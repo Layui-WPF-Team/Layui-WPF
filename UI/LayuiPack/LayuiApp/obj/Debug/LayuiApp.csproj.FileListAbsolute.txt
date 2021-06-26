@@ -22,12 +22,12 @@ D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\bin\Debug\Layui.Core.pdb
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\bin\Debug\LayuiTemplate.pdb
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\bin\Debug\LayuiHome.pdb
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\LayuiApp.csproj.AssemblyReference.cache
-D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\Views\MainWindow.baml
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\Views\MainWindow.g.cs
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\App.g.cs
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\LayuiApp_MarkupCompile.cache
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\LayuiApp_MarkupCompile.lref
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\App.baml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\Views\MainWindow.baml
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\LayuiApp.g.resources
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\LayuiApp.Properties.Resources.resources
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\LayuiApp.csproj.GenerateResource.cache

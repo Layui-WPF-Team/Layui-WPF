@@ -48,5 +48,28 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("Type", typeof(ButtonStyle), typeof(LayButton), new PropertyMetadata(ButtonStyle.Default));
 
 
+        public Brush HoverBackground
+        {
+            get { return (Brush)GetValue(HoverBackgroundProperty); }
+            set { SetValue(HoverBackgroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HoverBackground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HoverBackgroundProperty =
+            DependencyProperty.Register("HoverBackground", typeof(Brush), typeof(LayButton), new PropertyMetadata(Brushes.Transparent));
+
+
+        public Brush HoverBorderBrush
+        {
+            get { return (Brush)GetValue(HoverBorderBrushProperty); }
+            set { SetValue(HoverBorderBrushProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HoverBorderBrush.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HoverBorderBrushProperty =
+            DependencyProperty.Register("HoverBorderBrush", typeof(Brush), typeof(LayButton), new PropertyMetadata(Brushes.Transparent));
+
+
+
     }
 }
