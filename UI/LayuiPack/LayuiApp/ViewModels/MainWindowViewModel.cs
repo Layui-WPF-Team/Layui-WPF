@@ -13,6 +13,7 @@ namespace LayuiApp.ViewModels
         {
 
         }
+        
         #region 视图属性
         private string _title = "Layui-WPF";
         /// <summary>

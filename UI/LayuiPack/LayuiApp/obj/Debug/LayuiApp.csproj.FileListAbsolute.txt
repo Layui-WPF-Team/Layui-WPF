@@ -35,4 +35,3 @@ D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\LayuiApp.csproj.
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\LayuiApp.csproj.CopyComplete
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\LayuiApp.exe
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\obj\Debug\LayuiApp.pdb
-D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiApp\bin\Debug\Fonts\fontawesome-webfont.ttf

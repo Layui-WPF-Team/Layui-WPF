@@ -12,6 +12,4 @@ D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTempla
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.csproj.CoreCompileInputs.cache
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.dll
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.pdb
-D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\FontStyle.baml
-D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\bin\Debug\Fonts\fontawesome-webfont.ttf
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.csproj.AssemblyReference.cache

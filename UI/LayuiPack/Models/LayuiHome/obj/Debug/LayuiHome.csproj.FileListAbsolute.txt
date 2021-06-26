@@ -22,4 +22,3 @@ D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Models\LayuiHome\obj\Debug\LayuiHom
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Models\LayuiHome\obj\Debug\LayuiHome.csproj.CopyComplete
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Models\LayuiHome\obj\Debug\LayuiHome.dll
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Models\LayuiHome\obj\Debug\LayuiHome.pdb
-D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Models\LayuiHome\bin\Debug\Fonts\fontawesome-webfont.ttf
