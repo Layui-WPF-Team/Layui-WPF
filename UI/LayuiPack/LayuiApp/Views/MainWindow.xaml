@@ -15,15 +15,17 @@
     WindowState="{Binding WindowState}"
     WindowStyle="None">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="60" ResizeBorderThickness="12" />
+        <WindowChrome
+            CaptionHeight="60"
+            GlassFrameThickness="1"
+            ResizeBorderThickness="12" />
     </WindowChrome.WindowChrome>
-    <Border Margin="7" CornerRadius="6">
+    <Border ClipToBounds="True">
         <Border.Style>
             <Style TargetType="Border">
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=WindowState}" Value="Maximized">
                         <Setter Property="Margin" Value="7" />
-                        <Setter Property="CornerRadius" Value="0" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
@@ -35,31 +37,32 @@
             </Grid.RowDefinitions>
             <Border
                 Height="60"
-                Padding="5,5,5,0"
-                Background="#23262E"
-                CornerRadius="6 6 0 0 ">
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=WindowState}" Value="Maximized">
-                                <Setter Property="CornerRadius" Value="0" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
+                Panel.ZIndex="1"
+                Background="#23262E">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Grid Width="200">
+                    <Border
+                        Width="200"
+                        Background="#393D49"
+                        CornerRadius="6 0 0 0">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="3"
+                                Direction="-90"
+                                Opacity="0.6"
+                                ShadowDepth="0" />
+                        </Border.Effect>
                         <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             FontSize="20"
-                            Foreground="#616369"
+                            Foreground="White"
+                            Opacity="0.7"
                             Text="{Binding Title}" />
-                    </Grid>
+                    </Border>
                     <StackPanel
                         Grid.Column="1"
                         HorizontalAlignment="Right"
@@ -134,18 +137,8 @@
             </Border>
             <Border
                 Grid.Row="1"
-                Padding="5,0,5,5"
-                Background="White"
-                CornerRadius="0 0 6 6">
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=WindowState}" Value="Maximized">
-                                <Setter Property="CornerRadius" Value="0" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
+                Panel.ZIndex="0"
+                Background="White">
                 <ContentControl prism:RegionManager.RegionName="{x:Static Nv:SystemResource.NavMainContent}" />
             </Border>
         </Grid>

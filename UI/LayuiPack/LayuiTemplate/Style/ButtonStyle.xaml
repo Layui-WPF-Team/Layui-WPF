@@ -39,6 +39,7 @@
             <Trigger Property="Type" Value="Primary">
                 <Setter Property="Background" Value="White" />
                 <Setter Property="Foreground" Value="Black" />
+                <Setter Property="HoverBackground" Value="White" />
                 <Setter Property="HoverBorderBrush" Value="{DynamicResource Green}" />
                 <Setter Property="BorderThickness" Value="1" />
             </Trigger>

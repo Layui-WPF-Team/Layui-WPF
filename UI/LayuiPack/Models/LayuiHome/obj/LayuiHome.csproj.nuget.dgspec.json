@@ -1,44 +1,46 @@
 {
   "format": 1,
   "restore": {
-    "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj": {}
+    "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj": {}
   },
   "projects": {
-    "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj": {
+    "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj": {
       "restore": {
-        "projectUniqueName": "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj",
+        "projectUniqueName": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj",
         "projectName": "Layui.Core",
-        "projectPath": "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj"
+        "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj"
       },
       "frameworks": {
         "net452": {}
       }
     },
-    "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj": {
+    "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj": {
       "restore": {
-        "projectUniqueName": "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj",
+        "projectUniqueName": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj",
         "projectName": "LayuiTemplate",
-        "projectPath": "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj"
+        "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj"
       },
       "frameworks": {
         "net452": {}
       }
     },
-    "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj": {
+    "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj",
+        "projectUniqueName": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj",
         "projectName": "LayuiHome",
-        "projectPath": "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj",
-        "packagesPath": "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\",
-        "outputPath": "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\obj\\",
+        "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj",
+        "packagesPath": "C:\\Users\\yinwenke\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
-          "D:\\Microsoft\\Xamarin\\NuGet\\"
+          "F:\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\22684\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yinwenke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -52,11 +54,11 @@
         "frameworks": {
           "net452": {
             "projectReferences": {
-              "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj": {
-                "projectPath": "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj"
+              "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj": {
+                "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj"
               },
-              "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj": {
-                "projectPath": "E:\\2019_Projects\\Repos\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj"
+              "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj": {
+                "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj"
               }
             }
           }

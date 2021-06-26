@@ -5,5 +5,182 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Lay:LayButton Type="Default" />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border Width="200" Background="#393D49">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <ItemsControl
+                    Padding="0"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    ItemsSource="{Binding MenuItemList}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <CheckBox
+                                    x:Name="header"
+                                    Height="50"
+                                    Padding="20,0"
+                                    Content="{Binding Title}"
+                                    FocusVisualStyle="{x:Null}"
+                                    Foreground="White"
+                                    IsChecked="False">
+                                    <CheckBox.Template>
+                                        <ControlTemplate TargetType="CheckBox">
+                                            <Border
+                                                x:Name="bg"
+                                                Margin="{TemplateBinding Margin}"
+                                                Background="Transparent"
+                                                Opacity="0.7">
+                                                <Grid Margin="{TemplateBinding Padding}">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    <TextBlock
+                                                        Grid.Column="1"
+                                                        VerticalAlignment="Center"
+                                                        FontFamily="{StaticResource IconFont}"
+                                                        RenderTransformOrigin="0.5,0.5"
+                                                        Text="&#xf078;">
+                                                        <TextBlock.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform />
+                                                                <SkewTransform />
+                                                                <RotateTransform x:Name="RotateTransform" Angle="0" />
+                                                                <TranslateTransform />
+                                                            </TransformGroup>
+                                                        </TextBlock.RenderTransform>
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter TargetName="bg" Property="Opacity" Value="1" />
+                                                </Trigger>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation
+                                                                    Storyboard.TargetName="RotateTransform"
+                                                                    Storyboard.TargetProperty="Angle"
+                                                                    To="180"
+                                                                    Duration="0:0:0.3" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation
+                                                                    Storyboard.TargetName="RotateTransform"
+                                                                    Storyboard.TargetProperty="Angle"
+                                                                    To="0"
+                                                                    Duration="0:0:0.3" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </CheckBox.Template>
+                                </CheckBox>
+                                <StackPanel Grid.Row="1" Background="#282B33">
+                                    <ItemsControl x:Name="content" ItemsSource="{Binding Data}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.Style>
+                                            <Style TargetType="ItemsControl">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=header, Path=IsChecked}" Value="false">
+                                                        <Setter Property="Height" Value="0" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ItemsControl.Style>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <RadioButton
+                                                    Height="40"
+                                                    Padding="20,0"
+                                                    Content="{Binding ItemTitle}"
+                                                    FocusVisualStyle="{x:Null}"
+                                                    Foreground="White"
+                                                    GroupName="Item">
+                                                    <RadioButton.Template>
+                                                        <ControlTemplate TargetType="RadioButton">
+                                                            <Grid>
+                                                                <Border x:Name="bg" Background="Transparent" />
+                                                                <Grid
+                                                                    x:Name="line"
+                                                                    Width="5"
+                                                                    HorizontalAlignment="Left"
+                                                                    Background="{StaticResource Green}"
+                                                                    Opacity="0" />
+                                                                <ContentPresenter
+                                                                    x:Name="dataContent"
+                                                                    Margin="{TemplateBinding Padding}"
+                                                                    HorizontalAlignment="Left"
+                                                                    VerticalAlignment="Center"
+                                                                    IsHitTestVisible="True"
+                                                                    Opacity="0.7" />
+                                                            </Grid>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="true">
+                                                                    <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                                    <Trigger.EnterActions>
+                                                                        <BeginStoryboard>
+                                                                            <Storyboard>
+                                                                                <DoubleAnimation
+                                                                                    Storyboard.TargetName="line"
+                                                                                    Storyboard.TargetProperty="Opacity"
+                                                                                    To="1"
+                                                                                    Duration="0:0:0.3" />
+                                                                            </Storyboard>
+                                                                        </BeginStoryboard>
+                                                                    </Trigger.EnterActions>
+                                                                    <Trigger.ExitActions>
+                                                                        <BeginStoryboard>
+                                                                            <Storyboard>
+                                                                                <DoubleAnimation
+                                                                                    Storyboard.TargetName="line"
+                                                                                    Storyboard.TargetProperty="Opacity"
+                                                                                    To="0"
+                                                                                    Duration="0:0:0.3" />
+                                                                            </Storyboard>
+                                                                        </BeginStoryboard>
+                                                                    </Trigger.ExitActions>
+                                                                </Trigger>
+                                                                <Trigger Property="IsChecked" Value="true">
+                                                                    <Setter TargetName="bg" Property="Background" Value="{StaticResource Green}" />
+                                                                    <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                                    <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </RadioButton.Template>
+                                                </RadioButton>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+    </Grid>
 </UserControl>

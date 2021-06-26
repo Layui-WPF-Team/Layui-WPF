@@ -8,12 +8,12 @@ namespace LayuiApp.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        
+
         public MainWindowViewModel()
         {
 
         }
-        
+
         #region 视图属性
         private string _title = "Layui-WPF";
         /// <summary>
@@ -33,18 +33,26 @@ namespace LayuiApp.ViewModels
             get { return _WindowState; }
             set { _WindowState = value; RaisePropertyChanged(); }
         }
+        private Thickness _GlassFrameThickness ;
+
+        public Thickness GlassFrameThickness
+        {
+            get { return _GlassFrameThickness; }
+            set { _GlassFrameThickness = value; RaisePropertyChanged(); }
+        }
+
         #endregion
         #region 窗体命令
         /// <summary>
         /// 窗体最小化命令
         /// </summary>
         public DelegateCommand MinWindowCommand => new DelegateCommand(MinWindow);
-       
+
         /// <summary>
         ///窗体最大化命令
         /// </summary>
         public DelegateCommand<bool?> MaxWindowCommand => new DelegateCommand<bool?>(MaxWindow);
-        
+
         /// <summary>
         /// 关闭窗体
         /// </summary>
@@ -65,8 +73,16 @@ namespace LayuiApp.ViewModels
         /// <param name="obj"></param>
         private void MaxWindow(bool? obj)
         {
-            if (obj == true) WindowState = WindowState.Maximized;
-            else WindowState = WindowState.Normal;
+            if (obj == true)
+            {
+                GlassFrameThickness = new Thickness(1);
+                WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                GlassFrameThickness = new Thickness(0);
+                WindowState = WindowState.Normal;
+            }
         }
         /// <summary>
         /// 关闭窗体
