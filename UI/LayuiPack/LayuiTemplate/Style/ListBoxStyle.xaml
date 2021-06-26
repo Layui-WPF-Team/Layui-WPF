@@ -5,6 +5,7 @@
 
     <Style TargetType="{x:Type Lay:LayListBox}">
         
+        
     </Style>
 
 </ResourceDictionary>

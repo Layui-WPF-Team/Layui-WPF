@@ -7,6 +7,9 @@ using System.Windows.Controls;
 
 namespace LayuiTemplate.Control
 {
+    /// <summary>
+    /// ListBox
+    /// </summary>
     public class LayListBox : ListBox
     {
 
