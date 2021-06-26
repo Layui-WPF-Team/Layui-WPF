@@ -4,17 +4,17 @@
 library
 C#
 .cs
-D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\
+D:\Code\GitHub\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\
 LayuiTemplate
 none
 false
 DEBUG;TRACE
 
-41658336990
+5-969487415
 
-62140965916
+7646573834
 13738642453
-Color\LayColor.xaml;Style\ButtonStyle.xaml;Style\FontsStyle.xaml;Themes\Generic.xaml;
+Color\LayColor.xaml;Style\ButtonStyle.xaml;Style\FontsStyle.xaml;Style\ListBoxStyle.xaml;Themes\Generic.xaml;
 
 True
 

@@ -44,3 +44,4 @@ D:\Code\GitHub\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.cspr
 D:\Code\GitHub\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.csproj.CoreCompileInputs.cache
 D:\Code\GitHub\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.dll
 D:\Code\GitHub\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.pdb
+D:\Code\GitHub\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\ListBoxStyle.baml
