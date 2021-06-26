@@ -115,7 +115,7 @@
                                         <DataTrigger Binding="{Binding WindowState}" Value="Maximized">
                                             <Setter Property="Content" Value="&#xf2d0;" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding WindowState}" Value="Normal">
+                                        <DataTrigger Binding="{Binding WindowState, FallbackValue=Normal}" Value="Normal">
                                             <Setter Property="Content" Value="&#xf2d2;" />
                                         </DataTrigger>
                                     </Style.Triggers>
