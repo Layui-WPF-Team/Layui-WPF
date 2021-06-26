@@ -105,6 +105,10 @@
       <Project>{80dd0aa1-a155-4c77-a7d0-878f1fb1325e}</Project>
       <Name>LayuiTemplate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Models\LayuiFundamentalElement\LayuiFundamentalElement.csproj">
+      <Project>{91C67C0C-F473-4A37-94AD-9E5E800A7CBD}</Project>
+      <Name>LayuiFundamentalElement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\LayuiHome\LayuiHome.csproj">
       <Project>{7EC17FFF-261F-4F1C-9899-F5AD3BB34D4F}</Project>
       <Name>LayuiHome</Name>

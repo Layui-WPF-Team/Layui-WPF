@@ -9,7 +9,17 @@ namespace Layui.Core.Resource
     public class SystemResource
     {
         #region 导航控件声明去区域
-        public static string NavMainContent = "NavMainContent";
+        /// <summary>
+        /// 主页导航
+        /// </summary>
+        public static string Nav_MainContent = "Nav_MainContent";
+        /// <summary>
+        /// 模块导航
+        /// </summary>
+        public static string Nav_HomeContent = "Nav_HomeContent";
+        #endregion
+        #region 导航内容
+        public static string Page_ButtonView = "Page_ButtonView";
         #endregion
     }
 }

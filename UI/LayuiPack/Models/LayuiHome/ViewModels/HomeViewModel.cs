@@ -1,5 +1,9 @@
-﻿using Prism.Commands;
+﻿using Layui.Core.Base;
+using Layui.Core.Resource;
+using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,98 +11,112 @@ using System.Linq;
 
 namespace LayuiHome.ViewModels
 {
-    public class HomeViewModel : BindableBase
+    public class HomeViewModel : LayuiViewModelBase
     {
-        public HomeViewModel()
+        public HomeViewModel(IRegionManager regionManager, IDialogService dialogServic) : base(regionManager, dialogServic)
         {
-            MenuItemList = new ObservableCollection<Menu>();
-            MenuItemList.Add(new Menu()
+            MenuItemList = new ObservableCollection<object>();
+            MenuItemList.Add(new
             {
                 Title = "基本元素",
-                Data = new ObservableCollection<Item>()
+                Data = new ObservableCollection<object>()
                     {
-                        new Item()
+                        new
                         {
-                            ItemTitle="按钮"
-                        },new Item()
+                            ItemTitle="按钮", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="表单"
-                        },new Item()
+                            ItemTitle="表单", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="基础菜单"
-                        },new Item()
+                            ItemTitle="基础菜单", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="选项卡"
-                        },new Item()
+                            ItemTitle="选项卡", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="进度条"
-                        },new Item()
+                            ItemTitle="进度条", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="面板"
-                        },new Item()
+                            ItemTitle="面板", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="徽章"
-                        },new Item()
+                            ItemTitle="徽章", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="动画"
+                            ItemTitle="动画", PageKey=SystemResource.Page_ButtonView
                         }
                     }
-            }); MenuItemList.Add(new Menu()
+            }); MenuItemList.Add(new
             {
                 Title = "组件示例",
-                Data = new ObservableCollection<Item>()
+                Data = new ObservableCollection<object>()
                     {
-                        new Item()
+                        new
                         {
-                            ItemTitle="弹出层"
-                        },new Item()
+                            ItemTitle="弹出层", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="日期与时间选择"
-                        },new Item()
+                            ItemTitle="日期与时间选择", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="数据表格"
-                        },new Item()
+                            ItemTitle="数据表格", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="下拉菜单"
-                        },new Item()
+                            ItemTitle="下拉菜单", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="文件上传"
-                        },new Item()
+                            ItemTitle="文件上传", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="穿梭格"
-                        },new Item()
+                            ItemTitle="穿梭格", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="树形组件"
-                        },new Item()
+                            ItemTitle="树形组件", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="滑块"
-                        },new Item()
+                            ItemTitle="滑块", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="评分"
-                        },new Item()
+                            ItemTitle="评分", PageKey=SystemResource.Page_ButtonView
+                        },new
                         {
-                            ItemTitle="轮播图"
+                            ItemTitle="轮播图", PageKey=SystemResource.Page_ButtonView
                         }
                     }
             });
-        }
-        private ObservableCollection<Menu> _MenuItemList;
 
-        public ObservableCollection<Menu> MenuItemList
+        }
+        #region 视图属性
+        private ObservableCollection<object> _MenuItemList;
+        /// <summary>
+        /// 导航目录
+        /// </summary>
+        public ObservableCollection<object> MenuItemList
         {
             get { return _MenuItemList; }
             set { _MenuItemList = value; }
         }
+        #endregion
+        #region 命令
+        /// <summary>
+        /// 导航界面
+        /// </summary>
+        public DelegateCommand<string> GoPageCommand => new DelegateCommand<string>(GoPage);
+        #endregion
 
-    }
-    public class Menu
-    {
-        public string Title { get; set; }
-        public ObservableCollection<Item> Data { get; set; }
-    }
-    public class Item
-    {
-        public string ItemTitle { get; set; }
+        #region 核心方法
+        /// <summary>
+        /// 跳转界面
+        /// </summary>
+        /// <param name="PageKey"></param>
+        private void GoPage(string PageKey)
+        {
+            regionManager.RequestNavigate(SystemResource.Nav_HomeContent, PageKey);
+        }
+        #endregion
+
+
 
     }
 }

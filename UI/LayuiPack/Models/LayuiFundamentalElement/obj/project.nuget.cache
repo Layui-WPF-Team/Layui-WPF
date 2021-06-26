@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "TI32kHOUUwftJJYdhcnBja6WmGrpDYHpeLQiMA9qzwCt2Xcv+VOynY8dG2ZRHOuZ3+cK3Rnpc30TF/4irYbBYQ==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiFundamentalElement\\LayuiFundamentalElement.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yinwenke\\.nuget\\packages\\commonservicelocator\\2.0.4\\commonservicelocator.2.0.4.nupkg.sha512",
+    "C:\\Users\\yinwenke\\.nuget\\packages\\prism.core\\7.2.0.1422\\prism.core.7.2.0.1422.nupkg.sha512",
+    "C:\\Users\\yinwenke\\.nuget\\packages\\prism.wpf\\7.2.0.1422\\prism.wpf.7.2.0.1422.nupkg.sha512",
+    "C:\\Users\\yinwenke\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

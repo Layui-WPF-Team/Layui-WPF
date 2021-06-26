@@ -118,6 +118,21 @@
           "bin/placeholder/Layui.Core.dll": {}
         }
       },
+      "LayuiFundamentalElement/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.2",
+        "dependencies": {
+          "Layui.Core": "1.0.0",
+          "LayuiTemplate": "1.0.0",
+          "Prism.Wpf": "7.2.0.1422"
+        },
+        "compile": {
+          "bin/placeholder/LayuiFundamentalElement.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LayuiFundamentalElement.dll": {}
+        }
+      },
       "LayuiHome/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.2",
@@ -258,6 +273,21 @@
         },
         "runtime": {
           "bin/placeholder/Layui.Core.dll": {}
+        }
+      },
+      "LayuiFundamentalElement/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.2",
+        "dependencies": {
+          "Layui.Core": "1.0.0",
+          "LayuiTemplate": "1.0.0",
+          "Prism.Wpf": "7.2.0.1422"
+        },
+        "compile": {
+          "bin/placeholder/LayuiFundamentalElement.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LayuiFundamentalElement.dll": {}
         }
       },
       "LayuiHome/1.0.0": {
@@ -402,6 +432,21 @@
           "bin/placeholder/Layui.Core.dll": {}
         }
       },
+      "LayuiFundamentalElement/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.2",
+        "dependencies": {
+          "Layui.Core": "1.0.0",
+          "LayuiTemplate": "1.0.0",
+          "Prism.Wpf": "7.2.0.1422"
+        },
+        "compile": {
+          "bin/placeholder/LayuiFundamentalElement.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LayuiFundamentalElement.dll": {}
+        }
+      },
       "LayuiHome/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.2",
@@ -542,6 +587,21 @@
         },
         "runtime": {
           "bin/placeholder/Layui.Core.dll": {}
+        }
+      },
+      "LayuiFundamentalElement/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.2",
+        "dependencies": {
+          "Layui.Core": "1.0.0",
+          "LayuiTemplate": "1.0.0",
+          "Prism.Wpf": "7.2.0.1422"
+        },
+        "compile": {
+          "bin/placeholder/LayuiFundamentalElement.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LayuiFundamentalElement.dll": {}
         }
       },
       "LayuiHome/1.0.0": {
@@ -809,6 +869,11 @@
       "path": "../Core/Layui.Core/Layui.Core.csproj",
       "msbuildProject": "../Core/Layui.Core/Layui.Core.csproj"
     },
+    "LayuiFundamentalElement/1.0.0": {
+      "type": "project",
+      "path": "../Models/LayuiFundamentalElement/LayuiFundamentalElement.csproj",
+      "msbuildProject": "../Models/LayuiFundamentalElement/LayuiFundamentalElement.csproj"
+    },
     "LayuiHome/1.0.0": {
       "type": "project",
       "path": "../Models/LayuiHome/LayuiHome.csproj",
@@ -823,6 +888,7 @@
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.5.2": [
       "Layui.Core >= 1.0.0",
+      "LayuiFundamentalElement >= 1.0.0",
       "LayuiHome >= 1.0.0",
       "LayuiTemplate >= 1.0.0",
       "Prism.Unity >= 7.2.0.1422"
@@ -868,6 +934,9 @@
             },
             "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj": {
               "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj"
+            },
+            "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiFundamentalElement\\LayuiFundamentalElement.csproj": {
+              "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiFundamentalElement\\LayuiFundamentalElement.csproj"
             },
             "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj": {
               "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj"

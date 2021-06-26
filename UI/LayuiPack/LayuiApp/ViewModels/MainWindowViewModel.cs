@@ -1,15 +1,18 @@
-﻿using Prism.Commands;
+﻿using Layui.Core.Base;
+using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
+using Prism.Services.Dialogs;
 using System;
 using System.Windows;
 using System.Windows.Input;
 
 namespace LayuiApp.ViewModels
 {
-    public class MainWindowViewModel : BindableBase
+    public class MainWindowViewModel : LayuiViewModelBase
     {
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IRegionManager regionManager, IDialogService dialogServic) :base(regionManager, dialogServic)
         {
 
         }

@@ -8,3 +8,14 @@ D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Layui.Cor
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.csproj.CoreCompileInputs.cache
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.dll
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.pdb
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\CommonServiceLocator.dll
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Prism.dll
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Prism.Wpf.dll
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\System.ValueTuple.dll
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\System.Windows.Interactivity.dll
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Prism.pdb
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Prism.xml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Prism.Wpf.pdb
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Prism.Wpf.xml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\System.ValueTuple.xml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.csproj.CopyComplete
