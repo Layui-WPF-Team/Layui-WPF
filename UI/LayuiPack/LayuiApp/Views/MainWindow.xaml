@@ -96,7 +96,7 @@
                         <Button
                             Command="{Binding MinWindowCommand}"
                             Content="&#xf2d1;"
-                            FontFamily="/LayuiApp;component/Fonts/#FontAwesome"
+                            FontFamily="{StaticResource IconFont}"
                             FontSize="20"
                             Foreground="White"
                             WindowChrome.IsHitTestVisibleInChrome="True" />
@@ -104,7 +104,7 @@
                             x:Name="WindowStateBtn"
                             Command="{Binding MaxWindowCommand}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"
-                            FontFamily="/LayuiApp;component/Fonts/#FontAwesome"
+                            FontFamily="{StaticResource IconFont}"
                             FontSize="20"
                             Foreground="White"
                             IsChecked="False"
@@ -125,7 +125,7 @@
                         <Button
                             Command="{Binding CloseWindowCommand}"
                             Content="&#xf00d;"
-                            FontFamily="/LayuiApp;component/Fonts/#FontAwesome"
+                            FontFamily="{StaticResource IconFont}"
                             FontSize="20"
                             Foreground="White"
                             WindowChrome.IsHitTestVisibleInChrome="True" />

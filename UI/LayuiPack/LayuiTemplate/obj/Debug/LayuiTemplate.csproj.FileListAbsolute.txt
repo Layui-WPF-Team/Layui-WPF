@@ -12,4 +12,4 @@ D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTempla
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.csproj.CoreCompileInputs.cache
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.dll
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.pdb
-D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.csproj.AssemblyReference.cache
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\FontsStyle.baml

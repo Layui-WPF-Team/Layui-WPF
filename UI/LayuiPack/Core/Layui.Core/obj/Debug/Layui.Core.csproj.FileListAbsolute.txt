@@ -3,4 +3,3 @@ D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Layui.Cor
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.csproj.CoreCompileInputs.cache
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.dll
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.pdb
-D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.csproj.AssemblyReference.cache
