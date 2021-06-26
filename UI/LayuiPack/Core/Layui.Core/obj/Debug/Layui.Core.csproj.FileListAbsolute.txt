@@ -3,3 +3,8 @@ D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Layui.Cor
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.csproj.CoreCompileInputs.cache
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.dll
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.pdb
+E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Layui.Core.dll
+E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Layui.Core.pdb
+E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.csproj.CoreCompileInputs.cache
+E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.dll
+E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.pdb

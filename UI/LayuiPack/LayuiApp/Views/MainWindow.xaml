@@ -6,7 +6,7 @@
     xmlns:Nv="clr-namespace:Layui.Core.Resource;assembly=Layui.Core"
     xmlns:local="clr-namespace:LayuiApp.Views"
     xmlns:prism="http://prismlibrary.com/"
-    Width="900"
+    Width="1080"
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
     AllowsTransparency="True"
