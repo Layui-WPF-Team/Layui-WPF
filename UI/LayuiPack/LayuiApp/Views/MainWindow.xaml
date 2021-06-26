@@ -8,7 +8,6 @@
     xmlns:prism="http://prismlibrary.com/"
     Width="900"
     Height="600"
-    MaxHeight="{Binding MaxHeight, FallbackValue=600}"
     prism:ViewModelLocator.AutoWireViewModel="True"
     AllowsTransparency="True"
     Background="Transparent"
