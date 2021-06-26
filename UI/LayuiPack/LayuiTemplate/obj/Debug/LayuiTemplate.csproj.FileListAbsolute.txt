@@ -1,0 +1,17 @@
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\bin\Debug\LayuiTemplate.dll
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\bin\Debug\LayuiTemplate.pdb
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Color\LayColor.baml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate_MarkupCompile.cache
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate_MarkupCompile.lref
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\ButtonStyle.baml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Themes\Generic.baml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.g.resources
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.Properties.Resources.resources
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.csproj.GenerateResource.cache
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.csproj.CoreCompileInputs.cache
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.dll
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.pdb
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\FontStyle.baml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\bin\Debug\Fonts\fontawesome-webfont.ttf
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.csproj.AssemblyReference.cache

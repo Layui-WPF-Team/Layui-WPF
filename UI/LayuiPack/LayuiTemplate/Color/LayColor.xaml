@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  主色  -->
+    <Color x:Key="GreenEffect">#009688</Color>
+    <Color x:Key="LightGreenEffect">#33ABA0</Color>
+    <SolidColorBrush x:Key="Green" Color="{StaticResource GreenEffect}" />
+    <SolidColorBrush x:Key="LightGreen" Color="{StaticResource LightGreenEffect}" />
+    <!--  百搭  -->
+    <Color x:Key="BlueEffect">#1E9FFF</Color>
+    <Color x:Key="LightBlueEffect">#4BB2FF</Color>
+    <SolidColorBrush x:Key="Blue" Color="{StaticResource BlueEffect}" />
+    <SolidColorBrush x:Key="LightBlue" Color="{StaticResource LightBlueEffect}" />
+    <!--  暖色  -->
+    <Color x:Key="OrangeEffect">#FFB800</Color>
+    <Color x:Key="LightOrangeEffect">#FFC633</Color>
+    <SolidColorBrush x:Key="Orange" Color="{StaticResource OrangeEffect}" />
+    <SolidColorBrush x:Key="LightOrange" Color="{StaticResource LightOrangeEffect}" />
+    <!--  警告  -->
+    <Color x:Key="RedEffect">#FF5722</Color>
+    <Color x:Key="LightRedEffect">#FF794E</Color>
+    <SolidColorBrush x:Key="Red" Color="{StaticResource RedEffect}" />
+    <SolidColorBrush x:Key="LightRed" Color="{StaticResource LightRedEffect}" />
+    <!--  深色  -->
+    <Color x:Key="BlackEffect">#61646D</Color>
+    <Color x:Key="LightBlackEffect">#61646D</Color>
+    <SolidColorBrush x:Key="Black" Color="{StaticResource BlackEffect}" />
+    <SolidColorBrush x:Key="LightBlack" Color="{StaticResource LightBlackEffect}" />
+</ResourceDictionary>

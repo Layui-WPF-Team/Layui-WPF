@@ -1,0 +1,9 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Color/LayColor.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/ButtonStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

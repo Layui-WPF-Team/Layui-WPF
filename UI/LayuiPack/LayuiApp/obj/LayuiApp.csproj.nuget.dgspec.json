@@ -1,0 +1,155 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiApp\\LayuiApp.csproj": {}
+  },
+  "projects": {
+    "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj",
+        "projectName": "Layui.Core",
+        "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj"
+      },
+      "frameworks": {
+        "net452": {}
+      }
+    },
+    "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiApp\\LayuiApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiApp\\LayuiApp.csproj",
+        "projectName": "LayuiApp",
+        "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiApp\\LayuiApp.csproj",
+        "packagesPath": "C:\\Users\\yinwenke\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "F:\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\yinwenke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net452"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net452": {
+            "projectReferences": {
+              "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj": {
+                "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj"
+              },
+              "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj": {
+                "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj"
+              },
+              "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj": {
+                "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net452": {
+          "dependencies": {
+            "Prism.Unity": {
+              "target": "Package",
+              "version": "[7.2.0.1422, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj",
+        "projectName": "LayuiTemplate",
+        "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj"
+      },
+      "frameworks": {
+        "net452": {}
+      }
+    },
+    "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj",
+        "projectName": "LayuiHome",
+        "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\LayuiHome.csproj",
+        "packagesPath": "C:\\Users\\yinwenke\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Models\\LayuiHome\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "F:\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\yinwenke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net452"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net452": {
+            "projectReferences": {
+              "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj": {
+                "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\Core\\Layui.Core\\Layui.Core.csproj"
+              },
+              "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj": {
+                "projectPath": "D:\\GitHub项目源码\\Layui-WPF\\UI\\LayuiPack\\LayuiTemplate\\LayuiTemplate.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net452": {
+          "dependencies": {
+            "Prism.Wpf": {
+              "target": "Package",
+              "version": "[7.2.0.1422, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
