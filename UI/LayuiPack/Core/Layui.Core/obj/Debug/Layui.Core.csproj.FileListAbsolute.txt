@@ -8,3 +8,9 @@ E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Layui.Co
 E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.csproj.CoreCompileInputs.cache
 E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.dll
 E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.pdb
+D:\Code\GitHub\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Layui.Core.dll
+D:\Code\GitHub\Layui-WPF\UI\LayuiPack\Core\Layui.Core\bin\Debug\Layui.Core.pdb
+D:\Code\GitHub\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.csproj.AssemblyReference.cache
+D:\Code\GitHub\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.csproj.CoreCompileInputs.cache
+D:\Code\GitHub\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.dll
+D:\Code\GitHub\Layui-WPF\UI\LayuiPack\Core\Layui.Core\obj\Debug\Layui.Core.pdb

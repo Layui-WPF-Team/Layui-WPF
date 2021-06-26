@@ -15,6 +15,7 @@ namespace LayuiApp.ViewModels
         }
         
         #region 视图属性
+
         private string _title = "Layui-WPF";
         /// <summary>
         /// 标题
@@ -24,6 +25,7 @@ namespace LayuiApp.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
+
         private WindowState _WindowState;
         /// <summary>
         /// 窗体状态
@@ -33,7 +35,10 @@ namespace LayuiApp.ViewModels
             get { return _WindowState; }
             set { _WindowState = value; RaisePropertyChanged(); }
         }
+
         #endregion
+
+
         #region 窗体命令
         /// <summary>
         /// 窗体最小化命令
@@ -51,7 +56,10 @@ namespace LayuiApp.ViewModels
         public DelegateCommand CloseWindowCommand => new DelegateCommand(CloseWindow);
 
         #endregion
+
+
         #region 核心方法
+
         /// <summary>
         /// 窗体最小化
         /// </summary>
@@ -59,6 +67,7 @@ namespace LayuiApp.ViewModels
         {
             WindowState = WindowState.Minimized;
         }
+
         /// <summary>
         /// 窗体最大化
         /// </summary>
@@ -68,6 +77,7 @@ namespace LayuiApp.ViewModels
             if (obj == true) WindowState = WindowState.Maximized;
             else WindowState = WindowState.Normal;
         }
+
         /// <summary>
         /// 关闭窗体
         /// </summary>
@@ -75,6 +85,7 @@ namespace LayuiApp.ViewModels
         {
             Application.Current.Shutdown();
         }
+
         #endregion
     }
 }
