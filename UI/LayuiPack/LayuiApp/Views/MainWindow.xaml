@@ -44,10 +44,7 @@
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Border
-                        Width="200"
-                        Background="#393D49"
-                        CornerRadius="6 0 0 0">
+                    <Border Width="200" Background="#393D49">
                         <Border.Effect>
                             <DropShadowEffect
                                 BlurRadius="3"

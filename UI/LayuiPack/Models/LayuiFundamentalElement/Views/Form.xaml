@@ -1,0 +1,38 @@
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.Form"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:Nv="clr-namespace:Layui.Core.Resource;assembly=Layui.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="540"
+    d:DesignWidth="1080"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Background="White"
+    mc:Ignorable="d">
+    <StackPanel Margin="6">
+        <Grid Margin="0,20">
+            <Grid Height="2" Background="#D2D2D2" />
+            <TextBlock
+                Margin="30,0,0,0"
+                HorizontalAlignment="Left"
+                Background="White"
+                Foreground="#B2000000"
+                Text="表单集合演示" />
+        </Grid>
+        <Lay:LayTextBox Height="50" Margin="0,5" />
+        <StackPanel Margin="0,5" Orientation="Horizontal">
+            <Lay:LayCheckBox Content="写作" />
+            <Lay:LayCheckBox Margin="10,0" Content="阅读" />
+            <Lay:LayCheckBox Content="游戏" />
+        </StackPanel>
+        <Lay:LayButton
+            HorizontalAlignment="Left"
+            Command="{Binding SaveCommand}"
+            Content="立即提交"
+            Type="Default" />
+    </StackPanel>
+</UserControl>

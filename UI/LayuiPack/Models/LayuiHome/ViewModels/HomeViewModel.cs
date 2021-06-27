@@ -26,7 +26,7 @@ namespace LayuiHome.ViewModels
                             ItemTitle="按钮", PageKey=SystemResource.Page_ButtonView
                         },new
                         {
-                            ItemTitle="表单", PageKey=SystemResource.Page_ButtonView
+                            ItemTitle="表单", PageKey=SystemResource.Page_FormView
                         },new
                         {
                             ItemTitle="基础菜单", PageKey=SystemResource.Page_ButtonView

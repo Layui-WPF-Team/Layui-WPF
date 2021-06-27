@@ -18,6 +18,7 @@ namespace LayuiFundamentalElement
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<Views.Button>(SystemResource.Page_ButtonView);
+            containerRegistry.RegisterForNavigation<Views.Form>(SystemResource.Page_FormView);
         }
     }
 }

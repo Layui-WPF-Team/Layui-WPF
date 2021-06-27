@@ -19,7 +19,14 @@ namespace Layui.Core.Resource
         public static string Nav_HomeContent = "Nav_HomeContent";
         #endregion
         #region 导航内容
+        /// <summary>
+        /// 按钮视图
+        /// </summary>
         public static string Page_ButtonView = "Page_ButtonView";
+        /// <summary>
+        /// 表单视图
+        /// </summary>
+        public static string Page_FormView = "Page_FormView";
         #endregion
     }
 }

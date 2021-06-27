@@ -5,7 +5,77 @@
     <Style TargetType="{x:Type Lay:LayButton}">
         <Setter Property="Width" Value="94" />
         <Setter Property="Height" Value="38" />
-        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Type" Value="Primary" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Lay:LayButton}">
+                    <Border
+                        x:Name="bg"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBackground}" />
+                            <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBorderBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="bg" Property="Background" Value="#FBFBFB" />
+                            <Setter TargetName="bg" Property="BorderBrush" Value="#d2d2d2" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Type" Value="Primary">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="HoverBackground" Value="White" />
+                <Setter Property="HoverBorderBrush" Value="{DynamicResource Green}" />
+                <Setter Property="BorderThickness" Value="1" />
+            </Trigger>
+            <Trigger Property="Type" Value="Default">
+                <Setter Property="Background" Value="{DynamicResource Green}" />
+                <Setter Property="HoverBackground" Value="{DynamicResource LightGreen}" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Foreground" Value="White" />
+            </Trigger>
+            <Trigger Property="Type" Value="Normal">
+                <Setter Property="Background" Value="{DynamicResource Blue}" />
+                <Setter Property="HoverBackground" Value="{DynamicResource LightBlue}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Trigger>
+            <Trigger Property="Type" Value="Warm">
+                <Setter Property="Background" Value="{DynamicResource Orange}" />
+                <Setter Property="HoverBackground" Value="{DynamicResource LightOrange}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Trigger>
+            <Trigger Property="Type" Value="Danger">
+                <Setter Property="Background" Value="{DynamicResource Red}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="HoverBackground" Value="{DynamicResource LightRed}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="#d2d2d2" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="LayButtonStyle" TargetType="{x:Type Lay:LayButton}">
+        <Setter Property="Width" Value="94" />
+        <Setter Property="Height" Value="38" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Type" Value="Primary" />
         <Setter Property="Template">

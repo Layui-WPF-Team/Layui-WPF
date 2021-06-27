@@ -33,7 +33,7 @@ namespace Layui.Core.Base
         /// </summary>
         /// <param name="navigationContext"></param>
         /// <returns></returns>
-        public bool IsNavigationTarget(NavigationContext navigationContext)
+        public virtual bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return false;
         }
@@ -41,7 +41,7 @@ namespace Layui.Core.Base
         /// 导航前
         /// </summary>
         /// <param name="navigationContext"></param>
-        public void OnNavigatedFrom(NavigationContext navigationContext)
+        public virtual void OnNavigatedFrom(NavigationContext navigationContext)
         {
            
         }

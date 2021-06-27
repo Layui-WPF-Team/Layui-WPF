@@ -15,12 +15,13 @@ E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTempl
 E:\2019_Projects\Repos\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.pdb
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\bin\Debug\LayuiTemplate.dll
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\bin\Debug\LayuiTemplate.pdb
-D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Color\LayColor.baml
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\FontsStyle.baml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\ControlBaseStyle.baml
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate_MarkupCompile.cache
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate_MarkupCompile.lref
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\ButtonStyle.baml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\TextBoxStyle.baml
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Themes\Generic.baml
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.g.resources
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.Properties.Resources.resources
@@ -28,3 +29,5 @@ D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTempla
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.csproj.CoreCompileInputs.cache
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.dll
 D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\LayuiTemplate.pdb
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\CheckBoxStyle.baml
+D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\Style\ColorStyle.baml

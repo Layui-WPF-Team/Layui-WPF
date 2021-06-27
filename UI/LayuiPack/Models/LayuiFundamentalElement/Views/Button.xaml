@@ -22,6 +22,16 @@
             Margin="5"
             Content="百搭按钮"
             Type="Normal" />
+        <Lay:LayButton Margin="5" Type="Normal">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="{StaticResource IconFont}"
+                    Text="&#xf2bc;" />
+                <TextBlock Text="图标" />
+            </StackPanel>
+        </Lay:LayButton>
         <Lay:LayButton
             Margin="5"
             Content="暖色按钮"
