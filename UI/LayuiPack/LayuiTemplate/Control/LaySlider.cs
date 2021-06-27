@@ -15,7 +15,7 @@ namespace LayuiTemplate.Control
     {
 
         /// <summary>
-        /// 按钮圆角
+        /// 是否显示文本提示
         /// </summary>
         public bool ShowTips
         {
