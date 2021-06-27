@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\GitHub项目源码\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\
+D:\Code\GitHub\Layui-WPF\UI\LayuiPack\LayuiTemplate\obj\Debug\
 LayuiTemplate
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 8-2044860278
 
-9473149686
+10855637922
 13738642453
 Style\CheckBoxStyle.xaml;Style\ColorStyle.xaml;Style\ButtonStyle.xaml;Style\ControlBaseStyle.xaml;Style\FontsStyle.xaml;Style\ListBoxStyle.xaml;Style\TextBoxStyle.xaml;Themes\Generic.xaml;
 
-False
+True
 
