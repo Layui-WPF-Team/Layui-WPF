@@ -75,7 +75,7 @@ namespace LayuiHome.ViewModels
                             ItemTitle="树形组件", PageKey=SystemResource.Page_ButtonView
                         },new
                         {
-                            ItemTitle="滑块", PageKey=SystemResource.Page_ButtonView
+                            ItemTitle="滑块", PageKey=SystemResource.Page_Slider
                         },new
                         {
                             ItemTitle="评分", PageKey=SystemResource.Page_ButtonView

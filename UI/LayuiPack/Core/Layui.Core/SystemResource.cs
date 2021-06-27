@@ -27,6 +27,10 @@ namespace Layui.Core.Resource
         /// 表单视图
         /// </summary>
         public static string Page_FormView = "Page_FormView";
+        /// <summary>
+        /// 滑块视图
+        /// </summary>
+        public static string Page_Slider = "Page_Slider";
         #endregion
     }
 }

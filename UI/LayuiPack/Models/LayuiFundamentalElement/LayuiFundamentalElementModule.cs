@@ -19,6 +19,7 @@ namespace LayuiFundamentalElement
         {
             containerRegistry.RegisterForNavigation<Views.Button>(SystemResource.Page_ButtonView);
             containerRegistry.RegisterForNavigation<Views.Form>(SystemResource.Page_FormView);
+            containerRegistry.RegisterForNavigation<Views.Slider>(SystemResource.Page_Slider);
         }
     }
 }
