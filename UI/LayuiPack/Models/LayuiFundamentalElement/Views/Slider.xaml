@@ -9,9 +9,12 @@
              d:DesignHeight="450" d:DesignWidth="800"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
+
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
 
         <StackPanel Margin="20">
+
             <Grid Margin="0,20">
                 <Grid Height="2" Background="#D2D2D2" />
                 <TextBlock
@@ -21,7 +24,21 @@
                 Foreground="#B2000000"
                 Text="基本滑块" />
             </Grid>
-            <Lay:LaySlider Value="50" Maximum="100" />
+            <Lay:LaySlider Value="20" Maximum="100" />
+
+            <Grid Margin="0,20">
+                <Grid Height="2" Background="#D2D2D2" />
+                <TextBlock
+                Margin="30,0,0,0"
+                HorizontalAlignment="Left"
+                Background="White"
+                Foreground="#B2000000"
+                Text="垂直滑块" />
+            </Grid>
+            <StackPanel Height="200" Orientation="Horizontal">
+                <Lay:LaySlider Value="20" Maximum="100" Orientation="Vertical" Margin="20,0" />
+                <Lay:LaySlider Value="30" Maximum="100" Orientation="Vertical" Margin="20,0" Background="#FF5722" />
+            </StackPanel>
 
             <Grid Margin="0,20">
                 <Grid Height="2" Background="#D2D2D2" />
@@ -32,8 +49,8 @@
                 Foreground="#B2000000"
                 Text="自定义颜色" />
             </Grid>
-            <Lay:LaySlider Value="50" Maximum="100" Background="#1E9FFF" Margin="0,10"/>
-            <Lay:LaySlider Value="50" Maximum="100" Background="#5FB878" Margin="0,10"/>
+            <Lay:LaySlider Value="30" Maximum="100" Background="#1E9FFF" Margin="0,10"/>
+            <Lay:LaySlider Value="40" Maximum="100" Background="#5FB878" Margin="0,10"/>
             <Lay:LaySlider Value="50" Maximum="100" Background="#FF5722" Margin="0,10"/>
 
             <Grid Margin="0,20">
@@ -45,10 +62,13 @@
                 Foreground="#B2000000"
                 Text="禁用滑块" />
             </Grid>
-            <Lay:LaySlider Value="50" Maximum="100" IsEnabled="False"/>
+            <Lay:LaySlider Value="30" Maximum="100" IsEnabled="False"/>
+
+
         </StackPanel>
 
+    </ScrollViewer>
 
 
-    </Grid>
+
 </UserControl>

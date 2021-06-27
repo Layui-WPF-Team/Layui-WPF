@@ -56,13 +56,13 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Lay:LaySlider}">
-                    <Grid Height="18">
+                    <Grid x:Name="grid" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
                         <Track Grid.Column="1" Name="PART_Track">
                             <Track.DecreaseRepeatButton>
-                                <RepeatButton Background="{TemplateBinding Background}" Style="{StaticResource drb}" />
+                                <RepeatButton x:Name="drb" Background="{TemplateBinding Background}" Style="{StaticResource drb}" />
                             </Track.DecreaseRepeatButton>
                             <Track.IncreaseRepeatButton>
-                                <RepeatButton Style="{StaticResource irb}" />
+                                <RepeatButton x:Name="irb" Style="{StaticResource irb}" />
                             </Track.IncreaseRepeatButton>
                             <Track.Thumb>
                                 <Thumb Background="{TemplateBinding Background}" Style="{StaticResource ThumbStyle}"/>
@@ -72,6 +72,20 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" Value="#c2c2c2" />
+                        </Trigger>
+                        <Trigger Property="Orientation" Value="Horizontal">
+                            <Setter TargetName="grid" Property="Height" Value="18" />
+                            <Setter TargetName="drb" Property="Height" Value="4" />
+                            <Setter TargetName="drb" Property="Width" Value="{Binding ElementName=grid,Path=ActualWidth}" />
+                            <Setter TargetName="irb" Property="Height" Value="4" />
+                            <Setter TargetName="irb" Property="Width" Value="{Binding ElementName=grid,Path=ActualWidth}" />
+                        </Trigger>
+                        <Trigger Property="Orientation" Value="Vertical">
+                            <Setter TargetName="grid" Property="Width" Value="18" />
+                            <Setter TargetName="drb" Property="Width" Value="4" />
+                            <Setter TargetName="drb" Property="Height" Value="{Binding ElementName=grid,Path=ActualHeight}" />
+                            <Setter TargetName="irb" Property="Width" Value="4" />
+                            <Setter TargetName="irb" Property="Height" Value="{Binding ElementName=grid,Path=ActualHeight}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
