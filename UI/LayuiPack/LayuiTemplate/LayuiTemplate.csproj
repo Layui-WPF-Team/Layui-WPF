@@ -66,6 +66,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\ListBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Style\TextBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -78,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Control\LayButton.cs" />
     <Compile Include="Control\LayCheckBox.cs" />
+    <Compile Include="Control\LayListBox.cs" />
     <Compile Include="Control\LayTextBox.cs" />
     <Compile Include="Enum\ButtonStyle.cs" />
     <Compile Include="Enum\CheckBoxStyle.cs" />

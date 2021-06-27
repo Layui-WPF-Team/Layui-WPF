@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-7582964127
+8-2044860278
 
-81967541768
+9473149686
 13738642453
-Style\CheckBoxStyle.xaml;Style\ColorStyle.xaml;Style\ButtonStyle.xaml;Style\ControlBaseStyle.xaml;Style\FontsStyle.xaml;Style\TextBoxStyle.xaml;Themes\Generic.xaml;
+Style\CheckBoxStyle.xaml;Style\ColorStyle.xaml;Style\ButtonStyle.xaml;Style\ControlBaseStyle.xaml;Style\FontsStyle.xaml;Style\ListBoxStyle.xaml;Style\TextBoxStyle.xaml;Themes\Generic.xaml;
 
 False
 
