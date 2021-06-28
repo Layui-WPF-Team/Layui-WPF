@@ -107,15 +107,16 @@
                             FontFamily="{StaticResource IconFont}"
                             FontSize="20"
                             Foreground="White"
-                            IsChecked="False"
                             WindowChrome.IsHitTestVisibleInChrome="True">
                             <CheckBox.Style>
                                 <Style BasedOn="{StaticResource WindowCheckBoxStyle}" TargetType="CheckBox">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding WindowState}" Value="Maximized">
+                                            <Setter Property="IsChecked" Value="True" />
                                             <Setter Property="Content" Value="&#xf2d0;" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding WindowState, FallbackValue=Normal}" Value="Normal">
+                                            <Setter Property="IsChecked" Value="false" />
                                             <Setter Property="Content" Value="&#xf2d2;" />
                                         </DataTrigger>
                                     </Style.Triggers>

@@ -1,14 +1,15 @@
-﻿<UserControl x:Class="LayuiFundamentalElement.Views.Slider"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
-             xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.Slider"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
@@ -17,65 +18,87 @@
             <Grid Margin="0,20">
                 <Grid Height="2" Background="#D2D2D2" />
                 <TextBlock
-                Margin="30,0,0,0"
-                HorizontalAlignment="Left"
-                Background="White"
-                Foreground="#B2000000"
-                Text="基本滑块" />
+                    Margin="30,0,0,0"
+                    HorizontalAlignment="Left"
+                    Background="White"
+                    Foreground="#B2000000"
+                    Text="基本滑块" />
             </Grid>
             <Lay:LaySlider Value="20" />
 
             <Grid Margin="0,20">
                 <Grid Height="2" Background="#D2D2D2" />
                 <TextBlock
-                Margin="30,0,0,0"
-                HorizontalAlignment="Left"
-                Background="White"
-                Foreground="#B2000000"
-                Text="设置最大最小值" />
+                    Margin="30,0,0,0"
+                    HorizontalAlignment="Left"
+                    Background="White"
+                    Foreground="#B2000000"
+                    Text="设置最大最小值" />
             </Grid>
-            <Lay:LaySlider Value="30" Minimum="20" Maximum="50" />
+            <Lay:LaySlider
+                Maximum="50"
+                Minimum="20"
+                Value="30" />
 
             <Grid Margin="0,20">
                 <Grid Height="2" Background="#D2D2D2" />
                 <TextBlock
-                Margin="30,0,0,0"
-                HorizontalAlignment="Left"
-                Background="White"
-                Foreground="#B2000000"
-                Text="垂直滑块" />
+                    Margin="30,0,0,0"
+                    HorizontalAlignment="Left"
+                    Background="White"
+                    Foreground="#B2000000"
+                    Text="垂直滑块" />
             </Grid>
             <StackPanel Height="200" Orientation="Horizontal">
-                <Lay:LaySlider Value="20" Orientation="Vertical" Margin="20,0" />
-                <Lay:LaySlider Value="30" Orientation="Vertical" Margin="20,0" Background="#FF5722" />
+                <Lay:LaySlider
+                    Margin="20,0"
+                    Orientation="Vertical"
+                    Value="20" />
+                <Lay:LaySlider
+                    Margin="20,0"
+                    Background="#FF5722"
+                    Orientation="Vertical"
+                    Value="30" />
             </StackPanel>
 
             <Grid Margin="0,20">
                 <Grid Height="2" Background="#D2D2D2" />
                 <TextBlock
-                Margin="30,0,0,0"
-                HorizontalAlignment="Left"
-                Background="White"
-                Foreground="#B2000000"
-                Text="自定义颜色" />
+                    Margin="30,0,0,0"
+                    HorizontalAlignment="Left"
+                    Background="White"
+                    Foreground="#B2000000"
+                    Text="自定义颜色" />
             </Grid>
-            <Lay:LaySlider Value="30" Background="#1E9FFF" Margin="0,10"/>
-            <Lay:LaySlider Value="40" Background="#5FB878" Margin="0,10"/>
-            <Lay:LaySlider Value="50" Background="#FF5722" Margin="0,10"/>
+            <Lay:LaySlider
+                Margin="0,10"
+                Background="#1E9FFF"
+                Value="30" />
+            <Lay:LaySlider
+                Margin="0,10"
+                Background="#5FB878"
+                Value="40" />
+            <Lay:LaySlider
+                Margin="0,10"
+                Background="#FF5722"
+                Value="50" />
 
             <Grid Margin="0,20">
                 <Grid Height="2" Background="#D2D2D2" />
                 <TextBlock
-                Margin="30,0,0,0"
-                HorizontalAlignment="Left"
-                Background="White"
-                Foreground="#B2000000"
-                Text="禁用滑块" />
+                    Margin="30,0,0,0"
+                    HorizontalAlignment="Left"
+                    Background="White"
+                    Foreground="#B2000000"
+                    Text="禁用滑块" />
             </Grid>
-            <Lay:LaySlider Value="30" Maximum="100" IsEnabled="False"/>
+            <Lay:LaySlider
+                IsEnabled="False"
+                Maximum="100"
+                Value="30" />
 
         </StackPanel>
 
     </ScrollViewer>
-    
+
 </UserControl>

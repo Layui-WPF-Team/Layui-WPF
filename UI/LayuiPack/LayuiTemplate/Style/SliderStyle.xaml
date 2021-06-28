@@ -1,8 +1,8 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:Lay="clr-namespace:LayuiTemplate.Control">
-
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--  禁用色  -->
     <SolidColorBrush x:Key="Disable" Color="#C2C2C2" />
     <!--  增多色  -->
@@ -10,24 +10,68 @@
 
     <!--  圈圈默认大小  -->
     <sys:Double x:Key="ThumbDefaultSize">16</sys:Double>
-    <!--  圈圈放大大小  -->
-    <sys:Double x:Key="ThumbEnlargeSize">18</sys:Double>
     <!--  条条默认大小  -->
     <sys:Double x:Key="RepeatButtonSize">4</sys:Double>
 
     <Style x:Key="ThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Focusable" Value="false" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Width" Value="{DynamicResource ThumbDefaultSize}" />
         <Setter Property="Height" Value="{DynamicResource ThumbDefaultSize}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Thumb">
-                    <Border BorderBrush="{TemplateBinding Background}" BorderThickness="2" Background="#FFFFFF" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" CornerRadius="20"/>
+                    <Border
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="#FFFFFF"
+                        BorderBrush="{TemplateBinding Background}"
+                        BorderThickness="2"
+                        CornerRadius="8"
+                        RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform x:Name="ThumbScaleTransform" ScaleX="1" ScaleY="1" />
+                                <SkewTransform />
+                                <RotateTransform />
+                                <TranslateTransform />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Width" Value="{DynamicResource ThumbEnlargeSize}" />
-                            <Setter Property="Height" Value="{DynamicResource ThumbEnlargeSize}" />
+                            <!--  新增鼠标移上去的缓冲动画《对原有的大小进行放大，不破坏原有样式,放大1.15倍，单纯的设置宽高多出的部分会被切割视觉上有瑕疵》  -->
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbScaleTransform"
+                                            Storyboard.TargetProperty="ScaleX"
+                                            To="1.15"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbScaleTransform"
+                                            Storyboard.TargetProperty="ScaleY"
+                                            To="1.15"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbScaleTransform"
+                                            Storyboard.TargetProperty="ScaleX"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbScaleTransform"
+                                            Storyboard.TargetProperty="ScaleY"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -37,65 +81,91 @@
 
     <Style x:Key="RepeatButton" TargetType="{x:Type RepeatButton}">
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Height" Value="{DynamicResource RepeatButtonSize}" />
-        <Setter Property="Focusable" Value="false"/>
-        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="IsTabStop" Value="false" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+                    <Rectangle
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Fill="{TemplateBinding Background}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <!-- 水平滑条 -->
+    <!--  水平滑条  -->
     <ControlTemplate x:Key="LaySliderHorizontal" TargetType="{x:Type Lay:LaySlider}">
-        <Grid x:Name="grid" Height="18" Width="{TemplateBinding Width}">
-            <Track Grid.Column="1" Name="PART_Track">
+        <Grid
+            x:Name="grid"
+            Width="{TemplateBinding Width}"
+            Height="18">
+            <Track Name="PART_Track" Grid.Column="1">
                 <Track.DecreaseRepeatButton>
-                    <RepeatButton Style="{StaticResource RepeatButton}" Height="4" Width="{TemplateBinding Width}" Background="{TemplateBinding Background}" />
+                    <RepeatButton
+                        Width="{TemplateBinding Width}"
+                        Height="4"
+                        Background="{TemplateBinding Background}"
+                        Style="{StaticResource RepeatButton}" />
                 </Track.DecreaseRepeatButton>
                 <Track.IncreaseRepeatButton>
-                    <RepeatButton Style="{StaticResource RepeatButton}" Height="4" Width="{TemplateBinding Width}" Background="{DynamicResource Increase}" />
+                    <RepeatButton
+                        Width="{TemplateBinding Width}"
+                        Height="4"
+                        Background="{DynamicResource Increase}"
+                        Style="{StaticResource RepeatButton}" />
                 </Track.IncreaseRepeatButton>
                 <Track.Thumb>
-                    <Thumb Background="{TemplateBinding Background}" Style="{StaticResource ThumbStyle}"/>
+                    <Thumb Background="{TemplateBinding Background}" Style="{StaticResource ThumbStyle}" />
                 </Track.Thumb>
             </Track>
         </Grid>
     </ControlTemplate>
 
-    <!-- 垂直滑条 -->
+    <!--  垂直滑条  -->
     <ControlTemplate x:Key="LaySliderVertical" TargetType="{x:Type Lay:LaySlider}">
-        <Grid x:Name="grid" Width="18" Height="{TemplateBinding Height}">
-            <Track Grid.Column="1" Name="PART_Track">
+        <Grid
+            x:Name="grid"
+            Width="18"
+            Height="{TemplateBinding Height}">
+            <Track Name="PART_Track" Grid.Column="1">
                 <Track.DecreaseRepeatButton>
-                    <RepeatButton Style="{StaticResource RepeatButton}" Width="4" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" />
+                    <RepeatButton
+                        Width="4"
+                        Height="{TemplateBinding Height}"
+                        Background="{TemplateBinding Background}"
+                        Style="{StaticResource RepeatButton}" />
                 </Track.DecreaseRepeatButton>
                 <Track.IncreaseRepeatButton>
-                    <RepeatButton Style="{StaticResource RepeatButton}" Width="4" Height="{TemplateBinding Height}" Background="{DynamicResource Increase}" />
+                    <RepeatButton
+                        Width="4"
+                        Height="{TemplateBinding Height}"
+                        Background="{DynamicResource Increase}"
+                        Style="{StaticResource RepeatButton}" />
                 </Track.IncreaseRepeatButton>
                 <Track.Thumb>
-                    <Thumb Background="{TemplateBinding Background}" Style="{StaticResource ThumbStyle}"/>
+                    <Thumb Background="{TemplateBinding Background}" Style="{StaticResource ThumbStyle}" />
                 </Track.Thumb>
             </Track>
         </Grid>
     </ControlTemplate>
 
-    <!-- 滑条 -->
+    <!--  滑条  -->
     <Style TargetType="{x:Type Lay:LaySlider}">
         <Setter Property="Minimum" Value="0" />
         <Setter Property="Maximum" Value="100" />
-
-        <Setter Property="Focusable" Value="False"  />
-        <Setter Property="IsMoveToPointEnabled" Value="True"  />
-        <Setter Property="AutoToolTipPlacement" Value="TopLeft"/>
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsMoveToPointEnabled" Value="True" />
+        <Setter Property="AutoToolTipPlacement" Value="TopLeft" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Background" Value="{DynamicResource Green}" />
-        <Setter Property="Template" Value="{StaticResource LaySliderHorizontal}"/>
+        <Setter Property="Template" Value="{StaticResource LaySliderHorizontal}" />
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Vertical">
-                <Setter Property="Template" Value="{StaticResource LaySliderVertical}"/>
+                <Setter Property="Template" Value="{StaticResource LaySliderVertical}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{DynamicResource Disable}" />
