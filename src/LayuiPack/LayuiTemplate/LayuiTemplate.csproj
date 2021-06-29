@@ -97,7 +97,7 @@
     <Compile Include="Control\ListBox\LayListBox.cs" />
     <Compile Include="Control\Slider\LaySlider.cs" />
     <Compile Include="Control\TextBox\LayTextBox.cs" />
-    <Compile Include="Converter\ProgressBa\LayProgressBarIValueConverter.cs" />
+    <Compile Include="Converter\ProgressBar\LayProgressBarIValueConverter.cs" />
     <Compile Include="Enum\Button\ButtonStyle.cs" />
     <Compile Include="Enum\CheckBox\CheckBoxStyle.cs" />
     <Compile Include="Enum\Slider\SliderTipsPosition.cs" />
