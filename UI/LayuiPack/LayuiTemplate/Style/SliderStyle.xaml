@@ -3,10 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
     <!--  禁用色  -->
     <SolidColorBrush x:Key="Disable" Color="#C2C2C2" />
     <!--  增多色  -->
     <SolidColorBrush x:Key="Increase" Color="#EEEEEE" />
+    <!--  圈圈背景色  -->
+    <SolidColorBrush x:Key="ThumbBackground" Color="#FFFFFF" />
 
     <!--  圈圈默认大小  -->
     <sys:Double x:Key="ThumbDefaultSize">16</sys:Double>
@@ -25,7 +28,7 @@
                     <Border
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        Background="#FFFFFF"
+                        Background="{DynamicResource ThumbBackground}"
                         BorderBrush="{TemplateBinding Background}"
                         BorderThickness="2"
                         CornerRadius="8"
@@ -48,13 +51,13 @@
                                         <DoubleAnimation
                                             Storyboard.TargetName="ThumbScaleTransform"
                                             Storyboard.TargetProperty="ScaleX"
-                                            To="1.15"
-                                            Duration="0:0:0.3" />
+                                            To="1.125"
+                                            Duration="0:0:0.2" />
                                         <DoubleAnimation
                                             Storyboard.TargetName="ThumbScaleTransform"
                                             Storyboard.TargetProperty="ScaleY"
-                                            To="1.15"
-                                            Duration="0:0:0.3" />
+                                            To="1.125"
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -64,11 +67,11 @@
                                         <DoubleAnimation
                                             Storyboard.TargetName="ThumbScaleTransform"
                                             Storyboard.TargetProperty="ScaleX"
-                                            Duration="0:0:0.3" />
+                                            Duration="0:0:0.2" />
                                         <DoubleAnimation
                                             Storyboard.TargetName="ThumbScaleTransform"
                                             Storyboard.TargetProperty="ScaleY"
-                                            Duration="0:0:0.3" />
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
