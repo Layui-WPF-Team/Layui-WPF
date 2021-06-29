@@ -48,55 +48,59 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Style\CheckBoxStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Style\ColorStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Style\ButtonStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Style\ControlBaseStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Style\FontsStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Style\ListBoxStyle.xaml">
+    <Page Include="Style\Default\ButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Style\ProgressBarStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Style\SliderStyle.xaml">
+    <Page Include="Style\Default\CheckBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Style\TextBoxStyle.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Style\Default\ColorStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\Generic.xaml">
+    <Page Include="Style\Default\ControlBaseStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Default\FontsStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Default\ListBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Default\ProgressBarStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Default\SliderStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Default\TextBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\Button\LayButton.cs" />
     <Compile Include="Control\Canvas\LaySliderCanvas.cs" />
     <Compile Include="Control\CheckBox\LayCheckBox.cs" />
+    <Compile Include="Control\ProgressBar\LayProgressBar.cs" />
     <Compile Include="Control\ListBox\LayListBox.cs" />
     <Compile Include="Control\Slider\LaySlider.cs" />
     <Compile Include="Control\TextBox\LayTextBox.cs" />
-    <Compile Include="Enum\ButtonStyle.cs" />
-    <Compile Include="Enum\CheckBoxStyle.cs" />
-    <Compile Include="Enum\SliderTipsPosition.cs" />
+    <Compile Include="Converter\ProgressBar\LayProgressBarIValueConverter.cs" />
+    <Compile Include="Enum\Button\ButtonStyle.cs" />
+    <Compile Include="Enum\CheckBox\CheckBoxStyle.cs" />
+    <Compile Include="Enum\Slider\SliderTipsPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
