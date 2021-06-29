@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-
+    
     <!--  禁用色  -->
     <SolidColorBrush x:Key="Disable" Color="#C2C2C2" />
     <!--  增多色  -->
@@ -44,7 +44,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <!--  新增鼠标移上去的缓冲动画《对原有的大小进行放大，不破坏原有样式,放大1.125倍，单纯的设置宽高多出的部分会被切割视觉上有瑕疵》  -->
+                            <!--  新增鼠标移上去的缓冲动画《对原有的大小进行放大，不破坏原有样式,放大1.15倍，单纯的设置宽高多出的部分会被切割视觉上有瑕疵》  -->
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
