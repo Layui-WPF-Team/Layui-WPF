@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LayuiTemplate.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,19 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(ShowTips), typeof(bool), typeof(LaySlider));
+            DependencyProperty.Register(nameof(ShowTips), typeof(bool), typeof(LaySlider),new PropertyMetadata(false));
+
+
+        public SliderTipsPosition TipsPosition
+        {
+            get { return (SliderTipsPosition)GetValue(TipsPositionProperty); }
+            set { SetValue(TipsPositionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TipsPositionProperty =
+            DependencyProperty.Register("TipsPosition", typeof(SliderTipsPosition), typeof(LaySlider), new PropertyMetadata(SliderTipsPosition.Top));
+
 
     }
 }

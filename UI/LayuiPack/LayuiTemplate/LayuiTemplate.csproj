@@ -88,15 +88,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\LayButton.cs" />
-    <Compile Include="Control\LayCheckBox.cs" />
-    <Compile Include="Control\LayListBox.cs" />
-    <Compile Include="Control\LayProgressBar.cs" />
-    <Compile Include="Control\LaySlider.cs" />
-    <Compile Include="Control\LayTextBox.cs" />
-    <Compile Include="Converter\LayProgressBarIValueConverter.cs" />
+    <Compile Include="Control\Button\LayButton.cs" />
+    <Compile Include="Control\Canvas\LaySliderCanvas.cs" />
+    <Compile Include="Control\CheckBox\LayCheckBox.cs" />
+    <Compile Include="Control\ListBox\LayListBox.cs" />
+    <Compile Include="Control\Slider\LaySlider.cs" />
+    <Compile Include="Control\TextBox\LayTextBox.cs" />
     <Compile Include="Enum\ButtonStyle.cs" />
     <Compile Include="Enum\CheckBoxStyle.cs" />
+    <Compile Include="Enum\SliderTipsPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

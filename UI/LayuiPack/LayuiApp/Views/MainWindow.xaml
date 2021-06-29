@@ -9,23 +9,23 @@
     Width="1080"
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    AllowsTransparency="True"
-    Background="Transparent"
     WindowStartupLocation="CenterOwner"
-    WindowState="{Binding WindowState}"
-    WindowStyle="None">
+    WindowState="{Binding WindowState}">
     <WindowChrome.WindowChrome>
         <WindowChrome
             CaptionHeight="60"
-            GlassFrameThickness="1"
-            ResizeBorderThickness="12" />
+            CornerRadius="12"
+            GlassFrameThickness="0"
+            NonClientFrameEdges="None"
+            ResizeBorderThickness="4"
+            UseAeroCaptionButtons="False" />
     </WindowChrome.WindowChrome>
     <Border ClipToBounds="True">
         <Border.Style>
             <Style TargetType="Border">
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=WindowState}" Value="Maximized">
-                        <Setter Property="Margin" Value="7" />
+                        <Setter Property="Margin" Value="8" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
