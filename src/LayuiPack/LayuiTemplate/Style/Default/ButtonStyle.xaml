@@ -21,6 +21,10 @@
                         <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBackground}" />
                         <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBorderBrush}" />
                     </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" />
+                        <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
+                    </Trigger>
                     <Trigger Property="IsEnabled" Value="False">
                         <Setter TargetName="bg" Property="Background" Value="#FBFBFB" />
                         <Setter TargetName="bg" Property="BorderBrush" Value="#d2d2d2" />
