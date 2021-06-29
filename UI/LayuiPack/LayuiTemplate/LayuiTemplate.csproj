@@ -70,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\ProgressBarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\SliderStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,8 +91,10 @@
     <Compile Include="Control\LayButton.cs" />
     <Compile Include="Control\LayCheckBox.cs" />
     <Compile Include="Control\LayListBox.cs" />
+    <Compile Include="Control\LayProgressBar.cs" />
     <Compile Include="Control\LaySlider.cs" />
     <Compile Include="Control\LayTextBox.cs" />
+    <Compile Include="Converter\LayProgressBarIValueConverter.cs" />
     <Compile Include="Enum\ButtonStyle.cs" />
     <Compile Include="Enum\CheckBoxStyle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -31,6 +31,10 @@ namespace Layui.Core.Resource
         /// 滑块视图
         /// </summary>
         public static string Page_Slider = "Page_Slider";
+        /// <summary>
+        /// 进度条视图
+        /// </summary>
+        public static string Page_ProgressBar = "Page_ProgressBar";
         #endregion
     }
 }
