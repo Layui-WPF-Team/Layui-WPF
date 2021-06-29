@@ -14,7 +14,6 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
         <StackPanel Margin="20">
-
             <Grid Margin="0,20">
                 <Grid Height="2" Background="#D2D2D2" />
                 <TextBlock
@@ -24,8 +23,7 @@
                     Foreground="#B2000000"
                     Text="基本滑块" />
             </Grid>
-            <Lay:LaySlider Value="20" />
-
+            <Lay:LaySlider ShowTips="True" Value="20" />
             <Grid Margin="0,20">
                 <Grid Height="2" Background="#D2D2D2" />
                 <TextBlock

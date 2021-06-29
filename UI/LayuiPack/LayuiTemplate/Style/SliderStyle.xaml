@@ -25,27 +25,60 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Thumb">
-                    <Border
-                        Width="{TemplateBinding Width}"
-                        Height="{TemplateBinding Height}"
-                        Background="{DynamicResource ThumbBackground}"
-                        BorderBrush="{TemplateBinding Background}"
-                        BorderThickness="2"
-                        CornerRadius="8"
-                        RenderTransformOrigin="0.5,0.5">
-                        <Border.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform x:Name="ThumbScaleTransform" ScaleX="1" ScaleY="1" />
-                                <SkewTransform />
-                                <RotateTransform />
-                                <TranslateTransform />
-                            </TransformGroup>
-                        </Border.RenderTransform>
-                    </Border>
+                    <Lay:LaySliderCanvas>
+                        <Grid
+                            x:Name="ToolTip"
+                            Canvas.Bottom="15"
+                            IsHitTestVisible="False"
+                            Opacity="0">
+                            <Border
+                                Padding="5,2"
+                                Background="Black"
+                                CornerRadius="2">
+                                <TextBlock Foreground="White" Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlider}, Path=Value}" />
+                            </Border>
+                            <Grid
+                                Width="5"
+                                Height="5"
+                                VerticalAlignment="Bottom"
+                                Background="Black"
+                                RenderTransformOrigin="0.5,0.5">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="45" />
+                                        <TranslateTransform Y="2.5" />
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                            </Grid>
+                        </Grid>
+                        <Border
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{DynamicResource ThumbBackground}"
+                            BorderBrush="{TemplateBinding Background}"
+                            BorderThickness="2"
+                            CornerRadius="8"
+                            RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform x:Name="ThumbScaleTransform" ScaleX="1" ScaleY="1" />
+                                    <SkewTransform />
+                                    <RotateTransform />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+                    </Lay:LaySliderCanvas>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ShowTips}" Value="true" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsMouseOver}" Value="true" />
+                            </MultiDataTrigger.Conditions>
                             <!--  新增鼠标移上去的缓冲动画《对原有的大小进行放大，不破坏原有样式,放大1.125倍，单纯的设置宽高多出的部分会被切割视觉上有瑕疵》  -->
-                            <Trigger.EnterActions>
+                            <MultiDataTrigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
@@ -58,10 +91,20 @@
                                             Storyboard.TargetProperty="ScaleY"
                                             To="1.125"
                                             Duration="0:0:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ToolTip"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.1" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ToolTip"
+                                            Storyboard.TargetProperty="(Canvas.Bottom)"
+                                            To="25"
+                                            Duration="0:0:0.1" />
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
+                            </MultiDataTrigger.EnterActions>
+                            <MultiDataTrigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
@@ -72,10 +115,18 @@
                                             Storyboard.TargetName="ThumbScaleTransform"
                                             Storyboard.TargetProperty="ScaleY"
                                             Duration="0:0:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ToolTip"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.1" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ToolTip"
+                                            Storyboard.TargetProperty="(Canvas.Bottom)"
+                                            Duration="0:0:0.1" />
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
+                            </MultiDataTrigger.ExitActions>
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -162,7 +213,7 @@
         <Setter Property="Maximum" Value="100" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsMoveToPointEnabled" Value="True" />
-        <Setter Property="AutoToolTipPlacement" Value="TopLeft" />
+        <Setter Property="AutoToolTipPlacement" Value="None" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Background" Value="{DynamicResource Green}" />
         <Setter Property="Template" Value="{StaticResource LaySliderHorizontal}" />
