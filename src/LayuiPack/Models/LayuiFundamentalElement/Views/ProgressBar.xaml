@@ -4,42 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             mc:Ignorable="d" d:DesignWidth="600"
              xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
 
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20">
 
-            <Grid Margin="0,20">
-                <Grid Height="2" Background="#D2D2D2" />
-                <TextBlock Margin="30,0,0,0" HorizontalAlignment="Left" Background="White" Foreground="#B2000000" Text="默认风格的进度条" />
-            </Grid>
+            <Lay:LayHr Text="默认风格的进度条" Margin="0,10,0,0"/>
             <Lay:LayProgressBar Value="50" Margin="0,20"/>
 
+            <Lay:LayHr Text="更多颜色选取" Margin="0,10,0,0"/>
+            <Lay:LayProgressBar Margin="0,20" Value="20" Foreground="#FF5722"/>
+            <Lay:LayProgressBar Margin="0,20" Value="30" Foreground="#FFB800"/>
+            <Lay:LayProgressBar Margin="0,20" Value="40" Foreground="#5FB878"/>
+            <Lay:LayProgressBar Margin="0,20" Value="50" Foreground="#1E9FFF"/>
+            <Lay:LayProgressBar Margin="0,20" Value="56" Foreground="#2F4056"/>
 
-            <Grid Margin="0,20">
-                <Grid Height="2" Background="#D2D2D2" />
-                <TextBlock Margin="30,0,0,0" HorizontalAlignment="Left" Background="White" Foreground="#B2000000" Text="更多颜色选取" />
-            </Grid>
-            <Lay:LayProgressBar Value="20" Foreground="#FF5722" Margin="0,20"/>
-            <Lay:LayProgressBar Value="30" Foreground="#FFB800" Margin="0,20"/>
-            <Lay:LayProgressBar Value="40" Foreground="#5FB878" Margin="0,20"/>
-            <Lay:LayProgressBar Value="50" Foreground="#1E9FFF" Margin="0,20"/>
-            <Lay:LayProgressBar Value="56" Foreground="#2F4056" Margin="0,20"/>
+            <Lay:LayHr Text="大尺寸进度条" Margin="0,10,0,0"/>
+            <Lay:LayProgressBar Margin="0,20" Value="20" Height="18"/>
+            <Lay:LayProgressBar Margin="0,20" Value="50" Height="18" Foreground="#5FB878" />
+            <Lay:LayProgressBar Margin="0,20" Value="80" Height="18" Foreground="#2F4056" />
 
-            <Grid Margin="0,20">
-                <Grid Height="2" Background="#D2D2D2" />
-                <TextBlock Margin="30,0,0,0" HorizontalAlignment="Left" Background="White" Foreground="#B2000000" Text="大尺寸进度条" />
-            </Grid>
-            <Lay:LayProgressBar Value="40" Height="18" Margin="0,20"/>
-            <Lay:LayProgressBar Value="40" Height="18" Foreground="#5FB878" Margin="0,20"/>
-            <Lay:LayProgressBar Value="40" Height="18" Foreground="#2F4056" Margin="0,20"/>
-            
         </StackPanel>
-    
     </ScrollViewer>
-    
 </UserControl>

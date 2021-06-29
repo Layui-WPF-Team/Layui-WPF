@@ -48,6 +48,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Control\Hr\LayHr.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\ButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -93,6 +97,9 @@
     <Compile Include="Control\Button\LayButton.cs" />
     <Compile Include="Control\Canvas\LaySliderCanvas.cs" />
     <Compile Include="Control\CheckBox\LayCheckBox.cs" />
+    <Compile Include="Control\Hr\LayHr.xaml.cs">
+      <DependentUpon>LayHr.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ProgressBar\LayProgressBar.cs" />
     <Compile Include="Control\ListBox\LayListBox.cs" />
     <Compile Include="Control\Slider\LaySlider.cs" />
