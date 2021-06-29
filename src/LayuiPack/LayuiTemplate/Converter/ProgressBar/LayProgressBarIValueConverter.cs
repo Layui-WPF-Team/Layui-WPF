@@ -8,9 +8,12 @@ using System.Windows.Data;
 
 namespace LayuiTemplate.Converter
 {
+    /// <summary>
+    /// 进度值自转换器
+    /// </summary>
     public class LayProgressBarIValueConverter : IValueConverter
     {
-        object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (double.TryParse(value.ToString(), out double result))
             {
@@ -21,10 +24,16 @@ namespace LayuiTemplate.Converter
                 return 0;
             }
         }
-
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            if (double.TryParse(value.ToString(), out double result))
+            {
+                return result / 2;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }
