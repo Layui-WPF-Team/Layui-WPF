@@ -65,12 +65,16 @@
     </Compile>
     <Compile Include="ViewModels\ButtonViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
+    <Compile Include="ViewModels\ProgressBarViewModel.cs" />
     <Compile Include="ViewModels\SliderViewModel.cs" />
     <Compile Include="Views\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Form.xaml.cs">
       <DependentUpon>Form.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProgressBar.xaml.cs">
+      <DependentUpon>ProgressBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
@@ -91,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Form.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
