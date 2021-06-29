@@ -35,7 +35,7 @@ namespace LayuiHome.ViewModels
                             ItemTitle="选项卡", PageKey=SystemResource.Page_ButtonView
                         },new
                         {
-                            ItemTitle="进度条", PageKey=SystemResource.Page_ButtonView
+                            ItemTitle="进度条", PageKey=SystemResource.Page_ProgressBar
                         },new
                         {
                             ItemTitle="面板", PageKey=SystemResource.Page_ButtonView
