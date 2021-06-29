@@ -10,5 +10,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/TextBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/CheckBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/SliderStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/ProgressBarStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
