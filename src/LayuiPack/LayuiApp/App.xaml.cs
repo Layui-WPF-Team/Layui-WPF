@@ -1,4 +1,5 @@
 ﻿using LayuiApp.Views;
+using LayuiComponentExample;
 using LayuiFundamentalElement;
 using LayuiHome;
 using Prism.Ioc;
@@ -24,7 +25,8 @@ namespace LayuiApp
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule<LayuiHomeModule>(); 
-            moduleCatalog.AddModule<LayuiFundamentalElementModule>(); 
+            moduleCatalog.AddModule<LayuiFundamentalElementModule>();
+            moduleCatalog.AddModule<LayuiComponentExampleModule>();
         }
     }
 }

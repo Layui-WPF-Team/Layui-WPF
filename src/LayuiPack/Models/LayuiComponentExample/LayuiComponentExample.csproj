@@ -4,20 +4,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{66C2DD01-5264-4219-9C8D-D4A560CBF024}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{DADA7F2F-A343-4748-99D7-A576697C1953}</ProjectGuid>
+    <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LayuiApp</RootNamespace>
-    <AssemblyName>LayuiApp</AssemblyName>
+    <RootNamespace>LayuiComponentExample</RootNamespace>
+    <AssemblyName>LayuiComponentExample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,7 +25,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -52,25 +49,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="Views\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="LayuiComponentExampleModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -84,6 +63,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\SliderViewModel.cs" />
+    <Compile Include="Views\Slider.xaml.cs">
+      <DependentUpon>Slider.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -92,30 +75,25 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Prism.Unity" Version="7.2.0.1422" />
+    <Page Include="Views\Slider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Layui.Core\Layui.Core.csproj">
+    <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Layui.Core\Layui.Core.csproj">
       <Project>{b867ed96-1955-45c5-9381-a21dbae85529}</Project>
       <Name>Layui.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LayuiTemplate\LayuiTemplate.csproj">
+    <ProjectReference Include="..\..\LayuiTemplate\LayuiTemplate.csproj">
       <Project>{80dd0aa1-a155-4c77-a7d0-878f1fb1325e}</Project>
       <Name>LayuiTemplate</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Models\LayuiComponentExample\LayuiComponentExample.csproj">
-      <Project>{dada7f2f-a343-4748-99d7-a576697c1953}</Project>
-      <Name>LayuiComponentExample</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Models\LayuiFundamentalElement\LayuiFundamentalElement.csproj">
-      <Project>{91C67C0C-F473-4A37-94AD-9E5E800A7CBD}</Project>
-      <Name>LayuiFundamentalElement</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Models\LayuiHome\LayuiHome.csproj">
-      <Project>{7EC17FFF-261F-4F1C-9899-F5AD3BB34D4F}</Project>
-      <Name>LayuiHome</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
