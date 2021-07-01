@@ -6,8 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignWidth="600"
     xmlns:prism="http://prismlibrary.com/"
+    d:DesignWidth="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
 
@@ -15,25 +15,57 @@
 
         <StackPanel Margin="20">
 
-            <Lay:LayHr Text="基本滑块" Margin="0,10,0,0"/>
-            <Lay:LaySlider Margin="0,20" ShowTips="True" Value="20" />
+            <Lay:LayHr Margin="0,10,0,0" Text="基本滑块" />
+            <Lay:LaySlider
+                Margin="0,20"
+                TipsPosition="Top"
+                Value="20" />
+            <Lay:LayHr Margin="0,10,0,0" Text="设置最大最小值" />
+            <Lay:LaySlider
+                Margin="0,20"
+                Maximum="50"
+                Minimum="20"
+                TipsPosition="Bottom"
+                Value="30" />
 
-            <Lay:LayHr Text="设置最大最小值" Margin="0,10,0,0"/>
-            <Lay:LaySlider Margin="0,20" Maximum="50" Minimum="20" Value="30" />
-
-            <Lay:LayHr Text="垂直滑块" Margin="0,10,0,0"/>
-            <StackPanel Height="200" Orientation="Horizontal" Margin="0,20">
-                <Lay:LaySlider Margin="20,0" Orientation="Vertical" Value="20" />
-                <Lay:LaySlider Margin="20,0" Orientation="Vertical" Value="40" Background="#FF5722" />
+            <Lay:LayHr Margin="0,10,0,0" Text="垂直滑块" />
+            <StackPanel
+                Height="200"
+                Margin="0,20"
+                Orientation="Horizontal">
+                <Lay:LaySlider
+                    Margin="20,0"
+                    Orientation="Vertical"
+                    TipsPosition="Left"
+                    Value="20" />
+                <Lay:LaySlider
+                    Margin="20,0"
+                    Background="#FF5722"
+                    Orientation="Vertical"
+                    TipsPosition="Right"
+                    Value="40" />
             </StackPanel>
 
-            <Lay:LayHr Text="自定义颜色" Margin="0,10,0,0"/>
-            <Lay:LaySlider Margin="0,20" Background="#1E9FFF" Value="30" />
-            <Lay:LaySlider Margin="0,20" Background="#5FB878" Value="40" />
-            <Lay:LaySlider Margin="0,20" Background="#FF5722" Value="50" />
+            <Lay:LayHr Margin="0,10,0,0" Text="自定义颜色" />
+            <Lay:LaySlider
+                Margin="0,20"
+                Background="#1E9FFF"
+                Value="30" />
+            <Lay:LaySlider
+                Margin="0,20"
+                Background="#5FB878"
+                Value="40" />
+            <Lay:LaySlider
+                Margin="0,20"
+                Background="#FF5722"
+                Value="50" />
 
-            <Lay:LayHr Text="禁用滑块" Margin="0,10,0,0"/>
-            <Lay:LaySlider Margin="0,20" IsEnabled="False" Maximum="100" Value="30" />
+            <Lay:LayHr Margin="0,10,0,0" Text="禁用滑块" />
+            <Lay:LaySlider
+                Margin="0,20"
+                IsEnabled="False"
+                Maximum="100"
+                Value="30" />
 
         </StackPanel>
 

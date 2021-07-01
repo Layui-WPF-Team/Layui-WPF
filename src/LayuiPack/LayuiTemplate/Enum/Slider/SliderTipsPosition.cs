@@ -12,6 +12,10 @@ namespace LayuiTemplate.Enum
     public enum SliderTipsPosition
     {
         /// <summary>
+        /// 无 
+        /// </summary>
+        No,
+        /// <summary>
         /// 上
         /// </summary>
         Top,

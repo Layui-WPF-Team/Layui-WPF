@@ -14,21 +14,9 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LaySlider: Slider
     {
-
         /// <summary>
-        /// 是否显示文本提示
+        /// 气泡提示方向
         /// </summary>
-        public bool ShowTips
-        {
-            get { return (bool)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(ShowTips), typeof(bool), typeof(LaySlider),new PropertyMetadata(false));
-
-
         public SliderTipsPosition TipsPosition
         {
             get { return (SliderTipsPosition)GetValue(TipsPositionProperty); }
@@ -37,7 +25,7 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TipsPositionProperty =
-            DependencyProperty.Register("TipsPosition", typeof(SliderTipsPosition), typeof(LaySlider), new PropertyMetadata(SliderTipsPosition.Top));
+            DependencyProperty.Register("TipsPosition", typeof(SliderTipsPosition), typeof(LaySlider), new PropertyMetadata(SliderTipsPosition.No));
 
 
     }

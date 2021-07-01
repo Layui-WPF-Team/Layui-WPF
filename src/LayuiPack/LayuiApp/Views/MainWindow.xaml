@@ -13,7 +13,7 @@
     WindowState="{Binding WindowState}">
     <WindowChrome.WindowChrome>
         <WindowChrome
-            CaptionHeight="60"
+            CaptionHeight="56"
             CornerRadius="12"
             GlassFrameThickness="0"
             NonClientFrameEdges="None"
@@ -112,12 +112,12 @@
                                 <Style BasedOn="{StaticResource WindowCheckBoxStyle}" TargetType="CheckBox">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding WindowState}" Value="Maximized">
+                                            <Setter Property="Content" Value="&#xf2d2;" />
                                             <Setter Property="IsChecked" Value="True" />
-                                            <Setter Property="Content" Value="&#xf2d0;" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding WindowState, FallbackValue=Normal}" Value="Normal">
                                             <Setter Property="IsChecked" Value="false" />
-                                            <Setter Property="Content" Value="&#xf2d2;" />
+                                            <Setter Property="Content" Value="&#xf2d0;" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
