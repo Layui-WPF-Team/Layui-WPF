@@ -13,18 +13,6 @@ namespace LayuiTemplate.Control
     public class LayCheckBox: CheckBox
     {
         /// <summary>
-        /// 输入框圆角
-        /// </summary>
-        public CornerRadius CornerRadius
-        {
-            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayCheckBox));
-        /// <summary>
         /// 复选框样式
         /// </summary>
         public CheckBoxStyle Type

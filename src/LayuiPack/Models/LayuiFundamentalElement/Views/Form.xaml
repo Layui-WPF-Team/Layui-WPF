@@ -24,10 +24,27 @@
                 Text="表单集合演示" />
         </Grid>
         <Lay:LayTextBox Height="50" Margin="0,5" />
-        <StackPanel Margin="0,5" Orientation="Horizontal">
-            <Lay:LayCheckBox Content="写作" />
-            <Lay:LayCheckBox Margin="10,0" Content="阅读" />
-            <Lay:LayCheckBox Content="游戏" />
+        <StackPanel>
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <Lay:LayCheckBox Content="写作" />
+                <Lay:LayCheckBox Margin="10,0" Content="阅读" />
+                <Lay:LayCheckBox
+                    Content="游戏"
+                    IsChecked="True"
+                    IsEnabled="False" />
+            </StackPanel>
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <Lay:LayCheckBox Content="写作" Type="Default" />
+                <Lay:LayCheckBox
+                    Margin="5,0"
+                    Content="阅读阅读"
+                    Type="Default" />
+                <Lay:LayCheckBox
+                    Content="游戏"
+                    IsEnabled="False"
+                    Type="Default" />
+
+            </StackPanel>
         </StackPanel>
         <Lay:LayButton
             HorizontalAlignment="Left"

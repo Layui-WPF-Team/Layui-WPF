@@ -26,4 +26,7 @@
     <Color x:Key="LightBlackEffect">#61646D</Color>
     <SolidColorBrush x:Key="Black" Color="{StaticResource BlackEffect}" />
     <SolidColorBrush x:Key="LightBlack" Color="{StaticResource LightBlackEffect}" />
+    <!--  灰色  -->
+    <Color x:Key="GrayEffect">#d2d2d2</Color>
+    <SolidColorBrush x:Key="Gray" Color="{StaticResource GrayEffect}" />
 </ResourceDictionary>

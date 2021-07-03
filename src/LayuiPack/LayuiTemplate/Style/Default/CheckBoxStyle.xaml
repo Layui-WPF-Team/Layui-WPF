@@ -9,13 +9,12 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="BorderBrush" Value="#D2D2D2" />
         <Setter Property="Foreground" Value="Black" />
-        <Setter Property="Padding" Value="5,0,0,0" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="BorderThickness" Value="1" />
         <Style.Triggers>
             <Trigger Property="Type" Value="Primary">
+                <Setter Property="Padding" Value="5,0,0,0" />
                 <Setter Property="Background" Value="White" />
                 <Setter Property="IconSize" Value="30" />
                 <Setter Property="HoverBorderBrush" Value="{DynamicResource CyanBlue}" />
@@ -42,7 +41,7 @@
                                         Background="White"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="{TemplateBinding CornerRadius}">
+                                        CornerRadius="{DynamicResource ControlCornerRadiusBase}">
                                         <Viewbox>
                                             <TextBlock
                                                 x:Name="textBlock"
@@ -79,13 +78,24 @@
                                 <Trigger Property="IsMouseOver" Value="true">
                                     <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBorderBrush}" />
                                 </Trigger>
-                                <!--  复选框被禁止时的效果  -->
-                                <Trigger Property="IsEnabled" Value="false" />
                                 <!--  鼠标点击后的效果  -->
                                 <Trigger Property="IsPressed" Value="true" />
                                 <!--  被选中后的效果  -->
-                                <Trigger Property="IsChecked" Value="true">
-                                    <Trigger.EnterActions>
+                                <Trigger Property="IsChecked" Value="true" />
+                                <!--  未选择时的效果  -->
+                                <Trigger Property="IsChecked" Value="{x:Null}" />
+                                <!--  复选框被禁止时的效果  -->
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                                    <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#eee" />
+                                    <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="#c2c2c2" />
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsEnabled" Value="true" />
+                                        <Condition Property="IsChecked" Value="true" />
+                                    </MultiTrigger.Conditions>
+                                    <MultiTrigger.EnterActions>
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ColorAnimation
@@ -100,8 +110,8 @@
                                                     Duration="0:0:0.2" />
                                             </Storyboard>
                                         </BeginStoryboard>
-                                    </Trigger.EnterActions>
-                                    <Trigger.ExitActions>
+                                    </MultiTrigger.EnterActions>
+                                    <MultiTrigger.ExitActions>
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ColorAnimation
@@ -114,11 +124,185 @@
                                                     Duration="0:0:0.2" />
                                             </Storyboard>
                                         </BeginStoryboard>
+                                    </MultiTrigger.ExitActions>
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsEnabled" Value="false" />
+                                        <Condition Property="IsChecked" Value="true" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                                    <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#eee" />
+                                    <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="#c2c2c2" />
+                                </MultiTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="Type" Value="Default">
+                <Setter Property="MinWidth" Value="78" />
+                <Setter Property="Height" Value="30" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Padding" Value="10,3" />
+                <Setter Property="IconSize" Value="30" />
+                <Setter Property="Background" Value="{DynamicResource Gray}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+                <Setter Property="HoverBorderBrush" Value="{DynamicResource CyanBlue}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Lay:LayCheckBox}">
+                            <Border
+                                x:Name="body"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                <Grid IsHitTestVisible="False">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border
+                                        x:Name="checkBoxBorder"
+                                        Margin="-1"
+                                        Padding="{TemplateBinding Padding}"
+                                        Background="Transparent"
+                                        CornerRadius="1 0 0 1">
+                                        <ContentPresenter
+                                            x:Name="contentPresenter"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                    <Viewbox Grid.Column="1">
+                                        <Border
+                                            Width="{Binding ElementName=checkBoxBorder, Path=ActualHeight}"
+                                            Height="{Binding ElementName=checkBoxBorder, Path=ActualHeight}"
+                                            Background="White"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="0 1 1 0">
+                                            <Viewbox>
+                                                <TextBlock
+                                                    x:Name="fontIcon"
+                                                    Margin="5"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="{DynamicResource IconFont}"
+                                                    Foreground="{StaticResource Gray}"
+                                                    Opacity="0"
+                                                    Text="&#xf00c;" />
+                                            </Viewbox>
+                                        </Border>
+                                    </Viewbox>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <!--  鼠标移上去触发的效果  -->
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="checkBoxBorder"
+                                                    Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+                                                    To="#C2C2C2"
+                                                    Duration="0" />
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="fontIcon"
+                                                    Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                    To="1"
+                                                    Duration="0" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="checkBoxBorder"
+                                                    Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+                                                    Duration="0" />
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="fontIcon"
+                                                    Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                    Duration="0" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
                                     </Trigger.ExitActions>
                                 </Trigger>
-                                <!--  未选择时的效果  -->
-                                <Trigger Property="IsChecked" Value="{x:Null}" />
+                                <!--  被选中后的效果  -->
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsChecked" Value="true" />
+                                        <Condition Property="IsEnabled" Value="true" />
+                                    </MultiTrigger.Conditions>
+                                    <MultiTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="checkBoxBorder"
+                                                    Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+                                                    To="{StaticResource CyanBlueEffect}"
+                                                    Duration="0:0:0.2" />
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="fontIcon"
+                                                    Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                    To="1"
+                                                    Duration="0:0:0.2" />
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="fontIcon"
+                                                    Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                    To="{StaticResource CyanBlueEffect}"
+                                                    Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </MultiTrigger.EnterActions>
+                                    <MultiTrigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="checkBoxBorder"
+                                                    Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+                                                    Duration="0:0:0.2" />
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="fontIcon"
+                                                    Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                    Duration="0:0:0.2" />
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="fontIcon"
+                                                    Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                    Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </MultiTrigger.ExitActions>
+                                </MultiTrigger>
+                                <!--  设置空间禁止状态样式  -->
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsEnabled" Value="false" />
+                                        <Condition Property="IsChecked" Value="true" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                                    <Setter TargetName="body" Property="Background" Value="#FFEAEAEA" />
+                                    <Setter TargetName="body" Property="BorderBrush" Value="#FFEAEAEA" />
+                                    <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#FFEAEAEA" />
+                                    <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="White" />
+                                </MultiTrigger>
+                                <!--  设置空间禁止状态样式  -->
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsEnabled" Value="false" />
+                                        <Condition Property="IsChecked" Value="false" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                                    <Setter TargetName="body" Property="Background" Value="#FFEAEAEA" />
+                                    <Setter TargetName="body" Property="BorderBrush" Value="#FFEAEAEA" />
+                                    <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#FFEAEAEA" />
+                                    <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="White" />
+                                </MultiTrigger>
                             </ControlTemplate.Triggers>
+
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
