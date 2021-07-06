@@ -7,6 +7,8 @@
              mc:Ignorable="d" d:DesignWidth="600"
              xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:vm="clr-namespace:LayuiFundamentalElement.ViewModels"
+             d:DataContext="{d:DesignInstance Type=vm:ProgressBarViewModel}"
              prism:ViewModelLocator.AutoWireViewModel="True">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -27,6 +29,13 @@
             <Lay:LayProgressBar Margin="0,20" Value="50" Height="18" Foreground="#5FB878" />
             <Lay:LayProgressBar Margin="0,20" Value="80" Height="18" Foreground="#2F4056" />
 
+            <Lay:LayHr Text="动态改变进度条" Margin="0,10,0,0"/>
+            <Lay:LayProgressBar Margin="0,20" Value="{Binding ProVaule}" Height="18" Foreground="#FF5722"/>
+            <StackPanel Orientation="Horizontal">
+                <Lay:LayButton HorizontalAlignment="Left" Type="Default" IsEnabled="{Binding IsEnabled}" Content="设置50%" Command="{Binding Set50Command}"/>
+                <Lay:LayButton HorizontalAlignment="Left" Type="Default" IsEnabled="{Binding IsEnabled}" Content="模拟Loading" Margin="10,0,0,0" Command="{Binding LoadingCommand}"/>
+            </StackPanel>
+            
         </StackPanel>
     </ScrollViewer>
 </UserControl>
