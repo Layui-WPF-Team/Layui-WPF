@@ -3,36 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-
-    <!--  禁用色  -->
-    <SolidColorBrush x:Key="Disable" Color="#C2C2C2" />
-    <!--  增多色  -->
-    <SolidColorBrush x:Key="Increase" Color="#EEEEEE" />
-    <!--  圈圈背景色  -->
-    <SolidColorBrush x:Key="ThumbBackground" Color="#FFFFFF" />
-
-    <!--  圈圈默认大小  -->
-    <sys:Double x:Key="ThumbDefaultSize">16</sys:Double>
-    <!--  条条默认大小  -->
-    <sys:Double x:Key="RepeatButtonSize">4</sys:Double>
-    <Style x:Key="RepeatButton" TargetType="{x:Type RepeatButton}">
-        <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Height" Value="{DynamicResource RepeatButtonSize}" />
-        <Setter Property="Focusable" Value="false" />
-        <Setter Property="IsTabStop" Value="false" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Rectangle
-                        Width="{TemplateBinding Width}"
-                        Height="{TemplateBinding Height}"
-                        Fill="{TemplateBinding Background}" />
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <!--  水平滑条  -->
     <ControlTemplate x:Key="LaySliderHorizontal" TargetType="{x:Type Lay:LaySlider}">
         <Grid
@@ -44,15 +14,53 @@
                     <RepeatButton
                         Width="{TemplateBinding Width}"
                         Height="4"
-                        Background="{TemplateBinding Background}"
-                        Style="{StaticResource RepeatButton}" />
+                        Background="{TemplateBinding Background}">
+                        <RepeatButton.Style>
+                            <Style TargetType="{x:Type RepeatButton}">
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                <Setter Property="Height" Value="4" />
+                                <Setter Property="Focusable" Value="false" />
+                                <Setter Property="IsTabStop" Value="false" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                            <Rectangle
+                                                Width="{TemplateBinding Width}"
+                                                Height="{TemplateBinding Height}"
+                                                Fill="{TemplateBinding Background}" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RepeatButton.Style>
+                    </RepeatButton>
                 </Track.DecreaseRepeatButton>
                 <Track.IncreaseRepeatButton>
                     <RepeatButton
                         Width="{TemplateBinding Width}"
                         Height="4"
-                        Background="{DynamicResource Increase}"
-                        Style="{StaticResource RepeatButton}" />
+                        Background="#EEEEEE">
+                        <RepeatButton.Style>
+                            <Style TargetType="{x:Type RepeatButton}">
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                <Setter Property="Height" Value="4" />
+                                <Setter Property="Focusable" Value="false" />
+                                <Setter Property="IsTabStop" Value="false" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                            <Rectangle
+                                                Width="{TemplateBinding Width}"
+                                                Height="{TemplateBinding Height}"
+                                                Fill="{TemplateBinding Background}" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RepeatButton.Style>
+                    </RepeatButton>
                 </Track.IncreaseRepeatButton>
                 <Track.Thumb>
                     <Thumb Background="{TemplateBinding Background}">
@@ -61,8 +69,8 @@
                                 <Setter Property="Cursor" Value="Hand" />
                                 <Setter Property="Focusable" Value="false" />
                                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                                <Setter Property="Width" Value="{DynamicResource ThumbDefaultSize}" />
-                                <Setter Property="Height" Value="{DynamicResource ThumbDefaultSize}" />
+                                <Setter Property="Width" Value="16" />
+                                <Setter Property="Height" Value="16" />
                                 <Style.Triggers>
                                     <!--  无气泡  -->
                                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlider}, Path=TipsPosition}" Value="No">
@@ -311,7 +319,7 @@
                                                         <Border
                                                             Width="{TemplateBinding Width}"
                                                             Height="{TemplateBinding Height}"
-                                                            Background="{DynamicResource ThumbBackground}"
+                                                            Background="#FFFF"
                                                             BorderBrush="{TemplateBinding Background}"
                                                             BorderThickness="2"
                                                             CornerRadius="8"
@@ -442,15 +450,53 @@
                     <RepeatButton
                         Width="4"
                         Height="{TemplateBinding Height}"
-                        Background="{TemplateBinding Background}"
-                        Style="{StaticResource RepeatButton}" />
+                        Background="{TemplateBinding Background}">
+                        <RepeatButton.Style>
+                            <Style TargetType="{x:Type RepeatButton}">
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                <Setter Property="Height" Value="4" />
+                                <Setter Property="Focusable" Value="false" />
+                                <Setter Property="IsTabStop" Value="false" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                            <Rectangle
+                                                Width="{TemplateBinding Width}"
+                                                Height="{TemplateBinding Height}"
+                                                Fill="{TemplateBinding Background}" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RepeatButton.Style>
+                    </RepeatButton>
                 </Track.DecreaseRepeatButton>
                 <Track.IncreaseRepeatButton>
                     <RepeatButton
                         Width="4"
                         Height="{TemplateBinding Height}"
-                        Background="{DynamicResource Increase}"
-                        Style="{StaticResource RepeatButton}" />
+                        Background="#EEEEEE">
+                        <RepeatButton.Style>
+                            <Style TargetType="{x:Type RepeatButton}">
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                <Setter Property="Height" Value="4" />
+                                <Setter Property="Focusable" Value="false" />
+                                <Setter Property="IsTabStop" Value="false" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                            <Rectangle
+                                                Width="{TemplateBinding Width}"
+                                                Height="{TemplateBinding Height}"
+                                                Fill="{TemplateBinding Background}" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RepeatButton.Style>
+                    </RepeatButton>
                 </Track.IncreaseRepeatButton>
                 <Track.Thumb>
                     <Thumb Background="{TemplateBinding Background}">
@@ -459,8 +505,8 @@
                                 <Setter Property="Cursor" Value="Hand" />
                                 <Setter Property="Focusable" Value="false" />
                                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                                <Setter Property="Width" Value="{DynamicResource ThumbDefaultSize}" />
-                                <Setter Property="Height" Value="{DynamicResource ThumbDefaultSize}" />
+                                <Setter Property="Width" Value="16" />
+                                <Setter Property="Height" Value="16" />
                                 <Style.Triggers>
                                     <!--  无气泡  -->
                                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlider}, Path=TipsPosition}" Value="No">
@@ -470,7 +516,7 @@
                                                     <Border
                                                         Width="{TemplateBinding Width}"
                                                         Height="{TemplateBinding Height}"
-                                                        Background="{DynamicResource ThumbBackground}"
+                                                        Background="#FFFF"
                                                         BorderBrush="{TemplateBinding Background}"
                                                         BorderThickness="2"
                                                         CornerRadius="8"
@@ -562,7 +608,7 @@
                                                         <Border
                                                             Width="{TemplateBinding Width}"
                                                             Height="{TemplateBinding Height}"
-                                                            Background="{DynamicResource ThumbBackground}"
+                                                            Background="#FFFF"
                                                             BorderBrush="{TemplateBinding Background}"
                                                             BorderThickness="2"
                                                             CornerRadius="8"
@@ -709,7 +755,7 @@
                                                         <Border
                                                             Width="{TemplateBinding Width}"
                                                             Height="{TemplateBinding Height}"
-                                                            Background="{DynamicResource ThumbBackground}"
+                                                            Background="#FFFF"
                                                             BorderBrush="{TemplateBinding Background}"
                                                             BorderThickness="2"
                                                             CornerRadius="8"
@@ -824,7 +870,7 @@
                 <Setter Property="Template" Value="{StaticResource LaySliderVertical}" />
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource Disable}" />
+                <Setter Property="Background" Value="#C2C2C2" />
             </Trigger>
         </Style.Triggers>
     </Style>
