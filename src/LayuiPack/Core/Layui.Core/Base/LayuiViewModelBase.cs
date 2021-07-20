@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Layui.Core.Base
 {
-    public abstract class LayuiViewModelBase : BindableBase, INavigationAware, IConfirmNavigationRequest
+    public abstract class LayuiViewModelBase : BindableBase, INavigationAware, IRegionMemberLifetime, IConfirmNavigationRequest
     {
         /// <summary>
         /// 导航器
@@ -23,6 +23,10 @@ namespace Layui.Core.Base
             this.regionManager = regionManager;
             this.dialogService = dialogService;
         }
+        /// <summary>
+        /// 标记上一个视图时候被销毁
+        /// </summary>
+        public bool KeepAlive => false;
 
         public virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
         {
