@@ -40,7 +40,7 @@
                     <RepeatButton
                         Width="{TemplateBinding Width}"
                         Height="4"
-                        Background="#EEEEEE">
+                        Background="#EEEEEE" >
                         <RepeatButton.Style>
                             <Style TargetType="{x:Type RepeatButton}">
                                 <Setter Property="Cursor" Value="Hand" />
@@ -80,7 +80,7 @@
                                                     <Border
                                                         Width="{TemplateBinding Width}"
                                                         Height="{TemplateBinding Height}"
-                                                        Background="{DynamicResource ThumbBackground}"
+                                                        Background="White"
                                                         BorderBrush="{TemplateBinding Background}"
                                                         BorderThickness="2"
                                                         CornerRadius="8"
@@ -172,7 +172,7 @@
                                                         <Border
                                                             Width="{TemplateBinding Width}"
                                                             Height="{TemplateBinding Height}"
-                                                            Background="{DynamicResource ThumbBackground}"
+                                                            Background="White"
                                                             BorderBrush="{TemplateBinding Background}"
                                                             BorderThickness="2"
                                                             CornerRadius="8"

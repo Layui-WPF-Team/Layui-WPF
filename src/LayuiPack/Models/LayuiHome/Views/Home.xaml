@@ -101,7 +101,7 @@
                                         </ControlTemplate>
                                     </CheckBox.Template>
                                 </CheckBox>
-                                <StackPanel Grid.Row="1" Background="#282B33">
+                                <StackPanel Grid.Row="1" Background="#282B33" >
                                     <ItemsControl x:Name="content" ItemsSource="{Binding Data}">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
