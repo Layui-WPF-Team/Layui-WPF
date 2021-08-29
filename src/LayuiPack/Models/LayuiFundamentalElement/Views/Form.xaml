@@ -24,6 +24,10 @@
                 Text="表单集合演示" />
         </Grid>
         <Lay:LayTextBox Height="50" Margin="0,5" />
+        <Lay:LayPasswordBox
+            Height="50"
+            Margin="0,5"
+            Text="{Binding Password}" />
         <StackPanel>
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <Lay:LayCheckBox Content="写作" />
@@ -43,7 +47,20 @@
                     Content="游戏"
                     IsEnabled="False"
                     Type="Default" />
-
+            </StackPanel>
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <Lay:LayRadioButton
+                    Content="男"
+                    FontSize="20"
+                    GroupName="Sex" />
+                <Lay:LayRadioButton
+                    Content="女"
+                    FontSize="20"
+                    GroupName="Sex" />
+                <Lay:LayRadioButton
+                    Content="其他"
+                    GroupName="Sex"
+                    IsEnabled="false" />
             </StackPanel>
         </StackPanel>
         <Lay:LayButton

@@ -76,9 +76,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\Default\PasswordBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\ProgressBarStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Default\RadioButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style\Default\ScrollViewer.xaml">
       <SubType>Designer</SubType>
@@ -104,8 +112,10 @@
     <Compile Include="Control\Hr\LayHr.xaml.cs">
       <DependentUpon>LayHr.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\Password\LayPasswordBox.cs" />
     <Compile Include="Control\ProgressBar\LayProgressBar.cs" />
     <Compile Include="Control\ListBox\LayListBox.cs" />
+    <Compile Include="Control\RadioButton\LayRadioButton.cs" />
     <Compile Include="Control\Slider\LaySlider.cs" />
     <Compile Include="Control\TextBox\LayTextBox.cs" />
     <Compile Include="Converter\ProgressBar\LayProgressBarIValueConverter.cs" />
