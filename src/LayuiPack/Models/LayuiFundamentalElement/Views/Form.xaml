@@ -51,14 +51,15 @@
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <Lay:LayRadioButton
                     Content="男"
-                    FontSize="20"
+                    FontSize="16"
                     GroupName="Sex" />
                 <Lay:LayRadioButton
                     Content="女"
-                    FontSize="20"
+                    FontSize="16"
                     GroupName="Sex" />
                 <Lay:LayRadioButton
                     Content="其他"
+                    FontSize="16"
                     GroupName="Sex"
                     IsEnabled="false" />
             </StackPanel>

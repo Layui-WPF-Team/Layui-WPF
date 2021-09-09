@@ -20,7 +20,15 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorProperty =
             DependencyProperty.Register("Color", typeof(Brush), typeof(LayRadioButton));
+        public Brush CheckedColor
+        {
+            get { return (Brush)GetValue(CheckedColorProperty); }
+            set { SetValue(CheckedColorProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CheckedColorProperty =
+            DependencyProperty.Register("CheckedColor", typeof(Brush), typeof(LayRadioButton));
 
 
     }

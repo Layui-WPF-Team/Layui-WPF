@@ -10,7 +10,8 @@
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
-        <Setter Property="Color" Value="{DynamicResource LightGreen}" />
+        <Setter Property="Color" Value="{DynamicResource Gray}" />
+        <Setter Property="CheckedColor" Value="{DynamicResource CyanBlue}" />
         <Setter Property="Padding" Value="3,0" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -82,6 +83,9 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckedIco" Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=CheckedColor}" />
+                            <Setter TargetName="UnCheckedIco" Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=CheckedColor}" />
+                            <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=CheckedColor}" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
