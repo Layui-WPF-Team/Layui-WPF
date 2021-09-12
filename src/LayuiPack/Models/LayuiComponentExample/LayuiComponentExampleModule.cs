@@ -17,6 +17,7 @@ namespace LayuiComponentExample
         {
 
             containerRegistry.RegisterForNavigation<Views.Slider>(SystemResource.Page_Slider);
+            containerRegistry.RegisterForNavigation<Views.DataGrid>(SystemResource.Page_DataGrid);
         }
     }
 }

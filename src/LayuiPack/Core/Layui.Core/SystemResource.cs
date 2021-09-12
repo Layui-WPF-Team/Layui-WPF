@@ -35,6 +35,10 @@ namespace Layui.Core.Resource
         /// 进度条视图
         /// </summary>
         public static string Page_ProgressBar = "Page_ProgressBar";
+        /// <summary>
+        /// 数据表格
+        /// </summary>
+        public static string Page_DataGrid = "Page_DataGrid";
         #endregion
     }
 }

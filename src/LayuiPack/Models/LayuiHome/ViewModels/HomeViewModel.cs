@@ -60,7 +60,7 @@ namespace LayuiHome.ViewModels
                             ItemTitle="日期与时间选择", PageKey=SystemResource.Page_ButtonView
                         },new
                         {
-                            ItemTitle="数据表格", PageKey=SystemResource.Page_ButtonView
+                            ItemTitle="数据表格", PageKey=SystemResource.Page_DataGrid
                         },new
                         {
                             ItemTitle="下拉菜单", PageKey=SystemResource.Page_ButtonView

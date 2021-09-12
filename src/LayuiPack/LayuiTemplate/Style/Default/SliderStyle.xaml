@@ -40,7 +40,7 @@
                     <RepeatButton
                         Width="{TemplateBinding Width}"
                         Height="4"
-                        Background="#EEEEEE" >
+                        Background="#EEEEEE">
                         <RepeatButton.Style>
                             <Style TargetType="{x:Type RepeatButton}">
                                 <Setter Property="Cursor" Value="Hand" />
@@ -840,7 +840,7 @@
     </ControlTemplate>
 
     <!--  滑条  -->
-    <Style TargetType="{x:Type Lay:LaySlider}">
+    <Style x:Key="LaySliderStyle" TargetType="{x:Type Lay:LaySlider}">
         <Setter Property="Minimum" Value="0" />
         <Setter Property="Maximum" Value="100" />
         <Setter Property="Focusable" Value="False" />
@@ -874,5 +874,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    <Style BasedOn="{StaticResource LaySliderStyle}" TargetType="{x:Type Lay:LaySlider}" />
 </ResourceDictionary>

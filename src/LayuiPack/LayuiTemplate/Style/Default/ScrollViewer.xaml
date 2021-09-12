@@ -4,7 +4,7 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--  垂直滚动条  -->
-    <Style x:Key="ScrollBarVertical" TargetType="{x:Type ScrollBar}">
+    <Style x:Key="LayScrollBarVertical" TargetType="{x:Type ScrollBar}">
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
         <Setter Property="Orientation" Value="Vertical" />
@@ -151,9 +151,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <!--  水平滚动条  -->
-    <Style x:Key="ScrollBarHorizontal" TargetType="{x:Type ScrollBar}">
+    <Style x:Key="LayScrollBarHorizontal" TargetType="{x:Type ScrollBar}">
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
         <Setter Property="Orientation" Value="Horizontal" />
@@ -299,7 +298,7 @@
     </Style>
 
     <!--  ScrollViewer  -->
-    <Style TargetType="{x:Type ScrollViewer}">
+    <Style x:Key="LayScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
@@ -337,7 +336,7 @@
                                 Cursor="Arrow"
                                 Maximum="{TemplateBinding ScrollableHeight}"
                                 Minimum="0"
-                                Style="{StaticResource ScrollBarVertical}"
+                                Style="{StaticResource LayScrollBarVertical}"
                                 ViewportSize="{TemplateBinding ViewportHeight}"
                                 Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
                                 Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -349,7 +348,7 @@
                                 Cursor="Arrow"
                                 Maximum="{TemplateBinding ScrollableWidth}"
                                 Minimum="0"
-                                Style="{StaticResource ScrollBarHorizontal}"
+                                Style="{StaticResource LayScrollBarHorizontal}"
                                 ViewportSize="{TemplateBinding ViewportWidth}"
                                 Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
                                 Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -393,5 +392,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style BasedOn="{StaticResource LayScrollViewerStyle}" TargetType="{x:Type ScrollViewer}" />
 </ResourceDictionary>

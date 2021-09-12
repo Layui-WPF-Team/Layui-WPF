@@ -16,7 +16,7 @@
             <Trigger Property="Type" Value="Primary">
                 <Setter Property="Padding" Value="5,0,0,0" />
                 <Setter Property="Background" Value="White" />
-                <Setter Property="IconSize" Value="30" />
+                <Setter Property="IconSize" Value="20" />
                 <Setter Property="HoverBorderBrush" Value="{DynamicResource CyanBlue}" />
                 <Setter Property="Template">
                     <Setter.Value>
@@ -198,6 +198,12 @@
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
+                                <Trigger Property="Content" Value="{x:Null}">
+                                    <Setter TargetName="contentPresenter" Property="Visibility" Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="Content" Value="">
+                                    <Setter TargetName="contentPresenter" Property="Visibility" Value="Collapsed" />
+                                </Trigger>
                                 <!--  鼠标移上去触发的效果  -->
                                 <Trigger Property="IsMouseOver" Value="true">
                                     <Trigger.EnterActions>

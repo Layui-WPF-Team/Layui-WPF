@@ -29,6 +29,18 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CheckedColorProperty =
             DependencyProperty.Register("CheckedColor", typeof(Brush), typeof(LayRadioButton));
+        /// <summary>
+        /// 图标大小
+        /// </summary>
+        public int IconSize
+        {
+            get { return (int)GetValue(IconSizeProperty); }
+            set { SetValue(IconSizeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IconSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IconSizeProperty =
+            DependencyProperty.Register("IconSize", typeof(int), typeof(LayRadioButton));
 
 
     }
