@@ -1,0 +1,65 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.DataGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="500"
+    d:DesignWidth="600"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <Lay:LayDataGrid
+        Margin="5"
+        FrozenColumnCount="1"
+        ItemsSource="{Binding ListData}"
+        Style="{StaticResource LayDataGridStyle}">
+        <DataGrid.Columns>
+            <DataGridTemplateColumn MinWidth="50" MaxWidth="50">
+                <DataGridTemplateColumn.Header>
+                    <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </DataGridTemplateColumn.Header>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTextColumn
+                MinWidth="150"
+                MaxWidth="150"
+                Binding="{Binding Index, Mode=OneWay}"
+                Header="编号" />
+            <DataGridTextColumn
+                Width="200"
+                Binding="{Binding Name, Mode=OneWay}"
+                Header="名称" />
+            <DataGridTextColumn
+                Width="*"
+                Binding="{Binding Name, Mode=OneWay}"
+                Header="名称" />
+            <DataGridTemplateColumn MinWidth="200" MaxWidth="200">
+                <DataGridTemplateColumn.Header>
+                    <TextBlock Text="进度" />
+                </DataGridTemplateColumn.Header>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Lay:LayProgressBar
+                                x:Name="ProgressBar"
+                                Height="10"
+                                VerticalAlignment="Center"
+                                Value="{Binding ProgressBarValue, Mode=OneWay}" />
+                            <TextBlock Grid.Column="1" Text="{Binding ElementName=ProgressBar, Path=Value, StringFormat={}{0}%}" />
+                        </Grid>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </Lay:LayDataGrid>
+</UserControl>

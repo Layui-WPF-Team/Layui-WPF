@@ -29,4 +29,7 @@
     <!--  灰色  -->
     <Color x:Key="GrayEffect">#d2d2d2</Color>
     <SolidColorBrush x:Key="Gray" Color="{StaticResource GrayEffect}" />
+    <!--  浅灰色  -->
+    <Color x:Key="LightGrayEffect">#FAFAFA</Color>
+    <SolidColorBrush x:Key="LighGray" Color="{StaticResource LightGrayEffect}" />
 </ResourceDictionary>
