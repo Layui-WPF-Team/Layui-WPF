@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -16,6 +17,7 @@ namespace LayuiTemplate.Control
     {
         private Button passwordChangeBtn;
         private PasswordBox passwordBox;//用于存储模板中抓取的密码框
+        private bool IsPasswordChanging;
         /// <summary>
         ///密码框字符串暗码
         /// </summary>
@@ -76,8 +78,19 @@ namespace LayuiTemplate.Control
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (passwordBox == null) return;
+            IsPasswordChanging = true;
             this.Text = passwordBox.Password;
             this.Select(passwordBox.Password.Length, passwordBox.Password.Length);
+            IsPasswordChanging = false;
+        }
+        protected override void OnTextChanged(TextChangedEventArgs e)
+        {
+            base.OnTextChanged(e);
+            if (passwordBox == null) return;
+            if (!IsPasswordChanging)
+            {
+                passwordBox.Password = this.Text;
+            }
         }
         /// <summary>
         /// 光标定位
@@ -85,9 +98,9 @@ namespace LayuiTemplate.Control
         /// <param name="passwordBox">密码框</param>
         /// <param name="start">光标定位起始长度</param>
         /// <param name="length">密码框的密码长度</param>
-        private void SetSelection(PasswordBox passwordBox, int start, int length) 
-        { 
-            passwordBox.GetType().GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(passwordBox, new object[] { start, length }); 
+        private void SetSelection(PasswordBox passwordBox, int start, int length)
+        {
+            passwordBox.GetType().GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(passwordBox, new object[] { start, length });
         }
     }
 }
