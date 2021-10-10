@@ -3,9 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
 
-    <Style TargetType="{x:Type Lay:LayListBox}">
-        
-        
-    </Style>
+    <Style TargetType="{x:Type Lay:LayListBox}" />
 
 </ResourceDictionary>

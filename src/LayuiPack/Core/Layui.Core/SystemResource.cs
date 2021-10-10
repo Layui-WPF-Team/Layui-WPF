@@ -39,6 +39,17 @@ namespace Layui.Core.Resource
         /// 数据表格
         /// </summary>
         public static string Page_DataGrid = "Page_DataGrid";
+        /// <summary>
+        /// 对话框
+        /// </summary>
+        public static string Page_DialogView = "Page_DialogView";
+        #endregion
+
+        #region 弹窗名称
+        /// <summary>
+        /// 测试弹窗名称
+        /// </summary>
+        public static string DialogMessageView = "DialogMessageView";
         #endregion
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Layui.Core.Resource;
 using LayuiComponentExample.Views;
+using LayuiTemplate.Dialog;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -18,6 +19,8 @@ namespace LayuiComponentExample
 
             containerRegistry.RegisterForNavigation<Views.Slider>(SystemResource.Page_Slider);
             containerRegistry.RegisterForNavigation<Views.DataGrid>(SystemResource.Page_DataGrid);
+            containerRegistry.RegisterForNavigation<Views.Dialog>(SystemResource.Page_DialogView);
+            LayDialog.RegisterDialog<DialogMessageView>("DialogMessageView");
         }
     }
 }

@@ -1,0 +1,16 @@
+﻿<UserControl
+    x:Class="LayuiTemplate.Dialog.LayDialogUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LayuiTemplate.Dialog"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FocusVisualStyle="{x:Null}"
+    Focusable="False"
+    mc:Ignorable="d">
+    <UserControl.Template>
+        <ControlTemplate TargetType="UserControl">
+            <ContentPresenter />
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

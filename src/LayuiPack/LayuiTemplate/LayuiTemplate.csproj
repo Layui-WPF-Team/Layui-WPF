@@ -53,6 +53,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialog\LayDialogUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\ButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,6 +74,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Style\Default\DataGridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Default\DialogStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,6 +123,7 @@
     <Compile Include="Control\Canvas\LaySliderCanvas.cs" />
     <Compile Include="Control\CheckBox\LayCheckBox.cs" />
     <Compile Include="Control\DataGrid\LayDataGrid.cs" />
+    <Compile Include="Control\DialogHost\LayDialogHost.cs" />
     <Compile Include="Control\Hr\LayHr.xaml.cs">
       <DependentUpon>LayHr.xaml</DependentUpon>
     </Compile>
@@ -124,8 +133,22 @@
     <Compile Include="Control\RadioButton\LayRadioButton.cs" />
     <Compile Include="Control\Slider\LaySlider.cs" />
     <Compile Include="Control\TextBox\LayTextBox.cs" />
+    <Compile Include="Dialog\LayDialogParameter.cs" />
+    <Compile Include="Dialog\LayDialogResult.cs" />
+    <Compile Include="Dialog\LayDialogUserControl.xaml.cs">
+      <DependentUpon>LayDialogUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\Interface\ILayDialogAware.cs" />
+    <Compile Include="Dialog\Interface\ILayDialogParameter.cs" />
+    <Compile Include="Dialog\Interface\ILayDialogResult.cs" />
+    <Compile Include="Dialog\Interface\ILayDialogUserControl.cs" />
+    <Compile Include="Dialog\Interface\ILayDialogUserControlExtensions.cs" />
+    <Compile Include="Dialog\Interface\ILayDialog.cs" />
+    <Compile Include="Dialog\LayDialog.cs" />
+    <Compile Include="Dialog\LayParametersExtensions.cs" />
     <Compile Include="Enum\Button\ButtonStyle.cs" />
     <Compile Include="Enum\CheckBox\CheckBoxStyle.cs" />
+    <Compile Include="Enum\Dialog\ButtonResult.cs" />
     <Compile Include="Enum\Slider\SliderTipsPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

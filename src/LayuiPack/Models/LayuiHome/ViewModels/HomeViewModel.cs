@@ -54,7 +54,7 @@ namespace LayuiHome.ViewModels
                     {
                         new
                         {
-                            ItemTitle="弹出层", PageKey=SystemResource.Page_ButtonView
+                            ItemTitle="弹出层", PageKey=SystemResource.Page_DialogView
                         },new
                         {
                             ItemTitle="日期与时间选择", PageKey=SystemResource.Page_ButtonView

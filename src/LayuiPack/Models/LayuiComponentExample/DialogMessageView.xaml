@@ -1,0 +1,46 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.DialogMessageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LayuiComponentExample"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid
+        Width="300"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Border
+            Padding="50"
+            Background="#393D49"
+            CornerRadius="2 2 0 0">
+            <TextBlock
+                FontSize="16"
+                Foreground="White"
+                Text="这是一个WPF版的Layui组件库,在这里你可以感受到WPF版本的Layui的魅力"
+                TextWrapping="WrapWithOverflow" />
+        </Border>
+        <Border
+            Grid.Row="1"
+            Background="White"
+            CornerRadius=" 0 0 2 2">
+            <UniformGrid Margin="0,10" Rows="1">
+                <Lay:LayButton
+                    Command="{Binding LikeCommand}"
+                    Content="喜欢"
+                    Type="Normal" />
+                <Lay:LayButton
+                    Command="{Binding NoCommand}"
+                    Content="不喜欢"
+                    Type="Danger" />
+            </UniformGrid>
+        </Border>
+    </Grid>
+</UserControl>
