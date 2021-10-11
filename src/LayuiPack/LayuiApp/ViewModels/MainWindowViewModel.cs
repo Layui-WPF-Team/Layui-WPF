@@ -14,7 +14,6 @@ namespace LayuiApp.ViewModels
 
         public MainWindowViewModel(IRegionManager regionManager, IDialogService dialogServic) :base(regionManager, dialogServic)
         {
-            WindowState = WindowState.Maximized;
         }
 
         #region 视图属性

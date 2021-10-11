@@ -50,7 +50,7 @@
                                             To="1"
                                             Duration="0:0:0.2">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut" />
+                                                <CircleEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                         <DoubleAnimation
@@ -59,7 +59,7 @@
                                             To="1"
                                             Duration="0:0:0.2">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut" />
+                                                <CircleEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible">
@@ -74,20 +74,20 @@
                                         <DoubleAnimation
                                             Storyboard.TargetName="content"
                                             Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.1" />
+                                            Duration="0:0:0.05" />
                                         <DoubleAnimation
                                             Storyboard.TargetName="body"
                                             Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.1" />
+                                            Duration="0:0:0.05" />
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform"
                                             Storyboard.TargetProperty="ScaleX"
-                                            Duration="0:0:0.1" />
+                                            Duration="0:0:0.05" />
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform"
                                             Storyboard.TargetProperty="ScaleY"
-                                            Duration="0:0:0.1" />
-                                        <BooleanAnimationUsingKeyFrames BeginTime="0:0:0.1" Storyboard.TargetProperty="IsHitTestVisible">
+                                            Duration="0:0:0.05" />
+                                        <BooleanAnimationUsingKeyFrames BeginTime="0:0:0.05" Storyboard.TargetProperty="IsHitTestVisible">
                                             <DiscreteBooleanKeyFrame KeyTime="0" Value="false" />
                                         </BooleanAnimationUsingKeyFrames>
                                     </Storyboard>

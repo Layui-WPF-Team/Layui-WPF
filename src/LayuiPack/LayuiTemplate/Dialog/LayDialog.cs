@@ -136,7 +136,7 @@ namespace LayuiTemplate.Dialog
                     layDialog.IsOpen = false;
                     layDialog.Dispatcher.BeginInvoke(DispatcherPriority.Normal,new Action(async () =>
                     {
-                        await Task.Delay(200);
+                        await Task.Delay(100);
                         //窗体关闭后数据置空
                         DialogView = null;
                         layDialog.Content = null;
