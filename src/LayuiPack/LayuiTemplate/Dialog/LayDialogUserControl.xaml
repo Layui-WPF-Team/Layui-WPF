@@ -10,7 +10,9 @@
     mc:Ignorable="d">
     <UserControl.Template>
         <ControlTemplate TargetType="UserControl">
-            <ContentPresenter />
+            <Border x:Name="body">
+                <ContentPresenter />
+            </Border>
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>

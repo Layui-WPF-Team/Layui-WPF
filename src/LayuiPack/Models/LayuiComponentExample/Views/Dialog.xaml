@@ -11,10 +11,22 @@
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <Grid>
+    <StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Orientation="Horizontal">
         <Lay:LayButton
+            Margin="10"
             Command="{Binding DialogShowCommand}"
+            CommandParameter="false"
             Content="弹窗测试"
             Type="Normal" />
-    </Grid>
+        <Lay:LayButton
+            Margin="10"
+            Command="{Binding DialogShowCommand}"
+            CommandParameter="true"
+            Content="模态弹窗测试"
+            Type="Normal" />
+    </StackPanel>
+
 </UserControl>

@@ -19,24 +19,54 @@ namespace LayuiComponentExample.ViewModels
         {
 
         }
-        public DelegateCommand DialogShowCommand => new DelegateCommand(DialogShow);
-        private void DialogShow()
+        public DelegateCommand<string> DialogShowCommand => new DelegateCommand<string>(DialogShow);
+        private void DialogShow(string IsModel)
         {
-            LayDialog.Dialog.Show(SystemResource.DialogMessageView, null,rest=> {
-                switch (rest.Result)
+            LayDialogParameter dialogParameter ;
+            if (IsModel=="true")
+            {
+                dialogParameter = new LayDialogParameter();
+                dialogParameter.Add("IsModel", "这是模态弹窗");
+                LayDialog.Dialog.ShowDialog(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
-                    case LayuiTemplate.Enum.Dialog.ButtonResult.Yes:
-                        MessageBox.Show("我也是这么认为的");
-                        break;
-                    case LayuiTemplate.Enum.Dialog.ButtonResult.No:
-                        MessageBox.Show("你确定你是认真的吗?");
-                        break;
-                    case LayuiTemplate.Enum.Dialog.ButtonResult.Default:
-                        break;
-                    default:
-                        break;
-                }
-            });
+                    switch (rest.Result)
+                    {
+                        case LayuiTemplate.Enum.Dialog.ButtonResult.Yes:
+                            MessageBox.Show("我也是这么认为的");
+                            break;
+                        case LayuiTemplate.Enum.Dialog.ButtonResult.No:
+                            MessageBox.Show("你确定你是认真的吗?");
+                            break;
+                        case LayuiTemplate.Enum.Dialog.ButtonResult.Default:
+                            break;
+                        default:
+                            break;
+                    }
+                });
+                MessageBox.Show("业务逻辑被阻塞");
+            }
+            else
+            {
+                dialogParameter = new LayDialogParameter();
+                dialogParameter.Add("IsModel", "这是非模态弹窗");
+                LayDialog.Dialog.Show(SystemResource.DialogMessageView, dialogParameter, rest =>
+                {
+                    switch (rest.Result)
+                    {
+                        case LayuiTemplate.Enum.Dialog.ButtonResult.Yes:
+                            MessageBox.Show("我也是这么认为的");
+                            break;
+                        case LayuiTemplate.Enum.Dialog.ButtonResult.No:
+                            MessageBox.Show("你确定你是认真的吗?");
+                            break;
+                        case LayuiTemplate.Enum.Dialog.ButtonResult.Default:
+                            break;
+                        default:
+                            break;
+                    }
+                });
+                MessageBox.Show("业务逻辑未被阻塞");
+            }
         }
     }
 }

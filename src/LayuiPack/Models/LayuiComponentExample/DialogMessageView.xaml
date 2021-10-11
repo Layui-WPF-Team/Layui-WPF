@@ -16,11 +16,24 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Border
-            Padding="50"
+            Padding="0,20"
             Background="#393D49"
+            BorderThickness="0"
             CornerRadius="2 2 0 0">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="16"
+                Foreground="White"
+                Text="{Binding Title}" />
+        </Border>
+        <Border
+            Grid.Row="1"
+            Padding="50"
+            Background="#393D49">
             <TextBlock
                 FontSize="16"
                 Foreground="White"
@@ -28,7 +41,7 @@
                 TextWrapping="WrapWithOverflow" />
         </Border>
         <Border
-            Grid.Row="1"
+            Grid.Row="2"
             Background="White"
             CornerRadius=" 0 0 2 2">
             <UniformGrid Margin="0,10" Rows="1">

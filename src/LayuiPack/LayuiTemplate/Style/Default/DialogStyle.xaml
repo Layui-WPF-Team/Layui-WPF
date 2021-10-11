@@ -4,6 +4,8 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
     <Style x:Key="LayDialogHostStyle" TargetType="Lay:LayDialogHost">
         <Setter Property="Background" Value="Black" />
+        <Setter Property="Panel.ZIndex" Value="99999" />
+        <Setter Property="IsHitTestVisible" Value="false" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayDialogHost">
@@ -12,7 +14,20 @@
                             x:Name="body"
                             Background="{TemplateBinding Background}"
                             Opacity="0" />
-                        <ContentPresenter Content="{TemplateBinding Content}" />
+                        <ContentPresenter
+                            x:Name="content"
+                            Content="{TemplateBinding Content}"
+                            Opacity="0"
+                            RenderTransformOrigin="0.5,0.5">
+                            <ContentPresenter.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform x:Name="ScaleTransform" ScaleX="0.5" ScaleY="0.5" />
+                                    <SkewTransform />
+                                    <RotateTransform />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsOpen" Value="true">
@@ -20,10 +35,36 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
+                                            Storyboard.TargetName="content"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0" />
+                                        <DoubleAnimation
                                             Storyboard.TargetName="body"
                                             Storyboard.TargetProperty="Opacity"
-                                            To="0.8"
-                                            Duration="0:0:0.1" />
+                                            To="0.4"
+                                            Duration="0:0:0" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ScaleTransform"
+                                            Storyboard.TargetProperty="ScaleX"
+                                            To="1"
+                                            Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ScaleTransform"
+                                            Storyboard.TargetProperty="ScaleY"
+                                            To="1"
+                                            Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible">
+                                            <DiscreteBooleanKeyFrame KeyTime="0" Value="True" />
+                                        </BooleanAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -31,9 +72,24 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
+                                            Storyboard.TargetName="content"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.1" />
+                                        <DoubleAnimation
                                             Storyboard.TargetName="body"
                                             Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.2" />
+                                            Duration="0:0:0.1" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ScaleTransform"
+                                            Storyboard.TargetProperty="ScaleX"
+                                            Duration="0:0:0.1" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ScaleTransform"
+                                            Storyboard.TargetProperty="ScaleY"
+                                            Duration="0:0:0.1" />
+                                        <BooleanAnimationUsingKeyFrames BeginTime="0:0:0.1" Storyboard.TargetProperty="IsHitTestVisible">
+                                            <DiscreteBooleanKeyFrame KeyTime="0" Value="false" />
+                                        </BooleanAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>

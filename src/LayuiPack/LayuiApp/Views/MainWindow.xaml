@@ -14,20 +14,9 @@
     <Window.Template>
         <ControlTemplate TargetType="Window">
             <Grid>
-                <Lay:LayDialogHost
-                    x:Name="WindowDialogHostBody"
-                    Panel.ZIndex="100"
-                    Visibility="Hidden" />
-                <ContentPresenter Panel.ZIndex="0" />
+                <Lay:LayDialogHost x:Name="WindowDialogHostBody" />
+                <ContentPresenter />
             </Grid>
-            <ControlTemplate.Triggers>
-                <Trigger SourceName="WindowDialogHostBody" Property="IsOpen" Value="true">
-                    <Setter TargetName="WindowDialogHostBody" Property="Visibility" Value="Visible" />
-                </Trigger>
-                <Trigger SourceName="WindowDialogHostBody" Property="IsOpen" Value="false">
-                    <Setter TargetName="WindowDialogHostBody" Property="Visibility" Value="Hidden" />
-                </Trigger>
-            </ControlTemplate.Triggers>
         </ControlTemplate>
     </Window.Template>
     <WindowChrome.WindowChrome>
