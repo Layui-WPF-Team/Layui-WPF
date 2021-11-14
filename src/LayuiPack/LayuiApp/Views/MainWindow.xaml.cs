@@ -1,11 +1,12 @@
-﻿using System.Windows;
+﻿using LayuiTemplate.Control;
+using System.Windows;
 
 namespace LayuiApp.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : LayWindow
     {
         public MainWindow()
         {

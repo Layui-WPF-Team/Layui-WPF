@@ -113,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\Default\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,6 +137,7 @@
     <Compile Include="Control\RadioButton\LayRadioButton.cs" />
     <Compile Include="Control\Slider\LaySlider.cs" />
     <Compile Include="Control\TextBox\LayTextBox.cs" />
+    <Compile Include="Control\Window\LayWindow.cs" />
     <Compile Include="Dialog\LayDialogParameter.cs" />
     <Compile Include="Dialog\LayDialogResult.cs" />
     <Compile Include="Dialog\LayDialogUserControl.xaml.cs">

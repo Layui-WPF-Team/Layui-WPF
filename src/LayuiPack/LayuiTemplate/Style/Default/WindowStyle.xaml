@@ -1,0 +1,18 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    <Style x:Key="LayWindowStyle" TargetType="Lay:LayWindow">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayWindow">
+                    <Grid>
+                        <Lay:LayDialogHost x:Name="WindowDialogHostBody" />
+                        <ContentPresenter />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{DynamicResource LayWindowStyle}" TargetType="Lay:LayWindow" />
+</ResourceDictionary>

@@ -104,9 +104,10 @@ namespace LayuiTemplate.Dialog
 
             try
             {
-               
+
                 //抓取主窗体模板中的DialogHost
-                LayDialogHost layDialog = Application.Current.MainWindow.Template.FindName("WindowDialogHostBody", Application.Current.MainWindow) as LayDialogHost;
+                var layWindow = Application.Current.Windows.Cast<Window>().SingleOrDefault(x => x.IsActive);
+                LayDialogHost layDialog = layWindow.Template.FindName("WindowDialogHostBody", layWindow) as LayDialogHost;
                 //防呆
                 if (layDialog == null || layDialog.Content != null) return;
                 LayDialogUserControl DialogView = null;

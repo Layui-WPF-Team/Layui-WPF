@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:Nv="clr-namespace:Layui.Core.Resource;assembly=Layui.Core"
+    xmlns:Selector="clr-namespace:LayuiHome.Selector"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:LayuiHome.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -23,9 +24,11 @@
                     Padding="0"
                     Background="Transparent"
                     BorderThickness="0"
+                    ItemTemplateSelector="{DynamicResource MenuItemSelector}"
                     ItemsSource="{Binding MenuItemList}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
+                    <ItemsControl.Resources>
+                        <Selector:MenuItemDataTemplateSelector x:Key="MenuItemSelector" />
+                        <DataTemplate x:Key="MenuItemsDataTemplate">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
@@ -35,7 +38,7 @@
                                     x:Name="header"
                                     Height="50"
                                     Padding="20,0"
-                                    Content="{Binding Title}"
+                                    Content="{Binding ItemTitle}"
                                     FocusVisualStyle="{x:Null}"
                                     Foreground="White"
                                     IsChecked="False">
@@ -44,7 +47,7 @@
                                             <Border
                                                 x:Name="bg"
                                                 Margin="{TemplateBinding Margin}"
-                                                Background="Transparent"
+                                                Background="#393D49"
                                                 Opacity="0.7">
                                                 <Grid Margin="{TemplateBinding Padding}">
                                                     <Grid.ColumnDefinitions>
@@ -101,8 +104,11 @@
                                         </ControlTemplate>
                                     </CheckBox.Template>
                                 </CheckBox>
-                                <StackPanel Grid.Row="1" Background="#282B33" >
-                                    <ItemsControl x:Name="content" ItemsSource="{Binding Data}">
+                                <StackPanel Grid.Row="1" Background="#282B33">
+                                    <ItemsControl
+                                        x:Name="content"
+                                        ItemTemplateSelector="{DynamicResource MenuItemSelector}"
+                                        ItemsSource="{Binding Data}">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <StackPanel />
@@ -117,77 +123,76 @@
                                                 </Style.Triggers>
                                             </Style>
                                         </ItemsControl.Style>
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <RadioButton
-                                                    Height="40"
-                                                    Padding="20,0"
-                                                    Command="{Binding RelativeSource={RelativeSource AncestorType=local:Home}, Path=DataContext.GoPageCommand}"
-                                                    CommandParameter="{Binding PageKey}"
-                                                    Content="{Binding ItemTitle}"
-                                                    FocusVisualStyle="{x:Null}"
-                                                    Foreground="White"
-                                                    GroupName="Item">
-                                                    <RadioButton.Template>
-                                                        <ControlTemplate TargetType="RadioButton">
-                                                            <Grid>
-                                                                <Border x:Name="bg" Background="Transparent" />
-                                                                <Grid
-                                                                    x:Name="line"
-                                                                    Width="5"
-                                                                    HorizontalAlignment="Left"
-                                                                    Background="{StaticResource Green}"
-                                                                    Opacity="0" />
-                                                                <ContentPresenter
-                                                                    x:Name="dataContent"
-                                                                    Margin="{TemplateBinding Padding}"
-                                                                    HorizontalAlignment="Left"
-                                                                    VerticalAlignment="Center"
-                                                                    IsHitTestVisible="True"
-                                                                    Opacity="0.7" />
-                                                            </Grid>
-                                                            <ControlTemplate.Triggers>
-                                                                <Trigger Property="IsMouseOver" Value="true">
-                                                                    <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                                                    <Trigger.EnterActions>
-                                                                        <BeginStoryboard>
-                                                                            <Storyboard>
-                                                                                <DoubleAnimation
-                                                                                    Storyboard.TargetName="line"
-                                                                                    Storyboard.TargetProperty="Opacity"
-                                                                                    To="1"
-                                                                                    Duration="0:0:0.3" />
-                                                                            </Storyboard>
-                                                                        </BeginStoryboard>
-                                                                    </Trigger.EnterActions>
-                                                                    <Trigger.ExitActions>
-                                                                        <BeginStoryboard>
-                                                                            <Storyboard>
-                                                                                <DoubleAnimation
-                                                                                    Storyboard.TargetName="line"
-                                                                                    Storyboard.TargetProperty="Opacity"
-                                                                                    To="0"
-                                                                                    Duration="0:0:0.3" />
-                                                                            </Storyboard>
-                                                                        </BeginStoryboard>
-                                                                    </Trigger.ExitActions>
-                                                                </Trigger>
-                                                                <Trigger Property="IsChecked" Value="true">
-                                                                    <Setter TargetName="bg" Property="Background" Value="{StaticResource Green}" />
-                                                                    <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                                                    <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                                                </Trigger>
-                                                            </ControlTemplate.Triggers>
-                                                        </ControlTemplate>
-                                                    </RadioButton.Template>
-                                                </RadioButton>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
                                     </ItemsControl>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
-                    </ItemsControl.ItemTemplate>
+                        <DataTemplate x:Key="MenuItemDataTemplate">
+                            <RadioButton
+                                Height="40"
+                                Padding="20,0"
+                                Command="{Binding RelativeSource={RelativeSource AncestorType=local:Home}, Path=DataContext.GoPageCommand}"
+                                CommandParameter="{Binding PageKey}"
+                                Content="{Binding ItemTitle}"
+                                FocusVisualStyle="{x:Null}"
+                                Foreground="White"
+                                GroupName="Item"
+                                IsChecked="{Binding IsSelected}">
+                                <RadioButton.Template>
+                                    <ControlTemplate TargetType="RadioButton">
+                                        <Grid>
+                                            <Border x:Name="bg" Background="Transparent" />
+                                            <Grid
+                                                x:Name="line"
+                                                Width="5"
+                                                HorizontalAlignment="Left"
+                                                Background="{StaticResource Green}"
+                                                Opacity="0" />
+                                            <ContentPresenter
+                                                x:Name="dataContent"
+                                                Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                IsHitTestVisible="True"
+                                                Opacity="0.7" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetName="line"
+                                                                Storyboard.TargetProperty="Opacity"
+                                                                To="1"
+                                                                Duration="0:0:0.3" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetName="line"
+                                                                Storyboard.TargetProperty="Opacity"
+                                                                To="0"
+                                                                Duration="0:0:0.3" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                            <Trigger Property="IsChecked" Value="true">
+                                                <Setter TargetName="bg" Property="Background" Value="{StaticResource Green}" />
+                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </RadioButton.Template>
+                            </RadioButton>
+                        </DataTemplate>
+                    </ItemsControl.Resources>
                 </ItemsControl>
             </ScrollViewer>
         </Border>
