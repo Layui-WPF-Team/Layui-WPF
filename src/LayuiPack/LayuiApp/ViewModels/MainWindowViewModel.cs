@@ -1,5 +1,6 @@
 ﻿using Layui.Core.Base;
 using Prism.Commands;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
@@ -12,7 +13,7 @@ namespace LayuiApp.ViewModels
     public class MainWindowViewModel : LayuiViewModelBase
     {
 
-        public MainWindowViewModel(IRegionManager regionManager, IDialogService dialogServic) :base(regionManager, dialogServic)
+        public MainWindowViewModel(IContainerExtension container) : base(container)
         {
         }
 

@@ -1,5 +1,6 @@
 ﻿using Layui.Core.Base;
 using Prism.Commands;
+using Prism.Ioc;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
@@ -13,7 +14,7 @@ namespace LayuiFundamentalElement.ViewModels
     public class ProgressBarViewModel : LayuiViewModelBase
     {
 
-        public ProgressBarViewModel(IRegionManager regionManager, IDialogService dialogServic) : base(regionManager, dialogServic)
+        public ProgressBarViewModel(IContainerExtension container) : base(container)
         {
 
         }

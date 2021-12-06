@@ -2,6 +2,7 @@
 using Layui.Core.Resource;
 using LayuiTemplate.Dialog;
 using Prism.Commands;
+using Prism.Ioc;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
@@ -15,7 +16,7 @@ namespace LayuiComponentExample.ViewModels
 {
     public class DialogViewModel : LayuiViewModelBase
     {
-        public DialogViewModel(IRegionManager regionManager, IDialogService dialogServic) : base(regionManager, dialogServic)
+        public DialogViewModel(IContainerExtension container) : base(container)
         {
 
         }

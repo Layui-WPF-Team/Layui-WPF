@@ -2,6 +2,7 @@
 using Layui.Core.Resource;
 using LayuiHome.Models;
 using Prism.Commands;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
@@ -14,7 +15,7 @@ namespace LayuiHome.ViewModels
 {
     public class HomeViewModel : LayuiViewModelBase
     {
-        public HomeViewModel(IRegionManager regionManager, IDialogService dialogServic) : base(regionManager, dialogServic)
+        public HomeViewModel(IContainerExtension container) : base(container)
         {
             MenuItemList = new ObservableCollection<MenuItemModel>();
             MenuItemList.Add(new MenuItemModel()
@@ -154,7 +155,7 @@ namespace LayuiHome.ViewModels
         private void GoPage(string PageKey)
         {
             if (PageKey == null) return;
-            regionManager.RequestNavigate(SystemResource.Nav_HomeContent, PageKey);
+            Region.RequestNavigate(SystemResource.Nav_HomeContent, PageKey);
         }
         #endregion
 

@@ -1,4 +1,6 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Events;
+using Prism.Ioc;
+using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
@@ -14,14 +16,19 @@ namespace Layui.Core.Base
         /// <summary>
         /// 导航器
         /// </summary>
-        public IRegionManager regionManager;
+        public IRegionManager Region;
         /// <summary>
         /// 弹窗服务
         /// </summary>
-        public IDialogService dialogService;
-        public LayuiViewModelBase(IRegionManager regionManager,IDialogService dialogService) {
-            this.regionManager = regionManager;
-            this.dialogService = dialogService;
+        public IDialogService Dialog;
+        /// <summary>
+        /// 事件聚合器
+        /// </summary>
+        public IEventAggregator Event;
+        public LayuiViewModelBase(IContainerExtension container) {
+            this.Region = container.Resolve<IRegionManager>();
+            this.Dialog = container.Resolve<IDialogService>();
+            this.Event = container.Resolve<IEventAggregator>();
         }
         /// <summary>
         /// 标记上一个视图时候被销毁

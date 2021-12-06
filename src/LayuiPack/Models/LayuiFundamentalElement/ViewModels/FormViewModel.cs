@@ -1,5 +1,6 @@
 ﻿using Layui.Core.Base;
 using Prism.Commands;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
@@ -15,7 +16,7 @@ namespace LayuiFundamentalElement.ViewModels
     /// </summary>
     public class FormViewModel :  LayuiViewModelBase
     {
-        public FormViewModel(IRegionManager regionManager, IDialogService dialogServic) : base(regionManager, dialogServic)
+        public FormViewModel(IContainerExtension container) : base(container)
         {
             Password = "123123";
         }

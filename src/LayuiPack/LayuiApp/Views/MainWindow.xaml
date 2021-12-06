@@ -9,6 +9,7 @@
     Width="1080"
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
+    Style="{DynamicResource LayWindowStyle}"
     WindowStartupLocation="CenterOwner"
     WindowState="{Binding WindowState}">
     <WindowChrome.WindowChrome>
