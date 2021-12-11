@@ -14,5 +14,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{DynamicResource LayWindowStyle}" TargetType="Lay:LayWindow" />
+    <Style BasedOn="{StaticResource LayWindowStyle}" TargetType="Lay:LayWindow" />
 </ResourceDictionary>

@@ -116,6 +116,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\Default\TabControlStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Default\TabItemStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\TextBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -144,6 +152,8 @@
     <Compile Include="Control\ListBox\LayListBox.cs" />
     <Compile Include="Control\RadioButton\LayRadioButton.cs" />
     <Compile Include="Control\Slider\LaySlider.cs" />
+    <Compile Include="Control\TabControl\LayTabControl.cs" />
+    <Compile Include="Control\TabItem\LayTabItem.cs" />
     <Compile Include="Control\TextBox\LayTextBox.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
     <Compile Include="Dialog\LayDialogParameter.cs" />
@@ -164,6 +174,7 @@
     <Compile Include="Enum\CheckBox\CheckBoxStyle.cs" />
     <Compile Include="Enum\Dialog\ButtonResult.cs" />
     <Compile Include="Enum\Slider\SliderTipsPosition.cs" />
+    <Compile Include="Enum\TabControl\TabControlStyle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

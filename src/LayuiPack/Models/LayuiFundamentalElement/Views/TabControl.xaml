@@ -1,0 +1,84 @@
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.TabControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <UniformGrid
+        Margin="2"
+        Columns="1"
+        Rows="3">
+        <Lay:LayTabControl
+            Margin="2"
+            TabStripPlacement="Top"
+            Type="Card">
+            <TabItem Header="选项卡一">
+                <Grid Margin="10">
+                    <TextBlock Text="内容不一样是要有，因为你可以监听tab事件（阅读下文档就是了）" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="选项卡二">
+                <Grid Margin="10">
+                    <TextBlock Text="默认宽度是相对于父元素100%适应的，你也可以固定宽度。" />
+                </Grid>
+            </TabItem>
+        </Lay:LayTabControl>
+        <Lay:LayTabControl Margin="2" TabStripPlacement="Top">
+            <TabItem Header="选项卡一">
+                <Grid Margin="10">
+                    <TextBlock Text="内容不一样是要有，因为你可以监听tab事件（阅读下文档就是了）" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="选项卡二">
+                <Grid Margin="10">
+                    <TextBlock Text="默认宽度是相对于父元素100%适应的，你也可以固定宽度。" />
+                </Grid>
+            </TabItem>
+        </Lay:LayTabControl>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <Lay:LayButton
+                    Margin="5,0"
+                    Command="{Binding AddCommand}"
+                    Content="新增"
+                    Type="Default" />
+            </StackPanel>
+            <Lay:LayTabControl
+                Grid.Row="1"
+                ItemsSource="{Binding PageList}"
+                SelectedItem="{Binding PageModel}"
+                TabStripPlacement="Top"
+                Type="Card">
+                <Lay:LayTabControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                            <Lay:LayButton
+                                Grid.Column="1"
+                                Width="20"
+                                Height="20"
+                                Margin="10,0,0,0"
+                                Command="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTabControl}, Path=DataContext.DeleteCommand}"
+                                CommandParameter="{Binding}"
+                                Content="X" />
+                        </Grid>
+                    </DataTemplate>
+                </Lay:LayTabControl.ItemTemplate>
+                <Lay:LayTabControl.ContentTemplate>
+                    <DataTemplate>
+                        <ContentControl Content="{Binding Content}" />
+                    </DataTemplate>
+                </Lay:LayTabControl.ContentTemplate>
+            </Lay:LayTabControl>
+        </Grid>
+    </UniformGrid>
+</UserControl>

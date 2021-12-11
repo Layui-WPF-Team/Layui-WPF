@@ -1,0 +1,146 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Enum="clr-namespace:LayuiTemplate.Enum"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <Style x:Key="LayTabItemStyle" TargetType="{x:Type TabItem}">
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Padding" Value="15,5" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Background" Value="Transparent" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTabControl, Mode=FindAncestor}, Path=Type}" Value="{x:Static Enum:TabControlStyle.Simplicity}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid Background="{TemplateBinding Background}" Cursor="Hand">
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                    ContentSource="Header"
+                                    TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                <Rectangle
+                                    x:Name="rectangle"
+                                    Fill="{Binding ElementName=contentPresenter, Path=(TextBlock.Foreground)}"
+                                    IsHitTestVisible="False"
+                                    Opacity="0" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter TargetName="rectangle" Property="Opacity" Value="1" />
+                                    <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{DynamicResource Green}" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="false">
+                                    <Setter TargetName="rectangle" Property="Opacity" Value="0" />
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Left">
+                                    <Setter TargetName="rectangle" Property="Width" Value="2" />
+                                    <Setter TargetName="rectangle" Property="Height" Value="auto" />
+                                    <Setter TargetName="rectangle" Property="Margin" Value="0,0,-1,0" />
+                                    <Setter TargetName="rectangle" Property="HorizontalAlignment" Value="Right" />
+                                    <Setter TargetName="rectangle" Property="VerticalAlignment" Value="Stretch" />
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Top">
+                                    <Setter TargetName="rectangle" Property="Width" Value="auto" />
+                                    <Setter TargetName="rectangle" Property="Height" Value="2" />
+                                    <Setter TargetName="rectangle" Property="Margin" Value="0,0,0,-1" />
+                                    <Setter TargetName="rectangle" Property="HorizontalAlignment" Value="Stretch" />
+                                    <Setter TargetName="rectangle" Property="VerticalAlignment" Value="Bottom" />
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Right">
+                                    <Setter TargetName="rectangle" Property="Width" Value="2" />
+                                    <Setter TargetName="rectangle" Property="Height" Value="auto" />
+                                    <Setter TargetName="rectangle" Property="Margin" Value="-1,0,0,0" />
+                                    <Setter TargetName="rectangle" Property="HorizontalAlignment" Value="Left" />
+                                    <Setter TargetName="rectangle" Property="VerticalAlignment" Value="Stretch" />
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Bottom">
+                                    <Setter TargetName="rectangle" Property="Width" Value="auto" />
+                                    <Setter TargetName="rectangle" Property="Height" Value="2" />
+                                    <Setter TargetName="rectangle" Property="Margin" Value="0,-1,0,0" />
+                                    <Setter TargetName="rectangle" Property="HorizontalAlignment" Value="Stretch" />
+                                    <Setter TargetName="rectangle" Property="VerticalAlignment" Value="Top" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTabControl, Mode=FindAncestor}, Path=Type}" Value="{x:Static Enum:TabControlStyle.Card}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid Background="{TemplateBinding Background}" Cursor="Hand">
+                                <Border
+                                    x:Name="border"
+                                    Margin="0"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{DynamicResource Gray}"
+                                    BorderThickness="1,1,1,0"
+                                    Opacity="0" />
+                                <Border
+                                    x:Name="borderBottom"
+                                    Height="1"
+                                    Background="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTabControl}, Path=Background}"
+                                    Opacity="0" />
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                    ContentSource="Header"
+                                    TextBlock.Foreground="{TemplateBinding Foreground}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter TargetName="border" Property="Opacity" Value="1" />
+                                    <Setter TargetName="borderBottom" Property="Opacity" Value="1" />
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Left">
+                                    <Setter TargetName="borderBottom" Property="Width" Value="1" />
+                                    <Setter TargetName="borderBottom" Property="Height" Value="auto" />
+                                    <Setter TargetName="borderBottom" Property="Margin" Value="0,1,-1,1" />
+                                    <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Right" />
+                                    <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Stretch" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="0,1,0,1" />
+                                    <Setter TargetName="border" Property="Margin" Value="0,0,0,0" />
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Top">
+                                    <Setter TargetName="borderBottom" Property="Width" Value="auto" />
+                                    <Setter TargetName="borderBottom" Property="Height" Value="1" />
+                                    <Setter TargetName="borderBottom" Property="Margin" Value="1,0,1,-1" />
+                                    <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Stretch" />
+                                    <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Bottom" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="1,0,1,0" />
+                                    <Setter TargetName="border" Property="Margin" Value="0,0,0,0" />
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Right">
+                                    <Setter TargetName="borderBottom" Property="Width" Value="1" />
+                                    <Setter TargetName="borderBottom" Property="Height" Value="auto" />
+                                    <Setter TargetName="borderBottom" Property="Margin" Value="-1,1,0,1" />
+                                    <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Left" />
+                                    <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Stretch" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="0,1,0,1" />
+                                    <Setter TargetName="border" Property="Margin" Value="0,0,0,0" />
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Bottom">
+                                    <Setter TargetName="borderBottom" Property="Width" Value="auto" />
+                                    <Setter TargetName="borderBottom" Property="Height" Value="1" />
+                                    <Setter TargetName="borderBottom" Property="Margin" Value="1,-1,1,0" />
+                                    <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Stretch" />
+                                    <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Top" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="1,0,1,0" />
+                                    <Setter TargetName="border" Property="Margin" Value="0,0,0,0" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

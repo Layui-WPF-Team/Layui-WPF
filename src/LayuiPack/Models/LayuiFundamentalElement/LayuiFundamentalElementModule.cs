@@ -20,6 +20,7 @@ namespace LayuiFundamentalElement
             containerRegistry.RegisterForNavigation<Views.Button>(SystemResource.Page_ButtonView);
             containerRegistry.RegisterForNavigation<Views.Form>(SystemResource.Page_FormView);
             containerRegistry.RegisterForNavigation<Views.ProgressBar>(SystemResource.Page_ProgressBar);
+            containerRegistry.RegisterForNavigation<Views.TabControl>(SystemResource.Page_TabControl);
         }
     }
 }

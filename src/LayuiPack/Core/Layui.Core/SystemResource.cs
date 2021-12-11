@@ -12,44 +12,48 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 主页导航
         /// </summary>
-        public static string Nav_MainContent = "Nav_MainContent";
+        public const string Nav_MainContent = "Nav_MainContent";
         /// <summary>
         /// 模块导航
         /// </summary>
-        public static string Nav_HomeContent = "Nav_HomeContent";
+        public const string Nav_HomeContent = "Nav_HomeContent";
         #endregion
         #region 导航内容
         /// <summary>
         /// 按钮视图
         /// </summary>
-        public static string Page_ButtonView = "Page_ButtonView";
+        public const string Page_ButtonView = "Page_ButtonView";
         /// <summary>
         /// 表单视图
         /// </summary>
-        public static string Page_FormView = "Page_FormView";
+        public const string Page_FormView = "Page_FormView";
         /// <summary>
         /// 滑块视图
         /// </summary>
-        public static string Page_Slider = "Page_Slider";
+        public const string Page_Slider = "Page_Slider";
         /// <summary>
         /// 进度条视图
         /// </summary>
-        public static string Page_ProgressBar = "Page_ProgressBar";
+        public const string Page_ProgressBar = "Page_ProgressBar";
         /// <summary>
         /// 数据表格
         /// </summary>
-        public static string Page_DataGrid = "Page_DataGrid";
+        public const string Page_DataGrid = "Page_DataGrid";
         /// <summary>
         /// 对话框
         /// </summary>
-        public static string Page_DialogView = "Page_DialogView";
+        public const string Page_DialogView = "Page_DialogView";
+        /// <summary>
+        /// 选项卡
+        /// </summary>
+        public const string Page_TabControl = "DialogMessageView";
         #endregion
 
         #region 弹窗名称
         /// <summary>
         /// 测试弹窗名称
         /// </summary>
-        public static string DialogMessageView = "DialogMessageView";
+        public  const string DialogMessageView = "DialogMessageView";
         #endregion
     }
 }

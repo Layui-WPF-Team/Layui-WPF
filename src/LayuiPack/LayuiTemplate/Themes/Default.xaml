@@ -14,5 +14,7 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/SliderStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/DialogStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/WindowStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TabControlStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TabItemStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
