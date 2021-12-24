@@ -1,0 +1,107 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    <Style x:Key="LayTransitionControlStyle" TargetType="Lay:LayTransitionControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayTransitionControl">
+                    <ControlTemplate.Resources>
+                        <!--  ZoomAnimation Start  -->
+                        <DoubleAnimation
+                            x:Key="ZoomScaleXDecimalAnimation"
+                            Storyboard.TargetName="ScaleTransform"
+                            Storyboard.TargetProperty="ScaleX"
+                            From="0"
+                            To="1"
+                            Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation
+                            x:Key="ZoomScaleYDecimalAnimation"
+                            Storyboard.TargetName="ScaleTransform"
+                            Storyboard.TargetProperty="ScaleY"
+                            From="0"
+                            To="1"
+                            Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation
+                            x:Key="ZoomOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="0"
+                            To="1"
+                            Duration="0:0:0.3" />
+                        <!--  ZoomAnimation End  -->
+                        <!--  GradientAnimation Start  -->
+                        <DoubleAnimation
+                            x:Key="GradientScaleXDecimalAnimation"
+                            Storyboard.TargetName="ScaleTransform"
+                            Storyboard.TargetProperty="ScaleX"
+                            From="1"
+                            To="1"
+                            Duration="0" />
+                        <DoubleAnimation
+                            x:Key="GradientScaleYDecimalAnimation"
+                            Storyboard.TargetName="ScaleTransform"
+                            Storyboard.TargetProperty="ScaleY"
+                            From="1"
+                            To="1"
+                            Duration="0" />
+                        <DoubleAnimation
+                            x:Key="GradientOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="0"
+                            To="1"
+                            Duration="0:0:0.5" />
+                        <!--  ZoomAnimation End  -->
+                        <!--  DefaultAnimation Start  -->
+                        <DoubleAnimation
+                            x:Key="DefaultScaleXDecimalAnimation"
+                            Storyboard.TargetName="ScaleTransform"
+                            Storyboard.TargetProperty="ScaleX"
+                            From="1"
+                            To="1"
+                            Duration="0" />
+                        <DoubleAnimation
+                            x:Key="DefaultScaleYDecimalAnimation"
+                            Storyboard.TargetName="ScaleTransform"
+                            Storyboard.TargetProperty="ScaleY"
+                            From="1"
+                            To="1"
+                            Duration="0" />
+                        <DoubleAnimation
+                            x:Key="DefaultOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="1"
+                            To="1"
+                            Duration="0" />
+                        <!--  DefaultAnimation End  -->
+                    </ControlTemplate.Resources>
+                    <Grid
+                        x:Name="TransitionBody"
+                        Opacity="0"
+                        RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform x:Name="ScaleTransform" ScaleX="0" ScaleY="0" />
+                                <SkewTransform />
+                                <RotateTransform />
+                                <TranslateTransform />
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <ContentPresenter />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayTransitionControlStyle}" TargetType="Lay:LayTransitionControl" />
+</ResourceDictionary>

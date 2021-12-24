@@ -1,0 +1,56 @@
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.TransitionControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid Width="500" Height="400">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Lay:LayCheckBox
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Left"
+            Command="{Binding AnimationCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"
+            Content="动画开关"
+            IsChecked="{Binding IsChecked}" />
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <UniformGrid Columns="3">
+                    <Lay:LayTransitionControl Type="{Binding ZoomAnimationType}">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            Background="{StaticResource Green}"
+                            CornerRadius="50">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Text="缩放" />
+                        </Border>
+                    </Lay:LayTransitionControl>
+                    <Lay:LayTransitionControl Type="{Binding GradientAnimationType}">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            Background="{StaticResource Green}"
+                            CornerRadius="50">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Text="渐变" />
+                        </Border>
+                    </Lay:LayTransitionControl>
+                </UniformGrid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

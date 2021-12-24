@@ -47,6 +47,11 @@ namespace Layui.Core.Resource
         /// 选项卡
         /// </summary>
         public const string Page_TabControl = "DialogMessageView";
+        /// <summary>
+        /// 动画
+        /// </summary>
+        public const string Page_TransitionControlView = "TransitionControlView";
+        
         #endregion
 
         #region 弹窗名称

@@ -46,7 +46,7 @@ namespace LayuiHome.ViewModels
                             ItemTitle="徽章", PageKey=SystemResource.Page_ButtonView
                         },new MenuItemModel()
                         { 
-                            ItemTitle="动画", PageKey=SystemResource.Page_ButtonView
+                            ItemTitle="过渡动画", PageKey=SystemResource.Page_TransitionControlView
                         }
                     }
             }); 

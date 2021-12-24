@@ -1,4 +1,5 @@
-﻿using Prism.Events;
+﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -25,10 +26,21 @@ namespace Layui.Core.Base
         /// 事件聚合器
         /// </summary>
         public IEventAggregator Event;
-        public LayuiViewModelBase(IContainerExtension container) {
+        public LayuiViewModelBase(IContainerExtension container)
+        {
             this.Region = container.Resolve<IRegionManager>();
             this.Dialog = container.Resolve<IDialogService>();
             this.Event = container.Resolve<IEventAggregator>();
+        }
+        private DelegateCommand _LoadedCommand;
+        public DelegateCommand LoadedCommand =>
+            _LoadedCommand ?? (_LoadedCommand = new DelegateCommand(ExecuteLoadedCommand));
+        /// <summary>
+        ///初始化界面加载
+        /// </summary>
+        public virtual void ExecuteLoadedCommand()
+        {
+
         }
         /// <summary>
         /// 标记上一个视图时候被销毁
@@ -54,7 +66,7 @@ namespace Layui.Core.Base
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedFrom(NavigationContext navigationContext)
         {
-           
+
         }
         /// <summary>
         /// 导航后
@@ -62,7 +74,7 @@ namespace Layui.Core.Base
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
-            
+
         }
     }
 }
