@@ -10,16 +10,9 @@
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Style="{DynamicResource LayWindowStyle}"
+    WindowChrome.WindowChrome="{DynamicResource LayWindowChromeStyle}"
     WindowStartupLocation="CenterOwner"
     WindowState="{Binding WindowState}">
-    <WindowChrome.WindowChrome>
-        <WindowChrome
-            CaptionHeight="56"
-            CornerRadius="0"
-            NonClientFrameEdges="None"
-            ResizeBorderThickness="4"
-            UseAeroCaptionButtons="False" />
-    </WindowChrome.WindowChrome>
     <Border ClipToBounds="True">
         <Border.Style>
             <Style TargetType="Border">
