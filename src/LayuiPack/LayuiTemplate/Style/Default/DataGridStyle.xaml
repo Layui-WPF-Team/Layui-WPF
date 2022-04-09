@@ -6,7 +6,7 @@
         <Setter Property="Background" Value="White" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="ColumnHeaderHeight" Value="40" />
-        <Setter Property="RowHeight" Value="40" />
+        <Setter Property="MinRowHeight" Value="40" />
         <Setter Property="RowHeaderWidth" Value="0" />
         <Setter Property="AutoGenerateColumns" Value="false" />
         <Setter Property="CanUserReorderColumns" Value="false" />
