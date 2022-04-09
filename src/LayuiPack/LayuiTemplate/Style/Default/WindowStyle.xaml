@@ -2,6 +2,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    <WindowChrome
+        x:Key="LayWindowChromeStyle"
+        CaptionHeight="56"
+        CornerRadius="0"
+        GlassFrameThickness="1"
+        NonClientFrameEdges="None"
+        ResizeBorderThickness="4"
+        UseAeroCaptionButtons="False" />
     <Style x:Key="LayWindowStyle" TargetType="Lay:LayWindow">
         <Setter Property="Template">
             <Setter.Value>
