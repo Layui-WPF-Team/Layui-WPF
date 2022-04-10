@@ -68,6 +68,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\DataGridViewModel.cs" />
+    <Compile Include="ViewModels\DialogAlertViewModel.cs" />
     <Compile Include="ViewModels\DialogMessageViewModel.cs" />
     <Compile Include="ViewModels\DialogViewModel.cs" />
     <Compile Include="ViewModels\SliderViewModel.cs" />
@@ -76,6 +77,9 @@
     </Compile>
     <Compile Include="Views\Dialog.xaml.cs">
       <DependentUpon>Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogAlert.xaml.cs">
+      <DependentUpon>DialogAlert.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
@@ -103,12 +107,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DialogAlert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Slider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
   </ItemGroup>
   <ItemGroup>

@@ -42,26 +42,18 @@
                                         <DoubleAnimation
                                             Storyboard.TargetName="body"
                                             Storyboard.TargetProperty="Opacity"
-                                            To="0.4"
+                                            To="0.2"
                                             Duration="0:0:0" />
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform"
                                             Storyboard.TargetProperty="ScaleX"
                                             To="1"
-                                            Duration="0:0:0.2">
-                                            <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseOut" />
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
+                                            Duration="0:0:0.2" />
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform"
                                             Storyboard.TargetProperty="ScaleY"
                                             To="1"
-                                            Duration="0:0:0.2">
-                                            <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseOut" />
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
+                                            Duration="0:0:0.2" />
                                         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible">
                                             <DiscreteBooleanKeyFrame KeyTime="0" Value="True" />
                                         </BooleanAnimationUsingKeyFrames>

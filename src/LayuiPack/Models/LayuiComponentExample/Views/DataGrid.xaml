@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LayuiComponentExample.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     d:DesignHeight="500"
@@ -15,6 +16,19 @@
         FrozenColumnCount="1"
         ItemsSource="{Binding ListData}"
         Style="{StaticResource LayDataGridStyle}">
+        <Lay:LayDataGrid.Resources>
+            <ContextMenu x:Key="DataItemsContextMenu">
+                <MenuItem
+                    Command="{Binding RelativeSource={RelativeSource AncestorType=local:DataGrid}, Path=DataContext.GetItemsCommand}"
+                    CommandParameter="{Binding}"
+                    Header="获取数据" />
+            </ContextMenu>
+        </Lay:LayDataGrid.Resources>
+        <Lay:LayDataGrid.RowStyle>
+            <Style BasedOn="{StaticResource LayDataGridRowStyle}" TargetType="DataGridRow">
+                <Setter Property="ContextMenu" Value="{StaticResource DataItemsContextMenu}" />
+            </Style>
+        </Lay:LayDataGrid.RowStyle>
         <DataGrid.Columns>
             <DataGridTemplateColumn MinWidth="50" MaxWidth="50">
                 <DataGridTemplateColumn.Header>
