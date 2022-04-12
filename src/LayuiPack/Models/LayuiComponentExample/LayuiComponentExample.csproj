@@ -71,6 +71,7 @@
     <Compile Include="ViewModels\DialogAlertViewModel.cs" />
     <Compile Include="ViewModels\DialogMessageViewModel.cs" />
     <Compile Include="ViewModels\DialogViewModel.cs" />
+    <Compile Include="ViewModels\LayDialogWindowTookenViewModel.cs" />
     <Compile Include="ViewModels\SliderViewModel.cs" />
     <Compile Include="Views\DataGrid.xaml.cs">
       <DependentUpon>DataGrid.xaml</DependentUpon>

@@ -1,11 +1,13 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Dialg="clr-namespace:LayuiTemplate.Dialog"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
     <Style x:Key="LayDialogHostStyle" TargetType="Lay:LayDialogHost">
         <Setter Property="Background" Value="Black" />
         <Setter Property="Panel.ZIndex" Value="99999" />
         <Setter Property="IsHitTestVisible" Value="false" />
+        <Setter Property="Visibility" Value="Collapsed" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayDialogHost">
@@ -85,6 +87,7 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
+                            <Setter Property="Visibility" Value="Visible" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

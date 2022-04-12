@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace LayuiTemplate.Dialog.Interface
 {
-    public interface ILayDialogUserControl
+    public interface ILayDialogWindow
     {
         /// <summary>
         /// 内容
@@ -16,7 +16,7 @@ namespace LayuiTemplate.Dialog.Interface
         /// <summary>
         /// 返回结果
         /// </summary>
-        ILayDialogResult Result { get; set; }
+        ILayDialogResult Result { get;  set; }
         /// <summary>
         /// 初始化
         /// </summary>

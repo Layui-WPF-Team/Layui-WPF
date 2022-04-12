@@ -6,13 +6,20 @@ namespace LayuiTemplate.Behavior
 {
     public class LayLoadBehavior: Behavior<FrameworkElement>
     {
-        /// <summary>
-        /// 动画类型
-        /// </summary>
-        public LayAnimation Animation { get; set; } = LayAnimation.Scale;
         protected override void OnAttached()
         {
             base.OnAttached();
         }
+        public LayAnimation Animation
+        {
+            get { return (LayAnimation)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Animation.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AnimationProperty =
+            DependencyProperty.Register("Animation", typeof(LayAnimation), typeof(LayLoadBehavior), new PropertyMetadata(LayAnimation.Scale));
+
+
     }
 }

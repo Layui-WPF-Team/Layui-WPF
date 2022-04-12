@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Dialg="clr-namespace:LayuiTemplate.Dialog"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
     <WindowChrome
         x:Key="LayWindowChromeStyle"
@@ -15,7 +16,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayWindow">
                     <Grid>
-                        <Lay:LayDialogHost x:Name="WindowDialogHostBody" />
+                        <Lay:LayDialogHost Dialg:LayDialog.Tooken="{Binding Source={x:Static Dialg:LayDialogToken.RootDialogTooken}}" />
                         <ContentPresenter />
                     </Grid>
                 </ControlTemplate>

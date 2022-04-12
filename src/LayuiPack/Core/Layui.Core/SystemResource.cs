@@ -59,6 +59,8 @@ namespace Layui.Core.Resource
         /// 测试弹窗名称
         /// </summary>
         public  const string DialogMessageView = "DialogMessageView";
+
+        public const string LayDialogWindowTooken = "LayDialogWindowTooken";
         #endregion
     }
 }

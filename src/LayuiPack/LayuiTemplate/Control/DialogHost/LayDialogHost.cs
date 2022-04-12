@@ -1,4 +1,5 @@
 ﻿using LayuiTemplate.Dialog;
+using LayuiTemplate.Dialog.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Windows.Controls;
 
 namespace LayuiTemplate.Control
 {
-    public class LayDialogHost:ContentControl
+    public class LayDialogHost : ContentControl
     {
         public bool IsOpen
         {
@@ -17,10 +18,23 @@ namespace LayuiTemplate.Control
             set { SetValue(IsOpenProperty, value); }
         }
 
+
         // Using a DependencyProperty as the backing store for IsOpen.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.Register("IsOpen", typeof(bool), typeof(LayDialogHost), new PropertyMetadata(false));
 
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            Unloaded -= LayDialogHost_Unloaded;
+            Unloaded += LayDialogHost_Unloaded;
+        }
 
+        private void LayDialogHost_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var tooken = LayDialog.GetTooken(this);
+            if (LayDialog.DialogHosts.ContainsKey(tooken)) LayDialog.DialogHosts.Remove(tooken);
+            Unloaded -= LayDialogHost_Unloaded;
+        }
     }
 }
