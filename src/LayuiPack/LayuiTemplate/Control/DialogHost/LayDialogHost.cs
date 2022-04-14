@@ -12,6 +12,10 @@ namespace LayuiTemplate.Control
 {
     public class LayDialogHost : ContentControl
     {
+        public LayDialogHost()
+        {
+            Unloaded += LayDialogHost_Unloaded;
+        }
         public bool IsOpen
         {
             get { return (bool)GetValue(IsOpenProperty); }
@@ -23,18 +27,10 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.Register("IsOpen", typeof(bool), typeof(LayDialogHost), new PropertyMetadata(false));
 
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-            Unloaded -= LayDialogHost_Unloaded;
-            Unloaded += LayDialogHost_Unloaded;
-        }
-
         private void LayDialogHost_Unloaded(object sender, RoutedEventArgs e)
         {
             var tooken = LayDialog.GetTooken(this);
             if (LayDialog.DialogHosts.ContainsKey(tooken)) LayDialog.DialogHosts.Remove(tooken);
-            Unloaded -= LayDialogHost_Unloaded;
         }
     }
 }
