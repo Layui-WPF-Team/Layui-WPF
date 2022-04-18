@@ -1,0 +1,22 @@
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.Expander"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel>
+        <Lay:LayExpander Width="100" IsExpanded="True">
+            <Lay:LayExpander.Header>
+                <TextBlock Text="123" />
+            </Lay:LayExpander.Header>
+            <Lay:LayButton Height="50" />
+        </Lay:LayExpander>
+        <Lay:LayExpander
+            Width="100"
+            Header="123"
+            IsExpanded="True">
+            <Lay:LayButton Height="50" />
+        </Lay:LayExpander>
+    </StackPanel>
+</UserControl>

@@ -51,7 +51,10 @@ namespace Layui.Core.Resource
         /// 动画
         /// </summary>
         public const string Page_TransitionControlView = "TransitionControlView";
-        
+        /// <summary>
+        /// 折叠板
+        /// </summary>
+        public const string Page_ExpanderView = "ExpanderView";
         #endregion
 
         #region 弹窗名称
@@ -61,6 +64,7 @@ namespace Layui.Core.Resource
         public  const string DialogMessageView = "DialogMessageView";
 
         public const string LayDialogWindowTooken = "LayDialogWindowTooken";
+
         #endregion
     }
 }

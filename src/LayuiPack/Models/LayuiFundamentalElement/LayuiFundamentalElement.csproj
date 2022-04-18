@@ -64,12 +64,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\ButtonViewModel.cs" />
+    <Compile Include="ViewModels\ExpanderViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
     <Compile Include="ViewModels\ProgressBarViewModel.cs" />
     <Compile Include="ViewModels\TabControlViewModel.cs" />
     <Compile Include="ViewModels\TransitionControlViewModel.cs" />
     <Compile Include="Views\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Expander.xaml.cs">
+      <DependentUpon>Expander.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Form.xaml.cs">
       <DependentUpon>Form.xaml</DependentUpon>
@@ -95,6 +99,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Expander.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

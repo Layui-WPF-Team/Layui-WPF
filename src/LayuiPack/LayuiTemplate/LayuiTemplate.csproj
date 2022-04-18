@@ -83,6 +83,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\ExpanderStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\FontsStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -175,6 +179,7 @@
     <Compile Include="Enum\Slider\SliderTipsPosition.cs" />
     <Compile Include="Enum\TabControl\TabControlStyle.cs" />
     <Compile Include="Enum\Transitions\AnimationType.cs" />
+    <Compile Include="Control\Expander\LayExpander.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
