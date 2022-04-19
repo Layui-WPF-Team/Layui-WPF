@@ -5,18 +5,20 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <StackPanel>
-        <Lay:LayExpander Width="100" IsExpanded="True">
+    <Lay:LayExpanderPanel IsAutoFold="true">
+        <Lay:LayExpander IsExpanded="true">
             <Lay:LayExpander.Header>
                 <TextBlock Text="123" />
             </Lay:LayExpander.Header>
             <Lay:LayButton Height="50" />
         </Lay:LayExpander>
-        <Lay:LayExpander
-            Width="100"
-            Header="123"
-            IsExpanded="True">
-            <Lay:LayButton Height="50" />
+        <Lay:LayExpander Header="123">
+            <StackPanel>
+                <Lay:LayButton Height="50" />
+                <Lay:LayButton Height="50" />
+                <Lay:LayButton Height="50" />
+                <Lay:LayButton Height="50" />
+            </StackPanel>
         </Lay:LayExpander>
-    </StackPanel>
+    </Lay:LayExpanderPanel>
 </UserControl>

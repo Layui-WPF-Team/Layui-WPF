@@ -81,6 +81,7 @@
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.ExitActions>
+                                        <Setter TargetName="bg" Property="Opacity" Value="1" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -90,20 +91,108 @@
                         x:Name="contentPanel"
                         Grid.Row="1"
                         Background="{TemplateBinding Background}">
-                        <ContentPresenter x:Name="content" />
+                        <Grid x:Name="contentAnimationGrid">
+                            <ContentPresenter x:Name="content" />
+                        </Grid>
                     </StackPanel>
                 </Grid>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsExpanded" Value="false">
-                        <Setter TargetName="contentPanel" Property="Height" Value="0" />
-                    </Trigger>
-                </ControlTemplate.Triggers>
             </ControlTemplate>
             <ControlTemplate x:Key="LeftLayExpander" TargetType="Lay:LayExpander" />
             <ControlTemplate x:Key="RightLayExpander" TargetType="Lay:LayExpander" />
-            <ControlTemplate x:Key="UpLayExpander" TargetType="Lay:LayExpander" />
+            <ControlTemplate x:Key="UpLayExpander" TargetType="Lay:LayExpander">
+                <Grid Background="{TemplateBinding HeaderBackground}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel x:Name="contentPanel" Background="{TemplateBinding Background}">
+                        <Grid x:Name="contentAnimationGrid">
+                            <ContentPresenter x:Name="content" />
+                        </Grid>
+                    </StackPanel>
+                    <ToggleButton
+                        x:Name="header"
+                        Grid.Row="1"
+                        Height="{TemplateBinding HeaderHeight}"
+                        Padding="{TemplateBinding Padding}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Background="{TemplateBinding HeaderBackground}"
+                        Content="{TemplateBinding Header}"
+                        ContentTemplate="{TemplateBinding HeaderTemplate}"
+                        FocusVisualStyle="{x:Null}"
+                        Foreground="{TemplateBinding Foreground}"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ToggleButton.Template>
+                            <ControlTemplate TargetType="ToggleButton">
+                                <Border
+                                    x:Name="bg"
+                                    Background="{TemplateBinding Background}"
+                                    Opacity="0.7">
+                                    <Grid Margin="{TemplateBinding Padding}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="20" />
+                                        </Grid.ColumnDefinitions>
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                        <Path
+                                            Grid.Column="1"
+                                            Width="15"
+                                            Height="10"
+                                            VerticalAlignment="Center"
+                                            Data="M533.333333 516.266667l-174.933333-170.666667-64 59.733333 234.666667 234.666667L768 405.333333l-59.733333-59.733333-174.933334 170.666667z"
+                                            Fill="{TemplateBinding Foreground}"
+                                            RenderTransformOrigin="0.5,0.5"
+                                            Stretch="Fill">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform />
+                                                    <SkewTransform />
+                                                    <RotateTransform x:Name="RotateTransform" Angle="180" />
+                                                    <TranslateTransform />
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Grid>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter TargetName="bg" Property="Opacity" Value="1" />
+                                    </Trigger>
+                                    <Trigger Property="IsChecked" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="RotateTransform"
+                                                        Storyboard.TargetProperty="Angle"
+                                                        To="0"
+                                                        Duration="0:0:0.3" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="RotateTransform"
+                                                        Storyboard.TargetProperty="Angle"
+                                                        To="180"
+                                                        Duration="0:0:0.3" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                        <Setter TargetName="bg" Property="Opacity" Value="1" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </ToggleButton.Template>
+                    </ToggleButton>
+                </Grid>
+            </ControlTemplate>
         </Style.Resources>
         <Setter Property="ExpandDirection" Value="Down" />
+        <Setter Property="HeaderHeight" Value="50" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="HeaderBackground" Value="#393D49" />
         <Setter Property="Background" Value="#282B33" />

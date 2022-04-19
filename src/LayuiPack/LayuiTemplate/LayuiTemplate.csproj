@@ -147,6 +147,7 @@
     <Compile Include="Control\CheckBox\LayCheckBox.cs" />
     <Compile Include="Control\DataGrid\LayDataGrid.cs" />
     <Compile Include="Control\DialogHost\LayDialogHost.cs" />
+    <Compile Include="Control\Expander\LayExpanderPanel.cs" />
     <Compile Include="Control\Hr\LayHr.xaml.cs">
       <DependentUpon>LayHr.xaml</DependentUpon>
     </Compile>

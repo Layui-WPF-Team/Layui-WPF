@@ -35,103 +35,20 @@
                     <ItemsControl.Resources>
                         <Selector:MenuItemDataTemplateSelector x:Key="MenuItemSelector" />
                         <DataTemplate x:Key="MenuItemsDataTemplate">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <CheckBox
-                                    x:Name="header"
-                                    Height="50"
-                                    Padding="20,0"
-                                    Content="{Binding ItemTitle}"
-                                    FocusVisualStyle="{x:Null}"
-                                    Foreground="White"
-                                    IsChecked="{Binding IsSelected}">
-                                    <CheckBox.Template>
-                                        <ControlTemplate TargetType="CheckBox">
-                                            <Border
-                                                x:Name="bg"
-                                                Margin="{TemplateBinding Margin}"
-                                                Background="#393D49"
-                                                Opacity="0.7">
-                                                <Grid Margin="{TemplateBinding Padding}">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition />
-                                                        <ColumnDefinition Width="auto" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
-                                                    <TextBlock
-                                                        Grid.Column="1"
-                                                        VerticalAlignment="Center"
-                                                        FontFamily="{StaticResource IconFont}"
-                                                        RenderTransformOrigin="0.5,0.5"
-                                                        Text="&#xf078;">
-                                                        <TextBlock.RenderTransform>
-                                                            <TransformGroup>
-                                                                <ScaleTransform />
-                                                                <SkewTransform />
-                                                                <RotateTransform x:Name="RotateTransform" Angle="0" />
-                                                                <TranslateTransform />
-                                                            </TransformGroup>
-                                                        </TextBlock.RenderTransform>
-                                                    </TextBlock>
-                                                </Grid>
-                                            </Border>
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="true">
-                                                    <Setter TargetName="bg" Property="Opacity" Value="1" />
-                                                </Trigger>
-                                                <Trigger Property="IsChecked" Value="True">
-                                                    <Trigger.EnterActions>
-                                                        <BeginStoryboard>
-                                                            <Storyboard>
-                                                                <DoubleAnimation
-                                                                    Storyboard.TargetName="RotateTransform"
-                                                                    Storyboard.TargetProperty="Angle"
-                                                                    To="180"
-                                                                    Duration="0:0:0.3" />
-                                                            </Storyboard>
-                                                        </BeginStoryboard>
-                                                    </Trigger.EnterActions>
-                                                    <Trigger.ExitActions>
-                                                        <BeginStoryboard>
-                                                            <Storyboard>
-                                                                <DoubleAnimation
-                                                                    Storyboard.TargetName="RotateTransform"
-                                                                    Storyboard.TargetProperty="Angle"
-                                                                    To="0"
-                                                                    Duration="0:0:0.3" />
-                                                            </Storyboard>
-                                                        </BeginStoryboard>
-                                                    </Trigger.ExitActions>
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </CheckBox.Template>
-                                </CheckBox>
-                                <StackPanel Grid.Row="1" Background="#282B33">
-                                    <ItemsControl
-                                        x:Name="content"
-                                        ItemTemplateSelector="{DynamicResource MenuItemSelector}"
-                                        ItemsSource="{Binding Data}">
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel />
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                        <ItemsControl.Style>
-                                            <Style TargetType="ItemsControl">
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding ElementName=header, Path=IsChecked}" Value="false">
-                                                        <Setter Property="Height" Value="0" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </ItemsControl.Style>
-                                    </ItemsControl>
-                                </StackPanel>
-                            </Grid>
+                            <Lay:LayExpander
+                                Padding="10,0"
+                                Background="#282B33"
+                                Header="{Binding ItemTitle}"
+                                HeaderBackground="#393D49"
+                                IsExpanded="{Binding IsSelected}">
+                                <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Data}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </Lay:LayExpander>
                         </DataTemplate>
                         <DataTemplate x:Key="MenuItemDataTemplate">
                             <RadioButton
