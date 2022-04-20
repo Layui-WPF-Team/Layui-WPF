@@ -147,7 +147,7 @@
     <Compile Include="Control\CheckBox\LayCheckBox.cs" />
     <Compile Include="Control\DataGrid\LayDataGrid.cs" />
     <Compile Include="Control\DialogHost\LayDialogHost.cs" />
-    <Compile Include="Control\Expander\LayExpanderPanel.cs" />
+    <Compile Include="Control\Expander\LayNavExpanderPanel.cs" />
     <Compile Include="Control\Hr\LayHr.xaml.cs">
       <DependentUpon>LayHr.xaml</DependentUpon>
     </Compile>
@@ -180,7 +180,7 @@
     <Compile Include="Enum\Slider\SliderTipsPosition.cs" />
     <Compile Include="Enum\TabControl\TabControlStyle.cs" />
     <Compile Include="Enum\Transitions\AnimationType.cs" />
-    <Compile Include="Control\Expander\LayExpander.cs" />
+    <Compile Include="Control\Expander\LayNavExpander.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -207,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converter\ProgressBar\" />
+    <Folder Include="Enum\Expander\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

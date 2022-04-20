@@ -35,7 +35,7 @@
                     <ItemsControl.Resources>
                         <Selector:MenuItemDataTemplateSelector x:Key="MenuItemSelector" />
                         <DataTemplate x:Key="MenuItemsDataTemplate">
-                            <Lay:LayExpander
+                            <Lay:LayNavExpander
                                 Padding="10,0"
                                 Background="#282B33"
                                 Header="{Binding ItemTitle}"
@@ -48,7 +48,7 @@
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                 </ItemsControl>
-                            </Lay:LayExpander>
+                            </Lay:LayNavExpander>
                         </DataTemplate>
                         <DataTemplate x:Key="MenuItemDataTemplate">
                             <RadioButton

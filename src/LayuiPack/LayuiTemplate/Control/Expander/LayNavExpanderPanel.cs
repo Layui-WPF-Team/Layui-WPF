@@ -14,13 +14,8 @@ namespace LayuiTemplate.Control
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-04-19 下午 5:56:27</para>
     /// </summary>
-    public class LayExpanderPanel:StackPanel
+    public class LayNavExpanderPanel : StackPanel
     {
-        private void LayExpanderPanel_Loaded(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool IsAutoFold
         {
             get { return (bool)GetValue(IsAutoFoldProperty); }
@@ -29,6 +24,6 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for IsAutoFold.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsAutoFoldProperty =
-            DependencyProperty.Register("IsAutoFold", typeof(bool), typeof(LayExpanderPanel), new PropertyMetadata(false));
+            DependencyProperty.Register("IsAutoFold", typeof(bool), typeof(LayNavExpanderPanel), new PropertyMetadata(false));
     }
 }

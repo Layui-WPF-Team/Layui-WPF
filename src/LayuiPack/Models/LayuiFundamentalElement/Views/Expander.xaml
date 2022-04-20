@@ -5,20 +5,57 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Lay:LayExpanderPanel IsAutoFold="true">
-        <Lay:LayExpander IsExpanded="true">
-            <Lay:LayExpander.Header>
-                <TextBlock Text="123" />
-            </Lay:LayExpander.Header>
-            <Lay:LayButton Height="50" />
-        </Lay:LayExpander>
-        <Lay:LayExpander Header="123">
-            <StackPanel>
-                <Lay:LayButton Height="50" />
-                <Lay:LayButton Height="50" />
-                <Lay:LayButton Height="50" />
-                <Lay:LayButton Height="50" />
-            </StackPanel>
-        </Lay:LayExpander>
-    </Lay:LayExpanderPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Lay:LayNavExpanderPanel
+            Margin="1,0"
+            Background="#393D49"
+            IsAutoFold="true">
+            <Lay:LayNavExpander IsExpanded="true">
+                <Lay:LayNavExpander.Header>
+                    <TextBlock Text="可自动折叠的导航栏" />
+                </Lay:LayNavExpander.Header>
+                <StackPanel>
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                </StackPanel>
+            </Lay:LayNavExpander>
+            <Lay:LayNavExpander>
+                <Lay:LayNavExpander.Header>
+                    <TextBlock Text="可自动折叠的导航栏" />
+                </Lay:LayNavExpander.Header>
+                <StackPanel>
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                </StackPanel>
+            </Lay:LayNavExpander>
+            <Lay:LayNavExpander>
+                <Lay:LayNavExpander.Header>
+                    <TextBlock Text="可自动折叠的导航栏" />
+                </Lay:LayNavExpander.Header>
+                <StackPanel>
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                    <Lay:LayButton />
+                </StackPanel>
+            </Lay:LayNavExpander>
+        </Lay:LayNavExpanderPanel>
+    </Grid>
 </UserControl>
