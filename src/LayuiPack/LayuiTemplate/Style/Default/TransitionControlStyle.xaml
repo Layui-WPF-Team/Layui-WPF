@@ -2,10 +2,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
-    <Style x:Key="LayTransitionControlStyle" TargetType="Lay:LayTransitionControl">
+    <Style x:Key="LayTransitionStyle" TargetType="Lay:LayTransition">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Lay:LayTransitionControl">
+                <ControlTemplate TargetType="Lay:LayTransition">
                     <ControlTemplate.Resources>
                         <!--  ZoomAnimation Start  -->
                         <DoubleAnimation
@@ -103,5 +103,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource LayTransitionControlStyle}" TargetType="Lay:LayTransitionControl" />
+    <Style BasedOn="{StaticResource LayTransitionStyle}" TargetType="Lay:LayTransition" />
 </ResourceDictionary>

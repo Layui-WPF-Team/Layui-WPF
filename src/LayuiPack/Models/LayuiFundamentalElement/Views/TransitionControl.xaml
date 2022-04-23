@@ -21,7 +21,7 @@
         <ScrollViewer Grid.Row="1">
             <StackPanel>
                 <UniformGrid Columns="3">
-                    <Lay:LayTransitionControl Type="{Binding ZoomAnimationType}">
+                    <Lay:LayTransition Type="{Binding ZoomAnimationType}">
                         <Border
                             Width="100"
                             Height="100"
@@ -34,8 +34,8 @@
                                 Foreground="White"
                                 Text="缩放" />
                         </Border>
-                    </Lay:LayTransitionControl>
-                    <Lay:LayTransitionControl Type="{Binding GradientAnimationType}">
+                    </Lay:LayTransition>
+                    <Lay:LayTransition Type="{Binding GradientAnimationType}">
                         <Border
                             Width="100"
                             Height="100"
@@ -48,7 +48,7 @@
                                 Foreground="White"
                                 Text="渐变" />
                         </Border>
-                    </Lay:LayTransitionControl>
+                    </Lay:LayTransition>
                 </UniformGrid>
             </StackPanel>
         </ScrollViewer>

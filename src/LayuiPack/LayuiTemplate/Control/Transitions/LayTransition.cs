@@ -13,7 +13,7 @@ namespace LayuiTemplate.Control
     /// <summary>
     /// 动画过渡容器
     /// </summary>
-    public class LayTransitionControl : ContentControl
+    public class LayTransition : ContentControl
     {
         /// <summary>
         /// 动画容器
@@ -30,7 +30,7 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for Type.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TypeProperty =
-            DependencyProperty.Register("Type", typeof(AnimationType), typeof(LayTransitionControl), new PropertyMetadata(AnimationType.Default, AnimationChange));
+            DependencyProperty.Register("Type", typeof(AnimationType), typeof(LayTransition), new PropertyMetadata(AnimationType.Default, AnimationChange));
         /// <summary>
         /// 监听动画类型改变
         /// </summary>
@@ -38,7 +38,7 @@ namespace LayuiTemplate.Control
         /// <param name="e"></param>
         private static void AnimationChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            LayTransitionControl control = d as LayTransitionControl;
+            LayTransition control = d as LayTransition;
             if (!control.IsLoaded) return;
             control.RefreshAnimation();
         }
@@ -53,7 +53,7 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for BeginTime.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BeginTimeProperty =
-            DependencyProperty.Register("BeginTime", typeof(TimeSpan?), typeof(LayTransitionControl),new PropertyMetadata(AnimationChange));
+            DependencyProperty.Register("BeginTime", typeof(TimeSpan?), typeof(LayTransition),new PropertyMetadata(AnimationChange));
 
 
         /// <summary>

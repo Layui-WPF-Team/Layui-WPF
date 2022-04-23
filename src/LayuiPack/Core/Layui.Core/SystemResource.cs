@@ -55,6 +55,10 @@ namespace Layui.Core.Resource
         /// 折叠板
         /// </summary>
         public const string Page_ExpanderView = "ExpanderView";
+        /// <summary>
+        /// 加载动画
+        /// </summary>
+        public const string Page_LoadingView = "LoadingView";
         #endregion
 
         #region 弹窗名称

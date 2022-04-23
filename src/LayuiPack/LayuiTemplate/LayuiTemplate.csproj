@@ -95,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\Default\LoadingStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\PasswordBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,6 +155,7 @@
     <Compile Include="Control\Hr\LayHr.xaml.cs">
       <DependentUpon>LayHr.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\Loading\LayLoading.cs" />
     <Compile Include="Control\Password\LayPasswordBox.cs" />
     <Compile Include="Control\ProgressBar\LayProgressBar.cs" />
     <Compile Include="Control\ListBox\LayListBox.cs" />
@@ -159,7 +164,7 @@
     <Compile Include="Control\TabControl\LayTabControl.cs" />
     <Compile Include="Control\TabItem\LayTabItem.cs" />
     <Compile Include="Control\TextBox\LayTextBox.cs" />
-    <Compile Include="Control\Transitions\LayTransitionControl.cs" />
+    <Compile Include="Control\Transitions\LayTransition.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
     <Compile Include="Dialog\LayDialogToken.cs" />
     <Compile Include="Dialog\LayDialogParameter.cs" />

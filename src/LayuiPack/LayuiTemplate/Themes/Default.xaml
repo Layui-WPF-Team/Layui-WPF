@@ -18,5 +18,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TabControlStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TabItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ExpanderStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/LoadingStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
