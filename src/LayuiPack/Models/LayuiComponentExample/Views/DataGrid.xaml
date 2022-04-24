@@ -21,8 +21,7 @@
         Margin="5"
         FrozenColumnCount="1"
         IsActive="{Binding IsActive}"
-        ItemsSource="{Binding ListData}"
-        Style="{StaticResource LayDataGridStyle}">
+        ItemsSource="{Binding ListData}">
         <Lay:LayDataGrid.Resources>
             <ContextMenu x:Key="DataItemsContextMenu">
                 <MenuItem

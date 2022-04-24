@@ -5,7 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ColorStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style TargetType="{x:Type Lay:LayCheckBox}">
+    <Style x:Key="LayCheckBoxStyle" TargetType="{x:Type Lay:LayCheckBox}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="BorderBrush" Value="#D2D2D2" />
         <Setter Property="Foreground" Value="Black" />
@@ -315,4 +315,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style BasedOn="{StaticResource LayCheckBoxStyle}" TargetType="{x:Type Lay:LayCheckBox}" />
 </ResourceDictionary>

@@ -3,6 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Dialg="clr-namespace:LayuiTemplate.Dialog"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ColorStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
     <Style x:Key="LayDialogHostStyle" TargetType="Lay:LayDialogHost">
         <Setter Property="Background" Value="Black" />
         <Setter Property="Panel.ZIndex" Value="99999" />
@@ -94,5 +97,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource LayDialogHostStyle}" TargetType="Lay:LayDialogHost" />
 </ResourceDictionary>

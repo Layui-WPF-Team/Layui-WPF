@@ -1,5 +1,6 @@
 ﻿using LayuiTemplate.Dialog;
 using LayuiTemplate.Dialog.Interface;
+using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;

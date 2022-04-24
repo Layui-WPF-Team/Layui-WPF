@@ -3,6 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Dialg="clr-namespace:LayuiTemplate.Dialog"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ColorStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
     <WindowChrome
         x:Key="LayWindowChromeStyle"
         CaptionHeight="56"
@@ -12,16 +15,27 @@
         ResizeBorderThickness="4"
         UseAeroCaptionButtons="False" />
     <Style x:Key="LayWindowStyle" TargetType="Lay:LayWindow">
+        <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource LayWindowChromeStyle}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayWindow">
-                    <Grid>
-                        <Lay:LayDialogHost Dialg:LayDialog.Tooken="{Binding Source={x:Static Dialg:LayDialogToken.RootDialogTooken}}" />
-                        <ContentPresenter />
-                    </Grid>
+                    <Border Background="{TemplateBinding Background}" ClipToBounds="True">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayWindow}, Path=WindowState}" Value="Maximized">
+                                        <Setter Property="Padding" Value="8" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Grid>
+                            <Lay:LayDialogHost Dialg:LayDialog.Tooken="{Binding Source={x:Static Dialg:LayDialogToken.RootDialogTooken}}" />
+                            <ContentPresenter />
+                        </Grid>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource LayWindowStyle}" TargetType="Lay:LayWindow" />
 </ResourceDictionary>

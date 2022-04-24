@@ -1,4 +1,5 @@
 ﻿using LayuiTemplate.Enum;
+using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LaySlider: Slider
     {
+        
         /// <summary>
         /// 气泡提示方向
         /// </summary>

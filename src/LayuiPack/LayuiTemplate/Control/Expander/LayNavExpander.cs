@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
+using LayuiTemplate.Tools;
 
 namespace LayuiTemplate.Control
 {
@@ -18,6 +19,7 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LayNavExpander : HeaderedContentControl
     {
+        
         /// <summary>
         /// 状态监听
         /// </summary>

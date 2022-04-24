@@ -1,4 +1,5 @@
 ﻿using LayuiTemplate.Enum.Transitions;
+using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LayTransition : ContentControl
     {
+        
         /// <summary>
         /// 动画容器
         /// </summary>
