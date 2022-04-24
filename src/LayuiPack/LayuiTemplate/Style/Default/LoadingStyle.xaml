@@ -12,7 +12,7 @@
                             x:Name="mask"
                             IsHitTestVisible="False"
                             Opacity="0">
-                            <Grid Background="Black" Opacity="0.2" />
+                            <Grid Background="White" Opacity="0.2" />
                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
@@ -35,19 +35,19 @@
                                     <Rectangle
                                         x:Name="rectangle"
                                         Margin="1,1,1,1"
-                                        Fill="#33ABA0" />
+                                        Fill="{DynamicResource LightGreen}" />
                                     <Rectangle
                                         x:Name="rectangle2"
                                         Margin="1,1,1,1"
-                                        Fill="#1E9FFF" />
+                                        Fill="{DynamicResource LightBlue}" />
                                     <Rectangle
                                         x:Name="rectangle3"
                                         Margin="1,1,1,1"
-                                        Fill="#FFC633" />
+                                        Fill="{DynamicResource LightOrange}" />
                                     <Rectangle
                                         x:Name="rectangle1"
                                         Margin="1,1,1,1"
-                                        Fill="#FF5722" />
+                                        Fill="{DynamicResource LightRed}" />
                                 </UniformGrid>
                                 <ContentControl
                                     x:Name="messageContent"
@@ -65,28 +65,28 @@
                                 <BeginStoryboard>
                                     <Storyboard AutoReverse="True" RepeatBehavior="Forever">
                                         <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                                            <EasingThicknessKeyFrame KeyTime="0:0:0.7" Value="20,20,-20,-20">
+                                            <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="20,20,-20,-20">
                                                 <EasingThicknessKeyFrame.EasingFunction>
                                                     <CubicEase EasingMode="EaseInOut" />
                                                 </EasingThicknessKeyFrame.EasingFunction>
                                             </EasingThicknessKeyFrame>
                                         </ThicknessAnimationUsingKeyFrames>
                                         <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle1" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                                            <EasingThicknessKeyFrame KeyTime="0:0:0.7" Value="-20,-20,20,20">
+                                            <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="-20,-20,20,20">
                                                 <EasingThicknessKeyFrame.EasingFunction>
                                                     <CubicEase EasingMode="EaseInOut" />
                                                 </EasingThicknessKeyFrame.EasingFunction>
                                             </EasingThicknessKeyFrame>
                                         </ThicknessAnimationUsingKeyFrames>
                                         <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle2" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                                            <EasingThicknessKeyFrame KeyTime="0:0:0.7" Value="-20,20,20,-20">
+                                            <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="-20,20,20,-20">
                                                 <EasingThicknessKeyFrame.EasingFunction>
                                                     <CubicEase EasingMode="EaseInOut" />
                                                 </EasingThicknessKeyFrame.EasingFunction>
                                             </EasingThicknessKeyFrame>
                                         </ThicknessAnimationUsingKeyFrames>
                                         <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="rectangle3" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                                            <EasingThicknessKeyFrame KeyTime="0:0:0.7" Value="20,-20,-20,20">
+                                            <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="20,-20,-20,20">
                                                 <EasingThicknessKeyFrame.EasingFunction>
                                                     <CubicEase EasingMode="EaseInOut" />
                                                 </EasingThicknessKeyFrame.EasingFunction>

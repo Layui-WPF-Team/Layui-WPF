@@ -9,6 +9,7 @@ using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,32 +21,46 @@ namespace LayuiComponentExample.ViewModels
     {
         public DataGridViewModel(IContainerExtension container) : base(container)
         {
-            LoadedListData();
         }
-        private List<object> _ListData;
-
-        public List<object> ListData
+        private bool _IsActive;
+        public bool IsActive
+        {
+            get { return _IsActive; }
+            set { SetProperty(ref _IsActive, value); }
+        }
+        private ObservableCollection<object> _ListData;
+        public ObservableCollection<object> ListData
         {
             get { return _ListData; }
-            set { _ListData = value; }
+            set { SetProperty(ref _ListData, value); }
         }
-        private void LoadedListData()
+        private Task<ObservableCollection<object>> LoadedListData()
         {
             try
             {
                 var random = new Random();
-                ListData = new List<object>();
+                ObservableCollection<object> ListData = new ObservableCollection<object>();
                 for (int i = 0; i < 50; i++)
                 {
                     int num = random.Next(1, 101);
                     ListData.Add(new { Index = i, Name = "测试" + i, ProgressBarValue = num });
                 };
+                return Task.FromResult(ListData);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
+        }
+        public async override void ExecuteLoadedCommand()
+        {
+            base.ExecuteLoadedCommand();
+            IsActive = true;
+            await Task.Delay(2000);
+            ListData = await LoadedListData();
+            IsActive = false;
+
         }
         private DelegateCommand<object> _GetItemsCommand;
         public DelegateCommand<object> GetItemsCommand =>
@@ -53,9 +68,9 @@ namespace LayuiComponentExample.ViewModels
 
         void ExecuteGetItemsCommand(object data)
         {
-            LayDialogParameter dialogParameter= new LayDialogParameter();
+            LayDialogParameter dialogParameter = new LayDialogParameter();
             dialogParameter.Add("Message", JsonConvert.SerializeObject(data));
-            LayDialog.Dialog.Show("DialogAlert", dialogParameter,null);
+            LayDialog.Dialog.Show("DialogAlert", dialogParameter, null);
         }
     }
 }

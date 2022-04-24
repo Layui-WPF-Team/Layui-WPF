@@ -22,6 +22,18 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for NoDataTips.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NoDataTipsProperty =
             DependencyProperty.Register("NoDataTips", typeof(string), typeof(LayDataGrid), new PropertyMetadata("暂无数据"));
+        /// <summary>
+        /// 动画开关
+        /// </summary>
+        public bool IsActive
+        {
+            get { return (bool)GetValue(IsActiveProperty); }
+            set { SetValue(IsActiveProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsActive.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsActiveProperty =
+            DependencyProperty.Register("IsActive", typeof(bool), typeof(LayDataGrid), new PropertyMetadata(false));
 
 
     }
