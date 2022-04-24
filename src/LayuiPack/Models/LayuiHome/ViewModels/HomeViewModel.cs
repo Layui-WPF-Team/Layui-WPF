@@ -107,6 +107,9 @@ namespace LayuiHome.ViewModels
                             },new MenuItemModel()
                             {
                                 ItemTitle="过渡动画", PageKey=SystemResource.Page_TransitionControlView
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="加载动画", PageKey=SystemResource.Page_LoadingView
                             }
                         }
                 },new MenuItemModel()

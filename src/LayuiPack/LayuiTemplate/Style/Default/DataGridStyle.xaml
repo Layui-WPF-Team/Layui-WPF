@@ -57,11 +57,11 @@
                                             x:Name="PART_ColumnHeadersPresenter"
                                             Grid.Column="1"
                                             Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-                                        <Lay:LayTransitionControl
+                                        <Lay:LayTransition
                                             x:Name="ContentPresenter"
                                             Grid.Row="1"
                                             Grid.ColumnSpan="2"
-                                            Style="{DynamicResource LayTransitionControlStyle}"
+                                            Style="{DynamicResource LayTransitionStyle}"
                                             Type="Gradient">
                                             <Grid>
                                                 <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" />
@@ -91,7 +91,7 @@
                                                         Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=NoDataTips, Mode=OneWay}" />
                                                 </Grid>
                                             </Grid>
-                                        </Lay:LayTransitionControl>
+                                        </Lay:LayTransition>
                                         <ScrollBar
                                             x:Name="PART_VerticalScrollBar"
                                             Grid.Row="1"
