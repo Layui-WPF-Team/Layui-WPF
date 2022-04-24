@@ -35,7 +35,10 @@
                         <ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
                             <ScrollViewer.Template>
                                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
-                                    <Lay:LayLoading IsActive="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=IsActive}" Style="{DynamicResource LayLoadingStyle}">
+                                    <Lay:LayLoading
+                                        Background="White"
+                                        IsActive="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=IsActive}"
+                                        Style="{DynamicResource LayLoadingStyle}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />

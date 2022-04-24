@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
     <Style x:Key="LayLoadingStyle" TargetType="Lay:LayLoading">
+        <Setter Property="Background" Value="Black" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayLoading">
@@ -12,7 +13,7 @@
                             x:Name="mask"
                             IsHitTestVisible="False"
                             Opacity="0">
-                            <Grid Background="White" Opacity="0.2" />
+                            <Grid Background="{TemplateBinding Background}" Opacity="0.2" />
                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
