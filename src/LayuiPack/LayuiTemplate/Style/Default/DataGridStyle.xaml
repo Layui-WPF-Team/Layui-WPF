@@ -35,35 +35,33 @@
                         <ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
                             <ScrollViewer.Template>
                                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Button
-                                            Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                            Command="{x:Static DataGrid.SelectAllCommand}"
-                                            Focusable="false"
-                                            Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle,
-                                                                                          TypeInTargetAssembly={x:Type DataGrid}}}"
-                                            Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-                                        <DataGridColumnHeadersPresenter
-                                            x:Name="PART_ColumnHeadersPresenter"
-                                            Grid.Column="1"
-                                            Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-                                        <Lay:LayLoading
-                                            Grid.Row="1"
-                                            Grid.ColumnSpan="2"
-                                            IsActive="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=IsActive}"
-                                            Style="{DynamicResource LayLoadingStyle}">
+                                    <Lay:LayLoading IsActive="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=IsActive}" Style="{DynamicResource LayLoadingStyle}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Button
+                                                Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                Command="{x:Static DataGrid.SelectAllCommand}"
+                                                Focusable="false"
+                                                Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle,
+                                                                                              TypeInTargetAssembly={x:Type DataGrid}}}"
+                                                Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                                            <DataGridColumnHeadersPresenter
+                                                x:Name="PART_ColumnHeadersPresenter"
+                                                Grid.Column="1"
+                                                Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
                                             <Lay:LayTransition
                                                 x:Name="ContentPresenter"
+                                                Grid.Row="1"
+                                                Grid.ColumnSpan="2"
                                                 Style="{DynamicResource LayTransitionStyle}"
                                                 Type="Gradient">
                                                 <Grid>
@@ -95,33 +93,33 @@
                                                     </Grid>
                                                 </Grid>
                                             </Lay:LayTransition>
-                                        </Lay:LayLoading>
-                                        <ScrollBar
-                                            x:Name="PART_VerticalScrollBar"
-                                            Grid.Row="1"
-                                            Grid.Column="2"
-                                            Maximum="{TemplateBinding ScrollableHeight}"
-                                            Orientation="Vertical"
-                                            Style="{DynamicResource LayScrollBarVertical}"
-                                            ViewportSize="{TemplateBinding ViewportHeight}"
-                                            Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
-                                            Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
-                                        <Grid Grid.Row="2" Grid.Column="1">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
                                             <ScrollBar
-                                                x:Name="PART_HorizontalScrollBar"
-                                                Grid.Column="1"
-                                                Maximum="{TemplateBinding ScrollableWidth}"
-                                                Orientation="Horizontal"
-                                                Style="{DynamicResource LayScrollBarHorizontal}"
-                                                ViewportSize="{TemplateBinding ViewportWidth}"
-                                                Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
-                                                Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                                x:Name="PART_VerticalScrollBar"
+                                                Grid.Row="1"
+                                                Grid.Column="2"
+                                                Maximum="{TemplateBinding ScrollableHeight}"
+                                                Orientation="Vertical"
+                                                Style="{DynamicResource LayScrollBarVertical}"
+                                                ViewportSize="{TemplateBinding ViewportHeight}"
+                                                Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                                Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                            <Grid Grid.Row="2" Grid.Column="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <ScrollBar
+                                                    x:Name="PART_HorizontalScrollBar"
+                                                    Grid.Column="1"
+                                                    Maximum="{TemplateBinding ScrollableWidth}"
+                                                    Orientation="Horizontal"
+                                                    Style="{DynamicResource LayScrollBarHorizontal}"
+                                                    ViewportSize="{TemplateBinding ViewportWidth}"
+                                                    Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                                    Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                            </Grid>
                                         </Grid>
-                                    </Grid>
+                                    </Lay:LayLoading>
                                     <ControlTemplate.Triggers>
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
