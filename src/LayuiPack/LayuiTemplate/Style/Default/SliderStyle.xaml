@@ -877,4 +877,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style BasedOn="{StaticResource LaySliderStyle}" TargetType="Lay:LaySlider" />
 </ResourceDictionary>

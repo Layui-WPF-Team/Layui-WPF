@@ -106,4 +106,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style BasedOn="{StaticResource LayTransitionStyle}" TargetType="Lay:LayTransition" />
 </ResourceDictionary>

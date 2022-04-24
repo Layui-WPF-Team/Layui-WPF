@@ -289,4 +289,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style BasedOn="{StaticResource LayDataGridStyle}" TargetType="Lay:LayDataGrid" />
 </ResourceDictionary>

@@ -85,4 +85,5 @@
             </MultiTrigger>
         </Style.Triggers>
     </Style>
+    <Style BasedOn="{StaticResource LayTextBoxStyle}" TargetType="Lay:LayTextBox" />
 </ResourceDictionary>

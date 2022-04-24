@@ -97,4 +97,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style BasedOn="{StaticResource LayDialogHostStyle}" TargetType="Lay:LayDialogHost" />
 </ResourceDictionary>

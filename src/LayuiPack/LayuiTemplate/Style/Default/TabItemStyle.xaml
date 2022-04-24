@@ -146,4 +146,5 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+    <Style BasedOn="{StaticResource LayTabItemStyle}" TargetType="Lay:LayTabItem" />
 </ResourceDictionary>

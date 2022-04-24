@@ -21,4 +21,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style BasedOn="{StaticResource LayMenuStyle}" TargetType="Lay:LayMenu" />
 </ResourceDictionary>

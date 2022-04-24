@@ -141,4 +141,5 @@
             </MultiTrigger>
         </Style.Triggers>
     </Style>
+    <Style BasedOn="{StaticResource LayTabControlStyle}" TargetType="Lay:LayTabControl" />
 </ResourceDictionary>

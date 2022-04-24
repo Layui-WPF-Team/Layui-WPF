@@ -559,4 +559,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style BasedOn="{StaticResource LayMenuItemStyle}" TargetType="Lay:LayMenuItem" />
 </ResourceDictionary>
