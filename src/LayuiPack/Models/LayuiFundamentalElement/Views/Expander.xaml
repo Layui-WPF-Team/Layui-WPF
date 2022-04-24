@@ -14,7 +14,7 @@
             Margin="1,0"
             Background="#393D49"
             IsAutoFold="true">
-            <Lay:LayNavExpander IsExpanded="true">
+            <Lay:LayNavExpander IsExpanded="false">
                 <Lay:LayNavExpander.Header>
                     <TextBlock Text="可自动折叠的导航栏" />
                 </Lay:LayNavExpander.Header>
