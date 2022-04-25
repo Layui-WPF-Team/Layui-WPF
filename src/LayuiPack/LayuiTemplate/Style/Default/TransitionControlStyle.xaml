@@ -62,7 +62,7 @@
                             Storyboard.TargetProperty="Opacity"
                             From="0"
                             To="1"
-                            Duration="0:0:0.5" />
+                            Duration="0:0:0.8" />
                         <!--  ZoomAnimation End  -->
                         <!--  DefaultAnimation Start  -->
                         <DoubleAnimation
@@ -87,6 +87,26 @@
                             To="1"
                             Duration="0" />
                         <!--  DefaultAnimation End  -->
+                        <!--  SlideInXDecimalAnimationn Start  -->
+                        <DoubleAnimation
+                            x:Key="SlideInYDecimalAnimation"
+                            Storyboard.TargetName="TranslateTransform"
+                            Storyboard.TargetProperty="Y"
+                            From="30"
+                            To="0"
+                            Duration="0:0:0.5">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation
+                            x:Key="SlideInOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="0"
+                            To="1"
+                            Duration="0:0:0.5" />
+                        <!--  SlideInXDecimalAnimationn End  -->
                     </ControlTemplate.Resources>
                     <Grid
                         x:Name="TransitionBody"
@@ -97,7 +117,7 @@
                                 <ScaleTransform x:Name="ScaleTransform" ScaleX="0" ScaleY="0" />
                                 <SkewTransform />
                                 <RotateTransform />
-                                <TranslateTransform />
+                                <TranslateTransform x:Name="TranslateTransform" />
                             </TransformGroup>
                         </Grid.RenderTransform>
                         <ContentPresenter />

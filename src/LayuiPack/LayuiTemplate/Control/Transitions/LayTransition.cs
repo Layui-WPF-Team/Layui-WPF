@@ -84,6 +84,12 @@ namespace LayuiTemplate.Control
                     storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
                     storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "OpacityDecimalAnimation"] as DoubleAnimation);
                     break;
+                case AnimationType.SlideIn:
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleXDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideIn) + "YDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideIn) + "OpacityDecimalAnimation"] as DoubleAnimation);
+                    break;
             }
             TransitionBody.BeginStoryboard(storyboard);
         }

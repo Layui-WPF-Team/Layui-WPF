@@ -49,6 +49,20 @@
                                 Text="渐变" />
                         </Border>
                     </Lay:LayTransition>
+                    <Lay:LayTransition Type="SlideIn">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            Background="{StaticResource Green}"
+                            CornerRadius="50">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Text="渐变" />
+                        </Border>
+                    </Lay:LayTransition>
                 </UniformGrid>
             </StackPanel>
         </ScrollViewer>

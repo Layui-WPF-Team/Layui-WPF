@@ -10,7 +10,6 @@
         <Setter Property="Background" Value="Black" />
         <Setter Property="Panel.ZIndex" Value="99999" />
         <Setter Property="IsHitTestVisible" Value="false" />
-        <Setter Property="Visibility" Value="Collapsed" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayDialogHost">
@@ -53,15 +52,26 @@
                                             Storyboard.TargetName="ScaleTransform"
                                             Storyboard.TargetProperty="ScaleX"
                                             To="1"
-                                            Duration="0:0:0.2" />
+                                            Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CircleEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform"
                                             Storyboard.TargetProperty="ScaleY"
                                             To="1"
-                                            Duration="0:0:0.2" />
+                                            Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CircleEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
                                         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible">
                                             <DiscreteBooleanKeyFrame KeyTime="0" Value="True" />
                                         </BooleanAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -71,26 +81,28 @@
                                         <DoubleAnimation
                                             Storyboard.TargetName="content"
                                             Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.05" />
+                                            Duration="0:0:0.1" />
                                         <DoubleAnimation
                                             Storyboard.TargetName="body"
                                             Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.05" />
+                                            Duration="0:0:0.1" />
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform"
                                             Storyboard.TargetProperty="ScaleX"
-                                            Duration="0:0:0.05" />
+                                            Duration="0:0:0.1" />
                                         <DoubleAnimation
                                             Storyboard.TargetName="ScaleTransform"
                                             Storyboard.TargetProperty="ScaleY"
-                                            Duration="0:0:0.05" />
-                                        <BooleanAnimationUsingKeyFrames BeginTime="0:0:0.05" Storyboard.TargetProperty="IsHitTestVisible">
+                                            Duration="0:0:0.1" />
+                                        <BooleanAnimationUsingKeyFrames BeginTime="0:0:0.1" Storyboard.TargetProperty="IsHitTestVisible">
                                             <DiscreteBooleanKeyFrame KeyTime="0" Value="false" />
                                         </BooleanAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames BeginTime="0:0:0.1" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
-                            <Setter Property="Visibility" Value="Visible" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

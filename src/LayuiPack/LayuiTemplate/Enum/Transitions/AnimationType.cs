@@ -22,6 +22,10 @@ namespace LayuiTemplate.Enum.Transitions
         /// <summary>
         /// 默认无效果
         /// </summary>
-        Default
+        Default,
+        /// <summary>
+        /// 滑入
+        /// </summary>
+        SlideIn
     }
 }
