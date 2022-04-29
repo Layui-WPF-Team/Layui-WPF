@@ -35,7 +35,7 @@
                 <Setter Property="ContextMenu" Value="{StaticResource DataItemsContextMenu}" />
             </Style>
         </Lay:LayDataGrid.RowStyle>
-        <DataGrid.Columns>
+        <Lay:LayDataGrid.Columns>
             <DataGridTemplateColumn MinWidth="50" MaxWidth="50">
                 <DataGridTemplateColumn.Header>
                     <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -55,10 +55,45 @@
                 Width="200"
                 Binding="{Binding Name, Mode=OneWay}"
                 Header="名称" />
-            <DataGridTextColumn
-                Width="*"
-                Binding="{Binding Name, Mode=OneWay}"
-                Header="名称" />
+            <DataGridTemplateColumn Width="*" Header="跨列">
+                <DataGridTemplateColumn.HeaderStyle>
+                    <Style BasedOn="{StaticResource LayColumnHeaderStyle}" TargetType="DataGridColumnHeader">
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                </DataGridTemplateColumn.HeaderStyle>
+                <DataGridTemplateColumn.CellStyle>
+                    <Style BasedOn="{StaticResource LayDataGridCellStyle}" TargetType="DataGridCell">
+                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                </DataGridTemplateColumn.CellStyle>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{Binding Name}" />
+                            <Grid
+                                Grid.Column="1"
+                                Width="1"
+                                Background="{DynamicResource Gray}" />
+                            <TextBlock
+                                Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{Binding Name}" />
+                        </Grid>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
             <DataGridTemplateColumn MinWidth="200" MaxWidth="200">
                 <DataGridTemplateColumn.Header>
                     <TextBlock Text="进度" />
@@ -80,6 +115,33 @@
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
-        </DataGrid.Columns>
+        </Lay:LayDataGrid.Columns>
+        <Lay:LayDataGrid.RowDetailsTemplate>
+            <DataTemplate>
+                <Expander
+                    Padding="10"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Header="详情信息">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="名称: " />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="进度: " />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding ProgressBarValue}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="12"
+                                Text="编号 " />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Index}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+            </DataTemplate>
+        </Lay:LayDataGrid.RowDetailsTemplate>
     </Lay:LayDataGrid>
 </UserControl>
