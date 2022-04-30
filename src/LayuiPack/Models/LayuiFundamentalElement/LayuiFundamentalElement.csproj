@@ -68,6 +68,7 @@
     <Compile Include="ViewModels\FormViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
+    <Compile Include="ViewModels\PanelViewModel.cs" />
     <Compile Include="ViewModels\ProgressBarViewModel.cs" />
     <Compile Include="ViewModels\TabControlViewModel.cs" />
     <Compile Include="ViewModels\TransitionControlViewModel.cs" />
@@ -85,6 +86,9 @@
     </Compile>
     <Compile Include="Views\Loading.xaml.cs">
       <DependentUpon>Loading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Panel.xaml.cs">
+      <DependentUpon>Panel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProgressBar.xaml.cs">
       <DependentUpon>ProgressBar.xaml</DependentUpon>
@@ -123,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Loading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Panel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

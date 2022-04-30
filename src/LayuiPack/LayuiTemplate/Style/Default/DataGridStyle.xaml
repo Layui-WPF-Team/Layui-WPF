@@ -33,7 +33,8 @@
                     <Lay:LayLoading
                         Background="White"
                         IsActive="{TemplateBinding IsActive}"
-                        Style="{DynamicResource LayLoadingStyle}">
+                        Style="{DynamicResource LayLoadingStyle}"
+                        Type="Normal">
                         <Border
                             Padding="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}"

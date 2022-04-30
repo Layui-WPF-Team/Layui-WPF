@@ -1,4 +1,5 @@
-﻿using LayuiTemplate.Tools;
+﻿using LayuiTemplate.Enum;
+using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,18 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for MessageContent.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MessageContentProperty =
             DependencyProperty.Register("MessageContent", typeof(object), typeof(LayLoading));
+
+
+
+        public LoadingStyle Type
+        {
+            get { return (LoadingStyle)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Type.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TypeProperty =
+            DependencyProperty.Register("Type", typeof(LoadingStyle), typeof(LayLoading), new PropertyMetadata(LoadingStyle.Google));
 
 
 

@@ -91,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\Default\CardStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\ListBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style\Default\LoadingStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Default\PanelStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,6 +167,7 @@
     <Compile Include="Control\CheckBox\LayCheckBox.cs" />
     <Compile Include="Control\DataGrid\LayDataGrid.cs" />
     <Compile Include="Control\DialogHost\LayDialogHost.cs" />
+    <Compile Include="Control\Expander\LayExpander.cs" />
     <Compile Include="Control\Expander\LayNavExpanderPanel.cs" />
     <Compile Include="Control\Hr\LayHr.xaml.cs">
       <DependentUpon>LayHr.xaml</DependentUpon>
@@ -166,6 +175,7 @@
     <Compile Include="Control\MenuItem\LayMenuItem.cs" />
     <Compile Include="Control\Menu\LayMenu.cs" />
     <Compile Include="Control\Loading\LayLoading.cs" />
+    <Compile Include="Control\Panel\LayCard.cs" />
     <Compile Include="Control\Password\LayPasswordBox.cs" />
     <Compile Include="Control\ProgressBar\LayProgressBar.cs" />
     <Compile Include="Control\ListBox\LayListBox.cs" />
@@ -192,6 +202,7 @@
     <Compile Include="Enum\Button\ButtonStyle.cs" />
     <Compile Include="Enum\CheckBox\CheckBoxStyle.cs" />
     <Compile Include="Enum\Dialog\ButtonResult.cs" />
+    <Compile Include="Enum\Loading\LoadingStyle.cs" />
     <Compile Include="Enum\Slider\SliderTipsPosition.cs" />
     <Compile Include="Enum\TabControl\TabControlStyle.cs" />
     <Compile Include="Enum\Transitions\AnimationType.cs" />
@@ -222,7 +233,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converter\ProgressBar\" />
+    <Folder Include="Converter\Base\" />
     <Folder Include="Enum\Expander\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

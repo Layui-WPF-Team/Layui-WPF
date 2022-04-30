@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="LayContentBorderStyle" TargetType="Border">
+        <Style.Resources>
+            <DropShadowEffect
+                x:Key="DefaultEffect"
+                Opacity="0.2"
+                ShadowDepth="0"
+                Color="Black" />
+        </Style.Resources>
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Effect" Value="{DynamicResource DefaultEffect}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
+    </Style>
+</ResourceDictionary>

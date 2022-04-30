@@ -1,0 +1,59 @@
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.Panel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Lay:LayTransition Type="SlideIn">
+        <Border Margin="5">
+            <ScrollViewer>
+                <StackPanel>
+                    <TextBlock Text="普通面板" />
+                    <UniformGrid
+                        Height="200"
+                        Background="{DynamicResource LighGray}"
+                        Rows="1">
+                        <Border Margin="20" Style="{DynamicResource LayContentBorderStyle}" />
+                        <Border Margin="20" Style="{DynamicResource LayContentBorderStyle}" />
+                    </UniformGrid>
+                    <UniformGrid
+                        Height="200"
+                        Background="{DynamicResource LighGray}"
+                        Rows="1">
+                        <Lay:LayCard Margin="20">
+                            <Lay:LayCard.Header>
+                                <Grid MinHeight="30">
+                                    <TextBlock VerticalAlignment="Center" Text="标题" />
+                                </Grid>
+                            </Lay:LayCard.Header>
+                            <TextBlock Text="我是内容" />
+                        </Lay:LayCard>
+                        <Lay:LayCard Margin="20">
+                            <Lay:LayCard.Header>
+                                <Grid MinHeight="30">
+                                    <TextBlock VerticalAlignment="Center" Text="标题" />
+                                </Grid>
+                            </Lay:LayCard.Header>
+                            <TextBlock Text="我是内容" />
+                        </Lay:LayCard>
+                    </UniformGrid>
+                    <UniformGrid Height="200" Rows="1">
+                        <Lay:LayExpander Margin="20" Style="{DynamicResource LayExpanderStyle}">
+                            <Lay:LayExpander.Header>
+                                <TextBlock Text="我是标题" />
+                            </Lay:LayExpander.Header>
+                            <TextBlock Text="我是内容" />
+                        </Lay:LayExpander>
+                        <Lay:LayExpander Margin="20" Style="{DynamicResource LayExpanderStyle}">
+                            <Lay:LayExpander.Header>
+                                <TextBlock Text="我是标题" />
+                            </Lay:LayExpander.Header>
+                            <TextBlock Text="我是内容" />
+                        </Lay:LayExpander>
+                    </UniformGrid>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Lay:LayTransition>
+</UserControl>

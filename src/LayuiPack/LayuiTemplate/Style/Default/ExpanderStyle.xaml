@@ -5,6 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ColorStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <!--  导航折叠板  -->
     <Style x:Key="LayNavExpanderStyle" TargetType="{x:Type Lay:LayNavExpander}">
         <Setter Property="HeaderHeight" Value="50" />
         <Setter Property="Foreground" Value="White" />
@@ -25,7 +26,7 @@
                         </Grid.RowDefinitions>
                         <ToggleButton
                             x:Name="header"
-                            Height="{TemplateBinding HeaderHeight}"
+                            MinHeight="{TemplateBinding HeaderHeight}"
                             Padding="{TemplateBinding Padding}"
                             HorizontalContentAlignment="{TemplateBinding HeaderHorizontalAlignment}"
                             VerticalContentAlignment="{TemplateBinding HeaderVerticalAlignment}"
@@ -193,4 +194,162 @@
         </Setter>
     </Style>
     <Style BasedOn="{StaticResource LayNavExpanderStyle}" TargetType="{x:Type Lay:LayNavExpander}" />
+    <!--  普通折叠板  -->
+    <Style x:Key="LayExpanderStyle" TargetType="{x:Type Lay:LayExpander}">
+        <Style.Resources>
+            <Style x:Key="ExpanderDownHeaderStyle" TargetType="ToggleButton">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid
+                                    x:Name="iconGrid"
+                                    Width="20"
+                                    Margin="5,0">
+                                    <Path
+                                        Width="15"
+                                        Height="8"
+                                        VerticalAlignment="Center"
+                                        Data="M966.4 323.2c-9.6-9.6-25.6-9.6-35.2 0l-416 416-425.6-416c-9.6-9.6-25.6-9.6-35.2 0-9.6 9.6-9.6 25.6 0 35.2l441.6 432c9.6 9.6 25.6 9.6 35.2 0l435.2-432C976 345.6 976 332.8 966.4 323.2z"
+                                        Fill="{TemplateBinding Foreground}"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Stretch="Fill">
+                                        <Path.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform />
+                                                <SkewTransform />
+                                                <RotateTransform Angle="-90" />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </Path.RenderTransform>
+                                        <Path.Style>
+                                            <Style TargetType="Path">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsChecked}" Value="true">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                                                                        <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                                                                        <EasingDoubleKeyFrame KeyTime="0" Value="-90" />
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Path.Style>
+                                    </Path>
+                                </Grid>
+                                <ContentPresenter
+                                    Grid.Column="1"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="ExpanderRightHeaderStyle" TargetType="ToggleButton" />
+            <Style x:Key="ExpanderUpHeaderStyle" TargetType="ToggleButton" />
+            <Style x:Key="ExpanderLeftHeaderStyle" TargetType="ToggleButton" />
+        </Style.Resources>
+        <Setter Property="HeaderHeight" Value="40" />
+        <Setter Property="LineHeight" Value="1" />
+        <Setter Property="HeaderVerticalAlignment" Value="Center" />
+        <Setter Property="HeaderBackground" Value="{DynamicResource LighGray}" />
+        <Setter Property="Padding" Value="20,0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Lay:LayExpander}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="0"
+                        SnapsToDevicePixels="true">
+                        <DockPanel>
+                            <Grid DockPanel.Dock="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <ToggleButton
+                                    x:Name="HeaderSite"
+                                    MinWidth="0"
+                                    MinHeight="{TemplateBinding HeaderHeight}"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HeaderHorizontalAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding HeaderVerticalAlignment}"
+                                    Background="{TemplateBinding HeaderBackground}"
+                                    Content="{TemplateBinding Header}"
+                                    ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                    ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                    FocusVisualStyle="{x:Null}"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    FontStretch="{TemplateBinding FontStretch}"
+                                    FontStyle="{TemplateBinding FontStyle}"
+                                    FontWeight="{TemplateBinding FontWeight}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Style="{StaticResource ExpanderDownHeaderStyle}" />
+                                <Grid
+                                    Grid.Row="1"
+                                    Height="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayExpander}, Path=LineHeight}"
+                                    Background="{TemplateBinding BorderBrush}" />
+                            </Grid>
+                            <ContentPresenter
+                                x:Name="ExpandSite"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                DockPanel.Dock="Bottom"
+                                Focusable="false"
+                                Visibility="Collapsed" />
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="true">
+                            <Setter TargetName="ExpandSite" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Right">
+                            <Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Right" />
+                            <Setter TargetName="HeaderSite" Property="DockPanel.Dock" Value="Left" />
+                            <Setter TargetName="HeaderSite" Property="Style" Value="{DynamicResource ExpanderRightHeaderStyle}" />
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Up">
+                            <Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Top" />
+                            <Setter TargetName="HeaderSite" Property="DockPanel.Dock" Value="Bottom" />
+                            <Setter TargetName="HeaderSite" Property="Style" Value="{DynamicResource ExpanderUpHeaderStyle}" />
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Left">
+                            <Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Left" />
+                            <Setter TargetName="HeaderSite" Property="DockPanel.Dock" Value="Right" />
+                            <Setter TargetName="HeaderSite" Property="Style" Value="{DynamicResource ExpanderLeftHeaderStyle}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false" />
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

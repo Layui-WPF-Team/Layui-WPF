@@ -97,7 +97,7 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="进度条", PageKey=SystemResource.Page_ProgressBar
                             },new MenuItemModel()
                             {
-                                ItemTitle="面板", PageKey=SystemResource.Page_ButtonView
+                                ItemTitle="面板", PageKey=SystemResource.Page_PanelView
                             },new MenuItemModel()
                             {
                                 ItemTitle="折叠板", PageKey=SystemResource.Page_ExpanderView

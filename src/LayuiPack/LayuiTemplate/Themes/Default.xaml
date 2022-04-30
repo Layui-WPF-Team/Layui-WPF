@@ -21,5 +21,7 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/MenuStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/MenuItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/LoadingStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/PanelStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/CardStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

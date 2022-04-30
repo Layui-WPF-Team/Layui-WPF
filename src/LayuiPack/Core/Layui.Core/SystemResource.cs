@@ -30,7 +30,7 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 滑块视图
         /// </summary>
-        public const string Page_Slider = "Page_Slider";
+        public const string Page_Slider = "Page_Slider"; 
         /// <summary>
         /// 进度条视图
         /// </summary>
@@ -54,11 +54,15 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 折叠板
         /// </summary>
-        public const string Page_ExpanderView = "ExpanderView";
+        public const string Page_ExpanderView = "ExpanderView"; 
         /// <summary>
         /// 加载动画
         /// </summary>
         public const string Page_LoadingView = "LoadingView";
+        /// <summary>
+        /// 面板
+        /// </summary>
+        public const string Page_PanelView = "PanelView";
         #endregion
 
         #region 弹窗名称

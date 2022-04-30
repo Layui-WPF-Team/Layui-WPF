@@ -5,5 +5,14 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Lay:LayLoading IsActive="true" />
+    <UniformGrid Columns="2" Rows="2">
+        <Lay:LayLoading
+            Background="Transparent"
+            IsActive="true"
+            Type="Google" />
+        <Lay:LayLoading
+            Background="Transparent"
+            IsActive="true"
+            Type="Normal" />
+    </UniformGrid>
 </UserControl>
