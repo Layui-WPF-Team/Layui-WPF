@@ -62,7 +62,11 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 面板
         /// </summary>
-        public const string Page_PanelView = "PanelView";
+        public const string Page_PanelView = "PanelView"; 
+        /// <summary>
+        /// 时间线视图
+        /// </summary>
+        public const string Page_TimelineView = "Timeline"; 
         #endregion
 
         #region 弹窗名称

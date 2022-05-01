@@ -1,0 +1,42 @@
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.Timeline"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <StackPanel>
+            <Lay:LayTimelinePanel Margin="10,5">
+                <Lay:LayTimelineItem Header="8月18日">
+                    <TextBlock Text="layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发。 不枉近百个日日夜夜与之为伴。因小而大，因弱而强。 无论它能走多远，抑或如何支撑？至少我曾倾注全心，无怨无悔 " TextWrapping="Wrap" />
+                </Lay:LayTimelineItem>
+                <Lay:LayTimelineItem Header="8月18日">
+                    <TextBlock Text="layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发。 不枉近百个日日夜夜与之为伴。因小而大，因弱而强。 无论它能走多远，抑或如何支撑？至少我曾倾注全心，无怨无悔 " TextWrapping="Wrap" />
+                </Lay:LayTimelineItem>
+                <Lay:LayTimelineItem Header="这是结尾" IsContentState="False" />
+            </Lay:LayTimelinePanel>
+            <Lay:LayTimelinePanel Margin="10,5" ItemsSource="{Binding List}">
+                <Lay:LayTimelinePanel.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource LayTimelineItemStyle}" TargetType="Lay:LayTimelineItem">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Content}" Value="">
+                                <Setter Property="IsContentState" Value="false" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Lay:LayTimelinePanel.ItemContainerStyle>
+                <Lay:LayTimelinePanel.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
+                    </DataTemplate>
+                </Lay:LayTimelinePanel.HeaderTemplate>
+                <Lay:LayTimelinePanel.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Content}" TextWrapping="Wrap" />
+                    </DataTemplate>
+                </Lay:LayTimelinePanel.ItemTemplate>
+            </Lay:LayTimelinePanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

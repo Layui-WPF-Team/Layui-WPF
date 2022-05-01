@@ -110,6 +110,9 @@ namespace LayuiHome.ViewModels
                             },new MenuItemModel()
                             {
                                 ItemTitle="加载动画", PageKey=SystemResource.Page_LoadingView
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="时间线", PageKey=SystemResource.Page_TimelineView
                             }
                         }
                 },new MenuItemModel()
