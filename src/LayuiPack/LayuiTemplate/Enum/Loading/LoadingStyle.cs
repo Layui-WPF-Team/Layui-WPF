@@ -18,6 +18,10 @@ namespace LayuiTemplate.Enum
         /// <summary>
         /// 百搭
         /// </summary>
-        Normal
+        Normal,
+        /// <summary>
+        /// 简约
+        /// </summary>
+        Simple
     }
 }

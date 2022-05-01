@@ -38,18 +38,24 @@
                             <TextBlock Text="我是内容" />
                         </Lay:LayCard>
                     </UniformGrid>
-                    <UniformGrid Height="200" Rows="1">
-                        <Lay:LayExpander Margin="20" Style="{DynamicResource LayExpanderStyle}">
+                    <UniformGrid Rows="1">
+                        <Lay:LayExpander
+                            Margin="20"
+                            VerticalAlignment="Top"
+                            Style="{DynamicResource LayExpanderStyle}">
                             <Lay:LayExpander.Header>
                                 <TextBlock Text="我是标题" />
                             </Lay:LayExpander.Header>
-                            <TextBlock Text="我是内容" />
+                            <TextBlock Height="100" Text="我是内容" />
                         </Lay:LayExpander>
-                        <Lay:LayExpander Margin="20" Style="{DynamicResource LayExpanderStyle}">
+                        <Lay:LayExpander
+                            Margin="20"
+                            VerticalAlignment="Top"
+                            Style="{DynamicResource LayExpanderStyle}">
                             <Lay:LayExpander.Header>
                                 <TextBlock Text="我是标题" />
                             </Lay:LayExpander.Header>
-                            <TextBlock Text="我是内容" />
+                            <TextBlock Height="100" Text="我是内容" />
                         </Lay:LayExpander>
                     </UniformGrid>
                 </StackPanel>

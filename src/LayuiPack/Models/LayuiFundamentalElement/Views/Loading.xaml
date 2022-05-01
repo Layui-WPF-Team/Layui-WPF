@@ -6,13 +6,8 @@
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <UniformGrid Columns="2" Rows="2">
-        <Lay:LayLoading
-            Background="Transparent"
-            IsActive="true"
-            Type="Google" />
-        <Lay:LayLoading
-            Background="Transparent"
-            IsActive="true"
-            Type="Normal" />
+        <Lay:LayLoading IsActive="true" Type="Google" />
+        <Lay:LayLoading IsActive="true" Type="Normal" />
+        <Lay:LayLoading IsActive="true" Type="Simple" />
     </UniformGrid>
 </UserControl>

@@ -34,7 +34,7 @@
                         Background="White"
                         IsActive="{TemplateBinding IsActive}"
                         Style="{DynamicResource LayLoadingStyle}"
-                        Type="Normal">
+                        Type="Google">
                         <Border
                             Padding="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}"
@@ -248,8 +248,9 @@
         <Setter Property="BorderThickness" Value="0" />
     </Style>
     <Style x:Key="LayDataGridRowStyle" TargetType="{x:Type DataGridRow}">
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="0,0,1,0" />
         <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid, Mode=FindAncestor}, Path=BorderBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="DataGridRow">
@@ -257,8 +258,8 @@
                         <Border
                             x:Name="border"
                             Background="{TemplateBinding Background}"
-                            BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=BorderBrush}"
-                            BorderThickness="0,0,1,0" />
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" />
                         <SelectiveScrollingGrid>
                             <SelectiveScrollingGrid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
@@ -273,6 +274,7 @@
                                 ItemsPanel="{TemplateBinding ItemsPanel}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <DataGridDetailsPresenter
+                                x:Name="DetailsPresenter"
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
@@ -293,6 +295,9 @@
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="border" Property="Background" Value="{DynamicResource LighGray}" />
+                        </Trigger>
+                        <Trigger Property="DetailsVisibility" Value="Visible">
+                            <Setter TargetName="DetailsPresenter" Property="Margin" Value="0,0,1,0" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

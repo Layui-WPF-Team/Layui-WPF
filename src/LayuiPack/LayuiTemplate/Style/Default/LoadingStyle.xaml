@@ -7,7 +7,7 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ColorStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="LayLoadingStyle" TargetType="Lay:LayLoading">
-        <Setter Property="Background" Value="Black" />
+        <Setter Property="Background" Value="White" />
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -189,6 +189,201 @@
                                             <Storyboard>
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="path" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
                                                     <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                                <Trigger Property="MessageContent" Value="{x:Null}" />
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsActive" Value="true" />
+                    <Condition Property="Type" Value="{x:Static enum:LoadingStyle.Simple}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Lay:LayLoading">
+                            <Grid>
+                                <ContentPresenter />
+                                <Grid
+                                    x:Name="mask"
+                                    IsHitTestVisible="False"
+                                    Opacity="0">
+                                    <Grid Background="{TemplateBinding Background}" Opacity="0.2" />
+                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <UniformGrid
+                                            Width="60"
+                                            Height="20"
+                                            Columns="6"
+                                            Rows="1">
+                                            <Grid
+                                                x:Name="loading1"
+                                                Margin="1,0"
+                                                Background="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                            </Grid>
+                                            <Grid
+                                                x:Name="loading2"
+                                                Margin="1,0"
+                                                Background="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                            </Grid>
+                                            <Grid
+                                                x:Name="loading3"
+                                                Margin="1,0"
+                                                Background="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                            </Grid>
+                                            <Grid
+                                                x:Name="loading4"
+                                                Margin="1,0"
+                                                Background="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                            </Grid>
+                                            <Grid
+                                                x:Name="loading5"
+                                                Margin="1,0"
+                                                Background="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                            </Grid>
+                                            <Grid
+                                                x:Name="loading6"
+                                                Margin="1,0"
+                                                Background="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                            </Grid>
+                                        </UniformGrid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsActive" Value="True">
+                                    <Setter TargetName="mask" Property="Opacity" Value="1" />
+                                    <Setter TargetName="mask" Property="IsHitTestVisible" Value="true" />
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard RepeatBehavior="Forever">
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames
+                                                    BeginTime="0:0:0.1"
+                                                    Storyboard.TargetName="loading2"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames
+                                                    BeginTime="0:0:0.2"
+                                                    Storyboard.TargetName="loading3"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames
+                                                    BeginTime="0:0:0.3"
+                                                    Storyboard.TargetName="loading4"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames
+                                                    BeginTime="0:0:0.4"
+                                                    Storyboard.TargetName="loading5"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames
+                                                    BeginTime="0:0:0.5"
+                                                    Storyboard.TargetName="loading6"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading6" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
                                                 </DoubleAnimationUsingKeyFrames>
                                             </Storyboard>
                                         </BeginStoryboard>
