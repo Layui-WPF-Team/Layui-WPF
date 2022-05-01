@@ -38,7 +38,10 @@
                             <TextBlock Text="我是内容" />
                         </Lay:LayCard>
                     </UniformGrid>
-                    <UniformGrid Rows="1">
+                    <UniformGrid
+                        Height="200"
+                        Columns="2"
+                        Rows="2">
                         <Lay:LayExpander
                             Margin="20"
                             VerticalAlignment="Top"
@@ -46,16 +49,36 @@
                             <Lay:LayExpander.Header>
                                 <TextBlock Text="我是标题" />
                             </Lay:LayExpander.Header>
-                            <TextBlock Height="100" Text="我是内容" />
+                            <TextBlock Text="我是内容" />
                         </Lay:LayExpander>
                         <Lay:LayExpander
                             Margin="20"
                             VerticalAlignment="Top"
+                            ExpandDirection="Up"
                             Style="{DynamicResource LayExpanderStyle}">
                             <Lay:LayExpander.Header>
                                 <TextBlock Text="我是标题" />
                             </Lay:LayExpander.Header>
-                            <TextBlock Height="100" Text="我是内容" />
+                            <TextBlock Text="我是内容" />
+                        </Lay:LayExpander>
+                        <Lay:LayExpander
+                            Margin="20"
+                            VerticalAlignment="Top"
+                            ExpandDirection="Left"
+                            Style="{DynamicResource LayExpanderStyle}">
+                            <Lay:LayExpander.Header>
+                                <TextBlock Text="我是标题" />
+                            </Lay:LayExpander.Header>
+                            <TextBlock Text="我是内容" />
+                        </Lay:LayExpander>
+                        <Lay:LayExpander
+                            Margin="20"
+                            VerticalAlignment="Top"
+                            ExpandDirection="Right">
+                            <Lay:LayExpander.Header>
+                                <TextBlock Text="我是标题" />
+                            </Lay:LayExpander.Header>
+                            <TextBlock Text="我是内容" />
                         </Lay:LayExpander>
                     </UniformGrid>
                 </StackPanel>

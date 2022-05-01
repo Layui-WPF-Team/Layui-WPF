@@ -73,16 +73,19 @@ namespace LayuiTemplate.Control
             get { return (Brush)GetValue(HeaderBackgroundProperty); }
             set { SetValue(HeaderBackgroundProperty, value); }
         }
-
         // Using a DependencyProperty as the backing store for HeaderBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderBackgroundProperty =
             DependencyProperty.Register("HeaderBackground", typeof(Brush), typeof(LayNavExpander));
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            headerToggleButton = GetTemplateChild("header") as ToggleButton;
-            headerToggleButton.Checked -= HeaderToggleButton_Click;
-            headerToggleButton.Checked += HeaderToggleButton_Click;
+            /////////防呆///////
+            if (headerToggleButton != null)
+            {
+                headerToggleButton = GetTemplateChild("header") as ToggleButton;
+                headerToggleButton.Checked -= HeaderToggleButton_Click;
+                headerToggleButton.Checked += HeaderToggleButton_Click;
+            }
         }
         private void HeaderToggleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -93,6 +96,7 @@ namespace LayuiTemplate.Control
         /// </summary>
         private void RefreshExpanded()
         {
+            if (this.Parent == null) return;
             if (this.Parent is LayNavExpanderPanel panel)
             {
                 if (!panel.IsAutoFold) return;
