@@ -57,7 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppHelper\DownloadFileInfo.cs" />
     <Compile Include="Base\LayuiViewModelBase.cs" />
+    <Compile Include="AppHelper\FileHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemResource.cs" />
   </ItemGroup>
