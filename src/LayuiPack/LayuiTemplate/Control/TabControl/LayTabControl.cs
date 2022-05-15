@@ -30,7 +30,23 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.Register("Type", typeof(TabControlStyle), typeof(LayTabControl), new PropertyMetadata(TabControlStyle.Simplicity));
 
-
+        /// <summary>
+        /// 重写自定义指定项子控件
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        protected override bool IsItemItsOwnContainerOverride(object item)
+        {
+            return item is LayTabItem;
+        }
+        /// <summary>
+        /// 抓取指定项控件并返回定制项控件
+        /// </summary>
+        /// <returns></returns>
+        protected override DependencyObject GetContainerForItemOverride()
+        {
+            return new LayTabItem();
+        }
 
     }
 }

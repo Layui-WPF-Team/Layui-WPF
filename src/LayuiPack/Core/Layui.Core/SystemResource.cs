@@ -67,6 +67,14 @@ namespace Layui.Core.Resource
         /// 时间线视图
         /// </summary>
         public const string Page_TimelineView = "Timeline"; 
+        /// <summary>
+        /// 基础菜单
+        /// </summary>
+        public const string Page_MenuView = "Menu";
+        /// <summary>
+        /// 树形控件
+        /// </summary>
+        public const string Page_TreeView = "TreeView";
         #endregion
 
         #region 弹窗名称

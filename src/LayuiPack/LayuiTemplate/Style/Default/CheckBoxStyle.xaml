@@ -35,7 +35,7 @@
                                         Width="30"
                                         Height="30"
                                         Margin="1"
-                                        Padding="4"
+                                        Padding="5"
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                         Background="White"
@@ -43,13 +43,12 @@
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         CornerRadius="{DynamicResource ControlCornerRadiusBase}">
                                         <Viewbox>
-                                            <TextBlock
+                                            <Path
                                                 x:Name="textBlock"
-                                                FontFamily="{DynamicResource IconFont}"
-                                                FontSize="20"
-                                                Foreground="White"
+                                                Data="M887.904 298.208c-12.864-12.064-33.152-11.488-45.216 1.408L415.936 753.984l-233.12-229.696c-12.608-12.416-32.864-12.288-45.28 0.32-12.416 12.576-12.256 32.864 0.352 45.248l256.48 252.672c0.096 0.096 0.224 0.128 0.32 0.224s0.128 0.224 0.224 0.32c2.016 1.92 4.448 3.008 6.784 4.288 1.152 0.672 2.144 1.664 3.36 2.144 3.776 1.472 7.776 2.24 11.744 2.24 4.192 0 8.384-0.832 12.288-2.496 1.312-0.544 2.336-1.664 3.552-2.368 2.4-1.408 4.896-2.592 6.944-4.672 0.096-0.096 0.128-0.256 0.224-0.352 0.064-0.096 0.192-0.128 0.288-0.224L889.28 343.424c12.16-12.832 11.488-33.088-1.376-45.216z"
+                                                Fill="White"
                                                 Opacity="0"
-                                                Text="&#xf00c;" />
+                                                Stretch="Fill" />
                                         </Viewbox>
                                     </Border>
                                 </Viewbox>
@@ -182,16 +181,13 @@
                                             Background="White"
                                             BorderThickness="{TemplateBinding BorderThickness}"
                                             CornerRadius="0 1 1 0">
-                                            <Viewbox>
-                                                <TextBlock
+                                            <Viewbox Margin="5">
+                                                <Path
                                                     x:Name="fontIcon"
-                                                    Margin="5"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    FontFamily="{DynamicResource IconFont}"
-                                                    Foreground="{StaticResource Gray}"
+                                                    Data="M887.904 298.208c-12.864-12.064-33.152-11.488-45.216 1.408L415.936 753.984l-233.12-229.696c-12.608-12.416-32.864-12.288-45.28 0.32-12.416 12.576-12.256 32.864 0.352 45.248l256.48 252.672c0.096 0.096 0.224 0.128 0.32 0.224s0.128 0.224 0.224 0.32c2.016 1.92 4.448 3.008 6.784 4.288 1.152 0.672 2.144 1.664 3.36 2.144 3.776 1.472 7.776 2.24 11.744 2.24 4.192 0 8.384-0.832 12.288-2.496 1.312-0.544 2.336-1.664 3.552-2.368 2.4-1.408 4.896-2.592 6.944-4.672 0.096-0.096 0.128-0.256 0.224-0.352 0.064-0.096 0.192-0.128 0.288-0.224L889.28 343.424c12.16-12.832 11.488-33.088-1.376-45.216z"
+                                                    Fill="{StaticResource Gray}"
                                                     Opacity="0"
-                                                    Text="&#xf00c;" />
+                                                    Stretch="Fill" />
                                             </Viewbox>
                                         </Border>
                                     </Viewbox>
@@ -258,7 +254,7 @@
                                                     Duration="0:0:0.2" />
                                                 <ColorAnimation
                                                     Storyboard.TargetName="fontIcon"
-                                                    Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                    Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
                                                     To="{StaticResource CyanBlueEffect}"
                                                     Duration="0:0:0.2" />
                                             </Storyboard>
@@ -277,7 +273,7 @@
                                                     Duration="0:0:0.2" />
                                                 <ColorAnimation
                                                     Storyboard.TargetName="fontIcon"
-                                                    Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                    Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
                                                     Duration="0:0:0.2" />
                                             </Storyboard>
                                         </BeginStoryboard>

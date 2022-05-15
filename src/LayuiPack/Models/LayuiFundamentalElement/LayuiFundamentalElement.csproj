@@ -73,6 +73,7 @@
     <Compile Include="ViewModels\TabControlViewModel.cs" />
     <Compile Include="ViewModels\TimelineViewModel.cs" />
     <Compile Include="ViewModels\TransitionControlViewModel.cs" />
+    <Compile Include="ViewModels\TreeViewModel.cs" />
     <Compile Include="Views\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
@@ -102,6 +103,9 @@
     </Compile>
     <Compile Include="Views\TransitionControl.xaml.cs">
       <DependentUpon>TransitionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TreeView.xaml.cs">
+      <DependentUpon>TreeView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -151,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TransitionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

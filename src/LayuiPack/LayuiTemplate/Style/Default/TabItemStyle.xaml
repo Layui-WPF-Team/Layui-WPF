@@ -7,7 +7,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ColorStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="LayTabItemStyle" TargetType="{x:Type TabItem}">
+    <Style x:Key="LayTabItemStyle" TargetType="{x:Type Lay:LayTabItem}">
         <Setter Property="Height" Value="40" />
         <Setter Property="Padding" Value="15,5" />
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -17,7 +17,7 @@
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTabControl, Mode=FindAncestor}, Path=Type}" Value="{x:Static Enum:TabControlStyle.Simplicity}">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type TabItem}">
+                        <ControlTemplate TargetType="{x:Type Lay:LayTabItem}">
                             <Grid Background="{TemplateBinding Background}" Cursor="Hand">
                                 <ContentPresenter
                                     x:Name="contentPresenter"
@@ -76,7 +76,7 @@
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTabControl, Mode=FindAncestor}, Path=Type}" Value="{x:Static Enum:TabControlStyle.Card}">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type TabItem}">
+                        <ControlTemplate TargetType="{x:Type Lay:LayTabItem}">
                             <Grid Background="{TemplateBinding Background}" Cursor="Hand">
                                 <Border
                                     x:Name="border"

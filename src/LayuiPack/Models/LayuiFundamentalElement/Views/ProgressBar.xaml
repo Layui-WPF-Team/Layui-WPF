@@ -1,41 +1,87 @@
-﻿<UserControl x:Class="LayuiFundamentalElement.Views.ProgressBar"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
-             mc:Ignorable="d" d:DesignWidth="600"
-             xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
-             xmlns:prism="http://prismlibrary.com/"
-             xmlns:vm="clr-namespace:LayuiFundamentalElement.ViewModels"
-             d:DataContext="{d:DesignInstance Type=vm:ProgressBarViewModel}"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.ProgressBar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:LayuiFundamentalElement.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:ProgressBarViewModel}"
+    d:DesignWidth="600"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20">
 
-            <Lay:LayHr Text="默认风格的进度条" Margin="0,10,0,0"/>
-            <Lay:LayProgressBar Value="50" Margin="0,20"/>
+            <Lay:LayHr Margin="0,10,0,0" Text="默认风格的进度条" />
+            <Lay:LayProgressBar Margin="0,20" Value="50" />
 
-            <Lay:LayHr Text="更多颜色选取" Margin="0,10,0,0"/>
-            <Lay:LayProgressBar Margin="0,20" Value="20" Foreground="#FF5722"/>
-            <Lay:LayProgressBar Margin="0,20" Value="30" Foreground="#FFB800"/>
-            <Lay:LayProgressBar Margin="0,20" Value="40" Foreground="#5FB878"/>
-            <Lay:LayProgressBar Margin="0,20" Value="50" Foreground="#1E9FFF"/>
-            <Lay:LayProgressBar Margin="0,20" Value="56" Foreground="#2F4056"/>
+            <Lay:LayHr Margin="0,10,0,0" Text="更多颜色选取" />
+            <Lay:LayProgressBar
+                Margin="0,20"
+                Foreground="#FF5722"
+                Value="20" />
+            <Lay:LayProgressBar
+                Margin="0,20"
+                Foreground="#FFB800"
+                Value="30" />
+            <Lay:LayProgressBar
+                Margin="0,20"
+                Foreground="#5FB878"
+                Value="40" />
+            <Lay:LayProgressBar
+                Margin="0,20"
+                Foreground="#1E9FFF"
+                Value="50" />
+            <Lay:LayProgressBar
+                Margin="0,20"
+                Foreground="#2F4056"
+                Value="56" />
 
-            <Lay:LayHr Text="大尺寸进度条" Margin="0,10,0,0"/>
-            <Lay:LayProgressBar Margin="0,20" Value="20" Height="18"/>
-            <Lay:LayProgressBar Margin="0,20" Value="50" Height="18" Foreground="#5FB878" />
-            <Lay:LayProgressBar Margin="0,20" Value="80" Height="18" Foreground="#2F4056" />
+            <Lay:LayHr Margin="0,10,0,0" Text="大尺寸进度条" />
+            <Lay:LayProgressBar
+                Height="18"
+                Margin="0,20"
+                IsIndeterminate="True"
+                Value="20" />
+            <Lay:LayProgressBar
+                Height="18"
+                Margin="0,20"
+                Background="AntiqueWhite"
+                CornerRadius="9"
+                Foreground="#5FB878"
+                Value="50" />
+            <Lay:LayProgressBar
+                Height="18"
+                Margin="0,20"
+                Foreground="#2F4056"
+                Value="80" />
 
-            <Lay:LayHr Text="动态改变进度条" Margin="0,10,0,0"/>
-            <Lay:LayProgressBar Margin="0,20" Value="{Binding ProVaule}" Height="18" Foreground="#FF5722"/>
+            <Lay:LayHr Margin="0,10,0,0" Text="动态改变进度条" />
+            <Lay:LayProgressBar
+                Height="18"
+                Margin="0,20"
+                Foreground="#FF5722"
+                Value="{Binding ProVaule}" />
             <StackPanel Orientation="Horizontal">
-                <Lay:LayButton HorizontalAlignment="Left" Type="Default" IsEnabled="{Binding IsEnabled}" Content="设置50%" Command="{Binding Set50Command}"/>
-                <Lay:LayButton HorizontalAlignment="Left" Type="Default" IsEnabled="{Binding IsEnabled}" Content="模拟Loading" Margin="10,0,0,0" Command="{Binding LoadingCommand}"/>
+                <Lay:LayButton
+                    HorizontalAlignment="Left"
+                    Command="{Binding Set50Command}"
+                    Content="设置50%"
+                    IsEnabled="{Binding IsEnabled}"
+                    Type="Default" />
+                <Lay:LayButton
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    Command="{Binding LoadingCommand}"
+                    Content="模拟Loading"
+                    IsEnabled="{Binding IsEnabled}"
+                    Type="Default" />
             </StackPanel>
-            
+
         </StackPanel>
     </ScrollViewer>
 </UserControl>

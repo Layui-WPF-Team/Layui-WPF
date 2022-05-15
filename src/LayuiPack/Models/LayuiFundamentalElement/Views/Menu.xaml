@@ -2,9 +2,10 @@
     x:Class="LayuiFundamentalElement.Views.Menu"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Menu>
-        <MenuItem Header="123" />
-    </Menu>
+    <Lay:LayMenu>
+        <Lay:LayMenuItem Header="123" />
+    </Lay:LayMenu>
 </UserControl>

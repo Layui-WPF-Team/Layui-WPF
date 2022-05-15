@@ -13,28 +13,28 @@
             Margin="2"
             TabStripPlacement="Top"
             Type="Card">
-            <TabItem Header="选项卡一">
+            <Lay:LayTabItem Header="选项卡一">
                 <Grid Margin="10">
                     <TextBlock Text="内容不一样是要有，因为你可以监听tab事件（阅读下文档就是了）" />
                 </Grid>
-            </TabItem>
-            <TabItem Header="选项卡二">
+            </Lay:LayTabItem>
+            <Lay:LayTabItem Header="选项卡二">
                 <Grid Margin="10">
                     <TextBlock Text="默认宽度是相对于父元素100%适应的，你也可以固定宽度。" />
                 </Grid>
-            </TabItem>
+            </Lay:LayTabItem>
         </Lay:LayTabControl>
         <Lay:LayTabControl Margin="2" TabStripPlacement="Top">
-            <TabItem Header="选项卡一">
+            <Lay:LayTabItem Header="选项卡一">
                 <Grid Margin="10">
                     <TextBlock Text="内容不一样是要有，因为你可以监听tab事件（阅读下文档就是了）" />
                 </Grid>
-            </TabItem>
-            <TabItem Header="选项卡二">
+            </Lay:LayTabItem>
+            <Lay:LayTabItem Header="选项卡二">
                 <Grid Margin="10">
                     <TextBlock Text="默认宽度是相对于父元素100%适应的，你也可以固定宽度。" />
                 </Grid>
-            </TabItem>
+            </Lay:LayTabItem>
         </Lay:LayTabControl>
         <Grid>
             <Grid.RowDefinitions>

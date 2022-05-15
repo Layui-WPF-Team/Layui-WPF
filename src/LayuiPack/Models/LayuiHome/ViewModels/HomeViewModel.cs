@@ -88,7 +88,7 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="表单", PageKey=SystemResource.Page_FormView
                             },new MenuItemModel()
                             {
-                                ItemTitle="基础菜单", PageKey=SystemResource.Page_ButtonView
+                                ItemTitle="基础菜单", PageKey=SystemResource.Page_MenuView
                             },new MenuItemModel()
                             {
                                 ItemTitle="选项卡", PageKey=SystemResource.Page_TabControl
@@ -140,7 +140,7 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="穿梭格", PageKey=SystemResource.Page_ButtonView
                             },new MenuItemModel()
                             {
-                                ItemTitle="树形组件", PageKey=SystemResource.Page_ButtonView
+                                ItemTitle="树形组件", PageKey=SystemResource.Page_TreeView
                             },new MenuItemModel()
                             {
                                 ItemTitle="滑块", PageKey=SystemResource.Page_Slider

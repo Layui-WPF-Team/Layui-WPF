@@ -159,6 +159,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\TreeViewItemStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Default\TreeViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\WindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -196,6 +204,8 @@
     <Compile Include="Control\Timeline\LayTimelineItem.cs" />
     <Compile Include="Control\Timeline\LayTimelinePanel.cs" />
     <Compile Include="Control\Transitions\LayTransition.cs" />
+    <Compile Include="Control\TreeViewItem\LayTreeViewItem.cs" />
+    <Compile Include="Control\TreeView\LayTreeView.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
     <Compile Include="Dialog\LayDialogToken.cs" />
     <Compile Include="Dialog\LayDialogParameter.cs" />

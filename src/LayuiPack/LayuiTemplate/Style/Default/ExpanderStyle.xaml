@@ -300,7 +300,7 @@
                                                             <BeginStoryboard>
                                                                 <Storyboard>
                                                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-90" />
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-180" />
                                                                     </DoubleAnimationUsingKeyFrames>
                                                                 </Storyboard>
                                                             </BeginStoryboard>
@@ -309,7 +309,7 @@
                                                             <BeginStoryboard>
                                                                 <Storyboard>
                                                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-180" />
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-90" />
                                                                     </DoubleAnimationUsingKeyFrames>
                                                                 </Storyboard>
                                                             </BeginStoryboard>

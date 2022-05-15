@@ -19,6 +19,7 @@ namespace LayuiFundamentalElement
         {
             containerRegistry.RegisterForNavigation<Views.Button>(SystemResource.Page_ButtonView);
             containerRegistry.RegisterForNavigation<Views.Form>(SystemResource.Page_FormView);
+            containerRegistry.RegisterForNavigation<Views.Menu>(SystemResource.Page_MenuView);
             containerRegistry.RegisterForNavigation<Views.ProgressBar>(SystemResource.Page_ProgressBar);
             containerRegistry.RegisterForNavigation<Views.TabControl>(SystemResource.Page_TabControl);
             containerRegistry.RegisterForNavigation<Views.TransitionControl>(SystemResource.Page_TransitionControlView);
@@ -26,6 +27,7 @@ namespace LayuiFundamentalElement
             containerRegistry.RegisterForNavigation<Views.Loading>(SystemResource.Page_LoadingView);
             containerRegistry.RegisterForNavigation<Views.Panel>(SystemResource.Page_PanelView);
             containerRegistry.RegisterForNavigation<Views.Timeline>(SystemResource.Page_TimelineView);
+            containerRegistry.RegisterForNavigation<Views.TreeView>(SystemResource.Page_TreeView);
         }
     }
 }
