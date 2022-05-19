@@ -152,6 +152,9 @@ namespace LayuiHome.ViewModels
                             },new MenuItemModel()
                             {
                                 ItemTitle="轮播图", PageKey=SystemResource.Page_ButtonView
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="提示信息", PageKey=SystemResource.Page_MessageView
                             }
                         }
                 },new MenuItemModel()

@@ -16,9 +16,9 @@ namespace LayuiTemplate.Control
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-05-19 下午 8:02:09</para>
     /// </summary>
-    public class LayMessageContent : ContentControl
+    internal class LayMessageContent : ContentControl
     {
-        public LayMessageContent()
+        internal LayMessageContent()
         {
             DoubleAnimation doubleAnimation = new DoubleAnimation();
             doubleAnimation.From = 0;

@@ -3,20 +3,45 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Lay:LayTreeView IsActiveCheckBox="true">
-        <Lay:LayTreeViewItem Header="123">
-            <Lay:LayTreeViewItem Header="123" />
-            <Lay:LayTreeViewItem Header="123">
-                <Lay:LayTreeViewItem Header="123" />
-            </Lay:LayTreeViewItem>
-            <Lay:LayTreeViewItem Header="123" />
-        </Lay:LayTreeViewItem>
-        <Lay:LayTreeViewItem Header="123">
-            <Lay:LayTreeViewItem Header="123" />
-            <Lay:LayTreeViewItem Header="123" />
-            <Lay:LayTreeViewItem Header="123" />
-        </Lay:LayTreeViewItem>
-    </Lay:LayTreeView>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <UniformGrid Rows="1">
+            <Lay:LayTreeView ItemsSource="{Binding ListApps}">
+                <Lay:LayTreeView.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource LayTreeViewItemStyle}" TargetType="Lay:LayTreeViewItem">
+                        <Setter Property="IsExpanded" Value="true" />
+                    </Style>
+                </Lay:LayTreeView.ItemContainerStyle>
+                <Lay:LayTreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Child}">
+                        <Lay:LayCheckBox
+                            Command="{Binding RelativeSource={RelativeSource AncestorType=local:TreeView}, Path=DataContext.CheckedCommand}"
+                            CommandParameter="{Binding}"
+                            Content="{Binding Title}"
+                            IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </HierarchicalDataTemplate>
+                </Lay:LayTreeView.ItemTemplate>
+            </Lay:LayTreeView>
+            <ListView ItemsSource="{Binding SelectItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Title}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </UniformGrid>
+        <UniformGrid
+            Grid.Row="1"
+            Height="50"
+            Rows="1">
+            <Lay:LayButton Command="{Binding CheckedItemCommand}" Content="设置选中项" />
+            <Lay:LayButton Command="{Binding GetCheckedItemsCommand}" Content="获得选中项" />
+        </UniformGrid>
+    </Grid>
 </UserControl>

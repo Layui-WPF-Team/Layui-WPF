@@ -1,0 +1,66 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.Message"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:Message="clr-namespace:LayuiTemplate.Message;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Lay:LayMessageHost Message:LayMessage.Tooken="Message" />
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="全局提示信息" />
+            <StackPanel Orientation="Horizontal">
+                <Lay:LayButton
+                    Margin="5"
+                    Command="{Binding GlobalMessageCommand}"
+                    CommandParameter="1"
+                    Content="成功"
+                    Type="Default" />
+                <Lay:LayButton
+                    Margin="5"
+                    Command="{Binding GlobalMessageCommand}"
+                    CommandParameter="2"
+                    Content="警告"
+                    Type="Warm" />
+                <Lay:LayButton
+                    Margin="5"
+                    Command="{Binding GlobalMessageCommand}"
+                    CommandParameter="3"
+                    Content="错误"
+                    Type="Danger" />
+            </StackPanel>
+            <TextBlock Text="内部提示信息" />
+            <StackPanel Orientation="Horizontal">
+                <Lay:LayButton
+                    Margin="5"
+                    Command="{Binding MessageCommand}"
+                    CommandParameter="1"
+                    Content="成功"
+                    Type="Default" />
+                <Lay:LayButton
+                    Margin="5"
+                    Command="{Binding MessageCommand}"
+                    CommandParameter="2"
+                    Content="警告"
+                    Type="Warm" />
+                <Lay:LayButton
+                    Margin="5"
+                    Command="{Binding MessageCommand}"
+                    CommandParameter="3"
+                    Content="错误"
+                    Type="Danger" />
+            </StackPanel>
+
+            <TextBlock Text="自定义弹出内容" />
+            <StackPanel Orientation="Horizontal">
+                <Lay:LayButton
+                    Margin="5"
+                    Command="{Binding ControlsMessageCommand}"
+                    CommandParameter="1"
+                    Content="点我"
+                    Type="Default" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

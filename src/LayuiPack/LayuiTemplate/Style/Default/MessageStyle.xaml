@@ -4,40 +4,52 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
     <Style x:Key="LayMessageContentStyle" TargetType="Lay:LayMessageContent">
         <Setter Property="MinHeight" Value="50" />
-        <Setter Property="MinWidth" Value="370" />
+        <Setter Property="MinWidth" Value="250" />
         <Setter Property="IsHitTestVisible" Value="false" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+        <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="Opacity" Value="0" />
         <Setter Property="Margin" Value="0,4" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayMessageContent">
-                    <Grid>
-                        <Border Background="{TemplateBinding Background}" CornerRadius="4">
-                            <Border.Effect>
-                                <DropShadowEffect Opacity="0.2" ShadowDepth="0" />
-                            </Border.Effect>
-                        </Border>
-                        <Grid Margin="4,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Border
-                                Width="20"
-                                Height="20"
-                                Margin="4,0">
-                                <Path x:Name="icon" Stretch="Fill" />
+                    <Lay:LayTransition
+                        Background="{x:Null}"
+                        Style="{DynamicResource LayTransitionStyle}"
+                        Type="SlideIn">
+                        <Grid>
+                            <Border Background="{TemplateBinding Background}" CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                <Border.Effect>
+                                    <DropShadowEffect Opacity="0.2" ShadowDepth="0" />
+                                </Border.Effect>
                             </Border>
-                            <ContentPresenter
-                                Grid.Column="1"
-                                Margin="4"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <Grid Margin="4,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Border
+                                    x:Name="bg"
+                                    Width="20"
+                                    Height="20"
+                                    Margin="4,0">
+                                    <Path x:Name="icon" Stretch="Fill" />
+                                </Border>
+                                <ContentPresenter
+                                    Grid.Column="1"
+                                    Margin="4"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
                         </Grid>
-                    </Grid>
+                    </Lay:LayTransition>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="Type" Value="Default">
+                            <Setter Property="Background" Value="White" />
+                            <Setter TargetName="bg" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                         <Trigger Property="Type" Value="Error">
                             <Setter Property="Background" Value="White" />
                             <Setter TargetName="icon" Property="Fill" Value="{DynamicResource Red}" />
@@ -57,18 +69,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Triggers>
-            <EventTrigger RoutedEvent="Loaded">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation
-                            Storyboard.TargetProperty="Opacity"
-                            To="1"
-                            Duration="0:0:0.4" />
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-        </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource LayMessageContentStyle}" TargetType="Lay:LayMessageContent" />
     <Style x:Key="LayMessageHostStyle" TargetType="Lay:LayMessageHost">

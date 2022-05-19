@@ -75,6 +75,10 @@ namespace Layui.Core.Resource
         /// 树形控件
         /// </summary>
         public const string Page_TreeView = "TreeView";
+        /// <summary>
+        /// 提示信息
+        /// </summary>
+        public const string Page_MessageView = "Message";
         #endregion
 
         #region 弹窗名称

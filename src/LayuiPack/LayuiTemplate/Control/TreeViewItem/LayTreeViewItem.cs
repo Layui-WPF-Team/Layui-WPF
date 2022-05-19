@@ -10,20 +10,22 @@ namespace LayuiTemplate.Control
 {
     public class LayTreeViewItem: TreeViewItem
     {
-
         /// <summary>
-        /// 是否选中
+        /// 重写自定义指定项子控件
         /// </summary>
-        public bool IsChecked
+        /// <param name="item"></param>
+        /// <returns></returns>
+        protected override bool IsItemItsOwnContainerOverride(object item)
         {
-            get { return (bool)GetValue(IsCheckedProperty); }
-            set { SetValue(IsCheckedProperty, value); }
+            return item is LayTreeViewItem;
         }
-
-        // Using a DependencyProperty as the backing store for IsChecked.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsCheckedProperty =
-            DependencyProperty.Register("IsChecked", typeof(bool), typeof(LayTreeViewItem), new PropertyMetadata(false));
-
-
+        /// <summary>
+        /// 抓取指定项控件并返回定制项控件
+        /// </summary>
+        /// <returns></returns>
+        protected override DependencyObject GetContainerForItemOverride()
+        {
+            return new LayTreeViewItem();
+        }
     }
 }

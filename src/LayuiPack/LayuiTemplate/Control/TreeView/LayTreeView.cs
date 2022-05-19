@@ -11,19 +11,6 @@ namespace LayuiTemplate.Control
     public class LayTreeView : TreeView
     {
         /// <summary>
-        /// 是否激活复选框
-        /// </summary>
-        public bool IsActiveCheckBox
-        {
-            get { return (bool)GetValue(IsActiveCheckBoxProperty); }
-            set { SetValue(IsActiveCheckBoxProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for IsActiveCheckBox.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsActiveCheckBoxProperty =
-            DependencyProperty.Register("IsActiveCheckBox", typeof(bool), typeof(LayTreeView));
-
-        /// <summary>
         /// 重写自定义指定项子控件
         /// </summary>
         /// <param name="item"></param>

@@ -56,26 +56,33 @@ namespace LayuiTemplate.Message
             }
         }
         /// <summary>
+        /// 默认提示信息（无图标效果）
+        /// </summary>
+        /// <param name="message">提示信息</param>
+        /// <param name="tooken">自定义指定提示窗口</param>
+        /// <param name="time">停留时间</param>
+        public static void Default(object message, string tooken = null, double time = 3) => Show(message, MessageType.Default, tooken, time);
+        /// <summary>
         /// 成功信息提示
         /// </summary>
         /// <param name="message">提示信息</param>
         /// <param name="tooken">自定义指定提示窗口</param>
         /// <param name="time">停留时间</param>
-        public static void Success(string message, string tooken=null, double time = 3) => Show(message, MessageType.Success, tooken, time);
+        public static void Success(object message, string tooken=null, double time = 3) => Show(message, MessageType.Success, tooken, time);
         /// <summary>
         /// 警告信息提示
         /// </summary>
         /// <param name="message">提示信息</param>
         /// <param name="tooken">自定义指定提示窗口</param>
         /// <param name="time">停留时间</param>
-        public static void Warning(string message, string tooken = null, double time = 3) => Show(message, MessageType.Warning, tooken, time);
+        public static void Warning(object message, string tooken = null, double time = 3) => Show(message, MessageType.Warning, tooken, time);
         /// <summary>
         /// 错误信息提示
         /// </summary>
         /// <param name="message">提示信息</param>
         /// <param name="tooken">自定义指定提示窗口</param>
         /// <param name="time">停留时间</param>
-        public static void Error(string message, string tooken = null, double time = 3) => Show(message, MessageType.Error, tooken, time);
+        public static void Error(object message, string tooken = null, double time = 3) => Show(message, MessageType.Error, tooken, time);
         /// <summary>
         /// 显示提示信息
         /// </summary>
@@ -83,7 +90,7 @@ namespace LayuiTemplate.Message
         /// <param name="type">提示类型</param>
         /// <param name="tooken">自定义指定提示窗口</param>
         /// <param name="time">停留时间</param>
-        private static void Show(string message, MessageType type, string tooken, double time)
+        private static void Show(object message, MessageType type, string tooken, double time)
         {
             if (tooken == null) {
                 if (!MessageHosts.ContainsKey(LayMessageToken.RootMessageTooken)) return;

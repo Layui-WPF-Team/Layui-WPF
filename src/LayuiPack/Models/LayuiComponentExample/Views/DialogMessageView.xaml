@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="LayuiComponentExample.DialogMessageView"
+    x:Class="LayuiComponentExample.Views.DialogMessageView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"

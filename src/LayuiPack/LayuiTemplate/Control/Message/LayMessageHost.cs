@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LayuiTemplate.Message;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,21 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LayMessageHost : System.Windows.Controls.ItemsControl
     {
+        public LayMessageHost()
+        {
+            Unloaded -= LayMessageHost_Unloaded;
+            Unloaded += LayMessageHost_Unloaded;
+        }
+        /// <summary>
+        /// 控件销毁移除字典中的缓存控件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LayMessageHost_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var tooken = LayMessage.GetTooken(this);
+            if (LayMessage.MessageHosts.ContainsKey(tooken)) LayMessage.MessageHosts.Remove(tooken);
+        }
+
     }
 }
