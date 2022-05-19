@@ -27,5 +27,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TimelineItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TreeViewStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TreeViewItemStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/MessageStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

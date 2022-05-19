@@ -1,4 +1,4 @@
-﻿using LayuiTemplate.Enum.Dialog;
+﻿using LayuiTemplate.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;

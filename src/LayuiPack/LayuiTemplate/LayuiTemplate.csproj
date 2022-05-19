@@ -111,6 +111,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\MessageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\PanelStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +196,7 @@
     <Compile Include="Control\MenuItem\LayMenuItem.cs" />
     <Compile Include="Control\Menu\LayMenu.cs" />
     <Compile Include="Control\Loading\LayLoading.cs" />
+    <Compile Include="Control\Message\LayMessageHost.cs" />
     <Compile Include="Control\Panel\LayCard.cs" />
     <Compile Include="Control\Password\LayPasswordBox.cs" />
     <Compile Include="Control\ProgressBar\LayProgressBar.cs" />
@@ -207,6 +212,7 @@
     <Compile Include="Control\TreeViewItem\LayTreeViewItem.cs" />
     <Compile Include="Control\TreeView\LayTreeView.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
+    <Compile Include="Message\LayMessageToken.cs" />
     <Compile Include="Dialog\LayDialogToken.cs" />
     <Compile Include="Dialog\LayDialogParameter.cs" />
     <Compile Include="Dialog\LayDialogResult.cs" />
@@ -224,10 +230,13 @@
     <Compile Include="Enum\CheckBox\CheckBoxStyle.cs" />
     <Compile Include="Enum\Dialog\ButtonResult.cs" />
     <Compile Include="Enum\Loading\LoadingStyle.cs" />
+    <Compile Include="Enum\Message\MessageType.cs" />
     <Compile Include="Enum\Slider\SliderTipsPosition.cs" />
     <Compile Include="Enum\TabControl\TabControlStyle.cs" />
     <Compile Include="Enum\Transitions\AnimationType.cs" />
     <Compile Include="Control\Expander\LayNavExpander.cs" />
+    <Compile Include="Message\LayMessage.cs" />
+    <Compile Include="Control\Message\LayMessageContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

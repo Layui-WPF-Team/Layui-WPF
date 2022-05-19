@@ -58,7 +58,7 @@ namespace LayuiTemplate.Dialog
                 LayDialogHost host = d as LayDialogHost;
                 if (host == null) return;
                 var tooken = LayDialog.GetTooken(host);
-                if (LayDialog.DialogHosts.ContainsKey(tooken)) throw new Exception($"{tooken}已存在");
+                if (LayDialog.DialogHosts.ContainsKey(tooken)) LayDialog.DialogHosts.Remove(tooken);
                 LayDialog.DialogHosts.Add(tooken, host);
             }
             catch (Exception ex)
@@ -169,7 +169,7 @@ namespace LayuiTemplate.Dialog
                     dialog.Unloaded -= UnloadedHandler;
                     dialog.GetDialogViewModel().RequestClose -= requestCloseHandler;
                     //抓取回调后的数据并回传
-                    if (dialog.Result == null) dialog.Result = new LayDialogResult() { Result = Enum.Dialog.ButtonResult.Default };
+                    if (dialog.Result == null) dialog.Result = new LayDialogResult() { Result = Enum.ButtonResult.Default };
                     callback?.Invoke(dialog.Result);
                     //判断是否为模态弹窗
                     if (isModel)

@@ -32,13 +32,13 @@ namespace LayuiComponentExample.ViewModels
                 {
                     switch (rest.Result)
                     {
-                        case LayuiTemplate.Enum.Dialog.ButtonResult.Yes:
+                        case LayuiTemplate.Enum.ButtonResult.Yes:
                             MessageBox.Show("我也是这么认为的");
                             break;
-                        case LayuiTemplate.Enum.Dialog.ButtonResult.No:
+                        case LayuiTemplate.Enum.ButtonResult.No:
                             MessageBox.Show("你确定你是认真的吗?");
                             break;
-                        case LayuiTemplate.Enum.Dialog.ButtonResult.Default:
+                        case LayuiTemplate.Enum.ButtonResult.Default:
                             break;
                         default:
                             break;
@@ -54,13 +54,13 @@ namespace LayuiComponentExample.ViewModels
                 {
                     switch (rest.Result)
                     {
-                        case LayuiTemplate.Enum.Dialog.ButtonResult.Yes:
+                        case LayuiTemplate.Enum.ButtonResult.Yes:
                             MessageBox.Show("我也是这么认为的");
                             break;
-                        case LayuiTemplate.Enum.Dialog.ButtonResult.No:
+                        case LayuiTemplate.Enum.ButtonResult.No:
                             MessageBox.Show("你确定你是认真的吗?");
                             break;
-                        case LayuiTemplate.Enum.Dialog.ButtonResult.Default:
+                        case LayuiTemplate.Enum.ButtonResult.Default:
                             break;
                         default:
                             break;
@@ -80,11 +80,11 @@ namespace LayuiComponentExample.ViewModels
             LayDialog.Dialog.Show(SystemResource.DialogMessageView, dialogParameter, rest => {
                 switch (rest.Result)
                 {
-                    case LayuiTemplate.Enum.Dialog.ButtonResult.Yes:
+                    case LayuiTemplate.Enum.ButtonResult.Yes:
                         break;
-                    case LayuiTemplate.Enum.Dialog.ButtonResult.No:
+                    case LayuiTemplate.Enum.ButtonResult.No:
                         break;
-                    case LayuiTemplate.Enum.Dialog.ButtonResult.Default:
+                    case LayuiTemplate.Enum.ButtonResult.Default:
                         break;
                     default:
                         break;

@@ -1,6 +1,6 @@
 ﻿using LayuiTemplate.Dialog;
 using LayuiTemplate.Dialog.Interface;
-using LayuiTemplate.Enum.Dialog;
+using LayuiTemplate.Enum;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
