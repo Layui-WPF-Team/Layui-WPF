@@ -2,6 +2,7 @@
 using LayuiComponentExample;
 using LayuiFundamentalElement;
 using LayuiHome;
+using LayuiTemplate.Dialog;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
@@ -20,7 +21,7 @@ namespace LayuiApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            LayDialog.RegisterDialogWindow<DialogWindowBase>("window");
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {

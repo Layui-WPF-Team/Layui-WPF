@@ -8,9 +8,9 @@ namespace LayuiTemplate.Dialog.Interface
 {
     internal static class ILayDialogWindowExtensions
     {
-        internal static ILayDialogAware GetDialogViewModel(this ILayDialogWindow dialog)
+        internal static ILayDialogWindowAware GetDialogViewModel(this ILayDialogWindow dialog)
         {
-            return (ILayDialogAware)dialog.DataContext;
+            return (ILayDialogWindowAware)dialog.DataContext;
         }
     }
 }

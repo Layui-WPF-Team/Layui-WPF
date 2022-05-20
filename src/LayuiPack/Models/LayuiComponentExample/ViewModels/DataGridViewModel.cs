@@ -70,7 +70,7 @@ namespace LayuiComponentExample.ViewModels
         {
             LayDialogParameter dialogParameter = new LayDialogParameter();
             dialogParameter.Add("Message", JsonConvert.SerializeObject(data));
-            LayDialog.Dialog.Show("DialogAlert", dialogParameter, null);
+            LayDialog.Dialog.Show("DialogAlert", dialogParameter);
         }
     }
 }

@@ -11,5 +11,6 @@ namespace LayuiTemplate.Enum
         Yes,
         No,
         Default,
+        None
     }
 }

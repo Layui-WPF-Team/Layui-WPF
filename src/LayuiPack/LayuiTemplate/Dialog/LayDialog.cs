@@ -2,6 +2,7 @@
 using LayuiTemplate.Dialog.Interface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,7 +17,6 @@ namespace LayuiTemplate.Dialog
     /// </summary>
     public class LayDialog : ILayDialog
     {
-        private static DispatcherFrame dispatcherFrame = null;
         /// <summary>
         /// 初始化LayDialog
         /// </summary>
@@ -24,7 +24,14 @@ namespace LayuiTemplate.Dialog
         /// <summary>
         /// 被注入的窗体集合
         /// </summary>
-        public static Dictionary<string, Type> DialogViewCollection { get; set; } = DialogViewCollection ?? new Dictionary<string, Type>();
+        internal static Dictionary<string, Type> DialogViewCollection { get; set; } = DialogViewCollection ?? new Dictionary<string, Type>();
+        /// <summary>
+        /// 对话框载体
+        /// </summary>
+        internal static Dictionary<string, Type> DialogWindow { get; set; } = DialogWindow ?? new Dictionary<string, Type>();
+        /// <summary>
+        /// 对话框组件
+        /// </summary>
         internal static Dictionary<string, LayDialogHost> DialogHosts { get; set; } = DialogHosts ?? new Dictionary<string, LayDialogHost>();
         public LayDialog()
         {
@@ -67,7 +74,50 @@ namespace LayuiTemplate.Dialog
                 throw ex;
             }
         }
+        /// Identifies the WindowStyle attached property.
+        /// </summary>
+        /// <remarks>
+        /// This attached property is used to specify the style of a <see cref="IDialogWindow"/>.
+        /// </remarks>
+        public static readonly DependencyProperty WindowStyleProperty =
+            DependencyProperty.RegisterAttached("WindowStyle", typeof(Style), typeof(LayDialog), new PropertyMetadata(null));
 
+        /// <summary>
+        /// Gets the value for the <see cref="WindowStyleProperty"/> attached property.
+        /// </summary>
+        /// <param name="obj">The target element.</param>
+        /// <returns>The <see cref="WindowStyleProperty"/> attached to the <paramref name="obj"/> element.</returns>
+        public static Style GetWindowStyle(DependencyObject obj)
+        {
+            return (Style)obj.GetValue(WindowStyleProperty);
+        }
+
+        /// <summary>
+        /// Sets the <see cref="WindowStyleProperty"/> attached property.
+        /// </summary>
+        /// <param name="obj">The target element.</param>
+        /// <param name="value">The Style to attach.</param>
+        public static void SetWindowStyle(DependencyObject obj, Style value)
+        {
+            obj.SetValue(WindowStyleProperty, value);
+        }
+        /// <summary>
+        /// 注入对话框窗体载体
+        /// </summary>
+        /// <typeparam name="TView">需要注入的类型</typeparam>
+        /// <param name="dialogName">视图名称</param>
+        public static void RegisterDialogWindow<TWindow>(string windowName) where TWindow : ILayDialogWindow
+        {
+            try
+            {
+                if (DialogWindow.ContainsKey(windowName)) throw new Exception($"{windowName}对话框窗体载体多次注入");
+                DialogWindow.Add(windowName, typeof(TWindow));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         /// <summary>
         /// 注入弹窗试图
         /// </summary>
@@ -77,7 +127,7 @@ namespace LayuiTemplate.Dialog
         {
             try
             {
-                if(DialogViewCollection.ContainsKey(dialogName)) throw new Exception($"{dialogName}弹窗视图多次注入");
+                if (DialogViewCollection.ContainsKey(dialogName)) throw new Exception($"{dialogName}弹窗视图多次注入");
                 DialogViewCollection.Add(dialogName, typeof(TView));
             }
             catch (Exception ex)
@@ -90,28 +140,34 @@ namespace LayuiTemplate.Dialog
         /// </summary>
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
-        /// <param name="tooken">需要通知弹窗的唯一健值</param>
-        public void Show(string dialogName, ILayDialogParameter parameters, string tooken = null) => Alert(dialogName, parameters, null, false, tooken);
+        /// <param name="tooken">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
+        /// <param name="windowName">指定需要打开的窗体样式</param>
+        public void Show(string dialogName, ILayDialogParameter parameters, string tooken = null, string windowName = null) => Alert(dialogName, parameters, null, false, tooken, windowName);
         /// <summary>
         /// 普通弹窗
         /// </summary>
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
         /// <param name="callback">回调</param>
-        public void Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string tooken = null) => Alert(dialogName, parameters, callback, false, tooken);
+        /// <param name="tooken">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
+        /// <param name="windowName">指定需要打开的窗体样式</param>
+        public void Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string tooken = null, string windowName = null) => Alert(dialogName, parameters, callback, false, tooken, windowName);
         /// <summary>
         /// 模态对话框
         /// </summary>
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
-        public void ShowDialog(string dialogName, ILayDialogParameter parameters, string tooken = null) => Alert(dialogName, parameters, null, true, tooken);
+        /// <param name="windowName">指定需要打开的窗体样式</param>
+        public void ShowDialog(string dialogName, ILayDialogParameter parameters, string tooken = null, string windowName = null) => Alert(dialogName, parameters, null, true, tooken, windowName);
         /// <summary>
         /// 模态对话框
         /// </summary>
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
         /// <param name="callback">回调</param>
-        public void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string tooken = null) => Alert(dialogName, parameters, callback, true, tooken);
+        /// <param name="tooken">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
+        /// <param name="windowName">指定需要打开的窗体样式</param>
+        public void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string tooken = null, string windowName = null) => Alert(dialogName, parameters, callback, true, tooken, windowName);
         /// <summary>
         /// 弹窗业务
         /// </summary>
@@ -119,8 +175,95 @@ namespace LayuiTemplate.Dialog
         /// <param name="parameters">参数</param>
         /// <param name="callback">回调</param>
         /// <param name="isModel">是否为模态</param>
-        private void Alert(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string tooken)
+        /// <param name="tooken">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
+        /// <param name="windowName">指定需要打开的窗体样式</param>
+        private void Alert(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string tooken, string windowName)
         {
+            if (windowName != null) AlertWindow(dialogName, parameters, callback, isModel, tooken, windowName);
+            else AlertUserControl(dialogName, parameters, callback, isModel, tooken);
+        }
+        /// <summary>
+        /// 弹起Window窗体
+        /// </summary>
+        /// <param name="dialogName"></param>
+        /// <param name="parameters"></param>
+        /// <param name="callback"></param>
+        /// <param name="isModel"></param>
+        /// <param name="tooken"></param>
+        /// <param name="windowName"></param>
+        private void AlertWindow(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string tooken, string windowName)
+        {
+            try
+            {
+                ILayDialogWindow window = Activator.CreateInstance(DialogWindow[windowName]) as ILayDialogWindow;
+                Action<ILayDialogResult> requestCloseHandler = null;
+                requestCloseHandler = (o) =>
+                {
+                    window.Result = o;
+                    window.Close();
+                };
+                RoutedEventHandler loadedHandler = null;
+                loadedHandler = (o, e) =>
+                {
+                    window.Loaded -= loadedHandler;
+                    window.GetDialogViewModel().RequestClose += requestCloseHandler;
+                };
+                window.Loaded += loadedHandler;
+                CancelEventHandler closingHandler = null;
+                closingHandler = (o, e) =>
+                {
+                    if (!window.GetDialogViewModel().CanCloseDialog()) e.Cancel = true;
+                };
+                window.Closing += closingHandler;
+                EventHandler closedHandler = null;
+                closedHandler = (o, e) =>
+                {
+                    window.Closed -= closedHandler;
+                    window.Closing -= closingHandler;
+                    window.GetDialogViewModel().RequestClose -= requestCloseHandler;
+                    window.GetDialogViewModel().OnDialogClosed();
+                    if (window.Result == null) window.Result = new LayDialogResult();
+                    callback?.Invoke(window.Result);
+                    window.DataContext = null;
+                    window.Content = null;
+                };
+                window.Closed += closedHandler;
+                var content = Activator.CreateInstance(DialogViewCollection[dialogName]);
+                if (!(content is FrameworkElement dialogContent))
+                    throw new NullReferenceException("对话框的内容必须是FrameworkElement");
+                //抓取当前需要传递的参数并且传递给对应视图的ViewModel
+                if (!(dialogContent.DataContext is ILayDialogWindowAware viewModel))
+                    throw new NullReferenceException("对话框的 ViewModel 必须实现 ILayDialogWindowAware 接口 ");
+                ///////设置窗体样式//////
+                var windowStyle = GetWindowStyle(dialogContent);
+                if (windowStyle != null) window.Style = windowStyle;
+                ///////填充内容//////
+                window.Content = dialogContent;
+                /////////填充数据上下文/////////
+                window.DataContext = dialogContent.DataContext;
+                if (window.Owner == null)  window.Owner = Application.Current?.Windows.OfType<Window>().FirstOrDefault(x => x.IsActive);
+                //给对应的ViewModel传值
+                ViewAndViewModelAction<ILayDialogWindowAware>(viewModel, d => d.OnDialogOpened(parameters));
+                if (isModel) window.ShowDialog();
+                else window.Show();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// 弹起用户控件窗体
+        /// </summary>
+        /// <param name="dialogName"></param>
+        /// <param name="parameters"></param>
+        /// <param name="callback"></param>
+        /// <param name="isModel"></param>
+        /// <param name="tooken"></param>
+        private void AlertUserControl(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string tooken)
+        {
+            DispatcherFrame dispatcherFrame = null;
             try
             {
                 var view = Activator.CreateInstance(DialogViewCollection[dialogName]) as UserControl;
@@ -130,7 +273,7 @@ namespace LayuiTemplate.Dialog
                 else host = DialogHosts[tooken];
                 if (host == null) throw new Exception($"未找到弹窗组件");
                 if (host.IsOpen) throw new Exception($"{view.GetType().Name}已开启，请先关闭当前窗体");
-                LayDialogWindow DialogView = new LayDialogWindow()
+                LayDialogUserControlWindow DialogView = new LayDialogUserControlWindow()
                 {
                     Content = view,
                     DataContext = view.DataContext
@@ -138,7 +281,7 @@ namespace LayuiTemplate.Dialog
                 host.Content = DialogView;
                 if (DialogView == null) return;
                 host.IsOpen = true;
-                ILayDialogWindow dialog = DialogView as ILayDialogWindow;
+                ILayDialogUserControlWindow dialog = DialogView as ILayDialogUserControlWindow;
                 Action<ILayDialogResult> requestCloseHandler = null;
                 //窗体关闭的回调方法
                 requestCloseHandler = (o) =>

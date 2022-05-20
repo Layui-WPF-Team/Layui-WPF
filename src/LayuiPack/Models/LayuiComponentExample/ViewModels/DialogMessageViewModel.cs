@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LayuiComponentExample.ViewModels
 {
-    public class DialogMessageViewModel : BindableBase, ILayDialogAware
+    public class DialogMessageViewModel : BindableBase, ILayDialogWindowAware
     {
         public event Action<ILayDialogResult> RequestClose;
         private string _Title;
@@ -41,6 +41,16 @@ namespace LayuiComponentExample.ViewModels
             LayDialogResult dialogResult = new LayDialogResult();
             dialogResult.Result = ButtonResult.Yes;
             RequestClose?.Invoke(dialogResult);
+        }
+
+        public bool CanCloseDialog()
+        {
+            return true;
+        }
+
+        public void OnDialogClosed()
+        {
+            
         }
     }
 }

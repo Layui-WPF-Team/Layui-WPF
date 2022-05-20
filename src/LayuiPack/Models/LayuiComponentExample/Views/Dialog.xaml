@@ -18,27 +18,46 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Lay:LayDialogHost Dialog:LayDialog.Tooken="Dialog" />
-        <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Orientation="Horizontal">
-            <Lay:LayButton
-                Margin="10"
-                Command="{Binding DialogShowCommand}"
-                CommandParameter="false"
-                Content="弹窗测试"
-                Type="Normal" />
-            <Lay:LayButton
-                Margin="10"
-                Command="{Binding DialogShowCommand}"
-                CommandParameter="true"
-                Content="模态弹窗测试"
-                Type="Normal" />
-            <Lay:LayButton
-                Margin="10"
-                Command="{Binding LocalDialogShowCommand}"
-                Content="本页窗体"
-                Type="Normal" />
+        <StackPanel VerticalAlignment="Center">
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <Lay:LayButton
+                    Margin="10"
+                    Command="{Binding DialogShowCommand}"
+                    CommandParameter="false"
+                    Content="弹窗测试"
+                    Type="Normal" />
+                <Lay:LayButton
+                    Margin="10"
+                    Command="{Binding DialogShowCommand}"
+                    CommandParameter="true"
+                    Content="模态弹窗测试"
+                    Type="Normal" />
+                <Lay:LayButton
+                    Margin="10"
+                    Command="{Binding LocalDialogShowCommand}"
+                    Content="本页窗体"
+                    Type="Normal" />
+            </StackPanel>
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <Lay:LayButton
+                    Margin="10"
+                    Command="{Binding DialogShowWindowCommand}"
+                    CommandParameter="false"
+                    Content="弹窗测试"
+                    Type="Normal" />
+                <Lay:LayButton
+                    Margin="10"
+                    Command="{Binding DialogShowWindowCommand}"
+                    CommandParameter="true"
+                    Content="模态弹窗测试"
+                    Type="Normal" />
+            </StackPanel>
         </StackPanel>
         <Lay:LayButton
             Grid.Row="1"

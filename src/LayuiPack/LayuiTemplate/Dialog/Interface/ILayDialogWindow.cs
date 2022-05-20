@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,24 +11,62 @@ namespace LayuiTemplate.Dialog.Interface
     public interface ILayDialogWindow
     {
         /// <summary>
-        /// 内容
+        /// Dialog content.
         /// </summary>
         object Content { get; set; }
+
         /// <summary>
-        /// 返回结果
+        /// Close the window.
         /// </summary>
-        ILayDialogResult Result { get;  set; }
+        void Close();
+
         /// <summary>
-        /// 初始化
+        /// The window's owner.
+        /// </summary>
+        Window Owner { get; set; }
+
+        /// <summary>
+        /// Show a non-modal dialog.
+        /// </summary>
+        void Show();
+
+        /// <summary>
+        /// Show a modal dialog.
+        /// </summary>
+        /// <returns></returns>
+        bool? ShowDialog();
+
+        /// <summary>
+        /// The data context of the window.
+        /// </summary>
+        /// <remarks>
+        /// The data context must implement <see cref="IDialogAware"/>.
+        /// </remarks>
+        object DataContext { get; set; }
+
+        /// <summary>
+        /// Called when the window is loaded.
         /// </summary>
         event RoutedEventHandler Loaded;
+
         /// <summary>
-        /// 结束
+        /// Called when the window is closed.
         /// </summary>
-        event RoutedEventHandler Unloaded;
+        event EventHandler Closed;
+
         /// <summary>
-        /// 数据上下文
+        /// Called when the window is closing.
         /// </summary>
-        object DataContext { get; set; }
+        event CancelEventHandler Closing;
+
+        /// <summary>
+        /// The result of the dialog.
+        /// </summary>
+        ILayDialogResult Result { get; set; }
+
+        /// <summary>
+        /// The window style.
+        /// </summary>
+        Style Style { get; set; }
     }
 }

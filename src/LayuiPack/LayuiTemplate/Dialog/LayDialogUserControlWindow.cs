@@ -13,7 +13,7 @@ namespace LayuiTemplate.Dialog
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-04-12 下午 1:50:20</para>
     /// </summary>
-    internal class LayDialogWindow:ContentControl,ILayDialogWindow
+    internal class LayDialogUserControlWindow : ContentControl, ILayDialogUserControlWindow
     {
         public ILayDialogResult Result { get; set; }
     }

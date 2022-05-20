@@ -10,7 +10,7 @@ namespace LayuiTemplate.Dialog
 {
     public class LayDialogResult : ILayDialogResult
     {
-        public ButtonResult Result { get; set; }
+        public ButtonResult Result { get; set; } = ButtonResult.None;
 
         public LayDialogParameter Parameters { get; set; }
     }

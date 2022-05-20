@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LayuiTemplate.Dialog.Interface
 {
-    public interface ILayDialogAware
+    public interface ILayDialogWindowAware:ILayDialogAware
     {
-        event Action<ILayDialogResult> RequestClose;
-        void OnDialogOpened(ILayDialogParameter parameters);
+        bool CanCloseDialog();
+        void OnDialogClosed();
     }
 }

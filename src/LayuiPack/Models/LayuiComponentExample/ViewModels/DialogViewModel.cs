@@ -100,5 +100,57 @@ namespace LayuiComponentExample.ViewModels
         {
             LayDialog.Dialog.Close("Dialog");
         }
+        private DelegateCommand<string> _DialogShowWindowCommand;
+        public DelegateCommand<string> DialogShowWindowCommand =>
+            _DialogShowWindowCommand ?? (_DialogShowWindowCommand = new DelegateCommand<string>(ExecuteDialogShowWindowCommand));
+
+        void ExecuteDialogShowWindowCommand(string IsModel)
+        {
+            LayDialogParameter dialogParameter;
+            if (IsModel == "true")
+            {
+                dialogParameter = new LayDialogParameter();
+                dialogParameter.Add("IsModel", "这是模态弹窗");
+                LayDialog.Dialog.ShowDialog(SystemResource.DialogMessageView, dialogParameter, rest =>
+                {
+                    switch (rest.Result)
+                    {
+                        case LayuiTemplate.Enum.ButtonResult.Yes:
+                            MessageBox.Show("我也是这么认为的");
+                            break;
+                        case LayuiTemplate.Enum.ButtonResult.No:
+                            MessageBox.Show("你确定你是认真的吗?");
+                            break;
+                        case LayuiTemplate.Enum.ButtonResult.Default:
+                            break;
+                        default:
+                            break;
+                    }
+                }, null, "window");
+                MessageBox.Show("业务逻辑被阻塞");
+            }
+            else
+            {
+                dialogParameter = new LayDialogParameter();
+                dialogParameter.Add("IsModel", "这是非模态弹窗");
+                LayDialog.Dialog.Show(SystemResource.DialogMessageView, dialogParameter, rest =>
+                {
+                    switch (rest.Result)
+                    {
+                        case LayuiTemplate.Enum.ButtonResult.Yes:
+                            MessageBox.Show("我也是这么认为的");
+                            break;
+                        case LayuiTemplate.Enum.ButtonResult.No:
+                            MessageBox.Show("你确定你是认真的吗?");
+                            break;
+                        case LayuiTemplate.Enum.ButtonResult.Default:
+                            break;
+                        default:
+                            break;
+                    }
+                },null,"window");
+                MessageBox.Show("业务逻辑未被阻塞");
+            }
+        }
     }
 }
