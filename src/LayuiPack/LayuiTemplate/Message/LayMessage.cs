@@ -46,8 +46,8 @@ namespace LayuiTemplate.Message
                 LayMessageHost host = d as LayMessageHost;
                 if (host == null) return;
                 var tooken = LayMessage.GetTooken(host);
-                if (LayMessage.MessageHosts.ContainsKey(tooken)) LayMessage.MessageHosts.Remove(tooken);
-                LayMessage.MessageHosts.Add(tooken, host);
+                if (!LayMessage.MessageHosts.ContainsKey(tooken)) LayMessage.MessageHosts.Add(tooken, host);
+
             }
             catch (Exception ex)
             {
@@ -93,8 +93,8 @@ namespace LayuiTemplate.Message
         private static void Show(object message, MessageType type, string tooken, double time)
         {
             if (tooken == null) {
-                if (!MessageHosts.ContainsKey(LayMessageToken.RootMessageTooken)) return;
-                var view = MessageHosts.Where(o => o.Key.Equals(LayMessageToken.RootMessageTooken)).FirstOrDefault().Value;
+                if (!MessageHosts.ContainsKey("RootMessageTooken")) return;
+                var view = MessageHosts.Where(o => o.Key.Equals("RootMessageTooken")).FirstOrDefault().Value;
                 view.Items.Add(new LayMessageContent() { Type = type, Content = message, Time = time, Uid = Guid.NewGuid().ToString() });
             }
             else

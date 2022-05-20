@@ -216,8 +216,6 @@
     <Compile Include="Dialog\Interface\ILayDialogUserControlWindow.cs" />
     <Compile Include="Dialog\Interface\ILayDialogUserControlWindowExtensions.cs" />
     <Compile Include="Dialog\LayDialogUserControlWindow.cs" />
-    <Compile Include="Message\LayMessageToken.cs" />
-    <Compile Include="Dialog\LayDialogToken.cs" />
     <Compile Include="Dialog\LayDialogParameter.cs" />
     <Compile Include="Dialog\LayDialogResult.cs" />
     <Compile Include="Dialog\Interface\ILayDialogAware.cs" />
