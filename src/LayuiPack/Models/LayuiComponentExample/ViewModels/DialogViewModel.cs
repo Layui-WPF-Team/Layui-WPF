@@ -111,7 +111,7 @@ namespace LayuiComponentExample.ViewModels
             {
                 dialogParameter = new LayDialogParameter();
                 dialogParameter.Add("IsModel", "这是模态弹窗");
-                LayDialog.Dialog.ShowDialog(SystemResource.DialogMessageView, dialogParameter, rest =>
+                LayDialog.Dialog.ShowDialogWindow(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                     switch (rest.Result)
                     {
@@ -126,14 +126,14 @@ namespace LayuiComponentExample.ViewModels
                         default:
                             break;
                     }
-                }, null, "window");
+                },"window");
                 MessageBox.Show("业务逻辑被阻塞");
             }
             else
             {
                 dialogParameter = new LayDialogParameter();
                 dialogParameter.Add("IsModel", "这是非模态弹窗");
-                LayDialog.Dialog.Show(SystemResource.DialogMessageView, dialogParameter, rest =>
+                LayDialog.Dialog.ShowWindow(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                     switch (rest.Result)
                     {
@@ -148,7 +148,7 @@ namespace LayuiComponentExample.ViewModels
                         default:
                             break;
                     }
-                },null,"window");
+                },"window");
                 MessageBox.Show("业务逻辑未被阻塞");
             }
         }

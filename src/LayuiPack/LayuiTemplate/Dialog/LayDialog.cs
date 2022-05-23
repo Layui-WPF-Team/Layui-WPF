@@ -65,8 +65,8 @@ namespace LayuiTemplate.Dialog
                 LayDialogHost host = d as LayDialogHost;
                 if (host == null) return;
                 var tooken = LayDialog.GetTooken(host);
-                if (LayDialog.DialogHosts.ContainsKey(tooken)) LayDialog.DialogHosts.Remove(tooken);
-                LayDialog.DialogHosts.Add(tooken, host);
+                if (!LayDialog.DialogHosts.ContainsKey(tooken)) LayDialog.DialogHosts.Add(tooken, host); ;
+                
             }
             catch (Exception ex)
             {
@@ -140,25 +140,46 @@ namespace LayuiTemplate.Dialog
         /// </summary>
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
-        /// <param name="tooken">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
+        /// <param name="tooken">需要通知弹窗的唯一健值</param>
+        public void Show(string dialogName, ILayDialogParameter parameters, string tooken = null) => Alert(dialogName, parameters, null, false, tooken, null);
+        /// <summary>
+        /// 普通弹窗
+        /// </summary>
+        /// <param name="dialogName">窗体名称</param>
+        /// <param name="parameters">参数</param>
         /// <param name="windowName">指定需要打开的窗体样式</param>
-        public void Show(string dialogName, ILayDialogParameter parameters, string tooken = null, string windowName = null) => Alert(dialogName, parameters, null, false, tooken, windowName);
+        public void ShowWindow(string dialogName, ILayDialogParameter parameters, string windowName) => Alert(dialogName, parameters, null, false, null, windowName);
         /// <summary>
         /// 普通弹窗
         /// </summary>
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
         /// <param name="callback">回调</param>
-        /// <param name="tooken">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
+        /// <param name="tooken">需要通知弹窗的唯一健值</param>
+        public void Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string tooken = null) => Alert(dialogName, parameters, callback, false, tooken, null);
+        /// <summary>
+        /// 普通弹窗
+        /// </summary>
+        /// <param name="dialogName">窗体名称</param>
+        /// <param name="parameters">参数</param>
+        /// <param name="callback">回调</param>
         /// <param name="windowName">指定需要打开的窗体样式</param>
-        public void Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string tooken = null, string windowName = null) => Alert(dialogName, parameters, callback, false, tooken, windowName);
+        public void ShowWindow(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string windowName) => Alert(dialogName, parameters, callback, false, null, windowName);
+        /// <summary>
+        /// 模态对话框
+        /// </summary>
+        /// <param name="dialogName">窗体名称</param>
+        /// <param name="parameters">参数</param>
+        /// <param name="tooken">需要通知弹窗的唯一健值</param>
+        public void ShowDialog(string dialogName, ILayDialogParameter parameters, string tooken = null) => Alert(dialogName, parameters, null, true, tooken, null);
         /// <summary>
         /// 模态对话框
         /// </summary>
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
         /// <param name="windowName">指定需要打开的窗体样式</param>
-        public void ShowDialog(string dialogName, ILayDialogParameter parameters, string tooken = null, string windowName = null) => Alert(dialogName, parameters, null, true, tooken, windowName);
+        public void ShowDialogWindow(string dialogName, ILayDialogParameter parameters, string windowName = null) => Alert(dialogName, parameters, null, true, null, windowName);
+        /// <summary>
         /// <summary>
         /// 模态对话框
         /// </summary>
@@ -166,8 +187,16 @@ namespace LayuiTemplate.Dialog
         /// <param name="parameters">参数</param>
         /// <param name="callback">回调</param>
         /// <param name="tooken">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
+        public void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string tooken = null) => Alert(dialogName, parameters, callback, true, tooken, null);
+        /// <summary>
+        /// <summary>
+        /// 模态对话框
+        /// </summary>
+        /// <param name="dialogName">窗体名称</param>
+        /// <param name="parameters">参数</param>
+        /// <param name="callback">回调</param>
         /// <param name="windowName">指定需要打开的窗体样式</param>
-        public void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string tooken = null, string windowName = null) => Alert(dialogName, parameters, callback, true, tooken, windowName);
+        public void ShowDialogWindow(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback,string windowName = null) => Alert(dialogName, parameters, callback, true, null, windowName);
         /// <summary>
         /// 弹窗业务
         /// </summary>
@@ -179,7 +208,7 @@ namespace LayuiTemplate.Dialog
         /// <param name="windowName">指定需要打开的窗体样式</param>
         private void Alert(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string tooken, string windowName)
         {
-            if (windowName != null) AlertWindow(dialogName, parameters, callback, isModel, tooken, windowName);
+            if (windowName != null) AlertWindow(dialogName, parameters, callback, isModel, windowName);
             else AlertUserControl(dialogName, parameters, callback, isModel, tooken);
         }
         /// <summary>
@@ -191,7 +220,7 @@ namespace LayuiTemplate.Dialog
         /// <param name="isModel"></param>
         /// <param name="tooken"></param>
         /// <param name="windowName"></param>
-        private void AlertWindow(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string tooken, string windowName)
+        private void AlertWindow(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string windowName)
         {
             try
             {
@@ -269,7 +298,7 @@ namespace LayuiTemplate.Dialog
                 var view = Activator.CreateInstance(DialogViewCollection[dialogName]) as UserControl;
                 if (view == null) throw new Exception($"{dialogName}未找到");
                 LayDialogHost host = null;
-                if (tooken == null) host = DialogHosts[LayDialogToken.RootDialogTooken];
+                if (tooken == null) host = DialogHosts["RootDialogTooken"];
                 else host = DialogHosts[tooken];
                 if (host == null) throw new Exception($"未找到弹窗组件");
                 if (host.IsOpen) throw new Exception($"{view.GetType().Name}已开启，请先关闭当前窗体");

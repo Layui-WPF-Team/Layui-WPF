@@ -30,11 +30,9 @@
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
-                        <Grid>
-                            <Lay:LayDialogHost Dialg:LayDialog.Tooken="{Binding Source={x:Static Dialg:LayDialogToken.RootDialogTooken}}" />
+                        <Lay:LayTransition Style="{DynamicResource LayTransitionStyle}" Type="{TemplateBinding Type}">
                             <ContentPresenter />
-                            <Lay:LayMessageHost Message:LayMessage.Tooken="{Binding Source={x:Static Message:LayMessageToken.RootMessageTooken}}" />
-                        </Grid>
+                        </Lay:LayTransition>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
