@@ -95,6 +95,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\SnackbarControlStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\ListBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -203,6 +207,7 @@
     <Compile Include="Control\ListBox\LayListBox.cs" />
     <Compile Include="Control\RadioButton\LayRadioButton.cs" />
     <Compile Include="Control\Slider\LaySlider.cs" />
+    <Compile Include="Control\Snackbar\LaySnackbarControl.cs" />
     <Compile Include="Control\TabControl\LayTabControl.cs" />
     <Compile Include="Control\TabItem\LayTabItem.cs" />
     <Compile Include="Control\TextBox\LayTextBox.cs" />
@@ -212,20 +217,19 @@
     <Compile Include="Control\TreeViewItem\LayTreeViewItem.cs" />
     <Compile Include="Control\TreeView\LayTreeView.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
-    <Compile Include="Dialog\Interface\ILayDialogWindowAware.cs" />
-    <Compile Include="Dialog\Interface\ILayDialogUserControlWindow.cs" />
-    <Compile Include="Dialog\Interface\ILayDialogUserControlWindowExtensions.cs" />
-    <Compile Include="Dialog\LayDialogUserControlWindow.cs" />
-    <Compile Include="Dialog\LayDialogParameter.cs" />
-    <Compile Include="Dialog\LayDialogResult.cs" />
-    <Compile Include="Dialog\Interface\ILayDialogAware.cs" />
-    <Compile Include="Dialog\Interface\ILayDialogParameter.cs" />
-    <Compile Include="Dialog\Interface\ILayDialogResult.cs" />
-    <Compile Include="Dialog\Interface\ILayDialogWindow.cs" />
-    <Compile Include="Dialog\Interface\ILayDialogWindowExtensions.cs" />
-    <Compile Include="Dialog\Interface\ILayDialog.cs" />
-    <Compile Include="Dialog\LayDialog.cs" />
-    <Compile Include="Dialog\LayParametersExtensions.cs" />
+    <Compile Include="Global\Dialog\Interface\ILayDialogWindowAware.cs" />
+    <Compile Include="Global\Dialog\Interface\ILayDialogUserControlWindow.cs" />
+    <Compile Include="Global\Dialog\Interface\ILayDialogUserControlWindowExtensions.cs" />
+    <Compile Include="Global\Dialog\LayDialogUserControlWindow.cs" />
+    <Compile Include="Global\Dialog\LayDialogParameter.cs" />
+    <Compile Include="Global\Dialog\LayDialogResult.cs" />
+    <Compile Include="Global\Dialog\Interface\ILayDialogAware.cs" />
+    <Compile Include="Global\Dialog\Interface\ILayDialogParameter.cs" />
+    <Compile Include="Global\Dialog\Interface\ILayDialogResult.cs" />
+    <Compile Include="Global\Dialog\Interface\ILayDialogWindow.cs" />
+    <Compile Include="Global\Dialog\Interface\ILayDialogWindowExtensions.cs" />
+    <Compile Include="Global\Dialog\LayDialog.cs" />
+    <Compile Include="Global\Dialog\LayParametersExtensions.cs" />
     <Compile Include="Enum\Base\LayAnimation.cs" />
     <Compile Include="Enum\Button\ButtonStyle.cs" />
     <Compile Include="Enum\CheckBox\CheckBoxStyle.cs" />
@@ -236,8 +240,9 @@
     <Compile Include="Enum\TabControl\TabControlStyle.cs" />
     <Compile Include="Enum\Transitions\AnimationType.cs" />
     <Compile Include="Control\Expander\LayNavExpander.cs" />
-    <Compile Include="Message\LayMessage.cs" />
-    <Compile Include="Control\Message\LayMessageContent.cs" />
+    <Compile Include="Global\Message\LayMessage.cs" />
+    <Compile Include="Control\Message\LayMessageControl.cs" />
+    <Compile Include="Global\Snackbar\LaySnackbar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

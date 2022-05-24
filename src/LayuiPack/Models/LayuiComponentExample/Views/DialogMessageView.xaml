@@ -2,22 +2,22 @@
     x:Class="LayuiComponentExample.Views.DialogMessageView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Global="clr-namespace:LayuiTemplate.Global;assembly=LayuiTemplate"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:dialog="clr-namespace:LayuiTemplate.Dialog;assembly=LayuiTemplate"
     xmlns:local="clr-namespace:LayuiComponentExample"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <dialog:LayDialog.WindowStyle>
+    <Global:LayDialog.WindowStyle>
         <Style BasedOn="{StaticResource LayWindowStyle}" TargetType="Lay:LayWindow">
             <Setter Property="AllowsTransparency" Value="True" />
             <Setter Property="Background" Value="{x:Null}" />
             <Setter Property="WindowStyle" Value="None" />
             <Setter Property="SizeToContent" Value="WidthAndHeight" />
         </Style>
-    </dialog:LayDialog.WindowStyle>
+    </Global:LayDialog.WindowStyle>
     <Grid
         Width="300"
         HorizontalAlignment="Center"

@@ -2,7 +2,7 @@
 using LayuiComponentExample;
 using LayuiFundamentalElement;
 using LayuiHome;
-using LayuiTemplate.Dialog;
+using LayuiTemplate.Global;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;

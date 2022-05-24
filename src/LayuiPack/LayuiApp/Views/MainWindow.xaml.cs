@@ -1,4 +1,5 @@
 ﻿using LayuiTemplate.Control;
+using LayuiTemplate.Global;
 using System.Windows;
 
 namespace LayuiApp.Views
@@ -11,6 +12,11 @@ namespace LayuiApp.Views
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LaySnackbar.Show("欢迎使用Layui—WPF组件库", "RootSnackbarTooken");
         }
     }
 }

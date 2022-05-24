@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayuiTemplate.Dialog.Interface
+namespace LayuiTemplate.Global
 {
     public interface ILayDialogResult
     {

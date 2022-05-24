@@ -1,6 +1,6 @@
 ﻿using Layui.Core.Base;
 using Layui.Core.Resource;
-using LayuiTemplate.Dialog;
+using LayuiTemplate.Global;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Ioc;
@@ -70,7 +70,7 @@ namespace LayuiComponentExample.ViewModels
         {
             LayDialogParameter dialogParameter = new LayDialogParameter();
             dialogParameter.Add("Message", JsonConvert.SerializeObject(data));
-            LayDialog.Dialog.Show("DialogAlert", dialogParameter);
+            LayDialog.Show("DialogAlert", dialogParameter);
         }
     }
 }

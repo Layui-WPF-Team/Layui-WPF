@@ -1,5 +1,5 @@
 ﻿using LayuiTemplate.Control;
-using LayuiTemplate.Dialog.Interface;
+using LayuiTemplate.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;

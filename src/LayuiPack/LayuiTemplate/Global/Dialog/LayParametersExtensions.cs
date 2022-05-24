@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayuiTemplate.Dialog
+namespace LayuiTemplate.Global
 {
     [EditorBrowsable(EditorBrowsableState.Never)]
     internal static class LayParametersExtensions

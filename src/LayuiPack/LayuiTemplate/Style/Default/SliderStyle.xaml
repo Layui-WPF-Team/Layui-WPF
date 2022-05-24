@@ -3,9 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ColorStyle.xaml" />
-    </ResourceDictionary.MergedDictionaries>
     <!--  水平滑条  -->
     <ControlTemplate x:Key="LaySliderHorizontal" TargetType="{x:Type Lay:LaySlider}">
         <Grid

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LayuiTemplate.Dialog.Interface
+namespace LayuiTemplate.Global
 {
     public interface ILayDialogUserControlWindow
     {

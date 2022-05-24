@@ -1,6 +1,6 @@
 ﻿using Layui.Core.Base;
 using Layui.Core.Resource;
-using LayuiTemplate.Dialog;
+using LayuiTemplate.Global;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Regions;
@@ -28,7 +28,7 @@ namespace LayuiComponentExample.ViewModels
             {
                 dialogParameter = new LayDialogParameter();
                 dialogParameter.Add("IsModel", "这是模态弹窗");
-                LayDialog.Dialog.ShowDialog(SystemResource.DialogMessageView, dialogParameter, rest =>
+                LayDialog.ShowDialog(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                     switch (rest.Result)
                     {
@@ -50,7 +50,7 @@ namespace LayuiComponentExample.ViewModels
             {
                 dialogParameter = new LayDialogParameter();
                 dialogParameter.Add("IsModel", "这是非模态弹窗");
-                LayDialog.Dialog.Show(SystemResource.DialogMessageView, dialogParameter, rest =>
+                LayDialog.Show(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                     switch (rest.Result)
                     {
@@ -77,7 +77,7 @@ namespace LayuiComponentExample.ViewModels
         {
             LayDialogParameter dialogParameter=new LayDialogParameter();
             dialogParameter.Add("IsModel", "这是非模态弹窗");
-            LayDialog.Dialog.Show(SystemResource.DialogMessageView, dialogParameter, rest => {
+            LayDialog.Show(SystemResource.DialogMessageView, dialogParameter, rest => {
                 switch (rest.Result)
                 {
                     case LayuiTemplate.Enum.ButtonResult.Yes:
@@ -98,7 +98,7 @@ namespace LayuiComponentExample.ViewModels
 
         void ExecuteCloseDialogCommand()
         {
-            LayDialog.Dialog.Close("Dialog");
+            LayDialog.Close("Dialog");
         }
         private DelegateCommand<string> _DialogShowWindowCommand;
         public DelegateCommand<string> DialogShowWindowCommand =>
@@ -111,7 +111,7 @@ namespace LayuiComponentExample.ViewModels
             {
                 dialogParameter = new LayDialogParameter();
                 dialogParameter.Add("IsModel", "这是模态弹窗");
-                LayDialog.Dialog.ShowDialogWindow(SystemResource.DialogMessageView, dialogParameter, rest =>
+                LayDialog.ShowDialogWindow(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                     switch (rest.Result)
                     {
@@ -133,7 +133,7 @@ namespace LayuiComponentExample.ViewModels
             {
                 dialogParameter = new LayDialogParameter();
                 dialogParameter.Add("IsModel", "这是非模态弹窗");
-                LayDialog.Dialog.ShowWindow(SystemResource.DialogMessageView, dialogParameter, rest =>
+                LayDialog.ShowWindow(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                     switch (rest.Result)
                     {

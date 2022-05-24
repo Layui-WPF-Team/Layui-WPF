@@ -1,4 +1,4 @@
-﻿using LayuiTemplate.Dialog.Interface;
+﻿
 using LayuiTemplate.Enum;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayuiTemplate.Dialog
+namespace LayuiTemplate.Global
 {
     public class LayDialogResult : ILayDialogResult
     {

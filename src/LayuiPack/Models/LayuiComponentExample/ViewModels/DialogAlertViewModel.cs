@@ -1,6 +1,5 @@
 ﻿using Layui.Core.Base;
-using LayuiTemplate.Dialog;
-using LayuiTemplate.Dialog.Interface;
+using LayuiTemplate.Global;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;

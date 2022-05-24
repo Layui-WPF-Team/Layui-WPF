@@ -1,7 +1,7 @@
 ﻿using Layui.Core.Base;
 using Layui.Core.Resource;
 using LayuiHome.Models;
-using LayuiTemplate.Message;
+using LayuiTemplate.Global;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -68,7 +68,7 @@ namespace LayuiHome.ViewModels
             MenuItemModel = MenuItemList.First().Data.First();
             MenuItemList.First().IsSelected = true;
             MenuItemModel.IsSelected = true;
-            LayMessage.Success("欢迎使用Layui—WPF组件库");
+            LaySnackbar.Show("欢迎使用Layui—WPF组件库", "RootSnackbarTooken");
         }
 
         private Task<ObservableCollection<MenuItemModel>> GetData()
