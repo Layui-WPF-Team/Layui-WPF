@@ -210,6 +210,7 @@
     <Compile Include="Control\Snackbar\LaySnackbarControl.cs" />
     <Compile Include="Control\TabControl\LayTabControl.cs" />
     <Compile Include="Control\TabItem\LayTabItem.cs" />
+    <Compile Include="Control\TextBox\LayAutoCompleteTextBox.cs" />
     <Compile Include="Control\TextBox\LayTextBox.cs" />
     <Compile Include="Control\Timeline\LayTimelineItem.cs" />
     <Compile Include="Control\Timeline\LayTimelinePanel.cs" />
