@@ -23,16 +23,16 @@
                 Foreground="#B2000000"
                 Text="表单集合演示" />
         </Grid>
-        <Lay:LayTextBox Height="50" Margin="0,5" />
-        <Lay:LayAutoCompleteTextBox Height="50" Margin="0,5">
+        <Lay:LayTextBox Height="35" Margin="0,5" />
+        <Lay:LayAutoCompleteTextBox Height="35" Margin="0,5">
             <Lay:LayAutoCompleteTextBox.Content>
                 <ListBox>
-                    <ListBoxItem Height="50" Content="123" />
+                    <ListBoxItem Height="35" Content="123" />
                 </ListBox>
             </Lay:LayAutoCompleteTextBox.Content>
         </Lay:LayAutoCompleteTextBox>
         <Lay:LayPasswordBox
-            Height="50"
+            Height="35"
             Margin="0,5"
             Text="{Binding Password}" />
         <StackPanel>
