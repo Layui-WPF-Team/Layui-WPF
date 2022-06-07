@@ -1,0 +1,85 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    <Style x:Key="LayCarouselStyle" TargetType="Lay:LayCarousel">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayCarousel">
+                    <Grid>
+                        <Grid x:Name="PART_ItemsHost" />
+                        <Button
+                            Width="36"
+                            Height="36"
+                            HorizontalAlignment="Left" />
+                        <Button
+                            Width="36"
+                            Height="36"
+                            HorizontalAlignment="Right" />
+                        <ListBox
+                            Height="20"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            ItemsSource="{TemplateBinding ItemsSource}"
+                            SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayCarousel}, Path=SelectedIndex}"
+                            SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayCarousel}, Path=SelectedItem}">
+                            <ListBox.Template>
+                                <ControlTemplate TargetType="ListBox">
+                                    <ScrollViewer
+                                        x:Name="PART_ItemsHost"
+                                        HorizontalScrollBarVisibility="Disabled"
+                                        VerticalScrollBarVisibility="Disabled">
+                                        <Border CornerRadius="10">
+                                            <Border.Background>
+                                                <SolidColorBrush Opacity="0.2" Color="Black" />
+                                            </Border.Background>
+                                            <ItemsPresenter Margin="3,0" />
+                                        </Border>
+                                    </ScrollViewer>
+                                </ControlTemplate>
+                            </ListBox.Template>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Ellipse
+                                                    x:Name="content"
+                                                    Width="10"
+                                                    Height="10"
+                                                    Margin="3,0"
+                                                    Cursor="Hand">
+                                                    <Ellipse.Fill>
+                                                        <SolidColorBrush Opacity="0.4" Color="Black" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="content" Property="Fill">
+                                                            <Setter.Value>
+                                                                <SolidColorBrush Opacity="0.3" Color="Black" />
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="content" Property="Fill" Value="#fff" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayCarouselStyle}" TargetType="Lay:LayCarousel" />
+</ResourceDictionary>

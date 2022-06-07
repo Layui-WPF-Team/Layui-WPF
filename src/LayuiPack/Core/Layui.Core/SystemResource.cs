@@ -79,6 +79,10 @@ namespace Layui.Core.Resource
         /// 提示信息
         /// </summary>
         public const string Page_MessageView = "Message";
+        /// <summary>
+        /// 轮播图
+        /// </summary>
+        public const string Page_CarouselView = "Carousel";
         #endregion
 
         #region 弹窗名称

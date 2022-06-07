@@ -63,6 +63,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\Default\CarouselStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\CheckBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -188,6 +192,7 @@
     <Compile Include="Behavior\LayLoadBehavior.cs" />
     <Compile Include="Control\Button\LayButton.cs" />
     <Compile Include="Control\Canvas\LaySliderCanvas.cs" />
+    <Compile Include="Control\Carousel\LayCarousel.cs" />
     <Compile Include="Control\CheckBox\LayCheckBox.cs" />
     <Compile Include="Control\DataGrid\LayDataGrid.cs" />
     <Compile Include="Control\DialogHost\LayDialogHost.cs" />

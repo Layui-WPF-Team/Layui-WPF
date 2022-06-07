@@ -21,6 +21,7 @@ namespace LayuiComponentExample
             containerRegistry.RegisterForNavigation<Views.DataGrid>(SystemResource.Page_DataGrid);
             containerRegistry.RegisterForNavigation<Views.Dialog>(SystemResource.Page_DialogView);
             containerRegistry.RegisterForNavigation<Views.Message>(SystemResource.Page_MessageView);
+            containerRegistry.RegisterForNavigation<Views.Carousel>(SystemResource.Page_CarouselView);
             LayDialog.RegisterDialog<DialogMessageView>(SystemResource.DialogMessageView);
             LayDialog.RegisterDialog<DialogAlert>("DialogAlert");
         }

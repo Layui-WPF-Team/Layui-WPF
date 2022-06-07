@@ -151,7 +151,7 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="评分", PageKey=SystemResource.Page_ButtonView
                             },new MenuItemModel()
                             {
-                                ItemTitle="轮播图", PageKey=SystemResource.Page_ButtonView
+                                ItemTitle="轮播图", PageKey=SystemResource.Page_CarouselView
                             },new MenuItemModel()
                             {
                                 ItemTitle="提示信息", PageKey=SystemResource.Page_MessageView
