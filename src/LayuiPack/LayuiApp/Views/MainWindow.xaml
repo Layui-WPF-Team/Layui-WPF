@@ -123,17 +123,6 @@
             Grid.Row="1"
             Panel.ZIndex="99"
             Global:LayMessage.Tooken="RootMessageTooken" />
-        <Lay:LaySnackbarControl
-            Grid.Row="1"
-            Width="150"
-            Height="50"
-            Panel.ZIndex="99"
-            Global:LaySnackbar.Tooken="RootSnackbarTooken"
-            Style="{DynamicResource LaySnackbarControlStyle}">
-            <Lay:LaySnackbarControl.Effect>
-                <DropShadowEffect Opacity="0.5" ShadowDepth="0" />
-            </Lay:LaySnackbarControl.Effect>
-        </Lay:LaySnackbarControl>
         <Border
             Grid.Row="1"
             Panel.ZIndex="0"

@@ -95,10 +95,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Style\Default\SnackbarControlStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Style\Default\ListBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -207,7 +203,6 @@
     <Compile Include="Control\ListBox\LayListBox.cs" />
     <Compile Include="Control\RadioButton\LayRadioButton.cs" />
     <Compile Include="Control\Slider\LaySlider.cs" />
-    <Compile Include="Control\Snackbar\LaySnackbarControl.cs" />
     <Compile Include="Control\TabControl\LayTabControl.cs" />
     <Compile Include="Control\TabItem\LayTabItem.cs" />
     <Compile Include="Control\TextBox\LayAutoCompleteTextBox.cs" />
@@ -243,7 +238,7 @@
     <Compile Include="Control\Expander\LayNavExpander.cs" />
     <Compile Include="Global\Message\LayMessage.cs" />
     <Compile Include="Control\Message\LayMessageControl.cs" />
-    <Compile Include="Global\Snackbar\LaySnackbar.cs" />
+    <Compile Include="Global\Notification\LayNotification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -270,6 +265,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Control\Notification\" />
     <Folder Include="Converter\Base\" />
     <Folder Include="Enum\Expander\" />
   </ItemGroup>

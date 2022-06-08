@@ -28,6 +28,5 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TreeViewStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TreeViewItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/MessageStyle.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/SnackbarControlStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

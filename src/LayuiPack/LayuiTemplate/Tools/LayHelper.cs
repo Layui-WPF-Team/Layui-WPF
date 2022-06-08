@@ -17,13 +17,13 @@ namespace LayuiTemplate.Tools
         /// <summary>
         /// 查找样式
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">样式名称</param>
         /// <returns></returns>
         public static Style GetStyle(string key)
         {
             try
             {
-                var data = Application.Current.FindResource(key);
+                var data = Application.Current?.FindResource(key);
                 if (data != null)
                     return data as Style;
                 else return null;

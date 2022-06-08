@@ -68,7 +68,7 @@ namespace LayuiHome.ViewModels
             MenuItemModel = MenuItemList.First().Data.First();
             MenuItemList.First().IsSelected = true;
             MenuItemModel.IsSelected = true;
-            LaySnackbar.Show("欢迎使用Layui—WPF组件库", "RootSnackbarTooken");
+            LayMessage.Success("欢迎使用Layui—WPF组件库", "RootMessageTooken");
         }
 
         private Task<ObservableCollection<MenuItemModel>> GetData()
