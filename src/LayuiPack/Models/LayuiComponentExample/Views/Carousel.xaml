@@ -1,0 +1,22 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.Carousel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Button Height="50" Command="{Binding DeleteCommand}" />
+        <lay:LayGradientCarousel Grid.Row="1" ItemsSource="{Binding Images}">
+            <lay:LayGradientCarousel.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding}" />
+                </DataTemplate>
+            </lay:LayGradientCarousel.ItemTemplate>
+        </lay:LayGradientCarousel>
+    </Grid>
+</UserControl>
