@@ -27,5 +27,13 @@ namespace LayuiComponentExample.ViewModels
                 "https://tse1-mm.cn.bing.net/th/id/OIP-C.Xf7-mF0XmUSVYF1_FmlEmwHaE7?w=296&h=197&c=7&r=0&o=5&pid=1.7"
             };
         }
+        private DelegateCommand _DeleteCommand;
+        public DelegateCommand DeleteCommand =>
+            _DeleteCommand ?? (_DeleteCommand = new DelegateCommand(ExecuteDeleteCommand));
+
+        void ExecuteDeleteCommand()
+        {
+            Images.Remove(Images[0]);
+        }
     }
 }
