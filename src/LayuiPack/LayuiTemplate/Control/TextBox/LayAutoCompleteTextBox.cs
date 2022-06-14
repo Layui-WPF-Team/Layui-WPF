@@ -12,8 +12,10 @@ namespace LayuiTemplate.Control
     [TemplatePart(Name = "PART_Popup", Type = typeof(Popup))]
     public class LayAutoCompleteTextBox : LayTextBox
     {
-        private Window window;
         private Popup PART_Popup;
+        /// <summary>
+        /// 内容
+        /// </summary>
         public object Content
         {
             get { return (object)GetValue(ContentProperty); }
@@ -23,7 +25,9 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentProperty =
             DependencyProperty.Register("Content", typeof(object), typeof(LayAutoCompleteTextBox));
-
+        /// <summary>
+        /// 是否展开
+        /// </summary>
         public bool IsDropDownOpen
         {
             get { return (bool)GetValue(IsDropDownOpenProperty); }
@@ -32,9 +36,9 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for IsDropDownOpen.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDropDownOpenProperty =
-            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(LayAutoCompleteTextBox), new PropertyMetadata(OnIsDropDownOpe));
+            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(LayAutoCompleteTextBox), new PropertyMetadata(OnIsDropDownOpen));
 
-        private static void OnIsDropDownOpe(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnIsDropDownOpen(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is LayAutoCompleteTextBox textBox)
             {
@@ -55,7 +59,11 @@ namespace LayuiTemplate.Control
                 }
             }
         }
-
+        /// <summary>
+        /// 选中状态
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Selector_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             IsDropDownOpen = false;
@@ -75,6 +83,10 @@ namespace LayuiTemplate.Control
             if(!IsDropDownOpen)
                 IsDropDownOpen = true;
         }
+        /// <summary>
+        /// 取消焦点
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLostFocus(RoutedEventArgs e)
         {
             base.OnLostFocus(e);

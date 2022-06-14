@@ -34,7 +34,6 @@ namespace LayuiFundamentalElement.ViewModels
             get { return _Password; }
             set { _Password = value; RaisePropertyChanged(); }
         }
-
         public DelegateCommand SaveCommand => new DelegateCommand(Save);
 
         private void Save()

@@ -123,6 +123,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\NumericUpDownStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\PanelStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -207,6 +211,7 @@
     <Compile Include="Control\Menu\LayMenu.cs" />
     <Compile Include="Control\Loading\LayLoading.cs" />
     <Compile Include="Control\Message\LayMessageHost.cs" />
+    <Compile Include="Control\NumericUpDown\LayNumericUpDown.cs" />
     <Compile Include="Control\Panel\LayCard.cs" />
     <Compile Include="Control\Password\LayPasswordBox.cs" />
     <Compile Include="Control\ProgressBar\LayProgressBar.cs" />
