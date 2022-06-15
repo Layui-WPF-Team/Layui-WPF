@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LayuiTemplate.Enum
 {
-   /// <summary>
-   /// 记载动画枚举类型
-   /// </summary>
+    /// <summary>
+    /// 记载动画枚举类型
+    /// </summary>
     public enum LoadingStyle
     {
         /// <summary>
@@ -22,6 +22,10 @@ namespace LayuiTemplate.Enum
         /// <summary>
         /// 简约
         /// </summary>
-        Simple
+        Simple,
+        /// <summary>
+        /// 跳动
+        /// </summary>
+        Beat
     }
 }

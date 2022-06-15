@@ -59,13 +59,17 @@ namespace LayuiTemplate.Control
             if (Value <= MinValue)
             {
                 Value = MinValue;
+                PART_LowerBtn.IsEnabled = false;
                 return;
             }
             if (Value>= MaxValue)
             {
                 Value = MaxValue;
+                PART_AddBtn.IsEnabled = false;
                 return;
             }
+            PART_LowerBtn.IsEnabled = true;
+            PART_AddBtn.IsEnabled = true;
             RaiseEvent(e);
         }
 
@@ -219,6 +223,18 @@ namespace LayuiTemplate.Control
                 PART_LowerBtn.Click += PART_LowerBtn_Click;
                 if (string.IsNullOrEmpty(PART_ValueHost.Text)) PART_ValueHost.Text = "0";
                 else PART_ValueHost.Text = CurrentText;
+                if (Value <= MinValue)
+                {
+                    Value = MinValue;
+                    PART_LowerBtn.IsEnabled = false;
+                    return;
+                }
+                if (Value >= MaxValue)
+                {
+                    Value = MaxValue;
+                    PART_AddBtn.IsEnabled = false;
+                    return;
+                }
             }
         }
         /// <summary>
@@ -252,7 +268,6 @@ namespace LayuiTemplate.Control
         {
             PART_ValueHost.Select(PART_ValueHost.Text.Length, 0);
         }
-
         private void PART_AddBtn_Click(object sender, RoutedEventArgs e)
         {
             Value = Value + Increment;

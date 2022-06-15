@@ -9,5 +9,6 @@
         <Lay:LayLoading IsActive="true" Type="Google" />
         <Lay:LayLoading IsActive="true" Type="Normal" />
         <Lay:LayLoading IsActive="true" Type="Simple" />
+        <Lay:LayLoading IsActive="true" Type="Beat" />
     </UniformGrid>
 </UserControl>

@@ -151,13 +151,40 @@
                                     Opacity="0">
                                     <Grid Background="{TemplateBinding Background}" Opacity="0.2" />
                                     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Grid Width="50" Height="50">
+                                        <Grid
+                                            Width="40"
+                                            Height="40"
+                                            RenderTransformOrigin="0.5,0.5">
+                                            <Grid.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                                                    <SkewTransform />
+                                                    <RotateTransform />
+                                                    <TranslateTransform />
+                                                </TransformGroup>
+                                            </Grid.RenderTransform>
                                             <Path
-                                                x:Name="path"
-                                                Data="M1023.849566 529.032144C1022.533495 457.744999 1007.544916 386.64064 979.907438 321.641387 952.343075 256.605575 912.349158 197.674868 863.252422 148.980264 814.192243 100.249102 755.992686 61.717486 693.004095 36.310016 630.052062 10.792874 562.347552-1.380777 495.483865 0.081523 428.620178 1.470709 362.012394 16.495846 301.144139 44.206439 240.202769 71.807359 185.000928 111.874391 139.377154 161.044242 93.753381 210.177537 57.707676 268.450209 33.945294 331.475357 10.073239 394.463948-1.296147 462.1319 0.166154 529.032144 1.482224 595.968946 15.593423 662.503615 41.549256 723.371871 67.468531 784.240126 105.013094 839.405409 151.075558 884.956067 197.101464 930.579841 251.645269 966.552431 310.612534 990.241698 369.543241 1014.040637 432.860849 1025.336908 495.483865 1023.874608 558.143438 1022.485422 620.291206 1008.337666 677.174693 982.381833 734.094737 956.462558 785.677384 918.954552 828.230327 872.892089 870.819826 826.902741 904.416179 772.395492 926.533473 713.5379 939.986637 677.85777 949.089457 640.605667 953.915048 602.841758 955.194561 602.951431 956.510631 602.987988 957.790144 602.987988 994.27454 602.987988 1023.849566 572.425909 1023.849566 534.735116 1023.849566 532.834125 1023.739893 530.933135 1023.593663 529.032144L1023.849566 529.032144 1023.849566 529.032144ZM918.892953 710.284282C894.691881 767.021538 859.596671 818.421398 816.568481 860.82811 773.540291 903.307938 722.652236 936.75806 667.706298 958.729124 612.760359 980.773303 553.902767 991.192193 495.483865 989.729893 437.064963 988.377265 379.304096 975.106889 326.441936 950.832702 273.543218 926.668187 225.616322 891.682649 186.097653 848.764132 146.542426 805.91873 115.35887 755.176905 94.959779 700.486869 74.451015 645.796833 64.799833 587.195144 66.189018 529.032144 67.541646 470.869145 79.934642 413.437296 102.563741 360.867595 125.119725 308.297895 157.765582 260.663459 197.759499 221.364135 237.716858 182.064811 284.985719 151.137157 335.910331 130.884296 386.834944 110.55832 441.305634 101.01681 495.483865 102.47911 549.662096 103.868296 603.036061 116.261292 651.876895 138.780718 700.754287 161.22703 745.025432 193.690099 781.509828 233.428113 818.067339 273.166127 846.764984 320.142529 865.518987 370.665008 884.346105 421.224045 893.156465 475.256046 891.76728 529.032144L891.986625 529.032144C891.840395 530.933135 891.76728 532.797568 891.76728 534.735116 891.76728 569.939999 917.540325 598.893547 950.66143 602.585856 944.227308 639.728286 933.589072 675.956779 918.892953 710.284282Z"
-                                                Fill="{DynamicResource LightBlue}"
+                                                Margin="5"
+                                                Data="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946 s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634       c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"
+                                                Fill="{DynamicResource LightGreen}"
+                                                Opacity="0.2"
                                                 RenderTransformOrigin="0.5,0.5"
                                                 Stretch="Fill">
+                                                <Path.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Path.RenderTransform>
+                                            </Path>
+                                            <Path
+                                                x:Name="path"
+                                                Data="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0 C22.32,8.481,24.301,9.057,26.013,10.047z"
+                                                Fill="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5"
+                                                Stretch="None">
                                                 <Path.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform />
@@ -217,9 +244,9 @@
                                     <Grid Background="{TemplateBinding Background}" Opacity="0.2" />
                                     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <UniformGrid
-                                            Width="60"
-                                            Height="20"
-                                            Columns="6"
+                                            Width="50"
+                                            Height="15"
+                                            Columns="5"
                                             Rows="1">
                                             <Grid
                                                 x:Name="loading1"
@@ -291,20 +318,6 @@
                                                     </TransformGroup>
                                                 </Grid.RenderTransform>
                                             </Grid>
-                                            <Grid
-                                                x:Name="loading6"
-                                                Margin="1,0"
-                                                Background="{DynamicResource LightGreen}"
-                                                RenderTransformOrigin="0.5,0.5">
-                                                <Grid.RenderTransform>
-                                                    <TransformGroup>
-                                                        <ScaleTransform />
-                                                        <SkewTransform />
-                                                        <RotateTransform />
-                                                        <TranslateTransform />
-                                                    </TransformGroup>
-                                                </Grid.RenderTransform>
-                                            </Grid>
                                         </UniformGrid>
                                     </Grid>
                                 </Grid>
@@ -315,51 +328,50 @@
                                     <Setter TargetName="mask" Property="IsHitTestVisible" Value="true" />
                                     <Trigger.EnterActions>
                                         <BeginStoryboard>
-                                            <Storyboard RepeatBehavior="Forever">
-                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames
+                                                    RepeatBehavior="Forever"
+                                                    Storyboard.TargetName="loading1"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
                                                     <EasingDoubleKeyFrame KeyTime="0" Value="1" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimationUsingKeyFrames
                                                     BeginTime="0:0:0.1"
+                                                    RepeatBehavior="Forever"
                                                     Storyboard.TargetName="loading2"
                                                     Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
                                                     <EasingDoubleKeyFrame KeyTime="0" Value="1" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimationUsingKeyFrames
                                                     BeginTime="0:0:0.2"
+                                                    RepeatBehavior="Forever"
                                                     Storyboard.TargetName="loading3"
                                                     Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
                                                     <EasingDoubleKeyFrame KeyTime="0" Value="1" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimationUsingKeyFrames
                                                     BeginTime="0:0:0.3"
+                                                    RepeatBehavior="Forever"
                                                     Storyboard.TargetName="loading4"
                                                     Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
                                                     <EasingDoubleKeyFrame KeyTime="0" Value="1" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimationUsingKeyFrames
                                                     BeginTime="0:0:0.4"
+                                                    RepeatBehavior="Forever"
                                                     Storyboard.TargetName="loading5"
                                                     Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
                                                     <EasingDoubleKeyFrame KeyTime="0" Value="1" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
-                                                </DoubleAnimationUsingKeyFrames>
-                                                <DoubleAnimationUsingKeyFrames
-                                                    BeginTime="0:0:0.5"
-                                                    Storyboard.TargetName="loading6"
-                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2" />
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="2" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
                                                 </DoubleAnimationUsingKeyFrames>
                                             </Storyboard>
                                         </BeginStoryboard>
@@ -382,8 +394,160 @@
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
                                                     <EasingDoubleKeyFrame KeyTime="0" Value="1" />
                                                 </DoubleAnimationUsingKeyFrames>
-                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading6" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                                <Trigger Property="MessageContent" Value="{x:Null}" />
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsActive" Value="true" />
+                    <Condition Property="Type" Value="{x:Static enum:LoadingStyle.Beat}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Lay:LayLoading">
+                            <Grid>
+                                <ContentPresenter />
+                                <Grid
+                                    x:Name="mask"
+                                    IsHitTestVisible="False"
+                                    Opacity="0">
+                                    <Grid Background="{TemplateBinding Background}" Opacity="0.2" />
+                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <UniformGrid
+                                            Width="40"
+                                            Height="20"
+                                            Columns="4"
+                                            Rows="1">
+                                            <Grid
+                                                x:Name="loading1"
+                                                Margin="1,0"
+                                                Background="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                            </Grid>
+                                            <Grid
+                                                x:Name="loading2"
+                                                Margin="1,0"
+                                                Background="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                            </Grid>
+                                            <Grid
+                                                x:Name="loading3"
+                                                Margin="1,0"
+                                                Background="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                            </Grid>
+                                            <Grid
+                                                x:Name="loading4"
+                                                Margin="1,0"
+                                                Background="{DynamicResource LightGreen}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                            </Grid>
+                                        </UniformGrid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsActive" Value="True">
+                                    <Setter TargetName="mask" Property="Opacity" Value="1" />
+                                    <Setter TargetName="mask" Property="IsHitTestVisible" Value="true" />
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames
+                                                    RepeatBehavior="Forever"
+                                                    Storyboard.TargetName="loading1"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-15" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="15" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames
+                                                    BeginTime="0:0:0.1"
+                                                    RepeatBehavior="Forever"
+                                                    Storyboard.TargetName="loading2"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-15" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="15" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames
+                                                    BeginTime="0:0:0.2"
+                                                    RepeatBehavior="Forever"
+                                                    Storyboard.TargetName="loading3"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-15" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="15" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames
+                                                    BeginTime="0:0:0.3"
+                                                    RepeatBehavior="Forever"
+                                                    Storyboard.TargetName="loading4"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-15" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="15" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loading4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0" />
                                                 </DoubleAnimationUsingKeyFrames>
                                             </Storyboard>
                                         </BeginStoryboard>
