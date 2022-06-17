@@ -44,7 +44,8 @@
             Increment="0.1" />
         <StackPanel>
             <StackPanel Margin="0,5" Orientation="Horizontal">
-                <Lay:LayCheckBox Content="写作" />
+                <Lay:LayCheckBox Content="空" IsChecked="{x:Null}" />
+                <Lay:LayCheckBox Margin="10,0" Content="写作" />
                 <Lay:LayCheckBox Margin="10,0" Content="阅读" />
                 <Lay:LayCheckBox
                     Content="游戏"

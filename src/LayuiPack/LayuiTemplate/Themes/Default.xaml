@@ -31,5 +31,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/CarouselStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/CarouselItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/NumericUpDownStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ToolTipStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

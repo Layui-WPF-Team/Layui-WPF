@@ -171,6 +171,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\ToolTipStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\TransitionControlStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +202,7 @@
     <Compile Include="Control\Canvas\LaySliderCanvas.cs" />
     <Compile Include="Control\Carousel\LayCarouselItem.cs" />
     <Compile Include="Control\Carousel\LayGradientCarousel.cs" />
+    <Compile Include="Control\Carousel\LaySlideCarousel.cs" />
     <Compile Include="Control\CheckBox\LayCheckBox.cs" />
     <Compile Include="Control\DataGrid\LayDataGrid.cs" />
     <Compile Include="Control\DialogHost\LayDialogHost.cs" />

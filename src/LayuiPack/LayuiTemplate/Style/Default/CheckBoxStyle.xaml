@@ -14,7 +14,6 @@
         <Setter Property="BorderThickness" Value="1" />
         <Style.Triggers>
             <Trigger Property="Type" Value="Primary">
-                <Setter Property="Padding" Value="5,0,0,0" />
                 <Setter Property="Background" Value="White" />
                 <Setter Property="IconSize" Value="20" />
                 <Setter Property="HoverBorderBrush" Value="{DynamicResource CyanBlue}" />
@@ -52,15 +51,16 @@
                                         </Viewbox>
                                     </Border>
                                 </Viewbox>
-                                <ContentPresenter
-                                    x:Name="contentPresenter"
-                                    Grid.Column="1"
-                                    Margin="{TemplateBinding Padding}"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    Focusable="False"
-                                    RecognizesAccessKey="True"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <Border Grid.Column="1" Padding="5,0,0,0">
+                                    <ContentPresenter
+                                        x:Name="contentPresenter"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Focusable="False"
+                                        RecognizesAccessKey="True"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </Border>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <!--  内容为空时触发的效果  -->
@@ -82,7 +82,11 @@
                                 <!--  被选中后的效果  -->
                                 <Trigger Property="IsChecked" Value="true" />
                                 <!--  未选择时的效果  -->
-                                <Trigger Property="IsChecked" Value="{x:Null}" />
+                                <Trigger Property="IsChecked" Value="{x:Null}">
+                                    <Setter TargetName="textBlock" Property="Data" Value="M63.6 489.6h896.7v44.8H63.6z" />
+                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource CyanBlue}" />
+                                    <Setter TargetName="textBlock" Property="Opacity" Value="1" />
+                                </Trigger>
                                 <!--  复选框被禁止时的效果  -->
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
@@ -178,9 +182,7 @@
                                         <Border
                                             Width="{Binding ElementName=checkBoxBorder, Path=ActualHeight}"
                                             Height="{Binding ElementName=checkBoxBorder, Path=ActualHeight}"
-                                            Background="White"
-                                            BorderThickness="{TemplateBinding BorderThickness}"
-                                            CornerRadius="0 1 1 0">
+                                            Background="White">
                                             <Viewbox Margin="5">
                                                 <Path
                                                     x:Name="fontIcon"

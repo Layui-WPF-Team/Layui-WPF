@@ -80,8 +80,9 @@ namespace LayuiTemplate.Control
         protected override void OnPreviewKeyUp(KeyEventArgs e)
         {
             base.OnPreviewKeyUp(e);
-            if(!IsDropDownOpen)
+            if (e.Key != Key.LeftShift && e.Key != Key.RightShift && e.Key != Key.LeftCtrl && e.Key != Key.RightCtrl && !IsDropDownOpen)
                 IsDropDownOpen = true;
+
         }
         /// <summary>
         /// 取消焦点

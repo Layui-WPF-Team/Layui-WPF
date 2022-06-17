@@ -81,7 +81,11 @@
                         FontFamily="{StaticResource IconFont}"
                         FontSize="20"
                         Foreground="White"
-                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                        WindowChrome.IsHitTestVisibleInChrome="True">
+                        <Button.ToolTip>
+                            <TextBlock FontSize="14" Text="最小化" />
+                        </Button.ToolTip>
+                    </Button>
                     <CheckBox
                         x:Name="WindowStateBtn"
                         Command="{Binding MaxWindowCommand}"
@@ -96,10 +100,20 @@
                                     <DataTrigger Binding="{Binding WindowState}" Value="Maximized">
                                         <Setter Property="Content" Value="&#xf2d2;" />
                                         <Setter Property="IsChecked" Value="True" />
+                                        <Setter Property="ToolTip">
+                                            <Setter.Value>
+                                                <TextBlock FontSize="14" Text="还原" />
+                                            </Setter.Value>
+                                        </Setter>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding WindowState, FallbackValue=Normal}" Value="Normal">
                                         <Setter Property="IsChecked" Value="false" />
                                         <Setter Property="Content" Value="&#xf2d0;" />
+                                        <Setter Property="ToolTip">
+                                            <Setter.Value>
+                                                <TextBlock FontSize="14" Text="最大化" />
+                                            </Setter.Value>
+                                        </Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -111,7 +125,11 @@
                         FontFamily="{StaticResource IconFont}"
                         FontSize="20"
                         Foreground="White"
-                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                        WindowChrome.IsHitTestVisibleInChrome="True">
+                        <Button.ToolTip>
+                            <TextBlock FontSize="14" Text="关闭" />
+                        </Button.ToolTip>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>
