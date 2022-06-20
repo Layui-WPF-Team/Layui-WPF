@@ -12,6 +12,7 @@
         <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="Opacity" Value="0" />
         <Setter Property="Margin" Value="0,4" />
+        <Setter Property="Panel.ZIndex" Value="100" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayMessageControl">

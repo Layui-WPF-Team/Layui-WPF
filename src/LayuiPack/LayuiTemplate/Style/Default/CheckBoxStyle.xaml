@@ -81,8 +81,30 @@
                                 <Trigger Property="IsChecked" Value="true" />
                                 <!--  未选择时的效果  -->
                                 <Trigger Property="IsChecked" Value="{x:Null}">
-                                    <Setter TargetName="textBlock" Property="Data" Value="M63.6 489.6h896.7v44.8H63.6z" />
-                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource CyanBlue}" />
+                                    <Setter TargetName="checkBoxBorder" Property="Padding" Value="3" />
+                                    <Setter TargetName="textBlock" Property="Data" Value="M0,2 C0,0.8954305 0.8954305,0 2,0 L28,0 C29.104569,0 30,0.8954305 30,2 L30,28 C30,29.104569 29.104569,30 28,30 L2,30 C0.8954305,30 0,29.104569 0,28 z" />
+                                    <Setter TargetName="textBlock" Property="Fill" Value="{DynamicResource CyanBlue}" />
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="textBlock"
+                                                    Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                    To="1"
+                                                    Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="textBlock"
+                                                    Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                    Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                                 <!--  复选框被禁止时的效果  -->
                                 <Trigger Property="IsEnabled" Value="false">

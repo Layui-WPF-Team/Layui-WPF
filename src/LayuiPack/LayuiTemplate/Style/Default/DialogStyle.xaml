@@ -8,6 +8,7 @@
     <Style x:Key="LayDialogHostStyle" TargetType="Lay:LayDialogHost">
         <Setter Property="Background" Value="Black" />
         <Setter Property="IsHitTestVisible" Value="false" />
+        <Setter Property="Panel.ZIndex" Value="100" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayDialogHost">

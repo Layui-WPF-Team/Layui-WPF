@@ -44,7 +44,7 @@
                                                 <Rectangle
                                                     Width="8"
                                                     Height="8"
-                                                    Fill="#90000000" />
+                                                    Fill="#70000000" />
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
@@ -114,7 +114,7 @@
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type Thumb}">
-                                                        <Border Background="#999999" CornerRadius="4" />
+                                                        <Border Background="#70000000" CornerRadius="4" />
                                                     </ControlTemplate>
                                                 </Setter.Value>
                                             </Setter>
@@ -141,7 +141,7 @@
                                                 <Rectangle
                                                     Width="8"
                                                     Height="8"
-                                                    Fill="#90000000" />
+                                                    Fill="#70000000" />
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
@@ -190,7 +190,7 @@
                                                 <Rectangle
                                                     Width="8"
                                                     Height="8"
-                                                    Fill="#90000000" />
+                                                    Fill="#70000000" />
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
@@ -259,7 +259,7 @@
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type Thumb}">
-                                                        <Border Background="#999999" CornerRadius="4" />
+                                                        <Border Background="#70000000" CornerRadius="4" />
                                                     </ControlTemplate>
                                                 </Setter.Value>
                                             </Setter>
@@ -286,7 +286,7 @@
                                                 <Rectangle
                                                     Width="8"
                                                     Height="8"
-                                                    Fill="#90000000" />
+                                                    Fill="#70000000" />
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
