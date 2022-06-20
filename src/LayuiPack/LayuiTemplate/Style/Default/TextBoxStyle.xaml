@@ -5,13 +5,14 @@
     <Style x:Key="LayTextBoxStyle" TargetType="{x:Type Lay:LayTextBox}">
         <Setter Property="Background" Value="White" />
         <Setter Property="BorderBrush" Value="#eee" />
-        <Setter Property="HoverBorderBrush" Value="#D2D2D2" />
-        <Setter Property="FocusedBorderBrush" Value="#D2D2D2" />
+        <Setter Property="HoverBorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="FocusedBorderBrush" Value="{DynamicResource Gray}" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Watermark" Value="这是水印" />
-        <Setter Property="WatermarkColor" Value="#D2D2D2" />
+        <Setter Property="WatermarkColor" Value="{DynamicResource Gray}" />
         <Setter Property="Padding" Value="10,0,10,0" />
+        <Setter Property="Height" Value="38" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />

@@ -21,7 +21,7 @@
         <ScrollViewer Grid.Row="1">
             <StackPanel>
                 <UniformGrid Columns="3">
-                    <Lay:LayTransition Type="{Binding ZoomAnimationType}">
+                    <Lay:LayTransition IsActive="{Binding IsChecked}" Type="Zoom">
                         <Border
                             Width="100"
                             Height="100"
@@ -35,7 +35,7 @@
                                 Text="缩放" />
                         </Border>
                     </Lay:LayTransition>
-                    <Lay:LayTransition Type="{Binding GradientAnimationType}">
+                    <Lay:LayTransition IsActive="{Binding IsChecked}" Type="Gradient">
                         <Border
                             Width="100"
                             Height="100"
@@ -49,7 +49,7 @@
                                 Text="渐变" />
                         </Border>
                     </Lay:LayTransition>
-                    <Lay:LayTransition Type="SlideIn">
+                    <Lay:LayTransition IsActive="{Binding IsChecked}" Type="SlideIn">
                         <Border
                             Width="100"
                             Height="100"

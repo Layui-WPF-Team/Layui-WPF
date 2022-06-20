@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
@@ -16,9 +17,9 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 内容
         /// </summary>
-        public object Content
+        public ListBox Content
         {
-            get { return (object)GetValue(ContentProperty); }
+            get { return (ListBox)GetValue(ContentProperty); }
             set { SetValue(ContentProperty, value); }
         }
 

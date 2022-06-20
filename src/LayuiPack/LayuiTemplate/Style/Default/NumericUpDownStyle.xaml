@@ -13,6 +13,7 @@
         <Setter Property="Increment" Value="1" />
         <Setter Property="MinValue" Value="0" />
         <Setter Property="MaxValue" Value="100" />
+        <Setter Property="Height" Value="38" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />

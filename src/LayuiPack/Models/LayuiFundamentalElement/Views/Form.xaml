@@ -23,32 +23,49 @@
                 Foreground="#B2000000"
                 Text="表单集合演示" />
         </Grid>
-        <Lay:LayTextBox Height="35" Margin="0,5" />
-        <Lay:LayAutoCompleteTextBox Height="35" Margin="0,5">
+        <Lay:LayTextBox Margin="0,5" />
+        <Lay:LayAutoCompleteTextBox Margin="0,5">
             <Lay:LayAutoCompleteTextBox.Content>
                 <ListBox>
-                    <ListBoxItem Height="35" Content="123" />
+                    <ListBoxItem Content="123" />
                 </ListBox>
             </Lay:LayAutoCompleteTextBox.Content>
         </Lay:LayAutoCompleteTextBox>
-        <Lay:LayPasswordBox
-            Height="35"
-            Margin="0,5"
-            Text="{Binding Password}" />
+        <Lay:LayPasswordBox Margin="0,5" Text="{Binding Password}" />
         <Lay:LayNumericUpDown
             x:Name="num"
             Width="300"
-            Height="35"
             Margin="0,5"
             HorizontalAlignment="Left"
             Increment="0.1" />
+        <Lay:LayComboBox Margin="0,5">
+            <Lay:LayComboBoxItem Content="123" />
+            <Lay:LayComboBoxItem Content="234" />
+        </Lay:LayComboBox>
+        <Lay:LayComboBox
+            Margin="0,5"
+            IsEditable="True"
+            Watermark="可编辑下拉框">
+            <Lay:LayComboBoxItem Content="123" />
+            <Lay:LayComboBoxItem Content="234" />
+        </Lay:LayComboBox>
         <StackPanel>
             <StackPanel Margin="0,5" Orientation="Horizontal">
-                <Lay:LayCheckBox Content="空" IsChecked="{x:Null}" />
-                <Lay:LayCheckBox Margin="10,0" Content="写作" />
-                <Lay:LayCheckBox Margin="10,0" Content="阅读" />
+                <Lay:LayCheckBox
+                    Content="空"
+                    IconSize="25"
+                    IsChecked="{x:Null}" />
+                <Lay:LayCheckBox
+                    Margin="10,0"
+                    Content="写作"
+                    IconSize="25" />
+                <Lay:LayCheckBox
+                    Margin="10,0"
+                    Content="阅读"
+                    IconSize="25" />
                 <Lay:LayCheckBox
                     Content="游戏"
+                    IconSize="25"
                     IsChecked="True"
                     IsEnabled="False" />
             </StackPanel>

@@ -16,7 +16,18 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LayTransition : ContentControl
     {
-        
+
+        public bool IsActive
+        {
+            get { return (bool)GetValue(IsActiveProperty); }
+            set { SetValue(IsActiveProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsActive.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsActiveProperty =
+            DependencyProperty.Register("IsActive", typeof(bool), typeof(LayTransition), new PropertyMetadata(false, AnimationChange));
+
+
         /// <summary>
         /// 动画容器
         /// </summary>
@@ -55,7 +66,7 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for BeginTime.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BeginTimeProperty =
-            DependencyProperty.Register("BeginTime", typeof(TimeSpan?), typeof(LayTransition),new PropertyMetadata(AnimationChange));
+            DependencyProperty.Register("BeginTime", typeof(TimeSpan?), typeof(LayTransition), new PropertyMetadata(AnimationChange));
 
 
         /// <summary>
@@ -63,14 +74,26 @@ namespace LayuiTemplate.Control
         /// </summary>
         private void RefreshAnimation()
         {
+            if (!IsActive)
+            {
+                var story = new Storyboard()
+                {
+                    BeginTime = (BeginTime == null ? TimeSpan.FromSeconds(0) : BeginTime)
+                };
+                story.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleXDecimalAnimation"] as DoubleAnimation);
+                story.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
+                story.Children.Add(Template.Resources[nameof(AnimationType.Default) + "OpacityDecimalAnimation"] as DoubleAnimation);
+                TransitionBody.BeginStoryboard(story);
+                return;
+            };
             Storyboard storyboard = new Storyboard()
             {
-                BeginTime = (BeginTime==null? TimeSpan.FromSeconds(0): BeginTime)
+                BeginTime = (BeginTime == null ? TimeSpan.FromSeconds(0) : BeginTime)
             };
             switch (Type)
             {
                 case AnimationType.Zoom:
-                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Zoom)+"ScaleXDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Zoom) + "ScaleXDecimalAnimation"] as DoubleAnimation);
                     storyboard.Children.Add(Template.Resources[nameof(AnimationType.Zoom) + "ScaleYDecimalAnimation"] as DoubleAnimation);
                     storyboard.Children.Add(Template.Resources[nameof(AnimationType.Zoom) + "OpacityDecimalAnimation"] as DoubleAnimation);
                     break;
