@@ -8,8 +8,9 @@
     xmlns:local="clr-namespace:LayuiApp.Views"
     xmlns:prism="http://prismlibrary.com/"
     Width="1080"
-    Height="600"
+    Height="600" 
     prism:ViewModelLocator.AutoWireViewModel="True"
+    ShowInTaskbar="True"
     WindowStartupLocation="CenterOwner"
     WindowState="{Binding WindowState}">
     <Grid>

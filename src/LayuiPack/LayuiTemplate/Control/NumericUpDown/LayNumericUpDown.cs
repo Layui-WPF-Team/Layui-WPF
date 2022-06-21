@@ -97,7 +97,18 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MinValueProperty =
-            DependencyProperty.Register("MinValue", typeof(double), typeof(LayNumericUpDown));
+            DependencyProperty.Register("MinValue", typeof(double), typeof(LayNumericUpDown),new PropertyMetadata(OnMinValueChanged));
+
+        private static void OnMinValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            LayNumericUpDown layNumericUp = d as LayNumericUpDown;
+            if (layNumericUp.Value <= layNumericUp.MinValue)
+            {
+                layNumericUp.Value = layNumericUp.MinValue;
+                layNumericUp.PART_LowerBtn.IsEnabled = false;
+            }
+        }
+
         /// <summary>
         /// 最大值
         /// </summary>
@@ -109,7 +120,18 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MaxValueProperty =
-            DependencyProperty.Register("MaxValue", typeof(double), typeof(LayNumericUpDown));
+            DependencyProperty.Register("MaxValue", typeof(double), typeof(LayNumericUpDown), new PropertyMetadata(OnMaxValueChanged));
+
+        private static void OnMaxValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            LayNumericUpDown layNumericUp = d as LayNumericUpDown;
+            if (layNumericUp.Value >= layNumericUp.MaxValue)
+            {
+                layNumericUp.Value = layNumericUp.MinValue;
+                layNumericUp.PART_LowerBtn.IsEnabled = false;
+            }
+        }
+
         /// <summary>
         /// 输入框圆角
         /// </summary>

@@ -43,6 +43,7 @@
                 Margin="5,0"
                 HorizontalAlignment="Left"
                 Increment="0.1"
+                MinValue="-10"
                 Orientation="Vertical"
                 ToolTip="纵向模式" />
             <Lay:LayNumericUpDown
