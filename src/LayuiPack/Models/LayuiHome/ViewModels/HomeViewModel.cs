@@ -127,7 +127,7 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="弹出层", PageKey=SystemResource.Page_DialogView
                             },new MenuItemModel()
                             {
-                                ItemTitle="日期与时间选择", PageKey=SystemResource.Page_ButtonView
+                                ItemTitle="日期与时间选择", PageKey=SystemResource.Page_DateTimeView
                             },new MenuItemModel()
                             {
                                 ItemTitle="数据表格", PageKey=SystemResource.Page_DataGrid

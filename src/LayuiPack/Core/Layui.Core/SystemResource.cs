@@ -83,6 +83,10 @@ namespace Layui.Core.Resource
         /// 轮播图
         /// </summary>
         public const string Page_CarouselView = "Carousel";
+        /// <summary>
+        /// 时间
+        /// </summary>
+        public const string Page_DateTimeView = "DateTime";
         #endregion
 
         #region 弹窗名称
@@ -92,6 +96,7 @@ namespace Layui.Core.Resource
         public  const string DialogMessageView = "DialogMessageView";
 
         public const string LayDialogWindowTooken = "LayDialogWindowTooken";
+
 
         #endregion
     }

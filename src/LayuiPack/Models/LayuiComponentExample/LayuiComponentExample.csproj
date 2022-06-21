@@ -51,8 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewModels\CarouselViewModel.cs" />
+    <Compile Include="ViewModels\DateTimeViewModel.cs" />
     <Compile Include="Views\Carousel.xaml.cs">
       <DependentUpon>Carousel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DateTime.xaml.cs">
+      <DependentUpon>DateTime.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DialogMessageView.xaml.cs">
       <DependentUpon>DialogMessageView.xaml</DependentUpon>
@@ -105,6 +109,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Carousel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DateTime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

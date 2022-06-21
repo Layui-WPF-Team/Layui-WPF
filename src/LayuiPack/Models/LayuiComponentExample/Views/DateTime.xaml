@@ -1,0 +1,26 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.DateTime"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <ScrollViewer>
+        <StackPanel>
+            <UniformGrid Columns="3" Rows="1">
+                <Lay:LayDatePicker
+                    Height="35"
+                    Margin="5"
+                    Style="{DynamicResource LayDatePickerStyle}" />
+                <Lay:LayDatePicker
+                    Height="35"
+                    Margin="5"
+                    Style="{DynamicResource LayDatePickerStyle}" />
+                <Lay:LayDatePicker
+                    Height="35"
+                    Margin="5"
+                    Style="{DynamicResource LayDatePickerStyle}" />
+            </UniformGrid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

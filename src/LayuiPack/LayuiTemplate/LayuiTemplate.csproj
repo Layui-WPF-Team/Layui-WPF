@@ -95,6 +95,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\DatePickerStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\DialogStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,6 +219,7 @@
     <Compile Include="Control\ComboBox\LayComboBox.cs" />
     <Compile Include="Control\ComboBox\LayComboBoxItem.cs" />
     <Compile Include="Control\DataGrid\LayDataGrid.cs" />
+    <Compile Include="Control\DatePicker\LayDatePicker.cs" />
     <Compile Include="Control\DialogHost\LayDialogHost.cs" />
     <Compile Include="Control\DropDown\LayDropDown.cs" />
     <Compile Include="Control\Expander\LayExpander.cs" />
