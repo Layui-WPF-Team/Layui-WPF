@@ -72,6 +72,19 @@ namespace LayuiTemplate.Control
             PART_AddBtn.IsEnabled = true;
             RaiseEvent(e);
         }
+        /// <summary>
+        /// 布局方向
+        /// </summary>
+        public Orientation Orientation
+        {
+            get { return (Orientation)GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OrientationProperty =
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(LayNumericUpDown), new PropertyMetadata(Orientation.Horizontal));
+
 
         /// <summary>
         /// 最小值
@@ -137,17 +150,17 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("FocusedBorderBrush", typeof(Brush), typeof(LayNumericUpDown), new PropertyMetadata(Brushes.Transparent));
 
         /// <summary>
-        /// 分割线宽度
+        /// 分割线
         /// </summary>
-        public double LineWidth
+        public double Line
         {
-            get { return (double)GetValue(LineWidthProperty); }
-            set { SetValue(LineWidthProperty, value); }
+            get { return (double)GetValue(LineProperty); }
+            set { SetValue(LineProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LineWidth.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LineWidthProperty =
-            DependencyProperty.Register("LineWidth", typeof(double), typeof(LayNumericUpDown));
+        // Using a DependencyProperty as the backing store for Line.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LineProperty =
+            DependencyProperty.Register("Line", typeof(double), typeof(LayNumericUpDown));
 
         /// <summary>
         /// 每单击按钮时增加或减少的数量

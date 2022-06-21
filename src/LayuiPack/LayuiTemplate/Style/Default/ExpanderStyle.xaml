@@ -335,7 +335,7 @@
             <Style x:Key="ExpanderLeftHeaderStyle" TargetType="ToggleButton" />
         </Style.Resources>
         <Setter Property="HeaderHeight" Value="40" />
-        <Setter Property="LineHeight" Value="1" />
+        <Setter Property="Line" Value="1" />
         <Setter Property="HeaderVerticalAlignment" Value="Center" />
         <Setter Property="HeaderBackground" Value="{DynamicResource LighGray}" />
         <Setter Property="Padding" Value="20,0" />
@@ -386,7 +386,7 @@
                                 <Grid
                                     x:Name="line"
                                     Grid.Row="1"
-                                    Height="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayExpander}, Path=LineHeight}"
+                                    Height="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayExpander}, Path=Line}"
                                     Background="{TemplateBinding BorderBrush}"
                                     Visibility="Collapsed" />
                             </Grid>
@@ -526,7 +526,7 @@
                                         </Grid.RowDefinitions>
                                         <Grid
                                             x:Name="line"
-                                            Height="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayExpander}, Path=LineHeight}"
+                                            Height="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayExpander}, Path=Line}"
                                             Background="{TemplateBinding BorderBrush}"
                                             Visibility="Collapsed" />
                                         <ToggleButton

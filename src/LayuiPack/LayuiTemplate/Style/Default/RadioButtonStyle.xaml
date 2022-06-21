@@ -2,9 +2,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ColorStyle.xaml" />
-    </ResourceDictionary.MergedDictionaries>
     <Style x:Key="LayRadioButtonStyle" TargetType="{x:Type Lay:LayRadioButton}">
         <Setter Property="Color" Value="{DynamicResource Gray}" />
         <Setter Property="CheckedColor" Value="{DynamicResource CyanBlue}" />
@@ -146,43 +143,15 @@
                         <Trigger Property="Content" Value="{x:Null}">
                             <Setter TargetName="content" Property="Visibility" Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation
-                                            Storyboard.TargetName="UnCheckedIco"
-                                            Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
-                                            To="{StaticResource GrayEffect}"
-                                            Duration="0" />
-                                        <ColorAnimation
-                                            Storyboard.TargetName="CheckedIco"
-                                            Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
-                                            To="{StaticResource GrayEffect}"
-                                            Duration="0" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation
-                                            Storyboard.TargetName="UnCheckedIco"
-                                            Storyboard.TargetProperty="Fill"
-                                            Duration="0" />
-                                        <ColorAnimation
-                                            Storyboard.TargetName="CheckedIco"
-                                            Storyboard.TargetProperty="Fill"
-                                            Duration="0" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
-                            <Setter Property="Foreground" Value="{StaticResource Gray}" />
-                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value="0.56" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource LayRadioButtonStyle}" TargetType="{x:Type Lay:LayRadioButton}" />
 </ResourceDictionary>

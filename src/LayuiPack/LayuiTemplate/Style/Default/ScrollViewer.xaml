@@ -2,9 +2,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ColorStyle.xaml" />
-    </ResourceDictionary.MergedDictionaries>
     <!--  垂直滚动条  -->
     <Style x:Key="LayScrollBarVertical" TargetType="{x:Type ScrollBar}">
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
@@ -339,7 +336,7 @@
                                 Maximum="{TemplateBinding ScrollableHeight}"
                                 Minimum="0"
                                 Opacity="0"
-                                Style="{StaticResource LayScrollBarVertical}"
+                                Style="{DynamicResource LayScrollBarVertical}"
                                 ViewportSize="{TemplateBinding ViewportHeight}"
                                 Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
                                 Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -352,7 +349,7 @@
                                 Maximum="{TemplateBinding ScrollableWidth}"
                                 Minimum="0"
                                 Opacity="0"
-                                Style="{StaticResource LayScrollBarHorizontal}"
+                                Style="{DynamicResource LayScrollBarHorizontal}"
                                 ViewportSize="{TemplateBinding ViewportWidth}"
                                 Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
                                 Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />

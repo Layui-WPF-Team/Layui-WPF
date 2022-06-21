@@ -11,7 +11,7 @@
         <Setter Property="Watermark" Value="请选择" />
         <Setter Property="WatermarkColor" Value="{DynamicResource Gray}" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="LineWidth" Value="1" />
+        <Setter Property="Line" Value="1" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="ItemContainerStyle" Value="{DynamicResource LayComboBoxItemStyle}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -246,7 +246,7 @@
                                         </Border>
                                         <Grid
                                             Grid.Column="1"
-                                            Width="{TemplateBinding LineWidth}"
+                                            Width="{TemplateBinding Line}"
                                             Background="{TemplateBinding BorderBrush}" />
                                         <Path
                                             Grid.Column="2"
@@ -339,6 +339,9 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.56" />
             </Trigger>
         </Style.Triggers>
     </Style>

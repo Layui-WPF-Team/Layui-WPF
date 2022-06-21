@@ -26,8 +26,7 @@
                         <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
                     </Trigger>
                     <Trigger Property="IsEnabled" Value="False">
-                        <Setter TargetName="bg" Property="Background" Value="#FBFBFB" />
-                        <Setter TargetName="bg" Property="BorderBrush" Value="#d2d2d2" />
+                        <Setter TargetName="bg" Property="Opacity" Value="0.4" />
                     </Trigger>
                 </ControlTemplate.Triggers>
             </ControlTemplate>
@@ -69,9 +68,6 @@
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="HoverBackground" Value="{DynamicResource LightRed}" />
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="#d2d2d2" />
             </Trigger>
         </Style.Triggers>
     </Style>

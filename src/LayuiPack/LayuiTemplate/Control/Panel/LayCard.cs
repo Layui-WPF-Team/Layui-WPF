@@ -13,15 +13,15 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 标题分割线高度
         /// </summary>
-        public double LineHeight
+        public double Line
         {
-            get { return (double)GetValue(LineHeightProperty); }
-            set { SetValue(LineHeightProperty, value); }
+            get { return (double)GetValue(LineProperty); }
+            set { SetValue(LineProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Line.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LineHeightProperty =
-            DependencyProperty.Register("LineHeight", typeof(double), typeof(LayCard));
+        public static readonly DependencyProperty LineProperty =
+            DependencyProperty.Register("Line", typeof(double), typeof(LayCard));
 
 
 

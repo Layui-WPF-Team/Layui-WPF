@@ -12,7 +12,7 @@
         </Style.Resources>
         <Setter Property="Background" Value="White" />
         <Setter Property="Padding" Value="15,5" />
-        <Setter Property="LineHeight" Value="1" />
+        <Setter Property="Line" Value="1" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Effect" Value="{DynamicResource DefaultEffect}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
@@ -33,7 +33,7 @@
                             <ContentControl Margin="{TemplateBinding Padding}" Content="{TemplateBinding Header}" />
                             <Grid
                                 Grid.Row="1"
-                                Height="{TemplateBinding LineHeight}"
+                                Height="{TemplateBinding Line}"
                                 VerticalAlignment="Bottom"
                                 Background="{TemplateBinding BorderBrush}" />
                             <ContentPresenter

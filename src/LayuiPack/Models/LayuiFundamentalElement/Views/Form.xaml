@@ -32,12 +32,34 @@
             </Lay:LayAutoCompleteTextBox.Content>
         </Lay:LayAutoCompleteTextBox>
         <Lay:LayPasswordBox Margin="0,5" Text="{Binding Password}" />
-        <Lay:LayNumericUpDown
-            x:Name="num"
-            Width="300"
-            Margin="0,5"
-            HorizontalAlignment="Left"
-            Increment="0.1" />
+        <StackPanel Margin="0,5" Orientation="Horizontal">
+            <Lay:LayNumericUpDown
+                Width="150"
+                HorizontalAlignment="Left"
+                Increment="0.1"
+                ToolTip="横向模式" />
+            <Lay:LayNumericUpDown
+                Width="150"
+                Margin="5,0"
+                HorizontalAlignment="Left"
+                Increment="0.1"
+                Orientation="Vertical"
+                ToolTip="纵向模式" />
+            <Lay:LayNumericUpDown
+                Width="150"
+                Margin="5,0"
+                HorizontalAlignment="Left"
+                Increment="0.1"
+                IsReadOnly="true"
+                ToolTip="只读模式" />
+            <Lay:LayNumericUpDown
+                Width="150"
+                Margin="5,0"
+                HorizontalAlignment="Left"
+                Increment="0.1"
+                IsEnabled="False"
+                Orientation="Vertical" />
+        </StackPanel>
         <Lay:LayComboBox Margin="0,5">
             <Lay:LayComboBoxItem Content="123" />
             <Lay:LayComboBoxItem Content="234" />

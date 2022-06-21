@@ -62,15 +62,15 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 分割线宽度(只有IsEditable开启才生效)
         /// </summary>
-        public double LineWidth
+        public double Line
         {
-            get { return (double)GetValue(LineWidthProperty); }
-            set { SetValue(LineWidthProperty, value); }
+            get { return (double)GetValue(LineProperty); }
+            set { SetValue(LineProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LineWidth.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LineWidthProperty =
-            DependencyProperty.Register("LineWidth", typeof(double), typeof(LayComboBox));
+        // Using a DependencyProperty as the backing store for Line.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LineProperty =
+            DependencyProperty.Register("Line", typeof(double), typeof(LayComboBox));
 
         /// <summary>
         /// 鼠标移入边框色

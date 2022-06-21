@@ -4,9 +4,6 @@
     xmlns:Enum="clr-namespace:LayuiTemplate.Enum"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ColorStyle.xaml" />
-    </ResourceDictionary.MergedDictionaries>
     <Style x:Key="LayTabItemStyle" TargetType="{x:Type Lay:LayTabItem}">
         <Setter Property="Height" Value="40" />
         <Setter Property="Padding" Value="15,5" />
