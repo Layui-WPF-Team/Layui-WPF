@@ -99,6 +99,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\DateTimePickerStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\DialogStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -220,6 +224,7 @@
     <Compile Include="Control\ComboBox\LayComboBoxItem.cs" />
     <Compile Include="Control\DataGrid\LayDataGrid.cs" />
     <Compile Include="Control\DatePicker\LayDatePicker.cs" />
+    <Compile Include="Control\DateTimePicker\LayDateTimePicker.cs" />
     <Compile Include="Control\DialogHost\LayDialogHost.cs" />
     <Compile Include="Control\DropDown\LayDropDown.cs" />
     <Compile Include="Control\Expander\LayExpander.cs" />
@@ -301,7 +306,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Control\Notification\" />
-    <Folder Include="Converter\Base\" />
+    <Folder Include="Converter\DatePicker\" />
     <Folder Include="Enum\Expander\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

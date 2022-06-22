@@ -7,19 +7,12 @@
     prism:ViewModelLocator.AutoWireViewModel="True">
     <ScrollViewer>
         <StackPanel>
-            <UniformGrid Columns="3" Rows="1">
-                <Lay:LayDatePicker
-                    Height="35"
-                    Margin="5"
-                    Style="{DynamicResource LayDatePickerStyle}" />
-                <Lay:LayDatePicker
-                    Height="35"
-                    Margin="5"
-                    Style="{DynamicResource LayDatePickerStyle}" />
-                <Lay:LayDatePicker
-                    Height="35"
-                    Margin="5"
-                    Style="{DynamicResource LayDatePickerStyle}" />
+            <UniformGrid Columns="2" Rows="1">
+                <Lay:LayDatePicker Height="35" Margin="5" />
+                <Lay:LayDateTimePicker Height="35" Margin="5" />
+            </UniformGrid>
+            <UniformGrid Columns="2" Rows="1">
+                <Calendar />
             </UniformGrid>
         </StackPanel>
     </ScrollViewer>
