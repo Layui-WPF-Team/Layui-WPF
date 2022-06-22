@@ -20,6 +20,10 @@ namespace LayuiFundamentalElement.ViewModels
         {
             Password = "123123";
         }
+        public List<string> ListDatas { get; set; } = new List<string>()
+        {
+            "1","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10","1","2","3","4","5","6","7","8","9","10"
+        };
         private bool _Error=false;
 
         public bool Error
@@ -33,6 +37,11 @@ namespace LayuiFundamentalElement.ViewModels
         {
             get { return _Password; }
             set { _Password = value; RaisePropertyChanged(); }
+        }
+        public override void ExecuteLoadedCommand()
+        {
+            base.ExecuteLoadedCommand();
+
         }
         public DelegateCommand SaveCommand => new DelegateCommand(Save);
 

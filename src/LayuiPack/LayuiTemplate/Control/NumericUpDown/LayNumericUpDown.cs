@@ -41,7 +41,7 @@ namespace LayuiTemplate.Control
             layNumericUp.OnValueChanged(new RoutedEventArgs(ValueChangedEvent, layNumericUp));
         }
         /// <summary>
-        ///     值改变事件
+        /// 值改变事件
         /// </summary>
         public event EventHandler<RoutedEventArgs> ValueChanged
         {
@@ -127,7 +127,7 @@ namespace LayuiTemplate.Control
             LayNumericUpDown layNumericUp = d as LayNumericUpDown;
             if (layNumericUp.Value >= layNumericUp.MaxValue)
             {
-                layNumericUp.Value = layNumericUp.MinValue;
+                layNumericUp.Value = layNumericUp.MaxValue;
                 layNumericUp.PART_LowerBtn.IsEnabled = false;
             }
         }

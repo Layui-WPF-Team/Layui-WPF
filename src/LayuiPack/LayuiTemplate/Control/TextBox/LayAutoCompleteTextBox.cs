@@ -11,21 +11,87 @@ using System.Windows.Input;
 namespace LayuiTemplate.Control
 {
     [TemplatePart(Name = "PART_Popup", Type = typeof(Popup))]
-    public class LayAutoCompleteTextBox : LayTextBox
+    [TemplatePart(Name = "PART_TextBox", Type = typeof(TextBox))]
+    public class LayAutoCompleteTextBox : ListBox
     {
         private Popup PART_Popup;
+        private TextBox PART_TextBox;
         /// <summary>
-        /// 内容
+        /// 无数据提示信息
         /// </summary>
-        public ListBox Content
+        public string NoDataTips
         {
-            get { return (ListBox)GetValue(ContentProperty); }
-            set { SetValue(ContentProperty, value); }
+            get { return (string)GetValue(NoDataTipsProperty); }
+            set { SetValue(NoDataTipsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(object), typeof(LayAutoCompleteTextBox));
+        // Using a DependencyProperty as the backing store for NoDataTips.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty NoDataTipsProperty =
+            DependencyProperty.Register("NoDataTips", typeof(string), typeof(LayAutoCompleteTextBox));
+
+
+        /// <summary>
+        /// 集合最大高度
+        /// </summary>
+        public double MaxDropDownHeight
+        {
+            get { return (double)GetValue(MaxDropDownHeightProperty); }
+            set { SetValue(MaxDropDownHeightProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MaxDropDownHeight.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MaxDropDownHeightProperty =
+            DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(LayAutoCompleteTextBox));
+
+        /// <summary>
+        /// 当前文本
+        /// </summary>
+        public string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(LayAutoCompleteTextBox));
+
+        /// <summary>
+        /// 值改变事件
+        /// </summary>
+        public event EventHandler<RoutedEventArgs> TextChanged
+        {
+            add => AddHandler(TextChangedEvent, value);
+            remove => RemoveHandler(TextChangedEvent, value);
+        }
+        /// <summary>
+        ///     值改变事件
+        /// </summary>
+        public static readonly RoutedEvent TextChangedEvent =
+            EventManager.RegisterRoutedEvent("TextChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(LayAutoCompleteTextBox));
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayAutoCompleteTextBox));
+        /// <summary>
+        /// 水印
+        /// </summary>
+        public string Watermark
+        {
+            get { return (string)GetValue(WatermarkProperty); }
+            set { SetValue(WatermarkProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Watermark.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty WatermarkProperty =
+            DependencyProperty.Register("Watermark", typeof(string), typeof(LayAutoCompleteTextBox));
+
+
         /// <summary>
         /// 是否展开
         /// </summary>
@@ -37,102 +103,92 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for IsDropDownOpen.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDropDownOpenProperty =
-            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(LayAutoCompleteTextBox), new PropertyMetadata(OnIsDropDownOpen));
-
-        private static void OnIsDropDownOpen(DependencyObject d, DependencyPropertyChangedEventArgs e)
+            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(LayAutoCompleteTextBox));
+        protected virtual void OnTextChanged(RoutedEventArgs e)
         {
-            if (d is LayAutoCompleteTextBox textBox)
-            {
-                textBox.GetSelector();
-            }
-        }
-        /// <summary>
-        /// 获取并设置Popup状态
-        /// </summary>
-        private void GetSelector()
-        {
-            if (Content != null)
-            {
-                if (Content is Selector selector)
-                {
-                    selector.SelectionChanged -= Selector_SelectionChanged;
-                    selector.SelectionChanged += Selector_SelectionChanged;
-                }
-            }
-        }
-        /// <summary>
-        /// 选中状态
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Selector_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            IsDropDownOpen = false;
-            if (Content != null)
-            {
-                if (Content is Selector selector)
-                {
-                    if (selector.Items.Count > 0)
-                        selector.SelectedIndex = -1;
-                }
-            }
-            Focus();
-        }
-        protected override void OnPreviewKeyUp(KeyEventArgs e)
-        {
-            base.OnPreviewKeyUp(e);
-            if (e.Key != Key.LeftShift && e.Key != Key.RightShift && e.Key != Key.LeftCtrl && e.Key != Key.RightCtrl && !IsDropDownOpen)
-                IsDropDownOpen = true;
-
-        }
-        /// <summary>
-        /// 取消焦点
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnLostFocus(RoutedEventArgs e)
-        {
-            base.OnLostFocus(e);
-            IsDropDownOpen = false;
+            RaiseEvent(e);
         }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             PART_Popup = GetTemplateChild("PART_Popup") as Popup;
-            if (PART_Popup != null)
+            PART_TextBox = GetTemplateChild("PART_TextBox") as TextBox;
+            if (PART_TextBox != null && PART_Popup != null)
             {
-                PART_Popup.Opened -= PART_Popup_Opened;
-                PART_Popup.Opened += PART_Popup_Opened;
+                PART_TextBox.TextChanged -= PART_TextBox_TextChanged;
+                PART_TextBox.TextChanged += PART_TextBox_TextChanged;
+                PART_TextBox.SelectionChanged -= PART_TextBox_SelectionChanged;
+                PART_TextBox.SelectionChanged += PART_TextBox_SelectionChanged;
+                PART_TextBox.LostFocus -= PART_TextBox_LostFocus;
+                PART_TextBox.LostFocus += PART_TextBox_LostFocus;
             }
-            GetSelector();
-        }
-
-        private void PART_Popup_Opened(object sender, EventArgs e)
-        {
             var window = Window.GetWindow(this);
             if (window != null)
             {
                 window.LocationChanged -= Window_LocationChanged;
                 window.LocationChanged += Window_LocationChanged;
-                window.PreviewMouseLeftButtonUp -= Window_PreviewMouseLeftButtonUp;
-                window.PreviewMouseLeftButtonUp += Window_PreviewMouseLeftButtonUp;
-            }
-            if (Content != null)
-            {
-                if (Content is Selector selector)
-                {
-                    if (selector.Items.Count > 0)
-                        selector.SelectedIndex = -1;
-                }
+                window.Deactivated -= Window_Deactivated;
+                window.Deactivated += Window_Deactivated;
+                window.MouseLeftButtonUp -= Windiw_MouseLeftButtonUp;
+                window.MouseLeftButtonUp += Windiw_MouseLeftButtonUp;
             }
         }
 
-        private void Window_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void PART_TextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
+            if (!IsLoaded) return; 
+            IsDropDownOpen = true;
+        }
+
+        /// <summary>
+        /// 抓取指定项控件并返回定制项控件
+        /// </summary>
+        /// <returns></returns>
+        protected override DependencyObject GetContainerForItemOverride()
+        {
+            var item = new ListBoxItem();
+            item.Focusable = false;
+            if (item is FrameworkElement view)
+            {
+                view.PreviewMouseLeftButtonDown -= InvengoSelectTextBox_MouseLeftButtonDown;
+                view.PreviewMouseLeftButtonDown += InvengoSelectTextBox_MouseLeftButtonDown;
+            }
+            return item;
+        }
+
+        private async void InvengoSelectTextBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!IsLoaded) return;
+            PART_TextBox.Focus();
+            PART_TextBox.SelectAll();
+            await Task.Delay(100);
             IsDropDownOpen = false;
         }
 
+        private void Windiw_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (!IsLoaded) return;
+            IsDropDownOpen = false;
+        }
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            if (!IsLoaded) return;
+            IsDropDownOpen = false;
+        }
+
+        private void PART_TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded) return;
+            IsDropDownOpen = false;
+        }
+
+        private void PART_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.OnTextChanged(new RoutedEventArgs(TextChangedEvent, this));
+        }
         private void Window_LocationChanged(object sender, EventArgs e)
         {
+            if (!IsLoaded) return;
             IsDropDownOpen = false;
         }
     }

@@ -5,6 +5,7 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:Nv="clr-namespace:Layui.Core.Resource;assembly=Layui.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
@@ -13,6 +14,11 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="White"
     mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <StackPanel Margin="6">
         <Grid Margin="0,20">
             <Grid Height="2" Background="#D2D2D2" />
@@ -24,12 +30,12 @@
                 Text="表单集合演示" />
         </Grid>
         <Lay:LayTextBox Margin="0,5" />
-        <Lay:LayAutoCompleteTextBox Margin="0,5">
-            <Lay:LayAutoCompleteTextBox.Content>
-                <ListBox>
-                    <ListBoxItem Content="123" />
-                </ListBox>
-            </Lay:LayAutoCompleteTextBox.Content>
+        <Lay:LayAutoCompleteTextBox Margin="0,5" ItemsSource="{Binding ListDatas}">
+            <Lay:LayAutoCompleteTextBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding .}" />
+                </DataTemplate>
+            </Lay:LayAutoCompleteTextBox.ItemTemplate>
         </Lay:LayAutoCompleteTextBox>
         <Lay:LayPasswordBox Margin="0,5" Text="{Binding Password}" />
         <StackPanel Margin="0,5" Orientation="Horizontal">
@@ -43,7 +49,6 @@
                 Margin="5,0"
                 HorizontalAlignment="Left"
                 Increment="0.1"
-                MinValue="-10"
                 Orientation="Vertical"
                 ToolTip="纵向模式" />
             <Lay:LayNumericUpDown
