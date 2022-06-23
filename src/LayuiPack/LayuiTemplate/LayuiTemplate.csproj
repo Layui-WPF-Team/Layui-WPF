@@ -187,6 +187,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\TimePickerStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Default\TimerStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\ToolTipStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -249,10 +257,14 @@
     <Compile Include="Control\TextBox\LayTextBox.cs" />
     <Compile Include="Control\Timeline\LayTimelineItem.cs" />
     <Compile Include="Control\Timeline\LayTimelinePanel.cs" />
+    <Compile Include="Control\TimePicker\LayTimePicker.cs" />
+    <Compile Include="Control\Timer\LayTimer.cs" />
     <Compile Include="Control\Transitions\LayTransition.cs" />
     <Compile Include="Control\TreeViewItem\LayTreeViewItem.cs" />
     <Compile Include="Control\TreeView\LayTreeView.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
+    <Compile Include="Extend\Base\LayControlsBaseHelper.cs" />
+    <Compile Include="Extend\DatePicker\LayDatePickerHelper.cs" />
     <Compile Include="Global\Dialog\Interface\ILayDialogWindowAware.cs" />
     <Compile Include="Global\Dialog\Interface\ILayDialogUserControlWindow.cs" />
     <Compile Include="Global\Dialog\Interface\ILayDialogUserControlWindowExtensions.cs" />

@@ -36,5 +36,7 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ComboBoxItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/DatePickerStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/DateTimePickerStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TimePickerStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/TimerStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

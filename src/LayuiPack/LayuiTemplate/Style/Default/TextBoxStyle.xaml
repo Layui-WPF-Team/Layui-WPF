@@ -13,6 +13,7 @@
         <Setter Property="WatermarkColor" Value="{DynamicResource Gray}" />
         <Setter Property="Padding" Value="10,0,10,0" />
         <Setter Property="Height" Value="38" />
+        <Setter Property="Width" Value="150" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -38,7 +39,7 @@
                                 HorizontalScrollBarVisibility="Hidden"
                                 VerticalScrollBarVisibility="Hidden" />
                             <Border
-                                Padding="2,0,0,0"
+                                Padding="2,0,2,0"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 IsHitTestVisible="False">

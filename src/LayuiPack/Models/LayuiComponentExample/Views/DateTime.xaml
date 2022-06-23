@@ -6,14 +6,25 @@
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <ScrollViewer>
-        <StackPanel>
-            <UniformGrid Columns="2" Rows="1">
-                <Lay:LayDatePicker Height="35" Margin="5" />
-                <Lay:LayDateTimePicker Height="35" Margin="5" />
-            </UniformGrid>
-            <UniformGrid Columns="2" Rows="1">
-                <Calendar />
-            </UniformGrid>
+        <StackPanel HorizontalAlignment="Left">
+            <Lay:LayDatePicker
+                Width="250"
+                Height="35"
+                Margin="5" />
+            <Lay:LayDateTimePicker
+                Width="250"
+                Height="35"
+                Margin="5" />
+            <Lay:LayTimePicker
+                Width="250"
+                Height="35"
+                Margin="5" />
+            <Calendar Margin="5" />
+            <Lay:LayTextBox
+                Width="250"
+                Margin="5"
+                Text="{Binding ElementName=time, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Lay:LayTimer x:Name="time" Margin="5" />
         </StackPanel>
     </ScrollViewer>
 </UserControl>
