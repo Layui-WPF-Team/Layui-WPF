@@ -1,0 +1,65 @@
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.AuxiliaryElement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <ScrollViewer>
+        <StackPanel Margin="10">
+            <Lay:LayGroupBox
+                Height="100"
+                BorderBrush="{DynamicResource Red}"
+                Style="{DynamicResource LayGroupBoxStyle}"
+                Type="Left">
+                <Lay:LayGroupBox.Header>
+                    <TextBlock Text="123" />
+                </Lay:LayGroupBox.Header>
+            </Lay:LayGroupBox>
+            <Lay:LayGroupBox
+                Height="100"
+                BorderBrush="{DynamicResource CyanBlue}"
+                Style="{DynamicResource LayGroupBoxStyle}"
+                Type="Center">
+                <Lay:LayGroupBox.Header>
+                    <TextBlock Text="123" />
+                </Lay:LayGroupBox.Header>
+            </Lay:LayGroupBox>
+            <Lay:LayGroupBox
+                Height="100"
+                BorderBrush="{DynamicResource Orange}"
+                Style="{DynamicResource LayGroupBoxStyle}"
+                Type="Right">
+                <Lay:LayGroupBox.Header>
+                    <TextBlock Text="123" />
+                </Lay:LayGroupBox.Header>
+            </Lay:LayGroupBox>
+            <Lay:LayLegend>
+                <Lay:LayLegend.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="我是按钮" />
+                        <TextBlock Margin="5,0" Text="我是标题" />
+                    </StackPanel>
+                </Lay:LayLegend.Header>
+                <Grid Height="100">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="自定义头部标题内容" />
+                </Grid>
+            </Lay:LayLegend>
+            <Lay:LayLegend
+                Header="这是分割线"
+                LineColor="{DynamicResource Red}"
+                Type="Left" />
+            <Lay:LayLegend
+                Header="这是分割线"
+                LineColor="{DynamicResource CyanBlue}"
+                Type="Center" />
+            <Lay:LayLegend
+                Header="这是分割线"
+                LineColor="{DynamicResource Orange}"
+                Type="Right" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

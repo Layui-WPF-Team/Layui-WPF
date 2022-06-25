@@ -63,6 +63,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\AuxiliaryElementViewModel.cs" />
     <Compile Include="ViewModels\ButtonViewModel.cs" />
     <Compile Include="ViewModels\ExpanderViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
@@ -74,6 +75,9 @@
     <Compile Include="ViewModels\TimelineViewModel.cs" />
     <Compile Include="ViewModels\TransitionControlViewModel.cs" />
     <Compile Include="ViewModels\TreeViewModel.cs" />
+    <Compile Include="Views\AuxiliaryElement.xaml.cs">
+      <DependentUpon>AuxiliaryElement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
@@ -118,6 +122,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AuxiliaryElement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -115,6 +115,9 @@ namespace LayuiHome.ViewModels
                             },new MenuItemModel()
                             {
                                 ItemTitle="时间线", PageKey=SystemResource.Page_TimelineView
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="辅助元素", PageKey=SystemResource.Page_AuxiliaryElementView
                             }
                         }
                 },new MenuItemModel()

@@ -87,6 +87,10 @@ namespace Layui.Core.Resource
         /// 时间
         /// </summary>
         public const string Page_DateTimeView = "DateTime";
+        /// <summary>
+        /// 辅助元素试图
+        /// </summary>
+        public const string Page_AuxiliaryElementView = "AuxiliaryElement";
         #endregion
 
         #region 弹窗名称
@@ -96,6 +100,7 @@ namespace Layui.Core.Resource
         public  const string DialogMessageView = "DialogMessageView";
 
         public const string LayDialogWindowTooken = "LayDialogWindowTooken";
+
 
 
         #endregion

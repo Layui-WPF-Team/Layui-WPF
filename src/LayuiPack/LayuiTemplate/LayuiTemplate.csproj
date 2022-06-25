@@ -119,6 +119,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\GroupBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Default\LegendStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\ListBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -237,9 +245,11 @@
     <Compile Include="Control\DropDown\LayDropDown.cs" />
     <Compile Include="Control\Expander\LayExpander.cs" />
     <Compile Include="Control\Expander\LayNavExpanderPanel.cs" />
+    <Compile Include="Control\GroupBox\LayGroupBox.cs" />
     <Compile Include="Control\Hr\LayHr.xaml.cs">
       <DependentUpon>LayHr.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\Legend\LayLegend.cs" />
     <Compile Include="Control\MenuItem\LayMenuItem.cs" />
     <Compile Include="Control\Menu\LayMenu.cs" />
     <Compile Include="Control\Loading\LayLoading.cs" />
@@ -263,6 +273,8 @@
     <Compile Include="Control\TreeViewItem\LayTreeViewItem.cs" />
     <Compile Include="Control\TreeView\LayTreeView.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
+    <Compile Include="Enum\GroupBox\GroupBoxStyle.cs" />
+    <Compile Include="Enum\Legend\LegendStyle.cs" />
     <Compile Include="Extend\Base\LayControlsBaseHelper.cs" />
     <Compile Include="Extend\DatePicker\LayDatePickerHelper.cs" />
     <Compile Include="Global\Dialog\Interface\ILayDialogWindowAware.cs" />

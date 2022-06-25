@@ -96,6 +96,7 @@
                     <Grid x:Name="body">
                         <Lay:LayTextBox
                             x:Name="PART_TextBox"
+                            Width="auto"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             IsEnabled="{TemplateBinding IsEnabled}"
                             Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

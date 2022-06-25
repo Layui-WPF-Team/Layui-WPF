@@ -28,6 +28,7 @@ namespace LayuiFundamentalElement
             containerRegistry.RegisterForNavigation<Views.Panel>(SystemResource.Page_PanelView);
             containerRegistry.RegisterForNavigation<Views.Timeline>(SystemResource.Page_TimelineView);
             containerRegistry.RegisterForNavigation<Views.TreeView>(SystemResource.Page_TreeView);
+            containerRegistry.RegisterForNavigation<Views.AuxiliaryElement>(SystemResource.Page_AuxiliaryElementView);
         }
     }
 }
