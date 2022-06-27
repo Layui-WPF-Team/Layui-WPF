@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Helper="clr-namespace:LayuiTemplate.Extend"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
     <Style x:Key="LayTextBoxStyle" TargetType="{x:Type Lay:LayTextBox}">
         <Setter Property="Background" Value="White" />
@@ -21,6 +22,7 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+        <Setter Property="Helper:LayTextBoxHelper.InputType" Value="Default" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
@@ -55,6 +57,15 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Helper:LayTextBoxHelper.InputType)}" Value="Default">
+                            <Setter Property="InputMethod.IsInputMethodEnabled" Value="true" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Helper:LayTextBoxHelper.InputType)}" Value="Number">
+                            <Setter Property="InputMethod.IsInputMethodEnabled" Value="false" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Helper:LayTextBoxHelper.InputType)}" Value="Phone">
+                            <Setter Property="InputMethod.IsInputMethodEnabled" Value="false" />
+                        </DataTrigger>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" Value="">
                             <Setter TargetName="watermark" Property="Visibility" Value="Visible" />
                         </DataTrigger>

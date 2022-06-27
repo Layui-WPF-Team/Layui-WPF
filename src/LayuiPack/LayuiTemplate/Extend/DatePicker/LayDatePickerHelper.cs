@@ -11,7 +11,7 @@ namespace LayuiTemplate.Extend
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-06-23 下午 1:10:14</para>
     /// </summary>
-    public class LayDatePickerHelper: LayControlsBaseHelper
+    public class LayDatePickerHelper : LayControlsBaseHelper
     {
     }
 }

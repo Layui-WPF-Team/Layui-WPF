@@ -275,8 +275,10 @@
     <Compile Include="Control\Window\LayWindow.cs" />
     <Compile Include="Enum\GroupBox\GroupBoxStyle.cs" />
     <Compile Include="Enum\Legend\LegendStyle.cs" />
+    <Compile Include="Enum\TextBox\InputType.cs" />
     <Compile Include="Extend\Base\LayControlsBaseHelper.cs" />
     <Compile Include="Extend\DatePicker\LayDatePickerHelper.cs" />
+    <Compile Include="Extend\TextBox\LayTextBoxHelper.cs" />
     <Compile Include="Global\Dialog\Interface\ILayDialogWindowAware.cs" />
     <Compile Include="Global\Dialog\Interface\ILayDialogUserControlWindow.cs" />
     <Compile Include="Global\Dialog\Interface\ILayDialogUserControlWindowExtensions.cs" />
