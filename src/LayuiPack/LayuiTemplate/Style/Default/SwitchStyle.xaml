@@ -1,0 +1,49 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Cv="clr-namespace:LayuiTemplate.Converters"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    <Style x:Key="LaySwitchStyle" TargetType="Lay:LaySwitch">
+        <Style.Resources>
+            <Cv:SwitchWidthConverter x:Key="SwitchWidthConverter" />
+        </Style.Resources>
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LaySwitch">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight, Converter={StaticResource SwitchWidthConverter}}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Viewbox x:Name="icon" HorizontalAlignment="Left">
+                                <Grid>
+                                    <Border
+                                        Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                        Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                        Margin="5"
+                                        Background="{TemplateBinding Foreground}"
+                                        CornerRadius="{TemplateBinding CornerRadius}" />
+                                </Grid>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="icon" Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Background" Value="{DynamicResource CyanBlue}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LaySwitchStyle}" TargetType="Lay:LaySwitch" />
+</ResourceDictionary>

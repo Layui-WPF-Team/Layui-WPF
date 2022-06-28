@@ -10,7 +10,6 @@
     xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
-    d:DesignHeight="540"
     d:DesignWidth="1080"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="White"
@@ -20,117 +19,117 @@
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <StackPanel Margin="6">
-        <Lay:LayLegend Header="表单集合演示" />
-        <Lay:LayTextBox Width="auto" Margin="0,5" />
-        <Lay:LayTextBox
-            Width="auto"
-            Margin="0,5"
-            LayHelper:LayTextBoxHelper.InputType="Number"
-            Watermark="只允许输入数字" />
-        <Lay:LayTextBox
-            Width="auto"
-            Margin="0,5"
-            LayHelper:LayTextBoxHelper.InputType="Phone"
-            Watermark="只允许输入电话号码" />
-        <Lay:LayAutoCompleteTextBox Margin="0,5" ItemsSource="{Binding ListDatas}">
-            <Lay:LayAutoCompleteTextBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding .}" />
-                </DataTemplate>
-            </Lay:LayAutoCompleteTextBox.ItemTemplate>
-        </Lay:LayAutoCompleteTextBox>
-        <Lay:LayPasswordBox Margin="0,5" Text="{Binding Password}" />
-        <StackPanel Margin="0,5" Orientation="Horizontal">
-            <Lay:LayNumericUpDown
-                Width="150"
-                HorizontalAlignment="Left"
-                Increment="0.1"
-                ToolTip="横向模式" />
-            <Lay:LayNumericUpDown
-                Width="150"
-                Margin="5,0"
-                HorizontalAlignment="Left"
-                Increment="0.1"
-                Orientation="Vertical"
-                ToolTip="纵向模式" />
-            <Lay:LayNumericUpDown
-                Width="150"
-                Margin="5,0"
-                HorizontalAlignment="Left"
-                Increment="0.1"
-                IsReadOnly="true"
-                ToolTip="只读模式" />
-            <Lay:LayNumericUpDown
-                Width="150"
-                Margin="5,0"
-                HorizontalAlignment="Left"
-                Increment="0.1"
-                IsEnabled="False"
-                Orientation="Vertical" />
-        </StackPanel>
-        <Lay:LayComboBox Margin="0,5">
-            <Lay:LayComboBoxItem Content="123" />
-            <Lay:LayComboBoxItem Content="234" />
-        </Lay:LayComboBox>
-        <Lay:LayComboBox
-            Margin="0,5"
-            IsEditable="True"
-            Watermark="可编辑下拉框">
-            <Lay:LayComboBoxItem Content="123" />
-            <Lay:LayComboBoxItem Content="234" />
-        </Lay:LayComboBox>
-        <StackPanel>
+    <ScrollViewer>
+        <StackPanel Margin="6">
+            <Lay:LayLegend Header="表单集合演示" />
+            <Lay:LayTextBox Width="auto" Margin="0,5" />
+            <Lay:LayTextBox
+                Width="auto"
+                Margin="0,5"
+                LayHelper:LayTextBoxHelper.InputType="Number"
+                Watermark="只允许输入数字" />
+            <Lay:LayTextBox
+                Width="auto"
+                Margin="0,5"
+                LayHelper:LayTextBoxHelper.InputType="Phone"
+                Watermark="只允许输入电话号码" />
+            <Lay:LayAutoCompleteTextBox Margin="0,5" ItemsSource="{Binding ListDatas}">
+                <Lay:LayAutoCompleteTextBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding .}" />
+                    </DataTemplate>
+                </Lay:LayAutoCompleteTextBox.ItemTemplate>
+            </Lay:LayAutoCompleteTextBox>
+            <Lay:LayPasswordBox Margin="0,5" Text="{Binding Password}" />
             <StackPanel Margin="0,5" Orientation="Horizontal">
-                <Lay:LayCheckBox
-                    Content="空"
-                    IconSize="25"
-                    IsChecked="{x:Null}" />
-                <Lay:LayCheckBox
-                    Margin="10,0"
-                    Content="写作"
-                    IconSize="25" />
-                <Lay:LayCheckBox
-                    Margin="10,0"
-                    Content="阅读"
-                    IconSize="25" />
-                <Lay:LayCheckBox
-                    Content="游戏"
-                    IconSize="25"
-                    IsChecked="True"
-                    IsEnabled="False" />
-            </StackPanel>
-            <StackPanel Margin="0,5" Orientation="Horizontal">
-                <Lay:LayCheckBox Content="写作" Type="Default" />
-                <Lay:LayCheckBox
+                <Lay:LayNumericUpDown
+                    Width="150"
+                    HorizontalAlignment="Left"
+                    Increment="0.1"
+                    ToolTip="横向模式" />
+                <Lay:LayNumericUpDown
+                    Width="150"
                     Margin="5,0"
-                    Content="阅读阅读"
-                    Type="Default" />
-                <Lay:LayCheckBox
-                    Content="游戏"
+                    HorizontalAlignment="Left"
+                    Increment="0.1"
+                    Orientation="Vertical"
+                    ToolTip="纵向模式" />
+                <Lay:LayNumericUpDown
+                    Width="150"
+                    Margin="5,0"
+                    HorizontalAlignment="Left"
+                    Increment="0.1"
+                    IsReadOnly="true"
+                    ToolTip="只读模式" />
+                <Lay:LayNumericUpDown
+                    Width="150"
+                    Margin="5,0"
+                    HorizontalAlignment="Left"
+                    Increment="0.1"
                     IsEnabled="False"
-                    Type="Default" />
+                    Orientation="Vertical" />
             </StackPanel>
-            <StackPanel Margin="0,5" Orientation="Horizontal">
-                <Lay:LayRadioButton
-                    Content="男"
-                    FontSize="16"
-                    GroupName="Sex" />
-                <Lay:LayRadioButton
-                    Content="女"
-                    FontSize="16"
-                    GroupName="Sex" />
-                <Lay:LayRadioButton
-                    Content="其他"
-                    FontSize="16"
-                    GroupName="Sex"
-                    IsEnabled="false" />
+            <Lay:LayComboBox Margin="0,5">
+                <Lay:LayComboBoxItem Content="123" />
+                <Lay:LayComboBoxItem Content="234" />
+            </Lay:LayComboBox>
+            <Lay:LayComboBox
+                Margin="0,5"
+                IsEditable="True"
+                Watermark="可编辑下拉框">
+                <Lay:LayComboBoxItem Content="123" />
+                <Lay:LayComboBoxItem Content="234" />
+            </Lay:LayComboBox>
+            <StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <Lay:LayCheckBox Content="空" IsChecked="{x:Null}" />
+                    <Lay:LayCheckBox Margin="10,0" Content="写作" />
+                    <Lay:LayCheckBox Margin="10,0" Content="阅读" />
+                    <Lay:LayCheckBox
+                        Content="游戏"
+                        IsChecked="True"
+                        IsEnabled="False" />
+                </StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <Lay:LayCheckBox Content="写作" Type="Default" />
+                    <Lay:LayCheckBox
+                        Margin="5,0"
+                        Content="阅读阅读"
+                        Type="Default" />
+                    <Lay:LayCheckBox
+                        Content="游戏"
+                        IsEnabled="False"
+                        Type="Default" />
+                </StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <Lay:LayRadioButton
+                        Content="男"
+                        FontSize="16"
+                        GroupName="Sex" />
+                    <Lay:LayRadioButton
+                        Content="女"
+                        FontSize="16"
+                        GroupName="Sex" />
+                    <Lay:LayRadioButton
+                        Content="其他"
+                        FontSize="16"
+                        GroupName="Sex"
+                        IsEnabled="false" />
+                </StackPanel>
+                <StackPanel Margin="0,5" Orientation="Horizontal">
+                    <Lay:LaySwitch
+                        Width="70"
+                        Height="30"
+                        Content="男"
+                        FontSize="16"
+                        Foreground="White" />
+                </StackPanel>
             </StackPanel>
+            <Lay:LayButton
+                HorizontalAlignment="Left"
+                Command="{Binding SaveCommand}"
+                Content="立即提交"
+                Type="Default" />
         </StackPanel>
-        <Lay:LayButton
-            HorizontalAlignment="Left"
-            Command="{Binding SaveCommand}"
-            Content="立即提交"
-            Type="Default" />
-    </StackPanel>
+    </ScrollViewer>
 </UserControl>

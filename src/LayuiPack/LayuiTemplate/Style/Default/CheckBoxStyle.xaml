@@ -9,11 +9,10 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="IconSize" Value="25" />
+        <Setter Property="Height" Value="25" />
         <Style.Triggers>
             <Trigger Property="Type" Value="Primary">
                 <Setter Property="Background" Value="White" />
-                <Setter Property="IconSize" Value="20" />
                 <Setter Property="HoverBorderBrush" Value="{DynamicResource CyanBlue}" />
                 <Setter Property="Template">
                     <Setter.Value>
@@ -26,29 +25,31 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Viewbox Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IconSize}" Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IconSize}">
-                                    <Border
-                                        x:Name="checkBoxBorder"
-                                        Width="30"
-                                        Height="30"
-                                        Margin="1"
-                                        Padding="5"
-                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                        Background="White"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="{DynamicResource ControlCornerRadiusBase}">
-                                        <Viewbox>
-                                            <Path
-                                                x:Name="textBlock"
-                                                Data="M332.972089 890.88a56.888889 56.888889 0 0 0 85.333333 0.170667l591.388445-682.666667a56.888889 56.888889 0 0 0-85.162667-75.434667l-591.388444 682.666667 85.333333 0.199111L99.642311 465.208889a56.888889 56.888889 0 1 0-85.504 75.064889l318.862222 350.577778z"
-                                                Fill="White"
-                                                Opacity="0"
-                                                Stretch="Fill" />
-                                        </Viewbox>
-                                    </Border>
-                                </Viewbox>
+                                <Grid Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}" Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}">
+                                    <Viewbox>
+                                        <Grid>
+                                            <Border
+                                                x:Name="checkBoxBorder"
+                                                Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                                Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                                Padding="5"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Background="White"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                                <Path
+                                                    x:Name="textBlock"
+                                                    Data="M332.972089 890.88a56.888889 56.888889 0 0 0 85.333333 0.170667l591.388445-682.666667a56.888889 56.888889 0 0 0-85.162667-75.434667l-591.388444 682.666667 85.333333 0.199111L99.642311 465.208889a56.888889 56.888889 0 1 0-85.504 75.064889l318.862222 350.577778z"
+                                                    Fill="White"
+                                                    Opacity="0"
+                                                    Stretch="Fill" />
+                                            </Border>
+                                        </Grid>
+                                    </Viewbox>
+                                </Grid>
+
                                 <Border Grid.Column="1" Padding="5,0,0,0">
                                     <ContentPresenter
                                         x:Name="contentPresenter"
@@ -81,7 +82,7 @@
                                 <Trigger Property="IsChecked" Value="true" />
                                 <!--  未选择时的效果  -->
                                 <Trigger Property="IsChecked" Value="{x:Null}">
-                                    <Setter TargetName="checkBoxBorder" Property="Padding" Value="3" />
+                                    <Setter TargetName="checkBoxBorder" Property="Padding" Value="1" />
                                     <Setter TargetName="textBlock" Property="Data" Value="M0,2 C0,0.8954305 0.8954305,0 2,0 L28,0 C29.104569,0 30,0.8954305 30,2 L30,28 C30,29.104569 29.104569,30 28,30 L2,30 C0.8954305,30 0,29.104569 0,28 z" />
                                     <Setter TargetName="textBlock" Property="Fill" Value="{DynamicResource CyanBlue}" />
                                     <Trigger.EnterActions>
@@ -138,6 +139,8 @@
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </MultiTrigger.ExitActions>
+                                    <Setter TargetName="checkBoxBorder" Property="Padding" Value="3" />
+                                    <Setter TargetName="textBlock" Property="Margin" Value="0,2" />
                                     <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource CyanBlue}" />
                                 </MultiTrigger>
                                 <MultiTrigger>
@@ -160,7 +163,6 @@
                 <Setter Property="FontSize" Value="14" />
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="Padding" Value="10,3" />
-                <Setter Property="IconSize" Value="30" />
                 <Setter Property="Background" Value="{DynamicResource Gray}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
                 <Setter Property="HoverBorderBrush" Value="{DynamicResource CyanBlue}" />

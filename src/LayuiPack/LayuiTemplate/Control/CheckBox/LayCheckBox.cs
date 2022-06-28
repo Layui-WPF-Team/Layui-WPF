@@ -39,20 +39,15 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty HoverBorderBrushProperty =
             DependencyProperty.Register("HoverBorderBrush", typeof(Brush), typeof(LayCheckBox), new PropertyMetadata(Brushes.Transparent));
 
-
-        /// <summary>
-        /// 图标大小
-        /// </summary>
-        public int IconSize
+        public Brush CheckedColor
         {
-            get { return (int)GetValue(IconSizeProperty); }
-            set { SetValue(IconSizeProperty, value); }
+            get { return (Brush)GetValue(CheckedColorProperty); }
+            set { SetValue(CheckedColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IconSize.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IconSizeProperty =
-            DependencyProperty.Register("IconSize", typeof(int), typeof(LayCheckBox), new PropertyMetadata(16));
-
+        // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CheckedColorProperty =
+            DependencyProperty.Register("CheckedColor", typeof(Brush), typeof(LayCheckBox));
 
     }
 }

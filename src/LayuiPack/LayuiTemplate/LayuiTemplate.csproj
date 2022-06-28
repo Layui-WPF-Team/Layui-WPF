@@ -175,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\Default\SwitchStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\TabControlStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -261,6 +265,7 @@
     <Compile Include="Control\ListBox\LayListBox.cs" />
     <Compile Include="Control\RadioButton\LayRadioButton.cs" />
     <Compile Include="Control\Slider\LaySlider.cs" />
+    <Compile Include="Control\Switch\LaySwitch.cs" />
     <Compile Include="Control\TabControl\LayTabControl.cs" />
     <Compile Include="Control\TabItem\LayTabItem.cs" />
     <Compile Include="Control\TextBox\LayAutoCompleteTextBox.cs" />
@@ -273,6 +278,7 @@
     <Compile Include="Control\TreeViewItem\LayTreeViewItem.cs" />
     <Compile Include="Control\TreeView\LayTreeView.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
+    <Compile Include="Converters\Switch\SwitchWidthConverter.cs" />
     <Compile Include="Enum\GroupBox\GroupBoxStyle.cs" />
     <Compile Include="Enum\Legend\LegendStyle.cs" />
     <Compile Include="Enum\TextBox\InputType.cs" />
@@ -332,7 +338,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Control\Notification\" />
-    <Folder Include="Converter\DatePicker\" />
     <Folder Include="Enum\Expander\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
