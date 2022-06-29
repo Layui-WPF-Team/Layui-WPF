@@ -9,21 +9,24 @@
         </Style.Resources>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="MinHeight" Value="20" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="MaxHeight" Value="100" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LaySwitch">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
-                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Border
+                            x:Name="PART_Border"
                             Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight, Converter={StaticResource SwitchWidthConverter}}"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding CornerRadius}">
-                            <Viewbox x:Name="icon" HorizontalAlignment="Left">
+                            <Viewbox x:Name="PART_Icon" HorizontalAlignment="Left">
                                 <Grid>
                                     <Border
                                         Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
@@ -37,7 +40,6 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter TargetName="icon" Property="HorizontalAlignment" Value="Right" />
                             <Setter Property="Background" Value="{DynamicResource CyanBlue}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

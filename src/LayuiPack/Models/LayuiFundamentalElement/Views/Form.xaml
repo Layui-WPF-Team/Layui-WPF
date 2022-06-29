@@ -117,13 +117,17 @@
                         IsEnabled="false" />
                 </StackPanel>
                 <StackPanel Margin="0,5" Orientation="Horizontal">
-                    <Lay:LaySwitch
-                        Width="70"
-                        Height="30"
-                        Content="男"
-                        FontSize="16"
-                        Foreground="White" />
+                    <Lay:LaySwitch FontSize="16" Foreground="White" />
                 </StackPanel>
+                <Lay:LayTextBox
+                    Width="auto"
+                    Height="150"
+                    Margin="0,5"
+                    VerticalContentAlignment="Top"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Visible"
+                    Watermark="可换行文本框" />
             </StackPanel>
             <Lay:LayButton
                 HorizontalAlignment="Left"

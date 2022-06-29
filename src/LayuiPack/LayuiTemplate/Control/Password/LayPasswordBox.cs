@@ -41,20 +41,10 @@ namespace LayuiTemplate.Control
             if (passwordBox == null) return;
             passwordChangeBtn = this.Template.FindName("passwordChangeBtn", this) as Button;
             if (passwordChangeBtn == null) return;
-            passwordChangeBtn.Click -= PasswordChangeBtn_Click;
-            passwordChangeBtn.Click += PasswordChangeBtn_Click;
             passwordBox.PasswordChanged -= PasswordBox_PasswordChanged;
             passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
             passwordBox.Loaded -= PasswordBox_Loaded;
             passwordBox.Loaded += PasswordBox_Loaded;
-        }
-        private void PasswordChangeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (passwordBox == null) return;
-            passwordBox.Focus();
-            //使得密码框初始化将光标定位到最后一位
-            SetSelection(passwordBox, passwordBox.Password.Length, passwordBox.Password.Length);
-            this.Select(passwordBox.Password.Length, passwordBox.Password.Length);
         }
 
         /// <summary>
@@ -66,7 +56,6 @@ namespace LayuiTemplate.Control
         {
             if (passwordBox == null) return;
             passwordBox.Password = this.Text;
-            passwordBox.Focus();
             //使得密码框初始化将光标定位到最后一位
             this.Select(passwordBox.Password.Length, passwordBox.Password.Length);
             SetSelection(passwordBox, passwordBox.Password.Length, passwordBox.Password.Length);

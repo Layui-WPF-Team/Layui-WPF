@@ -50,7 +50,10 @@
                                     </Viewbox>
                                 </Grid>
 
-                                <Border Grid.Column="1" Padding="5,0,0,0">
+                                <Border
+                                    x:Name="content"
+                                    Grid.Column="1"
+                                    Padding="5,0,0,0">
                                     <ContentPresenter
                                         x:Name="contentPresenter"
                                         Margin="{TemplateBinding Padding}"
@@ -64,10 +67,10 @@
                             <ControlTemplate.Triggers>
                                 <!--  内容为空时触发的效果  -->
                                 <Trigger Property="Content" Value="">
-                                    <Setter TargetName="contentPresenter" Property="Visibility" Value="Collapsed" />
+                                    <Setter TargetName="content" Property="Visibility" Value="Collapsed" />
                                 </Trigger>
                                 <Trigger Property="Content" Value="{x:Null}">
-                                    <Setter TargetName="contentPresenter" Property="Visibility" Value="Collapsed" />
+                                    <Setter TargetName="content" Property="Visibility" Value="Collapsed" />
                                 </Trigger>
                                 <Trigger Property="HasContent" Value="true">
                                     <!-- <Setter TargetName="contentPresenter" Property="Visibility" Value="Collapsed" />-->

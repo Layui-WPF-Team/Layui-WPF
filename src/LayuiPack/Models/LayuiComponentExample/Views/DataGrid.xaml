@@ -36,7 +36,7 @@
             </Style>
         </Lay:LayDataGrid.RowStyle>
         <Lay:LayDataGrid.Columns>
-            <DataGridTemplateColumn MinWidth="50" MaxWidth="50">
+            <DataGridTemplateColumn MinWidth="50" MaxWidth="100">
                 <DataGridTemplateColumn.Header>
                     <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </DataGridTemplateColumn.Header>

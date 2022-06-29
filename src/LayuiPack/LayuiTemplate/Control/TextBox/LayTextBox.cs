@@ -21,6 +21,10 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LayTextBox : TextBox
     {
+        protected override void OnTextChanged(TextChangedEventArgs e)
+        {
+            base.OnTextChanged(e);
+        }
         /// <summary>
         /// 输入框圆角
         /// </summary>
