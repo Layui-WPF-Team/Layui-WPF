@@ -42,33 +42,44 @@ namespace LayuiTemplate.Control
         protected override void OnChecked(RoutedEventArgs e)
         {
             base.OnChecked(e);
-            ThicknessAnimation thicknessAnimation = new ThicknessAnimation(); 
-            thicknessAnimation.To = new Thickness(PART_Border.ActualWidth / 2, 0, 0, 0);
-            thicknessAnimation.Duration = TimeSpan.FromMilliseconds(200);
-            PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
+            if (PART_Icon != null)
+            {
+                ThicknessAnimation thicknessAnimation = new ThicknessAnimation();
+                thicknessAnimation.To = new Thickness(PART_Border.ActualWidth / 2, 0, 0, 0);
+                thicknessAnimation.Duration = TimeSpan.FromMilliseconds(200);
+                PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
+
+            }
         }
         protected override void OnUnchecked(RoutedEventArgs e)
         {
             base.OnUnchecked(e);
-            ThicknessAnimation thicknessAnimation = new ThicknessAnimation();
-            thicknessAnimation.To = new Thickness(0, 0, 0, 0);
-            thicknessAnimation.Duration = TimeSpan.FromMilliseconds(200);
-            PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
+            if (PART_Icon != null)
+            {
+                ThicknessAnimation thicknessAnimation = new ThicknessAnimation();
+                thicknessAnimation.To = new Thickness(0, 0, 0, 0);
+                thicknessAnimation.Duration = TimeSpan.FromMilliseconds(200);
+                PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
+
+            }
         }
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
             base.OnRenderSizeChanged(sizeInfo);
-            ThicknessAnimation thicknessAnimation = new ThicknessAnimation();
-            if (IsChecked == true) 
+            if (PART_Icon != null)
             {
-                thicknessAnimation.To = new Thickness(PART_Border.ActualWidth / 2, 0, 0, 0);
+                ThicknessAnimation thicknessAnimation = new ThicknessAnimation();
+                if (IsChecked == true)
+                {
+                    thicknessAnimation.To = new Thickness(PART_Border.ActualWidth / 2, 0, 0, 0);
+                }
+                if (IsChecked == false)
+                {
+                    thicknessAnimation.To = new Thickness(0, 0, 0, 0);
+                }
+                thicknessAnimation.Duration = TimeSpan.FromMilliseconds(0);
+                PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
             }
-            if (IsChecked == false)
-            {
-                thicknessAnimation.To = new Thickness(0, 0, 0, 0);
-            }
-            thicknessAnimation.Duration = TimeSpan.FromMilliseconds(0);
-            PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
         }
         public override void OnApplyTemplate()
         {

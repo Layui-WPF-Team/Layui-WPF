@@ -40,7 +40,11 @@
                     </DataTemplate>
                 </Lay:LayAutoCompleteTextBox.ItemTemplate>
             </Lay:LayAutoCompleteTextBox>
-            <Lay:LayPasswordBox Margin="0,5" Text="{Binding Password}" />
+            <Lay:LayPasswordBox
+                x:Name="Test"
+                Margin="0,5"
+                IsShowPasswrod="True"
+                Text="{Binding Password}" />
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <Lay:LayNumericUpDown
                     Width="150"
@@ -83,7 +87,10 @@
             <StackPanel>
                 <StackPanel Margin="0,5" Orientation="Horizontal">
                     <Lay:LayCheckBox Content="空" IsChecked="{x:Null}" />
-                    <Lay:LayCheckBox Margin="10,0" Content="写作" />
+                    <Lay:LayCheckBox
+                        Margin="10,0"
+                        Content="写作"
+                        IsChecked="True" />
                     <Lay:LayCheckBox Margin="10,0" Content="阅读" />
                     <Lay:LayCheckBox
                         Content="游戏"
@@ -117,7 +124,10 @@
                         IsEnabled="false" />
                 </StackPanel>
                 <StackPanel Margin="0,5" Orientation="Horizontal">
-                    <Lay:LaySwitch FontSize="16" Foreground="White" />
+                    <Lay:LaySwitch
+                        FontSize="16"
+                        Foreground="White"
+                        IsChecked="True" />
                 </StackPanel>
                 <Lay:LayTextBox
                     Width="auto"
@@ -131,7 +141,6 @@
             </StackPanel>
             <Lay:LayButton
                 HorizontalAlignment="Left"
-                Command="{Binding SaveCommand}"
                 Content="立即提交"
                 Type="Default" />
         </StackPanel>

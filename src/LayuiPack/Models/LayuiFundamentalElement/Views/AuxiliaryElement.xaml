@@ -19,7 +19,6 @@
             <Lay:LayGroupBox
                 Height="100"
                 BorderBrush="{DynamicResource CyanBlue}"
-                Style="{DynamicResource LayGroupBoxStyle}"
                 Type="Center">
                 <Lay:LayGroupBox.Header>
                     <TextBlock Text="123" />
@@ -28,7 +27,6 @@
             <Lay:LayGroupBox
                 Height="100"
                 BorderBrush="{DynamicResource Orange}"
-                Style="{DynamicResource LayGroupBoxStyle}"
                 Type="Right">
                 <Lay:LayGroupBox.Header>
                     <TextBlock Text="123" />

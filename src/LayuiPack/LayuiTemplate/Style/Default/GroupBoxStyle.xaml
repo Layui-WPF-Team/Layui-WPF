@@ -20,11 +20,13 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Grid Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderThickness.Top, Mode=OneWay}" Background="{TemplateBinding BorderBrush}" />
-                            <ContentControl
+                            <ContentPresenter
                                 x:Name="PART_Header"
                                 Grid.Column="1"
                                 Margin="5,0"
-                                Content="{TemplateBinding Header}" />
+                                ContentSource="Header"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <Grid
                                 Grid.Column="2"
                                 Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderThickness.Top, Mode=OneWay}"

@@ -8,17 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace LayuiTemplate.Control
 {
     /// <summary>
     /// 密码框
     /// </summary>
+    [TemplatePart(Name = "PART_PasswordBox", Type = typeof(PasswordBox))]
+    [TemplatePart(Name = "PART_ToggleButton", Type = typeof(ToggleButton))]
     public class LayPasswordBox : LayTextBox
     {
-        private Button passwordChangeBtn;
-        private PasswordBox passwordBox;//用于存储模板中抓取的密码框
-        private bool IsPasswordChanging;
+        private ToggleButton PART_ToggleButton;
+        private PasswordBox PART_PasswordBox;//用于存储模板中抓取的密码框
         /// <summary>
         ///密码框字符串暗码
         /// </summary>
@@ -31,35 +34,59 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for PasswordChar.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PasswordCharProperty =
             DependencyProperty.Register("PasswordChar", typeof(char), typeof(LayPasswordBox));
+
+
+        public bool IsShowPasswrod
+        {
+            get { return (bool)GetValue(IsShowPasswrodProperty); }
+            set { SetValue(IsShowPasswrodProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsShowPasswrod.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsShowPasswrodProperty =
+            DependencyProperty.Register("IsShowPasswrod", typeof(bool), typeof(LayPasswordBox), new PropertyMetadata(false, OnIsShowPasswrodChanged));
+
+        private static void OnIsShowPasswrodChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            LayPasswordBox passwordBox = d as LayPasswordBox;
+            if (passwordBox.IsLoaded)
+            {
+                if (passwordBox.IsShowPasswrod)
+                {
+                    passwordBox.Text = passwordBox.PART_PasswordBox.Password;
+                }
+                else passwordBox.PART_PasswordBox.Password = passwordBox.Text;
+            }
+        }
+        protected override void OnGotFocus(RoutedEventArgs e)
+        {
+            base.OnGotFocus(e);
+            if (!IsShowPasswrod)
+            {
+                if (PART_PasswordBox != null) {
+                    PART_PasswordBox.Focus();
+                }
+            }
+        }
         /// <summary>
         /// 初始化模板
         /// </summary>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            passwordBox = this.Template.FindName("password", this) as PasswordBox;
-            if (passwordBox == null) return;
-            passwordChangeBtn = this.Template.FindName("passwordChangeBtn", this) as Button;
-            if (passwordChangeBtn == null) return;
-            passwordBox.PasswordChanged -= PasswordBox_PasswordChanged;
-            passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
-            passwordBox.Loaded -= PasswordBox_Loaded;
-            passwordBox.Loaded += PasswordBox_Loaded;
+            PART_PasswordBox = GetTemplateChild("PART_PasswordBox") as PasswordBox;
+            PART_ToggleButton = GetTemplateChild("PART_ToggleButton") as ToggleButton;
+            if (PART_PasswordBox != null || PART_ToggleButton != null)
+            {
+                PART_PasswordBox.PasswordChanged -= PasswordBox_PasswordChanged;
+                PART_PasswordBox.PasswordChanged += PasswordBox_PasswordChanged;
+                if (!IsShowPasswrod)
+                {
+                    PART_PasswordBox.Password = Text;
+                }
+            }
         }
 
-        /// <summary>
-        /// 初始化密码框,获取绑定内容的值，并且将光标定位到最后一位
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PasswordBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (passwordBox == null) return;
-            passwordBox.Password = this.Text;
-            //使得密码框初始化将光标定位到最后一位
-            this.Select(passwordBox.Password.Length, passwordBox.Password.Length);
-            SetSelection(passwordBox, passwordBox.Password.Length, passwordBox.Password.Length);
-        }
         /// <summary>
         /// 判断密码框的密码是否改变，若改变就修改文本框内容
         /// </summary>
@@ -67,30 +94,22 @@ namespace LayuiTemplate.Control
         /// <param name="e"></param>
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (passwordBox == null) return;
-            IsPasswordChanging = true;
-            this.Text = passwordBox.Password;
-            this.Select(passwordBox.Password.Length, passwordBox.Password.Length);
-            IsPasswordChanging = false;
-        }
-        protected override void OnTextChanged(TextChangedEventArgs e)
-        {
-            base.OnTextChanged(e);
-            if (passwordBox == null) return;
-            if (!IsPasswordChanging)
+            if (PART_PasswordBox == null) return;
+            if (!IsShowPasswrod)
             {
-                passwordBox.Password = this.Text;
+                Text = PART_PasswordBox.Password;
             }
         }
         /// <summary>
         /// 光标定位
         /// </summary>
-        /// <param name="passwordBox">密码框</param>
+        /// <param name="PART_PasswordBox">密码框</param>
         /// <param name="start">光标定位起始长度</param>
         /// <param name="length">密码框的密码长度</param>
-        private void SetSelection(PasswordBox passwordBox, int start, int length)
+        private void SetSelection(PasswordBox PART_PasswordBox, int start, int length)
         {
-            passwordBox.GetType().GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(passwordBox, new object[] { start, length });
+            PART_PasswordBox.GetType().GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(PART_PasswordBox, new object[] { start, length });
         }
+
     }
 }

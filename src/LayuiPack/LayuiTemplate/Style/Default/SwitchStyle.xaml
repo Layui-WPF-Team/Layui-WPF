@@ -31,7 +31,7 @@
                                     <Border
                                         Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
                                         Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
-                                        Margin="5"
+                                        Margin="2"
                                         Background="{TemplateBinding Foreground}"
                                         CornerRadius="{TemplateBinding CornerRadius}" />
                                 </Grid>
