@@ -12,6 +12,17 @@ namespace LayuiTemplate.Control
 {
     public class LayDataGrid : DataGrid
     {
+        public bool IsShowRowsFocusVisual
+        {
+            get { return (bool)GetValue(IsShowRowsFocusVisualProperty); }
+            set { SetValue(IsShowRowsFocusVisualProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsShowRowsFocusVisual.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsShowRowsFocusVisualProperty =
+            DependencyProperty.Register("IsShowRowsFocusVisual", typeof(bool), typeof(LayDataGrid), new PropertyMetadata(false));
+
+
         /// <summary>
         /// 无数据提示信息
         /// </summary>

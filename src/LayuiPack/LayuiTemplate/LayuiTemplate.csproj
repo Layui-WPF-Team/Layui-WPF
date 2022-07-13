@@ -283,6 +283,7 @@
     <Compile Include="Enum\Legend\LegendStyle.cs" />
     <Compile Include="Enum\TextBox\InputType.cs" />
     <Compile Include="Extend\Base\LayControlsBaseHelper.cs" />
+    <Compile Include="Extend\DataGrid\LayDataGridHelper.cs" />
     <Compile Include="Extend\DatePicker\LayDatePickerHelper.cs" />
     <Compile Include="Extend\TextBox\LayTextBoxHelper.cs" />
     <Compile Include="Global\Dialog\Interface\ILayDialogWindowAware.cs" />

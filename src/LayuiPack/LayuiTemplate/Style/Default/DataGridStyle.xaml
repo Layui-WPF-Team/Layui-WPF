@@ -12,6 +12,7 @@
         <Setter Property="CanUserReorderColumns" Value="false" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="Black" />
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource Gray}" />
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource Gray}" />
@@ -24,6 +25,13 @@
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="SelectionMode" Value="Single" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Lay:LayDataGrid}">
@@ -281,6 +289,83 @@
                                 SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
                                 Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
                         </SelectiveScrollingGrid>
+                        <Grid
+                            x:Name="fousIcon"
+                            IsHitTestVisible="False"
+                            Opacity="0">
+                            <Path
+                                Width="10"
+                                Height="10"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Data="M0,0 L0,0 50,0 50,10 10,10 10,50 0,50 0,52 z"
+                                Fill="{DynamicResource LightGreen}"
+                                RenderTransformOrigin="0.5,0.5"
+                                Stretch="Fill">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="0" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path
+                                Width="10"
+                                Height="10"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Data="M0,0 L0,0 50,0 50,10 10,10 10,50 0,50 0,52 z"
+                                Fill="{DynamicResource LightGreen}"
+                                RenderTransformOrigin="0.5,0.5"
+                                Stretch="Fill">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="90" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path
+                                Width="10"
+                                Height="10"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Data="M0,0 L0,0 50,0 50,10 10,10 10,50 0,50 0,52 z"
+                                Fill="{DynamicResource LightGreen}"
+                                RenderTransformOrigin="0.5,0.5"
+                                Stretch="Fill">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="180" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path
+                                Width="10"
+                                Height="10"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Data="M0,0 L0,0 50,0 50,10 10,10 10,50 0,50 0,52 z"
+                                Fill="{DynamicResource LightGreen}"
+                                RenderTransformOrigin="0.5,0.5"
+                                Stretch="Fill">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="-90" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="true" />
@@ -293,9 +378,15 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="border" Property="Background" Value="{DynamicResource LighGray}" />
                         </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="fousIcon" Property="Opacity" Value="1" />
+                        </Trigger>
                         <Trigger Property="DetailsVisibility" Value="Visible">
                             <Setter TargetName="DetailsPresenter" Property="Margin" Value="0,0,1,0" />
                         </Trigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=IsShowRowsFocusVisual}" Value="false">
+                            <Setter TargetName="fousIcon" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -305,8 +396,8 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="13,0" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid, Mode=FindAncestor}, Path=Foreground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">

@@ -72,5 +72,13 @@ namespace LayuiComponentExample.ViewModels
             dialogParameter.Add("Message", JsonConvert.SerializeObject(data));
             LayDialog.Show("DialogAlert", dialogParameter);
         }
+        private DelegateCommand<object> _DeleteCommand;
+        public DelegateCommand<object> DeleteCommand =>
+            _DeleteCommand ?? (_DeleteCommand = new DelegateCommand<object>(ExecuteDeleteCommand));
+
+        void ExecuteDeleteCommand(object data)
+        {
+            ListData.Remove(data);
+        }
     }
 }

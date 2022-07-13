@@ -49,7 +49,7 @@
             <DataGridTextColumn
                 MinWidth="150"
                 MaxWidth="150"
-                Binding="{Binding Index, Mode=OneWay}"
+                Binding="{Binding Index}"
                 Header="编号" />
             <DataGridTextColumn
                 Width="200"
@@ -112,6 +112,32 @@
                                 Value="{Binding ProgressBarValue, Mode=OneWay}" />
                             <TextBlock Grid.Column="1" Text="{Binding ElementName=ProgressBar, Path=Value, StringFormat={}{0}%}" />
                         </Grid>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn MinWidth="50" MaxWidth="50">
+                <DataGridTemplateColumn.Header>
+                    <TextBlock Text="操作" />
+                </DataGridTemplateColumn.Header>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button
+                            Width="auto"
+                            Height="auto"
+                            Command="{Binding RelativeSource={RelativeSource AncestorType=local:DataGrid}, Path=DataContext.DeleteCommand}"
+                            CommandParameter="{Binding}"
+                            Cursor="Hand"
+                            Style="{x:Null}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontFamily="{StaticResource IconFont}"
+                                        FontSize="20"
+                                        Text="&#xf014;" />
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
