@@ -50,16 +50,19 @@
                     Grid.Column="1"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Orientation="Horizontal">
+                    Orientation="Horizontal"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
                     <StackPanel.Resources>
                         <Style TargetType="Button">
                             <Setter Property="Width" Value="50" />
                             <Setter Property="Height" Value="50" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Cursor" Value="Hand" />
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="Button">
-                                        <Border Background="Transparent">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                         </Border>
                                     </ControlTemplate>
                                 </Setter.Value>
@@ -79,13 +82,169 @@
                             </Setter>
                         </Style>
                     </StackPanel.Resources>
+                    <Grid>
+                        <ToggleButton
+                            x:Name="MoreToggleButton"
+                            Width="50"
+                            Content="&#xf142;"
+                            Cursor="Hand"
+                            FontFamily="{StaticResource IconFont}"
+                            FontSize="20"
+                            Foreground="White">
+                            <ToggleButton.ToolTip>
+                                <TextBlock FontSize="14" Text="更多" />
+                            </ToggleButton.ToolTip>
+                            <ToggleButton.Template>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Grid Background="Transparent">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                            <ToggleButton.Style>
+                                <Style TargetType="ToggleButton">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=MorePopup, Path=IsOpen}" Value="true">
+                                            <Setter Property="IsEnabled" Value="false" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ToggleButton.Style>
+                        </ToggleButton>
+                        <Popup
+                            x:Name="MorePopup"
+                            AllowsTransparency="True"
+                            IsOpen="{Binding ElementName=MoreToggleButton, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Placement="Bottom"
+                            PlacementTarget="{Binding ElementName=MoreToggleButton}"
+                            PopupAnimation="Slide"
+                            StaysOpen="False"
+                            VerticalOffset="5">
+                            <Popup.Style>
+                                <Style TargetType="Popup">
+                                    <Setter Property="IsOpen" Value="false" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=MoreToggleButton, Path=IsChecked}" Value="true">
+                                            <Setter Property="IsOpen" Value="true" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Popup.Style>
+                            <Grid>
+                                <Grid.Effect>
+                                    <DropShadowEffect Opacity="0.5" ShadowDepth="0" />
+                                </Grid.Effect>
+                                <Grid
+                                    Width="10"
+                                    Height="10"
+                                    Margin="20,2"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Background="White"
+                                    RenderTransformOrigin="0.5,0.5">
+                                    <Grid.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform />
+                                            <SkewTransform />
+                                            <RotateTransform Angle="45" />
+                                            <TranslateTransform />
+                                        </TransformGroup>
+                                    </Grid.RenderTransform>
+                                </Grid>
+                                <Border
+                                    Width="150"
+                                    Height="auto"
+                                    Margin="5"
+                                    Background="White"
+                                    CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                    <StackPanel>
+                                        <Button
+                                            Width="150"
+                                            Height="40"
+                                            HorizontalContentAlignment="Stretch"
+                                            Command="{Binding GoBrowser}"
+                                            CommandParameter="https://github.com/Layui-WPF-Team/Layui-WPF">
+                                            <Grid Margin="30,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="{DynamicResource IconFont}"
+                                                    FontSize="18"
+                                                    Text="&#xf09b;" />
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Margin="10,0"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="GitHub" />
+                                            </Grid>
+                                        </Button>
+                                        <Button
+                                            Width="150"
+                                            Height="40"
+                                            HorizontalContentAlignment="Stretch"
+                                            Command="{Binding GoBrowser}"
+                                            CommandParameter="https://www.cnblogs.com/ShyFrog/">
+                                            <Grid Margin="30,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="{DynamicResource IconFont}"
+                                                    FontSize="18"
+                                                    Text="&#xf127;" />
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Margin="10,0"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="博客" />
+                                            </Grid>
+                                        </Button>
+                                        <Button
+                                            Width="150"
+                                            Height="40"
+                                            HorizontalContentAlignment="Stretch"
+                                            Command="{Binding GoBrowser}"
+                                            CommandParameter="https://b23.tv/F9IA5Vs">
+                                            <Grid Margin="30,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="{DynamicResource IconFont}"
+                                                    FontSize="18"
+                                                    Text="&#xf03d;" />
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Margin="10,0"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="教学视频" />
+                                            </Grid>
+                                        </Button>
+                                        <Button
+                                            Width="150"
+                                            Height="40"
+                                            Content="介绍" />
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </Popup>
+                    </Grid>
                     <Button
                         Command="{Binding MinWindowCommand}"
                         Content="&#xf2d1;"
                         FontFamily="{StaticResource IconFont}"
                         FontSize="20"
-                        Foreground="White"
-                        WindowChrome.IsHitTestVisibleInChrome="True">
+                        Foreground="White">
                         <Button.ToolTip>
                             <TextBlock FontSize="14" Text="最小化" />
                         </Button.ToolTip>
@@ -96,8 +255,7 @@
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"
                         FontFamily="{StaticResource IconFont}"
                         FontSize="20"
-                        Foreground="White"
-                        WindowChrome.IsHitTestVisibleInChrome="True">
+                        Foreground="White">
                         <CheckBox.Style>
                             <Style BasedOn="{StaticResource WindowCheckBoxStyle}" TargetType="CheckBox">
                                 <Style.Triggers>
@@ -128,8 +286,7 @@
                         Content="&#xf00d;"
                         FontFamily="{StaticResource IconFont}"
                         FontSize="20"
-                        Foreground="White"
-                        WindowChrome.IsHitTestVisibleInChrome="True">
+                        Foreground="White">
                         <Button.ToolTip>
                             <TextBlock FontSize="14" Text="关闭" />
                         </Button.ToolTip>

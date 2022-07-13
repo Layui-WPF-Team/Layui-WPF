@@ -5,6 +5,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
@@ -60,7 +61,14 @@ namespace LayuiApp.ViewModels
         /// 关闭窗体
         /// </summary>
         public DelegateCommand CloseWindowCommand => new DelegateCommand(CloseWindow);
+        private DelegateCommand<string> _GoBrowser;
+        public DelegateCommand<string> GoBrowser =>
+            _GoBrowser ?? (_GoBrowser = new DelegateCommand<string>(ExecuteGoBrowser));
 
+        void ExecuteGoBrowser(string uri)
+        {
+            Process.Start(new ProcessStartInfo(uri));
+        }
         #endregion
         #region 核心方法
         /// <summary>
