@@ -5,6 +5,7 @@
     xmlns:Global="clr-namespace:LayuiTemplate.Global;assembly=LayuiTemplate"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:Nv="clr-namespace:Layui.Core.Resource;assembly=Layui.Core"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:local="clr-namespace:LayuiApp.Views"
     xmlns:prism="http://prismlibrary.com/"
     Title="{Binding Title}"
@@ -16,6 +17,11 @@
     ShowInTaskbar="True"
     WindowStartupLocation="CenterOwner"
     WindowState="{Binding WindowState}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

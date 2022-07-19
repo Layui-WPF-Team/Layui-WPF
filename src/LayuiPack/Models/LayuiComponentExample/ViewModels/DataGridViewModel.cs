@@ -28,22 +28,22 @@ namespace LayuiComponentExample.ViewModels
             get { return _IsActive; }
             set { SetProperty(ref _IsActive, value); }
         }
-        private ObservableCollection<object> _ListData;
-        public ObservableCollection<object> ListData
+        private ObservableCollection<Data> _ListData;
+        public ObservableCollection<Data> ListData
         {
             get { return _ListData; }
             set { SetProperty(ref _ListData, value); }
         }
-        private Task<ObservableCollection<object>> LoadedListData()
+        private Task<ObservableCollection<Data>> LoadedListData()
         {
             try
             {
                 var random = new Random();
-                ObservableCollection<object> ListData = new ObservableCollection<object>();
+                ObservableCollection<Data> ListData = new ObservableCollection<Data>();
                 for (int i = 0; i < 50; i++)
                 {
                     int num = random.Next(1, 101);
-                    ListData.Add(new { Index = i, Name = "测试" + i, ProgressBarValue = num });
+                    ListData.Add(new Data (){ Index = i, Name = "测试" + i, ProgressBarValue = num });
                 };
                 return Task.FromResult(ListData);
             }
@@ -62,23 +62,44 @@ namespace LayuiComponentExample.ViewModels
             IsActive = false;
 
         }
-        private DelegateCommand<object> _GetItemsCommand;
-        public DelegateCommand<object> GetItemsCommand =>
-            _GetItemsCommand ?? (_GetItemsCommand = new DelegateCommand<object>(ExecuteGetItemsCommand));
+        private DelegateCommand<Data> _GetItemsCommand;
+        public DelegateCommand<Data> GetItemsCommand =>
+            _GetItemsCommand ?? (_GetItemsCommand = new DelegateCommand<Data>(ExecuteGetItemsCommand));
 
-        void ExecuteGetItemsCommand(object data)
+        void ExecuteGetItemsCommand(Data data)
         {
             LayDialogParameter dialogParameter = new LayDialogParameter();
             dialogParameter.Add("Message", JsonConvert.SerializeObject(data));
             LayDialog.Show("DialogAlert", dialogParameter);
         }
-        private DelegateCommand<object> _DeleteCommand;
-        public DelegateCommand<object> DeleteCommand =>
-            _DeleteCommand ?? (_DeleteCommand = new DelegateCommand<object>(ExecuteDeleteCommand));
+        private DelegateCommand<Data> _DeleteCommand;
+        public DelegateCommand<Data> DeleteCommand =>
+            _DeleteCommand ?? (_DeleteCommand = new DelegateCommand<Data>(ExecuteDeleteCommand));
 
-        void ExecuteDeleteCommand(object data)
+        void ExecuteDeleteCommand(Data data)
         {
             ListData.Remove(data);
+        }
+        public class Data : BindableBase
+        {
+            private int _Index;
+            public int Index
+            {
+                get { return _Index; }
+                set { SetProperty(ref _Index, value); }
+            }
+            private string _Name;
+            public string Name
+            {
+                get { return _Name; }
+                set { SetProperty(ref _Name, value); }
+            }
+            private int _ProgressBarValue;
+            public int ProgressBarValue
+            {
+                get { return _ProgressBarValue; }
+                set { SetProperty(ref _ProgressBarValue, value); }
+            }
         }
     }
 }

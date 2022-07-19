@@ -16,7 +16,7 @@ namespace LayuiTemplate.Control
         /// </summary>
         static LayWindow()
         {
-            StyleProperty.OverrideMetadata(typeof(LayWindow), new FrameworkPropertyMetadata(LayHelper.GetStyle(nameof(LayWindow)+"Style")));
+            StyleProperty.OverrideMetadata(typeof(LayWindow), new FrameworkPropertyMetadata(LayResourceHelper.GetStyle(nameof(LayWindow)+"Style")));
         }
         /// <summary>
         /// 动画类型

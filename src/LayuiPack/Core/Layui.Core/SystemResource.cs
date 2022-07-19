@@ -91,6 +91,10 @@ namespace Layui.Core.Resource
         /// 辅助元素试图
         /// </summary>
         public const string Page_AuxiliaryElementView = "AuxiliaryElement";
+        /// <summary>
+        /// GIF视图
+        /// </summary>
+        public const string Page_GIFView = "GIFView";
         #endregion
 
         #region 弹窗名称
@@ -100,6 +104,7 @@ namespace Layui.Core.Resource
         public  const string DialogMessageView = "DialogMessageView";
 
         public const string LayDialogWindowTooken = "LayDialogWindowTooken";
+
 
 
 

@@ -16,10 +16,10 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20">
 
-            <Lay:LayHr Margin="0,10,0,0" Text="默认风格的进度条" />
+            <Lay:LayLegend Margin="0,10,0,0" Header="默认风格的进度条" />
             <Lay:LayProgressBar Margin="0,20" Value="50" />
 
-            <Lay:LayHr Margin="0,10,0,0" Text="更多颜色选取" />
+            <Lay:LayLegend Margin="0,10,0,0" Header="更多颜色选取" />
             <Lay:LayProgressBar
                 Margin="0,20"
                 Foreground="#FF5722"
@@ -41,7 +41,7 @@
                 Foreground="#2F4056"
                 Value="56" />
 
-            <Lay:LayHr Margin="0,10,0,0" Text="大尺寸进度条" />
+            <Lay:LayLegend Margin="0,10,0,0" Header="大尺寸进度条" />
             <Lay:LayProgressBar
                 Height="18"
                 Margin="0,20"
@@ -60,7 +60,7 @@
                 Foreground="#2F4056"
                 Value="80" />
 
-            <Lay:LayHr Margin="0,10,0,0" Text="动态改变进度条" />
+            <Lay:LayLegend Margin="0,10,0,0" Header="动态改变进度条" />
             <Lay:LayProgressBar
                 Height="18"
                 Margin="0,20"

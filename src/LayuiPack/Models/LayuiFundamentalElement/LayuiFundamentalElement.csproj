@@ -67,6 +67,7 @@
     <Compile Include="ViewModels\ButtonViewModel.cs" />
     <Compile Include="ViewModels\ExpanderViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
+    <Compile Include="ViewModels\GIFViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
     <Compile Include="ViewModels\PanelViewModel.cs" />
@@ -86,6 +87,9 @@
     </Compile>
     <Compile Include="Views\Form.xaml.cs">
       <DependentUpon>Form.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GIF.xaml.cs">
+      <DependentUpon>GIF.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -135,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Form.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GIF.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -49,7 +49,7 @@
             <DataGridTextColumn
                 MinWidth="150"
                 MaxWidth="150"
-                Binding="{Binding Index}"
+                Binding="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Header="编号" />
             <DataGridTextColumn
                 Width="200"

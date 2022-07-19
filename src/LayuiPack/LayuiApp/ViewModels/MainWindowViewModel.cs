@@ -6,6 +6,7 @@ using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -37,7 +38,7 @@ namespace LayuiApp.ViewModels
             get { return _WindowState; }
             set { _WindowState = value; RaisePropertyChanged(); }
         }
-        private Thickness _GlassFrameThickness ;
+        private Thickness _GlassFrameThickness;
 
         public Thickness GlassFrameThickness
         {
@@ -103,5 +104,6 @@ namespace LayuiApp.ViewModels
             Application.Current.Shutdown();
         }
         #endregion
+        
     }
 }

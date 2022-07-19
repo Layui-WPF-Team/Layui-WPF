@@ -12,7 +12,7 @@ namespace LayuiTemplate.Tools
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-04-24 上午 10:11:26</para>
     /// </summary>
-    public static class LayHelper
+    public static class LayResourceHelper
     {
         /// <summary>
         /// 查找样式
