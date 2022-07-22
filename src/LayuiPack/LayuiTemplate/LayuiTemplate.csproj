@@ -160,6 +160,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\PopupBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\ProgressBarStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -260,6 +264,7 @@
     <Compile Include="Control\NumericUpDown\LayNumericUpDown.cs" />
     <Compile Include="Control\Panel\LayCard.cs" />
     <Compile Include="Control\Password\LayPasswordBox.cs" />
+    <Compile Include="Control\PopupBox\LayPopupBox.cs" />
     <Compile Include="Control\ProgressBar\LayProgressBar.cs" />
     <Compile Include="Control\ListBox\LayListBox.cs" />
     <Compile Include="Control\RadioButton\LayRadioButton.cs" />
