@@ -16,6 +16,12 @@ namespace LayuiFundamentalElement.ViewModels
     /// </summary>
     public class FormViewModel :  LayuiViewModelBase
     {
+        private string _DocumentXaml;
+        public string DocumentXaml
+        {
+            get { return _DocumentXaml; }
+            set { SetProperty(ref _DocumentXaml, value); }
+        }
         public FormViewModel(IContainerExtension container) : base(container)
         {
             Password = "123123";

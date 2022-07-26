@@ -138,6 +138,19 @@
                     TextWrapping="Wrap"
                     VerticalScrollBarVisibility="Visible"
                     Watermark="可换行文本框" />
+                <Lay:LayRichTextBox
+                    Width="auto"
+                    Height="150"
+                    Margin="0,5"
+                    DocumentXaml="{Binding DocumentXaml}"
+                    IsReadOnly="true"
+                    Style="{StaticResource LayRichTextBoxStyle}" />
+                <Lay:LayRichTextBox
+                    Width="auto"
+                    Height="150"
+                    Margin="0,5"
+                    DocumentXaml="{Binding DocumentXaml, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource LayRichTextBoxStyle}" />
             </StackPanel>
             <Lay:LayButton
                 HorizontalAlignment="Left"
