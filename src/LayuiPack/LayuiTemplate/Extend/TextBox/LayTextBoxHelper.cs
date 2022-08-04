@@ -17,11 +17,45 @@ namespace LayuiTemplate.Extend
     /// </summary>
     public class LayTextBoxHelper
     {
+        /// <summary>
+        /// 获取正则表达式
+        /// <para>要想Regex生效InputType设置问Regex类</para>
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string GetRegex(DependencyObject obj)
+        {
+            return (string)obj.GetValue(RegexProperty);
+        }
+        /// <summary>
+        /// 设置正则表达式
+        /// <para>要想Regex生效InputType设置问Regex类</para>
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
+        public static void SetRegex(DependencyObject obj, string value)
+        {
+            obj.SetValue(RegexProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for Regex.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RegexProperty =
+            DependencyProperty.RegisterAttached("Regex", typeof(string), typeof(LayTextBoxHelper));
+
+        /// <summary>
+        /// 获取输入类型
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static LayuiTemplate.Enum.InputType GetInputType(DependencyObject obj)
         {
             return (LayuiTemplate.Enum.InputType)obj.GetValue(InputTypeProperty);
         }
-
+        /// <summary>
+        /// 设置输入类型
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
         public static void SetInputType(DependencyObject obj, LayuiTemplate.Enum.InputType value)
         {
             obj.SetValue(InputTypeProperty, value);
@@ -62,6 +96,9 @@ namespace LayuiTemplate.Extend
                     break;
                 case Enum.InputType.Phone:
                     e.Handled = IsPhone(e);
+                    break;
+                case Enum.InputType.Regex:
+                    e.Handled =  new Regex(GetRegex(sender as TextBox).Trim()).IsMatch(e.Text);
                     break;
                 default:
                     e.Handled = false;

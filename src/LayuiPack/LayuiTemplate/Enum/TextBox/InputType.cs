@@ -24,6 +24,10 @@ namespace LayuiTemplate.Enum
         /// <summary>
         /// 电话
         /// </summary>
-        Phone
+        Phone,
+        /// <summary>
+        /// 正则表达式
+        /// </summary>
+        Regex
     }
 }

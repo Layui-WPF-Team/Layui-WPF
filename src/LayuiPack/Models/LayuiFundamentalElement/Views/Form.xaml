@@ -31,6 +31,13 @@
             <Lay:LayTextBox
                 Width="auto"
                 Margin="0,5"
+                LayHelper:LayTextBoxHelper.InputType="Regex"
+                LayHelper:LayTextBoxHelper.Regex="[^0-9|\-|\.]"
+                InputMethod.IsInputMethodEnabled="False"
+                Watermark="正则表达式限制输入类型" />
+            <Lay:LayTextBox
+                Width="auto"
+                Margin="0,5"
                 LayHelper:LayTextBoxHelper.InputType="Phone"
                 Watermark="只允许输入电话号码" />
             <Lay:LayAutoCompleteTextBox Margin="0,5" ItemsSource="{Binding ListDatas}">
