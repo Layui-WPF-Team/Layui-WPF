@@ -87,10 +87,7 @@
             <StackPanel>
                 <StackPanel Margin="0,5" Orientation="Horizontal">
                     <Lay:LayCheckBox Content="空" IsChecked="{x:Null}" />
-                    <Lay:LayCheckBox
-                        Margin="10,0"
-                        Content="写作"
-                        IsChecked="True" />
+                    <Lay:LayCheckBox Margin="10,0" Content="写作" />
                     <Lay:LayCheckBox Margin="10,0" Content="阅读" />
                     <Lay:LayCheckBox
                         Content="游戏"
@@ -142,14 +139,12 @@
                     Width="auto"
                     Height="150"
                     Margin="0,5"
-                    DocumentXaml="{Binding DocumentXaml}"
                     IsReadOnly="true"
                     Style="{StaticResource LayRichTextBoxStyle}" />
                 <Lay:LayRichTextBox
                     Width="auto"
                     Height="150"
                     Margin="0,5"
-                    DocumentXaml="{Binding DocumentXaml, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource LayRichTextBoxStyle}" />
             </StackPanel>
             <Lay:LayButton
