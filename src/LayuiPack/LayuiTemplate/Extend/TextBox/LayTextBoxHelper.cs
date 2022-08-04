@@ -98,7 +98,7 @@ namespace LayuiTemplate.Extend
                     e.Handled = IsPhone(e);
                     break;
                 case Enum.InputType.Regex:
-                    e.Handled =  new Regex(GetRegex(sender as TextBox).Trim()).IsMatch(e.Text);
+                    e.Handled =  new Regex(GetRegex(sender as TextBox)).IsMatch(e.Text);
                     break;
                 default:
                     e.Handled = false;
