@@ -105,9 +105,6 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="折叠板", PageKey=SystemResource.Page_ExpanderView
                             },new MenuItemModel()
                             {
-                                ItemTitle="徽章", PageKey=SystemResource.Page_ButtonView
-                            },new MenuItemModel()
-                            {
                                 ItemTitle="过渡动画", PageKey=SystemResource.Page_TransitionControlView
                             },new MenuItemModel()
                             {

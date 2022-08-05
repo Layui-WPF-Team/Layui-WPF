@@ -22,6 +22,30 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LayButton : Button
     {
+
+
+        public object LoadingContent
+        {
+            get { return (object)GetValue(LoadingContentProperty); }
+            set { SetValue(LoadingContentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for LoadingContent.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LoadingContentProperty =
+            DependencyProperty.Register("LoadingContent", typeof(object), typeof(LayButton));
+
+
+        public bool IsLoading
+        {
+            get { return (bool)GetValue(IsLoadingProperty); }
+            set { SetValue(IsLoadingProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsLoading.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsLoadingProperty =
+            DependencyProperty.Register("IsLoading", typeof(bool), typeof(LayButton), new PropertyMetadata(false));
+
+
         /// <summary>
         /// 按钮圆角
         /// </summary>

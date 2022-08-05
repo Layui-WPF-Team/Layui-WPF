@@ -46,6 +46,13 @@
                 Content="禁用按钮"
                 IsEnabled="False"
                 Type="Primary" />
+            <Lay:LayButton
+                Margin="5"
+                Command="{Binding BtnLoadingCommand}"
+                Content="点我"
+                IsLoading="{Binding BtnIsLoading}"
+                LoadingContent="加载中"
+                Type="Default" />
         </WrapPanel>
     </Lay:LayTransition>
 </UserControl>

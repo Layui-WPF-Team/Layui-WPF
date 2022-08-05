@@ -16,7 +16,7 @@
                                 x:Name="badge"
                                 Canvas.Left="{Binding ElementName=PART_Content, Path=ActualWidth}"
                                 Canvas.Top="-10"
-                                Margin="-6,0,6,0"
+                                Margin="-8,0,8,0"
                                 Padding="6,2"
                                 Background="Transparent"
                                 CornerRadius="10">

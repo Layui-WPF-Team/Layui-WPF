@@ -13,7 +13,7 @@
             Width="100"
             Height="40"
             Margin="20,0"
-            Value="12">
+            Value="10">
             <lay:LayButton
                 Width="auto"
                 Height="auto"
