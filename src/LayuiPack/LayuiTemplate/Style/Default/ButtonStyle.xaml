@@ -41,8 +41,8 @@
                         <ContentControl
                             x:Name="PART_LoadingContent"
                             Grid.Column="1"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
                             Content="{TemplateBinding LoadingContent}"
                             Visibility="Collapsed" />
                         <ContentPresenter
