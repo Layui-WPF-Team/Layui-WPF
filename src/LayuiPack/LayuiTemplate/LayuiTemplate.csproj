@@ -56,6 +56,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Style\Default\BadgeStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\ButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -243,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behavior\LayLoadBehavior.cs" />
+    <Compile Include="Control\Badge\LayBadge.cs" />
     <Compile Include="Control\Button\LayButton.cs" />
     <Compile Include="Control\Canvas\LaySliderCanvas.cs" />
     <Compile Include="Control\Carousel\LayCarouselItem.cs" />
@@ -288,6 +293,7 @@
     <Compile Include="Control\TreeView\LayTreeView.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
     <Compile Include="Converters\Switch\SwitchWidthConverter.cs" />
+    <Compile Include="Enum\Badge\BadgeStyle.cs" />
     <Compile Include="Enum\GroupBox\GroupBoxStyle.cs" />
     <Compile Include="Enum\Legend\LegendStyle.cs" />
     <Compile Include="Enum\TextBox\InputType.cs" />

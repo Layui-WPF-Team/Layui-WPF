@@ -50,8 +50,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\BadgeViewModel.cs" />
     <Compile Include="ViewModels\CarouselViewModel.cs" />
     <Compile Include="ViewModels\DateTimeViewModel.cs" />
+    <Compile Include="Views\Badge.xaml.cs">
+      <DependentUpon>Badge.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Carousel.xaml.cs">
       <DependentUpon>Carousel.xaml</DependentUpon>
     </Compile>
@@ -108,6 +112,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\Badge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Carousel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

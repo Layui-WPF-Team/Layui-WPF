@@ -30,7 +30,7 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 滑块视图
         /// </summary>
-        public const string Page_Slider = "Page_Slider"; 
+        public const string Page_Slider = "Page_Slider";
         /// <summary>
         /// 进度条视图
         /// </summary>
@@ -54,7 +54,7 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 折叠板
         /// </summary>
-        public const string Page_ExpanderView = "ExpanderView"; 
+        public const string Page_ExpanderView = "ExpanderView";
         /// <summary>
         /// 加载动画
         /// </summary>
@@ -62,11 +62,11 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 面板
         /// </summary>
-        public const string Page_PanelView = "PanelView"; 
+        public const string Page_PanelView = "PanelView";
         /// <summary>
         /// 时间线视图
         /// </summary>
-        public const string Page_TimelineView = "Timeline"; 
+        public const string Page_TimelineView = "Timeline";
         /// <summary>
         /// 基础菜单
         /// </summary>
@@ -101,9 +101,11 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 测试弹窗名称
         /// </summary>
-        public  const string DialogMessageView = "DialogMessageView";
+        public const string DialogMessageView = "DialogMessageView";
 
         public const string LayDialogWindowTooken = "LayDialogWindowTooken";
+
+        public const string Page_BadgeView = "Page_BadgeView";
 
 
 

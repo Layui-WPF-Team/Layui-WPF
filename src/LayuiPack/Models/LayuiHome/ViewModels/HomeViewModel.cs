@@ -130,6 +130,10 @@ namespace LayuiHome.ViewModels
                         {
                             new MenuItemModel()
                             {
+                                ItemTitle="标记", PageKey=SystemResource.Page_BadgeView
+                            },
+                            new MenuItemModel()
+                            {
                                 ItemTitle="弹出层", PageKey=SystemResource.Page_DialogView
                             },new MenuItemModel()
                             {

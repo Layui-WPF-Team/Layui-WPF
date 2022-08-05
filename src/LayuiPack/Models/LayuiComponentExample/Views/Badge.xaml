@@ -1,0 +1,69 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.Badge"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Orientation="Horizontal">
+        <lay:LayBadge
+            Width="100"
+            Height="40"
+            Margin="20,0"
+            Value="12">
+            <lay:LayButton
+                Width="auto"
+                Height="auto"
+                Content="评论" />
+        </lay:LayBadge>
+        <lay:LayBadge
+            Width="100"
+            Height="40"
+            Margin="20,0"
+            MaxValue="99"
+            Type="Danger"
+            Value="100">
+            <lay:LayButton
+                Width="auto"
+                Height="auto"
+                Content="评论" />
+        </lay:LayBadge>
+        <lay:LayBadge
+            Width="100"
+            Height="40"
+            Margin="20,0"
+            Type="Normal"
+            Value="新信息">
+            <lay:LayButton
+                Width="auto"
+                Height="auto"
+                Content="评论" />
+        </lay:LayBadge>
+        <lay:LayBadge
+            Width="100"
+            Height="40"
+            Margin="20,0"
+            MaxValue="99"
+            Type="Warm"
+            Value="{Binding Value}">
+            <lay:LayButton
+                Width="auto"
+                Height="auto"
+                Content="评论" />
+        </lay:LayBadge>
+        <lay:LayBadge
+            Width="100"
+            Height="40"
+            Margin="20,0"
+            IsDot="True"
+            Type="Warm">
+            <lay:LayButton
+                Width="auto"
+                Height="auto"
+                Content="评论" />
+        </lay:LayBadge>
+    </StackPanel>
+</UserControl>

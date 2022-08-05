@@ -9,6 +9,7 @@
         <Setter Property="Background" Value="Black" />
         <Setter Property="IsHitTestVisible" Value="false" />
         <Setter Property="Panel.ZIndex" Value="100" />
+        <Setter Property="Visibility" Value="Collapsed" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayDialogHost">
@@ -34,6 +35,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsOpen" Value="true">
+                            <Setter Property="Visibility" Value="Visible" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
