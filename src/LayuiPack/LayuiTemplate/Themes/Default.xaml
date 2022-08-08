@@ -46,5 +46,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/PopupBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/RichTextBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/BadgeStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/PaginationStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

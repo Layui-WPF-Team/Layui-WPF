@@ -140,6 +140,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="数据表格", PageKey=SystemResource.Page_DataGrid
                             },new MenuItemModel()
                             {
+                                ItemTitle="分页", PageKey=SystemResource.Page_PaginationView
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="下拉菜单", PageKey=SystemResource.Page_ButtonView
                             },new MenuItemModel()
                             {

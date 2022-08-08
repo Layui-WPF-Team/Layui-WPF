@@ -191,7 +191,7 @@
                                     Margin="3"
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
-                                    Data="M8.1772461,11.029181L10.433105,11.029181 11.700684,12.801641 12.973633,11.029181 15.191895,11.029181 12.844727,13.999395 15.21875,17.060919 12.962891,17.060919 11.673828,15.256231 10.352539,17.060919 8.1396484,17.060919 10.519043,14.042364z"
+                                    Data="{DynamicResource Date}"
                                     Fill="Black"
                                     Opacity="0"
                                     RenderTransformOrigin="0.5,0.5"

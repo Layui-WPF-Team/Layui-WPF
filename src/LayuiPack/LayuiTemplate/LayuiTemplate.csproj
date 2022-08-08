@@ -156,6 +156,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\PaginationStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\PanelStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -275,6 +279,7 @@
     <Compile Include="Control\Loading\LayLoading.cs" />
     <Compile Include="Control\Message\LayMessageHost.cs" />
     <Compile Include="Control\NumericUpDown\LayNumericUpDown.cs" />
+    <Compile Include="Control\Pagination\LayPagination.cs" />
     <Compile Include="Control\Panel\LayCard.cs" />
     <Compile Include="Control\Password\LayPasswordBox.cs" />
     <Compile Include="Control\PopupBox\LayPopupBox.cs" />
@@ -301,6 +306,7 @@
     <Compile Include="Enum\GroupBox\GroupBoxStyle.cs" />
     <Compile Include="Enum\Legend\LegendStyle.cs" />
     <Compile Include="Enum\TextBox\InputType.cs" />
+    <Compile Include="Event\LayFunctionEventArgs.cs" />
     <Compile Include="Extend\Base\LayControlsBaseHelper.cs" />
     <Compile Include="Extend\DataGrid\LayDataGridHelper.cs" />
     <Compile Include="Extend\DatePicker\LayDatePickerHelper.cs" />

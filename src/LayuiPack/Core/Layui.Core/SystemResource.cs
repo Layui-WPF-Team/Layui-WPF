@@ -95,6 +95,14 @@ namespace Layui.Core.Resource
         /// GIF视图
         /// </summary>
         public const string Page_GIFView = "GIFView";
+        /// <summary>
+        /// 标记视图
+        /// </summary>
+        public const string Page_BadgeView = "Page_BadgeView";
+        /// <summary>
+        /// 分页插件视图
+        /// </summary>
+        public const string Page_PaginationView = "Page_PaginationView";
         #endregion
 
         #region 弹窗名称
@@ -102,10 +110,7 @@ namespace Layui.Core.Resource
         /// 测试弹窗名称
         /// </summary>
         public const string DialogMessageView = "DialogMessageView";
-
         public const string LayDialogWindowTooken = "LayDialogWindowTooken";
-
-        public const string Page_BadgeView = "Page_BadgeView";
 
 
 

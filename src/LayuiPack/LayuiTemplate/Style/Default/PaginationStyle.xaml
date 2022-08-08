@@ -1,0 +1,207 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    <Style x:Key="LayPaginationStyle" TargetType="Lay:LayPagination">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="PrevBtnContent">
+            <Setter.Value>
+                <TextBlock Margin="5,0" Text="上一页" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="NextBtnContent">
+            <Setter.Value>
+                <TextBlock Margin="5,0" Text="下一页" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="SkipContent">
+            <Setter.Value>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Margin="5,0"
+                        VerticalAlignment="Center"
+                        Text="到第" />
+                    <Lay:LayTextBox
+                        Width="60"
+                        Height="auto"
+                        Margin="5,0"
+                        Padding="0"
+                        Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=Skip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Watermark="数量" />
+                    <TextBlock
+                        Margin="5,0"
+                        VerticalAlignment="Center"
+                        Text="页" />
+                </StackPanel>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="RefreshBtnContent">
+            <Setter.Value>
+                <Path
+                    Width="15"
+                    Height="15"
+                    Margin="5,0"
+                    Data="{DynamicResource refresh}"
+                    Fill="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=Foreground}"
+                    Stretch="Fill" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="LimitContent">
+            <Setter.Value>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center">
+                        <Run Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=Limit}" />
+                        <Run Text="条/页 " />
+                    </TextBlock>
+                </StackPanel>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="PageCountContent">
+            <Setter.Value>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center">
+                        <Run Text="共 " />
+                        <Run Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=PageCount}" />
+                        <Run Text="条 " />
+                    </TextBlock>
+                </StackPanel>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ConfirmBtnContent">
+            <Setter.Value>
+                <TextBlock Margin="5,0" Text="确定" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayPagination">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <ContentControl
+                            Height="auto"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding PageCountContent}" />
+                        <Button
+                            x:Name="PART_PrevBtn"
+                            Grid.Column="1"
+                            Height="auto"
+                            Margin="5,0"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            Content="{TemplateBinding PrevBtnContent}"
+                            Cursor="Hand"
+                            Style="{x:Null}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        Background="Transparent"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="2">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <StackPanel
+                            x:Name="PART_ItemPanel"
+                            Grid.Column="2"
+                            Height="auto"
+                            Margin="5,0" />
+                        <Button
+                            x:Name="PART_NextBtn"
+                            Grid.Column="3"
+                            Height="auto"
+                            Margin="5,0"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            Content="{TemplateBinding NextBtnContent}"
+                            Cursor="Hand"
+                            Style="{x:Null}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        Background="Transparent"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="2">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <ContentControl
+                            Grid.Column="4"
+                            Width="auto"
+                            Height="auto"
+                            Margin="10,0"
+                            Content="{TemplateBinding LimitContent}" />
+                        <Button
+                            Grid.Column="5"
+                            Height="auto"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0"
+                            Content="{TemplateBinding RefreshBtnContent}"
+                            Cursor="Hand"
+                            Style="{x:Null}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        Background="Transparent"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <ContentControl
+                            Grid.Column="6"
+                            Height="auto"
+                            Content="{TemplateBinding SkipContent}" />
+                        <Button
+                            Grid.Column="7"
+                            Height="auto"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            Content="{TemplateBinding ConfirmBtnContent}"
+                            Cursor="Hand">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        Background="Transparent"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="2">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayPaginationStyle}" TargetType="Lay:LayPagination" />
+</ResourceDictionary>

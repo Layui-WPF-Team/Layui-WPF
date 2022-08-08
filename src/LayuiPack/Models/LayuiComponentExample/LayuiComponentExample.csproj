@@ -53,6 +53,7 @@
     <Compile Include="ViewModels\BadgeViewModel.cs" />
     <Compile Include="ViewModels\CarouselViewModel.cs" />
     <Compile Include="ViewModels\DateTimeViewModel.cs" />
+    <Compile Include="ViewModels\PaginationViewModel.cs" />
     <Compile Include="Views\Badge.xaml.cs">
       <DependentUpon>Badge.xaml</DependentUpon>
     </Compile>
@@ -98,6 +99,9 @@
     <Compile Include="Views\Message.xaml.cs">
       <DependentUpon>Message.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pagination.xaml.cs">
+      <DependentUpon>Pagination.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
     </Compile>
@@ -141,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Message.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pagination.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
