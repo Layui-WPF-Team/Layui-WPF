@@ -27,10 +27,10 @@
         </Lay:LayDataGrid>
         <Lay:LayPagination
             Grid.Row="1"
-            Height="30"
             Margin="0,5"
             FontSize="12"
             Limit="10"
-            PageCount="100" />
+            PageCount="100"
+            PageIndex="2" />
     </Grid>
 </UserControl>
