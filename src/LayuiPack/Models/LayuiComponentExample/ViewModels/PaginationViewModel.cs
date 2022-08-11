@@ -14,6 +14,10 @@ namespace LayuiComponentExample.ViewModels
 {
     public class PaginationViewModel : LayuiViewModelBase
     {
+        public List<int> Limits { get; set; } = new List<int>()
+        {
+            10,20,30,40,50
+        };
         public PaginationViewModel(IContainerExtension container) : base(container)
         {
             
@@ -96,6 +100,14 @@ namespace LayuiComponentExample.ViewModels
                 get { return _ProgressBarValue; }
                 set { SetProperty(ref _ProgressBarValue, value); }
             }
+        }
+        private DelegateCommand<int?> _PageUpdatedCommand;
+        public DelegateCommand<int?> PageUpdatedCommand =>
+            _PageUpdatedCommand ?? (_PageUpdatedCommand = new DelegateCommand<int?>(ExecutePageUpdatedCommand));
+
+        void ExecutePageUpdatedCommand(int? JumpIndex)
+        {
+            LayMessage.Success($"查询当前第{JumpIndex}页数据");
         }
     }
 }

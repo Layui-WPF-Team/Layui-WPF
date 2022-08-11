@@ -20,7 +20,6 @@ namespace LayuiTemplate.Control
     [TemplatePart(Name = "PART_MoreRight", Type = typeof(Border))]
     [TemplatePart(Name = "PART_MoreLeft", Type = typeof(Border))]
     [TemplatePart(Name = "PART_NextButton", Type = typeof(Button))]
-    [TemplatePart(Name = "PART_RefreshButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_ConfirmButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_FirstButton", Type = typeof(RadioButton))]
     [TemplatePart(Name = "PART_LastButton", Type = typeof(RadioButton))]
@@ -34,10 +33,6 @@ namespace LayuiTemplate.Control
         /// 下一页按钮
         /// </summary>
         private Button PART_NextButton;
-        /// <summary>
-        /// 刷新当前页按钮
-        /// </summary>
-        private Button PART_RefreshButton;
         /// <summary>
         /// 跳转目标页按钮
         /// </summary>
@@ -70,18 +65,6 @@ namespace LayuiTemplate.Control
         /// 编辑模板添加状态
         /// </summary>
         private bool AppliedTemplate;
-        /// <summary>
-        /// 刷新按钮内容
-        /// </summary>
-        public object RefreshButtonContent
-        {
-            get { return (object)GetValue(RefreshButtonContentProperty); }
-            set { SetValue(RefreshButtonContentProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for RefreshButtonContent.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty RefreshButtonContentProperty =
-            DependencyProperty.Register("RefreshButtonContent", typeof(object), typeof(LayPagination));
         /// <summary>
         /// 总共页数
         /// </summary>
@@ -177,29 +160,87 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty PageCountProperty =
             DependencyProperty.Register("PageCount", typeof(int), typeof(LayPagination), new PropertyMetadata(Refresh));
         /// <summary>
-        /// 当前页数修饰内容
+        /// 跳转修饰内容
         /// </summary>
-        public object PageIndexContent
+        public object JumpContent
         {
-            get { return (object)GetValue(PageIndexContentProperty); }
-            set { SetValue(PageIndexContentProperty, value); }
+            get { return (object)GetValue(JumpContentProperty); }
+            set { SetValue(JumpContentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PageIndexContent.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty PageIndexContentProperty =
-            DependencyProperty.Register("PageIndexContent", typeof(object), typeof(LayPagination));
+        // Using a DependencyProperty as the backing store for JumpContent.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty JumpContentProperty =
+            DependencyProperty.Register("JumpContent", typeof(object), typeof(LayPagination));
         /// <summary>
         /// 当前页数
         /// </summary>
         public int PageIndex
         {
             get { return (int)GetValue(PageIndexProperty); }
-            set { SetValue(PageIndexProperty, value); }
+            private set { SetValue(PageIndexProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for PageIndex.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PageIndexProperty =
-            DependencyProperty.Register("PageIndex", typeof(int), typeof(LayPagination), new PropertyMetadata(Refresh));
+            DependencyProperty.Register("PageIndex", typeof(int), typeof(LayPagination), new PropertyMetadata(1, OnPageIndexChanged, CoercePageIndex));
+
+        private static void OnPageIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is LayPagination pagination && e.NewValue is int value)
+            {
+                pagination.Refresh();
+                pagination.JumpIndex = pagination.PageIndex;
+            }
+        }
+        private static object CoercePageIndex(DependencyObject d, object baseValue)
+        {
+            if (d is LayPagination pagination)
+            {
+                var intValue = (int)baseValue;
+                return intValue < 1 ? 1 : intValue > pagination.PageNum ? pagination.PageNum : intValue;
+            }
+            else return 1;
+
+        }
+        /// <summary>
+        /// 跳转页数
+        /// </summary>
+        public int JumpIndex
+        {
+            get { return (int)GetValue(JumpIndexProperty); }
+            set { SetValue(JumpIndexProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for JumpIndex.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty JumpIndexProperty =
+            DependencyProperty.Register("JumpIndex", typeof(int), typeof(LayPagination), new PropertyMetadata(1, null, OnJumpIndexChanged));
+
+        private static object OnJumpIndexChanged(DependencyObject d, object baseValue)
+        {
+            if (d is LayPagination pagination)
+            {
+                var intValue = (int)baseValue;
+                return intValue < 1 ? 1 : intValue> pagination.PageNum ? pagination.PageNum: intValue;
+            }
+            else return 1;
+        }
+
+
+        /// <summary>
+        /// 是否禁用跳转
+        /// </summary>
+        public bool IsJumpEnabled
+        {
+            get { return (bool)GetValue(IsJumpEnabledProperty); }
+            set { SetValue(IsJumpEnabledProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsJumpEnabled.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsJumpEnabledProperty =
+            DependencyProperty.Register("IsJumpEnabled", typeof(bool), typeof(LayPagination), new PropertyMetadata(false));
+
+
+
         /// <summary>
         /// 分页间隔
         /// </summary>
@@ -211,9 +252,7 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for MaxPageInterval.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MaxPageIntervalProperty =
-            DependencyProperty.Register("MaxPageInterval", typeof(int), typeof(LayPagination), new PropertyMetadata(Refresh));
-
-
+            DependencyProperty.Register("MaxPageInterval", typeof(int), typeof(LayPagination), new PropertyMetadata(5, Refresh));
         /// <summary>
         /// 当前分页展示数量
         /// </summary>
@@ -225,7 +264,19 @@ namespace LayuiTemplate.Control
 
         // Using a DependencyProperty as the backing store for Limits.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LimitProperty =
-            DependencyProperty.Register("Limit", typeof(int), typeof(LayPagination), new PropertyMetadata(Refresh));
+            DependencyProperty.Register("Limit", typeof(int), typeof(LayPagination), new PropertyMetadata(10, OnLimitChanged));
+
+        private static void OnLimitChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is LayPagination pagination && e.NewValue is int value)
+            {
+                pagination.Refresh();
+                pagination.RaiseEvent(new LayFunctionEventArgs<int>(PageUpdatedEvent, pagination)
+                {
+                    Info = pagination.PageIndex
+                });
+            }
+        }
 
         /// <summary>
         /// 当前分页展示数量修饰内容
@@ -270,6 +321,13 @@ namespace LayuiTemplate.Control
         private void Refresh()
         {
             if (!AppliedTemplate) return;
+            //计算页数
+            if (PageCount % Limit > 0) PageNum = PageCount / Limit + 1;
+            else PageNum = PageCount / Limit;
+            //设置上下一页按钮
+            PART_PrevButton.IsEnabled = PageIndex > 1;
+            PART_NextButton.IsEnabled = PageIndex < PageNum;
+            //防呆
             if (MaxPageInterval == 0)
             {
                 PART_FirstButton.Visibility = Visibility.Collapsed;
@@ -282,13 +340,12 @@ namespace LayuiTemplate.Control
                 selectButton.IsChecked = true;
                 return;
             }
-            else
-            {
-                PART_FirstButton.Visibility = Visibility.Visible;
-                PART_LastButton.Visibility = Visibility.Visible;
-                PART_MoreLeft.Visibility = Visibility.Visible;
-                PART_MoreRight.Visibility = Visibility.Visible;
-            }
+            //设置跳转页按钮效果
+            PART_FirstButton.Visibility = Visibility.Visible;
+            PART_LastButton.Visibility = Visibility.Visible;
+            PART_MoreLeft.Visibility = Visibility.Visible;
+            PART_MoreRight.Visibility = Visibility.Visible;
+
             //更新最后一页
             if (PageNum == 1)
             {
@@ -299,11 +356,55 @@ namespace LayuiTemplate.Control
                 PART_LastButton.Visibility = Visibility.Visible;
                 PART_LastButton.Content = PageNum.ToString();
             }
+
             //更新省略号
             var right = PageNum - PageIndex;
             var left = PageIndex - 1;
-            PART_MoreLeft.Visibility = right > MaxPageInterval ? Visibility.Visible : Visibility.Collapsed;
-            PART_MoreRight.Visibility= left > MaxPageInterval ? Visibility.Visible : Visibility.Collapsed;
+            PART_MoreRight.Visibility = right > MaxPageInterval ? Visibility.Visible : Visibility.Collapsed;
+            PART_MoreLeft.Visibility = left > MaxPageInterval ? Visibility.Visible : Visibility.Collapsed;
+
+            //更新中间部分
+            PART_ItemPanel.Children.Clear();
+            if (PageIndex > 1 && PageIndex < PageNum)
+            {
+                var selectButton = CreateButton(PageIndex);
+                PART_ItemPanel.Children.Add(selectButton);
+                selectButton.IsChecked = true;
+            }
+            else if (PageIndex == 1)
+            {
+                PART_FirstButton.IsChecked = true;
+            }
+            else
+            {
+                PART_LastButton.IsChecked = true;
+            }
+
+            var sub = PageIndex;
+            for (var i = 0; i < MaxPageInterval - 1; i++)
+            {
+                if (--sub > 1)
+                {
+                    PART_ItemPanel.Children.Insert(0, CreateButton(sub));
+                }
+                else
+                {
+                    break;
+                }
+            }
+            var add = PageIndex;
+            for (var i = 0; i < MaxPageInterval - 1; i++)
+            {
+                if (++add < PageNum)
+                {
+                    PART_ItemPanel.Children.Add(CreateButton(add));
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             PART_FirstButton.GroupName = GroupName;
             PART_LastButton.GroupName = GroupName;
         }
@@ -330,14 +431,13 @@ namespace LayuiTemplate.Control
             base.OnApplyTemplate();
             PART_PrevButton = GetTemplateChild("PART_PrevButton") as Button;
             PART_NextButton = GetTemplateChild("PART_NextButton") as Button;
-            PART_RefreshButton = GetTemplateChild("PART_RefreshButton") as Button;
             PART_ConfirmButton = GetTemplateChild("PART_ConfirmButton") as Button;
             PART_FirstButton = GetTemplateChild("PART_FirstButton") as RadioButton;
             PART_LastButton = GetTemplateChild("PART_LastButton") as RadioButton;
             PART_ItemPanel = GetTemplateChild("PART_ItemPanel") as Panel;
             PART_MoreLeft = GetTemplateChild("PART_MoreLeft") as Border;
             PART_MoreRight = GetTemplateChild("PART_MoreRight") as Border;
-            if (PART_PrevButton == null || PART_NextButton == null || PART_RefreshButton == null ||
+            if (PART_PrevButton == null || PART_NextButton == null ||
             PART_ConfirmButton == null || PART_ItemPanel == null || PART_FirstButton == null
             || PART_LastButton == null || PART_MoreLeft == null || PART_MoreRight == null) throw new Exception();
             else
@@ -350,29 +450,71 @@ namespace LayuiTemplate.Control
                 PART_FirstButton.Click += RadioButton_Click;
                 PART_LastButton.Click -= RadioButton_Click;
                 PART_LastButton.Click += RadioButton_Click;
+                PART_ConfirmButton.Click -= PART_ConfirmButton_Click;
+                PART_ConfirmButton.Click += PART_ConfirmButton_Click;
             }
             AppliedTemplate = true;
             Refresh();
         }
+        /// <summary>
+        /// 跳转目标页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PART_ConfirmButton_Click(object sender, RoutedEventArgs e)
+        {
+            PageIndex = JumpIndex;
+            RaiseEvent(new LayFunctionEventArgs<int>(PageUpdatedEvent, this)
+            {
+                Info = JumpIndex
+            });
 
-
+        }
+        /// <summary>
+        /// 选中当前目标页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
             if (e.OriginalSource is RadioButton button)
             {
                 if (button.IsChecked == false) return;
                 PageIndex = int.Parse(button.Content.ToString());
+                RaiseEvent(new LayFunctionEventArgs<int>(PageUpdatedEvent, this)
+                {
+                    Info = PageIndex
+                });
             }
         }
-
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PART_NextButton_Click(object sender, RoutedEventArgs e)
         {
             PageIndex++;
+            JumpIndex = PageIndex;
+            RaiseEvent(new LayFunctionEventArgs<int>(PageUpdatedEvent, this)
+            {
+                Info = PageIndex
+            });
         }
 
+        /// <summary>
+        /// 上一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PART_PrevButton_Click(object sender, RoutedEventArgs e)
         {
             PageIndex--;
+            JumpIndex = PageIndex;
+            RaiseEvent(new LayFunctionEventArgs<int>(PageUpdatedEvent, this)
+            {
+                Info = PageIndex
+            });
         }
     }
 }
