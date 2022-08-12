@@ -36,6 +36,7 @@
             </Style>
         </Lay:LayDataGrid.RowStyle>
         <Lay:LayDataGrid.Columns>
+            <DataGridCheckBoxColumn Width="60" Header="默认" />
             <DataGridTemplateColumn MinWidth="50" MaxWidth="100">
                 <DataGridTemplateColumn.Header>
                     <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -53,9 +54,34 @@
                 Header="编号" />
             <DataGridTextColumn
                 Width="200"
-                Binding="{Binding Name, Mode=OneWay}"
+                Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Header="名称" />
-            <DataGridTemplateColumn Width="*" Header="跨列">
+            <DataGridTemplateColumn Width="150" Header="下拉框">
+                <!--  这里是默认的显示框  -->
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock
+                            Padding="13,0"
+                            VerticalAlignment="Center"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                <!--  这里是可编辑后的下拉框效果  -->
+                <DataGridTemplateColumn.CellEditingTemplate>
+                    <DataTemplate>
+                        <Lay:LayComboBox
+                            BorderBrush="{DynamicResource Green}"
+                            CornerRadius="0"
+                            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                            Watermark="请选择">
+                            <Lay:LayComboBoxItem Content="123" />
+                            <Lay:LayComboBoxItem Content="123" />
+                            <Lay:LayComboBoxItem Content="456" />
+                        </Lay:LayComboBox>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellEditingTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn Width="300" Header="跨列">
                 <DataGridTemplateColumn.HeaderStyle>
                     <Style BasedOn="{StaticResource LayColumnHeaderStyle}" TargetType="DataGridColumnHeader">
                         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -80,7 +106,7 @@
                             <TextBlock
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Text="{Binding Name}" />
+                                Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Grid
                                 Grid.Column="1"
                                 Width="1"
@@ -89,7 +115,7 @@
                                 Grid.Column="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Text="{Binding Name}" />
+                                Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </Grid>
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
@@ -157,7 +183,7 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock VerticalAlignment="Center" Text="名称: " />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock VerticalAlignment="Center" Text="进度: " />
