@@ -80,27 +80,6 @@ namespace LayuiComponentExample.ViewModels
         {
             ListData.Remove(data);
         }
-        public class Data : BindableBase
-        {
-            private int _Index;
-            public int Index
-            {
-                get { return _Index; }
-                set { SetProperty(ref _Index, value); }
-            }
-            private string _Name;
-            public string Name
-            {
-                get { return _Name; }
-                set { SetProperty(ref _Name, value); }
-            }
-            private int _ProgressBarValue;
-            public int ProgressBarValue
-            {
-                get { return _ProgressBarValue; }
-                set { SetProperty(ref _ProgressBarValue, value); }
-            }
-        }
         private DelegateCommand<int?> _PageUpdatedCommand;
         public DelegateCommand<int?> PageUpdatedCommand =>
             _PageUpdatedCommand ?? (_PageUpdatedCommand = new DelegateCommand<int?>(ExecutePageUpdatedCommand));
@@ -108,6 +87,33 @@ namespace LayuiComponentExample.ViewModels
         void ExecutePageUpdatedCommand(int? JumpIndex)
         {
             LayMessage.Success($"查询当前第{JumpIndex}页数据");
+        }
+    }
+    public class Data : BindableBase
+    {
+        private int _Index;
+        public int Index
+        {
+            get { return _Index; }
+            set { SetProperty(ref _Index, value); }
+        }
+        private string _Name;
+        public string Name
+        {
+            get { return _Name; }
+            set { SetProperty(ref _Name, value); }
+        }
+        private int _ProgressBarValue;
+        public int ProgressBarValue
+        {
+            get { return _ProgressBarValue; }
+            set { SetProperty(ref _ProgressBarValue, value); }
+        }
+        private Data _PathData;
+        public Data PathData
+        {
+            get { return _PathData; }
+            set { SetProperty(ref _PathData, value); }
         }
     }
 }

@@ -4,25 +4,54 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:LayuiComponentExample.Views"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     prism:ViewModelLocator.AutoWireViewModel="True">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="ViewSource" Source="{Binding ListData}" />
+    </UserControl.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Margin="10">
+    <Grid x:Name="body" Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Lay:LayDataGrid IsActive="{Binding IsActive}" ItemsSource="{Binding ListData}">
+        <Lay:LayDataGrid
+            x:Name="LayDataGrid"
+            IsActive="{Binding IsActive}"
+            ItemsSource="{Binding ListData}">
             <Lay:LayDataGrid.Columns>
+                <DataGridCheckBoxColumn Width="50" Header="123" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding Name, Mode=OneWay}"
+                    Binding="{Binding Name}"
                     Header="名称" />
+                <DataGridTemplateColumn Width="150" Header="下拉框">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Padding="13,0"
+                                VerticalAlignment="Center"
+                                Text="{Binding PathData.Name}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Lay:LayComboBox
+                                BorderBrush="{DynamicResource Green}"
+                                CornerRadius="0"
+                                DisplayMemberPath="Name"
+                                ItemsSource="{Binding Source={StaticResource ViewSource}}"
+                                SelectedItem="{Binding PathData}"
+                                SelectedValuePath="Name" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
             </Lay:LayDataGrid.Columns>
         </Lay:LayDataGrid>
         <Lay:LayPagination

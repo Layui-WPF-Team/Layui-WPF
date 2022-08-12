@@ -2,6 +2,198 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    <Style x:Key="ElementTextStyle" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=VerticalContentAlignment}" />
+        <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}" />
+    </Style>
+    <Style x:Key="EditingTextStyle" TargetType="TextBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=VerticalContentAlignment}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border
+                        x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        SnapsToDevicePixels="True">
+                        <Grid>
+                            <ScrollViewer
+                                x:Name="PART_ContentHost"
+                                Focusable="false"
+                                HorizontalScrollBarVisibility="Hidden"
+                                VerticalScrollBarVisibility="Hidden" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ElementCheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=VerticalContentAlignment}" />
+        <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid
+                        x:Name="templateRoot"
+                        Background="Transparent"
+                        SnapsToDevicePixels="True">
+                        <Grid Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}" Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}">
+                            <Viewbox>
+                                <Grid>
+                                    <Border
+                                        x:Name="checkBoxBorder"
+                                        Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                        Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                        Padding="5"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="White"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                        <Path
+                                            x:Name="textBlock"
+                                            Data="M332.972089 890.88a56.888889 56.888889 0 0 0 85.333333 0.170667l591.388445-682.666667a56.888889 56.888889 0 0 0-85.162667-75.434667l-591.388444 682.666667 85.333333 0.199111L99.642311 465.208889a56.888889 56.888889 0 1 0-85.504 75.064889l318.862222 350.577778z"
+                                            Fill="White"
+                                            Opacity="0"
+                                            Stretch="Fill" />
+                                    </Border>
+                                </Grid>
+                            </Viewbox>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--  鼠标点击后的效果  -->
+                        <Trigger Property="IsPressed" Value="true" />
+                        <!--  被选中后的效果  -->
+                        <Trigger Property="IsChecked" Value="true" />
+                        <!--  未选择时的效果  -->
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter TargetName="checkBoxBorder" Property="Padding" Value="1" />
+                            <Setter TargetName="textBlock" Property="Data" Value="M0,2 C0,0.8954305 0.8954305,0 2,0 L28,0 C29.104569,0 30,0.8954305 30,2 L30,28 C30,29.104569 29.104569,30 28,30 L2,30 C0.8954305,30 0,29.104569 0,28 z" />
+                            <Setter TargetName="textBlock" Property="Fill" Value="{DynamicResource CyanBlue}" />
+                            <Setter TargetName="textBlock" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <!--  复选框被禁止时的效果  -->
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#eee" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="true" />
+                                <Condition Property="IsChecked" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="textBlock" Property="Opacity" Value="1" />
+                            <Setter TargetName="checkBoxBorder" Property="Padding" Value="3" />
+                            <Setter TargetName="textBlock" Property="Margin" Value="0,2" />
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource CyanBlue}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="false" />
+                                <Condition Property="IsChecked" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#eee" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="EditingCheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=VerticalContentAlignment}" />
+        <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid
+                        x:Name="templateRoot"
+                        Background="Transparent"
+                        SnapsToDevicePixels="True">
+                        <Grid Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}" Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}">
+                            <Viewbox>
+                                <Grid>
+                                    <Border
+                                        x:Name="checkBoxBorder"
+                                        Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                        Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                        Padding="5"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="White"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                        <Path
+                                            x:Name="textBlock"
+                                            Data="M332.972089 890.88a56.888889 56.888889 0 0 0 85.333333 0.170667l591.388445-682.666667a56.888889 56.888889 0 0 0-85.162667-75.434667l-591.388444 682.666667 85.333333 0.199111L99.642311 465.208889a56.888889 56.888889 0 1 0-85.504 75.064889l318.862222 350.577778z"
+                                            Fill="White"
+                                            Opacity="0"
+                                            Stretch="Fill" />
+                                    </Border>
+                                </Grid>
+                            </Viewbox>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--  鼠标点击后的效果  -->
+                        <Trigger Property="IsPressed" Value="true" />
+                        <!--  被选中后的效果  -->
+                        <Trigger Property="IsChecked" Value="true" />
+                        <!--  未选择时的效果  -->
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter TargetName="checkBoxBorder" Property="Padding" Value="1" />
+                            <Setter TargetName="textBlock" Property="Data" Value="M0,2 C0,0.8954305 0.8954305,0 2,0 L28,0 C29.104569,0 30,0.8954305 30,2 L30,28 C30,29.104569 29.104569,30 28,30 L2,30 C0.8954305,30 0,29.104569 0,28 z" />
+                            <Setter TargetName="textBlock" Property="Fill" Value="{DynamicResource CyanBlue}" />
+                            <Setter TargetName="textBlock" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <!--  复选框被禁止时的效果  -->
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#eee" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="true" />
+                                <Condition Property="IsChecked" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="textBlock" Property="Opacity" Value="1" />
+                            <Setter TargetName="checkBoxBorder" Property="Padding" Value="3" />
+                            <Setter TargetName="textBlock" Property="Margin" Value="0,2" />
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource CyanBlue}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="false" />
+                                <Condition Property="IsChecked" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#eee" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style x:Key="LayDataGridStyle" TargetType="{x:Type Lay:LayDataGrid}">
         <Setter Property="Background" Value="White" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -23,7 +215,10 @@
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="ElementTextColumnStyle" Value="{DynamicResource ElementTextStyle}" />
+        <Setter Property="EditingTextColumnStyle" Value="{DynamicResource EditingTextStyle}" />
+        <Setter Property="ElementCheckBoxColumnStyle" Value="{DynamicResource ElementCheckBoxStyle}" />
+        <Setter Property="EditingCheckBoxColumnStyle" Value="{DynamicResource EditingCheckBoxStyle}" />
         <Setter Property="SelectionMode" Value="Single" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
@@ -251,6 +446,7 @@
     </Style>
     <Style x:Key="LayRowHeaderStyle" TargetType="{x:Type DataGridRowHeader}">
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
     <Style x:Key="LayDataGridRowStyle" TargetType="{x:Type DataGridRow}">
         <Setter Property="BorderThickness" Value="0,0,1,0" />
@@ -398,11 +594,17 @@
         <Setter Property="Padding" Value="13,0" />
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid, Mode=FindAncestor}, Path=Foreground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
-                    <Grid Background="{TemplateBinding Background}">
-                        <ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    <Grid>
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

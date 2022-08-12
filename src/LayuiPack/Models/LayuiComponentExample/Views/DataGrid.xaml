@@ -100,7 +100,7 @@
                 </DataGridTemplateColumn.Header>
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid Margin="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="auto" />
@@ -110,7 +110,10 @@
                                 Height="10"
                                 VerticalAlignment="Center"
                                 Value="{Binding ProgressBarValue, Mode=OneWay}" />
-                            <TextBlock Grid.Column="1" Text="{Binding ElementName=ProgressBar, Path=Value, StringFormat={}{0}%}" />
+                            <TextBlock
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                Text="{Binding ElementName=ProgressBar, Path=Value, StringFormat={}{0}%}" />
                         </Grid>
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
@@ -124,6 +127,8 @@
                         <Button
                             Width="auto"
                             Height="auto"
+                            Margin="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}"
+                            VerticalAlignment="Center"
                             Command="{Binding RelativeSource={RelativeSource AncestorType=local:DataGrid}, Path=DataContext.DeleteCommand}"
                             CommandParameter="{Binding}"
                             Cursor="Hand"
