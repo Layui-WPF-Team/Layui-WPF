@@ -72,7 +72,7 @@
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="{TemplateBinding CornerRadius}">
-                                    <ContentControl Content="{TemplateBinding Content}" />
+                                    <ContentPresenter Content="{TemplateBinding Content}" />
                                 </Border>
                             </Grid>
                         </Popup>

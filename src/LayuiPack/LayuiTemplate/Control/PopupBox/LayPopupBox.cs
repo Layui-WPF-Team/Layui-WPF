@@ -18,6 +18,7 @@ namespace LayuiTemplate.Control
     [TemplatePart(Name = "PART_ToggleButton", Type = typeof(ToggleButton))]
     public class LayPopupBox : System.Windows.Controls.Control
     {
+        private Border PART_ContentBorder;
         private Popup PART_Popup;
 
         public double VerticalOffset
@@ -95,10 +96,39 @@ namespace LayuiTemplate.Control
 
 
 
+        public bool IsAutoClose
+        {
+            get { return (bool)GetValue(IsAutoCloseProperty); }
+            set { SetValue(IsAutoCloseProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsAutoClose.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsAutoCloseProperty =
+            DependencyProperty.Register("IsAutoClose", typeof(bool), typeof(LayPopupBox), new PropertyMetadata(false, OnIsAutoCloseChanged));
+
+        private static void OnIsAutoCloseChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is LayPopupBox layPopup)
+            {
+                if (layPopup.IsLoaded)
+                {
+                    if (layPopup.IsAutoClose)
+                    {
+                        layPopup.PART_ContentBorder.PreviewMouseLeftButtonDown -= layPopup.PART_ContentBorder_MouseLeftButtonDown;
+                    }
+                    else
+                    {
+                        layPopup.PART_ContentBorder.PreviewMouseLeftButtonDown -= layPopup.PART_ContentBorder_MouseLeftButtonDown;
+                        layPopup.PART_ContentBorder.PreviewMouseLeftButtonDown += layPopup.PART_ContentBorder_MouseLeftButtonDown;
+                    }
+                }
+            }
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            var PART_ContentBorder = GetTemplateChild("PART_ContentBorder") as FrameworkElement;
+            PART_ContentBorder = GetTemplateChild("PART_ContentBorder") as Border;
             PART_Popup = GetTemplateChild("PART_Popup") as Popup;
             if (PART_ContentBorder != null)
             {
@@ -109,7 +139,8 @@ namespace LayuiTemplate.Control
 
         private void PART_ContentBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.Source is Button button) {
+            if (e.Source is Button button)
+            {
                 PART_Popup.IsOpen = false;
             }
         }

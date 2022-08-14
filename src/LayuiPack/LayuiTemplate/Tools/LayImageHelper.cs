@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -59,7 +60,7 @@ namespace LayuiTemplate.Tools
         /// </summary>
         /// <param name="Source"></param>
         /// <returns></returns>
-        public static System.Drawing.Bitmap GetBitmap(ImageSource Source)
+        public static async Task<Bitmap> GetBitmapAsync(ImageSource Source)
         {
             try
             {
@@ -75,7 +76,9 @@ namespace LayuiTemplate.Tools
                 if (file.Contains("https:"))
                 {
                     var webC = new System.Net.WebClient();
-                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(webC.OpenRead(file));
+                    var Stream = await Task.Run(() => webC.OpenRead(file));
+                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(Stream);
+
                     return bmp;
                 }
                 else

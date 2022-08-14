@@ -30,19 +30,7 @@ namespace LayuiTemplate.Control
         private static void OnVisibilityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayGifImage layGif = d as LayGifImage;
-            layGif.StopAnimate();
-            if (e.NewValue != null)
-            {
-                var v = (Uri)e.NewValue;
-                layGif.gifBitmap = LayImageHelper.GetBitmap(layGif.Source);
-                layGif.bitmapSource = layGif.GetBitmapSource();
-                layGif.PART_Image.Source = layGif.bitmapSource;
-                layGif.StartAnimate();
-            }
-            else
-            {
-                layGif.PART_Image.Source = null;
-            }
+            layGif.Refresh();
         }
 
         /// <summary>
@@ -69,11 +57,7 @@ namespace LayuiTemplate.Control
         private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayGifImage layGif = d as LayGifImage;
-            if (layGif.IsLoaded) {
-                if(layGif!=null) layGif.StopAnimate();
-                layGif.Refresh();
-                layGif.StartAnimate();
-            } 
+            layGif.Refresh();
         }
         public Stretch Stretch
         {
@@ -87,20 +71,19 @@ namespace LayuiTemplate.Control
 
         private void Refresh()
         {
-            try
+            if (!IsLoaded) return;
+            Dispatcher.Invoke(async () =>
             {
                 if (Source != null)
                 {
-                    this.gifBitmap = LayImageHelper.GetBitmap(Source);
-                    this.bitmapSource = this.GetBitmapSource();
-                    this.PART_Image.Source = this.bitmapSource;
+                    gifBitmap = await LayImageHelper.GetBitmapAsync(Source);
+                    bitmapSource = GetBitmapSource();
+                    PART_Image.Source = bitmapSource;
+                    StopAnimate();
+                    StartAnimate();
                 }
-            }
-            catch (Exception ex)
-            {
+            });
 
-                throw ex;
-            }
         }
         private BitmapSource GetBitmapSource()
         {
@@ -108,7 +91,7 @@ namespace LayuiTemplate.Control
             try
             {
                 handle = gifBitmap.GetHbitmap();
-                this.bitmapSource = Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero, System.Windows.Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                bitmapSource = Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero, System.Windows.Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
             }
             finally
             {
@@ -117,7 +100,7 @@ namespace LayuiTemplate.Control
                     LayImageHelper.DeleteObject(handle);
                 }
             }
-            return this.bitmapSource;
+            return bitmapSource;
         }
         private void OnFrameChanged(object sender, EventArgs e)
         {
@@ -129,33 +112,38 @@ namespace LayuiTemplate.Control
                 PART_Image.Source.Freeze();
             }
 
-            PART_Image.Source = this.GetBitmapSource();
-            this.InvalidateVisual();
+            PART_Image.Source = GetBitmapSource();
+            InvalidateVisual();
         }));
         }
         public void StartAnimate()
         {
-            System.Drawing.ImageAnimator.Animate(this.gifBitmap, this.OnFrameChanged);
+            if (gifBitmap != null)
+                System.Drawing.ImageAnimator.Animate(gifBitmap, OnFrameChanged);
         }
         public void StopAnimate()
         {
-            System.Drawing.ImageAnimator.StopAnimate(this.gifBitmap, this.OnFrameChanged);
+            if (gifBitmap != null)
+                System.Drawing.ImageAnimator.StopAnimate(gifBitmap, OnFrameChanged);
         }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             PART_Image = GetTemplateChild("PART_Image") as Image;
+            Loaded -= LayGifImage_Loaded;
+            Loaded += LayGifImage_Loaded;
+            Unloaded -= LayGifImage_Unloaded;
+            Unloaded += LayGifImage_Unloaded;
+        }
+
+        private void LayGifImage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            StopAnimate();
+        }
+
+        private void LayGifImage_Loaded(object sender, RoutedEventArgs e)
+        {
             Refresh();
-            var unloaded = new RoutedEventHandler((s, e) =>
-            {
-                StopAnimate();
-            });
-            Unloaded += unloaded;
-            var loaded = new RoutedEventHandler((s, e) =>
-            {
-                StartAnimate();
-            });
-            Loaded += loaded;
         }
     }
 }
