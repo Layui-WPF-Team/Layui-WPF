@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LayuiTemplate.Enum.Carousel;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -36,6 +37,18 @@ namespace LayuiTemplate.Control
             Loaded -= LayCarousel_Loaded;
             Loaded += LayCarousel_Loaded;
         }
+
+
+        public CarouselArrow Arrow
+        {
+            get { return (CarouselArrow)GetValue(ArrowProperty); }
+            set { SetValue(ArrowProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Arrow.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ArrowProperty =
+            DependencyProperty.Register("Arrow", typeof(CarouselArrow), typeof(LayGradientCarousel), new PropertyMetadata(CarouselArrow.Always));
+
 
         private void LayCarousel_Loaded(object sender, RoutedEventArgs e)
         {

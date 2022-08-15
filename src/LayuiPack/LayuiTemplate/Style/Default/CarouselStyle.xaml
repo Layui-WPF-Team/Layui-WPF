@@ -28,7 +28,8 @@
                             Margin="20,0,0,0"
                             HorizontalAlignment="Left"
                             Cursor="Hand"
-                            Style="{x:Null}">
+                            Style="{x:Null}"
+                            Visibility="Collapsed">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid Width="36" Height="36">
@@ -64,7 +65,8 @@
                             Margin="0,0,20,0"
                             HorizontalAlignment="Right"
                             Cursor="Hand"
-                            Style="{x:Null}">
+                            Style="{x:Null}"
+                            Visibility="Collapsed">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid Width="36" Height="36">
@@ -96,6 +98,20 @@
                             </Button.Template>
                         </Button>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Arrow}" Value="Always">
+                            <Setter TargetName="PART_RightButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_LeftButton" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Arrow}" Value="Hover" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsMouseOver}" Value="true" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_RightButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_LeftButton" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

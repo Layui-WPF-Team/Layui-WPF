@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiFundamentalElement", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiComponentExample", "Models\LayuiComponentExample\LayuiComponentExample.csproj", "{DADA7F2F-A343-4748-99D7-A576697C1953}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiAutoUpdateTool", "LayuiAutoUpdateTool\LayuiAutoUpdateTool.csproj", "{4EF15F2D-A072-4EF1-A26F-1CC593077015}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{DADA7F2F-A343-4748-99D7-A576697C1953}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DADA7F2F-A343-4748-99D7-A576697C1953}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DADA7F2F-A343-4748-99D7-A576697C1953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF15F2D-A072-4EF1-A26F-1CC593077015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF15F2D-A072-4EF1-A26F-1CC593077015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF15F2D-A072-4EF1-A26F-1CC593077015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF15F2D-A072-4EF1-A26F-1CC593077015}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{80DD0AA1-A155-4C77-A7D0-878F1FB1325E} = {169DD4F0-432E-466C-8329-76762022D1A8}
 		{91C67C0C-F473-4A37-94AD-9E5E800A7CBD} = {24C0F3BE-6387-42BD-9469-3D5B0D810B93}
 		{DADA7F2F-A343-4748-99D7-A576697C1953} = {24C0F3BE-6387-42BD-9469-3D5B0D810B93}
+		{4EF15F2D-A072-4EF1-A26F-1CC593077015} = {169DD4F0-432E-466C-8329-76762022D1A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6FF3F37-627F-4C9F-9058-72C9F77EA1B2}

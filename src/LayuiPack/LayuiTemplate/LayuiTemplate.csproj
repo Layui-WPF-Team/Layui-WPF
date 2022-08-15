@@ -303,6 +303,7 @@
     <Compile Include="Control\Window\LayWindow.cs" />
     <Compile Include="Converters\Switch\SwitchWidthConverter.cs" />
     <Compile Include="Enum\Badge\BadgeStyle.cs" />
+    <Compile Include="Enum\Carousel\CarouselArrow.cs" />
     <Compile Include="Enum\GroupBox\GroupBoxStyle.cs" />
     <Compile Include="Enum\Legend\LegendStyle.cs" />
     <Compile Include="Enum\TextBox\InputType.cs" />

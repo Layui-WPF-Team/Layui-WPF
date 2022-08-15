@@ -10,60 +10,51 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Lay:LayProgressBar}">
-                    <Grid>
-                        <Grid x:Name="TemplateRoot">
-                            <Grid.OpacityMask>
-                                <VisualBrush>
-                                    <VisualBrush.Visual>
-                                        <Border
-                                            Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualWidth}"
-                                            Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
-                                            Background="Black"
-                                            CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=CornerRadius}" />
-                                    </VisualBrush.Visual>
-                                </VisualBrush>
-                            </Grid.OpacityMask>
-                            <Border Background="{TemplateBinding Background}" BorderThickness="0" />
-                            <Rectangle x:Name="PART_Track" />
-                            <Grid
-                                x:Name="PART_Indicator"
-                                HorizontalAlignment="Left"
-                                ClipToBounds="true">
-                                <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}" />
-                                <Rectangle
-                                    x:Name="Animation"
-                                    Fill="{TemplateBinding Foreground}"
-                                    RenderTransformOrigin="0.5,0.5">
-                                    <Rectangle.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
-                                    </Rectangle.RenderTransform>
-                                </Rectangle>
-                            </Grid>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Determinate" />
-                                    <VisualState x:Name="Indeterminate">
-                                        <Storyboard RepeatBehavior="Forever">
-                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                                <EasingDoubleKeyFrame KeyTime="0" Value="0.25" />
-                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25" />
-                                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25" />
-                                            </DoubleAnimationUsingKeyFrames>
-                                            <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
-                                                <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" />
-                                                <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5" />
-                                                <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" />
-                                            </PointAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
+                    <Grid x:Name="TemplateRoot" UseLayoutRounding="True">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayProgressBar}, Path=Radius, Mode=OneWay}" />
+                        <Border x:Name="PART_Track" />
+                        <Grid
+                            x:Name="PART_Indicator"
+                            HorizontalAlignment="Left"
+                            ClipToBounds="true">
+                            <Border x:Name="Indicator" Background="{TemplateBinding Foreground}" />
+                            <Border
+                                x:Name="Animation"
+                                Background="{TemplateBinding Foreground}"
+                                RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                            </Border>
                         </Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Determinate" />
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.25" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                            <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" />
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Orientation" Value="Vertical">

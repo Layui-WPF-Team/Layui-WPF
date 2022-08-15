@@ -51,7 +51,7 @@
                 Height="18"
                 Margin="0,20"
                 Background="AntiqueWhite"
-                CornerRadius="9"
+                Radius="9"
                 Foreground="#5FB878"
                 Value="50" />
             <Lay:LayProgressBar
