@@ -1,4 +1,5 @@
-﻿using LayuiAutoUpdateTool.Views;
+﻿using Layui.Core.Log;
+using LayuiAutoUpdateTool.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
@@ -17,7 +18,7 @@ namespace LayuiAutoUpdateTool
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            
         }
     }
 }

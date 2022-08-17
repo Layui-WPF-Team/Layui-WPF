@@ -89,18 +89,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="log4net">
+      <Version>2.0.15</Version>
+    </PackageReference>
     <PackageReference Include="Prism.Unity">
       <Version>7.2.0.1422</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Layui.Core\Layui.Core.csproj">
+      <Project>{B867ED96-1955-45C5-9381-A21DBAE85529}</Project>
+      <Name>Layui.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LayuiTemplate\LayuiTemplate.csproj">
       <Project>{80dd0aa1-a155-4c77-a7d0-878f1fb1325e}</Project>
       <Name>LayuiTemplate</Name>

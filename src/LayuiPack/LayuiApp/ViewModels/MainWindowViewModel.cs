@@ -96,6 +96,12 @@ namespace LayuiApp.ViewModels
                 WindowState = WindowState.Normal;
             }
         }
+        public override void ExecuteLoadedCommand()
+        {
+            base.ExecuteLoadedCommand();
+            Logger.Warn("主窗体加载完成");
+            Logger.Warn("主窗体加载完成");
+        }
         /// <summary>
         /// 关闭窗体
         /// </summary>
