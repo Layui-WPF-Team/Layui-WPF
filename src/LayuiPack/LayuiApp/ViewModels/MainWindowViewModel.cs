@@ -1,4 +1,6 @@
-﻿using Layui.Core.Base;
+﻿using Layui.Core.AppHelper;
+using Layui.Core.Base;
+using Layui.Core.Resource;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -18,8 +20,13 @@ namespace LayuiApp.ViewModels
         public MainWindowViewModel(IContainerExtension container) : base(container)
         {
         }
-
         #region 视图属性
+        private bool _Network;
+        public bool Network
+        {
+            get { return _Network; }
+            set { SetProperty(ref _Network, value); }
+        }
         private string _title = "Layui-WPF";
         /// <summary>
         /// 标题
@@ -99,9 +106,14 @@ namespace LayuiApp.ViewModels
         public override void ExecuteLoadedCommand()
         {
             base.ExecuteLoadedCommand();
-            Logger.Warn("主窗体加载完成");
-            Logger.Warn("主窗体加载完成");
+            NetworkHelper.NetworkAvailabilityChanged += Network_NetworkAvailabilityChanged;
         }
+
+        private void Network_NetworkAvailabilityChanged(bool isAvailable)
+        {
+            Network = isAvailable;
+        }
+
         /// <summary>
         /// 关闭窗体
         /// </summary>
@@ -110,6 +122,6 @@ namespace LayuiApp.ViewModels
             Application.Current.Shutdown();
         }
         #endregion
-        
+
     }
 }

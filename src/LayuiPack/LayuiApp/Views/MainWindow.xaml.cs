@@ -12,6 +12,7 @@ namespace LayuiApp.Views
         public MainWindow()
         {
             InitializeComponent();
+
         }
     }
 }

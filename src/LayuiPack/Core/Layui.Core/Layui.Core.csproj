@@ -37,6 +37,7 @@
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Prism, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Core.7.2.0.1422\lib\net45\Prism.dll</HintPath>
     </Reference>
@@ -62,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppHelper\DownloadFileInfo.cs" />
+    <Compile Include="AppHelper\NetworkHelper.cs" />
     <Compile Include="Base\LayuiViewModelBase.cs" />
     <Compile Include="AppHelper\FileHelper.cs" />
     <Compile Include="Log\ILayLogger.cs" />

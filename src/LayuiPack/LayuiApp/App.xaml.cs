@@ -1,4 +1,5 @@
-﻿using Layui.Core.Log;
+﻿using Layui.Core.AppHelper;
+using Layui.Core.Log;
 using LayuiApp.Views;
 using LayuiComponentExample;
 using LayuiFundamentalElement;
@@ -19,6 +20,7 @@ namespace LayuiApp
         {
             //初始化日志配置信息
             log4net.Config.XmlConfigurator.Configure();
+            NetworkHelper.Initialization();
         }
         protected override Window CreateShell()
         {

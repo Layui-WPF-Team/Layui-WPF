@@ -1,4 +1,5 @@
-﻿using Layui.Core.Base;
+﻿using Layui.Core.AppHelper;
+using Layui.Core.Base;
 using Layui.Core.Resource;
 using LayuiHome.Models;
 using LayuiTemplate.Global;
@@ -12,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace LayuiHome.ViewModels
 {
@@ -21,6 +23,12 @@ namespace LayuiHome.ViewModels
         {
         }
         #region 视图属性
+        private bool _Network;
+        public bool Network
+        {
+            get { return _Network; }
+            set { SetProperty(ref _Network, value); }
+        }
         private MenuItemModel _MenuItemModel;
         public MenuItemModel MenuItemModel
         {
@@ -64,6 +72,8 @@ namespace LayuiHome.ViewModels
         #endregion
         public async override void ExecuteLoadedCommand()
         {
+            IsAvailable = NetworkHelper.GetLocalNetworkStatus();
+            NetworkHelper.NetworkAvailabilityChanged += Network_NetworkAvailabilityChanged;
             MenuItemList = await GetData();
             MenuItemModel = MenuItemList.First().Data.First();
             MenuItemList.First().IsSelected = true;
@@ -71,6 +81,24 @@ namespace LayuiHome.ViewModels
             LayMessage.Success("欢迎使用Layui—WPF组件库", "RootMessageTooken");
         }
 
+        bool IsAvailable = false;
+        private  void Network_NetworkAvailabilityChanged(bool isAvailable)
+        {
+            Network = isAvailable;
+            if (!IsAvailable&& Network==true)
+            {
+                Application.Current.Dispatcher.BeginInvoke(new Action(async () =>
+                {
+                    MenuItemList = await GetData();
+                    MenuItemModel = MenuItemList.First().Data.First();
+                    MenuItemList.First().IsSelected = true;
+                    MenuItemModel.IsSelected = true;
+                    LayMessage.Success("网络已恢复", "RootMessageTooken");
+                    LayMessage.Success("程序已重新加载", "RootMessageTooken");
+                }));
+            }
+            IsAvailable = Network;
+        }
         private Task<ObservableCollection<MenuItemModel>> GetData()
         {
 
