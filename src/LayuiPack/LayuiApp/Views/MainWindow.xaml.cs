@@ -14,5 +14,6 @@ namespace LayuiApp.Views
             InitializeComponent();
 
         }
+
     }
 }

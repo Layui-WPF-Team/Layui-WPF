@@ -16,6 +16,8 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            Command="{TemplateBinding Command}"
+                            CommandParameter="{TemplateBinding CommandParameter}"
                             Content="{TemplateBinding Header}"
                             Cursor="Hand"
                             Foreground="{TemplateBinding Foreground}"

@@ -91,7 +91,43 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for Placement.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PlacementProperty =
             DependencyProperty.Register("Placement", typeof(PlacementMode), typeof(LayPopupBox), new PropertyMetadata(PlacementMode.Bottom));
+        /// <summary>
+        /// 点击事件
+        /// </summary>
+        public event RoutedEventHandler Click
+        {
+            add => AddHandler(ClickEvent, value);
+            remove => RemoveHandler(ClickEvent, value);
+        }
+        /// <summary>
+        /// 点击事件
+        /// </summary>
+        public static readonly RoutedEvent ClickEvent =
+            EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LayPopupBox));
+        protected virtual void OnClick(RoutedEventArgs e)
+        {
+            RaiseEvent(e);
+        }
+        [Bindable(true), Category("Action")]
+        [Localizability(LocalizationCategory.NeverLocalize)]
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register("Command", typeof(ICommand), typeof(LayPopupBox), new FrameworkPropertyMetadata((ICommand)null));
+        public object CommandParameter
+        {
+            get { return (object)GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CommandParameter.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CommandParameterProperty =
+            DependencyProperty.Register("CommandParameter", typeof(object), typeof(LayPopupBox), new PropertyMetadata((object)null));
 
         /// <summary>
         /// 圆角程度
@@ -165,14 +201,14 @@ namespace LayuiTemplate.Control
             PART_ContentGrid = GetTemplateChild("PART_ContentBorder") as Grid;
             PART_ToggleButton = GetTemplateChild("PART_ToggleButton") as ToggleButton;
             PART_Popup = GetTemplateChild("PART_Popup") as Popup;
-            PART_Popup.Opened -= PART_Popup_Opened;
-            PART_Popup.Opened += PART_Popup_Opened;
-            PART_Popup.Closed -= PART_Popup_Closed;
-            PART_Popup.Closed += PART_Popup_Closed;
-            if (PART_ToggleButton != null)
+            if (PART_ToggleButton != null && PART_ContentGrid != null && PART_Popup != null)
             {
-                PART_ToggleButton.Click -= PART_Button_Click;
-                PART_ToggleButton.Click += PART_Button_Click;
+                PART_ToggleButton.Click -= PART_ToggleButton_Click;
+                PART_ToggleButton.Click += PART_ToggleButton_Click;
+                PART_Popup.Opened -= PART_Popup_Opened;
+                PART_Popup.Opened += PART_Popup_Opened;
+                PART_Popup.Closed -= PART_Popup_Closed;
+                PART_Popup.Closed += PART_Popup_Closed;
             }
         }
 
@@ -185,12 +221,20 @@ namespace LayuiTemplate.Control
         {
             UpdateClickEvent(IsAutoClose);
         }
-
         private void PART_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Source is Button button)
+            if (e.OriginalSource is ButtonBase)
             {
-                PART_Popup.IsOpen = false;
+                if (PART_Popup.IsOpen) PART_Popup.IsOpen = false;
+            }
+        }
+        private void PART_ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OnClick(new RoutedEventArgs(ClickEvent, this));
+            if (Command != null)
+            {
+                Command.Execute(CommandParameter);
+                IsEnabled = Command.CanExecute(CommandParameter);
             }
         }
     }
