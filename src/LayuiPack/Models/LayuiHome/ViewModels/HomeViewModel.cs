@@ -153,13 +153,19 @@ namespace LayuiHome.ViewModels
                     ItemTitle = "组件示例",
                     Data = new ObservableCollection<MenuItemModel>()
                         {
+                            
                             new MenuItemModel()
                             {
                                 ItemTitle="标记", PageKey=SystemResource.Page_BadgeView
-                            },
-                            new MenuItemModel()
+                            },new MenuItemModel()
                             {
-                                ItemTitle="弹出层", PageKey=SystemResource.Page_DialogView
+                                ItemTitle="弹出框", PageKey=SystemResource.Page_PopupBoxView
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="对话框", PageKey=SystemResource.Page_DialogView
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="抽屉", PageKey=SystemResource.Page_DrawerView
                             },new MenuItemModel()
                             {
                                 ItemTitle="日期与时间选择", PageKey=SystemResource.Page_DateTimeView

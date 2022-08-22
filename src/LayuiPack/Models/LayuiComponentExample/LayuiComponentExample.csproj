@@ -53,7 +53,9 @@
     <Compile Include="ViewModels\BadgeViewModel.cs" />
     <Compile Include="ViewModels\CarouselViewModel.cs" />
     <Compile Include="ViewModels\DateTimeViewModel.cs" />
+    <Compile Include="ViewModels\DrawerViewModel.cs" />
     <Compile Include="ViewModels\PaginationViewModel.cs" />
+    <Compile Include="ViewModels\PopupBoxViewModel.cs" />
     <Compile Include="Views\Badge.xaml.cs">
       <DependentUpon>Badge.xaml</DependentUpon>
     </Compile>
@@ -96,11 +98,17 @@
     <Compile Include="Views\DialogAlert.xaml.cs">
       <DependentUpon>DialogAlert.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Drawer.xaml.cs">
+      <DependentUpon>Drawer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Message.xaml.cs">
       <DependentUpon>Message.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pagination.xaml.cs">
       <DependentUpon>Pagination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopupBox.xaml.cs">
+      <DependentUpon>PopupBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
@@ -144,11 +152,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Drawer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Message.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pagination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopupBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,57 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.PopupBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel
+        Height="40"
+        Margin="10"
+        HorizontalAlignment="Center"
+        Orientation="Horizontal">
+        <Lay:LayPopupBox
+            Width="150"
+            Margin="10,0"
+            Style="{DynamicResource LayPopupBoxStyle}">
+            <Lay:LayPopupBox.Header>
+                <TextBlock Margin="10,5" Text="弹出框" />
+            </Lay:LayPopupBox.Header>
+            <ListBox Width="150">
+                <ListBoxItem Content="123" />
+                <ListBoxItem Content="123" />
+                <ListBoxItem Content="123" />
+                <ListBoxItem Content="123" />
+                <ListBoxItem Content="123" />
+                <ListBoxItem Content="123" />
+                <ListBoxItem Content="123" />
+            </ListBox>
+        </Lay:LayPopupBox>
+        <Lay:LayPopupBox
+            Width="150"
+            Margin="10,0"
+            IsAutoClose="true"
+            Style="{DynamicResource LayPopupBoxStyle}">
+            <Lay:LayPopupBox.Header>
+                <TextBlock Margin="10,5" Text="弹出框" />
+            </Lay:LayPopupBox.Header>
+            <Grid Width="200" Background="White">
+                <Lay:LayButton Width="auto" Content="点击我" />
+            </Grid>
+        </Lay:LayPopupBox>
+        <Lay:LayPopupBox
+            Width="150"
+            Margin="10,0"
+            Style="{DynamicResource LayPopupBoxStyle}">
+            <Lay:LayPopupBox.Header>
+                <TextBlock Margin="10,5" Text="Gif" />
+            </Lay:LayPopupBox.Header>
+            <Grid
+                Width="200"
+                Height="150"
+                Background="White">
+                <Lay:LayGifImage Source="https://img.zcool.cn/community/0174b1558ba604000000b18f77328d.gif" />
+            </Grid>
+        </Lay:LayPopupBox>
+    </StackPanel>
+</UserControl>

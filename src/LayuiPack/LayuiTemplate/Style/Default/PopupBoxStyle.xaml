@@ -5,6 +5,7 @@
     <Style x:Key="LayPopupBoxStyle" TargetType="Lay:LayPopupBox">
         <Setter Property="Background" Value="{DynamicResource LightGreen}" />
         <Setter Property="Foreground" Value="White" />
+        <Setter Property="VerticalOffset" Value="5" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -66,12 +67,11 @@
                                     </Style.Triggers>
                                 </Style>
                             </Popup.Style>
-                            <Grid x:Name="PART_ContentBorder">
-                                <Border
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid
+                                x:Name="PART_ContentBorder"
+                                Margin="5"
+                                Effect="{DynamicResource LayShadow}">
+                                <Border Background="Transparent">
                                     <ContentPresenter Content="{TemplateBinding Content}" />
                                 </Border>
                             </Grid>

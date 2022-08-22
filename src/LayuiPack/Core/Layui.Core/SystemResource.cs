@@ -103,6 +103,14 @@ namespace Layui.Core.Resource
         /// 分页插件视图
         /// </summary>
         public const string Page_PaginationView = "Page_PaginationView";
+        /// <summary>
+        /// 弹出框
+        /// </summary>
+        public const string Page_PopupBoxView = "PopupBoxView";
+        /// <summary>
+        /// 抽屉
+        /// </summary>
+        public const string Page_DrawerView = "DrawerView";
         #endregion
 
         #region 弹窗名称
@@ -111,6 +119,7 @@ namespace Layui.Core.Resource
         /// </summary>
         public const string DialogMessageView = "DialogMessageView";
         public const string LayDialogWindowTooken = "LayDialogWindowTooken";
+
 
 
 
