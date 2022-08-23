@@ -110,7 +110,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Style\Default\DrawerStyle.xaml">
+    <Page Include="Style\Default\DrawerHostStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,7 +274,7 @@
     <Compile Include="Control\DatePicker\LayDatePicker.cs" />
     <Compile Include="Control\DateTimePicker\LayDateTimePicker.cs" />
     <Compile Include="Control\DialogHost\LayDialogHost.cs" />
-    <Compile Include="Control\Drawer\LayDrawer.cs" />
+    <Compile Include="Control\DrawerHost\LayDrawerHost.cs" />
     <Compile Include="Control\DropDown\LayDropDown.cs" />
     <Compile Include="Control\Expander\LayExpander.cs" />
     <Compile Include="Control\Expander\LayNavExpanderPanel.cs" />
@@ -309,6 +309,7 @@
     <Compile Include="Control\TreeView\LayTreeView.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
     <Compile Include="Converters\Base\MedianConvert.cs" />
+    <Compile Include="Converters\DrawerHost\DrawerHostOffsetConverter.cs" />
     <Compile Include="Converters\Switch\SwitchWidthConverter.cs" />
     <Compile Include="Enum\Badge\BadgeStyle.cs" />
     <Compile Include="Enum\Carousel\CarouselArrow.cs" />
