@@ -3,11 +3,11 @@
 namespace LayuiFundamentalElement.Views
 {
     /// <summary>
-    /// Interaction logic for GIF
+    /// Interaction logic for Image
     /// </summary>
-    public partial class GIF : UserControl
+    public partial class Image : UserControl
     {
-        public GIF()
+        public Image()
         {
             InitializeComponent();
         }

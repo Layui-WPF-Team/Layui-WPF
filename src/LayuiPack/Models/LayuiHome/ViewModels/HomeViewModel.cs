@@ -139,7 +139,7 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="加载动画", PageKey=SystemResource.Page_LoadingView
                             },new MenuItemModel()
                             {
-                                ItemTitle="Gif动画", PageKey=SystemResource.Page_GIFView
+                                ItemTitle="Gif动画", PageKey=SystemResource.Page_ImageView
                             },new MenuItemModel()
                             {
                                 ItemTitle="时间线", PageKey=SystemResource.Page_TimelineView

@@ -11,9 +11,9 @@ using System.Windows.Media.Imaging;
 
 namespace LayuiFundamentalElement.ViewModels
 {
-    public class GIFViewModel : LayuiViewModelBase
+    public class ImageViewModel : LayuiViewModelBase
     {
-        public GIFViewModel(IContainerExtension container) : base(container)
+        public ImageViewModel(IContainerExtension container) : base(container)
         {
             
         }

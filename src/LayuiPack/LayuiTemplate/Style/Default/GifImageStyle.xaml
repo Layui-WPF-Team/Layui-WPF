@@ -6,7 +6,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayGifImage">
-                    <Image x:Name="PART_Image" Stretch="{TemplateBinding Stretch}" />
+                    <Border CornerRadius="{TemplateBinding CornerRadius}">
+                        <Border.Background>
+                            <ImageBrush x:Name="PART_Image" Stretch="{TemplateBinding Stretch}" />
+                        </Border.Background>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

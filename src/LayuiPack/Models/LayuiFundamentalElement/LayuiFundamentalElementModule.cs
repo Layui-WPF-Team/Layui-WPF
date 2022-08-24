@@ -29,7 +29,7 @@ namespace LayuiFundamentalElement
             containerRegistry.RegisterForNavigation<Views.Timeline>(SystemResource.Page_TimelineView);
             containerRegistry.RegisterForNavigation<Views.TreeView>(SystemResource.Page_TreeView);
             containerRegistry.RegisterForNavigation<Views.AuxiliaryElement>(SystemResource.Page_AuxiliaryElementView);
-            containerRegistry.RegisterForNavigation<Views.GIF>(SystemResource.Page_GIFView);
+            containerRegistry.RegisterForNavigation<Views.Image>(SystemResource.Page_ImageView);
         }
     }
 }

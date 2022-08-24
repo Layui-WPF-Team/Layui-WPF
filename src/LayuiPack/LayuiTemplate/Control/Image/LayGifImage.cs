@@ -36,7 +36,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 图片加载容器
         /// </summary>
-        private Image PART_Image;
+        private ImageBrush PART_Image;
         /// <summary>
         /// gif动画的System.Drawing.Bitmap
         /// </summary>
@@ -59,6 +59,19 @@ namespace LayuiTemplate.Control
             LayGifImage layGif = d as LayGifImage;
             layGif.Refresh();
         }
+
+
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayGifImage));
+
+
         public Stretch Stretch
         {
             get { return (Stretch)GetValue(StretchProperty); }
@@ -78,7 +91,7 @@ namespace LayuiTemplate.Control
                 {
                     gifBitmap = await LayImageHelper.GetBitmapAsync(Source);
                     bitmapSource = GetBitmapSource();
-                    PART_Image.Source = bitmapSource;
+                    PART_Image.ImageSource = bitmapSource;
                     StopAnimate();
                     StartAnimate();
                 }
@@ -107,12 +120,12 @@ namespace LayuiTemplate.Control
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
         {
             System.Drawing.ImageAnimator.UpdateFrames(); // 更新到下一帧
-            if (PART_Image.Source != null)
+            if (PART_Image.ImageSource != null)
             {
-                PART_Image.Source.Freeze();
+                PART_Image.ImageSource.Freeze();
             }
 
-            PART_Image.Source = GetBitmapSource();
+            PART_Image.ImageSource = GetBitmapSource();
             InvalidateVisual();
         }));
         }
@@ -129,7 +142,7 @@ namespace LayuiTemplate.Control
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            PART_Image = GetTemplateChild("PART_Image") as Image;
+            PART_Image = GetTemplateChild("PART_Image") as ImageBrush;
             Loaded -= LayGifImage_Loaded;
             Loaded += LayGifImage_Loaded;
             Unloaded -= LayGifImage_Unloaded;

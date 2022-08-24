@@ -92,9 +92,9 @@ namespace Layui.Core.Resource
         /// </summary>
         public const string Page_AuxiliaryElementView = "AuxiliaryElement";
         /// <summary>
-        /// GIF视图
+        /// Image视图
         /// </summary>
-        public const string Page_GIFView = "GIFView";
+        public const string Page_ImageView = "GIFView";
         /// <summary>
         /// 标记视图
         /// </summary>

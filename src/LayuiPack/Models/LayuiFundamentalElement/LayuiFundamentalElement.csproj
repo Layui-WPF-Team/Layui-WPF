@@ -67,7 +67,7 @@
     <Compile Include="ViewModels\ButtonViewModel.cs" />
     <Compile Include="ViewModels\ExpanderViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
-    <Compile Include="ViewModels\GIFViewModel.cs" />
+    <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
     <Compile Include="ViewModels\PanelViewModel.cs" />
@@ -88,8 +88,8 @@
     <Compile Include="Views\Form.xaml.cs">
       <DependentUpon>Form.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GIF.xaml.cs">
-      <DependentUpon>GIF.xaml</DependentUpon>
+    <Compile Include="Views\Image.xaml.cs">
+      <DependentUpon>Image.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -142,7 +142,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GIF.xaml">
+    <Page Include="Views\Image.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -194,6 +194,13 @@
       <Project>{80dd0aa1-a155-4c77-a7d0-878f1fb1325e}</Project>
       <Name>LayuiTemplate</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SVG\购物车空空如也.svg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\GIF\v2-30156325f3b931600dc40e119d6a12cc_b.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

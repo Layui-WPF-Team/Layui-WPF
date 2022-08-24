@@ -1,0 +1,17 @@
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.Image"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <TabControl>
+        <TabItem Header="网络Gif">
+            <Lay:LayGifImage CornerRadius="5" Source="https://img.zcool.cn/community/0174b1558ba604000000b18f77328d.gif" />
+        </TabItem>
+        <TabItem Header="本地Gif">
+            <Lay:LayGifImage Source="/LayuiFundamentalElement;component/Images/GIF/v2-30156325f3b931600dc40e119d6a12cc_b.gif" />
+        </TabItem>
+
+    </TabControl>
+</UserControl>

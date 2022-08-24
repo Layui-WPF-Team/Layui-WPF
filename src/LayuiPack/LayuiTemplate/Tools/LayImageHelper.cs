@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -64,28 +66,19 @@ namespace LayuiTemplate.Tools
         {
             try
             {
-                string file = null;
-                if (Source.ToString().ToLower().Contains("pack"))
+                if (Source.ToString().ToLower().Contains("pack://siteoforigin:") || Source.ToString().ToLower().Contains("pack://application:"))
                 {
-                    file = System.AppDomain.CurrentDomain.BaseDirectory + new Uri(Source.ToString(), UriKind.RelativeOrAbsolute).LocalPath;
+                    Uri uri = new Uri(Source.ToString());
+                    return new Bitmap(Application.GetResourceStream(uri).Stream);
                 }
-                else
+                if (Source.ToString().ToLower().Contains("https:") || Source.ToString().ToLower().Contains("http:"))
                 {
-                    file = Source.ToString();
+                    string https = Source.ToString();
+                    Stream Stream = (await WebRequest.Create(https).GetResponseAsync()).GetResponseStream();
+                    return new Bitmap(Stream);
                 }
-                if (file.Contains("https:"))
-                {
-                    var webC = new System.Net.WebClient();
-                    var Stream = await Task.Run(() => webC.OpenRead(file));
-                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(Stream);
-
-                    return bmp;
-                }
-                else
-                {
-                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(file);
-                    return bmp;
-                }
+                string file = Source.ToString();
+                return new Bitmap(file);
             }
             catch (Exception ex)
             {
@@ -98,7 +91,8 @@ namespace LayuiTemplate.Tools
             using (MemoryStream outStream = new MemoryStream())
             {
                 BitmapEncoder enc = new BmpBitmapEncoder();
-                enc.Frames.Add(BitmapFrame.Create(bitmapImage));
+                BitmapFrame bitmapFrame = BitmapFrame.Create(bitmapImage);
+                enc.Frames.Add(bitmapFrame);
                 enc.Save(outStream);
                 System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(outStream);
 

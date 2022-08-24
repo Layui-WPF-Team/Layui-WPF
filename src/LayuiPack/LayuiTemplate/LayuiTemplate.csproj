@@ -280,6 +280,7 @@
     <Compile Include="Control\Expander\LayNavExpanderPanel.cs" />
     <Compile Include="Control\GroupBox\LayGroupBox.cs" />
     <Compile Include="Control\Image\LayGifImage.cs" />
+    <Compile Include="Control\Image\LaySVGImage.cs" />
     <Compile Include="Control\Legend\LayLegend.cs" />
     <Compile Include="Control\MenuItem\LayMenuItem.cs" />
     <Compile Include="Control\Menu\LayMenu.cs" />
