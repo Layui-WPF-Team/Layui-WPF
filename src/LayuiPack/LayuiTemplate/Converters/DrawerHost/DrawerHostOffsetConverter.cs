@@ -26,14 +26,14 @@ namespace LayuiTemplate.Converters
             switch (dock)
             {
                 case Dock.Top:
-                    return new Thickness(0, 0 - d, 0, 0);
+                    return new Thickness(0, 0 - d, 0, d);
                 case Dock.Bottom:
-                    return new Thickness(0, 0, 0, 0 - d);
+                    return new Thickness(0, d, 0, 0 - d);
                 case Dock.Right:
-                    return new Thickness(0, 0, 0 - d, 0);
+                    return new Thickness(d, 0, 0 - d, 0);
                 case Dock.Left:
                 default:
-                    return new Thickness(0 - d, 0, 0, 0);
+                    return new Thickness(0 - d, 0, d, 0);
             }
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LayuiTemplate.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace LayuiTemplate.Control
 {
@@ -17,14 +19,12 @@ namespace LayuiTemplate.Control
     /// </summary>
 
     [TemplatePart(Name = "PART_DrawerGrid", Type = typeof(Grid))]
-    [TemplatePart(Name = "PART_DockPanel", Type = typeof(DockPanel))]
+    [TemplatePart(Name = "PART_RootGrid", Type = typeof(Grid))]
+    [TemplatePart(Name = "PART_DockBorder", Type = typeof(Border))]
     public class LayDrawerHost : System.Windows.Controls.ContentControl
     {
+        private Grid PART_RootGrid;
         private Grid PART_DrawerGrid;
-        static LayDrawerHost()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(LayDrawerHost), new FrameworkPropertyMetadata(typeof(LayDrawerHost)));
-        }
         /// <summary>
         /// 圆角
         /// </summary>
@@ -56,336 +56,44 @@ namespace LayuiTemplate.Control
             }
         }
 
-
-        #region 左侧抽屉
-
         /// <summary>
-        /// 左侧抽屉开关
+        /// 抽屉子元素停靠位置
         /// </summary>
-        public bool LeftDrawerOpen
+        public DrawerHostStyle Type
         {
-            get { return (bool)GetValue(LeftDrawerOpenProperty); }
-            set { SetValue(LeftDrawerOpenProperty, value); }
+            get { return (DrawerHostStyle)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LeftDrawerOpen.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LeftDrawerOpenProperty =
-            DependencyProperty.Register("LeftDrawerOpen", typeof(bool), typeof(LayDrawerHost));
-
-
+        // Using a DependencyProperty as the backing store for Type.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TypeProperty =
+            DependencyProperty.Register("Type", typeof(DrawerHostStyle), typeof(LayDrawerHost), new PropertyMetadata(DrawerHostStyle.Top));
 
         /// <summary>
-        /// 左侧抽屉内容
+        /// 抽屉开关
         /// </summary>
-        public object LeftDrawerContent
+        public bool DrawerOpen
         {
-            get { return (object)GetValue(LeftDrawerContentProperty); }
-            set { SetValue(LeftDrawerContentProperty, value); }
+            get { return (bool)GetValue(DrawerOpenProperty); }
+            set { SetValue(DrawerOpenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LeftDrawerContent.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LeftDrawerContentProperty =
-            DependencyProperty.Register("LeftDrawerContent", typeof(object), typeof(LayDrawerHost));
-        /// <summary>
-        /// 左侧抽屉背景色
-        /// </summary>
-        public Brush LeftDrawerBackground
-        {
-            get { return (Brush)GetValue(LeftDrawerBackgroundProperty); }
-            set { SetValue(LeftDrawerBackgroundProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerBackground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LeftDrawerBackgroundProperty =
-            DependencyProperty.Register("LeftDrawerBackground", typeof(Brush), typeof(LayDrawerHost));
-        /// <summary>
-        /// 左侧抽屉边框线颜色
-        /// </summary>
-        public Brush LeftDrawerBorderBrush
-        {
-            get { return (Brush)GetValue(LeftDrawerBorderBrushProperty); }
-            set { SetValue(LeftDrawerBorderBrushProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerBackground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LeftDrawerBorderBrushProperty =
-            DependencyProperty.Register("LeftDrawerBorderBrush", typeof(Brush), typeof(LayDrawerHost));
-
+        // Using a DependencyProperty as the backing store for DrawerOpen.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DrawerOpenProperty =
+            DependencyProperty.Register("DrawerOpen", typeof(bool), typeof(LayDrawerHost));
 
         /// <summary>
-        /// 左侧抽屉边框线
+        /// 抽屉子元素内容
         /// </summary>
-        public Thickness LeftDrawerThickness
+        public object DrawerContent
         {
-            get { return (Thickness)GetValue(LeftDrawerThicknessProperty); }
-            set { SetValue(LeftDrawerThicknessProperty, value); }
+            get { return (object)GetValue(DrawerContentProperty); }
+            set { SetValue(DrawerContentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LeftDrawerThickness.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LeftDrawerThicknessProperty =
-            DependencyProperty.Register("LeftDrawerThickness", typeof(Thickness), typeof(LayDrawerHost));
-
-
-        /// <summary>
-        /// 左侧抽屉圆角
-        /// </summary>
-        public CornerRadius LeftDrawerCornerRadius
-        {
-            get { return (CornerRadius)GetValue(LeftDrawerCornerRadiusProperty); }
-            set { SetValue(LeftDrawerCornerRadiusProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerCornerRadius.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LeftDrawerCornerRadiusProperty =
-            DependencyProperty.Register("LeftDrawerCornerRadius", typeof(CornerRadius), typeof(LayDrawerHost));
-
-        #endregion
-
-        #region 顶部抽屉
-
-        /// <summary>
-        /// 顶部抽屉开关
-        /// </summary>
-        public bool TopDrawerOpen
-        {
-            get { return (bool)GetValue(TopDrawerOpenProperty); }
-            set { SetValue(TopDrawerOpenProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerOpen.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TopDrawerOpenProperty =
-            DependencyProperty.Register("TopDrawerOpen", typeof(bool), typeof(LayDrawerHost));
-
-        /// <summary>
-        /// 顶部抽屉内容
-        /// </summary>
-        public object TopDrawerContent
-        {
-            get { return (object)GetValue(TopDrawerContentProperty); }
-            set { SetValue(TopDrawerContentProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerContent.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TopDrawerContentProperty =
-            DependencyProperty.Register("TopDrawerContent", typeof(object), typeof(LayDrawerHost));
-        /// <summary>
-        /// 顶部抽屉背景色
-        /// </summary>
-        public Brush TopDrawerBackground
-        {
-            get { return (Brush)GetValue(TopDrawerBackgroundProperty); }
-            set { SetValue(TopDrawerBackgroundProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerBackground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TopDrawerBackgroundProperty =
-            DependencyProperty.Register("TopDrawerBackground", typeof(Brush), typeof(LayDrawerHost));
-        /// <summary>
-        /// 顶部抽屉边框线颜色
-        /// </summary>
-        public Brush TopDrawerBorderBrush
-        {
-            get { return (Brush)GetValue(TopDrawerBorderBrushProperty); }
-            set { SetValue(TopDrawerBorderBrushProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerBackground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TopDrawerBorderBrushProperty =
-            DependencyProperty.Register("TopDrawerBorderBrush", typeof(Brush), typeof(LayDrawerHost));
-
-
-        /// <summary>
-        /// 顶部抽屉边框线
-        /// </summary>
-        public Thickness TopDrawerThickness
-        {
-            get { return (Thickness)GetValue(TopDrawerThicknessProperty); }
-            set { SetValue(TopDrawerThicknessProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerThickness.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TopDrawerThicknessProperty =
-            DependencyProperty.Register("TopDrawerThickness", typeof(Thickness), typeof(LayDrawerHost));
-
-
-        /// <summary>
-        /// 顶部抽屉圆角
-        /// </summary>
-        public CornerRadius TopDrawerCornerRadius
-        {
-            get { return (CornerRadius)GetValue(TopDrawerCornerRadiusProperty); }
-            set { SetValue(TopDrawerCornerRadiusProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerCornerRadius.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TopDrawerCornerRadiusProperty =
-            DependencyProperty.Register("TopDrawerCornerRadius", typeof(CornerRadius), typeof(LayDrawerHost));
-
-        #endregion
-
-        #region 右侧抽屉
-        /// <summary>
-        /// 右侧抽屉开关
-        /// </summary>
-        public bool RightDrawerOpen
-        {
-            get { return (bool)GetValue(RightDrawerOpenProperty); }
-            set { SetValue(RightDrawerOpenProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerOpen.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty RightDrawerOpenProperty =
-            DependencyProperty.Register("RightDrawerOpen", typeof(bool), typeof(LayDrawerHost));
-
-        /// <summary>
-        /// 右侧抽屉内容
-        /// </summary>
-        public object RightDrawerContent
-        {
-            get { return (object)GetValue(RightDrawerContentProperty); }
-            set { SetValue(RightDrawerContentProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerContent.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty RightDrawerContentProperty =
-            DependencyProperty.Register("RightDrawerContent", typeof(object), typeof(LayDrawerHost));
-        /// <summary>
-        /// 右侧抽屉背景色
-        /// </summary>
-        public Brush RightDrawerBackground
-        {
-            get { return (Brush)GetValue(RightDrawerBackgroundProperty); }
-            set { SetValue(RightDrawerBackgroundProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerBackground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty RightDrawerBackgroundProperty =
-            DependencyProperty.Register("RightDrawerBackground", typeof(Brush), typeof(LayDrawerHost));
-        /// <summary>
-        /// 右侧抽屉边框线颜色
-        /// </summary>
-        public Brush RightDrawerBorderBrush
-        {
-            get { return (Brush)GetValue(RightDrawerBorderBrushProperty); }
-            set { SetValue(RightDrawerBorderBrushProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerBackground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty RightDrawerBorderBrushProperty =
-            DependencyProperty.Register("RightDrawerBorderBrush", typeof(Brush), typeof(LayDrawerHost));
-
-
-        /// <summary>
-        /// 右侧抽屉边框线
-        /// </summary>
-        public Thickness RightDrawerThickness
-        {
-            get { return (Thickness)GetValue(RightDrawerThicknessProperty); }
-            set { SetValue(RightDrawerThicknessProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerThickness.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty RightDrawerThicknessProperty =
-            DependencyProperty.Register("RightDrawerThickness", typeof(Thickness), typeof(LayDrawerHost));
-
-
-        /// <summary>
-        /// 右侧抽屉圆角
-        /// </summary>
-        public CornerRadius RightDrawerCornerRadius
-        {
-            get { return (CornerRadius)GetValue(RightDrawerCornerRadiusProperty); }
-            set { SetValue(RightDrawerCornerRadiusProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerCornerRadius.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty RightDrawerCornerRadiusProperty =
-            DependencyProperty.Register("RightDrawerCornerRadius", typeof(CornerRadius), typeof(LayDrawerHost));
-
-        #endregion
-
-        #region 底部抽屉
-        /// <summary>
-        /// 底部抽屉开关
-        /// </summary>
-        public bool BottomDrawerOpen
-        {
-            get { return (bool)GetValue(BottomDrawerOpenProperty); }
-            set { SetValue(BottomDrawerOpenProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerOpen.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty BottomDrawerOpenProperty =
-            DependencyProperty.Register("BottomDrawerOpen", typeof(bool), typeof(LayDrawerHost));
-
-        /// <summary>
-        /// 底部抽屉内容
-        /// </summary>
-        public object BottomDrawerContent
-        {
-            get { return (object)GetValue(BottomDrawerContentProperty); }
-            set { SetValue(BottomDrawerContentProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerContent.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty BottomDrawerContentProperty =
-            DependencyProperty.Register("BottomDrawerContent", typeof(object), typeof(LayDrawerHost));
-        /// <summary>
-        /// 底部抽屉背景色
-        /// </summary>
-        public Brush BottomDrawerBackground
-        {
-            get { return (Brush)GetValue(BottomDrawerBackgroundProperty); }
-            set { SetValue(BottomDrawerBackgroundProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerBackground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty BottomDrawerBackgroundProperty =
-            DependencyProperty.Register("BottomDrawerBackground", typeof(Brush), typeof(LayDrawerHost));
-        /// <summary>
-        /// 底部抽屉边框线颜色
-        /// </summary>
-        public Brush BottomDrawerBorderBrush
-        {
-            get { return (Brush)GetValue(BottomDrawerBorderBrushProperty); }
-            set { SetValue(BottomDrawerBorderBrushProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerBackground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty BottomDrawerBorderBrushProperty =
-            DependencyProperty.Register("BottomDrawerBorderBrush", typeof(Brush), typeof(LayDrawerHost));
-
-
-        /// <summary>
-        /// 底部抽屉边框线
-        /// </summary>
-        public Thickness BottomDrawerThickness
-        {
-            get { return (Thickness)GetValue(BottomDrawerThicknessProperty); }
-            set { SetValue(BottomDrawerThicknessProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerThickness.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty BottomDrawerThicknessProperty =
-            DependencyProperty.Register("BottomDrawerThickness", typeof(Thickness), typeof(LayDrawerHost));
-
-
-        /// <summary>
-        /// 底部抽屉圆角
-        /// </summary>
-        public CornerRadius BottomDrawerCornerRadius
-        {
-            get { return (CornerRadius)GetValue(BottomDrawerCornerRadiusProperty); }
-            set { SetValue(BottomDrawerCornerRadiusProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for LeftDrawerCornerRadius.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty BottomDrawerCornerRadiusProperty =
-            DependencyProperty.Register("BottomDrawerCornerRadius", typeof(CornerRadius), typeof(LayDrawerHost));
-
-        #endregion
-
-
+        // Using a DependencyProperty as the backing store for DrawerContent.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DrawerContentProperty =
+            DependencyProperty.Register("DrawerContent", typeof(object), typeof(LayDrawerHost));
         /// <summary>
         /// 遮罩背景色
         /// </summary>
@@ -404,24 +112,22 @@ namespace LayuiTemplate.Control
             if (PART_DrawerGrid == null) return;
             if (IsModal)
             {
-                PART_DrawerGrid.MouseLeftButtonDown -= PART_DrawerGrid_MouseLeftButtonDown;
-                PART_DrawerGrid.MouseLeftButtonDown += PART_DrawerGrid_MouseLeftButtonDown;
+                PART_DrawerGrid.MouseLeftButtonDown -= PART_DrawerGrid_MouseButtonDown;
+                PART_DrawerGrid.MouseLeftButtonDown += PART_DrawerGrid_MouseButtonDown;
             }
-            else PART_DrawerGrid.MouseLeftButtonDown -= PART_DrawerGrid_MouseLeftButtonDown;
+            else PART_DrawerGrid.MouseLeftButtonDown -= PART_DrawerGrid_MouseButtonDown;
         }
-        private void PART_DrawerGrid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void PART_DrawerGrid_MouseButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            LeftDrawerOpen = false;
-            RightDrawerOpen = false;
-            TopDrawerOpen = false;
-            BottomDrawerOpen = false;
+            DrawerOpen = false;
             e.Handled = true;
         }
 
         public override void OnApplyTemplate()
         {
-            base.OnApplyTemplate();
-            PART_DrawerGrid = GetTemplateChild("PART_DrawerGrid") as Grid;
+            base.OnApplyTemplate(); 
+             PART_DrawerGrid = GetTemplateChild("PART_DrawerGrid") as Grid;
+            PART_RootGrid = GetTemplateChild("PART_RootGrid") as Grid;
             UpdateModelEvent();
         }
     }

@@ -3,19 +3,57 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:LayEnum="clr-namespace:LayuiTemplate.Enum;assembly=LayuiTemplate"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Lay:LayDrawerHost
-        IsModal="false"
-        LeftDrawerBackground="White"
-        LeftDrawerOpen="{Binding ElementName=Open, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-        Style="{DynamicResource LayDrawerHostStyle}">
-        <Lay:LayDrawerHost.LeftDrawerContent>
-            <Grid Width="300" />
-        </Lay:LayDrawerHost.LeftDrawerContent>
-        <ToggleButton
-            x:Name="Open"
-            Width="150"
-            Height="50" />
+    <Lay:LayDrawerHost DrawerOpen="{Binding DrawerOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Type="{Binding Type}">
+        <Lay:LayDrawerHost.DrawerContent>
+            <DockPanel
+                Width="200"
+                Height="200"
+                Background="White" />
+        </Lay:LayDrawerHost.DrawerContent>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Lay:LayRadioButton
+                    Content="左"
+                    GroupName="DrawerHost"
+                    IsChecked="True">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CheckedCommand}" CommandParameter="{x:Static LayEnum:DrawerHostStyle.Left}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Lay:LayRadioButton>
+                <Lay:LayRadioButton Content="上" GroupName="DrawerHost">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CheckedCommand}" CommandParameter="{x:Static LayEnum:DrawerHostStyle.Top}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Lay:LayRadioButton>
+                <Lay:LayRadioButton Content="右" GroupName="DrawerHost">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CheckedCommand}" CommandParameter="{x:Static LayEnum:DrawerHostStyle.Right}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Lay:LayRadioButton>
+                <Lay:LayRadioButton Content="下" GroupName="DrawerHost">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CheckedCommand}" CommandParameter="{x:Static LayEnum:DrawerHostStyle.Bottom}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Lay:LayRadioButton>
+            </StackPanel>
+            <ToggleButton
+                x:Name="Open"
+                Width="150"
+                Height="50"
+                Content="点我"
+                IsChecked="{Binding DrawerOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
     </Lay:LayDrawerHost>
 </UserControl>

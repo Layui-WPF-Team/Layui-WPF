@@ -36,22 +36,29 @@
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Border Width="200" Background="#393D49">
-                    <Border.Effect>
-                        <DropShadowEffect
-                            BlurRadius="3"
-                            Direction="-90"
-                            Opacity="0.6"
-                            ShadowDepth="0" />
-                    </Border.Effect>
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="20"
-                        Foreground="White"
-                        Opacity="0.7"
-                        Text="{Binding Title}" />
-                </Border>
+                <ToggleButton x:Name="Title" WindowChrome.IsHitTestVisibleInChrome="true">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <ContentPresenter />
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                    <Border Width="200" Background="#393D49">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="3"
+                                Direction="-90"
+                                Opacity="0.6"
+                                ShadowDepth="0" />
+                        </Border.Effect>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Foreground="White"
+                            Opacity="0.7"
+                            Text="{Binding Title}" />
+                    </Border>
+                </ToggleButton>
                 <StackPanel
                     Grid.Column="1"
                     HorizontalAlignment="Right"
@@ -96,7 +103,8 @@
                             Cursor="Hand"
                             FontFamily="{StaticResource IconFont}"
                             FontSize="20"
-                            Foreground="White">
+                            Foreground="White"
+                            WindowChrome.IsHitTestVisibleInChrome="true">
                             <ToggleButton.ToolTip>
                                 <TextBlock FontSize="14" Text="更多" />
                             </ToggleButton.ToolTip>
@@ -341,7 +349,14 @@
                             Text="网络已断开" />
                     </StackPanel>
                 </Grid>
-                <ContentControl prism:RegionManager.RegionName="{x:Static Nv:SystemResource.Nav_MainContent}" />
+                <Lay:LayDrawerHost DrawerOpen="{Binding ElementName=Title, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Type="Right">
+                    <Lay:LayDrawerHost.DrawerContent>
+                        <Border Width="300" Background="White">
+                            <TextBlock Text="欢迎使用Layui-WPF UI组件库" />
+                        </Border>
+                    </Lay:LayDrawerHost.DrawerContent>
+                    <ContentControl prism:RegionManager.RegionName="{x:Static Nv:SystemResource.Nav_MainContent}" />
+                </Lay:LayDrawerHost>
             </Grid>
         </Border>
     </Grid>

@@ -13,246 +13,75 @@
                 <SolidColorBrush Opacity="0.2" Color="Black" />
             </Setter.Value>
         </Setter>
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayDrawerHost">
-                    <Grid>
+                    <Grid
+                        x:Name="PART_RootGrid"
+                        ClipToBounds="true"
+                        Style="{x:Null}">
                         <Grid
                             x:Name="PART_DrawerGrid"
+                            Panel.ZIndex="0"
                             Background="{TemplateBinding OverlayBackground}"
-                            Opacity="0" />
-                        <Grid
-                            x:Name="PART_DockPanel"
-                            ClipToBounds="true"
+                            Opacity="0"
+                            Style="{x:Null}" />
+                        <Border
+                            x:Name="PART_DockBorder"
+                            Panel.ZIndex="0"
                             Effect="{DynamicResource LayShadow}"
-                            Opacity="0">
-                            <Grid>
-                                <Grid.Style>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDrawerHost}, Path=LeftDrawerOpen}" Value="true">
-                                                <Setter Property="Visibility" Value="Visible" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <Border
-                                        x:Name="LeftDrawerBorder"
-                                        Background="{TemplateBinding LeftDrawerBackground}"
-                                        BorderBrush="{TemplateBinding LeftDrawerBorderBrush}"
-                                        BorderThickness="{TemplateBinding LeftDrawerThickness}"
-                                        CornerRadius="{TemplateBinding LeftDrawerCornerRadius}"
-                                        DockPanel.Dock="Left">
-                                        <ContentPresenter ContentSource="LeftDrawerContent" />
-                                    </Border>
-                                </DockPanel>
-                            </Grid>
-                            <Grid>
-                                <Grid.Style>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDrawerHost}, Path=RightDrawerOpen}" Value="true">
-                                                <Setter Property="Visibility" Value="Visible" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                                <DockPanel HorizontalAlignment="Right">
-                                    <Border
-                                        x:Name="RightDrawerBorder"
-                                        Background="{TemplateBinding RightDrawerBackground}"
-                                        BorderBrush="{TemplateBinding RightDrawerBorderBrush}"
-                                        BorderThickness="{TemplateBinding RightDrawerThickness}"
-                                        CornerRadius="{TemplateBinding RightDrawerCornerRadius}"
-                                        DockPanel.Dock="Right">
-                                        <ContentPresenter ContentSource="RightDrawerContent" />
-                                    </Border>
-                                </DockPanel>
-                            </Grid>
-                            <Grid>
-                                <Grid.Style>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDrawerHost}, Path=TopDrawerOpen}" Value="true">
-                                                <Setter Property="Visibility" Value="Visible" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                                <DockPanel VerticalAlignment="Top">
-                                    <Border
-                                        x:Name="TopDrawerBorder"
-                                        Background="{TemplateBinding TopDrawerBackground}"
-                                        BorderBrush="{TemplateBinding TopDrawerBorderBrush}"
-                                        BorderThickness="{TemplateBinding TopDrawerThickness}"
-                                        CornerRadius="{TemplateBinding TopDrawerCornerRadius}"
-                                        DockPanel.Dock="Top">
-                                        <ContentPresenter ContentSource="TopDrawerContent" />
-                                    </Border>
-                                </DockPanel>
-                            </Grid>
-                            <Grid>
-                                <Grid.Style>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDrawerHost}, Path=BottomDrawerOpen}" Value="true">
-                                                <Setter Property="Visibility" Value="Visible" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                                <DockPanel VerticalAlignment="Bottom">
-                                    <Border
-                                        x:Name="BottomDrawerBorder"
-                                        Background="{TemplateBinding BottomDrawerBackground}"
-                                        BorderBrush="{TemplateBinding BottomDrawerBorderBrush}"
-                                        BorderThickness="{TemplateBinding BottomDrawerThickness}"
-                                        CornerRadius="{TemplateBinding BottomDrawerCornerRadius}"
-                                        DockPanel.Dock="Bottom">
-                                        <ContentPresenter ContentSource="BottomDrawerContent" />
-                                    </Border>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-
+                            Opacity="0"
+                            Style="{x:Null}">
+                            <ContentPresenter x:Name="PART_DrawerContent" ContentSource="DrawerContent" />
+                        </Border>
                         <ContentPresenter
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Panel.ZIndex="0"
+                            Style="{x:Null}" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="LeftDrawerOpen" Value="true">
-                            <Setter TargetName="PART_DockPanel" Property="IsHitTestVisible" Value="True" />
-                            <Setter TargetName="PART_DockPanel" Property="Panel.ZIndex" Value="10" />
-                            <Setter TargetName="PART_DrawerGrid" Property="Panel.ZIndex" Value="10" />
-                            <Setter Property="TopDrawerOpen" Value="false" />
-                            <Setter Property="RightDrawerOpen" Value="false" />
-                            <Setter Property="BottomDrawerOpen" Value="false" />
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DockPanel"
-                                            Storyboard.TargetProperty="Opacity"
-                                            To="1"
-                                            Duration="0:0:0.3" />
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DrawerGrid"
-                                            Storyboard.TargetProperty="Opacity"
-                                            To="1"
-                                            Duration="0:0:0.3" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DockPanel"
-                                            Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.4" />
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DrawerGrid"
-                                            Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.3" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
+                        <Trigger Property="Type" Value="Top">
+                            <Setter TargetName="PART_DockBorder" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="PART_DockBorder" Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DrawerHostOffsetConverter}, ConverterParameter={x:Static Dock.Top}}" />
                         </Trigger>
-                        <Trigger Property="TopDrawerOpen" Value="true">
-                            <Setter TargetName="PART_DockPanel" Property="IsHitTestVisible" Value="True" />
-                            <Setter TargetName="PART_DockPanel" Property="Panel.ZIndex" Value="10" />
-                            <Setter TargetName="PART_DrawerGrid" Property="Panel.ZIndex" Value="10" />
-                            <Setter Property="LeftDrawerOpen" Value="false" />
-                            <Setter Property="RightDrawerOpen" Value="false" />
-                            <Setter Property="BottomDrawerOpen" Value="false" />
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DockPanel"
-                                            Storyboard.TargetProperty="Opacity"
-                                            To="1"
-                                            Duration="0:0:0.3" />
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DrawerGrid"
-                                            Storyboard.TargetProperty="Opacity"
-                                            To="1"
-                                            Duration="0:0:0.3" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DockPanel"
-                                            Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.3" />
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DrawerGrid"
-                                            Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.3" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
+                        <Trigger Property="Type" Value="Left">
+                            <Setter TargetName="PART_DockBorder" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="PART_DockBorder" Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DrawerHostOffsetConverter}, ConverterParameter={x:Static Dock.Left}}" />
                         </Trigger>
-                        <Trigger Property="RightDrawerOpen" Value="true">
-                            <Setter TargetName="PART_DockPanel" Property="IsHitTestVisible" Value="True" />
-                            <Setter TargetName="PART_DockPanel" Property="Panel.ZIndex" Value="10" />
-                            <Setter TargetName="PART_DrawerGrid" Property="Panel.ZIndex" Value="10" />
-                            <Setter Property="LeftDrawerOpen" Value="false" />
-                            <Setter Property="TopDrawerOpen" Value="false" />
-                            <Setter Property="BottomDrawerOpen" Value="false" />
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DockPanel"
-                                            Storyboard.TargetProperty="Opacity"
-                                            To="1"
-                                            Duration="0:0:0.3" />
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DrawerGrid"
-                                            Storyboard.TargetProperty="Opacity"
-                                            To="1"
-                                            Duration="0:0:0.3" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DockPanel"
-                                            Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.3" />
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DrawerGrid"
-                                            Storyboard.TargetProperty="Opacity"
-                                            Duration="0:0:0.3" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
+                        <Trigger Property="Type" Value="Right">
+                            <Setter TargetName="PART_DockBorder" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="PART_DockBorder" Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DrawerHostOffsetConverter}, ConverterParameter={x:Static Dock.Right}}" />
                         </Trigger>
-                        <Trigger Property="BottomDrawerOpen" Value="true">
-                            <Setter TargetName="PART_DockPanel" Property="IsHitTestVisible" Value="True" />
-                            <Setter TargetName="PART_DockPanel" Property="Panel.ZIndex" Value="10" />
-                            <Setter TargetName="PART_DrawerGrid" Property="Panel.ZIndex" Value="10" />
-                            <Setter Property="LeftDrawerOpen" Value="false" />
-                            <Setter Property="TopDrawerOpen" Value="false" />
-                            <Setter Property="RightDrawerOpen" Value="false" />
+                        <Trigger Property="Type" Value="Bottom">
+                            <Setter TargetName="PART_DockBorder" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="PART_DockBorder" Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DrawerHostOffsetConverter}, ConverterParameter={x:Static Dock.Bottom}}" />
+                        </Trigger>
+                        <Trigger Property="DrawerOpen" Value="true">
+                            <Setter TargetName="PART_DockBorder" Property="IsHitTestVisible" Value="True" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
+                                        <ThicknessAnimation
+                                            Storyboard.TargetName="PART_DockBorder"
+                                            Storyboard.TargetProperty="Margin"
+                                            To="0"
+                                            Duration="0:0:0.3" />
+                                        <Int32Animation
+                                            Storyboard.TargetName="PART_DockBorder"
+                                            Storyboard.TargetProperty="(Panel.ZIndex)"
+                                            To="1"
+                                            Duration="0" />
+                                        <Int32Animation
+                                            Storyboard.TargetName="PART_DrawerGrid"
+                                            Storyboard.TargetProperty="(Panel.ZIndex)"
+                                            To="1"
+                                            Duration="0" />
                                         <DoubleAnimation
-                                            Storyboard.TargetName="PART_DockPanel"
+                                            Storyboard.TargetName="PART_DockBorder"
                                             Storyboard.TargetProperty="Opacity"
                                             To="1"
                                             Duration="0:0:0.3" />
@@ -267,8 +96,24 @@
                             <Trigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
+                                        <ThicknessAnimation
+                                            Storyboard.TargetName="PART_DockBorder"
+                                            Storyboard.TargetProperty="Margin"
+                                            Duration="0:0:0.3" />
+                                        <Int32Animation
+                                            BeginTime="0:0:0.3"
+                                            Storyboard.TargetName="PART_DockBorder"
+                                            Storyboard.TargetProperty="(Panel.ZIndex)"
+                                            To="0"
+                                            Duration="0" />
+                                        <Int32Animation
+                                            BeginTime="0:0:0.3"
+                                            Storyboard.TargetName="PART_DrawerGrid"
+                                            Storyboard.TargetProperty="(Panel.ZIndex)"
+                                            To="0"
+                                            Duration="0" />
                                         <DoubleAnimation
-                                            Storyboard.TargetName="PART_DockPanel"
+                                            Storyboard.TargetName="PART_DockBorder"
                                             Storyboard.TargetProperty="Opacity"
                                             Duration="0:0:0.3" />
                                         <DoubleAnimation

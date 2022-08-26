@@ -7,7 +7,7 @@ namespace LayuiApp.Views
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : LayWindow
+    public partial class MainWindow 
     {
         public MainWindow()
         {
