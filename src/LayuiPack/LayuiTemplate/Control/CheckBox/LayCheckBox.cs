@@ -2,6 +2,7 @@
 using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 复选框样式
         /// </summary>
+        [Bindable(true)]
         public CheckBoxStyle Type
         {
             get { return (CheckBoxStyle)GetValue(TypeProperty); }
@@ -29,6 +31,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 鼠标移上去的边框颜色
         /// </summary>
+        [Bindable(true)]
         public Brush HoverBorderBrush
         {
             get { return (Brush)GetValue(HoverBorderBrushProperty); }
@@ -39,6 +42,7 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty HoverBorderBrushProperty =
             DependencyProperty.Register("HoverBorderBrush", typeof(Brush), typeof(LayCheckBox), new PropertyMetadata(Brushes.Transparent));
 
+        [Bindable(true)]
         public Brush CheckedColor
         {
             get { return (Brush)GetValue(CheckedColorProperty); }

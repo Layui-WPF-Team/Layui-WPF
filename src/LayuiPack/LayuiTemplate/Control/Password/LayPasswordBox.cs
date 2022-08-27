@@ -2,6 +2,7 @@
 using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -25,6 +26,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         ///密码框字符串暗码
         /// </summary>
+        [Bindable(true)]
         public char PasswordChar
         {
             get { return (char)GetValue(PasswordCharProperty); }
@@ -36,6 +38,7 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("PasswordChar", typeof(char), typeof(LayPasswordBox));
 
 
+        [Bindable(true)]
         public bool IsShowPasswrod
         {
             get { return (bool)GetValue(IsShowPasswrodProperty); }

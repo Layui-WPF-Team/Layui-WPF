@@ -2,6 +2,7 @@
 using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace LayuiTemplate.Control
     public class LayTransition : ContentControl
     {
 
+        [Bindable(true)]
         public bool IsActive
         {
             get { return (bool)GetValue(IsActiveProperty); }
@@ -35,6 +37,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 动画类型
         /// </summary>
+        [Bindable(true)]
         public AnimationType Type
         {
             get { return (AnimationType)GetValue(TypeProperty); }
@@ -58,6 +61,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 间隔时间
         /// </summary>
+        [Bindable(true)]
         public TimeSpan? BeginTime
         {
             get { return (TimeSpan?)GetValue(BeginTimeProperty); }

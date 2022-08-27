@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace LayuiTemplate.Control
     public class LayTimelinePanel : System.Windows.Controls.ItemsControl
     {
 
+        [Bindable(true)]
         public DataTemplate HeaderTemplate
         {
             get { return (DataTemplate)GetValue(HeaderTemplateProperty); }

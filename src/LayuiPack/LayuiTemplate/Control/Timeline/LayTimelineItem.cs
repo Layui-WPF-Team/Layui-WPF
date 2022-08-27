@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 用于控制内容区域状态(一般用于分割线结尾控制)
         /// </summary>
+        [Bindable(true)]
         public bool IsContentState
         {
             get { return (bool)GetValue(IsContentStateProperty); }
@@ -25,6 +27,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 顶部标题
         /// </summary>
+        [Bindable(true)]
         public object Header
         {
             get { return (object)GetValue(HeaderProperty); }
@@ -34,6 +37,7 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(object), typeof(LayTimelineItem));
+        [Bindable(true)]
         public VerticalAlignment HeaderVerticalAlignment
         {
             get { return (VerticalAlignment)GetValue(HeaderVerticalAlignmentProperty); }
@@ -45,6 +49,7 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("HeaderVerticalAlignment", typeof(VerticalAlignment), typeof(LayTimelineItem));
 
 
+        [Bindable(true)]
         public HorizontalAlignment HeaderHorizontalAlignment
         {
             get { return (HorizontalAlignment)GetValue(HeaderHorizontalAlignmentProperty); }

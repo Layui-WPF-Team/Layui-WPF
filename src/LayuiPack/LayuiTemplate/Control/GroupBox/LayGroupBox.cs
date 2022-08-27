@@ -1,6 +1,7 @@
 ﻿using LayuiTemplate.Enum.GroupBox;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 类型
         /// </summary>
+        [Bindable(true)]
         public GroupBoxStyle Type
         {
             get { return (GroupBoxStyle)GetValue(TypeProperty); }

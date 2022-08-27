@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace LayuiTemplate.Control
         /// 图片加载容器
         /// </summary>
         private Image PART_Image;
+        [Bindable(true)]
         public ImageSource Source
         {
             get { return (ImageSource)GetValue(SourceProperty); }

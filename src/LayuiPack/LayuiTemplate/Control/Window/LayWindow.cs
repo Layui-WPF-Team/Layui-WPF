@@ -22,6 +22,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 动画类型
         /// </summary>
+        [Bindable(true)]
         public AnimationType Type
         {
             get { return (AnimationType)GetValue(TypeProperty); }

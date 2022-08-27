@@ -1,6 +1,7 @@
 ﻿using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,8 @@ namespace LayuiTemplate.Control
 {
     public class LayRadioButton: RadioButton
     {
-        
+
+        [Bindable(true)]
         public Brush Color
         {
             get { return (Brush)GetValue(ColorProperty); }
@@ -22,6 +24,7 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorProperty =
             DependencyProperty.Register("Color", typeof(Brush), typeof(LayRadioButton));
+        [Bindable(true)]
         public Brush CheckedColor
         {
             get { return (Brush)GetValue(CheckedColorProperty); }
@@ -34,6 +37,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 图标大小
         /// </summary>
+        [Bindable(true)]
         public int IconSize
         {
             get { return (int)GetValue(IconSizeProperty); }

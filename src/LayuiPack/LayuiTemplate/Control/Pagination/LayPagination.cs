@@ -1,6 +1,7 @@
 ﻿using LayuiTemplate.Event;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 总共页数
         /// </summary>
+        [Bindable(true)]
         public int PageNum
         {
             get { return (int)GetValue(PageNumProperty); }
@@ -99,6 +101,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 上一页按钮内容
         /// </summary>
+        [Bindable(true)]
         public object PrevButtonContent
         {
             get { return (object)GetValue(PrevButtonContentProperty); }
@@ -111,6 +114,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 下一页按钮内容
         /// </summary>
+        [Bindable(true)]
         public object NextButtonContent
         {
             get { return (object)GetValue(NextButtonContentProperty); }
@@ -125,6 +129,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 确认按钮修饰内容
         /// </summary>
+        [Bindable(true)]
         public object ConfirmButtonContent
         {
             get { return (object)GetValue(ConfirmButtonContentProperty); }
@@ -138,6 +143,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 数据总数修饰内容
         /// </summary>
+        [Bindable(true)]
         public object PageCountContent
         {
             get { return (object)GetValue(PageCountContentProperty); }
@@ -150,6 +156,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 分页数据总数
         /// </summary>
+        [Bindable(true)]
         public int PageCount
         {
             get { return (int)GetValue(PageCountProperty); }
@@ -162,6 +169,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 跳转修饰内容
         /// </summary>
+        [Bindable(true)]
         public object JumpContent
         {
             get { return (object)GetValue(JumpContentProperty); }
@@ -174,6 +182,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 当前页数
         /// </summary>
+        [Bindable(true)]
         public int PageIndex
         {
             get { return (int)GetValue(PageIndexProperty); }
@@ -205,6 +214,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 跳转页数
         /// </summary>
+        [Bindable(true)]
         public int JumpIndex
         {
             get { return (int)GetValue(JumpIndexProperty); }
@@ -229,6 +239,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 是否禁用跳转
         /// </summary>
+        [Bindable(true)]
         public bool IsJumpEnabled
         {
             get { return (bool)GetValue(IsJumpEnabledProperty); }
@@ -244,6 +255,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 分页间隔
         /// </summary>
+        [Bindable(true)]
         public int MaxPageInterval
         {
             get { return (int)GetValue(MaxPageIntervalProperty); }
@@ -256,6 +268,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 当前分页展示数量
         /// </summary>
+        [Bindable(true)]
         public int Limit
         {
             get { return (int)GetValue(LimitProperty); }
@@ -281,6 +294,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 当前分页展示数量修饰内容
         /// </summary>
+        [Bindable(true)]
         public object LimitContent
         {
             get { return (object)GetValue(LimitContentProperty); }

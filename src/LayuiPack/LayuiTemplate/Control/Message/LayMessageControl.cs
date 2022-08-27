@@ -2,6 +2,7 @@
 using LayuiTemplate.Enum;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,7 @@ namespace LayuiTemplate.Control
 
         public double Time { get; set; }
 
+        [Bindable(true)]
         public MessageType Type
         {
             get { return (MessageType)GetValue(TypeProperty); }

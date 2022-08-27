@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 标题分割线高度
         /// </summary>
+        [Bindable(true)]
         public double Line
         {
             get { return (double)GetValue(LineProperty); }
@@ -25,6 +27,7 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty LineProperty =
             DependencyProperty.Register("Line", typeof(double), typeof(LayExpander));
 
+        [Bindable(true)]
         public VerticalAlignment HeaderVerticalAlignment
         {
             get { return (VerticalAlignment)GetValue(HeaderVerticalAlignmentProperty); }
@@ -36,6 +39,7 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("HeaderVerticalAlignment", typeof(VerticalAlignment), typeof(LayExpander));
 
 
+        [Bindable(true)]
         public HorizontalAlignment HeaderHorizontalAlignment
         {
             get { return (HorizontalAlignment)GetValue(HeaderHorizontalAlignmentProperty); }
@@ -49,6 +53,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 顶部高度
         /// </summary>
+        [Bindable(true)]
         public double HeaderHeight
         {
             get { return (double)GetValue(HeaderHeightProperty); }
@@ -60,6 +65,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 顶部颜色
         /// </summary>
+        [Bindable(true)]
         public Brush HeaderBackground
         {
             get { return (Brush)GetValue(HeaderBackgroundProperty); }

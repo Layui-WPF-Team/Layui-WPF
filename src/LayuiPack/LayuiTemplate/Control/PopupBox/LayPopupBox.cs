@@ -35,6 +35,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 垂直位置
         /// </summary>
+        [Bindable(true)]
         public double VerticalOffset
         {
             get { return (double)GetValue(VerticalOffsetProperty); }
@@ -47,6 +48,7 @@ namespace LayuiTemplate.Control
         // <summary>
         /// 水平位置
         /// </summary>
+        [Bindable(true)]
         public bool HorizontalOffset
         {
             get { return (bool)GetValue(HorizontalOffsetProperty); }
@@ -56,6 +58,8 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for HorizontalOffset.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HorizontalOffsetProperty =
             DependencyProperty.Register("HorizontalOffset", typeof(bool), typeof(LayPopupBox));
+
+        [Bindable(true)]
         public PopupAnimation PopupAnimation
         {
             get { return (PopupAnimation)GetValue(PopupAnimationProperty); }
@@ -69,6 +73,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 标题内容
         /// </summary>
+        [Bindable(true)]
         public object Header
         {
             get { return (object)GetValue(HeaderProperty); }
@@ -82,6 +87,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 窗体悬停位置
         /// </summary>
+        [Bindable(true)]
         public PlacementMode Placement
         {
             get { return (PlacementMode)GetValue(PlacementProperty); }
@@ -132,6 +138,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 圆角程度
         /// </summary>
+        [Bindable(true)]
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -144,6 +151,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 内容
         /// </summary>
+        [Bindable(true)]
         public object Content
         {
             get { return (object)GetValue(ContentProperty); }
@@ -159,6 +167,7 @@ namespace LayuiTemplate.Control
         /// 是否自动关闭当前弹出窗口
         /// <para>弹窗内有ButtonBase元素才能生效</para>
         /// </summary>
+        [Bindable(true)]
         public bool IsAutoClose
         {
             get { return (bool)GetValue(IsAutoCloseProperty); }

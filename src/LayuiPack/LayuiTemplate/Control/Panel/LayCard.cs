@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 标题分割线高度
         /// </summary>
+        [Bindable(true)]
         public double Line
         {
             get { return (double)GetValue(LineProperty); }
@@ -25,6 +27,7 @@ namespace LayuiTemplate.Control
 
 
 
+        [Bindable(true)]
         public object Header
         {
             get { return (object)GetValue(HeaderProperty); }

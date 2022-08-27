@@ -27,6 +27,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 分隔线颜色
         /// </summary>
+        [Bindable(true)]
         public Brush LineColor
         {
             get { return (Brush)GetValue(LineColorProperty); }
@@ -41,6 +42,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 分割线粗细大小
         /// </summary>
+        [Bindable(true)]
         public double Line
         {
             get { return (double)GetValue(LineProperty); }
@@ -55,6 +57,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 类型
         /// </summary>
+        [Bindable(true)]
         public LegendStyle Type
         {
             get { return (LegendStyle)GetValue(TypeProperty); }
@@ -68,6 +71,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 标题
         /// </summary>
+        [Bindable(true)]
         public object Header
         {
             get { return (string)GetValue(HeaderProperty); }
@@ -77,20 +81,6 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(object), typeof(LayLegend));
-
-        /// <summary>
-        /// 内容
-        /// </summary>
-        public object Content
-        {
-            get { return (object)GetValue(ContentProperty); }
-            set { SetValue(ContentProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(object), typeof(LayLegend),new PropertyMetadata(null));
-
 
     }
 }

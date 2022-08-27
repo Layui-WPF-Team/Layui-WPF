@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 这是水印
         /// </summary>
+        [Bindable(true)]
         public string Watermark
         {
             get { return (string)GetValue(WatermarkProperty); }
@@ -36,6 +38,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 水印文字颜色
         /// </summary>
+        [Bindable(true)]
         public Brush WatermarkColor
         {
             get { return (Brush)GetValue(WatermarkColorProperty); }
@@ -50,6 +53,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 圆角
         /// </summary>
+        [Bindable(true)]
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -62,6 +66,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 分割线宽度(只有IsEditable开启才生效)
         /// </summary>
+        [Bindable(true)]
         public double Line
         {
             get { return (double)GetValue(LineProperty); }
@@ -75,6 +80,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 鼠标移入边框色
         /// </summary>
+        [Bindable(true)]
         public Brush HoverBorderBrush
         {
             get { return (Brush)GetValue(HoverBorderBrushProperty); }
@@ -89,6 +95,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 光标聚焦后的边框色
         /// </summary>
+        [Bindable(true)]
         public Brush FocusedBorderBrush
         {
             get { return (Brush)GetValue(FocusedBorderBrushProperty); }

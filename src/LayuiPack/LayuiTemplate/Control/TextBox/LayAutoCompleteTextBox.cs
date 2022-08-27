@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 无数据提示信息
         /// </summary>
+        [Bindable(true)]
         public string NoDataTips
         {
             get { return (string)GetValue(NoDataTipsProperty); }
@@ -33,6 +35,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 集合最大高度
         /// </summary>
+        [Bindable(true)]
         public double MaxDropDownHeight
         {
             get { return (double)GetValue(MaxDropDownHeightProperty); }
@@ -46,6 +49,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 当前文本
         /// </summary>
+        [Bindable(true)]
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -81,6 +85,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 水印
         /// </summary>
+        [Bindable(true)]
         public string Watermark
         {
             get { return (string)GetValue(WatermarkProperty); }
@@ -95,6 +100,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 是否展开
         /// </summary>
+        [Bindable(true)]
         public bool IsDropDownOpen
         {
             get { return (bool)GetValue(IsDropDownOpenProperty); }

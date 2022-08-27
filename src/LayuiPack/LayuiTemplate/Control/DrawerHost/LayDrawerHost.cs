@@ -28,6 +28,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 圆角
         /// </summary>
+        [Bindable(true)]
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -38,6 +39,7 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayDrawerHost));
 
+        [Bindable(true)]
         public bool IsModal
         {
             get { return (bool)GetValue(IsModalProperty); }
@@ -59,6 +61,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 抽屉子元素停靠位置
         /// </summary>
+        [Bindable(true)]
         public DrawerHostStyle Type
         {
             get { return (DrawerHostStyle)GetValue(TypeProperty); }
@@ -72,6 +75,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 抽屉开关
         /// </summary>
+        [Bindable(true)]
         public bool DrawerOpen
         {
             get { return (bool)GetValue(DrawerOpenProperty); }
@@ -85,6 +89,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 抽屉子元素内容
         /// </summary>
+        [Bindable(true)]
         public object DrawerContent
         {
             get { return (object)GetValue(DrawerContentProperty); }
@@ -97,6 +102,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 遮罩背景色
         /// </summary>
+        [Bindable(true)]
         public Brush OverlayBackground
         {
             get { return (Brush)GetValue(OverlayBackgroundProperty); }

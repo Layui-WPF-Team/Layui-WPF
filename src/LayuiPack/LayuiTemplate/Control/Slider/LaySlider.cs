@@ -2,6 +2,7 @@
 using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,11 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LaySlider: Slider
     {
-        
+
         /// <summary>
         /// 气泡提示方向
         /// </summary>
+        [Bindable(true)]
         public SliderTipsPosition TipsPosition
         {
             get { return (SliderTipsPosition)GetValue(TipsPositionProperty); }

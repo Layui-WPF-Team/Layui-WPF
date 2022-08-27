@@ -21,7 +21,7 @@ namespace LayuiApp.ViewModels
         {
         }
         #region 视图属性
-        private bool _Network;
+        private bool _Network=true;
         public bool Network
         {
             get { return _Network; }

@@ -305,6 +305,7 @@
     <Compile Include="Control\Timeline\LayTimelinePanel.cs" />
     <Compile Include="Control\TimePicker\LayTimePicker.cs" />
     <Compile Include="Control\Timer\LayTimer.cs" />
+    <Compile Include="Control\ToolTip\LayToolTip.cs" />
     <Compile Include="Control\Transitions\LayTransition.cs" />
     <Compile Include="Control\TreeViewItem\LayTreeViewItem.cs" />
     <Compile Include="Control\TreeView\LayTreeView.cs" />
@@ -318,6 +319,7 @@
     <Compile Include="Enum\GroupBox\GroupBoxStyle.cs" />
     <Compile Include="Enum\Legend\LegendStyle.cs" />
     <Compile Include="Enum\TextBox\InputType.cs" />
+    <Compile Include="Enum\TooplTip\PlacementStyle.cs" />
     <Compile Include="Event\LayFunctionEventArgs.cs" />
     <Compile Include="Extend\Base\LayControlsBaseHelper.cs" />
     <Compile Include="Extend\DataGrid\LayDataGridHelper.cs" />

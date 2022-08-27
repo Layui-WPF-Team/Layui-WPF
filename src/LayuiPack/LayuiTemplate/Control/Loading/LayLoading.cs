@@ -2,6 +2,7 @@
 using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 动画开关
         /// </summary>
+        [Bindable(true)]
         public bool IsActive
         {
             get { return (bool)GetValue(IsActiveProperty); }
@@ -28,6 +30,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 提示信息
         /// </summary>
+        [Bindable(true)]
         public object MessageContent
         {
             get { return (object)GetValue(MessageContentProperty); }
@@ -39,7 +42,7 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("MessageContent", typeof(object), typeof(LayLoading));
 
 
-
+        [Bindable(true)]
         public LoadingStyle Type
         {
             get { return (LoadingStyle)GetValue(TypeProperty); }

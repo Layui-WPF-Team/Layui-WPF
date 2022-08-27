@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LaySliderCanvas : Canvas
     {
+        [Bindable(true)]
         public Orientation Orientation
         {
             get => (Orientation)GetValue(OrientationProperty);

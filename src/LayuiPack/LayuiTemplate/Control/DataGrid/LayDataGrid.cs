@@ -1,6 +1,7 @@
 ﻿using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace LayuiTemplate.Control
     public class LayDataGrid : DataGrid
     {
 
+        [Bindable(true)]
         public Style ElementCheckBoxColumnStyle
         {
             get { return (Style)GetValue(ElementCheckBoxColumnStyleProperty); }
@@ -23,6 +25,7 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty ElementCheckBoxColumnStyleProperty =
             DependencyProperty.Register("ElementCheckBoxColumnStyle", typeof(Style), typeof(LayDataGrid), new PropertyMetadata(default(Style), OnCheckBoxColumnStyleChanged));
 
+        [Bindable(true)]
         public Style EditingCheckBoxColumnStyle
         {
             get { return (Style)GetValue(EditingCheckBoxColumnStyleProperty); }
@@ -91,6 +94,7 @@ namespace LayuiTemplate.Control
             }
         }
 
+        [Bindable(true)]
         public Style ElementComboBoxColumnStyle
         {
             get { return (Style)GetValue(ElementComboBoxColumnStyleProperty); }
@@ -101,6 +105,7 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty ElementComboBoxColumnStyleProperty =
             DependencyProperty.Register("ElementComboBoxColumnStyle", typeof(Style), typeof(LayDataGrid), new PropertyMetadata(default(Style), OnComboBoxColumnStyleChanged));
 
+        [Bindable(true)]
         public Style EditingComboBoxColumnStyle
         {
             get { return (Style)GetValue(EditingComboBoxColumnStyleProperty); }
@@ -168,6 +173,7 @@ namespace LayuiTemplate.Control
                 }
             }
         }
+        [Bindable(true)]
         public Style ElementTextColumnStyle
         {
             get { return (Style)GetValue(ElementTextColumnStyleProperty); }
@@ -178,6 +184,7 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty ElementTextColumnStyleProperty =
             DependencyProperty.Register("ElementTextColumnStyle", typeof(Style), typeof(LayDataGrid), new PropertyMetadata(default(Style), OnTextColumnStyleChanged));
 
+        [Bindable(true)]
         public Style EditingTextColumnStyle
         {
             get { return (Style)GetValue(EditingTextColumnStyleProperty); }
@@ -243,6 +250,7 @@ namespace LayuiTemplate.Control
                 }
             }
         }
+        [Bindable(true)]
         public bool IsShowRowsFocusVisual
         {
             get { return (bool)GetValue(IsShowRowsFocusVisualProperty); }
@@ -257,6 +265,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 无数据提示信息
         /// </summary>
+        [Bindable(true)]
         public string NoDataTips
         {
             get { return (string)GetValue(NoDataTipsProperty); }
@@ -269,6 +278,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 动画开关
         /// </summary>
+        [Bindable(true)]
         public bool IsActive
         {
             get { return (bool)GetValue(IsActiveProperty); }

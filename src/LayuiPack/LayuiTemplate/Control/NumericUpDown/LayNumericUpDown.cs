@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 当前值
         /// </summary>
+        [Bindable(true)]
         public double Value
         {
             get { return (double)GetValue(ValueProperty); }
@@ -75,6 +77,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 布局方向
         /// </summary>
+        [Bindable(true)]
         public Orientation Orientation
         {
             get { return (Orientation)GetValue(OrientationProperty); }
@@ -89,6 +92,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 最小值
         /// </summary>
+        [Bindable(true)]
         public double MinValue
         {
             get { return (double)GetValue(MinValueProperty); }
@@ -112,6 +116,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 最大值
         /// </summary>
+        [Bindable(true)]
         public double MaxValue
         {
             get { return (double)GetValue(MaxValueProperty); }
@@ -135,6 +140,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 输入框圆角
         /// </summary>
+        [Bindable(true)]
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -147,6 +153,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 鼠标移入边框色
         /// </summary>
+        [Bindable(true)]
         public Brush HoverBorderBrush
         {
             get { return (Brush)GetValue(HoverBorderBrushProperty); }
@@ -161,6 +168,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 光标聚焦后的边框色
         /// </summary>
+        [Bindable(true)]
         public Brush FocusedBorderBrush
         {
             get { return (Brush)GetValue(FocusedBorderBrushProperty); }
@@ -174,6 +182,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 分割线
         /// </summary>
+        [Bindable(true)]
         public double Line
         {
             get { return (double)GetValue(LineProperty); }
@@ -187,6 +196,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 每单击按钮时增加或减少的数量
         /// </summary>
+        [Bindable(true)]
         public double Increment
         {
             get { return (double)GetValue(IncrementProperty); }
@@ -199,6 +209,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 是否只读
         /// </summary>
+        [Bindable(true)]
         public bool IsReadOnly
         {
             get { return (bool)GetValue(IsReadOnlyProperty); }

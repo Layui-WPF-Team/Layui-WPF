@@ -24,6 +24,7 @@ namespace LayuiTemplate.Control
         /// 状态监听
         /// </summary>
         private ToggleButton headerToggleButton = null;
+        [Bindable(true)]
         public VerticalAlignment HeaderVerticalAlignment
         {
             get { return (VerticalAlignment)GetValue(HeaderVerticalAlignmentProperty); }
@@ -35,6 +36,7 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("HeaderVerticalAlignment", typeof(VerticalAlignment), typeof(LayNavExpander));
 
 
+        [Bindable(true)]
         public HorizontalAlignment HeaderHorizontalAlignment
         {
             get { return (HorizontalAlignment)GetValue(HeaderHorizontalAlignmentProperty); }
@@ -45,6 +47,7 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty HeaderHorizontalAlignmentProperty =
             DependencyProperty.Register("HeaderHorizontalAlignment", typeof(HorizontalAlignment), typeof(LayNavExpander));
 
+        [Bindable(true)]
         public bool IsExpanded
         {
             get { return (bool)GetValue(IsExpandedProperty); }
@@ -53,10 +56,11 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for IsExpanded.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register("IsExpanded", typeof(bool), typeof(LayNavExpander));
-        
+
         /// <summary>
         /// 顶部高度
         /// </summary>
+        [Bindable(true)]
         public double HeaderHeight
         {
             get { return (double)GetValue(HeaderHeightProperty); }
@@ -68,6 +72,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 顶部颜色
         /// </summary>
+        [Bindable(true)]
         public Brush HeaderBackground
         {
             get { return (Brush)GetValue(HeaderBackgroundProperty); }

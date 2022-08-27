@@ -59,11 +59,26 @@
             Height="40"
             Margin="20,0"
             IsDot="True"
-            Type="Warm">
+            MaxValue="99"
+            Type="Danger"
+            Value="2">
             <lay:LayButton
                 Width="auto"
                 Height="auto"
                 Content="评论" />
         </lay:LayBadge>
+        <lay:LayToolTip ToolTipContent="123">
+            <lay:LayBadge
+                Width="100"
+                Height="40"
+                Margin="20,0"
+                IsDot="True"
+                Type="Warm">
+                <lay:LayButton
+                    Width="auto"
+                    Height="auto"
+                    Content="评论" />
+            </lay:LayBadge>
+        </lay:LayToolTip>
     </StackPanel>
 </UserControl>

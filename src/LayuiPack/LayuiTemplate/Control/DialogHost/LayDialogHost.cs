@@ -2,6 +2,7 @@
 using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace LayuiTemplate.Control
         public LayDialogHost()
         {
         }
+        [Bindable(true)]
         public bool IsOpen
         {
             get { return (bool)GetValue(IsOpenProperty); }

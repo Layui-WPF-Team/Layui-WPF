@@ -39,6 +39,7 @@ namespace LayuiTemplate.Control
         }
 
 
+        [Bindable(true)]
         public CarouselArrow Arrow
         {
             get { return (CarouselArrow)GetValue(ArrowProperty); }
@@ -58,6 +59,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 是否自动切换
         /// </summary>
+        [Bindable(true)]
         public bool IsAutoSwitch
         {
             get { return (bool)GetValue(IsAutoSwitchProperty); }
@@ -72,6 +74,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 间隔时间
         /// </summary>
+        [Bindable(true)]
         public TimeSpan Interval
         {
             get { return (TimeSpan)GetValue(IntervalProperty); }

@@ -3,6 +3,7 @@ using LayuiTemplate.Enum;
 using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,11 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LayTabControl : TabControl
     {
-        
+
         /// <summary>
         /// 选项卡类型
         /// </summary>
+        [Bindable(true)]
         public TabControlStyle Type
         {
             get { return (TabControlStyle)GetValue(TypeProperty); }

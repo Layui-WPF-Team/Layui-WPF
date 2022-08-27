@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 输入框圆角
         /// </summary>
+        [Bindable(true)]
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -36,6 +38,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 鼠标移入边框色
         /// </summary>
+        [Bindable(true)]
         public Brush HoverBorderBrush
         {
             get { return (Brush)GetValue(HoverBorderBrushProperty); }
@@ -50,6 +53,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 光标聚焦后的边框色
         /// </summary>
+        [Bindable(true)]
         public Brush FocusedBorderBrush
         {
             get { return (Brush)GetValue(FocusedBorderBrushProperty); }
@@ -63,6 +67,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 设置富文本内容
         /// </summary>
+        [Bindable(true)]
         public string DocumentXaml
         {
             get { return (string)GetValue(DocumentXamlProperty); }

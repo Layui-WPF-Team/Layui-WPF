@@ -2,6 +2,7 @@
 using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace LayuiTemplate.Control
     {
 
 
+        [Bindable(true)]
         public object LoadingContent
         {
             get { return (object)GetValue(LoadingContentProperty); }
@@ -35,6 +37,7 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("LoadingContent", typeof(object), typeof(LayButton));
 
 
+        [Bindable(true)]
         public bool IsLoading
         {
             get { return (bool)GetValue(IsLoadingProperty); }
@@ -49,6 +52,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 按钮圆角
         /// </summary>
+        [Bindable(true)]
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -62,6 +66,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 按钮类型
         /// </summary>
+        [Bindable(true)]
         public ButtonStyle Type
         {
             get { return (ButtonStyle)GetValue(TypeProperty); }
@@ -73,6 +78,7 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("Type", typeof(ButtonStyle), typeof(LayButton), new PropertyMetadata(ButtonStyle.Default));
 
 
+        [Bindable(true)]
         public Brush HoverBackground
         {
             get { return (Brush)GetValue(HoverBackgroundProperty); }
@@ -84,6 +90,7 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("HoverBackground", typeof(Brush), typeof(LayButton), new PropertyMetadata(Brushes.Transparent));
 
 
+        [Bindable(true)]
         public Brush HoverBorderBrush
         {
             get { return (Brush)GetValue(HoverBorderBrushProperty); }

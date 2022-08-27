@@ -7,8 +7,9 @@
         <Style.Resources>
             <Cv:MedianConvert x:Key="MedianConvert" />
         </Style.Resources>
-        <Setter Property="Padding" Value="5,2" />
+        <Setter Property="Padding" Value="7,2" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BadgeForeground" Value="White" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayBadge">
@@ -30,19 +31,13 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="12"
-                                    Foreground="White"
+                                    Foreground="{TemplateBinding BadgeForeground}"
                                     Text="{TemplateBinding Header}" />
                             </Border>
                         </Canvas>
                         <ContentPresenter x:Name="PART_Content" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=Header, Path=Text}" Value="">
-                            <Setter TargetName="badgeBody" Property="Visibility" Value="Collapsed" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=Header, Path=Text}" Value="{x:Null}">
-                            <Setter TargetName="badgeBody" Property="Visibility" Value="Collapsed" />
-                        </DataTrigger>
                         <Trigger Property="IsDot" Value="true">
                             <Setter TargetName="badgeBody" Property="Visibility" Value="Visible" />
                             <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
@@ -51,6 +46,12 @@
                             <Setter TargetName="badge" Property="Padding" Value="0" />
                             <Setter TargetName="badge" Property="CornerRadius" Value="4" />
                         </Trigger>
+                        <DataTrigger Binding="{Binding ElementName=Header, Path=Text}" Value="">
+                            <Setter TargetName="badgeBody" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=Header, Path=Text}" Value="{x:Null}">
+                            <Setter TargetName="badgeBody" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
                         <Trigger Property="Type" Value="Default">
                             <Setter Property="Background" Value="{DynamicResource Green}" />
                         </Trigger>

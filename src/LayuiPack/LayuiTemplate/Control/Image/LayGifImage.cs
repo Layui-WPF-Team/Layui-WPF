@@ -1,6 +1,7 @@
 ﻿using LayuiTemplate.Tools;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -45,6 +46,7 @@ namespace LayuiTemplate.Control
         /// 用于显示每一帧的BitmapSource
         /// </summary>
         private BitmapSource bitmapSource;
+        [Bindable(true)]
         public ImageSource Source
         {
             get { return (ImageSource)GetValue(SourceProperty); }
@@ -61,6 +63,7 @@ namespace LayuiTemplate.Control
         }
 
 
+        [Bindable(true)]
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -72,6 +75,7 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayGifImage));
 
 
+        [Bindable(true)]
         public Stretch Stretch
         {
             get { return (Stretch)GetValue(StretchProperty); }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 水印文字颜色
         /// </summary>
+        [Bindable(true)]
         public Brush WatermarkColor
         {
             get { return (Brush)GetValue(WatermarkColorProperty); }
@@ -36,6 +38,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 鼠标移入边框色
         /// </summary>
+        [Bindable(true)]
         public Brush HoverBorderBrush
         {
             get { return (Brush)GetValue(HoverBorderBrushProperty); }
@@ -50,6 +53,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 光标聚焦后的边框色
         /// </summary>
+        [Bindable(true)]
         public Brush FocusedBorderBrush
         {
             get { return (Brush)GetValue(FocusedBorderBrushProperty); }
@@ -64,6 +68,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 内容
         /// </summary>
+        [Bindable(true)]
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -76,6 +81,7 @@ namespace LayuiTemplate.Control
         /// <summary>
         /// 水印
         /// </summary>
+        [Bindable(true)]
         public string Watermark
         {
             get { return (string)GetValue(WatermarkProperty); }
@@ -88,6 +94,7 @@ namespace LayuiTemplate.Control
 
 
 
+        [Bindable(true)]
         public bool IsDropDownOpen
         {
             get { return (bool)GetValue(IsDropDownOpenProperty); }
@@ -100,6 +107,7 @@ namespace LayuiTemplate.Control
 
 
 
+        [Bindable(true)]
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -111,6 +119,7 @@ namespace LayuiTemplate.Control
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayTimePicker));
 
 
+        [Bindable(true)]
         public string DateMessageTitle
         {
             get { return (string)GetValue(DateMessageTitleProperty); }
@@ -123,6 +132,7 @@ namespace LayuiTemplate.Control
 
 
 
+        [Bindable(true)]
         public double Line
         {
             get { return (double)GetValue(LineProperty); }
