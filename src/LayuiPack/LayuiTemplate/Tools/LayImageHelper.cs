@@ -86,6 +86,11 @@ namespace LayuiTemplate.Tools
             }
 
         }
+        /// <summary>
+        /// BitmapImage转Bitmap
+        /// </summary>
+        /// <param name="bitmapImage"></param>
+        /// <returns></returns>
         public static System.Drawing.Bitmap BitmapImageToBitmap(BitmapImage bitmapImage)
         {
             using (MemoryStream outStream = new MemoryStream())

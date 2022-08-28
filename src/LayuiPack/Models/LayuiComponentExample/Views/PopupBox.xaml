@@ -30,13 +30,16 @@
         <Lay:LayPopupBox
             Width="150"
             Margin="10,0"
-            IsAutoClose="true"
+            IsOpen="{Binding IsOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Style="{DynamicResource LayPopupBoxStyle}">
             <Lay:LayPopupBox.Header>
                 <TextBlock Margin="10,5" Text="弹出框" />
             </Lay:LayPopupBox.Header>
             <Grid Width="200" Background="White">
-                <Lay:LayButton Width="auto" Content="点击我" />
+                <Lay:LayButton
+                    Width="auto"
+                    Command="{Binding ClosePopupBoxCommand}"
+                    Content="点击我" />
             </Grid>
         </Lay:LayPopupBox>
         <Lay:LayPopupBox

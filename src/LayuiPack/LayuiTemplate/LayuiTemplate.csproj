@@ -313,6 +313,7 @@
     <Compile Include="Converters\Base\MedianConvert.cs" />
     <Compile Include="Converters\DrawerHost\DrawerHostOffsetConverter.cs" />
     <Compile Include="Converters\Switch\SwitchWidthConverter.cs" />
+    <Compile Include="Converters\ToolTip\ToolTipOffsetConverter.cs" />
     <Compile Include="Enum\Badge\BadgeStyle.cs" />
     <Compile Include="Enum\Carousel\CarouselArrow.cs" />
     <Compile Include="Enum\DrawerHost\DrawerHostStyle.cs" />

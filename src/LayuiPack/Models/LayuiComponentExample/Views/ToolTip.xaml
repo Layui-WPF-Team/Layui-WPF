@@ -1,0 +1,38 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.ToolTip"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <UniformGrid
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Columns="2"
+        Rows="2">
+        <lay:LayToolTip
+            Margin="20"
+            Placement="Top"
+            ToolTipContent="这是提示信息">
+            <lay:LayButton Content="向上" />
+        </lay:LayToolTip>
+        <lay:LayToolTip
+            Margin="20"
+            Placement="Bottom"
+            ToolTipContent="这是提示信息">
+            <lay:LayButton Content="向下" />
+        </lay:LayToolTip>
+        <lay:LayToolTip
+            Margin="20"
+            Placement="Left"
+            ToolTipContent="这是提示信息">
+            <lay:LayButton Content="向左" />
+        </lay:LayToolTip>
+        <lay:LayToolTip
+            Margin="20"
+            Placement="Right"
+            ToolTipContent="这是提示信息">
+            <lay:LayButton Content="向右" />
+        </lay:LayToolTip>
+    </UniformGrid>
+</UserControl>

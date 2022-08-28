@@ -153,8 +153,10 @@ namespace LayuiHome.ViewModels
                     ItemTitle = "组件示例",
                     Data = new ObservableCollection<MenuItemModel>()
                         {
-                            
                             new MenuItemModel()
+                            {
+                                ItemTitle="鼠标移上信息", PageKey=SystemResource.Page_ToolTipView
+                            },new MenuItemModel()
                             {
                                 ItemTitle="标记", PageKey=SystemResource.Page_BadgeView
                             },new MenuItemModel()

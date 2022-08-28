@@ -1,10 +1,14 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Cv="clr-namespace:LayuiTemplate.Converters"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
     <Style x:Key="LayToolTipStyle" TargetType="Lay:LayToolTip">
+        <Style.Resources>
+            <Cv:ToolTipOffsetConverter x:Key="ToolTipOffsetConverter" />
+        </Style.Resources>
         <Setter Property="ToolTipForeground" Value="White" />
-        <Setter Property="Background" Value="Black" />
+        <Setter Property="Background" Value="{DynamicResource Black}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayToolTip">
@@ -12,27 +16,98 @@
                         <Popup
                             x:Name="PART_Popup"
                             AllowsTransparency="True"
+                            IsHitTestVisible="false"
                             Placement="Center"
-                            PlacementTarget="{Binding ElementName=PART_Content}"
-                            VerticalOffset="{Binding ElementName=PART_Content, Path=ActualHeight}">
-                            <Border
-                                Name="Border"
-                                Width="{TemplateBinding Width}"
-                                Height="{TemplateBinding Height}"
-                                Background="{TemplateBinding Background}"
-                                BorderThickness="0"
-                                CornerRadius="{DynamicResource ControlCornerRadiusBase}">
-                                <ContentPresenter
-                                    Margin="10"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    ContentSource="ToolTipContent"
-                                    TextBlock.Foreground="{TemplateBinding ToolTipForeground}" />
+                            PlacementTarget="{Binding ElementName=PART_Content}">
+                            <Border Name="Border" Padding="0,10,0,0">
+                                <Grid>
+                                    <Border
+                                        x:Name="PART_Arrow"
+                                        Width="30"
+                                        Height="30"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="{DynamicResource ControlCornerRadiusBase}"
+                                        RenderTransformOrigin="0.5,0.5">
+                                        <Border.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform />
+                                                <SkewTransform />
+                                                <RotateTransform Angle="45" />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </Border.RenderTransform>
+                                    </Border>
+                                    <Border
+                                        Width="{TemplateBinding Width}"
+                                        Height="{TemplateBinding Height}"
+                                        Background="{TemplateBinding Background}"
+                                        BorderThickness="0"
+                                        CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                        <ContentPresenter
+                                            Margin="10"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentSource="ToolTipContent"
+                                            TextBlock.Foreground="{TemplateBinding ToolTipForeground}" />
+                                    </Border>
+                                </Grid>
                             </Border>
                         </Popup>
                         <ContentPresenter x:Name="PART_Content" />
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="Placement" Value="Right">
+                            <Setter TargetName="PART_Popup" Property="VerticalOffset" Value="0" />
+                            <Setter TargetName="PART_Arrow" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="Border" Property="Padding" Value="10,0,0,0" />
+                            <Setter TargetName="PART_Popup" Property="HorizontalOffset">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource ToolTipOffsetConverter}">
+                                        <Binding ElementName="PART_Content" Path="ActualWidth" />
+                                        <Binding ElementName="Border" Path="ActualWidth" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="Placement" Value="Left">
+                            <Setter TargetName="PART_Popup" Property="VerticalOffset" Value="0" />
+                            <Setter TargetName="PART_Arrow" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="Border" Property="Padding" Value="0,0,10,0" />
+                            <Setter TargetName="PART_Popup" Property="HorizontalOffset">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource ToolTipOffsetConverter}" ConverterParameter="-">
+                                        <Binding ElementName="PART_Content" Path="ActualWidth" />
+                                        <Binding ElementName="Border" Path="ActualWidth" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="Placement" Value="Top">
+                            <Setter TargetName="PART_Popup" Property="HorizontalOffset" Value="0" />
+                            <Setter TargetName="PART_Arrow" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="Border" Property="Padding" Value="0,0,0,10" />
+                            <Setter TargetName="PART_Popup" Property="VerticalOffset">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource ToolTipOffsetConverter}" ConverterParameter="-">
+                                        <Binding ElementName="PART_Content" Path="ActualHeight" />
+                                        <Binding ElementName="Border" Path="ActualHeight" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="Placement" Value="Bottom">
+                            <Setter TargetName="PART_Popup" Property="HorizontalOffset" Value="0" />
+                            <Setter TargetName="PART_Arrow" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="Border" Property="Padding" Value="0,10,0,0" />
+                            <Setter TargetName="PART_Popup" Property="VerticalOffset">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource ToolTipOffsetConverter}">
+                                        <Binding ElementName="PART_Content" Path="ActualHeight" />
+                                        <Binding ElementName="Border" Path="ActualHeight" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_Popup" Property="IsOpen" Value="true" />
                         </Trigger>
@@ -60,10 +135,8 @@
                             Name="Border"
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}"
+                            Background="{DynamicResource Black}"
                             BorderThickness="0">
-                            <Border.Background>
-                                <SolidColorBrush Color="Black" />
-                            </Border.Background>
                             <ContentPresenter Margin="10" />
                         </Border>
                     </Lay:LayTransition>

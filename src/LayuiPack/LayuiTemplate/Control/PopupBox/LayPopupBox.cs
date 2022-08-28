@@ -83,7 +83,32 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(object), typeof(LayPopupBox));
+        /// <summary>
+        /// 是否开启弹窗
+        /// </summary>
+        [Bindable(true)]
+        public bool IsOpen
+        {
+            get { return (bool)GetValue(IsOpenProperty); }
+            set { SetValue(IsOpenProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for IsOpen.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsOpenProperty =
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(LayPopupBox), new PropertyMetadata(false,OnOpenChanged));
+
+        private static void OnOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is LayPopupBox layPopup)
+            {
+                layPopup.OnOpen(new RoutedEventArgs(OpenEvent, layPopup));
+                if (layPopup.Command != null)
+                {
+                    layPopup.Command.Execute(layPopup.CommandParameter);
+                    layPopup.IsEnabled = layPopup.Command.CanExecute(layPopup.CommandParameter);
+                }
+            }
+        }
         /// <summary>
         /// 窗体悬停位置
         /// </summary>
@@ -98,19 +123,23 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty PlacementProperty =
             DependencyProperty.Register("Placement", typeof(PlacementMode), typeof(LayPopupBox), new PropertyMetadata(PlacementMode.Bottom));
         /// <summary>
-        /// 点击事件
+        /// 开关事件
         /// </summary>
-        public event RoutedEventHandler Click
+        public event RoutedEventHandler Open
         {
-            add => AddHandler(ClickEvent, value);
-            remove => RemoveHandler(ClickEvent, value);
+            add => AddHandler(OpenEvent, value);
+            remove => RemoveHandler(OpenEvent, value);
         }
         /// <summary>
-        /// 点击事件
+        /// 开关事件
         /// </summary>
-        public static readonly RoutedEvent ClickEvent =
-            EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LayPopupBox));
-        protected virtual void OnClick(RoutedEventArgs e)
+        public static readonly RoutedEvent OpenEvent =
+            EventManager.RegisterRoutedEvent("Open", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LayPopupBox));
+        /// <summary>
+        /// 开关事件
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void OnOpen(RoutedEventArgs e)
         {
             RaiseEvent(e);
         }
@@ -162,89 +191,12 @@ namespace LayuiTemplate.Control
         public static readonly DependencyProperty ContentProperty =
             DependencyProperty.Register("Content", typeof(object), typeof(LayPopupBox));
 
-
-        /// <summary>
-        /// 是否自动关闭当前弹出窗口
-        /// <para>弹窗内有ButtonBase元素才能生效</para>
-        /// </summary>
-        [Bindable(true)]
-        public bool IsAutoClose
-        {
-            get { return (bool)GetValue(IsAutoCloseProperty); }
-            set { SetValue(IsAutoCloseProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for IsAutoClose.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsAutoCloseProperty =
-            DependencyProperty.Register("IsAutoClose", typeof(bool), typeof(LayPopupBox), new PropertyMetadata(false));
-
-        /// <summary>
-        /// 修改当前按钮点击事件
-        /// </summary>
-        /// <param name="IsAddEvent"></param>
-        private void UpdateClickEvent(bool IsAddEvent)
-        {
-            var btns = LayVisualTreeHelper.FindVisualChild<ButtonBase>(PART_ContentGrid);
-            if (btns != null)
-            {
-                if (IsAddEvent)
-                {
-                    foreach (ButtonBase item in btns)
-                    {
-                        item.Click -= PART_Button_Click;
-                        item.Click += PART_Button_Click;
-                    }
-                }
-                else
-                {
-                    foreach (ButtonBase item in btns)
-                    {
-                        item.Click -= PART_Button_Click;
-                    }
-                }
-            }
-        }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             PART_ContentGrid = GetTemplateChild("PART_ContentBorder") as Grid;
             PART_ToggleButton = GetTemplateChild("PART_ToggleButton") as ToggleButton;
             PART_Popup = GetTemplateChild("PART_Popup") as Popup;
-            if (PART_ToggleButton != null && PART_ContentGrid != null && PART_Popup != null)
-            {
-                PART_ToggleButton.Click -= PART_ToggleButton_Click;
-                PART_ToggleButton.Click += PART_ToggleButton_Click;
-                PART_Popup.Opened -= PART_Popup_Opened;
-                PART_Popup.Opened += PART_Popup_Opened;
-                PART_Popup.Closed -= PART_Popup_Closed;
-                PART_Popup.Closed += PART_Popup_Closed;
-            }
-        }
-
-        private void PART_Popup_Closed(object sender, EventArgs e)
-        {
-            UpdateClickEvent(false);
-        }
-
-        private void PART_Popup_Opened(object sender, EventArgs e)
-        {
-            UpdateClickEvent(IsAutoClose);
-        }
-        private void PART_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (e.OriginalSource is ButtonBase)
-            {
-                if (PART_Popup.IsOpen) PART_Popup.IsOpen = false;
-            }
-        }
-        private void PART_ToggleButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.OnClick(new RoutedEventArgs(ClickEvent, this));
-            if (Command != null)
-            {
-                Command.Execute(CommandParameter);
-                IsEnabled = Command.CanExecute(CommandParameter);
-            }
         }
     }
 }

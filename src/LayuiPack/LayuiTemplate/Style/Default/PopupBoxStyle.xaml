@@ -21,6 +21,7 @@
                             Content="{TemplateBinding Header}"
                             Cursor="Hand"
                             Foreground="{TemplateBinding Foreground}"
+                            IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             Tag="{TemplateBinding CornerRadius}">
                             <ToggleButton.Style>
                                 <Style TargetType="ToggleButton">

@@ -110,7 +110,11 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 抽屉
         /// </summary>
-        public const string Page_DrawerView = "DrawerView";
+        public const string Page_DrawerView = "DrawerView"; 
+        /// <summary>
+        /// 提示信息
+        /// </summary>
+        public const string Page_ToolTipView = "ToolTipView"; 
         #endregion
 
         #region 弹窗名称
