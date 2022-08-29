@@ -322,6 +322,7 @@
     <Compile Include="Enum\TextBox\InputType.cs" />
     <Compile Include="Enum\TooplTip\PlacementStyle.cs" />
     <Compile Include="Event\LayFunctionEventArgs.cs" />
+    <Compile Include="Extend\Animation\LayAnimationsHelper.cs" />
     <Compile Include="Extend\Base\LayControlsBaseHelper.cs" />
     <Compile Include="Extend\DataGrid\LayDataGridHelper.cs" />
     <Compile Include="Extend\DatePicker\LayDatePickerHelper.cs" />

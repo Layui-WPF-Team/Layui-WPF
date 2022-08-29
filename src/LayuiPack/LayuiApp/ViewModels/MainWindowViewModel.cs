@@ -123,6 +123,5 @@ namespace LayuiApp.ViewModels
             Application.Current.Shutdown();
         }
         #endregion
-
     }
 }

@@ -115,6 +115,10 @@ namespace Layui.Core.Resource
         /// 提示信息
         /// </summary>
         public const string Page_ToolTipView = "ToolTipView"; 
+        /// <summary>
+        /// 关键针结束命令绑定界面
+        /// </summary>
+        public const string Page_AnimationCommandView = "AnimationCommandView"; 
         #endregion
 
         #region 弹窗名称

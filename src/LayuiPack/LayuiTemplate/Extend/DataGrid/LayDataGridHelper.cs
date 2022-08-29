@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayuiTemplate.Extend.DataGrid
+namespace LayuiTemplate.Extend
 {
     /// <summary>
     ///  LayDataGridHelper

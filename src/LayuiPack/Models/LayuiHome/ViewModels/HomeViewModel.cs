@@ -155,6 +155,9 @@ namespace LayuiHome.ViewModels
                         {
                             new MenuItemModel()
                             {
+                                ItemTitle="关键帧动画命令绑定", PageKey=SystemResource.Page_AnimationCommandView
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="鼠标移上信息", PageKey=SystemResource.Page_ToolTipView
                             },new MenuItemModel()
                             {

@@ -50,6 +50,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\AnimationCommandViewModel.cs" />
     <Compile Include="ViewModels\BadgeViewModel.cs" />
     <Compile Include="ViewModels\CarouselViewModel.cs" />
     <Compile Include="ViewModels\DateTimeViewModel.cs" />
@@ -57,6 +58,9 @@
     <Compile Include="ViewModels\PaginationViewModel.cs" />
     <Compile Include="ViewModels\PopupBoxViewModel.cs" />
     <Compile Include="ViewModels\ToolTipViewModel.cs" />
+    <Compile Include="Views\AnimationCommand.xaml.cs">
+      <DependentUpon>AnimationCommand.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Badge.xaml.cs">
       <DependentUpon>Badge.xaml</DependentUpon>
     </Compile>
@@ -128,6 +132,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AnimationCommand.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Badge.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
