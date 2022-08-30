@@ -295,7 +295,6 @@ namespace LayuiTemplate.Control
             UpdateComboBoxColumnStyles(this);
             UpdateCheckBoxColumnStyles(this);
         }
-
     }
 
 }

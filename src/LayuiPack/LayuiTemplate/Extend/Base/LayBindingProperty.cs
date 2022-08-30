@@ -15,7 +15,7 @@ namespace LayuiTemplate.Extend
     public class LayBindingProperty : Freezable
     {
         /// <summary>
-        /// 数据山下文
+        /// 数据上下文
         /// </summary>
         public object DataContext
         {
