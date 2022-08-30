@@ -19,10 +19,6 @@ namespace LayuiTemplate.Enum
         /// 默认
         /// </summary>
         Default,
-        /// <summary>
-        /// 开关
-        /// </summary>
-        Switch
 
     }
 }

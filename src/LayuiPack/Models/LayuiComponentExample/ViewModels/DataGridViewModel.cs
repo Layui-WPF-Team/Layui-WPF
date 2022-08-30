@@ -22,6 +22,25 @@ namespace LayuiComponentExample.ViewModels
         public DataGridViewModel(IContainerExtension container) : base(container)
         {
         }
+        private Visibility _Visibility;
+        /// <summary>
+        /// 控制当前的列展示状态
+        /// </summary>
+        public Visibility Visibility
+        {
+            get { return _Visibility; }
+            set { SetProperty(ref _Visibility, value); }
+        }
+        private bool _IsShow=true;
+        public bool IsShow
+        {
+            get { return _IsShow; }
+            set { 
+                SetProperty(ref _IsShow, value);
+                if (value) Visibility = Visibility.Visible;
+                else Visibility = Visibility.Collapsed;
+            }
+        }
         private bool _IsActive;
         public bool IsActive
         {
