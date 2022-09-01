@@ -15,6 +15,29 @@ namespace LayuiTemplate.Extend
     /// </summary>
     public class LayDataGridHelper
     {
-        
+        /// <summary>
+        /// 获得DataGrid当前行号
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int GetRowIndex(DependencyObject obj)
+        {
+            return (int)obj.GetValue(RowIndexProperty);
+        }
+        /// <summary>
+        /// 设置DataGrid当前行号
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static void SetRowIndex(DependencyObject obj, int value)
+        {
+            obj.SetValue(RowIndexProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for Index.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RowIndexProperty =
+            DependencyProperty.RegisterAttached("RowIndex", typeof(int), typeof(LayDataGridHelper));
+
+
     }
 }

@@ -310,6 +310,7 @@
     <Compile Include="Control\TreeViewItem\LayTreeViewItem.cs" />
     <Compile Include="Control\TreeView\LayTreeView.cs" />
     <Compile Include="Control\Window\LayWindow.cs" />
+    <Compile Include="Converters\Base\ElementAutoNumberConvert.cs" />
     <Compile Include="Converters\Base\MedianConvert.cs" />
     <Compile Include="Converters\DrawerHost\DrawerHostOffsetConverter.cs" />
     <Compile Include="Converters\Switch\SwitchWidthConverter.cs" />

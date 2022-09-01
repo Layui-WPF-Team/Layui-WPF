@@ -37,9 +37,37 @@
             x:Name="LayDataGrid"
             Grid.Row="1"
             Margin="5"
-            FrozenColumnCount="1"
+            FrozenColumnCount="2"
             IsActive="{Binding IsActive}"
-            ItemsSource="{Binding ListData}">
+            ItemsSource="{Binding ListData}"
+            SelectedIndex="{Binding SelectedIndex}">
+            <Lay:LayDataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Lay:LayExpander
+                        Padding="10"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Header="详情信息">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" Text="名称: " />
+                                <TextBlock VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" Text="进度: " />
+                                <TextBlock VerticalAlignment="Center" Text="{Binding ProgressBarValue}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="12"
+                                    Text="编号 " />
+                                <TextBlock VerticalAlignment="Center" Text="{Binding Index}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Lay:LayExpander>
+                </DataTemplate>
+            </Lay:LayDataGrid.RowDetailsTemplate>
             <Lay:LayDataGrid.Resources>
                 <!--  用于存储当前数据山下文 提供Columns进行依赖属性绑定 解决绑定失效问题 Start  -->
                 <LayHelper:LayBindingProperty x:Key="LayBindingProperty" DataContext="{Binding}" />
@@ -58,6 +86,16 @@
             </Lay:LayDataGrid.RowStyle>
             <Lay:LayDataGrid.Columns>
                 <DataGridCheckBoxColumn Width="60" Header="默认" />
+                <DataGridTemplateColumn Width="80" Header="自动索引">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=(LayHelper:LayDataGridHelper.RowIndex)}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn MinWidth="50" MaxWidth="100">
                     <DataGridTemplateColumn.Header>
                         <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -195,33 +233,6 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </Lay:LayDataGrid.Columns>
-            <Lay:LayDataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <Lay:LayExpander
-                        Padding="10"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Header="详情信息">
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock VerticalAlignment="Center" Text="名称: " />
-                                <TextBlock VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock VerticalAlignment="Center" Text="进度: " />
-                                <TextBlock VerticalAlignment="Center" Text="{Binding ProgressBarValue}" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    FontSize="12"
-                                    Text="编号 " />
-                                <TextBlock VerticalAlignment="Center" Text="{Binding Index}" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Lay:LayExpander>
-                </DataTemplate>
-            </Lay:LayDataGrid.RowDetailsTemplate>
         </Lay:LayDataGrid>
     </Grid>
 </UserControl>

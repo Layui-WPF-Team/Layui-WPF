@@ -1,6 +1,9 @@
-﻿using LayuiTemplate.Tools;
+﻿using LayuiTemplate.Extend;
+using LayuiTemplate.Tools;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -8,12 +11,16 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace LayuiTemplate.Control
 {
     public class LayDataGrid : DataGrid
     {
-
+        /// <summary>
+        /// 记录行刷新状态 用于行刷新
+        /// </summary>
+        bool isRefresh = false;
         [Bindable(true)]
         public Style ElementCheckBoxColumnStyle
         {
@@ -294,6 +301,30 @@ namespace LayuiTemplate.Control
             UpdateTextColumnStyles(this);
             UpdateComboBoxColumnStyles(this);
             UpdateCheckBoxColumnStyles(this);
+        }
+        /// <summary>
+        /// 监听行变化
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
+        {
+            base.OnItemsChanged(e);
+            if (e.Action!= NotifyCollectionChangedAction.Add)
+            {
+                //防止当前视图出现递归刷新
+                if (!isRefresh)
+                {
+                    isRefresh = true;
+                    /////////重新渲染视图/////////
+                    this.Items.Refresh();
+                    isRefresh = false;
+                }
+            }
+        }
+        protected override void OnLoadingRow(DataGridRowEventArgs e)
+        {
+            base.OnLoadingRow(e);
+            LayDataGridHelper.SetRowIndex(e.Row, e.Row.GetIndex() + 1);
         }
     }
 

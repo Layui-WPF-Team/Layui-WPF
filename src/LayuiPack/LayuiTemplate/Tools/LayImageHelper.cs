@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -99,10 +100,26 @@ namespace LayuiTemplate.Tools
                 BitmapFrame bitmapFrame = BitmapFrame.Create(bitmapImage);
                 enc.Frames.Add(bitmapFrame);
                 enc.Save(outStream);
-                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(outStream);
+                Bitmap bitmap = new Bitmap(outStream);
 
-                return new System.Drawing.Bitmap(bitmap);
+                return new Bitmap(bitmap);
             }
+        }
+        /// <summary>
+        /// Bitmap转BitmapImage
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <param name="imageFormat">图片格式</param>
+        /// <returns></returns>
+        public BitmapImage BitmapToBitmapImage(Bitmap bitmap, ImageFormat imageFormat= null)
+        {
+            MemoryStream ms = new MemoryStream();
+            bitmap.Save(ms, imageFormat?? ImageFormat.Png);
+            BitmapImage bit3 = new BitmapImage();
+            bit3.BeginInit();
+            bit3.StreamSource = ms;
+            bit3.EndInit();
+            return bit3;
         }
     }
 }
