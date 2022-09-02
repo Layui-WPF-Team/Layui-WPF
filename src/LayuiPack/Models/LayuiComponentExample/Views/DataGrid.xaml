@@ -37,6 +37,7 @@
             x:Name="LayDataGrid"
             Grid.Row="1"
             Margin="5"
+            ColumnHeaderHeight="80"
             FrozenColumnCount="2"
             IsActive="{Binding IsActive}"
             ItemsSource="{Binding ListData}"
@@ -141,14 +142,52 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Width="300" Header="跨列">
+                <DataGridTemplateColumn Width="300">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style BasedOn="{StaticResource LayColumnHeaderStyle}" TargetType="DataGridColumnHeader">
-                            <Setter Property="VerticalContentAlignment" Value="Center" />
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             <Setter Property="Padding" Value="0" />
                         </Style>
                     </DataGridTemplateColumn.HeaderStyle>
+                    <DataGridTemplateColumn.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="合并表头" />
+                            <Grid
+                                Grid.Row="1"
+                                Height="1"
+                                Background="{DynamicResource Gray}" />
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Padding="13,0"
+                                    VerticalAlignment="Center"
+                                    Text="标题" />
+                                <Grid
+                                    Grid.Column="1"
+                                    Width="1"
+                                    Background="{DynamicResource Gray}" />
+                                <TextBlock
+                                    Grid.Column="2"
+                                    Padding="13,0"
+                                    VerticalAlignment="Center"
+                                    Text="标题" />
+                            </Grid>
+
+                        </Grid>
+                    </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellStyle>
                         <Style BasedOn="{StaticResource LayDataGridCellStyle}" TargetType="DataGridCell">
                             <Setter Property="VerticalContentAlignment" Value="Stretch" />
