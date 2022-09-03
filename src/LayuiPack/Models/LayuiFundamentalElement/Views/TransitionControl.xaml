@@ -5,7 +5,7 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid Width="500" MinHeight="400">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition />
@@ -20,8 +20,11 @@
             IsChecked="{Binding IsChecked}" />
         <ScrollViewer Grid.Row="1">
             <StackPanel>
-                <UniformGrid Columns="3">
-                    <Lay:LayTransition IsActive="{Binding IsChecked}" Type="Zoom">
+                <UniformGrid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Lay:LayTransition
+                        Margin="50"
+                        IsActive="{Binding IsChecked}"
+                        Type="Zoom">
                         <Border
                             Width="100"
                             Height="100"
@@ -156,10 +159,7 @@
                                 Text="下滑入" />
                         </Border>
                     </Lay:LayTransition>
-                    <Lay:LayTransition
-                        Margin="10"
-                        IsActive="{Binding IsChecked}"
-                        Type="SlideOutToBottom">
+                    <Lay:LayTransition IsActive="{Binding IsChecked}" Type="SlideOutToBottom">
                         <Border
                             Width="100"
                             Height="100"

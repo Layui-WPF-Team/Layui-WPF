@@ -89,7 +89,7 @@
                             x:Key="SlideInToBottomYDecimalAnimation"
                             Storyboard.TargetName="TranslateTransform"
                             Storyboard.TargetProperty="Y"
-                            From="30"
+                            From="40"
                             To="0"
                             Duration="0:0:0.5">
                             <DoubleAnimation.EasingFunction>
@@ -110,7 +110,7 @@
                             Storyboard.TargetName="TranslateTransform"
                             Storyboard.TargetProperty="Y">
                             <EasingDoubleKeyFrame KeyTime="0" Value="0" />
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="30" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="40" />
                             <EasingDoubleKeyFrame KeyTime="0:0:0.51" Value="0" />
                         </DoubleAnimationUsingKeyFrames>
                         <DoubleAnimation
@@ -126,7 +126,7 @@
                             x:Key="SlideInToTopYDecimalAnimation"
                             Storyboard.TargetName="TranslateTransform"
                             Storyboard.TargetProperty="Y">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="-30" />
+                            <EasingDoubleKeyFrame KeyTime="0" Value="-40" />
                             <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CircleEase EasingMode="EaseOut" />
@@ -147,7 +147,7 @@
                             Storyboard.TargetName="TranslateTransform"
                             Storyboard.TargetProperty="Y">
                             <EasingDoubleKeyFrame KeyTime="0" Value="0" />
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-30">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-40">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CircleEase EasingMode="EaseOut" />
                                 </EasingDoubleKeyFrame.EasingFunction>
@@ -167,7 +167,7 @@
                             x:Key="SlideInToRightXDecimalAnimation"
                             Storyboard.TargetName="TranslateTransform"
                             Storyboard.TargetProperty="X">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="30">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="40">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CircleEase EasingMode="EaseOut" />
                                 </EasingDoubleKeyFrame.EasingFunction>
@@ -188,7 +188,7 @@
                             Storyboard.TargetName="TranslateTransform"
                             Storyboard.TargetProperty="X">
                             <EasingDoubleKeyFrame KeyTime="0" Value="0" />
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="30">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="40">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CircleEase EasingMode="EaseOut" />
                                 </EasingDoubleKeyFrame.EasingFunction>
@@ -208,7 +208,7 @@
                             x:Key="SlideInToLeftXDecimalAnimation"
                             Storyboard.TargetName="TranslateTransform"
                             Storyboard.TargetProperty="X">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="-30">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="-40">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CircleEase EasingMode="EaseOut" />
                                 </EasingDoubleKeyFrame.EasingFunction>
@@ -229,7 +229,7 @@
                             Storyboard.TargetName="TranslateTransform"
                             Storyboard.TargetProperty="X">
                             <EasingDoubleKeyFrame KeyTime="0" Value="0" />
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-30">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-40">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CircleEase EasingMode="EaseOut" />
                                 </EasingDoubleKeyFrame.EasingFunction>
