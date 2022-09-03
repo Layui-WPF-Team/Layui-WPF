@@ -19,7 +19,7 @@
                     <Lay:LayTransition
                         Background="{x:Null}"
                         Style="{DynamicResource LayTransitionStyle}"
-                        Type="SlideIn">
+                        Type="SlideInToBottom">
                         <Grid>
                             <Border Background="{TemplateBinding Background}" CornerRadius="{DynamicResource ControlCornerRadiusBase}">
                                 <Border.Effect>

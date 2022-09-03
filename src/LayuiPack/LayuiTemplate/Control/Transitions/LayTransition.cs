@@ -111,11 +111,53 @@ namespace LayuiTemplate.Control
                     storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
                     storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "OpacityDecimalAnimation"] as DoubleAnimation);
                     break;
-                case AnimationType.SlideIn:
+                case AnimationType.SlideInToBottom:
                     storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleXDecimalAnimation"] as DoubleAnimation);
                     storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
-                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideIn) + "YDecimalAnimation"] as DoubleAnimation);
-                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideIn) + "OpacityDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideInToBottom) + "YDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideInToBottom) + "OpacityDecimalAnimation"] as DoubleAnimation);
+                    break;
+                case AnimationType.SlideOutToBottom:
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleXDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideOutToBottom) + "YDecimalAnimation"] as DoubleAnimationUsingKeyFrames);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideOutToBottom) + "OpacityDecimalAnimation"] as DoubleAnimation);
+                    break;
+                case AnimationType.SlideInToRight:
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleXDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideInToRight) + "XDecimalAnimation"] as DoubleAnimationUsingKeyFrames);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideInToRight) + "OpacityDecimalAnimation"] as DoubleAnimation);
+                    break;
+                case AnimationType.SlideOutToRight:
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleXDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideOutToRight) + "XDecimalAnimation"] as DoubleAnimationUsingKeyFrames);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideOutToRight) + "OpacityDecimalAnimation"] as DoubleAnimation);
+                    break;
+                case AnimationType.SlideInToTop:
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleXDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideInToTop) + "YDecimalAnimation"] as DoubleAnimationUsingKeyFrames);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideInToTop) + "OpacityDecimalAnimation"] as DoubleAnimation);
+                    break;
+                case AnimationType.SlideOutToTop:
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleXDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideOutToTop) + "YDecimalAnimation"] as DoubleAnimationUsingKeyFrames);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideOutToTop) + "OpacityDecimalAnimation"] as DoubleAnimation);
+                    break;
+                case AnimationType.SlideInToLeft:
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleXDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideInToLeft) + "XDecimalAnimation"] as DoubleAnimationUsingKeyFrames);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideInToLeft) + "OpacityDecimalAnimation"] as DoubleAnimation);
+                    break;
+                case AnimationType.SlideOutToLeft:
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleXDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.Default) + "ScaleYDecimalAnimation"] as DoubleAnimation);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideOutToLeft) + "XDecimalAnimation"] as DoubleAnimationUsingKeyFrames);
+                    storyboard.Children.Add(Template.Resources[nameof(AnimationType.SlideOutToLeft) + "OpacityDecimalAnimation"] as DoubleAnimation);
                     break;
             }
             TransitionBody.BeginStoryboard(storyboard);

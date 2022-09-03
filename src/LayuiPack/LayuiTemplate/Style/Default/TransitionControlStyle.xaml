@@ -84,9 +84,9 @@
                             To="1"
                             Duration="0" />
                         <!--  DefaultAnimation End  -->
-                        <!--  SlideInXDecimalAnimationn Start  -->
+                        <!--  SlideInToBottomAnimationn Start  -->
                         <DoubleAnimation
-                            x:Key="SlideInYDecimalAnimation"
+                            x:Key="SlideInToBottomYDecimalAnimation"
                             Storyboard.TargetName="TranslateTransform"
                             Storyboard.TargetProperty="Y"
                             From="30"
@@ -97,13 +97,153 @@
                             </DoubleAnimation.EasingFunction>
                         </DoubleAnimation>
                         <DoubleAnimation
-                            x:Key="SlideInOpacityDecimalAnimation"
+                            x:Key="SlideInToBottomOpacityDecimalAnimation"
                             Storyboard.TargetName="TransitionBody"
                             Storyboard.TargetProperty="Opacity"
                             From="0"
                             To="1"
                             Duration="0:0:0.5" />
-                        <!--  SlideInXDecimalAnimationn End  -->
+                        <!--  SlideInToBottomAnimationn End  -->
+                        <!--  SlideOutToBottomAnimationn Start  -->
+                        <DoubleAnimationUsingKeyFrames
+                            x:Key="SlideOutToBottomYDecimalAnimation"
+                            Storyboard.TargetName="TranslateTransform"
+                            Storyboard.TargetProperty="Y">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="30" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.51" Value="0" />
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimation
+                            x:Key="SlideOutToBottomOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="1"
+                            To="0"
+                            Duration="0:0:0.5" />
+                        <!--  SlideOutToBottomAnimationn End  -->
+                        <!--  SlideInToTopAnimationn Start  -->
+                        <DoubleAnimationUsingKeyFrames
+                            x:Key="SlideInToTopYDecimalAnimation"
+                            Storyboard.TargetName="TranslateTransform"
+                            Storyboard.TargetProperty="Y">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="-30" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CircleEase EasingMode="EaseOut" />
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimation
+                            x:Key="SlideInToTopOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="0"
+                            To="1"
+                            Duration="0:0:0.5" />
+                        <!--  SlideInToTopAnimationn End  -->
+                        <!--  SlideOutToTopAnimationn Start  -->
+                        <DoubleAnimationUsingKeyFrames
+                            x:Key="SlideOutToTopYDecimalAnimation"
+                            Storyboard.TargetName="TranslateTransform"
+                            Storyboard.TargetProperty="Y">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-30">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CircleEase EasingMode="EaseOut" />
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.51" Value="0" />
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimation
+                            x:Key="SlideOutToTopOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="1"
+                            To="0"
+                            Duration="0:0:0.5" />
+                        <!--  SlideOutToTopAnimationn End  -->
+                        <!--  SlideInToRightAnimationn Start  -->
+                        <DoubleAnimationUsingKeyFrames
+                            x:Key="SlideInToRightXDecimalAnimation"
+                            Storyboard.TargetName="TranslateTransform"
+                            Storyboard.TargetProperty="X">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="30">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CircleEase EasingMode="EaseOut" />
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" />
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimation
+                            x:Key="SlideInToRightOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="0"
+                            To="1"
+                            Duration="0:0:0.5" />
+                        <!--  SlideInToRightAnimationn End  -->
+                        <!--  SlideOutToRightAnimationn Start  -->
+                        <DoubleAnimationUsingKeyFrames
+                            x:Key="SlideOutToRightXDecimalAnimation"
+                            Storyboard.TargetName="TranslateTransform"
+                            Storyboard.TargetProperty="X">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="30">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CircleEase EasingMode="EaseOut" />
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.51" Value="0" />
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimation
+                            x:Key="SlideOutToRightOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="1"
+                            To="0"
+                            Duration="0:0:0.5" />
+                        <!--  SlideOutToRightAnimationn End  -->
+                        <!--  SlideInToLeftAnimationn Start  -->
+                        <DoubleAnimationUsingKeyFrames
+                            x:Key="SlideInToLeftXDecimalAnimation"
+                            Storyboard.TargetName="TranslateTransform"
+                            Storyboard.TargetProperty="X">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="-30">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CircleEase EasingMode="EaseOut" />
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" />
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimation
+                            x:Key="SlideInToLeftOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="0"
+                            To="1"
+                            Duration="0:0:0.5" />
+                        <!--  SlideInToLeftAnimationn End  -->
+                        <!--  SlideOutToLeftAnimationn Start  -->
+                        <DoubleAnimationUsingKeyFrames
+                            x:Key="SlideOutToLeftXDecimalAnimation"
+                            Storyboard.TargetName="TranslateTransform"
+                            Storyboard.TargetProperty="X">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-30">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CircleEase EasingMode="EaseOut" />
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.51" Value="0" />
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimation
+                            x:Key="SlideOutToLeftOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="1"
+                            To="0"
+                            Duration="0:0:0.5" />
+                        <!--  SlideOutToLeftAnimationn End  -->
                     </ControlTemplate.Resources>
                     <Grid
                         x:Name="TransitionBody"

@@ -5,7 +5,7 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid Width="500" Height="400">
+    <Grid Width="500" MinHeight="400">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition />
@@ -49,7 +49,7 @@
                                 Text="渐变" />
                         </Border>
                     </Lay:LayTransition>
-                    <Lay:LayTransition IsActive="{Binding IsChecked}" Type="SlideIn">
+                    <Lay:LayTransition IsActive="{Binding IsChecked}" Type="SlideInToLeft">
                         <Border
                             Width="100"
                             Height="100"
@@ -60,7 +60,117 @@
                                 VerticalAlignment="Center"
                                 FontSize="16"
                                 Foreground="White"
-                                Text="渐变" />
+                                Text="滑入" />
+                        </Border>
+                    </Lay:LayTransition>
+                    <Lay:LayTransition
+                        Margin="10"
+                        IsActive="{Binding IsChecked}"
+                        Type="SlideOutToLeft">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            Background="{StaticResource Green}"
+                            CornerRadius="50">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Text="左滑出" />
+                        </Border>
+                    </Lay:LayTransition>
+                    <Lay:LayTransition IsActive="{Binding IsChecked}" Type="SlideInToRight">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            Background="{StaticResource Green}"
+                            CornerRadius="50">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Text="右滑入" />
+                        </Border>
+                    </Lay:LayTransition>
+                    <Lay:LayTransition
+                        Margin="10"
+                        IsActive="{Binding IsChecked}"
+                        Type="SlideOutToRight">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            Background="{StaticResource Green}"
+                            CornerRadius="50">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Text="右滑出" />
+                        </Border>
+                    </Lay:LayTransition>
+                    <Lay:LayTransition IsActive="{Binding IsChecked}" Type="SlideInToTop">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            Background="{StaticResource Green}"
+                            CornerRadius="50">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Text="上滑入" />
+                        </Border>
+                    </Lay:LayTransition>
+                    <Lay:LayTransition
+                        Margin="10"
+                        IsActive="{Binding IsChecked}"
+                        Type="SlideOutToTop">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            Background="{StaticResource Green}"
+                            CornerRadius="50">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Text="上滑出" />
+                        </Border>
+                    </Lay:LayTransition>
+                    <Lay:LayTransition IsActive="{Binding IsChecked}" Type="SlideInToBottom">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            Background="{StaticResource Green}"
+                            CornerRadius="50">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Text="下滑入" />
+                        </Border>
+                    </Lay:LayTransition>
+                    <Lay:LayTransition
+                        Margin="10"
+                        IsActive="{Binding IsChecked}"
+                        Type="SlideOutToBottom">
+                        <Border
+                            Width="100"
+                            Height="100"
+                            Background="{StaticResource Green}"
+                            CornerRadius="50">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Text="下滑出" />
                         </Border>
                     </Lay:LayTransition>
                 </UniformGrid>

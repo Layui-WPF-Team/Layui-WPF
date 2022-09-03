@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LayuiTemplate.Enum.Transitions
 {
     /// <summary>
-    /// 动画枚举
+    /// 过度动画枚举
     /// </summary>
     public enum AnimationType
     {
@@ -24,8 +24,36 @@ namespace LayuiTemplate.Enum.Transitions
         /// </summary>
         Default,
         /// <summary>
-        /// 滑入
+        /// 底部滑入
         /// </summary>
-        SlideIn
+        SlideInToBottom,
+        /// <summary>
+        /// 底部滑出
+        /// </summary>
+        SlideOutToBottom,
+        /// <summary>
+        /// 右侧滑入
+        /// </summary>
+        SlideInToRight,
+        /// <summary>
+        /// 右侧滑出
+        /// </summary>
+        SlideOutToRight,
+        /// <summary>
+        /// 顶部滑入
+        /// </summary>
+        SlideInToTop,
+        /// <summary>
+        /// 顶部滑出
+        /// </summary>
+        SlideOutToTop,
+        /// <summary>
+        /// 左侧滑入
+        /// </summary>
+        SlideInToLeft,
+        /// <summary>
+        /// 左侧滑出
+        /// </summary>
+        SlideOutToLeft
     }
 }

@@ -5,7 +5,7 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Lay:LayTransition Type="SlideIn">
+    <Lay:LayTransition Type="SlideInToBottom">
         <Border Margin="5">
             <ScrollViewer>
                 <StackPanel>
