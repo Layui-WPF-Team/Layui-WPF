@@ -7,7 +7,7 @@
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <Lay:LayMessageHost Global:LayMessage.Tooken="Message" />
+        <Lay:LayMessageHost HorizontalAlignment="Right" Global:LayMessage.Tooken="Message" />
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="全局提示信息" />
             <StackPanel Orientation="Horizontal">

@@ -10,7 +10,6 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
         <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis" />
-        <Setter Property="Opacity" Value="0" />
         <Setter Property="Margin" Value="0,4" />
         <Setter Property="Panel.ZIndex" Value="100" />
         <Setter Property="Template">
@@ -18,8 +17,9 @@
                 <ControlTemplate TargetType="Lay:LayMessageControl">
                     <Lay:LayTransition
                         Background="{x:Null}"
+                        IsActive="True"
                         Style="{DynamicResource LayTransitionStyle}"
-                        Type="SlideInToBottom">
+                        Type="SlideInToTop">
                         <Grid>
                             <Border Background="{TemplateBinding Background}" CornerRadius="{DynamicResource ControlCornerRadiusBase}">
                                 <Border.Effect>

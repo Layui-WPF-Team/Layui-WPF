@@ -21,11 +21,6 @@ namespace LayuiTemplate.Control
     {
         internal LayMessageControl()
         {
-            DoubleAnimation doubleAnimation = new DoubleAnimation();
-            doubleAnimation.From = 0;
-            doubleAnimation.To = 1;
-            doubleAnimation.Duration = TimeSpan.FromSeconds(0.2);
-            this.BeginAnimation(OpacityProperty, doubleAnimation);
             Loaded += LayMessageControl_Loaded;
         }
 
