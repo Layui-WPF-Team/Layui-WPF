@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,6 @@ namespace LayuiTemplate.Control
     /// </summary>
     public class LayListBox : ListBox
     {
-
-
-
+       
     }
 }

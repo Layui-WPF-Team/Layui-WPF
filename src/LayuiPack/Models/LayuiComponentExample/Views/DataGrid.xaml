@@ -93,7 +93,7 @@
                             <TextBlock
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=(LayHelper:LayDataGridHelper.RowIndex)}" />
+                                Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=(LayHelper:LayDataGridHelper.LineNumber)}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -119,6 +119,10 @@ namespace Layui.Core.Resource
         /// 关键针结束命令绑定界面
         /// </summary>
         public const string Page_AnimationCommandView = "AnimationCommandView"; 
+        /// <summary>
+        /// 文件上传
+        /// </summary>
+        public const string Page_UploadView = "UploadView"; 
         #endregion
 
         #region 弹窗名称

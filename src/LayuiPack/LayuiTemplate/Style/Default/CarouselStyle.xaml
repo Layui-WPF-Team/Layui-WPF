@@ -3,6 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
     <Style x:Key="LayGradientCarouselStyle" TargetType="Lay:LayGradientCarousel">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource GrayEffect}" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="SelectedIndex" Value="0" />
         <Setter Property="ItemContainerStyle" Value="{DynamicResource LayCarouselItemStyle}" />
         <Setter Property="ItemsPanel">
@@ -15,7 +21,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayGradientCarousel">
-                    <Grid Background="Transparent">
+                    <Grid Background="{TemplateBinding Background}">
                         <ScrollViewer
                             Padding="{TemplateBinding Padding}"
                             Focusable="false"
@@ -97,11 +103,53 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
+                        <ListBox
+                            x:Name="PATR_Tools"
+                            Margin="20,10"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            ItemsSource="{TemplateBinding ItemsSource}"
+                            SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayGradientCarousel}, Path=SelectedIndex}"
+                            Style="{x:Null}"
+                            Visibility="Collapsed">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Ellipse
+                                                    x:Name="bg"
+                                                    Width="12"
+                                                    Height="12"
+                                                    Margin="2"
+                                                    Cursor="Hand"
+                                                    Fill="White"
+                                                    Opacity="0.5" />
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="bg" Property="Opacity" Value="1" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Arrow}" Value="Always">
                             <Setter TargetName="PART_RightButton" Property="Visibility" Value="Visible" />
                             <Setter TargetName="PART_LeftButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PATR_Tools" Property="Visibility" Value="Visible" />
                         </DataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -110,6 +158,7 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_RightButton" Property="Visibility" Value="Visible" />
                             <Setter TargetName="PART_LeftButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PATR_Tools" Property="Visibility" Value="Visible" />
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

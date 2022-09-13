@@ -34,11 +34,11 @@ namespace LayuiTemplate.Control
         private Button PART_RightButton;
         public LayGradientCarousel()
         {
-            Loaded -= LayCarousel_Loaded;
-            Loaded += LayCarousel_Loaded;
         }
 
-
+        /// <summary>
+        /// 切换按钮展示类型
+        /// </summary>
         [Bindable(true)]
         public CarouselArrow Arrow
         {
@@ -49,12 +49,6 @@ namespace LayuiTemplate.Control
         // Using a DependencyProperty as the backing store for Arrow.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ArrowProperty =
             DependencyProperty.Register("Arrow", typeof(CarouselArrow), typeof(LayGradientCarousel), new PropertyMetadata(CarouselArrow.Always));
-
-
-        private void LayCarousel_Loaded(object sender, RoutedEventArgs e)
-        {
-            ImageSwitch();
-        }
 
         /// <summary>
         /// 是否自动切换
@@ -143,6 +137,7 @@ namespace LayuiTemplate.Control
                 PART_LeftButton.Click += PART_LeftButton_Click;
                 PART_RightButton.Click += PART_RightButton_Click; ;
             }
+            ImageSwitch();
         }
         /// <summary>
         /// 执行上一页
@@ -155,7 +150,7 @@ namespace LayuiTemplate.Control
             if (SelectedIndex >= (Items.Count - 1)) SelectedIndex = 0;
             else SelectedIndex++;
             timer?.Stop();
-            timer?.Start();
+            if (IsAutoSwitch) timer?.Start();
         }
         /// <summary>
         /// 执行下一页
@@ -168,7 +163,7 @@ namespace LayuiTemplate.Control
             if (SelectedIndex <= 0) SelectedIndex = (Items.Count - 1);
             else SelectedIndex--;
             timer?.Stop();
-            timer?.Start();
+           if(IsAutoSwitch) timer?.Start();
         }
         /// <summary>
         /// 监听是否符合指定子项

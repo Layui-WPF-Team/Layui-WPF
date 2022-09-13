@@ -324,7 +324,7 @@ namespace LayuiTemplate.Control
         protected override void OnLoadingRow(DataGridRowEventArgs e)
         {
             base.OnLoadingRow(e);
-            LayDataGridHelper.SetRowIndex(e.Row, e.Row.GetIndex() + 1);
+            LayDataGridHelper.SetLineNumber(e.Row, e.Row.GetIndex() + 1);
         }
     }
 

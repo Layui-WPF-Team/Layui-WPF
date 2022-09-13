@@ -185,7 +185,7 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="下拉菜单", PageKey=SystemResource.Page_ButtonView
                             },new MenuItemModel()
                             {
-                                ItemTitle="文件上传", PageKey=SystemResource.Page_ButtonView
+                                ItemTitle="文件上传", PageKey=SystemResource.Page_UploadView
                             },new MenuItemModel()
                             {
                                 ItemTitle="穿梭格", PageKey=SystemResource.Page_ButtonView

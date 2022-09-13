@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 
-namespace LayuiTemplate.Extend
+namespace LayuiTemplate.Control
 {
     /// <summary>
-    ///  LayDataGridHelper
+    ///  LayListBoxItem
     /// <para>创建者:YWK</para>
-    /// <para>创建时间:2022-07-04 下午 4:36:23</para>
+    /// <para>创建时间:2022-09-13 上午 10:50:21</para>
     /// </summary>
-    public class LayDataGridHelper: LayItemsControlHelper
+    public class LayListBoxItem: ListBoxItem
     {
-
+        
     }
 }

@@ -280,6 +280,7 @@
     <Compile Include="Control\Image\LayGifImage.cs" />
     <Compile Include="Control\Image\LaySVGImage.cs" />
     <Compile Include="Control\Legend\LayLegend.cs" />
+    <Compile Include="Control\ListBox\LayListBoxItem.cs" />
     <Compile Include="Control\MenuItem\LayMenuItem.cs" />
     <Compile Include="Control\Menu\LayMenu.cs" />
     <Compile Include="Control\Loading\LayLoading.cs" />
@@ -327,6 +328,8 @@
     <Compile Include="Extend\Base\LayControlsBaseHelper.cs" />
     <Compile Include="Extend\DataGrid\LayDataGridHelper.cs" />
     <Compile Include="Extend\DatePicker\LayDatePickerHelper.cs" />
+    <Compile Include="Extend\Image\LayImageHelper.cs" />
+    <Compile Include="Extend\ItemsControl\LayItemsControlHelper.cs" />
     <Compile Include="Extend\TextBox\LayTextBoxHelper.cs" />
     <Compile Include="Global\Dialog\Interface\ILayDialogWindowAware.cs" />
     <Compile Include="Global\Dialog\Interface\ILayDialogUserControlWindow.cs" />
@@ -367,7 +370,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Tools\LayImageHelper.cs" />
     <Compile Include="Tools\LayResourceHelper.cs" />
     <Compile Include="Tools\LayVisualTreeHelper.cs" />
     <Compile Include="Tools\LayWebBrowserHelper.cs" />
