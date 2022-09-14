@@ -20,7 +20,7 @@ namespace Layui.Core.Log
     {
         public void Debug(string message)
         {
-            LogManager.GetLogger($"==>").DebugFormat(message);
+            LogManager.GetLogger($"==>").Debug(message);
         }
 
         public void Error(Exception exception)
@@ -30,12 +30,12 @@ namespace Layui.Core.Log
 
         public void Info(string message)
         {
-            LogManager.GetLogger($"==>").InfoFormat(message);
+            LogManager.GetLogger($"==>").Info(message);
         }
 
         public void Warn(string message)
         {
-            LogManager.GetLogger($"==>").DebugFormat(message);
+            LogManager.GetLogger($"==>").Warn(message);
         }
     }
 }

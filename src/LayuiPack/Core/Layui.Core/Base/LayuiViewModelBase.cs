@@ -31,6 +31,9 @@ namespace Layui.Core.Base
         /// 日志
         /// </summary>
         public ILayLogger Logger;
+        public LayuiViewModelBase()
+        {
+        }
         public LayuiViewModelBase(IContainerExtension container)
         {
             this.Region = container.Resolve<IRegionManager>();
