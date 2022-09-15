@@ -146,16 +146,26 @@
                     Width="auto"
                     Height="150"
                     Margin="0,5"
-                    IsReadOnly="true"
-                    Style="{StaticResource LayRichTextBoxStyle}" />
+                    LayDocument="{Binding GetDocument}"
+                    Style="{DynamicResource LayRichTextBoxStyle}" />
+                <Lay:LayButton
+                    Width="auto"
+                    Padding="5,0"
+                    HorizontalAlignment="Left"
+                    Command="{Binding GetDocumentCommand}"
+                    Content="读取并设置富文本内容"
+                    Type="Default" />
                 <Lay:LayRichTextBox
                     Width="auto"
                     Height="150"
                     Margin="0,5"
-                    Style="{StaticResource LayRichTextBoxStyle}" />
+                    IsReadOnly="true"
+                    LayDocument="{Binding SetDocument}"
+                    Style="{DynamicResource LayRichTextBoxStyle}" />
             </StackPanel>
             <Lay:LayButton
                 HorizontalAlignment="Left"
+                Command="{Binding SaveCommand}"
                 Content="立即提交"
                 Type="Default" />
         </StackPanel>

@@ -68,41 +68,50 @@ namespace LayuiTemplate.Control
         /// 设置富文本内容
         /// </summary>
         [Bindable(true)]
-        public string DocumentXaml
+        public FlowDocument LayDocument
         {
-            get { return (string)GetValue(DocumentXamlProperty); }
-            internal set
-            {
-                _recursionProtection.Add(Thread.CurrentThread);
-                SetValue(DocumentXamlProperty, value);
-                _recursionProtection.Remove(Thread.CurrentThread);
-            }
+            get { return (FlowDocument)GetValue(LayDocumentProperty); }
+            set { SetValue(LayDocumentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty DocumentXamlProperty =
-            DependencyProperty.Register("DocumentXaml", typeof(string), typeof(LayRichTextBox));
-
-
-        private static void OnDocumentXamlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        // Using a DependencyProperty as the backing store for Document.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LayDocumentProperty =
+            DependencyProperty.Register("LayDocument", typeof(FlowDocument), typeof(LayRichTextBox), new FrameworkPropertyMetadata()
+            {
+                BindsTwoWayByDefault = true,
+                DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+            });
+        public override void OnApplyTemplate()
         {
-            LayRichTextBox layRichText = d as LayRichTextBox;
-            if (layRichText._recursionProtection.Contains(Thread.CurrentThread)) return;
-            try
-            {
-                var stream = new MemoryStream(Encoding.UTF8.GetBytes(layRichText.DocumentXaml));
-                var doc = (FlowDocument)XamlReader.Load(stream);
-                layRichText.Document = doc;
-            }
-            catch
-            {
-                layRichText.Document = new FlowDocument();
-            }
+            base.OnApplyTemplate();
+            LayDocument = Document;
         }
-        protected override void OnTextChanged(TextChangedEventArgs e)
+        /// <summary>
+        /// 将富文本控件的内容转换成string类型
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
+        public static string GetTextByRichBox(FlowDocument document)
         {
-            base.OnTextChanged(e);
-            DocumentXaml = XamlWriter.Save(Document);
+            //创建一个流
+            MemoryStream s = new MemoryStream();
+            //获得富文本中的内容
+            TextRange documentTextRange = new TextRange(document.ContentStart, document.ContentEnd);
+            //将富文本中的内容转换成xaml的格式，并保存到指定的流中
+            documentTextRange.Save(s, DataFormats.XamlPackage);
+            //将流中的内容转换成字节数组，并转换成base64的等效格式
+            return Convert.ToBase64String(s.ToArray());
+        }
+        /// <summary>
+        /// 将数据库中的内容转换回richtextbox可识别的内容
+        /// </summary>
+        /// <param name="data">数据库取出的数据</param>
+        /// <param name="box">接收的richtextbox控件名称</param>
+        public static void SetTextToRichBox(string data, FlowDocument document)
+        {
+            MemoryStream s = new MemoryStream((Convert.FromBase64String(Convert.ToString(data))));
+            TextRange TR = new TextRange(document.ContentStart, document.ContentEnd);
+            TR.Load(s, DataFormats.XamlPackage);
         }
     }
 }
