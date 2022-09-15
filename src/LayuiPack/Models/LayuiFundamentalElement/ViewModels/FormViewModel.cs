@@ -32,7 +32,7 @@ namespace LayuiFundamentalElement.ViewModels
         }
         public FormViewModel(IContainerExtension container) : base(container)
         {
-            Password =123123;
+            Password ="123123";
         }
         public List<string> ListDatas { get; set; } = new List<string>()
         {

@@ -8,6 +8,8 @@
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="LineHeight" Value="auto" />
+                <Setter Property="TextAlignment" Value="Left" />
+                <Setter Property="FlowDirection" Value="LeftToRight" />
             </Style>
         </Style.Resources>
         <Setter Property="Background" Value="White" />
@@ -38,11 +40,107 @@
                         CornerRadius="{TemplateBinding CornerRadius}"
                         SnapsToDevicePixels="True">
                         <Grid>
-                            <ScrollViewer
-                                x:Name="PART_ContentHost"
-                                Focusable="false"
-                                HorizontalScrollBarVisibility="Hidden"
-                                VerticalScrollBarVisibility="Hidden" />
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false">
+                                <ScrollViewer.Style>
+                                    <Style TargetType="ScrollViewer">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                                    <Border
+                                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                                        SnapsToDevicePixels="True">
+                                                        <Grid Background="{TemplateBinding Background}">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="*" />
+                                                            </Grid.RowDefinitions>
+                                                            <Rectangle
+                                                                x:Name="Corner"
+                                                                Grid.Row="1"
+                                                                Grid.Column="1"
+                                                                Fill="Transparent" />
+                                                            <ScrollContentPresenter
+                                                                x:Name="PART_ScrollContentPresenter"
+                                                                Grid.Row="0"
+                                                                Grid.Column="0"
+                                                                Margin="{TemplateBinding Padding}"
+                                                                CanContentScroll="{TemplateBinding CanContentScroll}"
+                                                                CanHorizontallyScroll="False"
+                                                                CanVerticallyScroll="False"
+                                                                Content="{TemplateBinding Content}"
+                                                                ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                                            <ScrollBar
+                                                                x:Name="PART_VerticalScrollBar"
+                                                                HorizontalAlignment="Right"
+                                                                AutomationProperties.AutomationId="VerticalScrollBar"
+                                                                Cursor="Arrow"
+                                                                Maximum="{TemplateBinding ScrollableHeight}"
+                                                                Minimum="0"
+                                                                Opacity="0"
+                                                                Style="{DynamicResource LayScrollBarVertical}"
+                                                                ViewportSize="{TemplateBinding ViewportHeight}"
+                                                                Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                                                Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                                            <ScrollBar
+                                                                x:Name="PART_HorizontalScrollBar"
+                                                                HorizontalAlignment="Stretch"
+                                                                VerticalAlignment="Bottom"
+                                                                AutomationProperties.AutomationId="HorizontalScrollBar"
+                                                                Cursor="Arrow"
+                                                                Maximum="{TemplateBinding ScrollableWidth}"
+                                                                Minimum="0"
+                                                                Opacity="0"
+                                                                Style="{DynamicResource LayScrollBarHorizontal}"
+                                                                ViewportSize="{TemplateBinding ViewportWidth}"
+                                                                Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                                                Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                                        </Grid>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayRichTextBox}, Path=IsMouseOver}" Value="true">
+                                                            <DataTrigger.EnterActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation
+                                                                            Storyboard.TargetName="PART_VerticalScrollBar"
+                                                                            Storyboard.TargetProperty="Opacity"
+                                                                            To="1"
+                                                                            Duration="0:0:0.3" />
+                                                                        <DoubleAnimation
+                                                                            Storyboard.TargetName="PART_HorizontalScrollBar"
+                                                                            Storyboard.TargetProperty="Opacity"
+                                                                            To="1"
+                                                                            Duration="0:0:0.3" />
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </DataTrigger.EnterActions>
+                                                            <DataTrigger.ExitActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation
+                                                                            Storyboard.TargetName="PART_VerticalScrollBar"
+                                                                            Storyboard.TargetProperty="Opacity"
+                                                                            To="0"
+                                                                            Duration="0:0:0.3" />
+                                                                        <DoubleAnimation
+                                                                            Storyboard.TargetName="PART_HorizontalScrollBar"
+                                                                            Storyboard.TargetProperty="Opacity"
+                                                                            To="0"
+                                                                            Duration="0:0:0.3" />
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </DataTrigger.ExitActions>
+                                                        </DataTrigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ScrollViewer.Style>
+                            </ScrollViewer>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -60,4 +158,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style BasedOn="{StaticResource LayRichTextBoxStyle}" TargetType="{x:Type Lay:LayRichTextBox}" />
 </ResourceDictionary>

@@ -38,8 +38,7 @@
                             <ScrollViewer
                                 x:Name="PART_ContentHost"
                                 Focusable="false"
-                                HorizontalScrollBarVisibility="Hidden"
-                                VerticalScrollBarVisibility="Hidden" />
+                                Style="{DynamicResource LayScrollViewerStyle}" />
                             <Border
                                 Padding="2,0,2,0"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -154,7 +153,7 @@
                                                 Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=NoDataTips, Mode=OneWay}" />
                                         </Grid>
                                         <Grid x:Name="ItemsGrid" Background="Transparent">
-                                            <ScrollViewer Focusable="False">
+                                            <ScrollViewer Focusable="False" Style="{DynamicResource LayScrollViewerStyle}">
                                                 <ItemsPresenter Focusable="False" />
                                             </ScrollViewer>
                                         </Grid>

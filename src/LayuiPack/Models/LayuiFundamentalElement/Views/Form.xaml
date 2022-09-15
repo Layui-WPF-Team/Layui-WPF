@@ -147,7 +147,7 @@
                     Height="150"
                     Margin="0,5"
                     LayDocument="{Binding GetDocument}"
-                    Style="{DynamicResource LayRichTextBoxStyle}" />
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" />
                 <Lay:LayButton
                     Width="auto"
                     Padding="5,0"
@@ -161,7 +161,7 @@
                     Margin="0,5"
                     IsReadOnly="true"
                     LayDocument="{Binding SetDocument}"
-                    Style="{DynamicResource LayRichTextBoxStyle}" />
+                    ScrollViewer.VerticalScrollBarVisibility="Visible" />
             </StackPanel>
             <Lay:LayButton
                 HorizontalAlignment="Left"
