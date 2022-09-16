@@ -108,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\DrawerItemStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\EditTextStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -272,6 +276,7 @@
     <Compile Include="Control\DateTimePicker\LayDateTimePicker.cs" />
     <Compile Include="Control\DialogHost\LayDialogHost.cs" />
     <Compile Include="Control\DrawerHost\LayDrawerHost.cs" />
+    <Compile Include="Control\DrawerHost\LayDrawerItem.cs" />
     <Compile Include="Control\DropDown\LayDropDown.cs" />
     <Compile Include="Control\EditText\LayEditText.cs" />
     <Compile Include="Control\Expander\LayExpander.cs" />

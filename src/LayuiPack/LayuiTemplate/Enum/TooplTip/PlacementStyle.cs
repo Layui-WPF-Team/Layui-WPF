@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayuiTemplate.Enum.TooplTip
+namespace LayuiTemplate.Enum
 {
     public enum PlacementStyle
     {

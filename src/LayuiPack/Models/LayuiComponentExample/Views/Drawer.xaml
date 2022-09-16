@@ -76,6 +76,29 @@
                         IsChecked="{Binding DrawerOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </Lay:LayDrawerHost>
+            <Lay:LayDrawerHost Height="300">
+                <Grid>
+                    <ToggleButton
+                        x:Name="DrawerItem1"
+                        Width="150"
+                        Height="50"
+                        Content="点我Items" />
+                    <Lay:LayDrawerItem DrawerOpen="{Binding ElementName=DrawerItem1, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <Grid Height="200" Background="White">
+                            <ToggleButton
+                                x:Name="DrawerItem2"
+                                Width="150"
+                                Height="50"
+                                Content="点我" />
+                        </Grid>
+                    </Lay:LayDrawerItem>
+                    <Lay:LayDrawerItem DrawerOpen="{Binding ElementName=DrawerItem2, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <Grid Height="200" Background="White">
+                            <TextBlock Text="我是子项抽屉" />
+                        </Grid>
+                    </Lay:LayDrawerItem>
+                </Grid>
+            </Lay:LayDrawerHost>
         </StackPanel>
     </ScrollViewer>
 

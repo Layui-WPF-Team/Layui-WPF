@@ -1,4 +1,4 @@
-﻿using LayuiTemplate.Enum.TooplTip;
+﻿using LayuiTemplate.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
