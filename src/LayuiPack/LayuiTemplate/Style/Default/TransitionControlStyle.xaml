@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayuiTemplate.Control">
     <Style x:Key="LayTransitionStyle" TargetType="Lay:LayTransition">
+        <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayTransition">

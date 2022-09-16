@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayuiTemplate.Enum.Transitions
+namespace LayuiTemplate.Enum
 {
     /// <summary>
     /// 过度动画枚举

@@ -1,5 +1,4 @@
 ﻿using Layui.Core.Base;
-using LayuiTemplate.Enum.Transitions;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;

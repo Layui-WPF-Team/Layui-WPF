@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppHelper\Console.cs" />
     <Compile Include="AppHelper\DownloadFileInfo.cs" />
     <Compile Include="AppHelper\NetworkHelper.cs" />
     <Compile Include="Base\LayuiViewModelBase.cs" />
@@ -73,6 +74,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LayuiTemplate\LayuiTemplate.csproj">
+      <Project>{80DD0AA1-A155-4C77-A7D0-878F1FB1325E}</Project>
+      <Name>LayuiTemplate</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

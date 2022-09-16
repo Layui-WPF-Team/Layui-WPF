@@ -1,4 +1,5 @@
 ﻿using Layui.Core.Log;
+using LayuiTemplate.Enum;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Ioc;
@@ -56,7 +57,7 @@ namespace Layui.Core.Base
         /// </summary>
         public bool KeepAlive => false;
 
-        public virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
+        public  virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
         {
             continuationCallback(true);
         }
@@ -75,7 +76,6 @@ namespace Layui.Core.Base
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedFrom(NavigationContext navigationContext)
         {
-
         }
         /// <summary>
         /// 导航后
@@ -83,7 +83,6 @@ namespace Layui.Core.Base
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
-
         }
     }
 }

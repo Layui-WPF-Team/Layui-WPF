@@ -7,6 +7,8 @@ using LayuiHome;
 using LayuiTemplate.Global;
 using Prism.Ioc;
 using Prism.Modularity;
+using System;
+using System.IO;
 using System.Windows;
 
 namespace LayuiApp
@@ -21,6 +23,7 @@ namespace LayuiApp
             //初始化日志配置信息
             log4net.Config.XmlConfigurator.Configure();
             NetworkHelper.Initialization();
+
         }
         protected override Window CreateShell()
         {
@@ -32,7 +35,6 @@ namespace LayuiApp
             base.OnStartup(e);
             DispatcherUnhandledException += App_DispatcherUnhandledException;
         }
-
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
 

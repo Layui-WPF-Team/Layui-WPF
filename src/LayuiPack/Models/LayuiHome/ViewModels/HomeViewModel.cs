@@ -2,6 +2,7 @@
 using Layui.Core.Base;
 using Layui.Core.Resource;
 using LayuiHome.Models;
+using LayuiTemplate.Enum;
 using LayuiTemplate.Global;
 using Prism.Commands;
 using Prism.Ioc;
@@ -19,6 +20,12 @@ namespace LayuiHome.ViewModels
 {
     public class HomeViewModel : LayuiViewModelBase
     {
+        private AnimationType _AnimationType = AnimationType.SlideInToBottom;
+        public AnimationType AnimationType
+        {
+            get { return _AnimationType; }
+            set { SetProperty(ref _AnimationType, value); }
+        }
         public HomeViewModel(IContainerExtension container) : base(container)
         {
         }
@@ -36,7 +43,13 @@ namespace LayuiHome.ViewModels
             set
             {
                 SetProperty(ref _MenuItemModel, value);
-                Region.RequestNavigate(SystemResource.Nav_HomeContent, MenuItemModel.PageKey);
+                new Action(async () =>
+               {
+                   AnimationType = AnimationType.SlideOutToLeft;
+                   await Task.Delay(300);
+                   Region.RequestNavigate(SystemResource.Nav_HomeContent, MenuItemModel.PageKey);
+                   AnimationType = AnimationType.SlideInToRight;
+               }).Invoke();
             }
         }
         private ObservableCollection<MenuItemModel> _MenuItemList;
@@ -64,7 +77,7 @@ namespace LayuiHome.ViewModels
         /// 跳转界面
         /// </summary>
         /// <param name="PageKey"></param>
-        private void GoPage(MenuItemModel item)
+        private async void GoPage(MenuItemModel item)
         {
             if (item == null) return;
             MenuItemModel = item;
@@ -82,10 +95,10 @@ namespace LayuiHome.ViewModels
         }
 
         bool IsAvailable = false;
-        private  void Network_NetworkAvailabilityChanged(bool isAvailable)
+        private void Network_NetworkAvailabilityChanged(bool isAvailable)
         {
             Network = isAvailable;
-            if (!IsAvailable&& Network==true)
+            if (!IsAvailable && Network == true)
             {
                 Application.Current.Dispatcher.BeginInvoke(new Action(async () =>
                 {

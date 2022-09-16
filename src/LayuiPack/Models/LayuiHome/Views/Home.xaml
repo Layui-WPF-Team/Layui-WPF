@@ -119,6 +119,11 @@
                 </ItemsControl>
             </ScrollViewer>
         </Border>
-        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Nv:SystemResource.Nav_HomeContent}" />
+        <Lay:LayTransition
+            Grid.Column="1"
+            IsActive="true"
+            Type="{Binding AnimationType}">
+            <ContentControl prism:RegionManager.RegionName="{x:Static Nv:SystemResource.Nav_HomeContent}" />
+        </Lay:LayTransition>
     </Grid>
 </UserControl>

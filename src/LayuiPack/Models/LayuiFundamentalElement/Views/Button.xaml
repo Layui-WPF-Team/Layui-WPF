@@ -9,50 +9,48 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Lay:LayTransition IsActive="True" Type="SlideInToBottom">
-        <WrapPanel Orientation="Horizontal">
-            <Lay:LayButton
-                Margin="5"
-                Content="原始按钮"
-                Type="Primary" />
-            <Lay:LayButton
-                Margin="5"
-                Content="默认按钮"
-                Type="Default" />
-            <Lay:LayButton
-                Margin="5"
-                Content="百搭按钮"
-                Type="Normal" />
-            <Lay:LayButton Margin="5" Type="Normal">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontFamily="{StaticResource IconFont}"
-                        Text="&#xf2bc;" />
-                    <TextBlock Text="图标" />
-                </StackPanel>
-            </Lay:LayButton>
-            <Lay:LayButton
-                Margin="5"
-                Content="暖色按钮"
-                Type="Warm" />
-            <Lay:LayButton
-                Margin="5"
-                Content="警告按钮"
-                Type="Danger" />
-            <Lay:LayButton
-                Margin="5"
-                Content="禁用按钮"
-                IsEnabled="False"
-                Type="Primary" />
-            <Lay:LayButton
-                Margin="5"
-                Command="{Binding BtnLoadingCommand}"
-                Content="点我"
-                IsLoading="{Binding BtnIsLoading}"
-                LoadingContent="加载中"
-                Type="Default" />
-        </WrapPanel>
-    </Lay:LayTransition>
+    <WrapPanel Orientation="Horizontal">
+        <Lay:LayButton
+            Margin="5"
+            Content="原始按钮"
+            Type="Primary" />
+        <Lay:LayButton
+            Margin="5"
+            Content="默认按钮"
+            Type="Default" />
+        <Lay:LayButton
+            Margin="5"
+            Content="百搭按钮"
+            Type="Normal" />
+        <Lay:LayButton Margin="5" Type="Normal">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="{StaticResource IconFont}"
+                    Text="&#xf2bc;" />
+                <TextBlock Text="图标" />
+            </StackPanel>
+        </Lay:LayButton>
+        <Lay:LayButton
+            Margin="5"
+            Content="暖色按钮"
+            Type="Warm" />
+        <Lay:LayButton
+            Margin="5"
+            Content="警告按钮"
+            Type="Danger" />
+        <Lay:LayButton
+            Margin="5"
+            Content="禁用按钮"
+            IsEnabled="False"
+            Type="Primary" />
+        <Lay:LayButton
+            Margin="5"
+            Command="{Binding BtnLoadingCommand}"
+            Content="点我"
+            IsLoading="{Binding BtnIsLoading}"
+            LoadingContent="加载中"
+            Type="Default" />
+    </WrapPanel>
 </UserControl>
