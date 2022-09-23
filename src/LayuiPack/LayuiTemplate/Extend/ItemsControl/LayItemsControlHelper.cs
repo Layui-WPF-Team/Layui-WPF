@@ -35,7 +35,7 @@ namespace LayuiTemplate.Extend
 
         // Using a DependencyProperty as the backing store for Index.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LineNumberProperty =
-            DependencyProperty.RegisterAttached("LineNumber", typeof(int), typeof(LayDataGridHelper));
+            DependencyProperty.RegisterAttached("LineNumber", typeof(int), typeof(LayItemsControlHelper));
 
     }
 }

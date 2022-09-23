@@ -26,7 +26,8 @@
                                 x:Name="PART_Header"
                                 Grid.Column="1"
                                 Margin="5,0"
-                                Content="{TemplateBinding Header}" />
+                                Content="{TemplateBinding Header}"
+                                Focusable="{TemplateBinding Focusable}" />
                             <Grid
                                 Grid.Column="2"
                                 Height="{TemplateBinding Line}"
@@ -35,7 +36,8 @@
                         <ContentControl
                             x:Name="PART_Content"
                             Grid.Row="1"
-                            Content="{TemplateBinding Content}" />
+                            Content="{TemplateBinding Content}"
+                            Focusable="{TemplateBinding Focusable}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -61,7 +63,8 @@
                                         x:Name="PART_Header"
                                         Grid.Column="1"
                                         Margin="5,0"
-                                        Content="{TemplateBinding Header}" />
+                                        Content="{TemplateBinding Header}"
+                                        Focusable="{TemplateBinding Focusable}" />
                                     <Grid
                                         Grid.Column="2"
                                         Height="{TemplateBinding Line}"
@@ -70,7 +73,8 @@
                                 <ContentControl
                                     x:Name="PART_Content"
                                     Grid.Row="1"
-                                    Content="{TemplateBinding Content}" />
+                                    Content="{TemplateBinding Content}"
+                                    Focusable="{TemplateBinding Focusable}" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -96,7 +100,8 @@
                                         x:Name="PART_Header"
                                         Grid.Column="1"
                                         Margin="5,0"
-                                        Content="{TemplateBinding Header}" />
+                                        Content="{TemplateBinding Header}"
+                                        Focusable="{TemplateBinding Focusable}" />
                                     <Grid
                                         Grid.Column="2"
                                         Height="{TemplateBinding Line}"
@@ -105,7 +110,8 @@
                                 <ContentControl
                                     x:Name="PART_Content"
                                     Grid.Row="1"
-                                    Content="{TemplateBinding Content}" />
+                                    Content="{TemplateBinding Content}"
+                                    Focusable="{TemplateBinding Focusable}" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>

@@ -380,6 +380,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Tools\LayKeyboardKeyHelper.cs" />
     <Compile Include="Tools\LayResourceHelper.cs" />
     <Compile Include="Tools\LayVisualTreeHelper.cs" />
     <Compile Include="Tools\LayWebBrowserHelper.cs" />
