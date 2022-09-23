@@ -30,6 +30,7 @@ namespace LayuiFundamentalElement
             containerRegistry.RegisterForNavigation<Views.TreeView>(SystemResource.Page_TreeView);
             containerRegistry.RegisterForNavigation<Views.AuxiliaryElement>(SystemResource.Page_AuxiliaryElementView);
             containerRegistry.RegisterForNavigation<Views.Image>(SystemResource.Page_ImageView);
+            containerRegistry.RegisterForNavigation<Views.Keyboard>(SystemResource.Page_KeyboardView);
         }
     }
 }

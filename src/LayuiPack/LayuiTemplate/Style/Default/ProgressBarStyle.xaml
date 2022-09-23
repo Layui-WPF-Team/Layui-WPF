@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    xmlns:Lay="clr-namespace:LayuiTemplate.Controls">
     <Style x:Key="LayProgressBarStyle" TargetType="{x:Type Lay:LayProgressBar}">
         <Setter Property="Height" Value="6" />
         <Setter Property="Background" Value="{DynamicResource LighGray}" />

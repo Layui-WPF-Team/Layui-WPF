@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    xmlns:Lay="clr-namespace:LayuiTemplate.Controls">
     <Style x:Key="LayLegendStyle" TargetType="Lay:LayLegend">
         <Setter Property="Line" Value="1" />
         <Setter Property="Header" Value="华丽的分割线" />

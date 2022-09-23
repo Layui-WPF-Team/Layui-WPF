@@ -31,6 +31,10 @@ namespace LayuiTemplate.Enum
         /// 警告
         /// </summary>
         Danger,
+        /// <summary>
+        /// 自定义
+        /// </summary>
+        Customize,
 
     }
 }

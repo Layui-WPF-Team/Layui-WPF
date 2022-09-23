@@ -1,4 +1,4 @@
-﻿using LayuiTemplate.Control;
+﻿using LayuiTemplate.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

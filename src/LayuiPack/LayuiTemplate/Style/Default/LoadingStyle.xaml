@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Lay="clr-namespace:LayuiTemplate.Control"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Controls"
     xmlns:enum="clr-namespace:LayuiTemplate.Enum">
     <Style x:Key="LayLoadingStyle" TargetType="Lay:LayLoading">
         <Setter Property="Background" Value="White" />

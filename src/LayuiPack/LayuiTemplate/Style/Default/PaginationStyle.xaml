@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Lay="clr-namespace:LayuiTemplate.Control"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Controls"
     xmlns:LayHelper="clr-namespace:LayuiTemplate.Extend">
     <Style x:Key="LayPaginationStyle" TargetType="Lay:LayPagination">
         <Style.Resources>

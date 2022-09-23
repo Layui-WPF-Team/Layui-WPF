@@ -50,5 +50,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/DrawerHostStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/DrawerItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/EditTextStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/KeyboardStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

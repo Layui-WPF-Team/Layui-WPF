@@ -217,6 +217,9 @@ namespace LayuiHome.ViewModels
                             },new MenuItemModel()
                             {
                                 ItemTitle="提示信息", PageKey=SystemResource.Page_MessageView
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="键盘", PageKey=SystemResource.Page_KeyboardView
                             }
                         }
                 },new MenuItemModel()

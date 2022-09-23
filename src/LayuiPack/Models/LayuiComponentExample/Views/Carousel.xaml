@@ -2,7 +2,7 @@
     x:Class="LayuiComponentExample.Views.Carousel"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:lay="clr-namespace:LayuiTemplate.Control;assembly=LayuiTemplate"
+    xmlns:lay="clr-namespace:LayuiTemplate.Controls;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>

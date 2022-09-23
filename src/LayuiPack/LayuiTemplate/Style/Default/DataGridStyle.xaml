@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Lay="clr-namespace:LayuiTemplate.Control">
+    xmlns:Lay="clr-namespace:LayuiTemplate.Controls">
     <Style x:Key="ElementTextStyle" TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=VerticalContentAlignment}" />
         <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=HorizontalContentAlignment}" />

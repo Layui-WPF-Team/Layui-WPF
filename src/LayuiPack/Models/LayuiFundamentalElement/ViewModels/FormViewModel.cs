@@ -1,5 +1,5 @@
 ﻿using Layui.Core.Base;
-using LayuiTemplate.Control;
+using LayuiTemplate.Controls;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;

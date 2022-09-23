@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Lay="clr-namespace:LayuiTemplate.Control"
+    xmlns:Lay="clr-namespace:LayuiTemplate.Controls"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--  水平滑条  -->
     <ControlTemplate x:Key="LaySliderHorizontal" TargetType="{x:Type Lay:LaySlider}">

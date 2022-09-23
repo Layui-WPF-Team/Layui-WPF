@@ -136,6 +136,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\KeyboardStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\LegendStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -262,58 +266,59 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\Badge\LayBadge.cs" />
-    <Compile Include="Control\Button\LayButton.cs" />
-    <Compile Include="Control\Canvas\LaySliderCanvas.cs" />
-    <Compile Include="Control\Carousel\LayCarouselItem.cs" />
-    <Compile Include="Control\Carousel\LayGradientCarousel.cs" />
-    <Compile Include="Control\Carousel\LaySlideCarousel.cs" />
-    <Compile Include="Control\CheckBox\LayCheckBox.cs" />
-    <Compile Include="Control\ComboBox\LayComboBox.cs" />
-    <Compile Include="Control\ComboBox\LayComboBoxItem.cs" />
-    <Compile Include="Control\DataGrid\LayDataGrid.cs" />
-    <Compile Include="Control\DatePicker\LayDatePicker.cs" />
-    <Compile Include="Control\DateTimePicker\LayDateTimePicker.cs" />
-    <Compile Include="Control\DialogHost\LayDialogHost.cs" />
-    <Compile Include="Control\DrawerHost\LayDrawerHost.cs" />
-    <Compile Include="Control\DrawerHost\LayDrawerItem.cs" />
-    <Compile Include="Control\DropDown\LayDropDown.cs" />
-    <Compile Include="Control\EditText\LayEditText.cs" />
-    <Compile Include="Control\Expander\LayExpander.cs" />
-    <Compile Include="Control\Expander\LayNavExpanderPanel.cs" />
-    <Compile Include="Control\GroupBox\LayGroupBox.cs" />
-    <Compile Include="Control\Image\LayGifImage.cs" />
-    <Compile Include="Control\Image\LaySVGImage.cs" />
-    <Compile Include="Control\Legend\LayLegend.cs" />
-    <Compile Include="Control\ListBox\LayListBoxItem.cs" />
-    <Compile Include="Control\MenuItem\LayMenuItem.cs" />
-    <Compile Include="Control\Menu\LayMenu.cs" />
-    <Compile Include="Control\Loading\LayLoading.cs" />
-    <Compile Include="Control\Message\LayMessageHost.cs" />
-    <Compile Include="Control\NumericUpDown\LayNumericUpDown.cs" />
-    <Compile Include="Control\Pagination\LayPagination.cs" />
-    <Compile Include="Control\Panel\LayCard.cs" />
-    <Compile Include="Control\Password\LayPasswordBox.cs" />
-    <Compile Include="Control\PopupBox\LayPopupBox.cs" />
-    <Compile Include="Control\ProgressBar\LayProgressBar.cs" />
-    <Compile Include="Control\ListBox\LayListBox.cs" />
-    <Compile Include="Control\RadioButton\LayRadioButton.cs" />
-    <Compile Include="Control\RichTextBox\LayRichTextBox.cs" />
-    <Compile Include="Control\Slider\LaySlider.cs" />
-    <Compile Include="Control\Switch\LaySwitch.cs" />
-    <Compile Include="Control\TabControl\LayTabControl.cs" />
-    <Compile Include="Control\TabItem\LayTabItem.cs" />
-    <Compile Include="Control\TextBox\LayAutoCompleteTextBox.cs" />
-    <Compile Include="Control\TextBox\LayTextBox.cs" />
-    <Compile Include="Control\Timeline\LayTimelineItem.cs" />
-    <Compile Include="Control\Timeline\LayTimelinePanel.cs" />
-    <Compile Include="Control\TimePicker\LayTimePicker.cs" />
-    <Compile Include="Control\Timer\LayTimer.cs" />
-    <Compile Include="Control\ToolTip\LayToolTip.cs" />
-    <Compile Include="Control\Transitions\LayTransition.cs" />
-    <Compile Include="Control\TreeViewItem\LayTreeViewItem.cs" />
-    <Compile Include="Control\TreeView\LayTreeView.cs" />
-    <Compile Include="Control\Window\LayWindow.cs" />
+    <Compile Include="Controls\Badge\LayBadge.cs" />
+    <Compile Include="Controls\Button\LayButton.cs" />
+    <Compile Include="Controls\Canvas\LaySliderCanvas.cs" />
+    <Compile Include="Controls\Carousel\LayCarouselItem.cs" />
+    <Compile Include="Controls\Carousel\LayGradientCarousel.cs" />
+    <Compile Include="Controls\Carousel\LaySlideCarousel.cs" />
+    <Compile Include="Controls\CheckBox\LayCheckBox.cs" />
+    <Compile Include="Controls\ComboBox\LayComboBox.cs" />
+    <Compile Include="Controls\ComboBox\LayComboBoxItem.cs" />
+    <Compile Include="Controls\DataGrid\LayDataGrid.cs" />
+    <Compile Include="Controls\DatePicker\LayDatePicker.cs" />
+    <Compile Include="Controls\DateTimePicker\LayDateTimePicker.cs" />
+    <Compile Include="Controls\DialogHost\LayDialogHost.cs" />
+    <Compile Include="Controls\DrawerHost\LayDrawerHost.cs" />
+    <Compile Include="Controls\DrawerHost\LayDrawerItem.cs" />
+    <Compile Include="Controls\DropDown\LayDropDown.cs" />
+    <Compile Include="Controls\EditText\LayEditText.cs" />
+    <Compile Include="Controls\Expander\LayExpander.cs" />
+    <Compile Include="Controls\Expander\LayNavExpanderPanel.cs" />
+    <Compile Include="Controls\GroupBox\LayGroupBox.cs" />
+    <Compile Include="Controls\Image\LayGifImage.cs" />
+    <Compile Include="Controls\Image\LaySVGImage.cs" />
+    <Compile Include="Controls\Keyboard\LayKeyboard.cs" />
+    <Compile Include="Controls\Legend\LayLegend.cs" />
+    <Compile Include="Controls\ListBox\LayListBoxItem.cs" />
+    <Compile Include="Controls\MenuItem\LayMenuItem.cs" />
+    <Compile Include="Controls\Menu\LayMenu.cs" />
+    <Compile Include="Controls\Loading\LayLoading.cs" />
+    <Compile Include="Controls\Message\LayMessageHost.cs" />
+    <Compile Include="Controls\NumericUpDown\LayNumericUpDown.cs" />
+    <Compile Include="Controls\Pagination\LayPagination.cs" />
+    <Compile Include="Controls\Panel\LayCard.cs" />
+    <Compile Include="Controls\Password\LayPasswordBox.cs" />
+    <Compile Include="Controls\PopupBox\LayPopupBox.cs" />
+    <Compile Include="Controls\ProgressBar\LayProgressBar.cs" />
+    <Compile Include="Controls\ListBox\LayListBox.cs" />
+    <Compile Include="Controls\RadioButton\LayRadioButton.cs" />
+    <Compile Include="Controls\RichTextBox\LayRichTextBox.cs" />
+    <Compile Include="Controls\Slider\LaySlider.cs" />
+    <Compile Include="Controls\Switch\LaySwitch.cs" />
+    <Compile Include="Controls\TabControl\LayTabControl.cs" />
+    <Compile Include="Controls\TabItem\LayTabItem.cs" />
+    <Compile Include="Controls\TextBox\LayAutoCompleteTextBox.cs" />
+    <Compile Include="Controls\TextBox\LayTextBox.cs" />
+    <Compile Include="Controls\Timeline\LayTimelineItem.cs" />
+    <Compile Include="Controls\Timeline\LayTimelinePanel.cs" />
+    <Compile Include="Controls\TimePicker\LayTimePicker.cs" />
+    <Compile Include="Controls\Timer\LayTimer.cs" />
+    <Compile Include="Controls\ToolTip\LayToolTip.cs" />
+    <Compile Include="Controls\Transitions\LayTransition.cs" />
+    <Compile Include="Controls\TreeViewItem\LayTreeViewItem.cs" />
+    <Compile Include="Controls\TreeView\LayTreeView.cs" />
+    <Compile Include="Controls\Window\LayWindow.cs" />
     <Compile Include="Converters\Base\ElementAutoNumberConvert.cs" />
     <Compile Include="Converters\Base\ElementOffsetConverter.cs" />
     <Compile Include="Converters\Base\MedianConvert.cs" />
@@ -358,9 +363,9 @@
     <Compile Include="Enum\Slider\SliderTipsPosition.cs" />
     <Compile Include="Enum\TabControl\TabControlStyle.cs" />
     <Compile Include="Enum\Transitions\AnimationType.cs" />
-    <Compile Include="Control\Expander\LayNavExpander.cs" />
+    <Compile Include="Controls\Expander\LayNavExpander.cs" />
     <Compile Include="Global\Message\LayMessage.cs" />
-    <Compile Include="Control\Message\LayMessageControl.cs" />
+    <Compile Include="Controls\Message\LayMessageControl.cs" />
     <Compile Include="Global\Notification\LayNotification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -389,7 +394,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Control\Notification\" />
+    <Folder Include="Controls\Notification\" />
     <Folder Include="Enum\Expander\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

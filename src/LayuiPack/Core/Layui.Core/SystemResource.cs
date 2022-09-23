@@ -123,6 +123,10 @@ namespace Layui.Core.Resource
         /// 文件上传
         /// </summary>
         public const string Page_UploadView = "UploadView"; 
+        /// <summary>
+        /// 键盘
+        /// </summary>
+        public const string Page_KeyboardView = "KeyboardView"; 
         #endregion
 
         #region 弹窗名称
