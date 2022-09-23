@@ -10,10 +10,12 @@
         <Setter Property="KeyButtonStyle">
             <Setter.Value>
                 <Style BasedOn="{StaticResource LayButtonStyle}" TargetType="Lay:LayButton">
-                    <Setter Property="Type" Value="Normal" />
+                    <Setter Property="Type" Value="Default" />
                     <Setter Property="Width" Value="auto" />
                     <Setter Property="Height" Value="auto" />
                     <Setter Property="Margin" Value="1" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
             </Setter.Value>
         </Setter>
@@ -74,63 +76,275 @@
                                         </Grid>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
-                                <Lay:LayButton Grid.ColumnSpan="2" Style="{TemplateBinding KeyButtonStyle}" />
+                                <Lay:LayButton Grid.ColumnSpan="2" Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="Esc" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="2"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="~" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="`" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="4"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="!" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="1" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="6"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="@" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="2" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="8"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="#" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="3" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="10"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="$" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="4" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="12"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="%" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="5" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="14"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="^" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="6" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="16"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="&amp;" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="7" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="18"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="*" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="8" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="20"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="(" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="9" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="22"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text=")" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="0" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="24"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="-" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Top"
+                                            Text="_" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="26"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="+" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="=" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="28"
                                     Grid.ColumnSpan="3"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="Backspace" />
+                                    </Grid>
+                                </Lay:LayButton>
                             </ItemsControl>
                             <ItemsControl Grid.Row="1">
                                 <ItemsControl.ItemsPanel>
@@ -172,63 +386,192 @@
                                         </Grid>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
-                                <Lay:LayButton Grid.ColumnSpan="3" Style="{TemplateBinding KeyButtonStyle}" />
+                                <Lay:LayButton Grid.ColumnSpan="3" Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="Tab" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="3"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="q" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="5"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="w" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="7"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="e" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="9"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="r" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="11"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="t" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="13"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="y" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="15"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="u" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="17"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="i" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="19"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="o" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="21"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="p" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="23"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="{}{" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="`" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="25"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="{}}" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="`" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="27"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="|" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center"
+                                            Text="\" />
+                                    </Grid>
+                                </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="29"
                                     Grid.ColumnSpan="2"
-                                    Style="{TemplateBinding KeyButtonStyle}" />
+                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="Del" />
+                                    </Grid>
+                                </Lay:LayButton>
                             </ItemsControl>
                             <ItemsControl Grid.Row="2">
                                 <ItemsControl.ItemsPanel>
