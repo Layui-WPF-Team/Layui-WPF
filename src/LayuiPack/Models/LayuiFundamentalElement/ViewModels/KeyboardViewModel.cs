@@ -22,10 +22,10 @@ namespace LayuiFundamentalElement.ViewModels
 
         void ExecuteTestCommand(object key)
         {
-            LayKeyboardKeyHelper.Keyboard_Event(Key.LeftShift, LayKeyboardKeyHelper.KeyDown);
-            LayKeyboardKeyHelper.Keyboard_Event(Key.D1, LayKeyboardKeyHelper.KeyDown);
-            LayKeyboardKeyHelper.Keyboard_Event(Key.LeftShift, LayKeyboardKeyHelper.KeyUp);
-            LayKeyboardKeyHelper.Keyboard_Event(Key.D1, LayKeyboardKeyHelper.KeyUp);
+            //LayKeyboardKeyHelper.Keyboard_Event(Key.LeftShift, LayKeyboardKeyHelper.KeyDown);
+            //LayKeyboardKeyHelper.Keyboard_Event(Key.D1, LayKeyboardKeyHelper.KeyDown);
+            //LayKeyboardKeyHelper.Keyboard_Event(Key.LeftShift, LayKeyboardKeyHelper.KeyUp);
+            //LayKeyboardKeyHelper.Keyboard_Event(Key.D1, LayKeyboardKeyHelper.KeyUp);
         }
     }
 }

@@ -53,6 +53,14 @@
                     </Grid>
                 </Border>
                 <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBackground}" />
+                        <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBorderBrush}" />
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" />
+                        <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
+                    </Trigger>
                     <Trigger Property="IsLoading" Value="true">
                         <Setter Property="IsEnabled" Value="False" />
                         <Setter TargetName="PART_LoadingContent" Property="Visibility" Value="Visible" />
@@ -94,7 +102,6 @@
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Type" Value="Primary" />
-        <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
         <Style.Triggers>
             <Trigger Property="Type" Value="Primary">
                 <Setter Property="Background" Value="White" />
@@ -102,38 +109,35 @@
                 <Setter Property="HoverBackground" Value="White" />
                 <Setter Property="HoverBorderBrush" Value="{DynamicResource Green}" />
                 <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
             </Trigger>
             <Trigger Property="Type" Value="Default">
                 <Setter Property="Background" Value="{DynamicResource Green}" />
                 <Setter Property="HoverBackground" Value="{DynamicResource LightGreen}" />
                 <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="Foreground" Value="White" />
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
             </Trigger>
             <Trigger Property="Type" Value="Normal">
                 <Setter Property="Background" Value="{DynamicResource Blue}" />
                 <Setter Property="HoverBackground" Value="{DynamicResource LightBlue}" />
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
             </Trigger>
             <Trigger Property="Type" Value="Warm">
                 <Setter Property="Background" Value="{DynamicResource Orange}" />
                 <Setter Property="HoverBackground" Value="{DynamicResource LightOrange}" />
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
             </Trigger>
             <Trigger Property="Type" Value="Danger">
                 <Setter Property="Background" Value="{DynamicResource Red}" />
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="HoverBackground" Value="{DynamicResource LightRed}" />
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=HoverBackground}" />
-                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=HoverBorderBrush}" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Background}" />
-                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=BorderBrush}" />
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.4" />

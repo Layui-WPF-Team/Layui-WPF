@@ -113,6 +113,7 @@ namespace LayuiTemplate.Controls
             Loaded -= LayKeyboard_Loaded;
             if (PART_KeysRoot != null)
             {
+                IsCapsLock = LayKeyboardKeyHelper.CapsLockStatus;
                 AddOrRemoveKeyButtonEnevt(true);
             }
         }
