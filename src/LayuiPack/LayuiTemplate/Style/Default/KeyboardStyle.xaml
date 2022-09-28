@@ -700,7 +700,7 @@
                                 </ItemsControl.ItemsPanel>
                                 <Lay:LayToggleButton
                                     Grid.ColumnSpan="4"
-                                    CommandParameter="{Binding Source={x:Static Key.CapsLock}}"
+                                    CommandParameter="{Binding Source={x:Static Key.Capital}}"
                                     IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapsLock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{TemplateBinding CapsButtonStyle}">
                                     <Grid Margin="4">

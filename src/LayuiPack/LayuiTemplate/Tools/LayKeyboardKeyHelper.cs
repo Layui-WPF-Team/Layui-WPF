@@ -41,24 +41,5 @@ namespace LayuiTemplate.Tools
             keybd_event((byte)KeyInterop.VirtualKeyFromKey(key), 0, KeyDown, 0);
             keybd_event((byte)KeyInterop.VirtualKeyFromKey(key), 0, KeyUp, 0);
         }
-        /// <summary>
-        /// 检查键盘大小写状态
-        /// </summary>
-        /// <param name="nVirtKey"></param>
-        /// <returns></returns>
-        [DllImport("user32.dll", EntryPoint = "GetKeyboardState")]
-        internal static extern int GetKeyboardState(byte[] pbKeyState);
-        /// <summary>
-        /// 获取键盘大小写状态值
-        /// </summary>
-        public static bool CapsLockStatus
-        {
-            get
-            {
-                byte[] bs = new byte[256];
-                GetKeyboardState(bs);
-                return bs[0x14] == 1;
-            }
-        }
     }
 }
