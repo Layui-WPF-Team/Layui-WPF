@@ -5,6 +5,7 @@ using LayuiComponentExample;
 using LayuiFundamentalElement;
 using LayuiHome;
 using LayuiTemplate.Global;
+using LayuiTemplate.Tools;
 using Prism.Ioc;
 using Prism.Modularity;
 using System;
@@ -23,7 +24,6 @@ namespace LayuiApp
             //初始化日志配置信息
             log4net.Config.XmlConfigurator.Configure();
             NetworkHelper.Initialization();
-
         }
         protected override Window CreateShell()
         {

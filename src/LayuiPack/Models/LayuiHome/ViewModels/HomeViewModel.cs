@@ -4,6 +4,7 @@ using Layui.Core.Resource;
 using LayuiHome.Models;
 using LayuiTemplate.Enum;
 using LayuiTemplate.Global;
+using LayuiTemplate.Tools;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -77,7 +78,7 @@ namespace LayuiHome.ViewModels
         /// 跳转界面
         /// </summary>
         /// <param name="PageKey"></param>
-        private async void GoPage(MenuItemModel item)
+        private void GoPage(MenuItemModel item)
         {
             if (item == null) return;
             MenuItemModel = item;

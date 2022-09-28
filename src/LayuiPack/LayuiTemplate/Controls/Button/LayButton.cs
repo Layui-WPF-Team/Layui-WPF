@@ -101,7 +101,5 @@ namespace LayuiTemplate.Controls
         public static readonly DependencyProperty HoverBorderBrushProperty =
             DependencyProperty.Register("HoverBorderBrush", typeof(Brush), typeof(LayButton), new PropertyMetadata(Brushes.Transparent));
 
-
-
     }
 }

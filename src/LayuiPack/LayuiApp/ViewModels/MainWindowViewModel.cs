@@ -109,7 +109,6 @@ namespace LayuiApp.ViewModels
             base.ExecuteLoadedCommand();
             NetworkHelper.NetworkAvailabilityChanged += Network_NetworkAvailabilityChanged;
         }
-
         private void Network_NetworkAvailabilityChanged(bool isAvailable)
         {
             Network = isAvailable;

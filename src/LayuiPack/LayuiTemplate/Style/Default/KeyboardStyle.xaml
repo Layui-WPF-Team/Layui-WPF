@@ -4,18 +4,35 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Controls">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ButtonStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayuiTemplate;component/Style/Default/ToggleButtonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="LayKeyboardStyle" TargetType="Lay:LayKeyboard">
         <Setter Property="Padding" Value="1,0" />
         <Setter Property="Focusable" Value="false" />
+        <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="KeyButtonStyle">
+        <Setter Property="CapsButtonStyle">
+            <Setter.Value>
+                <Style BasedOn="{StaticResource LayKeyboardToggleButtonStyle}" TargetType="Lay:LayToggleButton">
+                    <Setter Property="Background" Value="{DynamicResource Green}" />
+                    <Setter Property="HoverBackground" Value="{DynamicResource LightGreen}" />
+                    <Setter Property="Width" Value="auto" />
+                    <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=Foreground}" />
+                    <Setter Property="Height" Value="auto" />
+                    <Setter Property="Margin" Value="1" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="DefaultButtonStyle">
             <Setter.Value>
                 <Style BasedOn="{StaticResource LayButtonStyle}" TargetType="Lay:LayButton">
                     <Setter Property="Type" Value="Default" />
                     <Setter Property="Width" Value="auto" />
                     <Setter Property="Height" Value="auto" />
                     <Setter Property="Margin" Value="1" />
+                    <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=Foreground}" />
                     <Setter Property="VerticalContentAlignment" Value="Stretch" />
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
@@ -83,7 +100,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.Escape}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             Grid.Row="1"
@@ -95,9 +112,9 @@
                                 <Lay:LayButton
                                     Grid.Column="2"
                                     Grid.ColumnSpan="2"
-                                    CommandParameter="{Binding Source={x:Static Key.D1}}"
+                                    CommandParameter="{Binding Source={x:Static Key.OemTilde}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -118,7 +135,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.D1}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -139,7 +156,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.D2}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -160,7 +177,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.D3}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -181,7 +198,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.D4}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -202,7 +219,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.D5}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -223,7 +240,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.D6}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -244,7 +261,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.D7}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -265,7 +282,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.D8}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -286,7 +303,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.D9}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -307,7 +324,7 @@
                                     Grid.ColumnSpan="2"
                                     CommandParameter="{Binding Source={x:Static Key.D0}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -326,8 +343,9 @@
                                 <Lay:LayButton
                                     Grid.Column="24"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.OemMinus}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -347,9 +365,9 @@
                                 <Lay:LayButton
                                     Grid.Column="26"
                                     Grid.ColumnSpan="2"
-                                    CommandParameter="{Binding Source={x:Static Key.Oem2}}"
+                                    CommandParameter="{Binding Source={x:Static Key.OemPlus}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -370,7 +388,7 @@
                                     Grid.ColumnSpan="3"
                                     CommandParameter="{Binding Source={x:Static Key.Back}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             Grid.Row="1"
@@ -422,8 +440,9 @@
                                 </ItemsControl.ItemsPanel>
                                 <Lay:LayButton
                                     Grid.ColumnSpan="3"
+                                    CommandParameter="{Binding Source={x:Static Key.Tab}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -434,20 +453,23 @@
                                 <Lay:LayButton
                                     Grid.Column="3"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.Q}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
+                                            Tag="letter"
                                             Text="q" />
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="5"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.W}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -458,8 +480,9 @@
                                 <Lay:LayButton
                                     Grid.Column="7"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.E}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -470,8 +493,9 @@
                                 <Lay:LayButton
                                     Grid.Column="9"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.R}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -482,8 +506,9 @@
                                 <Lay:LayButton
                                     Grid.Column="11"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.T}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -494,8 +519,9 @@
                                 <Lay:LayButton
                                     Grid.Column="13"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.Y}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -506,8 +532,9 @@
                                 <Lay:LayButton
                                     Grid.Column="15"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.U}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -518,8 +545,9 @@
                                 <Lay:LayButton
                                     Grid.Column="17"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.I}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -530,8 +558,9 @@
                                 <Lay:LayButton
                                     Grid.Column="19"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.O}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -542,8 +571,9 @@
                                 <Lay:LayButton
                                     Grid.Column="21"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.P}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -554,8 +584,9 @@
                                 <Lay:LayButton
                                     Grid.Column="23"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.OemOpenBrackets}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -568,14 +599,15 @@
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
-                                            Text="`" />
+                                            Text="[" />
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="25"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.OemCloseBrackets}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -588,14 +620,15 @@
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
-                                            Text="`" />
+                                            Text="]" />
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="27"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.OemBackslash}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -614,8 +647,9 @@
                                 <Lay:LayButton
                                     Grid.Column="29"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.Delete}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -664,22 +698,24 @@
                                         </Grid>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
-                                <Lay:LayButton
+                                <Lay:LayToggleButton
                                     Grid.ColumnSpan="4"
-                                    Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    CommandParameter="{Binding Source={x:Static Key.CapsLock}}"
+                                    IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapsLock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{TemplateBinding CapsButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Text="Caps" />
                                     </Grid>
-                                </Lay:LayButton>
+                                </Lay:LayToggleButton>
                                 <Lay:LayButton
                                     Grid.Column="4"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.A}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -690,20 +726,30 @@
                                 <Lay:LayButton
                                     Grid.Column="6"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.S}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="s" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="s" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="S" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="8"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.D}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -714,8 +760,9 @@
                                 <Lay:LayButton
                                     Grid.Column="10"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.F}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -726,8 +773,9 @@
                                 <Lay:LayButton
                                     Grid.Column="12"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.G}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -738,8 +786,9 @@
                                 <Lay:LayButton
                                     Grid.Column="14"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.H}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -750,8 +799,9 @@
                                 <Lay:LayButton
                                     Grid.Column="16"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.J}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -762,8 +812,9 @@
                                 <Lay:LayButton
                                     Grid.Column="18"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.K}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -774,8 +825,9 @@
                                 <Lay:LayButton
                                     Grid.Column="20"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.L}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -786,8 +838,9 @@
                                 <Lay:LayButton
                                     Grid.Column="22"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.OemSemicolon}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -806,8 +859,9 @@
                                 <Lay:LayButton
                                     Grid.Column="24"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.OemQuotes}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -826,8 +880,9 @@
                                 <Lay:LayButton
                                     Grid.Column="26"
                                     Grid.ColumnSpan="5"
+                                    CommandParameter="{Binding Source={x:Static Key.Enter}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -878,8 +933,9 @@
                                 </ItemsControl.ItemsPanel>
                                 <Lay:LayButton
                                     Grid.ColumnSpan="5"
+                                    CommandParameter="{Binding Source={x:Static Key.LeftShift}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -890,20 +946,9 @@
                                 <Lay:LayButton
                                     Grid.Column="5"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.Z}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
-                                    <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="Shift" />
-                                    </Grid>
-                                </Lay:LayButton>
-                                <Lay:LayButton
-                                    Grid.Column="7"
-                                    Grid.ColumnSpan="2"
-                                    Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -912,10 +957,11 @@
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
-                                    Grid.Column="9"
+                                    Grid.Column="7"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.X}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -924,10 +970,11 @@
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
-                                    Grid.Column="11"
+                                    Grid.Column="9"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.C}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -936,10 +983,11 @@
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
-                                    Grid.Column="13"
+                                    Grid.Column="11"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.V}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -948,10 +996,11 @@
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
-                                    Grid.Column="15"
+                                    Grid.Column="13"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.B}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -960,10 +1009,24 @@
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
+                                    Grid.Column="15"
+                                    Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.N}}"
+                                    Focusable="{TemplateBinding Focusable}"
+                                    Style="{TemplateBinding DefaultButtonStyle}">
+                                    <Grid Margin="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="n" />
+                                    </Grid>
+                                </Lay:LayButton>
+                                <Lay:LayButton
                                     Grid.Column="17"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.M}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -974,8 +1037,9 @@
                                 <Lay:LayButton
                                     Grid.Column="19"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.OemComma}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -994,8 +1058,9 @@
                                 <Lay:LayButton
                                     Grid.Column="21"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.OemPeriod}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -1014,8 +1079,9 @@
                                 <Lay:LayButton
                                     Grid.Column="23"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.OemQuestion}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -1034,8 +1100,9 @@
                                 <Lay:LayButton
                                     Grid.Column="25"
                                     Grid.ColumnSpan="6"
+                                    CommandParameter="{Binding Source={x:Static Key.RightShift}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -1086,8 +1153,9 @@
                                 </ItemsControl.ItemsPanel>
                                 <Lay:LayButton
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.LeftCtrl}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -1098,8 +1166,9 @@
                                 <Lay:LayButton
                                     Grid.Column="2"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.LWin}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <Path
                                             Width="20"
@@ -1112,8 +1181,9 @@
                                 <Lay:LayButton
                                     Grid.Column="4"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.LeftCtrl}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -1124,8 +1194,9 @@
                                 <Lay:LayButton
                                     Grid.Column="6"
                                     Grid.ColumnSpan="17"
+                                    CommandParameter="{Binding Source={x:Static Key.Space}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Path
                                         Height="1.5"
                                         MaxWidth="200"
@@ -1137,8 +1208,9 @@
                                 <Lay:LayButton
                                     Grid.Column="23"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.RightAlt}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
@@ -1149,34 +1221,35 @@
                                 <Lay:LayButton
                                     Grid.Column="25"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.Home}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
-                                            Text="Fn" />
+                                            Text="Home" />
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="27"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.End}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <Path
-                                            Width="15"
-                                            Height="20"
-                                            Data="M657.04718202 131.9327599h-110.69390207v-18.53986537c0-38.71560122-21.26631616-74.70475164-55.07430596-93.78990717l-32.17211932-17.99457521c-16.35870474-9.26993269-37.07973073-3.27174094-46.34966343 13.0869638-9.26993269 16.35870474-3.27174094 37.07973073 13.0869638 46.34966343l32.17211933 17.9945752c12.54167363 7.08877205 20.17573584 20.17573584 20.17573583 34.35327995v18.53986537H366.95281798c-108.51274143 0-196.30445688 88.33700559-196.30445687 196.30445686v298.81900657c0 181.58162259 147.77363281 329.90054556 329.90054557 329.90054556h23.4474768c181.58162259 0 329.90054556-147.77363281 329.90054557-329.90054556V328.23721676c-0.54529015-107.96745129-88.33700559-196.30445688-196.84974703-196.30445686zM366.95281798 200.09402964H512v243.74470062H238.80963086V328.23721676c0-70.34243037 57.25546659-128.14318712 128.14318712-128.14318712z m157.0435655 688.70146951h-23.4474768c-143.9566017 0-261.73927581-117.23738396-261.73927582-261.73927582V512h546.38073828v115.60151348c0 143.9566017-117.23738396 261.19398567-261.19398566 261.19398567z"
-                                            Fill="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayButton}, Path=Foreground}"
-                                            Stretch="Fill" />
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="End" />
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
                                     Grid.Column="29"
                                     Grid.ColumnSpan="2"
+                                    CommandParameter="{Binding Source={x:Static Key.RightCtrl}}"
                                     Focusable="{TemplateBinding Focusable}"
-                                    Style="{TemplateBinding KeyButtonStyle}">
+                                    Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
                                         <TextBlock
                                             HorizontalAlignment="Center"

@@ -53,17 +53,6 @@
                     </Grid>
                 </Border>
                 <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBackground}" />
-                        <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBorderBrush}" />
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="True">
-                        <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" />
-                        <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
-                    </Trigger>
-                    <Trigger Property="IsEnabled" Value="False">
-                        <Setter TargetName="bg" Property="Opacity" Value="0.4" />
-                    </Trigger>
                     <Trigger Property="IsLoading" Value="true">
                         <Setter Property="IsEnabled" Value="False" />
                         <Setter TargetName="PART_LoadingContent" Property="Visibility" Value="Visible" />
@@ -72,7 +61,7 @@
                         <Setter TargetName="PART_Content" Property="IsHitTestVisible" Value="False" />
                         <Setter TargetName="PART_Content" Property="Width" Value="0" />
                         <Setter TargetName="icon" Property="Visibility" Value="Visible" />
-                        <Setter TargetName="bg" Property="Opacity" Value="0.6" />
+                        <Setter Property="Opacity" Value="0.6" />
                         <Trigger.EnterActions>
                             <BeginStoryboard>
                                 <Storyboard RepeatBehavior="Forever">
@@ -137,6 +126,17 @@
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="HoverBackground" Value="{DynamicResource LightRed}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=HoverBackground}" />
+                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=HoverBorderBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Background}" />
+                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=BorderBrush}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.4" />
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -25,18 +25,32 @@ namespace LayuiTemplate.Controls
         /// </summary>
         private Grid PART_KeysRoot;
         /// <summary>
-        /// 键盘按钮样式
+        /// 默认键盘按钮样式
         /// </summary>
         [Bindable(true)]
-        public Style KeyButtonStyle
+        public Style DefaultButtonStyle
         {
-            get { return (Style)GetValue(KeyButtonStyleProperty); }
-            set { SetValue(KeyButtonStyleProperty, value); }
+            get { return (Style)GetValue(DefaultButtonStyleProperty); }
+            set { SetValue(DefaultButtonStyleProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for KeyButtonStyle.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty KeyButtonStyleProperty =
-            DependencyProperty.Register("KeyButtonStyle", typeof(Style), typeof(LayKeyboard));
+        public static readonly DependencyProperty DefaultButtonStyleProperty =
+            DependencyProperty.Register("DefaultButtonStyle", typeof(Style), typeof(LayKeyboard));
+
+        /// <summary>
+        /// 大小写键盘按钮样式
+        /// </summary>
+        public Style CapsButtonStyle
+        {
+            get { return (Style)GetValue(CapsButtonStyleProperty); }
+            set { SetValue(CapsButtonStyleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CapsButtonStyle.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CapsButtonStyleProperty =
+            DependencyProperty.Register("CapsButtonStyle", typeof(Style), typeof(LayKeyboard));
+
         /// <summary>
         /// 圆角
         /// </summary>
@@ -50,6 +64,21 @@ namespace LayuiTemplate.Controls
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayKeyboard));
+
+
+        /// <summary>
+        /// 大写锁定
+        /// </summary>
+        public bool IsCapsLock
+        {
+            get { return (bool)GetValue(IsCapsLockProperty); }
+            set { SetValue(IsCapsLockProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsCapsLock.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsCapsLockProperty =
+            DependencyProperty.Register("IsCapsLock", typeof(bool), typeof(LayKeyboard), new PropertyMetadata(false));
+
 
         public override void OnApplyTemplate()
         {
@@ -68,8 +97,12 @@ namespace LayuiTemplate.Controls
         private void LayKeyboard_Unloaded(object sender, RoutedEventArgs e)
         {
             Unloaded -= LayKeyboard_Unloaded;
-            if (PART_KeysRoot != null) AddOrRemoveKeyButtonEnevt(false);
+            if (PART_KeysRoot != null)
+            {
+                AddOrRemoveKeyButtonEnevt(false);
+            }
         }
+
         /// <summary>
         /// 关闭时删除按钮点击事件
         /// </summary>
@@ -78,7 +111,11 @@ namespace LayuiTemplate.Controls
         private void LayKeyboard_Loaded(object sender, RoutedEventArgs e)
         {
             Loaded -= LayKeyboard_Loaded;
-            if (PART_KeysRoot != null) AddOrRemoveKeyButtonEnevt(true);
+            if (PART_KeysRoot != null)
+            {
+                IsCapsLock = LayKeyboardKeyHelper.CapsLockStatus;
+                AddOrRemoveKeyButtonEnevt(true);
+            }
         }
 
         /// <summary>
@@ -88,20 +125,27 @@ namespace LayuiTemplate.Controls
         private void AddOrRemoveKeyButtonEnevt(bool isAdd)
         {
             var itemsControls = PART_KeysRoot.Children.Cast<ItemsControl>();
-            foreach (var itemsControl in itemsControls)
+            if (itemsControls != null)
             {
-                var buttonBases = itemsControl.Items.Cast<ButtonBase>();
-                foreach (var button in buttonBases)
+                foreach (var itemsControl in itemsControls)
                 {
-                    if (isAdd)
+                    var buttonBases = itemsControl.Items.Cast<ButtonBase>();
+                    if (buttonBases != null)
                     {
-                        button.Click -= Button_Click;
-                        button.Click += Button_Click;
+                        foreach (var button in buttonBases)
+                        {
+                            if (isAdd)
+                            {
+                                button.Click -= Button_Click;
+                                button.Click += Button_Click;
+                            }
+                            else
+                            {
+                                button.Click -= Button_Click;
+                            }
+                        }
                     }
-                    else
-                    {
-                        button.Click -= Button_Click;
-                    }
+
                 }
             }
         }

@@ -5,16 +5,16 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Controls;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <ScrollViewer>
+    <ScrollViewer Focusable="False">
         <StackPanel>
             <TextBox Height="40" />
             <Lay:LayButton Command="{Binding TestCommand}" Focusable="False" />
-            <Lay:LayLegend Focusable="False" Header="默认按钮样式">
+            <Lay:LayLegend Header="默认按钮样式">
                 <Lay:LayKeyboard Height="300" />
             </Lay:LayLegend>
-            <Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
+            <!--<Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
                 <Lay:LayKeyboard Height="300" Padding="1,0">
-                    <Lay:LayKeyboard.KeyButtonStyle>
+                    <Lay:LayKeyboard.DefaultButtonStyle>
                         <Style BasedOn="{StaticResource LayButtonStyle}" TargetType="Lay:LayButton">
                             <Setter Property="Background" Value="#F0F6FA" />
                             <Setter Property="HoverBackground" Value="White" />
@@ -26,12 +26,24 @@
                             <Setter Property="Height" Value="auto" />
                             <Setter Property="Margin" Value="3" />
                         </Style>
-                    </Lay:LayKeyboard.KeyButtonStyle>
+                    </Lay:LayKeyboard.DefaultButtonStyle>
+                    <Lay:LayKeyboard.CapsButtonStyle>
+                        <Style BasedOn="{StaticResource LayKeyboardToggleButtonStyle}" TargetType="Lay:LayToggleButton">
+                            <Setter Property="Background" Value="#F0F6FA" />
+                            <Setter Property="HoverBackground" Value="White" />
+                            <Setter Property="Foreground" Value="#F0BF39" />
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="FontSize" Value="16" />
+                            <Setter Property="Width" Value="auto" />
+                            <Setter Property="Height" Value="auto" />
+                            <Setter Property="Margin" Value="3" />
+                        </Style>
+                    </Lay:LayKeyboard.CapsButtonStyle>
                 </Lay:LayKeyboard>
             </Lay:LayLegend>
             <Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
                 <Lay:LayKeyboard Height="300" Padding="1,0">
-                    <Lay:LayKeyboard.KeyButtonStyle>
+                    <Lay:LayKeyboard.DefaultButtonStyle>
                         <Style BasedOn="{StaticResource LayButtonStyle}" TargetType="Lay:LayButton">
                             <Setter Property="Type" Value="Danger" />
                             <Setter Property="FontSize" Value="16" />
@@ -39,12 +51,12 @@
                             <Setter Property="Height" Value="auto" />
                             <Setter Property="Margin" Value="3" />
                         </Style>
-                    </Lay:LayKeyboard.KeyButtonStyle>
+                    </Lay:LayKeyboard.DefaultButtonStyle>
                 </Lay:LayKeyboard>
             </Lay:LayLegend>
             <Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
                 <Lay:LayKeyboard Height="300" Padding="1,0">
-                    <Lay:LayKeyboard.KeyButtonStyle>
+                    <Lay:LayKeyboard.DefaultButtonStyle>
                         <Style BasedOn="{StaticResource LayButtonStyle}" TargetType="Lay:LayButton">
                             <Setter Property="Type" Value="Normal" />
                             <Setter Property="FontSize" Value="16" />
@@ -52,12 +64,12 @@
                             <Setter Property="Height" Value="auto" />
                             <Setter Property="Margin" Value="3" />
                         </Style>
-                    </Lay:LayKeyboard.KeyButtonStyle>
+                    </Lay:LayKeyboard.DefaultButtonStyle>
                 </Lay:LayKeyboard>
             </Lay:LayLegend>
             <Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
                 <Lay:LayKeyboard Height="300" Padding="1,0">
-                    <Lay:LayKeyboard.KeyButtonStyle>
+                    <Lay:LayKeyboard.DefaultButtonStyle>
                         <Style BasedOn="{StaticResource LayButtonStyle}" TargetType="Lay:LayButton">
                             <Setter Property="Type" Value="Primary" />
                             <Setter Property="FontSize" Value="16" />
@@ -65,12 +77,12 @@
                             <Setter Property="Height" Value="auto" />
                             <Setter Property="Margin" Value="3" />
                         </Style>
-                    </Lay:LayKeyboard.KeyButtonStyle>
+                    </Lay:LayKeyboard.DefaultButtonStyle>
                 </Lay:LayKeyboard>
             </Lay:LayLegend>
             <Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
                 <Lay:LayKeyboard Height="300" Padding="1,0">
-                    <Lay:LayKeyboard.KeyButtonStyle>
+                    <Lay:LayKeyboard.DefaultButtonStyle>
                         <Style BasedOn="{StaticResource LayButtonStyle}" TargetType="Lay:LayButton">
                             <Setter Property="Type" Value="Warm" />
                             <Setter Property="FontSize" Value="16" />
@@ -78,9 +90,9 @@
                             <Setter Property="Height" Value="auto" />
                             <Setter Property="Margin" Value="3" />
                         </Style>
-                    </Lay:LayKeyboard.KeyButtonStyle>
+                    </Lay:LayKeyboard.DefaultButtonStyle>
                 </Lay:LayKeyboard>
-            </Lay:LayLegend>
+            </Lay:LayLegend>-->
         </StackPanel>
     </ScrollViewer>
 </UserControl>

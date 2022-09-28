@@ -240,6 +240,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Default\ToggleButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Default\ToolTipStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -314,6 +318,7 @@
     <Compile Include="Controls\Timeline\LayTimelinePanel.cs" />
     <Compile Include="Controls\TimePicker\LayTimePicker.cs" />
     <Compile Include="Controls\Timer\LayTimer.cs" />
+    <Compile Include="Controls\ToggleButton\LayToggleButton.cs" />
     <Compile Include="Controls\ToolTip\LayToolTip.cs" />
     <Compile Include="Controls\Transitions\LayTransition.cs" />
     <Compile Include="Controls\TreeViewItem\LayTreeViewItem.cs" />
