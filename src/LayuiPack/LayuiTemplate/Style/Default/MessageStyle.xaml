@@ -20,13 +20,13 @@
                         IsActive="True"
                         Style="{DynamicResource LayTransitionStyle}"
                         Type="SlideInToTop">
-                        <Grid>
+                        <Grid Margin="1">
                             <Border Background="{TemplateBinding Background}" CornerRadius="{DynamicResource ControlCornerRadiusBase}">
                                 <Border.Effect>
                                     <DropShadowEffect Opacity="0.2" ShadowDepth="0" />
                                 </Border.Effect>
                             </Border>
-                            <Grid Margin="4,0">
+                            <Grid Margin="1,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition />

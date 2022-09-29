@@ -8,11 +8,10 @@
     <ScrollViewer Focusable="False">
         <StackPanel>
             <TextBox Height="40" />
-            <Lay:LayButton Command="{Binding TestCommand}" Focusable="False" />
             <Lay:LayLegend Header="默认按钮样式">
                 <Lay:LayKeyboard Height="300" />
             </Lay:LayLegend>
-            <!--<Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
+            <Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
                 <Lay:LayKeyboard Height="300" Padding="1,0">
                     <Lay:LayKeyboard.DefaultButtonStyle>
                         <Style BasedOn="{StaticResource LayButtonStyle}" TargetType="Lay:LayButton">
@@ -92,7 +91,7 @@
                         </Style>
                     </Lay:LayKeyboard.DefaultButtonStyle>
                 </Lay:LayKeyboard>
-            </Lay:LayLegend>-->
+            </Lay:LayLegend>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

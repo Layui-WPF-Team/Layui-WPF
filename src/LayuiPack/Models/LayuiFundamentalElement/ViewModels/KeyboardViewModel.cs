@@ -16,16 +16,5 @@ namespace LayuiFundamentalElement.ViewModels
         {
 
         }
-        private DelegateCommand<object> _TestCommand;
-        public DelegateCommand<object> TestCommand =>
-            _TestCommand ?? (_TestCommand = new DelegateCommand<object>(ExecuteTestCommand));
-
-        void ExecuteTestCommand(object key)
-        {
-            //LayKeyboardKeyHelper.Keyboard_Event(Key.LeftShift, LayKeyboardKeyHelper.KeyDown);
-            //LayKeyboardKeyHelper.Keyboard_Event(Key.D1, LayKeyboardKeyHelper.KeyDown);
-            //LayKeyboardKeyHelper.Keyboard_Event(Key.LeftShift, LayKeyboardKeyHelper.KeyUp);
-            //LayKeyboardKeyHelper.Keyboard_Event(Key.D1, LayKeyboardKeyHelper.KeyUp);
-        }
     }
 }

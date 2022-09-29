@@ -45,16 +45,16 @@ namespace LayuiTemplate.Global
             {
                 LayMessageHost host = d as LayMessageHost;
                 if (host == null) return;
-                var tooken = LayMessage.GetTooken(host);
-                if (!LayMessage.MessageHosts.ContainsKey(tooken)) LayMessage.MessageHosts.Add(tooken, host);
-
+                var tooken = GetTooken(host);
+                if (MessageHosts.ContainsKey(tooken)) MessageHosts.Remove(tooken);
+                MessageHosts.Add(tooken, host);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
+
         /// <summary>
         /// 默认提示信息（无图标效果）
         /// </summary>
@@ -68,7 +68,7 @@ namespace LayuiTemplate.Global
         /// <param name="message">提示信息</param>
         /// <param name="tooken">自定义指定提示窗口</param>
         /// <param name="time">停留时间</param>
-        public static void Success(object message, string tooken=null, double time = 3) => Show(message, MessageType.Success, tooken, time);
+        public static void Success(object message, string tooken = null, double time = 3) => Show(message, MessageType.Success, tooken, time);
         /// <summary>
         /// 警告信息提示
         /// </summary>
@@ -92,7 +92,8 @@ namespace LayuiTemplate.Global
         /// <param name="time">停留时间</param>
         private static void Show(object message, MessageType type, string tooken, double time)
         {
-            if (tooken == null) {
+            if (tooken == null)
+            {
                 if (!MessageHosts.ContainsKey("RootMessageTooken")) return;
                 var view = MessageHosts.Where(o => o.Key.Equals("RootMessageTooken")).FirstOrDefault().Value;
                 view.Items.Add(new LayMessageControl() { Type = type, Content = message, Time = time, Uid = Guid.NewGuid().ToString() });

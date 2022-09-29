@@ -58,7 +58,10 @@ namespace LayuiTemplate.Controls
                 {
                     passwordBox.Text = passwordBox.PART_PasswordBox.Password;
                 }
-                else passwordBox.PART_PasswordBox.Password = passwordBox.Text;
+                else
+                {
+                    passwordBox.PART_PasswordBox.Password = passwordBox.Text;
+                }
             }
         }
         protected override void OnGotFocus(RoutedEventArgs e)
@@ -66,7 +69,8 @@ namespace LayuiTemplate.Controls
             base.OnGotFocus(e);
             if (!IsShowPasswrod)
             {
-                if (PART_PasswordBox != null) {
+                if (PART_PasswordBox != null)
+                {
                     PART_PasswordBox.Focus();
                 }
             }
