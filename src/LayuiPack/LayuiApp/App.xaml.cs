@@ -31,7 +31,6 @@ namespace LayuiApp
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-
             base.OnStartup(e);
             DispatcherUnhandledException += App_DispatcherUnhandledException;
         }
