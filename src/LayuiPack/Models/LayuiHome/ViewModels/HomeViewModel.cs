@@ -21,7 +21,7 @@ namespace LayuiHome.ViewModels
 {
     public class HomeViewModel : LayuiViewModelBase
     {
-        private AnimationType _AnimationType = AnimationType.SlideInToBottom;
+        private AnimationType _AnimationType = AnimationType.RotateOut;
         public AnimationType AnimationType
         {
             get { return _AnimationType; }
@@ -46,10 +46,10 @@ namespace LayuiHome.ViewModels
                 SetProperty(ref _MenuItemModel, value);
                 new Action(async () =>
                {
-                   AnimationType = AnimationType.SlideOutToLeft;
+                   AnimationType = AnimationType.RotateOut;
                    await Task.Delay(300);
                    Region.RequestNavigate(SystemResource.Nav_HomeContent, MenuItemModel.PageKey);
-                   AnimationType = AnimationType.SlideInToRight;
+                   AnimationType = AnimationType.RotateIn;
                }).Invoke();
             }
         }

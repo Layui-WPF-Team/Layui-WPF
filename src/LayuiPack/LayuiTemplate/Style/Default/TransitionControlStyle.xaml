@@ -84,6 +84,20 @@
                             From="1"
                             To="1"
                             Duration="0" />
+                        <PointAnimation
+                            x:Key="DefaultPointDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)"
+                            From="0.5,0.5"
+                            To="0.5,0.5"
+                            Duration="0" />
+                        <DoubleAnimation
+                            x:Key="DefaultRotateDecimalAnimation"
+                            Storyboard.TargetName="RotateTransform"
+                            Storyboard.TargetProperty="Angle"
+                            From="0"
+                            To="0"
+                            Duration="0:0:0.5" />
                         <!--  DefaultAnimation End  -->
                         <!--  SlideInToBottomAnimationn Start  -->
                         <DoubleAnimation
@@ -245,6 +259,52 @@
                             To="0"
                             Duration="0:0:0.5" />
                         <!--  SlideOutToLeftAnimationn End  -->
+                        <!--  RotateInDecimalAnimation Start  -->
+                        <PointAnimation
+                            x:Key="RotateInPointDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)"
+                            From="0.5,1"
+                            To="0.5,1"
+                            Duration="0" />
+                        <DoubleAnimation
+                            x:Key="RotateInDecimalAnimation"
+                            Storyboard.TargetName="RotateTransform"
+                            Storyboard.TargetProperty="Angle"
+                            From="180"
+                            To="0"
+                            Duration="0:0:0.5" />
+                        <DoubleAnimation
+                            x:Key="RotateInOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="0"
+                            To="1"
+                            Duration="0:0:0.5" />
+                        <!--  RotateInDecimalAnimation End  -->
+                        <!--  RotateOutDecimalAnimation Start  -->
+                        <PointAnimation
+                            x:Key="RotateOutPointDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)"
+                            From="0.5,1"
+                            To="0.5,1"
+                            Duration="0" />
+                        <DoubleAnimation
+                            x:Key="RotateOutDecimalAnimation"
+                            Storyboard.TargetName="RotateTransform"
+                            Storyboard.TargetProperty="Angle"
+                            From="0"
+                            To="-180"
+                            Duration="0:0:0.5" />
+                        <DoubleAnimation
+                            x:Key="RotateOutOpacityDecimalAnimation"
+                            Storyboard.TargetName="TransitionBody"
+                            Storyboard.TargetProperty="Opacity"
+                            From="1"
+                            To="0"
+                            Duration="0:0:0.5" />
+                        <!--  RotateOutDecimalAnimation End  -->
                     </ControlTemplate.Resources>
                     <Grid
                         x:Name="TransitionBody"
@@ -254,7 +314,7 @@
                             <TransformGroup>
                                 <ScaleTransform x:Name="ScaleTransform" ScaleX="0" ScaleY="0" />
                                 <SkewTransform />
-                                <RotateTransform />
+                                <RotateTransform x:Name="RotateTransform" />
                                 <TranslateTransform x:Name="TranslateTransform" />
                             </TransformGroup>
                         </Grid.RenderTransform>

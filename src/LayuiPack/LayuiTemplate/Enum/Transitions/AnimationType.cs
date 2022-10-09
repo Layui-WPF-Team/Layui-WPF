@@ -54,6 +54,14 @@ namespace LayuiTemplate.Enum
         /// <summary>
         /// 左侧滑出
         /// </summary>
-        SlideOutToLeft
+        SlideOutToLeft,
+        /// <summary>
+        /// 旋转进入
+        /// </summary>
+        RotateIn,
+        /// <summary>
+        /// 旋转退入
+        /// </summary>
+        RotateOut
     }
 }
