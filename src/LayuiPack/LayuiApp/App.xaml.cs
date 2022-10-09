@@ -37,7 +37,10 @@ namespace LayuiApp
         }
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-
+            LayMessage.Error(e.Exception);
+            var loger = Container.Resolve<ILayLogger>();
+            loger.Error(e.Exception);
+            e.Handled= true;
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

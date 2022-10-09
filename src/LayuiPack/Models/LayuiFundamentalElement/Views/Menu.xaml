@@ -5,9 +5,27 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Controls;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Lay:LayMenu>
+    <Lay:LayMenu Effect="{DynamicResource LayShadow}">
         <Lay:LayMenuItem Header="123">
-            <Lay:LayMenuItem Header="123" />
+            <Lay:LayMenuItem Width="150" Header="123" />
+            <Lay:LayMenuItem Width="150" Header="123" />
+            <Lay:LayMenuItem Width="150" Header="123" />
+            <Lay:LayMenuItem Width="150" Header="123" />
+            <Lay:LayMenuItem Width="150" Header="123" />
+            <Lay:LayMenuItem Width="150" Header="123" />
+            <Lay:LayMenuItem Width="150" Header="123" />
+            <Lay:LayMenuItem Width="150" Header="123" />
+            <Lay:LayMenuItem Header="123">
+                <Lay:LayMenuItem Width="150" Header="123" />
+                <Lay:LayMenuItem Width="150" Header="123" />
+                <Lay:LayMenuItem Width="150" Header="123" />
+                <Lay:LayMenuItem Width="150" Header="123" />
+                <Lay:LayMenuItem Width="150" Header="123" />
+                <Lay:LayMenuItem Width="150" Header="123" />
+                <Lay:LayMenuItem Width="150" Header="123" />
+                <Lay:LayMenuItem Width="150" Header="123" />
+                <Lay:LayMenuItem Width="150" Header="123" />
+            </Lay:LayMenuItem>
         </Lay:LayMenuItem>
     </Lay:LayMenu>
 </UserControl>

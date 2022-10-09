@@ -96,14 +96,20 @@ namespace LayuiTemplate.Global
             {
                 if (!MessageHosts.ContainsKey("RootMessageTooken")) return;
                 var view = MessageHosts.Where(o => o.Key.Equals("RootMessageTooken")).FirstOrDefault().Value;
-                view.Items.Add(new LayMessageControl() { Type = type, Content = message, Time = time, Uid = Guid.NewGuid().ToString() });
+                view.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
+                {
+                    view.Items.Add(new LayMessageControl() { Type = type, Content = message, Time = time, Uid = Guid.NewGuid().ToString() });
+                }));
             }
             else
             {
 
                 if (!MessageHosts.ContainsKey(tooken)) return;
                 var view = MessageHosts.Where(o => o.Key.Equals(tooken)).FirstOrDefault().Value;
-                view.Items.Add(new LayMessageControl() { Type = type, Content = message, Time = time, Uid = Guid.NewGuid().ToString() });
+                view.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
+                 {
+                     view.Items.Add(new LayMessageControl() { Type = type, Content = message, Time = time, Uid = Guid.NewGuid().ToString() });
+                 }));
             }
         }
     }

@@ -35,12 +35,12 @@
                                     x:Name="bg"
                                     Width="20"
                                     Height="20"
-                                    Margin="4,0">
+                                    Margin="4,10">
                                     <Path x:Name="icon" Stretch="Fill" />
                                 </Border>
                                 <ContentPresenter
                                     Grid.Column="1"
-                                    Margin="4"
+                                    Margin="4,10"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                             </Grid>
