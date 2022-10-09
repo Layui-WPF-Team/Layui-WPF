@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace LayuiTemplate.Extend
 {
@@ -65,28 +66,58 @@ namespace LayuiTemplate.Extend
 
         private static void OnFocusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is TextBox textBox)
+            var Element = d as FrameworkElement;
+            if (d is IInputElement input)
             {
-                if(GetIsFocus(textBox)) textBox.Focus();
-                textBox.LostFocus -= TextBox_LostFocus;
-                textBox.LostFocus += TextBox_LostFocus;
-            }
-            if (d is PasswordBox passwordBox)
-            {
-                if(GetIsFocus(passwordBox)) passwordBox.Focus();
-                passwordBox.LostFocus -= PasswordBox_LostFocus;
-                passwordBox.LostFocus += PasswordBox_LostFocus;
+                if (GetIsFocus(d) && Element.IsLoaded)
+                {
+                    input.Focus();
+                }
+                else
+                {
+                    input.LostKeyboardFocus -= Input_LostKeyboardFocus;
+                    input.LostKeyboardFocus += Input_LostKeyboardFocus;
+                    if (!Element.IsLoaded)
+                    {
+                        Element.Loaded -= Input_Loaded;
+                        Element.Loaded += Input_Loaded;
+                    }
+                }
             }
         }
-
-        private static void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 取消输入框状态
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void Input_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            SetIsFocus(sender as PasswordBox, false);
+            SetIsFocus(sender as DependencyObject, false);
         }
-
-        private static void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 初始化焦点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void Input_Loaded(object sender, RoutedEventArgs e)
         {
-            SetIsFocus(sender as TextBox, false);
+            if (sender is IInputElement input)
+            {
+                input.Focus();
+            }
+            (sender as FrameworkElement).Loaded -= Input_Loaded;
+        }
+        /// <summary>
+        /// 设置密码光标位置
+        /// </summary>
+        /// <param name="passwordBox">密码框</param>
+        /// <param name="start">起始位置</param>
+        /// <param name="length">长度</param>
+        public static void SetSelection(PasswordBox passwordBox, int start, int length)
+        {
+            passwordBox.GetType()
+               .GetMethod("Select", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+               .Invoke(passwordBox, new object[] { start, length });
         }
     }
 }

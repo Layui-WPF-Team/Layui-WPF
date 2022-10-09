@@ -21,8 +21,14 @@
     </i:Interaction.Triggers>
     <ScrollViewer>
         <StackPanel Margin="6">
+            <PasswordBox />
             <Lay:LayLegend Header="表单集合演示" />
-            <Lay:LayTextBox Width="auto" Margin="0,5" />
+            <Lay:LayTextBox
+                Width="auto"
+                Margin="0,5"
+                LayHelper:LayControlsBaseHelper.IsFocus="True"
+                Text="123123"
+                TextWrapping="Wrap" />
             <Lay:LayTextBox
                 Width="auto"
                 Margin="0,5"
