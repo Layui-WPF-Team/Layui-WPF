@@ -139,6 +139,9 @@
                 <Setter Property="HoverBackground" Value="{DynamicResource LightRed}" />
                 <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
             </Trigger>
+            <Trigger Property="Type" Value="Customize">
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
+            </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.4" />
             </Trigger>

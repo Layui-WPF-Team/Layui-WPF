@@ -41,6 +41,24 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayKeyboard">
+                    <ControlTemplate.Resources>
+                        <Style x:Key="SymbolTextBlockStyle" TargetType="TextBlock">
+                            <Setter Property="Opacity" Value=".5" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                    <Setter Property="Opacity" Value="1" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style x:Key="NumberTextBlockStyle" TargetType="TextBlock">
+                            <Setter Property="Opacity" Value="1" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                    <Setter Property="Opacity" Value=".5" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ControlTemplate.Resources>
                     <Border
                         Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
@@ -123,10 +141,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="~" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="`" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -144,10 +164,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="!" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="1" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -165,10 +187,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="@" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="2" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -186,10 +210,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="#" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="3" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -207,10 +233,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="$" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="4" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -228,10 +256,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="%" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="5" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -249,10 +279,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="^" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="6" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -270,10 +302,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="&amp;" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="7" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -291,10 +325,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="*" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="8" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -312,10 +348,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="(" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="9" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -333,10 +371,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text=")" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="0" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -354,11 +394,13 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="-" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Top"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="—" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -376,10 +418,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="+" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="=" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -460,8 +504,18 @@
                                         <TextBlock
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
-                                            Tag="letter"
-                                            Text="q" />
+                                            Tag="letter">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="q" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="Q" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -471,10 +525,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="w" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="w" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="W" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -484,10 +546,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="e" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="e" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="E" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -497,10 +567,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="r" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="r" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="R" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -510,10 +588,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="t" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="t" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="T" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -523,10 +609,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="y" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="y" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="Y" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -536,10 +630,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="u" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="u" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="U" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -549,10 +651,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="i" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="i" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="I" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -562,10 +672,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="o" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="o" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="O" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -575,10 +693,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="p" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="p" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="P" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -595,10 +721,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="{}{" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="[" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -616,10 +744,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="{}}" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="]" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -637,10 +767,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="|" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="\" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -705,7 +837,12 @@
                                     IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsCapsLock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{TemplateBinding CapsButtonStyle}">
                                     <Grid Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
                                         <TextBlock
+                                            Grid.RowSpan="2"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Text="Caps" />
@@ -718,10 +855,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="a" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="a" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="A" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -752,10 +897,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="d" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="d" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="D" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -765,10 +918,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="f" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="f" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="F" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -778,10 +939,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="g" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="g" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="G" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -791,10 +960,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="h" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="h" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="H" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -804,10 +981,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="j" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="j" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="J" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -817,10 +1002,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="k" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="k" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="K" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -830,10 +1023,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="l" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="l" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="L" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -850,10 +1051,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text=":" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text=";" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -871,10 +1074,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="&quot;" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="'" />
                                     </Grid>
                                 </Lay:LayButton>
@@ -951,10 +1156,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="z" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="z" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="Z" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -964,10 +1177,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="x" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="x" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="X" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -977,10 +1198,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="c" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="c" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="C" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -990,10 +1219,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="v" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="v" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="V" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -1003,10 +1240,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="b" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="b" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="B" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -1016,10 +1261,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="n" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="n" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="N" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -1029,10 +1282,18 @@
                                     Focusable="{TemplateBinding Focusable}"
                                     Style="{TemplateBinding DefaultButtonStyle}">
                                     <Grid Margin="4">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Text="m" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="m" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayKeyboard}, Path=IsCapsLock}" Value="true">
+                                                            <Setter Property="Text" Value="M" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                     </Grid>
                                 </Lay:LayButton>
                                 <Lay:LayButton
@@ -1049,10 +1310,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="&lt;" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="," />
                                     </Grid>
                                 </Lay:LayButton>
@@ -1070,10 +1333,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="&gt;" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="." />
                                     </Grid>
                                 </Lay:LayButton>
@@ -1091,10 +1356,12 @@
                                         <TextBlock
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
+                                            Style="{DynamicResource SymbolTextBlockStyle}"
                                             Text="?" />
                                         <TextBlock
                                             Grid.Row="1"
                                             HorizontalAlignment="Center"
+                                            Style="{DynamicResource NumberTextBlockStyle}"
                                             Text="/" />
                                     </Grid>
                                 </Lay:LayButton>
