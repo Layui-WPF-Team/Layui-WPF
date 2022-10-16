@@ -28,19 +28,24 @@ namespace LayuiTemplate.Controls
     [ContentProperty("Items")]
     [TemplatePart(Name = "PART_LeftButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_RightButton", Type = typeof(Button))]
-    [TemplatePart(Name = "PART_ItemsContentControl", Type = typeof(ContentControl))]
+    [TemplatePart(Name = "PART_FirstContentControl", Type = typeof(ContentControl))]
+    [TemplatePart(Name = "PART_ContentControl", Type = typeof(ContentControl))]
+    [TemplatePart(Name = "PART_LastContentControl", Type = typeof(ContentControl))]
     [DefaultProperty("Items")]
     public class LaySlideCarousel : Control
     {
-        private Collection<object> items = new Collection<object>();
+        /// <summary>
+        /// 首项
+        /// </summary>
+        private ContentControl PART_FirstContentControl = null;
         /// <summary>
         /// 轮播图容器集合
         /// </summary>
-        private StackPanel PART_CarouselPanel = null;
+        private ContentControl PART_ContentControl = null;
         /// <summary>
-        /// 轮播图容器集合
+        /// 末尾
         /// </summary>
-        private ContentControl PART_ItemsContentControl = null;
+        private ContentControl PART_LastContentControl = null;
         /// <summary>
         /// 计时器
         /// </summary>
@@ -103,6 +108,38 @@ namespace LayuiTemplate.Controls
         {
 
         }
+        public DataTemplate ItemTemplate
+        {
+            get { return (DataTemplate)GetValue(ItemTemplateProperty); }
+            set { SetValue(ItemTemplateProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ItemTemplate.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemTemplateProperty =
+            DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(LaySlideCarousel));
+
+        public object SelectedItem
+        {
+            get { return (object)GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedItem.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedItemProperty =
+            DependencyProperty.Register("SelectedItem", typeof(object), typeof(LaySlideCarousel));
+
+
+
+        public int SelectedIndex
+        {
+            get { return (int)GetValue(SelectedIndexProperty); }
+            set { SetValue(SelectedIndexProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedIndex.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedIndexProperty =
+            DependencyProperty.Register("SelectedIndex", typeof(int), typeof(LaySlideCarousel), new PropertyMetadata(0));
+
 
 
         public IEnumerable ItemsSource
@@ -138,20 +175,11 @@ namespace LayuiTemplate.Controls
 
         private void List_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.NewItems != null && e.NewItems.Count > 0)
-            {
-                SetValue(HasItemsPropertyKey, true);
-            }
             OnItemsChanged(sender, e);
         }
-        internal static readonly DependencyPropertyKey HasItemsPropertyKey =
-        DependencyProperty.RegisterReadOnly(nameof(HasItems), typeof(bool), typeof(LaySlideCarousel),
-            new PropertyMetadata(false));
-        public static readonly DependencyProperty HasItemsProperty = HasItemsPropertyKey.DependencyProperty;
-        public bool HasItems => (bool)GetValue(HasItemsProperty);
         protected virtual void OnItemsChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (!isloaded) return;
+            if (!IsLoaded) return;
             Refresh();
             UpdateItems();
         }
@@ -163,32 +191,22 @@ namespace LayuiTemplate.Controls
 
         private void Refresh()
         {
-            if (PART_ItemsContentControl == null) return;
-            PART_CarouselPanel = new StackPanel() { Orientation= Orientation.Horizontal };
-            items.Clear();
-            PART_CarouselPanel.Children.Clear();
-            foreach (var item in Items.ToList())
-            {
-                items.Add(item);
-            }
-            items.Add(Items[0]);
-            items.Insert(0, Items[Items.Count - 1]);
-            if (PART_CarouselPanel.Children.Count == items.Count) return;
-            for (int i = 0; i < items.Count; i++)
-            {
-                var ui = LayUIElementHelper.DeepCopy(items[i] as DependencyObject) as FrameworkElement;
-                PART_CarouselPanel.Children.Add(ui);
-            }
-            PART_ItemsContentControl.Content = PART_CarouselPanel;
+            if (PART_FirstContentControl == null || PART_ContentControl == null || PART_LastContentControl == null) return;
+            if (Items.Count < 1) return;
+            //if (SelectedIndex < 0) SelectedIndex = 0;
+            //if (SelectedIndex > Items.Count-1) SelectedIndex = Items.Count - 1;
+            //PART_FirstContentControl.Content = Items[SelectedIndex+1];
+            PART_ContentControl.Content = Items[0];
+            //PART_LastContentControl.Content = SelectedIndex--<0? Items[Items.Count-1]: Items[SelectedIndex-1<0? Items.Count - 1:];
         }
-        bool isloaded = false;
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             PART_LeftButton = GetTemplateChild("PART_LeftButton") as Button;
             PART_RightButton = GetTemplateChild("PART_RightButton") as Button;
-            PART_ItemsContentControl = GetTemplateChild("PART_ItemsContentControl") as ContentControl;
-            isloaded = true;
+            PART_FirstContentControl = GetTemplateChild("PART_FirstContentControl") as ContentControl;
+            PART_ContentControl = GetTemplateChild("PART_ContentControl") as ContentControl;
+            PART_LastContentControl = GetTemplateChild("PART_LastContentControl") as ContentControl;
             Refresh();
         }
     }

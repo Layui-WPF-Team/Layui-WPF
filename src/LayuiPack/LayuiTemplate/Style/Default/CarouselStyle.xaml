@@ -172,8 +172,29 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LaySlideCarousel">
-                    <Grid Background="{TemplateBinding Background}">
-                        <ContentControl x:Name="PART_ItemsContentControl" Style="{x:Null}" />
+                    <Grid
+                        Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualWidth}"
+                        Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                        Background="{TemplateBinding Background}"
+                        ClipToBounds="true">
+                        <StackPanel Margin="-100,0,0,0" Orientation="Horizontal">
+                            <ContentControl
+                                x:Name="PART_FirstContentControl"
+                                Grid.Column="0"
+                                Width="300"
+                                Height="300" />
+                            <ContentControl
+                                x:Name="PART_ContentControl"
+                                Grid.Column="1"
+                                Width="300"
+                                Height="300" />
+                            <ContentControl
+                                x:Name="PART_LastContentControl"
+                                Grid.Column="2"
+                                Width="300"
+                                Height="300"
+                                Visibility="Collapsed" />
+                        </StackPanel>
                         <Button
                             x:Name="PART_LeftButton"
                             Margin="20,0,0,0"

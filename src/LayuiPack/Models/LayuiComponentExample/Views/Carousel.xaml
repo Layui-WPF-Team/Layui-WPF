@@ -14,40 +14,12 @@
                     </DataTemplate>
                 </lay:LayGradientCarousel.ItemTemplate>
             </lay:LayGradientCarousel>
-            <lay:LaySlideCarousel Height="300">
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Red" />
-                </lay:LayCarouselItem>
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Red" />
-                </lay:LayCarouselItem>
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Black" />
-                </lay:LayCarouselItem>
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Black" />
-                </lay:LayCarouselItem>
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Red" />
-                </lay:LayCarouselItem>
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Black" />
-                </lay:LayCarouselItem>
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Black" />
-                </lay:LayCarouselItem>
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Black" />
-                </lay:LayCarouselItem>
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Black" />
-                </lay:LayCarouselItem>
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Black" />
-                </lay:LayCarouselItem>
-                <lay:LayCarouselItem>
-                    <Button Width="50" Background="Black" />
-                </lay:LayCarouselItem>
+            <lay:LaySlideCarousel
+                Width="300"
+                Height="300"
+                SelectedIndex="0"
+                Style="{StaticResource LaySlideCarouselStyle}">
+                <Button Background="Red" />
             </lay:LaySlideCarousel>
         </StackPanel>
     </ScrollViewer>
