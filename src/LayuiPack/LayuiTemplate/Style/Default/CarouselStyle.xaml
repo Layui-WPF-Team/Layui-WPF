@@ -10,7 +10,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="SelectedIndex" Value="0" />
-        <Setter Property="ItemContainerStyle" Value="{DynamicResource LayCarouselItemStyle}" />
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource LayGradientCarouselItemStyle}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -22,18 +22,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayGradientCarousel">
                     <Grid Background="{TemplateBinding Background}">
-                        <ScrollViewer
-                            Padding="{TemplateBinding Padding}"
-                            Focusable="false"
-                            HorizontalScrollBarVisibility="Disabled"
-                            VerticalScrollBarVisibility="Disabled">
-                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </ScrollViewer>
+                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <Button
                             x:Name="PART_LeftButton"
                             Margin="20,0,0,0"
                             HorizontalAlignment="Left"
                             Cursor="Hand"
+                            FocusVisualStyle="{x:Null}"
                             Style="{x:Null}"
                             Visibility="Collapsed">
                             <Button.Template>
@@ -71,6 +66,7 @@
                             Margin="0,0,20,0"
                             HorizontalAlignment="Right"
                             Cursor="Hand"
+                            FocusVisualStyle="{x:Null}"
                             Style="{x:Null}"
                             Visibility="Collapsed">
                             <Button.Template>
@@ -166,4 +162,98 @@
         </Setter>
     </Style>
     <Style BasedOn="{StaticResource LayGradientCarouselStyle}" TargetType="Lay:LayGradientCarousel" />
+    <Style x:Key="LaySlideCarouselStyle" TargetType="Lay:LaySlideCarousel">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource GrayEffect}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LaySlideCarousel">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentControl x:Name="PART_ItemsContentControl" Style="{x:Null}" />
+                        <Button
+                            x:Name="PART_LeftButton"
+                            Margin="20,0,0,0"
+                            HorizontalAlignment="Left"
+                            Cursor="Hand"
+                            FocusVisualStyle="{x:Null}"
+                            Style="{x:Null}"
+                            Visibility="Collapsed">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid Width="36" Height="36">
+                                        <Border
+                                            Background="Black"
+                                            CornerRadius="18"
+                                            Opacity="0.2" />
+                                        <Path
+                                            Width="15"
+                                            Height="10"
+                                            Margin="0,0,3,0"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Data="M533.333333 516.266667l-174.933333-170.666667-64 59.733333 234.666667 234.666667L768 405.333333l-59.733333-59.733333-174.933334 170.666667z"
+                                            Fill="White"
+                                            RenderTransformOrigin="0.5,0.5"
+                                            Stretch="Fill">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform />
+                                                    <SkewTransform />
+                                                    <RotateTransform x:Name="RotateTransform" Angle="90" />
+                                                    <TranslateTransform />
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button
+                            x:Name="PART_RightButton"
+                            Margin="0,0,20,0"
+                            HorizontalAlignment="Right"
+                            Cursor="Hand"
+                            FocusVisualStyle="{x:Null}"
+                            Style="{x:Null}"
+                            Visibility="Collapsed">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid Width="36" Height="36">
+                                        <Border
+                                            Background="Black"
+                                            CornerRadius="18"
+                                            Opacity="0.2" />
+                                        <Path
+                                            Width="15"
+                                            Height="10"
+                                            Margin="3,0,0,0"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Data="M533.333333 516.266667l-174.933333-170.666667-64 59.733333 234.666667 234.666667L768 405.333333l-59.733333-59.733333-174.933334 170.666667z"
+                                            Fill="White"
+                                            RenderTransformOrigin="0.5,0.5"
+                                            Stretch="Fill">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform />
+                                                    <SkewTransform />
+                                                    <RotateTransform x:Name="RotateTransform" Angle="-90" />
+                                                    <TranslateTransform />
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LaySlideCarouselStyle}" TargetType="Lay:LaySlideCarousel" />
 </ResourceDictionary>

@@ -21,8 +21,13 @@ namespace LayuiTemplate.Controls
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-06-07 下午 4:12:39</para>
     /// </summary>
+    [TemplatePart(Name = "PART_LeftButton", Type = typeof(Button))]
+    [TemplatePart(Name = "PART_RightButton", Type = typeof(Button))]
     public class LayGradientCarousel : System.Windows.Controls.ListBox
     {
+        /// <summary>
+        /// 计时器
+        /// </summary>
         private DispatcherTimer timer;
         /// <summary>
         /// 上一页
@@ -35,7 +40,6 @@ namespace LayuiTemplate.Controls
         public LayGradientCarousel()
         {
         }
-
         /// <summary>
         /// 切换按钮展示类型
         /// </summary>
@@ -80,7 +84,8 @@ namespace LayuiTemplate.Controls
             DependencyProperty.Register("Interval", typeof(TimeSpan), typeof(LayGradientCarousel), new PropertyMetadata(TimeSpan.FromSeconds(4), OnIntervalChange));
 
         private static void OnIntervalChange(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((LayGradientCarousel)d).SetInterval();
-        /// <summary>
+
+        // <summary>
         /// 切换开关
         /// </summary>
         private void ImageSwitch()

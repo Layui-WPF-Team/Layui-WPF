@@ -6,7 +6,7 @@
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <ScrollViewer Focusable="False">
-        <StackPanel>
+        <VirtualizingStackPanel>
             <TextBox Height="40" />
             <Lay:LayLegend Header="默认按钮样式">
                 <Lay:LayKeyboard Height="300" />
@@ -148,6 +148,6 @@
                     </Lay:LayKeyboard.CapsButtonStyle>
                 </Lay:LayKeyboard>
             </Lay:LayLegend>
-        </StackPanel>
+        </VirtualizingStackPanel>
     </ScrollViewer>
 </UserControl>

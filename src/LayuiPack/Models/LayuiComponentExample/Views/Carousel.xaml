@@ -5,18 +5,50 @@
     xmlns:lay="clr-namespace:LayuiTemplate.Controls;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Button Height="50" Command="{Binding DeleteCommand}" />
-        <lay:LayGradientCarousel Grid.Row="1" ItemsSource="{Binding Images}">
-            <lay:LayGradientCarousel.ItemTemplate>
-                <DataTemplate>
-                    <Image Source="{Binding}" />
-                </DataTemplate>
-            </lay:LayGradientCarousel.ItemTemplate>
-        </lay:LayGradientCarousel>
-    </Grid>
+    <ScrollViewer>
+        <StackPanel>
+            <lay:LayGradientCarousel Height="300" ItemsSource="{Binding Images}">
+                <lay:LayGradientCarousel.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding .}" Stretch="Fill" />
+                    </DataTemplate>
+                </lay:LayGradientCarousel.ItemTemplate>
+            </lay:LayGradientCarousel>
+            <lay:LaySlideCarousel Height="300">
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Red" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Red" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Black" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Black" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Red" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Black" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Black" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Black" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Black" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Black" />
+                </lay:LayCarouselItem>
+                <lay:LayCarouselItem>
+                    <Button Width="50" Background="Black" />
+                </lay:LayCarouselItem>
+            </lay:LaySlideCarousel>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
