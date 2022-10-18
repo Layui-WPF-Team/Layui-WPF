@@ -189,5 +189,9 @@ namespace LayuiTemplate.Controls
             var item = new LayCarouselItem();
             return item;
         }
+        protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
+        {
+            base.OnItemsChanged(e);
+        }
     }
 }

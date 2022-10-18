@@ -15,11 +15,18 @@
                 </lay:LayGradientCarousel.ItemTemplate>
             </lay:LayGradientCarousel>
             <lay:LaySlideCarousel
-                Width="300"
                 Height="300"
-                SelectedIndex="0"
-                Style="{StaticResource LaySlideCarouselStyle}">
-                <Button Background="Red" />
+                Background="Aquamarine"
+                ItemsSource="{Binding Images}"
+                SelectedIndex="0">
+                <lay:LaySlideCarousel.ItemTemplate>
+                    <DataTemplate>
+                        <Image
+                            Width="{Binding RelativeSource={RelativeSource AncestorType=lay:LaySlideCarousel}, Path=ActualWidth}"
+                            Source="{Binding .}"
+                            Stretch="Fill" />
+                    </DataTemplate>
+                </lay:LaySlideCarousel.ItemTemplate>
             </lay:LaySlideCarousel>
         </StackPanel>
     </ScrollViewer>

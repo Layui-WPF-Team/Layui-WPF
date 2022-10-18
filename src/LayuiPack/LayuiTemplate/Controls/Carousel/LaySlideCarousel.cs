@@ -15,6 +15,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Markup;
+using System.Windows.Media;
 using System.Windows.Threading;
 using System.Xml;
 
@@ -31,9 +32,14 @@ namespace LayuiTemplate.Controls
     [TemplatePart(Name = "PART_FirstContentControl", Type = typeof(ContentControl))]
     [TemplatePart(Name = "PART_ContentControl", Type = typeof(ContentControl))]
     [TemplatePart(Name = "PART_LastContentControl", Type = typeof(ContentControl))]
+    [TemplatePart(Name = "PART_ItemsControl", Type = typeof(ItemsControl))]
     [DefaultProperty("Items")]
     public class LaySlideCarousel : Control
     {
+        /// <summary>
+        /// 轮播图容器集合
+        /// </summary>
+        private ItemsControl PART_ItemsControl = null;
         /// <summary>
         /// 首项
         /// </summary>
@@ -116,7 +122,18 @@ namespace LayuiTemplate.Controls
 
         // Using a DependencyProperty as the backing store for ItemTemplate.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemTemplateProperty =
-            DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(LaySlideCarousel));
+            DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(LaySlideCarousel),new PropertyMetadata(OnItemTemplateChanged));
+
+        private static void OnItemTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as LaySlideCarousel).OnItemTemplateChanged(e);
+        }
+
+        protected virtual void OnItemTemplateChanged(DependencyPropertyChangedEventArgs e)
+        {
+            Refresh();
+            UpdateItems();
+        }
 
         public object SelectedItem
         {
@@ -150,8 +167,25 @@ namespace LayuiTemplate.Controls
 
         // Using a DependencyProperty as the backing store for ItemsSource.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(LaySlideCarousel));
+            DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(LaySlideCarousel), new PropertyMetadata(OnItemsSourceChanged));
 
+        private static void OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ui = d as LaySlideCarousel;
+            if (ui.ItemsSource is INotifyCollectionChanged notify)
+            {
+                notify.CollectionChanged -= ui.Notify_CollectionChanged;
+                notify.CollectionChanged += ui.Notify_CollectionChanged;
+            }
+            ui.OnItemsSourceChanged((IEnumerable)e.OldValue, (IEnumerable)e.NewValue);
+        }
+        protected virtual void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue) { 
+        
+        }
+        private void Notify_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnItemsChanged(e);
+        }
         private Collection<object> _Items;
 
         public Collection<object> Items
@@ -175,29 +209,41 @@ namespace LayuiTemplate.Controls
 
         private void List_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            OnItemsChanged(sender, e);
+            OnItemsChanged(e);
         }
-        protected virtual void OnItemsChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected virtual void OnItemsChanged(NotifyCollectionChangedEventArgs e)
         {
-            if (!IsLoaded) return;
             Refresh();
             UpdateItems();
         }
 
         private void UpdateItems()
         {
+            if (PART_FirstContentControl == null || PART_ContentControl == null || PART_LastContentControl == null) return;
+            if(ItemsSource!=null&& Items.Count>0) return;
+            //if (SelectedIndex < 0) SelectedIndex = 0;
+            //if (SelectedIndex > Items.Count-1) SelectedIndex = Items.Count - 1;
+            if (ItemTemplate != null)
+            {
+                if (ItemsSource is IList items)
+                {
+                    var list = items.Cast<object>().ToList();
+                    PART_FirstContentControl.ContentTemplate = ItemTemplate;
+                    PART_FirstContentControl.Content = list[SelectedIndex + 1];
+                    PART_ContentControl.ContentTemplate = ItemTemplate;
+                    PART_ContentControl.Content = list[0];
+                }
+            }
+            else {
 
+                PART_FirstContentControl.Content = Items[SelectedIndex + 1];
+                PART_ContentControl.Content = Items[0];
+            }
+            //PART_LastContentControl.Content = SelectedIndex--<0? Items[Items.Count-1]: Items[SelectedIndex-1<0? Items.Count - 1:];
         }
 
         private void Refresh()
         {
-            if (PART_FirstContentControl == null || PART_ContentControl == null || PART_LastContentControl == null) return;
-            if (Items.Count < 1) return;
-            //if (SelectedIndex < 0) SelectedIndex = 0;
-            //if (SelectedIndex > Items.Count-1) SelectedIndex = Items.Count - 1;
-            //PART_FirstContentControl.Content = Items[SelectedIndex+1];
-            PART_ContentControl.Content = Items[0];
-            //PART_LastContentControl.Content = SelectedIndex--<0? Items[Items.Count-1]: Items[SelectedIndex-1<0? Items.Count - 1:];
         }
         public override void OnApplyTemplate()
         {
@@ -207,7 +253,8 @@ namespace LayuiTemplate.Controls
             PART_FirstContentControl = GetTemplateChild("PART_FirstContentControl") as ContentControl;
             PART_ContentControl = GetTemplateChild("PART_ContentControl") as ContentControl;
             PART_LastContentControl = GetTemplateChild("PART_LastContentControl") as ContentControl;
-            Refresh();
+            PART_ItemsControl = GetTemplateChild("PART_ItemsControl") as ItemsControl;
+            UpdateItems();
         }
     }
 }
