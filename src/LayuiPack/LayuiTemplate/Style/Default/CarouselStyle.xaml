@@ -173,16 +173,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LaySlideCarousel">
                     <Grid Background="{TemplateBinding Background}">
-                        <ItemsControl x:Name="PART_ItemsControl">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ContentControl x:Name="PART_FirstContentControl" Width="{Binding ElementName=PART_ItemsPanel, Path=ActualWidth}" />
-                            <ContentControl x:Name="PART_ContentControl" Width="{Binding ElementName=PART_ItemsPanel, Path=ActualWidth}" />
-                            <ContentControl x:Name="PART_LastContentControl" Width="{Binding ElementName=PART_ItemsPanel, Path=ActualWidth}" />
-                        </ItemsControl>
+                        <StackPanel x:Name="PART_ItemsPanel" Orientation="Horizontal" />
                         <Button
                             x:Name="PART_LeftButton"
                             Margin="20,0,0,0"

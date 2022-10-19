@@ -29,29 +29,14 @@ namespace LayuiTemplate.Controls
     [ContentProperty("Items")]
     [TemplatePart(Name = "PART_LeftButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_RightButton", Type = typeof(Button))]
-    [TemplatePart(Name = "PART_FirstContentControl", Type = typeof(ContentControl))]
-    [TemplatePart(Name = "PART_ContentControl", Type = typeof(ContentControl))]
-    [TemplatePart(Name = "PART_LastContentControl", Type = typeof(ContentControl))]
-    [TemplatePart(Name = "PART_ItemsControl", Type = typeof(ItemsControl))]
+    [TemplatePart(Name = "PART_ItemsPanel", Type = typeof(Panel))]
     [DefaultProperty("Items")]
     public class LaySlideCarousel : Control
     {
         /// <summary>
         /// 轮播图容器集合
         /// </summary>
-        private ItemsControl PART_ItemsControl = null;
-        /// <summary>
-        /// 首项
-        /// </summary>
-        private ContentControl PART_FirstContentControl = null;
-        /// <summary>
-        /// 轮播图容器集合
-        /// </summary>
-        private ContentControl PART_ContentControl = null;
-        /// <summary>
-        /// 末尾
-        /// </summary>
-        private ContentControl PART_LastContentControl = null;
+        private Panel PART_ItemsPanel = null;
         /// <summary>
         /// 计时器
         /// </summary>
@@ -122,7 +107,7 @@ namespace LayuiTemplate.Controls
 
         // Using a DependencyProperty as the backing store for ItemTemplate.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemTemplateProperty =
-            DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(LaySlideCarousel),new PropertyMetadata(OnItemTemplateChanged));
+            DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(LaySlideCarousel), new PropertyMetadata(OnItemTemplateChanged));
 
         private static void OnItemTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -131,8 +116,11 @@ namespace LayuiTemplate.Controls
 
         protected virtual void OnItemTemplateChanged(DependencyPropertyChangedEventArgs e)
         {
-            Refresh();
-            UpdateItems();
+            if (IsLoaded)
+            {
+                UpdateItems();
+                InvalidateVisual();
+            }
         }
 
         public object SelectedItem
@@ -172,19 +160,17 @@ namespace LayuiTemplate.Controls
         private static void OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ui = d as LaySlideCarousel;
-            if (ui.ItemsSource is INotifyCollectionChanged notify)
-            {
-                notify.CollectionChanged -= ui.Notify_CollectionChanged;
-                notify.CollectionChanged += ui.Notify_CollectionChanged;
-            }
-            ui.OnItemsSourceChanged((IEnumerable)e.OldValue, (IEnumerable)e.NewValue);
+            IEnumerable oldValue = (IEnumerable)e.OldValue;
+            IEnumerable newValue = (IEnumerable)e.NewValue;
+            ui.OnItemsSourceChanged(oldValue, newValue);
         }
-        protected virtual void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue) { 
-        
+        protected virtual void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
+        {
+
         }
         private void Notify_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            OnItemsChanged(e);
+            if (IsLoaded) OnItemsChanged(e);
         }
         private Collection<object> _Items;
 
@@ -209,52 +195,77 @@ namespace LayuiTemplate.Controls
 
         private void List_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            OnItemsChanged(e);
+            if (IsLoaded) OnItemsChanged(e);
         }
         protected virtual void OnItemsChanged(NotifyCollectionChangedEventArgs e)
         {
-            Refresh();
-            UpdateItems();
+            if (IsLoaded) UpdateItems();
         }
 
         private void UpdateItems()
         {
-            if (PART_FirstContentControl == null || PART_ContentControl == null || PART_LastContentControl == null) return;
-            if(ItemsSource!=null&& Items.Count>0) return;
-            //if (SelectedIndex < 0) SelectedIndex = 0;
-            //if (SelectedIndex > Items.Count-1) SelectedIndex = Items.Count - 1;
-            if (ItemTemplate != null)
+            if (Items.Count > 0 && ItemsSource != null) return;
+            if (PART_ItemsPanel == null || PART_ItemsPanel.Children == null) return;
+            PART_ItemsPanel.Children.Clear();
+            if (ItemsSource != null)
             {
-                if (ItemsSource is IList items)
+                if (ItemsSource is IList list)
                 {
-                    var list = items.Cast<object>().ToList();
-                    PART_FirstContentControl.ContentTemplate = ItemTemplate;
-                    PART_FirstContentControl.Content = list[SelectedIndex + 1];
-                    PART_ContentControl.ContentTemplate = ItemTemplate;
-                    PART_ContentControl.Content = list[0];
+                    var items = list.Cast<object>().ToList();
+                    if (items == null) return;
+                    ContentPresenter FirstContent = new ContentPresenter() { ContentTemplate = ItemTemplate, Content = items.LastOrDefault() };
+                    ContentPresenter LastContent = new ContentPresenter() { ContentTemplate = ItemTemplate, Content = items.FirstOrDefault() };
+                    foreach (var item in ItemsSource)
+                    {
+                        PART_ItemsPanel.Children.Add(new ContentPresenter() { ContentTemplate = ItemTemplate, Content = item });
+                    }
+                    PART_ItemsPanel.Children.Insert(0, FirstContent);
+                    PART_ItemsPanel.Children.Add(LastContent);
                 }
             }
-            else {
-
-                PART_FirstContentControl.Content = Items[SelectedIndex + 1];
-                PART_ContentControl.Content = Items[0];
+            else
+            {
+                if (Items == null) return;
+                ContentPresenter FirstContent = new ContentPresenter() { Content = LayUIElementHelper.DeepCopy(Items.LastOrDefault() as FrameworkElement) };
+                ContentPresenter LastContent = new ContentPresenter() { Content = LayUIElementHelper.DeepCopy(Items.FirstOrDefault() as FrameworkElement) };
+                foreach (var item in Items)
+                {
+                    PART_ItemsPanel.Children.Add(new ContentPresenter() { Content = item });
+                }
+                PART_ItemsPanel.Children.Insert(0, FirstContent);
+                PART_ItemsPanel.Children.Add(LastContent);
             }
-            //PART_LastContentControl.Content = SelectedIndex--<0? Items[Items.Count-1]: Items[SelectedIndex-1<0? Items.Count - 1:];
         }
 
-        private void Refresh()
+        private void Refresh(Size size)
         {
+            if (PART_ItemsPanel != null && PART_ItemsPanel.Children != null && PART_ItemsPanel.IsLoaded && IsLoaded)
+            {
+                foreach (FrameworkElement item in PART_ItemsPanel.Children)
+                {
+                    item.Width = size.Width;
+                    item.Height = size.Height;
+                }
+                PART_ItemsPanel.InvalidateVisual();
+            }
         }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             PART_LeftButton = GetTemplateChild("PART_LeftButton") as Button;
             PART_RightButton = GetTemplateChild("PART_RightButton") as Button;
-            PART_FirstContentControl = GetTemplateChild("PART_FirstContentControl") as ContentControl;
-            PART_ContentControl = GetTemplateChild("PART_ContentControl") as ContentControl;
-            PART_LastContentControl = GetTemplateChild("PART_LastContentControl") as ContentControl;
-            PART_ItemsControl = GetTemplateChild("PART_ItemsControl") as ItemsControl;
+            PART_ItemsPanel = GetTemplateChild("PART_ItemsPanel") as StackPanel;
+            PART_ItemsPanel.Loaded += PART_ItemsControl_Loaded;
             UpdateItems();
+        }
+        private void PART_ItemsControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            InvalidateVisual();
+        }
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            if (IsLoaded) Refresh(DesiredSize);
         }
     }
 }

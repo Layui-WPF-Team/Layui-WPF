@@ -14,17 +14,10 @@
                     </DataTemplate>
                 </lay:LayGradientCarousel.ItemTemplate>
             </lay:LayGradientCarousel>
-            <lay:LaySlideCarousel
-                Height="300"
-                Background="Aquamarine"
-                ItemsSource="{Binding Images}"
-                SelectedIndex="0">
+            <lay:LaySlideCarousel Height="300" ItemsSource="{Binding Images}">
                 <lay:LaySlideCarousel.ItemTemplate>
                     <DataTemplate>
-                        <Image
-                            Width="{Binding RelativeSource={RelativeSource AncestorType=lay:LaySlideCarousel}, Path=ActualWidth}"
-                            Source="{Binding .}"
-                            Stretch="Fill" />
+                        <Image Source="{Binding .}" Stretch="Fill" />
                     </DataTemplate>
                 </lay:LaySlideCarousel.ItemTemplate>
             </lay:LaySlideCarousel>
