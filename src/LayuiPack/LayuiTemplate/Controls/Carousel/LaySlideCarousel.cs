@@ -26,13 +26,18 @@ namespace LayuiTemplate.Controls
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-06-07 下午 4:12:39</para>
     /// </summary>
-    [ContentProperty("Items")]
     [TemplatePart(Name = "PART_LeftButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_RightButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_ItemsPanel", Type = typeof(Panel))]
-    [DefaultProperty("Items")]
-    public class LaySlideCarousel : Control
+    public class LaySlideCarousel : Control, IDisposable
     {
+        // // TODO: 仅当“Dispose(bool disposing)”拥有用于释放未托管资源的代码时才替代终结器
+        ~LaySlideCarousel() => Dispose(disposing: false);
+        public LaySlideCarousel()
+        {
+            IsVisibleChanged += Carousel_IsVisibleChanged;
+        }
+        private readonly List<object> _entryDic = new List<object>();
         /// <summary>
         /// 轮播图容器集合
         /// </summary>
@@ -49,6 +54,8 @@ namespace LayuiTemplate.Controls
         /// 下一页
         /// </summary>
         private Button PART_RightButton;
+        private bool disposedValue;
+
         /// <summary>
         /// 切换按钮展示类型
         /// </summary>
@@ -77,9 +84,22 @@ namespace LayuiTemplate.Controls
         public static readonly DependencyProperty IsAutoSwitchProperty =
             DependencyProperty.Register("IsAutoSwitch", typeof(bool), typeof(LaySlideCarousel), new PropertyMetadata(false, OnAutoSwitchChange));
 
-        private static void OnAutoSwitchChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnAutoSwitchChange(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((LaySlideCarousel)d).ImageSwitch();
+        // <summary>
+        /// 切换开关
+        /// </summary>
+        private void ImageSwitch()
         {
-
+            if (!IsLoaded) return;
+            if (timer == null)
+            {
+                timer = new DispatcherTimer();
+                timer.Tick -= Timer_Tick;
+                timer.Tick += Timer_Tick;
+                timer.Interval = Interval;
+            }
+            if (IsAutoSwitch) timer?.Start();
+            else timer?.Stop();
         }
         /// <summary>
         /// 间隔时间
@@ -95,9 +115,25 @@ namespace LayuiTemplate.Controls
         public static readonly DependencyProperty IntervalProperty =
             DependencyProperty.Register("Interval", typeof(TimeSpan), typeof(LaySlideCarousel), new PropertyMetadata(TimeSpan.FromSeconds(4), OnIntervalChange));
 
-        private static void OnIntervalChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
+        private static void OnIntervalChange(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((LaySlideCarousel)d).SetInterval();
 
+
+        /// <summary>
+        /// 设置间隔时间
+        /// </summary>
+        private void SetInterval()
+        {
+            if (!IsLoaded) return;
+            if (!IsAutoSwitch) return;
+            if (timer == null)
+            {
+                timer = new DispatcherTimer();
+                timer.Tick -= Timer_Tick;
+                timer.Tick += Timer_Tick;
+            }
+            timer?.Stop();
+            timer.Interval = Interval;
+            timer?.Start();
         }
         public DataTemplate ItemTemplate
         {
@@ -116,11 +152,8 @@ namespace LayuiTemplate.Controls
 
         protected virtual void OnItemTemplateChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (IsLoaded)
-            {
-                UpdateItems();
-                InvalidateVisual();
-            }
+            UpdateItems();
+            InvalidateVisual();
         }
 
         public object SelectedItem
@@ -160,6 +193,11 @@ namespace LayuiTemplate.Controls
         private static void OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ui = d as LaySlideCarousel;
+            if (ui.ItemsSource is INotifyCollectionChanged notify)
+            {
+                notify.CollectionChanged -= ui.ItemsCollectionChanged;
+                notify.CollectionChanged += ui.ItemsCollectionChanged;
+            }
             IEnumerable oldValue = (IEnumerable)e.OldValue;
             IEnumerable newValue = (IEnumerable)e.NewValue;
             ui.OnItemsSourceChanged(oldValue, newValue);
@@ -168,85 +206,98 @@ namespace LayuiTemplate.Controls
         {
 
         }
-        private void Notify_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (IsLoaded) OnItemsChanged(e);
-        }
-        private Collection<object> _Items;
 
-        public Collection<object> Items
+        private void ItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            get
-            {
-                if (_Items == null)
-                {
-                    CreateItemCollectionAndGenerator();
-                }
-                return _Items;
-            }
-        }
-        private void CreateItemCollectionAndGenerator()
-        {
-            var list = new ObservableCollection<object>();
-            list.CollectionChanged -= List_CollectionChanged;
-            list.CollectionChanged += List_CollectionChanged;
-            _Items = list;
-        }
-
-        private void List_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (IsLoaded) OnItemsChanged(e);
+            OnItemsChanged(e);
+            InvalidateVisual();
         }
         protected virtual void OnItemsChanged(NotifyCollectionChangedEventArgs e)
         {
-            if (IsLoaded) UpdateItems();
+            UpdateItems();
         }
-
+        /// <summary>
+        /// 修改当前集合中的轮播图子项
+        /// </summary>
         private void UpdateItems()
         {
-            if (Items.Count > 0 && ItemsSource != null) return;
-            if (PART_ItemsPanel == null || PART_ItemsPanel.Children == null) return;
+            if (PART_ItemsPanel == null) return;
             PART_ItemsPanel.Children.Clear();
-            if (ItemsSource != null)
+            _entryDic.Clear();
+            if (ItemsSource == null) return;
+            foreach (var item in ItemsSource)
             {
-                if (ItemsSource is IList list)
-                {
-                    var items = list.Cast<object>().ToList();
-                    if (items == null) return;
-                    ContentPresenter FirstContent = new ContentPresenter() { ContentTemplate = ItemTemplate, Content = items.LastOrDefault() };
-                    ContentPresenter LastContent = new ContentPresenter() { ContentTemplate = ItemTemplate, Content = items.FirstOrDefault() };
-                    foreach (var item in ItemsSource)
-                    {
-                        PART_ItemsPanel.Children.Add(new ContentPresenter() { ContentTemplate = ItemTemplate, Content = item });
-                    }
-                    PART_ItemsPanel.Children.Insert(0, FirstContent);
-                    PART_ItemsPanel.Children.Add(LastContent);
-                }
+                _entryDic.Add(item);
+            }
+            foreach (var item in _entryDic)
+            {
+                PART_ItemsPanel.Children.Add(new ContentPresenter() { ContentTemplate = ItemTemplate, Content = item });
+            }
+            PART_ItemsPanel.Children.Add(new ContentPresenter() { ContentTemplate = ItemTemplate, Content = _entryDic.FirstOrDefault() });
+            PART_ItemsPanel.Children.Insert(0, new ContentPresenter() { ContentTemplate = ItemTemplate, Content = _entryDic.LastOrDefault() });
+        }
+        /// <summary>
+        /// 执行上一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PART_RightButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ItemsSource is IList Items)
+            {
+                if (Items.Count < 0) SelectedIndex = 0;
+                if (SelectedIndex >= (Items.Count - 1)) SelectedIndex = 0;
+                else SelectedIndex++;
+                timer?.Stop();
+                if (IsAutoSwitch) timer?.Start();
+            }
+        }
+        /// <summary>
+        /// 执行下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PART_LeftButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ItemsSource is IList Items)
+            {
+                if (Items.Count < 0) SelectedIndex = 0;
+                if (SelectedIndex <= 0) SelectedIndex = (Items.Count - 1);
+                else SelectedIndex--;
+                timer?.Stop();
+                if (IsAutoSwitch) timer?.Start();
+            }
+        }
+        public void Refresh()
+        {
+
+        }
+        private void Carousel_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (timer == null) return;
+            if (IsVisible)
+            {
+                timer.Tick += Timer_Tick;
+                timer.Start();
             }
             else
             {
-                if (Items == null) return;
-                ContentPresenter FirstContent = new ContentPresenter() { Content = LayUIElementHelper.DeepCopy(Items.LastOrDefault() as FrameworkElement) };
-                ContentPresenter LastContent = new ContentPresenter() { Content = LayUIElementHelper.DeepCopy(Items.FirstOrDefault() as FrameworkElement) };
-                foreach (var item in Items)
-                {
-                    PART_ItemsPanel.Children.Add(new ContentPresenter() { Content = item });
-                }
-                PART_ItemsPanel.Children.Insert(0, FirstContent);
-                PART_ItemsPanel.Children.Add(LastContent);
+                timer.Stop();
+                timer.Tick -= Timer_Tick;
             }
         }
-
-        private void Refresh(Size size)
+        /// <summary>
+        /// 计时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            if (PART_ItemsPanel != null && PART_ItemsPanel.Children != null && PART_ItemsPanel.IsLoaded && IsLoaded)
+            if (ItemsSource is IList Items)
             {
-                foreach (FrameworkElement item in PART_ItemsPanel.Children)
-                {
-                    item.Width = size.Width;
-                    item.Height = size.Height;
-                }
-                PART_ItemsPanel.InvalidateVisual();
+                if (Items.Count < 0) SelectedIndex = 0;
+                if (SelectedIndex >= (Items.Count - 1)) SelectedIndex = 0;
+                else SelectedIndex++;
             }
         }
         public override void OnApplyTemplate()
@@ -254,18 +305,57 @@ namespace LayuiTemplate.Controls
             base.OnApplyTemplate();
             PART_LeftButton = GetTemplateChild("PART_LeftButton") as Button;
             PART_RightButton = GetTemplateChild("PART_RightButton") as Button;
-            PART_ItemsPanel = GetTemplateChild("PART_ItemsPanel") as StackPanel;
-            PART_ItemsPanel.Loaded += PART_ItemsControl_Loaded;
+            PART_ItemsPanel = GetTemplateChild("PART_ItemsPanel") as Panel;
+            if (PART_LeftButton != null && PART_RightButton != null)
+            {
+                PART_LeftButton.Click -= PART_LeftButton_Click;
+                PART_RightButton.Click -= PART_RightButton_Click;
+                PART_LeftButton.Click += PART_LeftButton_Click;
+                PART_RightButton.Click += PART_RightButton_Click; ;
+            }
             UpdateItems();
-        }
-        private void PART_ItemsControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            InvalidateVisual();
+            ImageSwitch();
         }
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-            if (IsLoaded) Refresh(DesiredSize);
+            try
+            {
+                if (PART_ItemsPanel != null)
+                {
+                    foreach (FrameworkElement item in PART_ItemsPanel.Children)
+                    {
+                        item.Width = ActualWidth;
+                        item.Height = ActualHeight;
+                    }
+                }
+            }
+            catch
+            {
+            }
+        }
+        private void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: 释放托管状态(托管对象)
+                    IsVisibleChanged -= Carousel_IsVisibleChanged;
+                    timer?.Stop();
+                }
+                // TODO: 释放未托管的资源(未托管的对象)并重写终结器
+                // TODO: 将大型字段设置为 null
+                disposedValue = true;
+            }
+        }
+
+
+        public void Dispose()
+        {
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

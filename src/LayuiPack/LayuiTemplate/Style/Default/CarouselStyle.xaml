@@ -180,7 +180,8 @@
                             HorizontalAlignment="Left"
                             Cursor="Hand"
                             FocusVisualStyle="{x:Null}"
-                            Style="{x:Null}">
+                            Style="{x:Null}"
+                            Visibility="Collapsed">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid Width="36" Height="36">
@@ -217,7 +218,8 @@
                             HorizontalAlignment="Right"
                             Cursor="Hand"
                             FocusVisualStyle="{x:Null}"
-                            Style="{x:Null}">
+                            Style="{x:Null}"
+                            Visibility="Collapsed">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid Width="36" Height="36">
@@ -248,7 +250,66 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
+                        <ListBox
+                            x:Name="PATR_Tools"
+                            Margin="20,10"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            DataContext="{TemplateBinding DataContext}"
+                            ItemsSource="{TemplateBinding ItemsSource}"
+                            SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlideCarousel}, Path=SelectedIndex}"
+                            SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlideCarousel}, Path=SelectedItem}"
+                            Style="{x:Null}"
+                            Visibility="Collapsed">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Ellipse
+                                                    x:Name="bg"
+                                                    Width="12"
+                                                    Height="12"
+                                                    Margin="2"
+                                                    Cursor="Hand"
+                                                    Fill="White"
+                                                    Opacity="0.5" />
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="bg" Property="Opacity" Value="1" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Arrow}" Value="Always">
+                            <Setter TargetName="PART_RightButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_LeftButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PATR_Tools" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Arrow}" Value="Hover" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsMouseOver}" Value="true" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_RightButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_LeftButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PATR_Tools" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

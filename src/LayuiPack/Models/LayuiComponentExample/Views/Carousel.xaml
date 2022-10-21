@@ -7,14 +7,20 @@
     prism:ViewModelLocator.AutoWireViewModel="True">
     <ScrollViewer>
         <StackPanel>
-            <lay:LayGradientCarousel Height="300" ItemsSource="{Binding Images}">
+            <lay:LayGradientCarousel
+                Height="300"
+                Arrow="Hover"
+                ItemsSource="{Binding Images}">
                 <lay:LayGradientCarousel.ItemTemplate>
                     <DataTemplate>
                         <Image Source="{Binding .}" Stretch="Fill" />
                     </DataTemplate>
                 </lay:LayGradientCarousel.ItemTemplate>
             </lay:LayGradientCarousel>
-            <lay:LaySlideCarousel Height="300" ItemsSource="{Binding Images}">
+            <lay:LaySlideCarousel
+                Height="300"
+                Arrow="Hover"
+                ItemsSource="{Binding Images}">
                 <lay:LaySlideCarousel.ItemTemplate>
                     <DataTemplate>
                         <Image Source="{Binding .}" Stretch="Fill" />
