@@ -7,7 +7,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True">
     <TabControl>
         <TabItem Header="网络Gif">
-            <Lay:LayGifImage CornerRadius="5" Source="https://img.zcool.cn/community/0174b1558ba604000000b18f77328d.gif" />
+            <Lay:LayGifImage CornerRadius="5" Source="https://img.zcool.cn/community/01639c586c91bba801219c77f6efc8.gif" />
         </TabItem>
         <TabItem Header="本地Gif">
             <Lay:LayGifImage Source="/LayuiFundamentalElement;component/Images/GIF/v2-30156325f3b931600dc40e119d6a12cc_b.gif" />

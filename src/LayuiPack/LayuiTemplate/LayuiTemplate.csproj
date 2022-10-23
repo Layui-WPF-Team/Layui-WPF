@@ -312,6 +312,7 @@
     <Compile Include="Controls\Switch\LaySwitch.cs" />
     <Compile Include="Controls\TabControl\LayTabControl.cs" />
     <Compile Include="Controls\TabItem\LayTabItem.cs" />
+    <Compile Include="Controls\TextBlock\LayTextBlock.cs" />
     <Compile Include="Controls\TextBox\LayAutoCompleteTextBox.cs" />
     <Compile Include="Controls\TextBox\LayTextBox.cs" />
     <Compile Include="Controls\Timeline\LayTimelineItem.cs" />
