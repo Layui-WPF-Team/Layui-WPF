@@ -12,6 +12,5 @@
         <TabItem Header="本地Gif">
             <Lay:LayGifImage Source="/LayuiFundamentalElement;component/Images/GIF/v2-30156325f3b931600dc40e119d6a12cc_b.gif" />
         </TabItem>
-
     </TabControl>
 </UserControl>

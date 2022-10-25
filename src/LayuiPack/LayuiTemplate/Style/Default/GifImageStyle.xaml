@@ -8,7 +8,11 @@
                 <ControlTemplate TargetType="Lay:LayGifImage">
                     <Border CornerRadius="{TemplateBinding CornerRadius}">
                         <Border.Background>
-                            <ImageBrush x:Name="PART_Image" Stretch="{TemplateBinding Stretch}" />
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Image x:Name="PART_Image" Stretch="{TemplateBinding Stretch}" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
                         </Border.Background>
                     </Border>
                 </ControlTemplate>
