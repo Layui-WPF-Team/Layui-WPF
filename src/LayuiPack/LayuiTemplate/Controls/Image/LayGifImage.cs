@@ -87,7 +87,17 @@ namespace LayuiTemplate.Controls
                {
                    Dispatcher.Invoke(async () =>
                    {
-                       if (gifBitmap != null) {
+                       //防呆置空
+                       if (Source == null)
+                       {
+                           StopAnimate();
+                           gifBitmap?.Dispose();
+                           if(gifBitmap!=null) gifBitmap = null;
+                           this.PART_Image.Source = null;
+                           return;
+                       }
+                       if (gifBitmap != null)
+                       {
                            StopAnimate();
                            gifBitmap?.Dispose();
                        }
@@ -127,7 +137,7 @@ namespace LayuiTemplate.Controls
         /// </summary>
         public void StartAnimate()
         {
-           ImageAnimator.Animate(this.gifBitmap, this.OnFrameChanged);
+            ImageAnimator.Animate(this.gifBitmap, this.OnFrameChanged);
         }
 
         /// <summary>
@@ -135,7 +145,7 @@ namespace LayuiTemplate.Controls
         /// </summary>
         public void StopAnimate()
         {
-          ImageAnimator.StopAnimate(this.gifBitmap, this.OnFrameChanged);
+            ImageAnimator.StopAnimate(this.gifBitmap, this.OnFrameChanged);
         }
 
         /// <summary>

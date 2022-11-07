@@ -150,7 +150,13 @@ namespace LayuiTemplate.Extend
         {
             try
             {
-                if (Source.ToString().ToLower().Contains("pack://siteoforigin:") || Source.ToString().ToLower().Contains("pack://application:"))
+                if (Source.ToString().ToLower().Contains("pack://siteoforigin:"))
+                {
+                    Uri uri = new Uri(Source.ToString());
+                    var localUri = Environment.CurrentDirectory + uri.LocalPath;
+                    return new Bitmap(localUri);
+                }
+                if (Source.ToString().ToLower().Contains("pack://application:"))
                 {
                     Uri uri = new Uri(Source.ToString());
                     return new Bitmap(Application.GetResourceStream(uri).Stream);

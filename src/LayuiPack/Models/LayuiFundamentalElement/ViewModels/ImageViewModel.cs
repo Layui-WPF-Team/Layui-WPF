@@ -17,5 +17,19 @@ namespace LayuiFundamentalElement.ViewModels
         {
             
         }
+        private string _Uri;
+        public string Uri
+        {
+            get { return _Uri; }
+            set { SetProperty(ref _Uri, value); }
+        }
+        private DelegateCommand<string> _ChangedSourceCommand;
+        public DelegateCommand<string> ChangedSourceCommand =>
+            _ChangedSourceCommand ?? (_ChangedSourceCommand = new DelegateCommand<string>(ExecuteChangedSourceCommand));
+
+        void ExecuteChangedSourceCommand(string uri)
+        {
+            Uri = uri;
+        }
     }
 }

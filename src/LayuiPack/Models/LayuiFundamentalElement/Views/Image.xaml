@@ -12,5 +12,24 @@
         <TabItem Header="本地Gif">
             <Lay:LayGifImage Source="/LayuiFundamentalElement;component/Images/GIF/v2-30156325f3b931600dc40e119d6a12cc_b.gif" />
         </TabItem>
+        <TabItem Header="BindingGif">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Lay:LayGifImage Source="{Binding Uri}" />
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <RadioButton
+                        Command="{Binding ChangedSourceCommand}"
+                        CommandParameter=""
+                        Content="本地路径" />
+                    <RadioButton
+                        Command="{Binding ChangedSourceCommand}"
+                        CommandParameter="https://img.zcool.cn/community/01639c586c91bba801219c77f6efc8.gif"
+                        Content="网络路径" />
+                </StackPanel>
+            </Grid>
+        </TabItem>
     </TabControl>
 </UserControl>
