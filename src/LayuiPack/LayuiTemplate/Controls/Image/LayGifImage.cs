@@ -119,8 +119,12 @@ namespace LayuiTemplate.Controls
             IntPtr handle = IntPtr.Zero;
             try
             {
-                handle = this.gifBitmap.GetHbitmap();
-                this.bitmapSource = Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero, System.Windows.Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                if (gifBitmap != null)
+                {
+                    handle = this.gifBitmap.GetHbitmap();
+                    this.bitmapSource = Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero, System.Windows.Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+
+                }
             }
             finally
             {

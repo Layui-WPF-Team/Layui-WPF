@@ -11,22 +11,38 @@ using System.Windows.Controls;
 
 namespace LayuiTemplate.Controls
 {
-    public class LayDialogHost : ContentControl
+    [TemplatePart(Name = "PART_ItemsControl", Type = typeof(ItemsControl))]
+    public class LayDialogHost : Control
     {
         public LayDialogHost()
         {
         }
-        [Bindable(true)]
-        public bool IsOpen
+        public ItemsControl DialogItems
         {
-            get { return (bool)GetValue(IsOpenProperty); }
-            set { SetValue(IsOpenProperty, value); }
+            get { return (ItemsControl)GetValue(DialogItemsProperty); }
+            internal set { SetValue(DialogItemsProperty, value); }
         }
 
+        // Using a DependencyProperty as the backing store for Items.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DialogItemsProperty =
+            DependencyProperty.Register("DialogItems", typeof(ItemsControl), typeof(LayDialogHost));
 
-        // Using a DependencyProperty as the backing store for IsOpen.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(LayDialogHost), new PropertyMetadata(false));
+        /// <summary>
+        /// 唯一标识ID
+        /// </summary>
+        internal string GUID
+        {
+            get { return (string)GetValue(GUIDProperty); }
+            set { SetValue(GUIDProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for UID.  This enables animation, styling, binding, etc...
+        internal static readonly DependencyProperty GUIDProperty =
+            DependencyProperty.Register("GUID", typeof(string), typeof(LayDialogHost));
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            DialogItems = GetTemplateChild("PART_ItemsControl") as ItemsControl;
+        }
     }
 }

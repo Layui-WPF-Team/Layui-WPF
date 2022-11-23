@@ -311,11 +311,11 @@
         <Lay:LayDialogHost
             Grid.Row="1"
             Panel.ZIndex="99"
-            Global:LayDialog.Tooken="RootDialogTooken" />
+            Global:LayDialog.Token="RootDialogToken" />
         <Lay:LayMessageHost
             Grid.Row="1"
             Panel.ZIndex="99"
-            Global:LayMessage.Tooken="RootMessageTooken" />
+            Global:LayMessage.Token="RootMessageToken" />
         <Border
             Grid.Row="1"
             Panel.ZIndex="0"

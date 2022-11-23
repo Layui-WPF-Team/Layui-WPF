@@ -21,6 +21,10 @@ namespace LayuiTemplate.Global
         /// </summary>
         internal static Dictionary<string, Type> DialogViewCollection { get; set; } = DialogViewCollection ?? new Dictionary<string, Type>();
         /// <summary>
+        /// 被注入的窗体ViewModel集合
+        /// </summary>
+        internal static Dictionary<string, Type> DialogViewModelCollection { get; set; } = DialogViewModelCollection ?? new Dictionary<string, Type>();
+        /// <summary>
         /// 对话框载体
         /// </summary>
         internal static Dictionary<string, Type> DialogWindow { get; set; } = DialogWindow ?? new Dictionary<string, Type>();
@@ -32,36 +36,38 @@ namespace LayuiTemplate.Global
         {
         }
         /// <summary>
-        /// 获取Tooken
+        /// 获取token
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static string GetTooken(DependencyObject obj)
+        public static string GetToken(DependencyObject obj)
         {
-            return (string)obj.GetValue(TookenProperty);
+            return (string)obj.GetValue(TokenProperty);
         }
         /// <summary>
-        /// 设置Tooken
+        /// 设置token
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static void SetTooken(DependencyObject obj, string value)
+        public static void SetToken(DependencyObject obj, string value)
         {
-            obj.SetValue(TookenProperty, value);
+            obj.SetValue(TokenProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Tooken.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TookenProperty =
-            DependencyProperty.RegisterAttached("Tooken", typeof(string), typeof(LayDialog), new PropertyMetadata(OnTookenChange));
-        private static void OnTookenChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        // Using a DependencyProperty as the backing store for token.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TokenProperty =
+            DependencyProperty.RegisterAttached("Token", typeof(string), typeof(LayDialog), new PropertyMetadata(OntokenChange));
+        private static void OntokenChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             try
             {
                 LayDialogHost host = d as LayDialogHost;
                 if (host == null) return;
-                var tooken = LayDialog.GetTooken(host);
-                if (!LayDialog.DialogHosts.ContainsKey(tooken)) LayDialog.DialogHosts.Add(tooken, host); ;
-                
+                var token = GetToken(host);
+                if (token == null) token = Guid.NewGuid().ToString();
+                if (DialogHosts.ContainsKey(token)) DialogHosts?.Remove(token);
+                host.GUID = Guid.NewGuid().ToString();
+                DialogHosts?.Add(token, host);
             }
             catch (Exception ex)
             {
@@ -131,12 +137,32 @@ namespace LayuiTemplate.Global
             }
         }
         /// <summary>
+        /// 注入弹窗试图
+        /// </summary>
+        /// <typeparam name="TView">需要注入的类型</typeparam>
+        /// <typeparam name="TViewModel">需要注入的ViewModel类型</typeparam>
+        /// <param name="dialogName">视图名称</param>
+        public static void RegisterDialog<TView, TViewModel>(string dialogName) where TViewModel : ILayDialogAware
+        {
+            try
+            {
+                if (DialogViewCollection.ContainsKey(dialogName)) throw new Exception($"{dialogName}弹窗视图多次注入");
+                if (DialogViewModelCollection.ContainsKey(dialogName)) throw new Exception($"{dialogName}弹窗视图ViewModel多次注入");
+                DialogViewCollection.Add(dialogName, typeof(TView));
+                DialogViewModelCollection.Add(dialogName, typeof(TViewModel));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
         /// 普通弹窗
         /// </summary>
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
-        /// <param name="tooken">需要通知弹窗的唯一健值</param>
-        public static void Show(string dialogName, ILayDialogParameter parameters, string tooken = null) => Alert(dialogName, parameters, null, false, tooken, null);
+        /// <param name="token">需要通知弹窗的唯一健值</param>
+        public static void Show(string dialogName, ILayDialogParameter parameters, string token = null) => Alert(dialogName, parameters, null, false, token, null);
         /// <summary>
         /// 普通弹窗
         /// </summary>
@@ -150,8 +176,8 @@ namespace LayuiTemplate.Global
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
         /// <param name="callback">回调</param>
-        /// <param name="tooken">需要通知弹窗的唯一健值</param>
-        public static void Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string tooken = null) => Alert(dialogName, parameters, callback, false, tooken, null);
+        /// <param name="token">需要通知弹窗的唯一健值</param>
+        public static void Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token = null) => Alert(dialogName, parameters, callback, false, token, null);
         /// <summary>
         /// 普通弹窗
         /// </summary>
@@ -165,8 +191,8 @@ namespace LayuiTemplate.Global
         /// </summary>
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
-        /// <param name="tooken">需要通知弹窗的唯一健值</param>
-        public static void ShowDialog(string dialogName, ILayDialogParameter parameters, string tooken = null) => Alert(dialogName, parameters, null, true, tooken, null);
+        /// <param name="token">需要通知弹窗的唯一健值</param>
+        public static void ShowDialog(string dialogName, ILayDialogParameter parameters, string token = null) => Alert(dialogName, parameters, null, true, token, null);
         /// <summary>
         /// 模态对话框
         /// </summary>
@@ -181,8 +207,8 @@ namespace LayuiTemplate.Global
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
         /// <param name="callback">回调</param>
-        /// <param name="tooken">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
-        public static void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string tooken = null) => Alert(dialogName, parameters, callback, true, tooken, null);
+        /// <param name="token">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
+        public static void ShowDialog(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token = null) => Alert(dialogName, parameters, callback, true, token, null);
         /// <summary>
         /// <summary>
         /// 模态对话框
@@ -199,12 +225,12 @@ namespace LayuiTemplate.Global
         /// <param name="parameters">参数</param>
         /// <param name="callback">回调</param>
         /// <param name="isModel">是否为模态</param>
-        /// <param name="tooken">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
+        /// <param name="token">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
         /// <param name="windowName">指定需要打开的窗体样式</param>
-        private static void Alert(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string tooken, string windowName)
+        private static void Alert(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string token, string windowName)
         {
             if (windowName != null) AlertWindow(dialogName, parameters, callback, isModel, windowName);
-            else AlertUserControl(dialogName, parameters, callback, isModel, tooken);
+            else AlertUserControl(dialogName, parameters, callback, isModel, token);
         }
         /// <summary>
         /// 弹起Window窗体
@@ -213,7 +239,7 @@ namespace LayuiTemplate.Global
         /// <param name="parameters"></param>
         /// <param name="callback"></param>
         /// <param name="isModel"></param>
-        /// <param name="tooken"></param>
+        /// <param name="token"></param>
         /// <param name="windowName"></param>
         private static void AlertWindow(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string windowName)
         {
@@ -284,49 +310,54 @@ namespace LayuiTemplate.Global
         /// <param name="parameters"></param>
         /// <param name="callback"></param>
         /// <param name="isModel"></param>
-        /// <param name="tooken"></param>
-        private static void AlertUserControl(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string tooken)
+        /// <param name="token"></param>
+        private static void AlertUserControl(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string token)
         {
             DispatcherFrame dispatcherFrame = null;
             try
             {
+                if (string.IsNullOrEmpty(token)) throw new Exception($"{nameof(token)}不能为空");
+                if (string.IsNullOrEmpty(dialogName)) throw new Exception($"{nameof(dialogName)}不能为空");
+                if (!DialogHosts.ContainsKey(token)) throw new Exception($"未找到{nameof(token)}值为{token}的弹窗组件:{nameof(LayDialogHost)}");
+                if(!DialogViewCollection.ContainsKey(dialogName)) throw new Exception($"未找到{nameof(dialogName)}为{dialogName}的视图");
+                //抓取当前展示弹窗容器
+                LayDialogHost host = DialogHosts[token];
+                //创建内容视图
                 var view = Activator.CreateInstance(DialogViewCollection[dialogName]) as UserControl;
-                if (view == null) throw new Exception($"{dialogName}未找到");
-                LayDialogHost host = null;
-                if (tooken == null) host = DialogHosts["RootDialogTooken"];
-                else host = DialogHosts[tooken];
-                if (host == null) throw new Exception($"未找到弹窗组件");
-                if (host.IsOpen) throw new Exception($"{view.GetType().Name}已开启，请先关闭当前窗体");
-                LayDialogUserControlWindow DialogView = new LayDialogUserControlWindow()
+                //检查VM初始化被注入情况
+                if (DialogViewModelCollection.ContainsKey(dialogName))
                 {
+                    //创建VM
+                    view.DataContext = Activator.CreateInstance(DialogViewModelCollection[dialogName]);
+                }
+                //创建弹窗
+                LayDialogUserControlWindow dialogView = new LayDialogUserControlWindow()
+                {
+                    IsOpen=true,
                     Content = view,
                     DataContext = view.DataContext
                 };
-                host.Content = DialogView;
-                if (DialogView == null) return;
-                host.IsOpen = true;
-                ILayDialogUserControlWindow dialog = DialogView as ILayDialogUserControlWindow;
+                host.DialogItems.Items.Add(dialogView);
+                ILayDialogUserControlWindow dialog = dialogView as ILayDialogUserControlWindow;
                 Action<ILayDialogResult> requestCloseHandler = null;
                 //窗体关闭的回调方法
                 requestCloseHandler = (o) =>
                 {
-                    DialogView.Result = o;
+                    dialogView.Result = o;
                     //关闭窗体
-                    host.IsOpen = false;
                     host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(async () =>
                     {
-                        await Task.Delay(100);
                         //窗体关闭后数据置空
-                        DialogView = null;
-                        host.Content = null;
-                        host.DataContext = null;
+                        dialogView.IsOpen = false;
+                        await Task.Delay(100);
+                        host.DialogItems.Items.Clear();
                     }));
                 };
                 RoutedEventHandler LoadedHandler = null;
                 LoadedHandler = (o, e) =>
                 {
-                    DialogView.Loaded -= LoadedHandler;
-                    DialogView.GetDialogViewModel().RequestClose += requestCloseHandler;
+                    dialogView.Loaded -= LoadedHandler;
+                    dialogView.GetDialogViewModel().RequestClose += requestCloseHandler;
                 };
                 dialog.Loaded += LoadedHandler;
                 RoutedEventHandler UnloadedHandler = null;
@@ -356,7 +387,6 @@ namespace LayuiTemplate.Global
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -374,18 +404,14 @@ namespace LayuiTemplate.Global
         /// <summary>
         /// 关闭当前窗体的弹窗
         /// </summary>
-        /// <param name="tooken">需要关闭的的窗体Tooken</param>
-        public static void Close(string tooken)
+        /// <param name="token">需要关闭的的窗体token</param>
+        public static void Close(string token)
         {
-            if (!DialogHosts.ContainsKey(tooken)) return;
-            LayDialogHost host = DialogHosts[tooken];
-            host.IsOpen = false;
-            host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(async () =>
+            if (!DialogHosts.ContainsKey(token)) return;
+            LayDialogHost host = DialogHosts[token];
+            host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
             {
-                await Task.Delay(100);
-                //窗体关闭后数据置空
-                host.Content = null;
-                host.DataContext = null;
+                host.DialogItems.Items.Clear();
             }));
         }
         /// <summary>
@@ -396,13 +422,9 @@ namespace LayuiTemplate.Global
             foreach (var item in DialogHosts)
             {
                 LayDialogHost host = DialogHosts[item.Key];
-                host.IsOpen = false;
-                host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(async () =>
+                host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
-                    await Task.Delay(100);
-                    //窗体关闭后数据置空
-                    host.Content = null;
-                    host.DataContext = null;
+                    host.DialogItems.Items.Clear();
                 }));
             }
         }

@@ -21,19 +21,19 @@ namespace LayuiTemplate.Global
         /// </summary>
         internal static Dictionary<string, LayMessageHost> MessageHosts { get; set; } = MessageHosts ?? new Dictionary<string, LayMessageHost>();
 
-        public static string GetTooken(DependencyObject obj)
+        public static string GetToken(DependencyObject obj)
         {
-            return (string)obj.GetValue(TookenProperty);
+            return (string)obj.GetValue(TokenProperty);
         }
 
-        public static void SetTooken(DependencyObject obj, string value)
+        public static void SetToken(DependencyObject obj, string value)
         {
-            obj.SetValue(TookenProperty, value);
+            obj.SetValue(TokenProperty, value);
         }
 
         // Using a DependencyProperty as the backing store for Tooken.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TookenProperty =
-            DependencyProperty.RegisterAttached("Tooken", typeof(string), typeof(LayMessage), new PropertyMetadata(OnTookenChange));
+        public static readonly DependencyProperty TokenProperty =
+            DependencyProperty.RegisterAttached("Token", typeof(string), typeof(LayMessage), new PropertyMetadata(OnTookenChange));
         /// <summary>
         /// 设置组件
         /// </summary>
@@ -45,9 +45,9 @@ namespace LayuiTemplate.Global
             {
                 LayMessageHost host = d as LayMessageHost;
                 if (host == null) return;
-                var tooken = GetTooken(host);
-                if (MessageHosts.ContainsKey(tooken)) MessageHosts.Remove(tooken);
-                MessageHosts.Add(tooken, host);
+                var token = GetToken(host);
+                if (MessageHosts.ContainsKey(token)) MessageHosts.Remove(token);
+                MessageHosts.Add(token, host);
             }
             catch (Exception ex)
             {
@@ -94,8 +94,8 @@ namespace LayuiTemplate.Global
         {
             if (tooken == null)
             {
-                if (!MessageHosts.ContainsKey("RootMessageTooken")) return;
-                var view = MessageHosts.Where(o => o.Key.Equals("RootMessageTooken")).FirstOrDefault().Value;
+                if (!MessageHosts.ContainsKey("RootMessageToken")) return;
+                var view = MessageHosts.Where(o => o.Key.Equals("RootMessageToken")).FirstOrDefault().Value;
                 view.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
                 {
                     view.Items.Add(new LayMessageControl() { Type = type, Content = message, Time = time, Uid = Guid.NewGuid().ToString() });

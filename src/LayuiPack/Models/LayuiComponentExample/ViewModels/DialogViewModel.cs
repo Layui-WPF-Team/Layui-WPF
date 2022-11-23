@@ -43,7 +43,7 @@ namespace LayuiComponentExample.ViewModels
                         default:
                             break;
                     }
-                });
+                }, "RootDialogToken");
                 MessageBox.Show("业务逻辑被阻塞");
             }
             else
@@ -65,7 +65,23 @@ namespace LayuiComponentExample.ViewModels
                         default:
                             break;
                     }
-                });
+                }, "RootDialogToken"); 
+                LayDialog.Show(SystemResource.DialogMessageView, dialogParameter, rest =>
+                {
+                    switch (rest.Result)
+                    {
+                        case LayuiTemplate.Enum.ButtonResult.Yes:
+                            MessageBox.Show("我也是这么认为的");
+                            break;
+                        case LayuiTemplate.Enum.ButtonResult.No:
+                            MessageBox.Show("你确定你是认真的吗?");
+                            break;
+                        case LayuiTemplate.Enum.ButtonResult.Default:
+                            break;
+                        default:
+                            break;
+                    }
+                }, "RootDialogToken");
                 MessageBox.Show("业务逻辑未被阻塞");
             }
         }
