@@ -14,7 +14,7 @@ namespace LayuiTemplate.Global
     /// <summary>
     /// LayDialog控制器
     /// </summary>
-    public class LayDialog 
+    public class LayDialog
     {
         /// <summary>
         /// 被注入的窗体集合
@@ -217,7 +217,7 @@ namespace LayuiTemplate.Global
         /// <param name="parameters">参数</param>
         /// <param name="callback">回调</param>
         /// <param name="windowName">指定需要打开的窗体样式</param>
-        public static void ShowDialogWindow(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback,string windowName = null) => Alert(dialogName, parameters, callback, true, null, windowName);
+        public static void ShowDialogWindow(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string windowName = null) => Alert(dialogName, parameters, callback, true, null, windowName);
         /// <summary>
         /// 弹窗业务
         /// </summary>
@@ -291,7 +291,7 @@ namespace LayuiTemplate.Global
                 window.Content = dialogContent;
                 /////////填充数据上下文/////////
                 window.DataContext = dialogContent.DataContext;
-                if (window.Owner == null)  window.Owner = Application.Current?.Windows.OfType<Window>().FirstOrDefault(x => x.IsActive);
+                if (window.Owner == null) window.Owner = Application.Current?.Windows.OfType<Window>().FirstOrDefault(x => x.IsActive);
                 //给对应的ViewModel传值
                 ViewAndViewModelAction<ILayDialogWindowAware>(viewModel, d => d.OnDialogOpened(parameters));
                 if (isModel) window.ShowDialog();
@@ -319,7 +319,7 @@ namespace LayuiTemplate.Global
                 if (string.IsNullOrEmpty(token)) throw new Exception($"{nameof(token)}不能为空");
                 if (string.IsNullOrEmpty(dialogName)) throw new Exception($"{nameof(dialogName)}不能为空");
                 if (!DialogHosts.ContainsKey(token)) throw new Exception($"未找到{nameof(token)}值为{token}的弹窗组件:{nameof(LayDialogHost)}");
-                if(!DialogViewCollection.ContainsKey(dialogName)) throw new Exception($"未找到{nameof(dialogName)}为{dialogName}的视图");
+                if (!DialogViewCollection.ContainsKey(dialogName)) throw new Exception($"未找到{nameof(dialogName)}为{dialogName}的视图");
                 //抓取当前展示弹窗容器
                 LayDialogHost host = DialogHosts[token];
                 //创建内容视图
@@ -333,7 +333,8 @@ namespace LayuiTemplate.Global
                 //创建弹窗
                 LayDialogUserControlWindow dialogView = new LayDialogUserControlWindow()
                 {
-                    IsOpen=true,
+                    Uid = dialogName + Guid.NewGuid().ToString(),
+                    IsOpen = true,
                     Content = view,
                     DataContext = view.DataContext
                 };
@@ -350,7 +351,7 @@ namespace LayuiTemplate.Global
                         //窗体关闭后数据置空
                         dialogView.IsOpen = false;
                         await Task.Delay(100);
-                        host.DialogItems.Items.Clear();
+                        host.DialogItems.Items.Remove(dialogView);
                     }));
                 };
                 RoutedEventHandler LoadedHandler = null;
@@ -402,40 +403,101 @@ namespace LayuiTemplate.Global
             }
         }
         /// <summary>
-        /// 关闭当前窗体的弹窗
+        /// VM转换
         /// </summary>
-        /// <param name="token">需要关闭的的窗体token</param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="view"></param>
+        /// <param name="action"></param>
+        private static void ViewAndViewModelAction<T>(object view, Action<T> action)
+        {
+            try
+            {
+                if (view is T viewAsT)
+                    action(viewAsT);
+
+                if (view is FrameworkElement element && element.DataContext is T viewModelAsT)
+                {
+                    action(viewModelAsT);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// 关闭指定弹窗容器内所有窗体
+        /// </summary>
+        /// <param name="token">目标弹窗容器DialogHosts唯一token</param>
         public static void Close(string token)
         {
-            if (!DialogHosts.ContainsKey(token)) return;
-            LayDialogHost host = DialogHosts[token];
-            host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+            try
             {
-                host.DialogItems.Items.Clear();
-            }));
+                if (string.IsNullOrEmpty(token)) throw new Exception($"{nameof(token)}不能为空");
+                if (DialogHosts == null) return;
+                if (!DialogHosts.ContainsKey(token)) return;
+                LayDialogHost host = DialogHosts[token];
+                host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    host.DialogItems.Items.Clear();
+                }));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// 关闭指定弹窗容器内所有窗体某一类型弹窗
+        /// </summary>
+        /// <param name="dialogName">目标弹窗类型</param>
+        /// <param name="token">目标弹窗容器DialogHosts唯一token</param>
+        public static void Close(string dialogName, string token)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(token)) throw new Exception($"{nameof(token)}不能为空");
+                if (DialogHosts == null) return;
+                if (!DialogHosts.ContainsKey(token)) return;
+                LayDialogHost host = DialogHosts[token];
+                host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    foreach (UserControl item in host.DialogItems.Items)
+                    {
+                        if (item.Uid.Contains(dialogName))
+                            host.DialogItems.Items.Remove(item);
+                    }
+                }));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
         /// <summary>
         /// 关闭所有弹窗
         /// </summary>
         public void CloseAll()
         {
-            foreach (var item in DialogHosts)
+            try
             {
-                LayDialogHost host = DialogHosts[item.Key];
-                host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                if (DialogHosts == null) return;
+                foreach (var item in DialogHosts)
                 {
-                    host.DialogItems.Items.Clear();
-                }));
+                    LayDialogHost host = DialogHosts[item.Key];
+                    host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                    {
+                        host.DialogItems.Items.Clear();
+                    }));
+                }
             }
-        }
-        private static void ViewAndViewModelAction<T>(object view, Action<T> action)
-        {
-            if (view is T viewAsT)
-                action(viewAsT);
-
-            if (view is FrameworkElement element && element.DataContext is T viewModelAsT)
+            catch (Exception ex)
             {
-                action(viewModelAsT);
+                throw ex;
             }
         }
     }
