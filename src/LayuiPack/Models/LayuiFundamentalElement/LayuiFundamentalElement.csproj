@@ -199,7 +199,7 @@
       <Name>Layui.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\LayuiTemplate\LayuiTemplate.csproj">
-      <Project>{80dd0aa1-a155-4c77-a7d0-878f1fb1325e}</Project>
+      <Project>{af5e6a51-5926-46ba-9ce0-3229491a15fb}</Project>
       <Name>LayuiTemplate</Name>
     </ProjectReference>
   </ItemGroup>

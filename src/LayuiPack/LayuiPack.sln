@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31410.357
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiApp", "LayuiApp\LayuiApp.csproj", "{66C2DD01-5264-4219-9C8D-D4A560CBF024}"
 EndProject
@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F427B4DF-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Layui.Core", "Core\Layui.Core\Layui.Core.csproj", "{B867ED96-1955-45C5-9381-A21DBAE85529}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiTemplate", "LayuiTemplate\LayuiTemplate.csproj", "{80DD0AA1-A155-4C77-A7D0-878F1FB1325E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiFundamentalElement", "Models\LayuiFundamentalElement\LayuiFundamentalElement.csproj", "{91C67C0C-F473-4A37-94AD-9E5E800A7CBD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiComponentExample", "Models\LayuiComponentExample\LayuiComponentExample.csproj", "{DADA7F2F-A343-4748-99D7-A576697C1953}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiAutoUpdateTool", "LayuiAutoUpdateTool\LayuiAutoUpdateTool.csproj", "{4EF15F2D-A072-4EF1-A26F-1CC593077015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiTemplate", "LayuiTemplate\LayuiTemplate.csproj", "{AF5E6A51-5926-46BA-9CE0-3229491A15FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,6 @@ Global
 		{B867ED96-1955-45C5-9381-A21DBAE85529}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B867ED96-1955-45C5-9381-A21DBAE85529}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B867ED96-1955-45C5-9381-A21DBAE85529}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80DD0AA1-A155-4C77-A7D0-878F1FB1325E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80DD0AA1-A155-4C77-A7D0-878F1FB1325E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80DD0AA1-A155-4C77-A7D0-878F1FB1325E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80DD0AA1-A155-4C77-A7D0-878F1FB1325E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{91C67C0C-F473-4A37-94AD-9E5E800A7CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91C67C0C-F473-4A37-94AD-9E5E800A7CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C67C0C-F473-4A37-94AD-9E5E800A7CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +53,10 @@ Global
 		{4EF15F2D-A072-4EF1-A26F-1CC593077015}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EF15F2D-A072-4EF1-A26F-1CC593077015}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EF15F2D-A072-4EF1-A26F-1CC593077015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF5E6A51-5926-46BA-9CE0-3229491A15FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5E6A51-5926-46BA-9CE0-3229491A15FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5E6A51-5926-46BA-9CE0-3229491A15FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5E6A51-5926-46BA-9CE0-3229491A15FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,10 +65,10 @@ Global
 		{66C2DD01-5264-4219-9C8D-D4A560CBF024} = {169DD4F0-432E-466C-8329-76762022D1A8}
 		{7EC17FFF-261F-4F1C-9899-F5AD3BB34D4F} = {24C0F3BE-6387-42BD-9469-3D5B0D810B93}
 		{B867ED96-1955-45C5-9381-A21DBAE85529} = {F427B4DF-E10B-4B96-89F2-6D82E351E997}
-		{80DD0AA1-A155-4C77-A7D0-878F1FB1325E} = {169DD4F0-432E-466C-8329-76762022D1A8}
 		{91C67C0C-F473-4A37-94AD-9E5E800A7CBD} = {24C0F3BE-6387-42BD-9469-3D5B0D810B93}
 		{DADA7F2F-A343-4748-99D7-A576697C1953} = {24C0F3BE-6387-42BD-9469-3D5B0D810B93}
 		{4EF15F2D-A072-4EF1-A26F-1CC593077015} = {169DD4F0-432E-466C-8329-76762022D1A8}
+		{AF5E6A51-5926-46BA-9CE0-3229491A15FB} = {169DD4F0-432E-466C-8329-76762022D1A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6FF3F37-627F-4C9F-9058-72C9F77EA1B2}

@@ -1,5 +1,4 @@
 ﻿using Layui.Core.Log;
-using LayuiTemplate.Enum;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Ioc;
