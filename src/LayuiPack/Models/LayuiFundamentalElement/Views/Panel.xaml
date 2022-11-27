@@ -38,49 +38,122 @@
                             <TextBlock Text="我是内容" />
                         </Lay:LayCard>
                     </UniformGrid>
-                    <UniformGrid
-                        Height="200"
-                        Columns="2"
-                        Rows="2">
-                        <Lay:LayExpander
+                    <StackPanel>
+                        <UniformGrid Columns="2">
+                            <Lay:LayExpander
+                                Margin="20"
+                                VerticalAlignment="Top"
+                                Style="{DynamicResource LayExpanderStyle}">
+                                <Lay:LayExpander.Header>
+                                    <TextBlock Text="我是标题" />
+                                </Lay:LayExpander.Header>
+                                <TextBlock Text="我是内容" />
+                            </Lay:LayExpander>
+                            <Lay:LayExpander
+                                Margin="20"
+                                VerticalAlignment="Top"
+                                ExpandDirection="Up"
+                                Style="{DynamicResource LayExpanderStyle}">
+                                <Lay:LayExpander.Header>
+                                    <TextBlock Text="我是标题" />
+                                </Lay:LayExpander.Header>
+                                <TextBlock Text="我是内容" />
+                            </Lay:LayExpander>
+                        </UniformGrid>
+                        <StackPanel
+                            Height="200"
                             Margin="20"
-                            VerticalAlignment="Top"
-                            Style="{DynamicResource LayExpanderStyle}">
-                            <Lay:LayExpander.Header>
-                                <TextBlock Text="我是标题" />
-                            </Lay:LayExpander.Header>
-                            <TextBlock Text="我是内容" />
-                        </Lay:LayExpander>
-                        <Lay:LayExpander
-                            Margin="20"
-                            VerticalAlignment="Top"
-                            ExpandDirection="Up"
-                            Style="{DynamicResource LayExpanderStyle}">
-                            <Lay:LayExpander.Header>
-                                <TextBlock Text="我是标题" />
-                            </Lay:LayExpander.Header>
-                            <TextBlock Text="我是内容" />
-                        </Lay:LayExpander>
-                        <Lay:LayExpander
-                            Margin="20"
-                            VerticalAlignment="Top"
-                            ExpandDirection="Left"
-                            Style="{DynamicResource LayExpanderStyle}">
-                            <Lay:LayExpander.Header>
-                                <TextBlock Text="我是标题" />
-                            </Lay:LayExpander.Header>
-                            <TextBlock Text="我是内容" />
-                        </Lay:LayExpander>
-                        <Lay:LayExpander
-                            Margin="20"
-                            VerticalAlignment="Top"
-                            ExpandDirection="Right">
-                            <Lay:LayExpander.Header>
-                                <TextBlock Text="我是标题" />
-                            </Lay:LayExpander.Header>
-                            <TextBlock Text="我是内容" />
-                        </Lay:LayExpander>
-                    </UniformGrid>
+                            Orientation="Horizontal">
+                            <Lay:LayExpander
+                                HorizontalAlignment="Left"
+                                ExpandDirection="Left"
+                                HeaderHorizontalAlignment="Center"
+                                HeaderVerticalAlignment="Center"
+                                Style="{DynamicResource LayExpanderStyle}">
+                                <Lay:LayExpander.Header>
+                                    <Grid>
+                                        <TextBlock Text="我是标题">
+                                            <TextBlock.LayoutTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform />
+                                                    <SkewTransform />
+                                                    <RotateTransform Angle="90" />
+                                                    <TranslateTransform />
+                                                </TransformGroup>
+                                            </TextBlock.LayoutTransform>
+                                        </TextBlock>
+                                    </Grid>
+                                </Lay:LayExpander.Header>
+                                <TextBlock Text="我是内容" />
+                            </Lay:LayExpander>
+                            <Lay:LayExpander
+                                HorizontalAlignment="Left"
+                                ExpandDirection="Right"
+                                HeaderHorizontalAlignment="Center"
+                                HeaderVerticalAlignment="Center"
+                                Style="{DynamicResource LayExpanderStyle}">
+                                <Lay:LayExpander.Header>
+                                    <Grid>
+                                        <TextBlock Text="我是标题">
+                                            <TextBlock.LayoutTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform />
+                                                    <SkewTransform />
+                                                    <RotateTransform Angle="90" />
+                                                    <TranslateTransform />
+                                                </TransformGroup>
+                                            </TextBlock.LayoutTransform>
+                                        </TextBlock>
+                                    </Grid>
+                                </Lay:LayExpander.Header>
+                                <TextBlock Text="我是内容" />
+                            </Lay:LayExpander>
+                            <Lay:LayExpander
+                                HorizontalAlignment="Left"
+                                ExpandDirection="Right"
+                                HeaderHorizontalAlignment="Center"
+                                HeaderVerticalAlignment="Center"
+                                Style="{DynamicResource LayExpanderStyle}">
+                                <Lay:LayExpander.Header>
+                                    <Grid>
+                                        <TextBlock Text="我是标题">
+                                            <TextBlock.LayoutTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform />
+                                                    <SkewTransform />
+                                                    <RotateTransform Angle="90" />
+                                                    <TranslateTransform />
+                                                </TransformGroup>
+                                            </TextBlock.LayoutTransform>
+                                        </TextBlock>
+                                    </Grid>
+                                </Lay:LayExpander.Header>
+                                <TextBlock Text="我是内容" />
+                            </Lay:LayExpander>
+                            <Lay:LayExpander
+                                HorizontalAlignment="Left"
+                                ExpandDirection="Right"
+                                HeaderHorizontalAlignment="Center"
+                                HeaderVerticalAlignment="Center"
+                                Style="{DynamicResource LayExpanderStyle}">
+                                <Lay:LayExpander.Header>
+                                    <Grid>
+                                        <TextBlock Text="我是标题">
+                                            <TextBlock.LayoutTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform />
+                                                    <SkewTransform />
+                                                    <RotateTransform Angle="90" />
+                                                    <TranslateTransform />
+                                                </TransformGroup>
+                                            </TextBlock.LayoutTransform>
+                                        </TextBlock>
+                                    </Grid>
+                                </Lay:LayExpander.Header>
+                                <TextBlock Text="我是内容" />
+                            </Lay:LayExpander>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </Border>

@@ -108,6 +108,7 @@
                             BorderThickness="0"
                             ItemsSource="{TemplateBinding ItemsSource}"
                             SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayGradientCarousel}, Path=SelectedIndex}"
+                            SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayGradientCarousel}, Path=SelectedItem}"
                             Style="{x:Null}"
                             Visibility="Collapsed">
                             <ListBox.ItemContainerStyle>

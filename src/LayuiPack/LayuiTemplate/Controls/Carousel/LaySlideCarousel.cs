@@ -39,6 +39,10 @@ namespace LayuiTemplate.Controls
         }
         private readonly List<object> _entryDic = new List<object>();
         /// <summary>
+        /// 轮播图控制器
+        /// </summary>
+        private ListBox PATR_Tools;
+        /// <summary>
         /// 轮播图容器集合
         /// </summary>
         private Panel PART_ItemsPanel = null;
@@ -306,6 +310,7 @@ namespace LayuiTemplate.Controls
             PART_LeftButton = GetTemplateChild("PART_LeftButton") as Button;
             PART_RightButton = GetTemplateChild("PART_RightButton") as Button;
             PART_ItemsPanel = GetTemplateChild("PART_ItemsPanel") as Panel;
+            PATR_Tools = GetTemplateChild("PATR_Tools") as ListBox;
             if (PART_LeftButton != null && PART_RightButton != null)
             {
                 PART_LeftButton.Click -= PART_LeftButton_Click;

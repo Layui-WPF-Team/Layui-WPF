@@ -197,6 +197,7 @@
     <!--  普通折叠板  -->
     <Style x:Key="LayExpanderStyle" TargetType="{x:Type Lay:LayExpander}">
         <Style.Resources>
+            <!--  向下  -->
             <Style x:Key="ExpanderDownHeaderStyle" TargetType="ToggleButton">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -209,7 +210,7 @@
                                 <Grid
                                     x:Name="iconGrid"
                                     Width="20"
-                                    Margin="5,0">
+                                    Margin="5">
                                     <Path
                                         Width="15"
                                         Height="8"
@@ -263,6 +264,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <!--  向上  -->
             <Style x:Key="ExpanderUpHeaderStyle" TargetType="ToggleButton">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -275,7 +277,8 @@
                                 <Grid
                                     x:Name="iconGrid"
                                     Width="20"
-                                    Margin="5,0">
+                                    Height="20"
+                                    Margin="5">
                                     <Path
                                         Width="15"
                                         Height="8"
@@ -329,16 +332,148 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <!--  右侧  -->
+            <Style x:Key="ExpanderRightHeaderStyle" TargetType="ToggleButton">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid
+                                    x:Name="iconGrid"
+                                    Width="20"
+                                    Height="20"
+                                    Margin="5">
+                                    <Path
+                                        Width="15"
+                                        Height="8"
+                                        VerticalAlignment="Center"
+                                        Data="M966.4 323.2c-9.6-9.6-25.6-9.6-35.2 0l-416 416-425.6-416c-9.6-9.6-25.6-9.6-35.2 0-9.6 9.6-9.6 25.6 0 35.2l441.6 432c9.6 9.6 25.6 9.6 35.2 0l435.2-432C976 345.6 976 332.8 966.4 323.2z"
+                                        Fill="{TemplateBinding Foreground}"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Stretch="Fill">
+                                        <Path.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform />
+                                                <SkewTransform />
+                                                <RotateTransform Angle="-90" />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </Path.RenderTransform>
+                                        <Path.Style>
+                                            <Style TargetType="Path">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsChecked}" Value="true">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="90" />
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-90" />
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Path.Style>
+                                    </Path>
+                                </Grid>
+                                <ContentPresenter
+                                    Grid.Row="1"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <!--  暂缓  -->
-            <Style x:Key="ExpanderRightHeaderStyle" TargetType="ToggleButton" />
-            <!--  暂缓  -->
-            <Style x:Key="ExpanderLeftHeaderStyle" TargetType="ToggleButton" />
+            <Style x:Key="ExpanderLeftHeaderStyle" TargetType="ToggleButton">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid
+                                    x:Name="iconGrid"
+                                    Width="20"
+                                    Height="20"
+                                    Margin="5">
+                                    <Path
+                                        Width="15"
+                                        Height="8"
+                                        VerticalAlignment="Center"
+                                        Data="M966.4 323.2c-9.6-9.6-25.6-9.6-35.2 0l-416 416-425.6-416c-9.6-9.6-25.6-9.6-35.2 0-9.6 9.6-9.6 25.6 0 35.2l441.6 432c9.6 9.6 25.6 9.6 35.2 0l435.2-432C976 345.6 976 332.8 966.4 323.2z"
+                                        Fill="{TemplateBinding Foreground}"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Stretch="Fill">
+                                        <Path.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform />
+                                                <SkewTransform />
+                                                <RotateTransform Angle="-90" />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </Path.RenderTransform>
+                                        <Path.Style>
+                                            <Style TargetType="Path">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsChecked}" Value="true">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="90" />
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-90" />
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Path.Style>
+                                    </Path>
+                                </Grid>
+                                <ContentPresenter
+                                    Grid.Row="1"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </Style.Resources>
         <Setter Property="HeaderHeight" Value="40" />
         <Setter Property="Line" Value="1" />
         <Setter Property="HeaderVerticalAlignment" Value="Center" />
         <Setter Property="HeaderBackground" Value="{DynamicResource LighGray}" />
-        <Setter Property="Padding" Value="20,0" />
+        <Setter Property="Padding" Value="20" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -374,6 +509,7 @@
                                     Content="{TemplateBinding Header}"
                                     ContentTemplate="{TemplateBinding HeaderTemplate}"
                                     ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                    Cursor="Hand"
                                     FocusVisualStyle="{x:Null}"
                                     FontFamily="{TemplateBinding FontFamily}"
                                     FontSize="{TemplateBinding FontSize}"
@@ -382,7 +518,7 @@
                                     FontWeight="{TemplateBinding FontWeight}"
                                     Foreground="{TemplateBinding Foreground}"
                                     IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                    Style="{StaticResource ExpanderDownHeaderStyle}" />
+                                    Style="{DynamicResource ExpanderDownHeaderStyle}" />
                                 <Grid
                                     x:Name="line"
                                     Grid.Row="1"
@@ -481,7 +617,144 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="ExpandDirection" Value="Right" />
+            <Trigger Property="ExpandDirection" Value="Right">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Lay:LayExpander">
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="0"
+                                SnapsToDevicePixels="true">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <ToggleButton
+                                            x:Name="HeaderSite"
+                                            MinWidth="{TemplateBinding HeaderHeight}"
+                                            MinHeight="0"
+                                            Padding="{TemplateBinding Padding}"
+                                            HorizontalContentAlignment="{TemplateBinding HeaderHorizontalAlignment}"
+                                            VerticalContentAlignment="{TemplateBinding HeaderVerticalAlignment}"
+                                            Background="{TemplateBinding HeaderBackground}"
+                                            Content="{TemplateBinding Header}"
+                                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                            ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                            Cursor="Hand"
+                                            FocusVisualStyle="{x:Null}"
+                                            FontFamily="{TemplateBinding FontFamily}"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            FontStretch="{TemplateBinding FontStretch}"
+                                            FontStyle="{TemplateBinding FontStyle}"
+                                            FontWeight="{TemplateBinding FontWeight}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Style="{DynamicResource ExpanderRightHeaderStyle}" />
+                                        <Grid
+                                            x:Name="line"
+                                            Grid.Column="1"
+                                            Width="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayExpander}, Path=Line}"
+                                            Background="{TemplateBinding BorderBrush}"
+                                            Visibility="Collapsed" />
+                                    </Grid>
+                                    <Grid
+                                        x:Name="contentGrid"
+                                        Grid.Column="1"
+                                        Background="{TemplateBinding Background}">
+                                        <Grid.LayoutTransform>
+                                            <TransformGroup>
+                                                <TransformGroup>
+                                                    <ScaleTransform x:Name="ContentSiteScaleTransform" />
+                                                    <RotateTransform Angle="0" />
+                                                </TransformGroup>
+                                            </TransformGroup>
+                                        </Grid.LayoutTransform>
+                                        <Grid x:Name="contentAnimationGrid">
+                                            <ContentPresenter
+                                                x:Name="content"
+                                                Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Focusable="false"
+                                                Visibility="Collapsed" />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsExpanded" Value="true">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="contentAnimationGrid"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    From="0"
+                                                    To="1"
+                                                    Duration="0:0:0.2" />
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="ContentSiteScaleTransform"
+                                                    Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                                    From="0"
+                                                    To="1"
+                                                    Duration="0:0:0.2">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <ObjectAnimationUsingKeyFrames
+                                                    Storyboard.TargetName="content"
+                                                    Storyboard.TargetProperty="Visibility"
+                                                    Duration="0:0:0.2">
+                                                    <DiscreteObjectKeyFrame KeyTime="0%" Value="{x:Static Visibility.Visible}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="contentAnimationGrid"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    From="1"
+                                                    To="0"
+                                                    Duration="0:0:0.2" />
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="ContentSiteScaleTransform"
+                                                    Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                                    From="1"
+                                                    To="0"
+                                                    Duration="0:0:0.2">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <ObjectAnimationUsingKeyFrames
+                                                    Storyboard.TargetName="content"
+                                                    Storyboard.TargetProperty="Visibility"
+                                                    Duration="0:0:0.2">
+                                                    <DiscreteObjectKeyFrame KeyTime="100%" Value="{x:Static Visibility.Collapsed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                    <Setter TargetName="content" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="line" Property="Visibility" Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
             <!--  内容向上折叠  -->
             <Trigger Property="ExpandDirection" Value="Up">
                 <Setter Property="Template">
@@ -541,6 +814,7 @@
                                             Content="{TemplateBinding Header}"
                                             ContentTemplate="{TemplateBinding HeaderTemplate}"
                                             ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                            Cursor="Hand"
                                             FocusVisualStyle="{x:Null}"
                                             FontFamily="{TemplateBinding FontFamily}"
                                             FontSize="{TemplateBinding FontSize}"
@@ -619,7 +893,142 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
-            <Trigger Property="ExpandDirection" Value="Left" />
+            <!--  内容向左折叠  -->
+            <Trigger Property="ExpandDirection" Value="Left">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Lay:LayExpander">
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="0"
+                                SnapsToDevicePixels="true">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid x:Name="contentGrid" Background="{TemplateBinding Background}">
+                                        <Grid.LayoutTransform>
+                                            <TransformGroup>
+                                                <TransformGroup>
+                                                    <ScaleTransform x:Name="ContentSiteScaleTransform" />
+                                                    <RotateTransform Angle="0" />
+                                                </TransformGroup>
+                                            </TransformGroup>
+                                        </Grid.LayoutTransform>
+                                        <Grid x:Name="contentAnimationGrid">
+                                            <ContentPresenter
+                                                x:Name="content"
+                                                Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Focusable="false"
+                                                Visibility="Collapsed" />
+                                        </Grid>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid
+                                            x:Name="line"
+                                            Width="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayExpander}, Path=Line}"
+                                            Background="{TemplateBinding BorderBrush}"
+                                            Visibility="Collapsed" />
+                                        <ToggleButton
+                                            x:Name="HeaderSite"
+                                            Grid.Column="1"
+                                            MinWidth="{TemplateBinding HeaderHeight}"
+                                            MinHeight="0"
+                                            Padding="{TemplateBinding Padding}"
+                                            HorizontalContentAlignment="{TemplateBinding HeaderHorizontalAlignment}"
+                                            VerticalContentAlignment="{TemplateBinding HeaderVerticalAlignment}"
+                                            Background="{TemplateBinding HeaderBackground}"
+                                            Content="{TemplateBinding Header}"
+                                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                            ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                            Cursor="Hand"
+                                            FocusVisualStyle="{x:Null}"
+                                            FontFamily="{TemplateBinding FontFamily}"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            FontStretch="{TemplateBinding FontStretch}"
+                                            FontStyle="{TemplateBinding FontStyle}"
+                                            FontWeight="{TemplateBinding FontWeight}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Style="{DynamicResource ExpanderRightHeaderStyle}" />
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsExpanded" Value="true">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="contentAnimationGrid"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    From="0"
+                                                    To="1"
+                                                    Duration="0:0:0.2" />
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="ContentSiteScaleTransform"
+                                                    Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                                    From="0"
+                                                    To="1"
+                                                    Duration="0:0:0.2">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <ObjectAnimationUsingKeyFrames
+                                                    Storyboard.TargetName="content"
+                                                    Storyboard.TargetProperty="Visibility"
+                                                    Duration="0:0:0.2">
+                                                    <DiscreteObjectKeyFrame KeyTime="0%" Value="{x:Static Visibility.Visible}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="contentAnimationGrid"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    From="1"
+                                                    To="0"
+                                                    Duration="0:0:0.2" />
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="ContentSiteScaleTransform"
+                                                    Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                                    From="1"
+                                                    To="0"
+                                                    Duration="0:0:0.2">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <ObjectAnimationUsingKeyFrames
+                                                    Storyboard.TargetName="content"
+                                                    Storyboard.TargetProperty="Visibility"
+                                                    Duration="0:0:0.2">
+                                                    <DiscreteObjectKeyFrame KeyTime="100%" Value="{x:Static Visibility.Collapsed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                    <Setter TargetName="content" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="line" Property="Visibility" Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
         </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource LayExpanderStyle}" TargetType="Lay:LayExpander" />
