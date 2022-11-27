@@ -10,23 +10,27 @@
             <lay:LayGradientCarousel
                 Height="300"
                 Arrow="Hover"
-                ItemsSource="{Binding Images}">
+                ItemsSource="{Binding Images}"
+                Style="{DynamicResource LayGradientCarouselStyle}">
                 <lay:LayGradientCarousel.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding .}" Stretch="Fill" />
+                        <Image Source="{Binding}" Stretch="Fill" />
                     </DataTemplate>
                 </lay:LayGradientCarousel.ItemTemplate>
             </lay:LayGradientCarousel>
+            <!--  待完成滑动轮播图  -->
             <lay:LaySlideCarousel
                 Height="300"
                 Arrow="Hover"
-                ItemsSource="{Binding Images}">
+                ItemsSource="{Binding Images}"
+                Visibility="Collapsed">
                 <lay:LaySlideCarousel.ItemTemplate>
                     <DataTemplate>
                         <Image Source="{Binding .}" Stretch="Fill" />
                     </DataTemplate>
                 </lay:LaySlideCarousel.ItemTemplate>
             </lay:LaySlideCarousel>
+            <!--  待完成滑动轮播图  -->
         </StackPanel>
     </ScrollViewer>
 </UserControl>

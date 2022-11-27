@@ -90,33 +90,49 @@ namespace LayuiTemplate.Controls
         /// </summary>
         private void ImageSwitch()
         {
-            if (!IsLoaded) return;
-            if (timer == null)
+            try
             {
-                timer = new DispatcherTimer();
-                timer.Tick -= Timer_Tick;
-                timer.Tick += Timer_Tick;
-                timer.Interval = Interval;
+                if (!IsLoaded) return;
+                if (timer == null)
+                {
+                    timer = new DispatcherTimer();
+                    timer.Tick -= Timer_Tick;
+                    timer.Tick += Timer_Tick;
+                    timer.Interval = Interval;
+                }
+                if (IsAutoSwitch) timer?.Start();
+                else timer?.Stop();
             }
-            if (IsAutoSwitch) timer?.Start();
-            else timer?.Stop();
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         /// <summary>
         /// 设置间隔时间
         /// </summary>
         private void SetInterval()
         {
-            if(!IsLoaded) return;
-            if (!IsAutoSwitch) return;
-            if (timer == null)
+            try
             {
-                timer = new DispatcherTimer();
-                timer.Tick -= Timer_Tick;
-                timer.Tick += Timer_Tick;
+
+                if (!IsLoaded) return;
+                if (!IsAutoSwitch) return;
+                if (timer == null)
+                {
+                    timer = new DispatcherTimer();
+                    timer.Tick -= Timer_Tick;
+                    timer.Tick += Timer_Tick;
+                }
+                timer?.Stop();
+                timer.Interval = Interval;
+                timer?.Start();
             }
-            timer?.Stop();
-            timer.Interval = Interval;
-            timer?.Start();
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         /// <summary>
         /// 计时器
@@ -125,24 +141,40 @@ namespace LayuiTemplate.Controls
         /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if(Items.Count<0) SelectedIndex = 0;
-            if (SelectedIndex >= (Items.Count - 1)) SelectedIndex = 0;
-            else SelectedIndex++;
+            try
+            {
+                if (Items.Count < 0) SelectedIndex = 0;
+                if (SelectedIndex >= (Items.Count - 1)) SelectedIndex = 0;
+                else SelectedIndex++;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public override void OnApplyTemplate()
         {
-            base.OnApplyTemplate();
-            PART_LeftButton = GetTemplateChild("PART_LeftButton") as Button;
-            PART_RightButton = GetTemplateChild("PART_RightButton") as Button;
-            if (PART_LeftButton != null && PART_RightButton != null)
+            try
             {
-                PART_LeftButton.Click -= PART_LeftButton_Click;
-                PART_RightButton.Click -= PART_RightButton_Click;
-                PART_LeftButton.Click += PART_LeftButton_Click;
-                PART_RightButton.Click += PART_RightButton_Click; ;
+                base.OnApplyTemplate();
+                PART_LeftButton = GetTemplateChild("PART_LeftButton") as Button;
+                PART_RightButton = GetTemplateChild("PART_RightButton") as Button;
+                if (PART_LeftButton != null && PART_RightButton != null)
+                {
+                    PART_LeftButton.Click -= PART_LeftButton_Click;
+                    PART_RightButton.Click -= PART_RightButton_Click;
+                    PART_LeftButton.Click += PART_LeftButton_Click;
+                    PART_RightButton.Click += PART_RightButton_Click; ;
+                }
+                ImageSwitch();
             }
-            ImageSwitch();
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         /// <summary>
         /// 执行上一页
@@ -151,11 +183,19 @@ namespace LayuiTemplate.Controls
         /// <param name="e"></param>
         private void PART_RightButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Items.Count < 0) SelectedIndex = 0;
-            if (SelectedIndex >= (Items.Count - 1)) SelectedIndex = 0;
-            else SelectedIndex++;
-            timer?.Stop();
-            if (IsAutoSwitch) timer?.Start();
+            try
+            {
+                if (Items.Count < 0) SelectedIndex = 0;
+                if (SelectedIndex >= (Items.Count - 1)) SelectedIndex = 0;
+                else SelectedIndex++;
+                timer?.Stop();
+                if (IsAutoSwitch) timer?.Start();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         /// <summary>
         /// 执行下一页
@@ -164,11 +204,19 @@ namespace LayuiTemplate.Controls
         /// <param name="e"></param>
         private void PART_LeftButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Items.Count < 0) SelectedIndex = 0;
-            if (SelectedIndex <= 0) SelectedIndex = (Items.Count - 1);
-            else SelectedIndex--;
-            timer?.Stop();
-           if(IsAutoSwitch) timer?.Start();
+            try
+            {
+                if (Items.Count < 0) SelectedIndex = 0;
+                if (SelectedIndex <= 0) SelectedIndex = (Items.Count - 1);
+                else SelectedIndex--;
+                timer?.Stop();
+                if (IsAutoSwitch) timer?.Start();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         /// <summary>
         /// 监听是否符合指定子项
