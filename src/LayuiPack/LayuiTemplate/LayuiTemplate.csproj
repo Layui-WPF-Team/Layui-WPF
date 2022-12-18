@@ -6,6 +6,7 @@
 	  <AssemblyTitle>LayuiTemplate</AssemblyTitle>
 	  <Description>这是一款WPF版Layui库</Description>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <GenerateDocumentationFile>False</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -21,7 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiComponentExample", "Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiAutoUpdateTool", "LayuiAutoUpdateTool\LayuiAutoUpdateTool.csproj", "{4EF15F2D-A072-4EF1-A26F-1CC593077015}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayuiTemplate", "LayuiTemplate\LayuiTemplate.csproj", "{AF5E6A51-5926-46BA-9CE0-3229491A15FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayuiTemplate", "LayuiTemplate\LayuiTemplate.csproj", "{AF5E6A51-5926-46BA-9CE0-3229491A15FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{BA480906-5106-413D-A433-4F8035D083CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Layui.Wpf.Utils", "Utils\Layui.Wpf.Utils\Layui.Wpf.Utils.csproj", "{78A35FC5-344A-416B-87B8-EB50579FE3BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{AF5E6A51-5926-46BA-9CE0-3229491A15FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF5E6A51-5926-46BA-9CE0-3229491A15FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF5E6A51-5926-46BA-9CE0-3229491A15FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A35FC5-344A-416B-87B8-EB50579FE3BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A35FC5-344A-416B-87B8-EB50579FE3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A35FC5-344A-416B-87B8-EB50579FE3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A35FC5-344A-416B-87B8-EB50579FE3BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +77,7 @@ Global
 		{DADA7F2F-A343-4748-99D7-A576697C1953} = {24C0F3BE-6387-42BD-9469-3D5B0D810B93}
 		{4EF15F2D-A072-4EF1-A26F-1CC593077015} = {169DD4F0-432E-466C-8329-76762022D1A8}
 		{AF5E6A51-5926-46BA-9CE0-3229491A15FB} = {169DD4F0-432E-466C-8329-76762022D1A8}
+		{78A35FC5-344A-416B-87B8-EB50579FE3BF} = {BA480906-5106-413D-A433-4F8035D083CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6FF3F37-627F-4C9F-9058-72C9F77EA1B2}
