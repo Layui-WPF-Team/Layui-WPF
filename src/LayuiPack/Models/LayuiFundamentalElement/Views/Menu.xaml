@@ -35,13 +35,13 @@
             Background="{DynamicResource Gray}">
             <Border.ContextMenu>
                 <Lay:LayContextMenu>
-                    <Lay:LayMenuItem Header="我是一级菜单" />
-                    <Lay:LayMenuItem Header="我是一级菜单">
-                        <Lay:LayMenuItem Header="我是二级菜单" />
-                        <Lay:LayMenuItem Header="我是二级菜单" />
-                        <Lay:LayMenuItem Header="我是二级菜单">
-                            <Lay:LayMenuItem Header="我是三级菜单" />
-                            <Lay:LayMenuItem Header="我是三级菜单" />
+                    <Lay:LayMenuItem Width="150" Header="我是一级菜单" />
+                    <Lay:LayMenuItem Width="150" Header="我是一级菜单">
+                        <Lay:LayMenuItem Width="150" Header="我是二级菜单" />
+                        <Lay:LayMenuItem Width="150" Header="我是二级菜单" />
+                        <Lay:LayMenuItem Width="150" Header="我是二级菜单">
+                            <Lay:LayMenuItem Width="150" Header="我是三级菜单" />
+                            <Lay:LayMenuItem Width="150" Header="我是三级菜单" />
                         </Lay:LayMenuItem>
                     </Lay:LayMenuItem>
                 </Lay:LayContextMenu>
