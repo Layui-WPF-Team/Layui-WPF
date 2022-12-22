@@ -5,17 +5,9 @@
     xmlns:Lay="clr-namespace:LayuiTemplate.Controls;assembly=LayuiTemplate"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Lay:LayMenu Effect="{DynamicResource LayShadow}">
-        <Lay:LayMenuItem Header="123">
-            <Lay:LayMenuItem Width="150" Header="123" />
-            <Lay:LayMenuItem Width="150" Header="123" />
-            <Lay:LayMenuItem Width="150" Header="123" />
-            <Lay:LayMenuItem Width="150" Header="123" />
-            <Lay:LayMenuItem Width="150" Header="123" />
-            <Lay:LayMenuItem Width="150" Header="123" />
-            <Lay:LayMenuItem Width="150" Header="123" />
-            <Lay:LayMenuItem Width="150" Header="123" />
-            <Lay:LayMenuItem Header="123">
+    <StackPanel>
+        <Lay:LayMenu Effect="{DynamicResource LayShadow}">
+            <Lay:LayMenuItem Header="菜单">
                 <Lay:LayMenuItem Width="150" Header="123" />
                 <Lay:LayMenuItem Width="150" Header="123" />
                 <Lay:LayMenuItem Width="150" Header="123" />
@@ -24,8 +16,40 @@
                 <Lay:LayMenuItem Width="150" Header="123" />
                 <Lay:LayMenuItem Width="150" Header="123" />
                 <Lay:LayMenuItem Width="150" Header="123" />
-                <Lay:LayMenuItem Width="150" Header="123" />
+                <Lay:LayMenuItem Header="123">
+                    <Lay:LayMenuItem Width="150" Header="123" />
+                    <Lay:LayMenuItem Width="150" Header="123" />
+                    <Lay:LayMenuItem Width="150" Header="123" />
+                    <Lay:LayMenuItem Width="150" Header="123" />
+                    <Lay:LayMenuItem Width="150" Header="123" />
+                    <Lay:LayMenuItem Width="150" Header="123" />
+                    <Lay:LayMenuItem Width="150" Header="123" />
+                    <Lay:LayMenuItem Width="150" Header="123" />
+                    <Lay:LayMenuItem Width="150" Header="123" />
+                </Lay:LayMenuItem>
             </Lay:LayMenuItem>
-        </Lay:LayMenuItem>
-    </Lay:LayMenu>
+        </Lay:LayMenu>
+        <Border
+            Height="200"
+            Margin="5"
+            Background="{DynamicResource Gray}">
+            <Border.ContextMenu>
+                <Lay:LayContextMenu>
+                    <Lay:LayMenuItem Header="我是一级菜单" />
+                    <Lay:LayMenuItem Header="我是一级菜单">
+                        <Lay:LayMenuItem Header="我是二级菜单" />
+                        <Lay:LayMenuItem Header="我是二级菜单" />
+                        <Lay:LayMenuItem Header="我是二级菜单">
+                            <Lay:LayMenuItem Header="我是三级菜单" />
+                            <Lay:LayMenuItem Header="我是三级菜单" />
+                        </Lay:LayMenuItem>
+                    </Lay:LayMenuItem>
+                </Lay:LayContextMenu>
+            </Border.ContextMenu>
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="在此区域单击鼠标右键" />
+        </Border>
+    </StackPanel>
 </UserControl>
