@@ -46,10 +46,10 @@ namespace LayuiHome.ViewModels
                 SetProperty(ref _MenuItemModel, value);
                 new Action(async () =>
                {
-                   AnimationType = AnimationType.RotateOut;
+                   AnimationType = AnimationType.SlideOutToLeft;
                    await Task.Delay(300);
                    Region.RequestNavigate(SystemResource.Nav_HomeContent, MenuItemModel.PageKey);
-                   AnimationType = AnimationType.RotateIn;
+                   AnimationType = AnimationType.SlideInToRight;
                }).Invoke();
             }
         }

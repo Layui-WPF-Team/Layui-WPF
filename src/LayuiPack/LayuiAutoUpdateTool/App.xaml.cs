@@ -1,4 +1,5 @@
 ﻿using Layui.Core.Log;
+using Layui.Wpf.Utils.Thread;
 using LayuiAutoUpdateTool.Views;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -11,6 +12,10 @@ namespace LayuiAutoUpdateTool
     /// </summary>
     public partial class App
     {
+        static App()
+        {
+            LayuiDispatcher.Initialize();
+        }
         protected override Window CreateShell()
         {
             return Container.Resolve<MainWindow>();
@@ -18,7 +23,7 @@ namespace LayuiAutoUpdateTool
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+
         }
     }
 }

@@ -112,6 +112,10 @@
       <Project>{af5e6a51-5926-46ba-9ce0-3229491a15fb}</Project>
       <Name>LayuiTemplate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utils\Layui.Wpf.Utils\Layui.Wpf.Utils.csproj">
+      <Project>{78a35fc5-344a-416b-87b8-eb50579fe3bf}</Project>
+      <Name>Layui.Wpf.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
