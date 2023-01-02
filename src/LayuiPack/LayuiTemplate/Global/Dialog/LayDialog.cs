@@ -16,6 +16,7 @@ namespace LayuiTemplate.Global
     /// </summary>
     public class LayDialog
     {
+        internal static Dictionary<string, object> Instance = new Dictionary<string, object>();
         /// <summary>
         /// 被注入的窗体集合
         /// </summary>
@@ -34,6 +35,45 @@ namespace LayuiTemplate.Global
         internal static Dictionary<string, LayDialogHost> DialogHosts { get; set; } = DialogHosts ?? new Dictionary<string, LayDialogHost>();
         public LayDialog()
         {
+        }
+        /// <summary>
+        /// 消费服务
+        /// <para>用于配合IOC使用</para>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T Resolve<T>()
+        {
+            try
+            {
+                var obj = Instance.Where(o => o.Key == typeof(T).Name).FirstOrDefault();
+                if (obj.Value != null) return (T)obj.Value;
+                else return default;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// 注册服务
+        /// <para>用于配合IOC使用</para>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
+        public static void Register<T>(T t)
+        {
+            try
+            {
+                if (Instance.ContainsKey(typeof(T).Name)) return;
+                Instance.Add(typeof(T).Name, t);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         /// <summary>
         /// 获取token
@@ -476,7 +516,7 @@ namespace LayuiTemplate.Global
 
                 throw ex;
             }
-            
+
         }
         /// <summary>
         /// 关闭所有弹窗

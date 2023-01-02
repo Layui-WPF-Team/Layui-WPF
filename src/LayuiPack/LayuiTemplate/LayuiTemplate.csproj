@@ -10,12 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\fontawesome-webfont.ttf" />
+    <Compile Remove="Control\**" />
+    <Compile Remove="Converter\**" />
+    <EmbeddedResource Remove="Control\**" />
+    <EmbeddedResource Remove="Converter\**" />
+    <None Remove="Control\**" />
+    <None Remove="Converter\**" />
+    <Page Remove="Control\**" />
+    <Page Remove="Converter\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Control\Notification\" />
-    <Folder Include="Converter\DatePicker\" />
+    <None Remove="Fonts\fontawesome-webfont.ttf" />
   </ItemGroup>
 
   <ItemGroup>

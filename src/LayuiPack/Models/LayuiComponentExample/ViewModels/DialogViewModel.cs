@@ -23,28 +23,18 @@ namespace LayuiComponentExample.ViewModels
         public DelegateCommand<string> DialogShowCommand => new DelegateCommand<string>(DialogShow);
         private void DialogShow(string IsModel)
         {
-            LayDialogParameter dialogParameter ;
-            if (IsModel=="true")
+            var data = LayDialog.Resolve<IContainerExtension>();
+            LayDialogParameter dialogParameter;
+            if (IsModel == "true")
             {
                 dialogParameter = new LayDialogParameter();
                 dialogParameter.Add("IsModel", "这是模态弹窗");
                 LayDialog.ShowDialog(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
-                    switch (rest.Result)
-                    {
-                        case LayuiTemplate.Enum.ButtonResult.Yes:
-                            MessageBox.Show("我也是这么认为的");
-                            break;
-                        case LayuiTemplate.Enum.ButtonResult.No:
-                            MessageBox.Show("你确定你是认真的吗?");
-                            break;
-                        case LayuiTemplate.Enum.ButtonResult.Default:
-                            break;
-                        default:
-                            break;
-                    }
                 }, "RootDialogToken");
-                MessageBox.Show("业务逻辑被阻塞");
+                LayDialog.ShowDialog(SystemResource.DialogMessageView, dialogParameter, rest =>
+                {
+                }, "RootDialogToken");
             }
             else
             {
@@ -65,24 +55,7 @@ namespace LayuiComponentExample.ViewModels
                         default:
                             break;
                     }
-                }, "RootDialogToken"); 
-                LayDialog.Show(SystemResource.DialogMessageView, dialogParameter, rest =>
-                {
-                    switch (rest.Result)
-                    {
-                        case LayuiTemplate.Enum.ButtonResult.Yes:
-                            MessageBox.Show("我也是这么认为的");
-                            break;
-                        case LayuiTemplate.Enum.ButtonResult.No:
-                            MessageBox.Show("你确定你是认真的吗?");
-                            break;
-                        case LayuiTemplate.Enum.ButtonResult.Default:
-                            break;
-                        default:
-                            break;
-                    }
                 }, "RootDialogToken");
-                MessageBox.Show("业务逻辑未被阻塞");
             }
         }
         private DelegateCommand _LocalDialogShowCommand;
@@ -91,9 +64,10 @@ namespace LayuiComponentExample.ViewModels
 
         void ExecuteLocalDialogShowCommand()
         {
-            LayDialogParameter dialogParameter=new LayDialogParameter();
+            LayDialogParameter dialogParameter = new LayDialogParameter();
             dialogParameter.Add("IsModel", "这是非模态弹窗");
-            LayDialog.Show(SystemResource.DialogMessageView, dialogParameter, rest => {
+            LayDialog.Show(SystemResource.DialogMessageView, dialogParameter, rest =>
+            {
                 switch (rest.Result)
                 {
                     case LayuiTemplate.Enum.ButtonResult.Yes:
@@ -106,7 +80,7 @@ namespace LayuiComponentExample.ViewModels
                         break;
                 }
 
-            },"Dialog");
+            }, "Dialog");
         }
         private DelegateCommand _CloseDialogCommand;
         public DelegateCommand CloseDialogCommand =>
@@ -142,8 +116,7 @@ namespace LayuiComponentExample.ViewModels
                         default:
                             break;
                     }
-                },"window");
-                MessageBox.Show("业务逻辑被阻塞");
+                }, "window");
             }
             else
             {
@@ -164,8 +137,7 @@ namespace LayuiComponentExample.ViewModels
                         default:
                             break;
                     }
-                },"window");
-                MessageBox.Show("业务逻辑未被阻塞");
+                }, "window");
             }
         }
     }

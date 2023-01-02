@@ -1,4 +1,17 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Lay="clr-namespace:LayuiTemplate.Controls" />
+    xmlns:Lay="clr-namespace:LayuiTemplate.Controls" >
+    <Style x:Key="LayDateTimePickerStyle" TargetType="Lay:LayDateTimePicker">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayDateTimePicker">
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayDateTimePickerStyle}" TargetType="Lay:LayDateTimePicker">
+
+    </Style>
+</ResourceDictionary>

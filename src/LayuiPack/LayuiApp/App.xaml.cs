@@ -47,6 +47,7 @@ namespace LayuiApp
             //注入自定义接口
             containerRegistry.RegisterInstance<ILayLogger>(new LayLogger());
             LayDialog.RegisterDialogWindow<DialogWindowBase>("window");
+            LayDialog.Register(Container.Resolve<IContainerExtension>());
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
