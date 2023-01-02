@@ -13,6 +13,67 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayTimer">
+                    <ControlTemplate.Resources>
+                        <Style x:Key="ItemsStyle" TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Grid
+                                            x:Name="bg"
+                                            Height="30"
+                                            Background="Transparent">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter TargetName="bg" Property="Background" Value="{DynamicResource LightGreen}" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style x:Key="TimeListBoxStyle" TargetType="ListBox">
+                            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+                            <Setter Property="ItemContainerStyle" Value="{DynamicResource ItemsStyle}" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBox">
+                                        <ScrollViewer x:Name="PART_ScrollViewer">
+                                            <ItemsPresenter />
+                                        </ScrollViewer>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style x:Key="TimerButtonBaseStyle" TargetType="Button">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTimer}, Path=BorderBrush}" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter
+                                                Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="{DynamicResource CyanBlue}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ControlTemplate.Resources>
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -23,6 +84,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                                 <RowDefinition />
+                                <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid Height="46" Focusable="False">
@@ -39,42 +101,6 @@
                                 Focusable="False" />
                             <Border Grid.Row="2">
                                 <Grid>
-                                    <Grid.Resources>
-                                        <Style x:Key="ItemsStyle" TargetType="ListBoxItem">
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="ListBoxItem">
-                                                        <Grid
-                                                            x:Name="bg"
-                                                            Height="30"
-                                                            Background="Transparent">
-                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                                        </Grid>
-                                                        <ControlTemplate.Triggers>
-                                                            <Trigger Property="IsSelected" Value="true">
-                                                                <Setter TargetName="bg" Property="Background" Value="{DynamicResource LightGreen}" />
-                                                                <Setter Property="Foreground" Value="White" />
-                                                            </Trigger>
-                                                        </ControlTemplate.Triggers>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                        <Style x:Key="TimeListBoxStyle" TargetType="ListBox">
-                                            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-                                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
-                                            <Setter Property="ItemContainerStyle" Value="{DynamicResource ItemsStyle}" />
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="ListBox">
-                                                        <ScrollViewer x:Name="PART_ScrollViewer">
-                                                            <ItemsPresenter />
-                                                        </ScrollViewer>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </Grid.Resources>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
                                         <ColumnDefinition />
@@ -142,6 +168,34 @@
                                 Grid.Row="3"
                                 Height="{TemplateBinding Line}"
                                 Background="{TemplateBinding BorderBrush}" />
+                            <Grid
+                                Grid.Row="4"
+                                Height="35"
+                                Margin="10,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Time, StringFormat={}{0:HH:mm:ss}}" />
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <Button
+                                        Height="25"
+                                        Padding="5,0"
+                                        Content="重置"
+                                        Style="{DynamicResource TimerButtonBaseStyle}" />
+                                    <Button
+                                        Height="25"
+                                        Padding="5,0"
+                                        BorderThickness="0,1"
+                                        Content="现在"
+                                        Style="{DynamicResource TimerButtonBaseStyle}" />
+                                    <Button
+                                        Height="25"
+                                        Padding="5,0"
+                                        Content="确定"
+                                        Style="{DynamicResource TimerButtonBaseStyle}" />
+                                </StackPanel>
+                            </Grid>
                         </Grid>
                     </Border>
                 </ControlTemplate>
