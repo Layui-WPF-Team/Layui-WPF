@@ -107,10 +107,11 @@
                             PlacementTarget="{Binding ElementName=bg}"
                             PopupAnimation="Slide"
                             StaysOpen="False">
-                            <Grid Margin="0,5">
+                            <Grid>
                                 <Lay:LayTimer
                                     x:Name="PART_LayTimer"
                                     Title="{TemplateBinding DateMessageTitle}"
+                                    Margin="0,3"
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"

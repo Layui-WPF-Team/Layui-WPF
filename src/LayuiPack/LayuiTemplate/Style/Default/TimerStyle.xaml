@@ -18,15 +18,21 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ListBoxItem">
-                                        <Grid
-                                            x:Name="bg"
-                                            Height="30"
-                                            Background="Transparent">
+                                        <Grid>
+                                            <Border
+                                                x:Name="bg"
+                                                Height="30"
+                                                Background="Transparent" />
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                         </Grid>
                                         <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="bg" Property="Background" Value="{DynamicResource Gray}" />
+                                                <Setter TargetName="bg" Property="Opacity" Value="0.5" />
+                                            </Trigger>
                                             <Trigger Property="IsSelected" Value="true">
                                                 <Setter TargetName="bg" Property="Background" Value="{DynamicResource LightGreen}" />
+                                                <Setter TargetName="bg" Property="Opacity" Value="1" />
                                                 <Setter Property="Foreground" Value="White" />
                                             </Trigger>
                                         </ControlTemplate.Triggers>

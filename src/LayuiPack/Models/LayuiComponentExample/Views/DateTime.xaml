@@ -18,8 +18,7 @@
             <Lay:LayTimePicker
                 Width="250"
                 Height="35"
-                Margin="5"
-                IsReadOnly="False" />
+                Margin="5" />
             <Calendar Margin="5" />
             <Lay:LayTextBox
                 Width="250"

@@ -176,7 +176,7 @@
                                     BorderThickness="{TemplateBinding BorderThickness}" />
                                 <Border
                                     x:Name="HighlightBackground"
-                                    Background="{DynamicResource LightGreen}"
+                                    Background="{DynamicResource Gray}"
                                     Opacity="0" />
                                 <ContentPresenter
                                     x:Name="NormalText"
