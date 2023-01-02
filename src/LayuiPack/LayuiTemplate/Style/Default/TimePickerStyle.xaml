@@ -40,9 +40,9 @@
                                     Padding="{TemplateBinding Padding}"
                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    IsReadOnly="true"
+                                    IsReadOnly="{TemplateBinding IsReadOnly}"
                                     Style="{x:Null}"
-                                    Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Text}">
+                                    Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:HH:mm:ss}}">
                                     <TextBox.Template>
                                         <ControlTemplate TargetType="TextBox">
                                             <ScrollViewer
@@ -109,12 +109,14 @@
                             StaysOpen="False">
                             <Grid Margin="0,5">
                                 <Lay:LayTimer
+                                    x:Name="PART_LayTimer"
                                     Title="{TemplateBinding DateMessageTitle}"
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="{TemplateBinding CornerRadius}"
-                                    Line="{TemplateBinding Line}" />
+                                    Line="{TemplateBinding Line}"
+                                    Time="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             </Grid>
                         </Popup>
                     </Grid>

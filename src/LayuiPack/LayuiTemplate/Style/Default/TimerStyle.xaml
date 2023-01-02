@@ -176,20 +176,23 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Time, StringFormat={}{0:HH:mm:ss}}" />
+                                <TextBlock VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=DefaultTime, StringFormat={}{0:HH:mm:ss}}" />
                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                                     <Button
+                                        x:Name="PART_ResetTimeBtn"
                                         Height="25"
                                         Padding="5,0"
                                         Content="重置"
                                         Style="{DynamicResource TimerButtonBaseStyle}" />
                                     <Button
+                                        x:Name="PART_QueryTimeBtn"
                                         Height="25"
                                         Padding="5,0"
                                         BorderThickness="0,1"
                                         Content="现在"
                                         Style="{DynamicResource TimerButtonBaseStyle}" />
                                     <Button
+                                        x:Name="PART_SubmitTimeBtn"
                                         Height="25"
                                         Padding="5,0"
                                         Content="确定"

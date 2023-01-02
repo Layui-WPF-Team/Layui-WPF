@@ -18,12 +18,13 @@
             <Lay:LayTimePicker
                 Width="250"
                 Height="35"
-                Margin="5" />
+                Margin="5"
+                IsReadOnly="False" />
             <Calendar Margin="5" />
             <Lay:LayTextBox
                 Width="250"
                 Margin="5"
-                Text="{Binding ElementName=time, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding ElementName=time, Path=Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <Lay:LayTimer x:Name="time" Margin="5" />
         </StackPanel>
     </ScrollViewer>

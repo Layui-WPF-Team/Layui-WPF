@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace LayuiTemplate.Controls
 {
@@ -13,8 +15,27 @@ namespace LayuiTemplate.Controls
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-06-23 下午 1:54:59</para>
     /// </summary>
+
+    [TemplatePart(Name = "PART_Hour", Type = typeof(ListBox))]
+    [TemplatePart(Name = "PART_Minute", Type = typeof(ListBox))]
+    [TemplatePart(Name = "PART_Second", Type = typeof(ListBox))]
+    [TemplatePart(Name = "PART_ResetTimeBtn", Type = typeof(Button))]
+    [TemplatePart(Name = "PART_QueryTimeBtn", Type = typeof(Button))]
+    [TemplatePart(Name = "PART_SubmitTimeBtn", Type = typeof(Button))]
     public class LayTimer : System.Windows.Controls.Control
     {
+        /// <summary>
+        /// 确定按钮
+        /// </summary>
+        private Button PART_SubmitTimeBtn;
+        /// <summary>
+        /// 获取当前时间按钮
+        /// </summary>
+        private Button PART_QueryTimeBtn;
+        /// <summary>
+        /// 重置按钮
+        /// </summary>
+        private Button PART_ResetTimeBtn;
         /// <summary>
         /// 时
         /// </summary>
@@ -31,20 +52,54 @@ namespace LayuiTemplate.Controls
         /// <summary>
         /// 时间
         /// </summary>
-        public DateTime Time
+        public DateTime? Time
         {
-            get { return (DateTime)GetValue(TimeProperty); }
+            get { return (DateTime?)GetValue(TimeProperty); }
             set { SetValue(TimeProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TimeProperty =
-            DependencyProperty.Register("Time", typeof(DateTime), typeof(LayTimer), new PropertyMetadata(OnTimeChanged));
+            DependencyProperty.Register("Time", typeof(DateTime?), typeof(LayTimer), new PropertyMetadata(OnTimeChanged));
 
+        /// <summary>
+        /// 按钮点击事件
+        /// </summary>
+        public event EventHandler<RoutedEventArgs> Click
+        {
+            add => AddHandler(ClickEvent, value);
+            remove => RemoveHandler(ClickEvent, value);
+        }
+        public static readonly RoutedEvent ClickEvent =
+            EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(LayTimer));
+        protected virtual void OnClick(RoutedEventArgs e)
+        {
+            RaiseEvent(e);
+        }
+
+        internal DateTime? DefaultTime
+        {
+            get { return (DateTime?)GetValue(DefaultTimeProperty); }
+            set { SetValue(DefaultTimeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DefaultTime.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DefaultTimeProperty =
+            DependencyProperty.Register("DefaultTime", typeof(DateTime?), typeof(LayTimer));
         private static void OnTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as LayTimer;
-            
+            view.RefreshView();
+        }
+        /// <summary>
+        /// 刷新视图
+        /// </summary>
+        internal void RefreshView()
+        {
+            UpdateIsSelectedItem(PART_Hour, Time?.Hour.ToString());
+            UpdateIsSelectedItem(PART_Minute, Time?.Minute.ToString());
+            UpdateIsSelectedItem(PART_Second, Time?.Second.ToString());
+            DefaultTime = Time;
         }
 
         public string Title
@@ -119,9 +174,19 @@ namespace LayuiTemplate.Controls
         /// 更新数据
         /// </summary>
         private void UpdateDate()
-        { 
-            //$"{(PART_Hour.SelectedItem as ListBoxItem).Content.ToString()}:{(PART_Minute.SelectedItem as ListBoxItem).Content.ToString()}:{(PART_Second.SelectedItem as ListBoxItem).Content.ToString()}";
-            
+        {
+            var Hour = GetTime(PART_Hour.SelectedItem as ListBoxItem);
+            var Minute = GetTime(PART_Minute.SelectedItem as ListBoxItem);
+            var Second = GetTime(PART_Second.SelectedItem as ListBoxItem);
+            var Year = DateTime.Now.Year;
+            var Month = DateTime.Now.Month;
+            var Day = DateTime.Now.Day;
+            var time = $"{Year}/{Month}/{Day} {Hour}:{Minute}:{Second}";
+            DefaultTime = DateTime.Parse(time);
+        }
+        string GetTime(ListBoxItem item)
+        {
+            return item.Content.ToString();
         }
         /// <summary>
         /// 刷新选中项
@@ -147,14 +212,51 @@ namespace LayuiTemplate.Controls
             PART_Hour = GetTemplateChild("PART_Hour") as ListBox;
             PART_Minute = GetTemplateChild("PART_Minute") as ListBox;
             PART_Second = GetTemplateChild("PART_Second") as ListBox;
-            if (PART_Hour != null && PART_Minute != null && PART_Second != null)
+            PART_SubmitTimeBtn = GetTemplateChild("PART_SubmitTimeBtn") as Button;
+            PART_QueryTimeBtn = GetTemplateChild("PART_QueryTimeBtn") as Button;
+            PART_ResetTimeBtn = GetTemplateChild("PART_ResetTimeBtn") as Button;
+            if (PART_Hour != null && PART_Minute != null && PART_Second != null && PART_SubmitTimeBtn != null && PART_QueryTimeBtn != null && PART_ResetTimeBtn != null)
             {
                 SetDate();
                 this.PART_Hour.AddHandler(ListBoxItem.MouseLeftButtonDownEvent, new RoutedEventHandler(Button_Click), true);
                 this.PART_Minute.AddHandler(ListBoxItem.MouseLeftButtonDownEvent, new RoutedEventHandler(Button_Click), true);
                 this.PART_Second.AddHandler(ListBoxItem.MouseLeftButtonDownEvent, new RoutedEventHandler(Button_Click), true);
                 UpdateDate();
+                PART_ResetTimeBtn.Click -= PART_ResetTimeBtn_Click;
+                PART_QueryTimeBtn.Click -= PART_QueryTimeBtn_Click;
+                PART_SubmitTimeBtn.Click -= PART_SubmitTimeBtn_Click;
+                PART_ResetTimeBtn.Click += PART_ResetTimeBtn_Click;
+                PART_QueryTimeBtn.Click += PART_QueryTimeBtn_Click;
+                PART_SubmitTimeBtn.Click += PART_SubmitTimeBtn_Click;
             }
+        }
+        /// <summary>
+        /// 确定时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PART_SubmitTimeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Time = DefaultTime;
+            OnClick(new RoutedEventArgs(ClickEvent, sender));
+        }
+
+        private void PART_QueryTimeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime localTime = DateTime.Now;
+            DefaultTime = localTime;
+            Time = DefaultTime;
+            OnClick(new RoutedEventArgs(ClickEvent, sender));
+        }
+
+        private void PART_ResetTimeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateIsSelectedItem(PART_Hour, (PART_Hour.Items[0] as ListBoxItem).Content.ToString());
+            UpdateIsSelectedItem(PART_Minute, (PART_Minute.Items[0] as ListBoxItem).Content.ToString());
+            UpdateIsSelectedItem(PART_Second, (PART_Second.Items[0] as ListBoxItem).Content.ToString());
+            UpdateDate();
+            Time = DefaultTime;
+            OnClick(new RoutedEventArgs(ClickEvent, sender));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

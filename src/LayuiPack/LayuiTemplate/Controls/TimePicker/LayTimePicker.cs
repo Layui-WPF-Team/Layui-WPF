@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace LayuiTemplate.Controls
@@ -17,11 +18,14 @@ namespace LayuiTemplate.Controls
     /// </summary>
     public class LayTimePicker : System.Windows.Controls.Control
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        private LayTimer PART_LayTimer;
         /// <summary>
         /// 文本
         /// </summary>
-        private TextBox PART_TextBox;
+        private Popup PART_Popup;
         /// <summary>
         /// 水印文字颜色
         /// </summary>
@@ -66,18 +70,18 @@ namespace LayuiTemplate.Controls
 
 
         /// <summary>
-        /// 内容
+        /// 时间
         /// </summary>
         [Bindable(true)]
-        public string Text
+        public DateTime? Time
         {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            get { return (DateTime?)GetValue(TimeProperty); }
+            set { SetValue(TimeProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(LayTimePicker));
+        public static readonly DependencyProperty TimeProperty =
+            DependencyProperty.Register("Time", typeof(DateTime?), typeof(LayTimePicker));
         /// <summary>
         /// 水印
         /// </summary>
@@ -130,8 +134,24 @@ namespace LayuiTemplate.Controls
         public static readonly DependencyProperty DateMessageTitleProperty =
             DependencyProperty.Register("DateMessageTitle", typeof(string), typeof(LayTimePicker));
 
+        /// <summary>
+        /// 是否只读
+        /// </summary>
+        [Bindable(true)]
+        public bool IsReadOnly
+        {
+            get { return (bool)GetValue(IsReadOnlyProperty); }
+            set { SetValue(IsReadOnlyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(LayTimePicker), new PropertyMetadata(true));
 
 
+        /// <summary>
+        /// 线粗细
+        /// </summary>
         [Bindable(true)]
         public double Line
         {
@@ -145,10 +165,29 @@ namespace LayuiTemplate.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            PART_TextBox = GetTemplateChild("PART_TextBox") as TextBox;
-            if (PART_TextBox != null)
+            PART_Popup = GetTemplateChild("PART_Popup") as Popup;
+            PART_LayTimer = GetTemplateChild("PART_LayTimer") as LayTimer;
+            if (PART_Popup != null)
             {
+                PART_Popup.Opened -= PART_Popup_Opened;
+                PART_Popup.Opened += PART_Popup_Opened;
+                PART_LayTimer.Click -= PART_LayTimer_Click;
+                PART_LayTimer.Click += PART_LayTimer_Click;
+            }
+        }
 
+        private void PART_LayTimer_Click(object sender, RoutedEventArgs e)
+        {
+            PART_Popup.IsOpen = false;
+        }
+
+        private void PART_Popup_Opened(object sender, EventArgs e)
+        {
+            if (PART_LayTimer != null)
+            {
+                PART_LayTimer.Time = Time;
+                PART_LayTimer.DefaultTime = Time;
+                PART_LayTimer.RefreshView();
             }
         }
     }
