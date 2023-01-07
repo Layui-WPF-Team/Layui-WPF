@@ -1,6 +1,6 @@
 ﻿using Layui.Core.Resource;
 using LayuiComponentExample.Views;
-using LayuiTemplate.Global;
+using LayUI.Wpf.Global;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;

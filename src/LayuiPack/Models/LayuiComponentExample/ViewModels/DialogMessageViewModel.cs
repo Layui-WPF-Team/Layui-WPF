@@ -1,5 +1,5 @@
-﻿using LayuiTemplate.Global;
-using LayuiTemplate.Enum;
+﻿using LayUI.Wpf.Global;
+using LayUI.Wpf.Enum;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;

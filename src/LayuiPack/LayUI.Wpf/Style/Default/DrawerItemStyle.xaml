@@ -1,0 +1,126 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Cv="clr-namespace:LayUI.Wpf.Converters"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="LayDrawerItemStyle" TargetType="Lay:LayDrawerItem">
+        <Style.Resources>
+            <Cv:DrawerHostOffsetConverter x:Key="DrawerHostOffsetConverter" />
+        </Style.Resources>
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Opacity="0.2" Color="Black" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayDrawerItem">
+                    <Grid
+                        x:Name="PART_RootGrid"
+                        ClipToBounds="true"
+                        Style="{x:Null}">
+                        <Grid
+                            x:Name="PART_DrawerGrid"
+                            Panel.ZIndex="0"
+                            Background="{TemplateBinding Background}"
+                            IsHitTestVisible="false"
+                            Opacity="0"
+                            Style="{x:Null}" />
+                        <Border
+                            x:Name="PART_DockBorder"
+                            Panel.ZIndex="0"
+                            Effect="{DynamicResource LayShadow}"
+                            Opacity="0"
+                            Style="{x:Null}">
+                            <ContentPresenter x:Name="PART_DrawerContent" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Type" Value="Top">
+                            <Setter TargetName="PART_DockBorder" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="PART_DockBorder" Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DrawerHostOffsetConverter}, ConverterParameter={x:Static Dock.Top}}" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Left">
+                            <Setter TargetName="PART_DockBorder" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="PART_DockBorder" Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DrawerHostOffsetConverter}, ConverterParameter={x:Static Dock.Left}}" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Right">
+                            <Setter TargetName="PART_DockBorder" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="PART_DockBorder" Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DrawerHostOffsetConverter}, ConverterParameter={x:Static Dock.Right}}" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Bottom">
+                            <Setter TargetName="PART_DockBorder" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="PART_DockBorder" Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DrawerHostOffsetConverter}, ConverterParameter={x:Static Dock.Bottom}}" />
+                        </Trigger>
+                        <Trigger Property="DrawerOpen" Value="true">
+                            <Setter TargetName="PART_DockBorder" Property="IsHitTestVisible" Value="True" />
+                            <Setter TargetName="PART_DrawerGrid" Property="IsHitTestVisible" Value="True" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation
+                                            Storyboard.TargetName="PART_DockBorder"
+                                            Storyboard.TargetProperty="Margin"
+                                            To="0"
+                                            Duration="0:0:0.3" />
+                                        <Int32Animation
+                                            Storyboard.TargetName="PART_DockBorder"
+                                            Storyboard.TargetProperty="(Panel.ZIndex)"
+                                            To="1"
+                                            Duration="0" />
+                                        <Int32Animation
+                                            Storyboard.TargetName="PART_DrawerGrid"
+                                            Storyboard.TargetProperty="(Panel.ZIndex)"
+                                            To="1"
+                                            Duration="0" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_DockBorder"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_DrawerGrid"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation
+                                            Storyboard.TargetName="PART_DockBorder"
+                                            Storyboard.TargetProperty="Margin"
+                                            Duration="0:0:0.3" />
+                                        <Int32Animation
+                                            BeginTime="0:0:0.3"
+                                            Storyboard.TargetName="PART_DockBorder"
+                                            Storyboard.TargetProperty="(Panel.ZIndex)"
+                                            To="0"
+                                            Duration="0" />
+                                        <Int32Animation
+                                            BeginTime="0:0:0.3"
+                                            Storyboard.TargetName="PART_DrawerGrid"
+                                            Storyboard.TargetProperty="(Panel.ZIndex)"
+                                            To="0"
+                                            Duration="0" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_DockBorder"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_DrawerGrid"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayDrawerItemStyle}" TargetType="Lay:LayDrawerItem" />
+</ResourceDictionary>

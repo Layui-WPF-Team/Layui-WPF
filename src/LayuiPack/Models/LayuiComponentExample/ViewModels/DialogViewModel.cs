@@ -1,6 +1,6 @@
 ﻿using Layui.Core.Base;
 using Layui.Core.Resource;
-using LayuiTemplate.Global;
+using LayUI.Wpf.Global;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Regions;
@@ -44,13 +44,13 @@ namespace LayuiComponentExample.ViewModels
                 {
                     switch (rest.Result)
                     {
-                        case LayuiTemplate.Enum.ButtonResult.Yes:
+                        case LayUI.Wpf.Enum.ButtonResult.Yes:
                             MessageBox.Show("我也是这么认为的");
                             break;
-                        case LayuiTemplate.Enum.ButtonResult.No:
+                        case LayUI.Wpf.Enum.ButtonResult.No:
                             MessageBox.Show("你确定你是认真的吗?");
                             break;
-                        case LayuiTemplate.Enum.ButtonResult.Default:
+                        case LayUI.Wpf.Enum.ButtonResult.Default:
                             break;
                         default:
                             break;
@@ -70,11 +70,11 @@ namespace LayuiComponentExample.ViewModels
             {
                 switch (rest.Result)
                 {
-                    case LayuiTemplate.Enum.ButtonResult.Yes:
+                    case LayUI.Wpf.Enum.ButtonResult.Yes:
                         break;
-                    case LayuiTemplate.Enum.ButtonResult.No:
+                    case LayUI.Wpf.Enum.ButtonResult.No:
                         break;
-                    case LayuiTemplate.Enum.ButtonResult.Default:
+                    case LayUI.Wpf.Enum.ButtonResult.Default:
                         break;
                     default:
                         break;
@@ -105,13 +105,13 @@ namespace LayuiComponentExample.ViewModels
                 {
                     switch (rest.Result)
                     {
-                        case LayuiTemplate.Enum.ButtonResult.Yes:
+                        case LayUI.Wpf.Enum.ButtonResult.Yes:
                             MessageBox.Show("我也是这么认为的");
                             break;
-                        case LayuiTemplate.Enum.ButtonResult.No:
+                        case LayUI.Wpf.Enum.ButtonResult.No:
                             MessageBox.Show("你确定你是认真的吗?");
                             break;
-                        case LayuiTemplate.Enum.ButtonResult.Default:
+                        case LayUI.Wpf.Enum.ButtonResult.Default:
                             break;
                         default:
                             break;
@@ -126,13 +126,13 @@ namespace LayuiComponentExample.ViewModels
                 {
                     switch (rest.Result)
                     {
-                        case LayuiTemplate.Enum.ButtonResult.Yes:
+                        case LayUI.Wpf.Enum.ButtonResult.Yes:
                             MessageBox.Show("我也是这么认为的");
                             break;
-                        case LayuiTemplate.Enum.ButtonResult.No:
+                        case LayUI.Wpf.Enum.ButtonResult.No:
                             MessageBox.Show("你确定你是认真的吗?");
                             break;
-                        case LayuiTemplate.Enum.ButtonResult.Default:
+                        case LayUI.Wpf.Enum.ButtonResult.Default:
                             break;
                         default:
                             break;

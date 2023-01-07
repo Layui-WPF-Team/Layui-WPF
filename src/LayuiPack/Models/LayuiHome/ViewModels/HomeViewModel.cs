@@ -2,9 +2,9 @@
 using Layui.Core.Base;
 using Layui.Core.Resource;
 using LayuiHome.Models;
-using LayuiTemplate.Enum;
-using LayuiTemplate.Global;
-using LayuiTemplate.Tools;
+using LayUI.Wpf.Enum;
+using LayUI.Wpf.Global;
+using LayUI.Wpf.Tools;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;

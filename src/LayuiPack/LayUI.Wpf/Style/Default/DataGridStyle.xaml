@@ -1,0 +1,614 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="ElementTextStyle" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=VerticalContentAlignment}" />
+        <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}" />
+    </Style>
+    <Style x:Key="EditingTextStyle" TargetType="TextBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=VerticalContentAlignment}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border
+                        x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        SnapsToDevicePixels="True">
+                        <Grid>
+                            <ScrollViewer
+                                x:Name="PART_ContentHost"
+                                Focusable="false"
+                                HorizontalScrollBarVisibility="Hidden"
+                                VerticalScrollBarVisibility="Hidden" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ElementCheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=VerticalContentAlignment}" />
+        <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid
+                        x:Name="templateRoot"
+                        Background="Transparent"
+                        SnapsToDevicePixels="True">
+                        <Grid Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}" Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}">
+                            <Viewbox>
+                                <Grid>
+                                    <Border
+                                        x:Name="checkBoxBorder"
+                                        Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                        Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                        Padding="5"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="White"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                        <Path
+                                            x:Name="textBlock"
+                                            Data="M332.972089 890.88a56.888889 56.888889 0 0 0 85.333333 0.170667l591.388445-682.666667a56.888889 56.888889 0 0 0-85.162667-75.434667l-591.388444 682.666667 85.333333 0.199111L99.642311 465.208889a56.888889 56.888889 0 1 0-85.504 75.064889l318.862222 350.577778z"
+                                            Fill="White"
+                                            Opacity="0"
+                                            Stretch="Fill" />
+                                    </Border>
+                                </Grid>
+                            </Viewbox>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--  鼠标点击后的效果  -->
+                        <Trigger Property="IsPressed" Value="true" />
+                        <!--  被选中后的效果  -->
+                        <Trigger Property="IsChecked" Value="true" />
+                        <!--  未选择时的效果  -->
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter TargetName="checkBoxBorder" Property="Padding" Value="1" />
+                            <Setter TargetName="textBlock" Property="Data" Value="M0,2 C0,0.8954305 0.8954305,0 2,0 L28,0 C29.104569,0 30,0.8954305 30,2 L30,28 C30,29.104569 29.104569,30 28,30 L2,30 C0.8954305,30 0,29.104569 0,28 z" />
+                            <Setter TargetName="textBlock" Property="Fill" Value="{DynamicResource CyanBlue}" />
+                            <Setter TargetName="textBlock" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <!--  复选框被禁止时的效果  -->
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#eee" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="true" />
+                                <Condition Property="IsChecked" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="textBlock" Property="Opacity" Value="1" />
+                            <Setter TargetName="checkBoxBorder" Property="Padding" Value="3" />
+                            <Setter TargetName="textBlock" Property="Margin" Value="0,2" />
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource CyanBlue}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="false" />
+                                <Condition Property="IsChecked" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#eee" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="EditingCheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource Green}" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=VerticalContentAlignment}" />
+        <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid
+                        x:Name="templateRoot"
+                        Background="Transparent"
+                        SnapsToDevicePixels="True">
+                        <Grid Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}" Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}">
+                            <Viewbox>
+                                <Grid>
+                                    <Border
+                                        x:Name="checkBoxBorder"
+                                        Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                        Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}"
+                                        Padding="5"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="White"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                        <Path
+                                            x:Name="textBlock"
+                                            Data="M332.972089 890.88a56.888889 56.888889 0 0 0 85.333333 0.170667l591.388445-682.666667a56.888889 56.888889 0 0 0-85.162667-75.434667l-591.388444 682.666667 85.333333 0.199111L99.642311 465.208889a56.888889 56.888889 0 1 0-85.504 75.064889l318.862222 350.577778z"
+                                            Fill="White"
+                                            Opacity="0"
+                                            Stretch="Fill" />
+                                    </Border>
+                                </Grid>
+                            </Viewbox>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--  鼠标点击后的效果  -->
+                        <Trigger Property="IsPressed" Value="true" />
+                        <!--  被选中后的效果  -->
+                        <Trigger Property="IsChecked" Value="true" />
+                        <!--  未选择时的效果  -->
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter TargetName="checkBoxBorder" Property="Padding" Value="1" />
+                            <Setter TargetName="textBlock" Property="Data" Value="M0,2 C0,0.8954305 0.8954305,0 2,0 L28,0 C29.104569,0 30,0.8954305 30,2 L30,28 C30,29.104569 29.104569,30 28,30 L2,30 C0.8954305,30 0,29.104569 0,28 z" />
+                            <Setter TargetName="textBlock" Property="Fill" Value="{DynamicResource CyanBlue}" />
+                            <Setter TargetName="textBlock" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <!--  复选框被禁止时的效果  -->
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#eee" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="true" />
+                                <Condition Property="IsChecked" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="textBlock" Property="Opacity" Value="1" />
+                            <Setter TargetName="checkBoxBorder" Property="Padding" Value="3" />
+                            <Setter TargetName="textBlock" Property="Margin" Value="0,2" />
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource CyanBlue}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="false" />
+                                <Condition Property="IsChecked" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#eee" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="LayDataGridStyle" TargetType="{x:Type Lay:LayDataGrid}">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="ColumnHeaderHeight" Value="40" />
+        <Setter Property="MinRowHeight" Value="40" />
+        <Setter Property="RowHeaderWidth" Value="0" />
+        <Setter Property="AutoGenerateColumns" Value="false" />
+        <Setter Property="CanUserReorderColumns" Value="false" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource LayColumnHeaderStyle}" />
+        <Setter Property="RowHeaderStyle" Value="{DynamicResource LayRowHeaderStyle}" />
+        <Setter Property="RowStyle" Value="{DynamicResource LayDataGridRowStyle}" />
+        <Setter Property="CellStyle" Value="{DynamicResource LayDataGridCellStyle}" />
+        <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="ElementTextColumnStyle" Value="{DynamicResource ElementTextStyle}" />
+        <Setter Property="EditingTextColumnStyle" Value="{DynamicResource EditingTextStyle}" />
+        <Setter Property="ElementCheckBoxColumnStyle" Value="{DynamicResource ElementCheckBoxStyle}" />
+        <Setter Property="EditingCheckBoxColumnStyle" Value="{DynamicResource EditingCheckBoxStyle}" />
+        <Setter Property="SelectionMode" Value="Single" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Lay:LayDataGrid}">
+                    <Lay:LayLoading
+                        Background="White"
+                        IsActive="{TemplateBinding IsActive}"
+                        Style="{DynamicResource LayLoadingStyle}"
+                        Type="Google">
+                        <Border
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
+                                <ScrollViewer.Template>
+                                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Button
+                                                Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                Command="{x:Static DataGrid.SelectAllCommand}"
+                                                Focusable="false"
+                                                Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle,
+                                                                                              TypeInTargetAssembly={x:Type DataGrid}}}"
+                                                Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                                            <DataGridColumnHeadersPresenter
+                                                x:Name="PART_ColumnHeadersPresenter"
+                                                Grid.Column="1"
+                                                Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                                            <Lay:LayTransition
+                                                x:Name="ContentPresenter"
+                                                Grid.Row="1"
+                                                Grid.ColumnSpan="2"
+                                                Style="{DynamicResource LayTransitionStyle}"
+                                                Type="Gradient">
+                                                <Grid>
+                                                    <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" />
+                                                    <Grid
+                                                        x:Name="NoDataTipsGrid"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        IsHitTestVisible="False"
+                                                        Visibility="Collapsed">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Path
+                                                            Width="100"
+                                                            Height="60"
+                                                            Data="M156.662278 699.758173h21.097186A10.444152 10.444152 0 0 1 187.994733 710.202325c0 5.765172-4.490985 10.444152-10.235269 10.444152H156.662278v21.097186A10.444152 10.444152 0 0 1 146.218126 751.978932a10.277045 10.277045 0 0 1-10.444152-10.235269V720.646477H114.676787A10.444152 10.444152 0 0 1 104.441518 710.202325c0-5.765172 4.490985-10.444152 10.235269-10.444152H135.773974v-21.097187A10.444152 10.444152 0 0 1 146.218126 668.425717c5.765172 0 10.444152 4.490985 10.444152 10.235269v21.097187z m1378.628042-83.553215v-21.097186A10.277045 10.277045 0 0 0 1524.846168 584.872503a10.444152 10.444152 0 0 0-10.444152 10.235269v21.097186h-21.097186a10.277045 10.277045 0 0 0-10.235269 10.444152c0 5.598065 4.595427 10.444152 10.235269 10.444152h21.097186v21.097187c0 5.744284 4.67898 10.235269 10.444152 10.235268a10.444152 10.444152 0 0 0 10.444152-10.235268V637.093262h21.097187c5.744284 0 10.235269-4.67898 10.235268-10.444152a10.444152 10.444152 0 0 0-10.235268-10.444152H1535.29032zM776.460024 960.861969H250.596979A20.80475 20.80475 0 0 1 229.77134 939.973665c0-11.530344 9.462402-20.888304 20.825639-20.888303h94.728457A83.010119 83.010119 0 0 1 334.212859 877.413196v-605.96969A83.49055 83.49055 0 0 1 417.849627 187.994733H480.430984V167.001988A83.49055 83.49055 0 0 1 564.067752 83.553215h501.152182A83.448773 83.448773 0 0 1 1148.856702 167.001988v605.969689c0 15.185797-4.052331 29.410732-11.133466 41.672166h115.554096c11.551232 0 20.909192 9.274407 20.909192 20.888304 0 11.530344-9.295295 20.888304-20.888304 20.888304H1002.638576v20.992745c0 15.185797-4.052331 29.410732-11.133466 41.672166h11.196131c11.488567 0 20.825639 9.274407 20.825639 20.888303 0 11.530344-9.462402 20.888304-20.825639 20.888304h-109.893365c9.545955 16.000441 7.478013 36.972297-6.41271 50.863019a41.672166 41.672166 0 0 1-59.072122 0L776.460024 960.861969z m76.367638-41.776607h66.424806c22.977134 0 41.609501-18.59059 41.609501-41.881049V270.461756c0-22.559368-18.047494-40.690416-40.314426-40.690416H416.303892c-22.266932 0-40.314426 18.214601-40.314426 40.690416v606.742557c0 23.123352 18.799473 41.881049 41.588613 41.881049h317.084449l-10.736588-10.757477a41.693054 41.693054 0 0 1-10.861918-40.377091l-19.718558-19.739447A146.259902 146.259902 0 0 1 502.363703 627.693525a146.218126 146.218126 0 0 1 220.517822 190.981761l19.739447 19.739447a41.630389 41.630389 0 0 1 40.377091 10.841029L852.827662 919.085362zM1002.638576 814.643843h62.852906A41.797496 41.797496 0 0 0 1107.080095 772.867236V167.106429c0-23.14424-18.632367-41.776607-41.588613-41.776607H563.775316A41.797496 41.797496 0 0 0 522.207592 167.106429v20.888304h396.794216A83.448773 83.448773 0 0 1 1002.638576 271.443506V814.643843zM266.325872 46.998683h31.123572c8.773088 0 15.875111 6.955805 15.875111 15.666228 0 8.647758-7.102023 15.666228-15.875111 15.666228h-31.123572v31.123572c0 8.773088-6.955805 15.875111-15.666228 15.875111a15.770669 15.770669 0 0 1-15.666228-15.875111V78.331139H203.869844A15.728893 15.728893 0 0 1 187.994733 62.664911c0-8.647758 7.102023-15.666228 15.875111-15.666228h31.123572V15.875111c0-8.773088 6.955805-15.875111 15.666228-15.875111 8.647758 0 15.666228 7.102023 15.666228 15.875111v31.123572zM20.888304 939.973665c0-11.530344 9.462402-20.888304 20.825638-20.888303h125.455152c11.488567 0 20.825639 9.274407 20.825639 20.888303 0 11.530344-9.462402 20.888304-20.825639 20.888304H41.713942A20.80475 20.80475 0 0 1 20.888304 939.973665z m658.733544-135.021995a104.441518 104.441518 0 1 0-147.722083-147.722083 104.441518 104.441518 0 0 0 147.722083 147.722083zM459.542681 313.324555a20.888304 20.888304 0 0 1 20.867415-20.888304H710.202325a20.888304 20.888304 0 1 1 0 41.776608H480.430984A20.825639 20.825639 0 0 1 459.542681 313.324555z m0 104.441518c0-11.530344 9.295295-20.888304 20.742085-20.888303h334.505295c11.44679 0 20.742086 9.274407 20.742086 20.888303 0 11.530344-9.295295 20.888304-20.742086 20.888304H480.284766A20.762974 20.762974 0 0 1 459.542681 417.766073z m0 104.441519c0-11.530344 9.316183-20.888304 20.846527-20.888304h146.301679c11.509455 0 20.846527 9.274407 20.846527 20.888304 0 11.530344-9.316183 20.888304-20.846527 20.888303h-146.301679A20.80475 20.80475 0 0 1 459.542681 522.207592zM62.664911 396.87777a62.664911 62.664911 0 1 1 0-125.329822 62.664911 62.664911 0 0 1 0 125.329822z m0-31.332456a31.332456 31.332456 0 1 0 0-62.664911 31.332456 31.332456 0 0 0 0 62.664911zM1357.739739 271.547948a62.664911 62.664911 0 1 1 0-125.329822 62.664911 62.664911 0 0 1 0 125.329822z m0-31.332456a31.332456 31.332456 0 1 0 0-62.664911 31.332456 31.332456 0 0 0 0 62.664911z"
+                                                            Fill="{DynamicResource Gray}"
+                                                            Stretch="Fill" />
+                                                        <TextBlock
+                                                            Grid.Row="1"
+                                                            Margin="10"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Bottom"
+                                                            FontSize="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=FontSize, Mode=OneWay}"
+                                                            Foreground="{DynamicResource Gray}"
+                                                            Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=NoDataTips, Mode=OneWay}" />
+                                                    </Grid>
+                                                </Grid>
+                                            </Lay:LayTransition>
+                                            <ScrollBar
+                                                x:Name="PART_VerticalScrollBar"
+                                                Grid.Row="1"
+                                                Grid.Column="2"
+                                                Maximum="{TemplateBinding ScrollableHeight}"
+                                                Orientation="Vertical"
+                                                Style="{DynamicResource LayScrollBarVertical}"
+                                                ViewportSize="{TemplateBinding ViewportHeight}"
+                                                Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                                Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                            <Grid Grid.Row="2" Grid.Column="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <ScrollBar
+                                                    x:Name="PART_HorizontalScrollBar"
+                                                    Grid.Column="1"
+                                                    Maximum="{TemplateBinding ScrollableWidth}"
+                                                    Orientation="Horizontal"
+                                                    Style="{DynamicResource LayScrollBarHorizontal}"
+                                                    ViewportSize="{TemplateBinding ViewportWidth}"
+                                                    Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                                    Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                            </Grid>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=IsActive}" Value="false" />
+                                                    <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=Items.Count}" Value="0" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter TargetName="ContentPresenter" Property="Type" Value="Default" />
+                                                <Setter TargetName="NoDataTipsGrid" Property="Visibility" Value="Visible" />
+                                            </MultiDataTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ScrollViewer.Template>
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </ScrollViewer>
+                        </Border>
+                    </Lay:LayLoading>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsGrouping" Value="true" />
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="LayColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="Height" Value="{Binding ColumnHeaderHeight, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+        <Setter Property="Background" Value="{DynamicResource LighGray}" />
+        <Setter Property="BorderThickness" Value="1,0,1,1" />
+        <Setter Property="Margin" Value="-1,0,0,0" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="13,0,13,0" />
+        <Setter Property="BorderBrush" Value="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridColumnHeader">
+                    <Grid>
+                        <Border
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <ContentPresenter
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <Grid
+                                    x:Name="SortArrowGrid"
+                                    Grid.Column="1"
+                                    Width="7"
+                                    Height="15"
+                                    Margin="10,0,-10,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Visibility="Hidden">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Path
+                                        x:Name="SortArrowUp"
+                                        Margin="0,0,0,2"
+                                        Data="M500 365.76l-244.78 279.7a16 16 0 0 0 12 26.54h489.52a16 16 0 0 0 12-26.54L524 365.76a16 16 0 0 0-24 0z"
+                                        Fill="{DynamicResource Gray}"
+                                        Stretch="Fill" />
+                                    <Path
+                                        x:Name="SortArrowDown"
+                                        Grid.Row="1"
+                                        Margin="0,2,0,0"
+                                        Data="M524 658.24l244.74-279.7a16 16 0 0 0-12-26.54H267.26a16 16 0 0 0-12 26.54L500 658.24a16 16 0 0 0 24 0z"
+                                        Fill="{DynamicResource Gray}"
+                                        Stretch="Fill" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Thumb
+                            x:Name="PART_LeftHeaderGripper"
+                            HorizontalAlignment="Left"
+                            Cursor="SizeWE"
+                            FocusVisualStyle="{x:Null}"
+                            Opacity="0" />
+                        <Thumb
+                            x:Name="PART_RightHeaderGripper"
+                            HorizontalAlignment="Right"
+                            Cursor="SizeWE"
+                            FocusVisualStyle="{x:Null}"
+                            Opacity="0" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="SortDirection" Value="Ascending">
+                            <Setter TargetName="SortArrowGrid" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="SortArrowUp" Property="Fill" Value="{DynamicResource Black}" />
+                            <Setter TargetName="SortArrowDown" Property="Fill" Value="{DynamicResource Gray}" />
+                        </Trigger>
+                        <Trigger Property="SortDirection" Value="Descending">
+                            <Setter TargetName="SortArrowGrid" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="SortArrowUp" Property="Fill" Value="{DynamicResource Gray}" />
+                            <Setter TargetName="SortArrowDown" Property="Fill" Value="{DynamicResource Black}" />
+                        </Trigger>
+                        <Trigger Property="SortDirection" Value="{x:Null}">
+                            <Setter TargetName="SortArrowGrid" Property="Visibility" Value="Hidden" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding GridLinesVisibility, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Value="None">
+                <Setter Property="Padding" Value="0" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="LayRowHeaderStyle" TargetType="{x:Type DataGridRowHeader}">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style x:Key="LayDataGridRowStyle" TargetType="{x:Type DataGridRow}">
+        <Setter Property="BorderThickness" Value="0,0,1,0" />
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid, Mode=FindAncestor}, Path=BorderBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridRow">
+                    <Grid>
+                        <Border
+                            x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" />
+                        <SelectiveScrollingGrid>
+                            <SelectiveScrollingGrid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </SelectiveScrollingGrid.ColumnDefinitions>
+                            <SelectiveScrollingGrid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </SelectiveScrollingGrid.RowDefinitions>
+                            <DataGridCellsPresenter
+                                Grid.Column="1"
+                                ItemsPanel="{TemplateBinding ItemsPanel}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            <DataGridDetailsPresenter
+                                x:Name="DetailsPresenter"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                Visibility="{TemplateBinding DetailsVisibility}" />
+                            <DataGridRowHeader
+                                Grid.RowSpan="2"
+                                SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
+                                Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                        </SelectiveScrollingGrid>
+                        <Grid
+                            x:Name="fousIcon"
+                            IsHitTestVisible="False"
+                            Opacity="0">
+                            <Path
+                                Width="10"
+                                Height="10"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Data="M0,0 L0,0 50,0 50,10 10,10 10,50 0,50 0,52 z"
+                                Fill="{DynamicResource LightGreen}"
+                                RenderTransformOrigin="0.5,0.5"
+                                Stretch="Fill">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="0" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path
+                                Width="10"
+                                Height="10"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Data="M0,0 L0,0 50,0 50,10 10,10 10,50 0,50 0,52 z"
+                                Fill="{DynamicResource LightGreen}"
+                                RenderTransformOrigin="0.5,0.5"
+                                Stretch="Fill">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="90" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path
+                                Width="10"
+                                Height="10"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Data="M0,0 L0,0 50,0 50,10 10,10 10,50 0,50 0,52 z"
+                                Fill="{DynamicResource LightGreen}"
+                                RenderTransformOrigin="0.5,0.5"
+                                Stretch="Fill">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="180" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path
+                                Width="10"
+                                Height="10"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Data="M0,0 L0,0 50,0 50,10 10,10 10,50 0,50 0,52 z"
+                                Fill="{DynamicResource LightGreen}"
+                                RenderTransformOrigin="0.5,0.5"
+                                Stretch="Fill">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="-90" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true" />
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                            <Setter TargetName="border" Property="Background" Value="{x:Null}" />
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource LighGray}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource LighGray}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="fousIcon" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <Trigger Property="DetailsVisibility" Value="Visible">
+                            <Setter TargetName="DetailsPresenter" Property="Margin" Value="0,0,1,0" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid}, Path=IsShowRowsFocusVisual}" Value="false">
+                            <Setter TargetName="fousIcon" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="LayDataGridCellStyle" TargetType="{x:Type DataGridCell}">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="13,0" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid, Mode=FindAncestor}, Path=Foreground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                    <Grid>
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayDataGridStyle}" TargetType="Lay:LayDataGrid" />
+</ResourceDictionary>

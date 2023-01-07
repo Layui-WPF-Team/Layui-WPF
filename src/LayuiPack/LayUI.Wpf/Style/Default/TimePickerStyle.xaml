@@ -1,0 +1,146 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="LayTimePickerStyle" TargetType="Lay:LayTimePicker">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="#eee" />
+        <Setter Property="HoverBorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="FocusedBorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Width" Value="150" />
+        <Setter Property="Height" Value="38" />
+        <Setter Property="Watermark" Value="选择时间" />
+        <Setter Property="DateMessageTitle" Value="选择时间" />
+        <Setter Property="WatermarkColor" Value="{DynamicResource Gray}" />
+        <Setter Property="Line" Value="1" />
+        <Setter Property="Padding" Value="10,0,10,0" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
+        <Setter Property="Height" Value="38" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayTimePicker">
+                    <Grid x:Name="bg">
+                        <Border
+                            x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox
+                                    x:Name="PART_TextBox"
+                                    Height="auto"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    IsReadOnly="{TemplateBinding IsReadOnly}"
+                                    Style="{x:Null}"
+                                    Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:HH:mm:ss}}">
+                                    <TextBox.Template>
+                                        <ControlTemplate TargetType="TextBox">
+                                            <ScrollViewer
+                                                x:Name="PART_ContentHost"
+                                                Focusable="false"
+                                                HorizontalScrollBarVisibility="Hidden"
+                                                VerticalScrollBarVisibility="Hidden" />
+                                        </ControlTemplate>
+                                    </TextBox.Template>
+                                </TextBox>
+                                <Border
+                                    Padding="2,0,2,0"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    IsHitTestVisible="False">
+                                    <TextBlock
+                                        x:Name="watermark"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Foreground="{TemplateBinding WatermarkColor}"
+                                        Text="{TemplateBinding Watermark}"
+                                        Visibility="Collapsed" />
+                                </Border>
+                                <ToggleButton
+                                    Grid.Column="1"
+                                    Width="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight}"
+                                    Cursor="Hand"
+                                    IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="ToggleButton">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ToggleButton">
+                                                        <Grid Background="Transparent">
+                                                            <Path
+                                                                Margin="5"
+                                                                Data="M530.57191,527.71184 L657.86073,527.71184 C669.45582,527.71184 678.88245,537.1375 678.88245,548.76219 678.88245,560.3726 669.45582,569.79826 657.86073,569.79826 L530.57191,569.79826 C518.96052,569.79826 509.5492,560.3726 509.5492,548.76219 509.5492,537.1375 518.96052,527.71184 530.57191,527.71184 z M437.63343,512.18523 C457.83857,512.18523 474.21143,528.55913 474.21143,548.76323 474.21143,568.95402 457.83857,585.32591 437.63343,585.32591 417.42213,585.32591 401.05643,568.95402 401.05643,548.76323 401.05643,528.55809 417.42213,512.18419 437.63343,512.18523 z M437.63343,309.6989 C449.24482,309.6989 458.65614,319.12456 458.65614,330.73497 L458.65614,458.00944 C458.6562,469.63316 449.24482,479.04552 437.63343,479.04652 426.01072,479.04652 416.59119,469.63316 416.59119,458.00944 L416.59119,330.73497 C416.59119,319.12456 426.01072,309.6989 437.63343,309.6989 z M524.89124,235.02403 C526.96241,235.00009 529.07252,235.28384 531.16236,235.90742 595.49647,255.12611 651.67384,293.25441 693.61909,346.17561 700.82008,355.27791 699.28407,368.50819 690.18183,375.72249 686.32191,378.79445 681.69965,380.27415 677.10706,380.27415 670.68214,380.27537 664.60963,377.33769 660.62263,372.29954 624.07227,326.18434 575.15113,292.9597 519.10169,276.23482 507.98554,272.90907 501.65949,261.18611 504.98219,250.05357 507.67268,241.00923 515.91615,235.12776&#xD;&#xA;524.89124,235.02403 z M437.63441,222.32613 C449.24586,222.32613 458.65717,231.73848 458.65717,243.3622 458.65717,254.97261 449.24586,264.38496 437.63441,264.38496 280.84171,264.38496 153.27866,391.95515 153.27866,548.76219 153.27866,705.55595 280.84171,833.1118 437.63441,833.1118 594.42921,833.1118 721.9994,705.55595 721.9994,548.76219 721.9994,513.45207 715.60273,479.00255 703.00483,446.35606 698.82056,435.507 704.21741,423.33376 715.06654,419.14845 725.85932,414.9785 738.06013,420.36003&#xD;&#xA;742.2588,431.19582 756.74366,468.70399 764.0705,508.25371 764.07154,548.76219 764.07154,728.74705 617.62031,875.19829 437.63441,875.19829 257.63624,875.19829 111.20553,728.74705 111.20553,548.76219 111.20553,368.76402 257.63624,222.32613 437.63441,222.32613 z M437.63343,174.22368 C230.77964,174.22368 63.115349,341.90843 63.115349,548.76323 63.115349,755.58934 230.7786,923.27415 437.63343,923.27415 644.47492,923.27415 812.14637,755.58934 812.14533,548.76323 812.14533,341.90843 644.47492,174.22368 437.63343,174.22368 z M379.55579,63.123542 L379.55579,115.08795 C398.57694,112.55118 417.91434,111.11446 437.63343,111.11446 457.33204,111.11446 476.6919,112.55118 495.71308,115.08795 L495.71308,63.123542 z M379.55579,0 L495.71204,0 C530.57191,0 558.8346,28.25138 558.8346,63.123542 L558.8346,128.31825 C741.35725,181.02966 875.25355,349.48805 875.25355,548.76323 875.25355,710.95183 786.52998,852.71117 655.06916,928.30467 L677.41608,960.47227 C687.35029,974.78825 683.81379,994.4572 669.49879,1004.4048 664.01795,1008.2084 657.74714,1010.0544 651.54798,1010.0544 641.52985,1010.0544 631.70918,1005.3206 625.5796,996.49974 L597.47047,956.03319 C547.9026,975.54759 494.02155,986.39769 437.63343,986.39769 381.23194,986.39769 327.35191,975.54759 277.79124,956.03319 L249.67393,996.49974 C243.55253,1005.3206 233.71754,1010.0544 223.71986,1010.0544 217.29697,1010.0518 211.0293,1008.0799 205.76188,1004.4048 191.44691,994.4572 187.91035,974.78728 197.84357,960.47227 L220.19047,928.30467 C88.74604,852.71117 -7.6293945E-06,710.95183 0,548.76323 -7.6293945E-06,349.48805 133.91776,181.01431 316.44657,128.31825 L316.44657,63.123542 C316.44657,28.250358 344.68977,0 379.55579,0 z"
+                                                                Fill="{TemplateBinding Foreground}"
+                                                                Opacity="0.5"
+                                                                Stretch="Fill" />
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=PART_Popup, Path=IsOpen}" Value="true">
+                                                    <Setter Property="IsEnabled" Value="False" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                            </Grid>
+                        </Border>
+                        <Popup
+                            x:Name="PART_Popup"
+                            AllowsTransparency="True"
+                            Focusable="False"
+                            IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Placement="Bottom"
+                            PlacementTarget="{Binding ElementName=bg}"
+                            PopupAnimation="Slide"
+                            StaysOpen="False">
+                            <Grid>
+                                <Lay:LayTimer
+                                    x:Name="PART_LayTimer"
+                                    Title="{TemplateBinding DateMessageTitle}"
+                                    Margin="0,3"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    Line="{TemplateBinding Line}"
+                                    Time="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=PART_TextBox, Path=Text}" Value="">
+                            <Setter TargetName="watermark" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PART_TextBox, Path=Text}" Value="{x:Null}">
+                            <Setter TargetName="watermark" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBorderBrush}" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding ElementName=PART_TextBox, Path=IsKeyboardFocused}" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=FocusedBorderBrush}" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayTimePickerStyle}" TargetType="Lay:LayTimePicker" />
+</ResourceDictionary>

@@ -108,9 +108,9 @@
       <Project>{B867ED96-1955-45C5-9381-A21DBAE85529}</Project>
       <Name>Layui.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LayuiTemplate\LayuiTemplate.csproj">
-      <Project>{af5e6a51-5926-46ba-9ce0-3229491a15fb}</Project>
-      <Name>LayuiTemplate</Name>
+    <ProjectReference Include="..\LayUI.Wpf\LayUI.Wpf.csproj">
+      <Project>{511490c6-c8ac-4a19-ac4d-44413ebf81a2}</Project>
+      <Name>LayUI.Wpf</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utils\Layui.Wpf.Utils\Layui.Wpf.Utils.csproj">
       <Project>{78a35fc5-344a-416b-87b8-eb50579fe3bf}</Project>

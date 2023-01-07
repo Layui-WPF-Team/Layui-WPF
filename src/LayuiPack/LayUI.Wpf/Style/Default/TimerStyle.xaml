@@ -1,0 +1,215 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="LayTimerStyle" TargetType="Lay:LayTimer">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="#eee" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Width" Value="270" />
+        <Setter Property="Height" Value="324" />
+        <Setter Property="Title" Value="选择时间" />
+        <Setter Property="Line" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayTimer">
+                    <ControlTemplate.Resources>
+                        <Style x:Key="ItemsStyle" TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Grid>
+                                            <Border
+                                                x:Name="bg"
+                                                Height="30"
+                                                Background="Transparent" />
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="bg" Property="Background" Value="{DynamicResource Gray}" />
+                                                <Setter TargetName="bg" Property="Opacity" Value="0.5" />
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter TargetName="bg" Property="Background" Value="{DynamicResource LightGreen}" />
+                                                <Setter TargetName="bg" Property="Opacity" Value="1" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style x:Key="TimeListBoxStyle" TargetType="ListBox">
+                            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+                            <Setter Property="ItemContainerStyle" Value="{DynamicResource ItemsStyle}" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBox">
+                                        <ScrollViewer x:Name="PART_ScrollViewer">
+                                            <ItemsPresenter />
+                                        </ScrollViewer>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style x:Key="TimerButtonBaseStyle" TargetType="Button">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTimer}, Path=BorderBrush}" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter
+                                                Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="{DynamicResource CyanBlue}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ControlTemplate.Resources>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid Height="46" Focusable="False">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Focusable="False"
+                                    Text="{TemplateBinding Title}" />
+                            </Grid>
+                            <Grid
+                                Grid.Row="1"
+                                Height="{TemplateBinding Line}"
+                                Background="{TemplateBinding BorderBrush}"
+                                Focusable="False" />
+                            <Border Grid.Row="2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="时" />
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="分" />
+                                    </Grid>
+                                    <Grid Grid.Column="2">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Text="秒" />
+                                    </Grid>
+                                    <Border
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="3"
+                                        Margin="10,0,10,10"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <ListBox x:Name="PART_Hour" Style="{DynamicResource TimeListBoxStyle}" />
+                                            <Grid
+                                                Grid.Column="1"
+                                                Width="{TemplateBinding Line}"
+                                                Background="{TemplateBinding BorderBrush}" />
+                                            <ListBox
+                                                x:Name="PART_Minute"
+                                                Grid.Column="2"
+                                                Style="{DynamicResource TimeListBoxStyle}" />
+                                            <Grid
+                                                Grid.Column="3"
+                                                Width="{TemplateBinding Line}"
+                                                Background="{TemplateBinding BorderBrush}" />
+                                            <ListBox
+                                                x:Name="PART_Second"
+                                                Grid.Column="4"
+                                                Style="{DynamicResource TimeListBoxStyle}" />
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                            <Grid
+                                Grid.Row="3"
+                                Height="{TemplateBinding Line}"
+                                Background="{TemplateBinding BorderBrush}" />
+                            <Grid
+                                Grid.Row="4"
+                                Height="35"
+                                Margin="10,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=DefaultTime, StringFormat={}{0:HH:mm:ss}}" />
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <Button
+                                        x:Name="PART_ResetTimeBtn"
+                                        Height="25"
+                                        Padding="5,0"
+                                        Content="重置"
+                                        Style="{DynamicResource TimerButtonBaseStyle}" />
+                                    <Button
+                                        x:Name="PART_QueryTimeBtn"
+                                        Height="25"
+                                        Padding="5,0"
+                                        BorderThickness="0,1"
+                                        Content="现在"
+                                        Style="{DynamicResource TimerButtonBaseStyle}" />
+                                    <Button
+                                        x:Name="PART_SubmitTimeBtn"
+                                        Height="25"
+                                        Padding="5,0"
+                                        Content="确定"
+                                        Style="{DynamicResource TimerButtonBaseStyle}" />
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayTimerStyle}" TargetType="Lay:LayTimer" />
+</ResourceDictionary>

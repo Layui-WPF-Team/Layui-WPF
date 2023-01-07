@@ -1,0 +1,151 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="LayButtonStyle" TargetType="{x:Type Lay:LayButton}">
+        <Style.Resources>
+            <ControlTemplate x:Key="LayButtonControlTemplate" TargetType="{x:Type Lay:LayButton}">
+                <Border
+                    x:Name="bg"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <Grid
+                        Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Path
+                            x:Name="icon"
+                            Width="15"
+                            Height="15"
+                            Margin="0,0,5,0"
+                            Data="{DynamicResource loading}"
+                            Fill="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}"
+                            RenderTransformOrigin="0.5,0.5"
+                            Stretch="Fill"
+                            Visibility="Collapsed">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform Angle="0" />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <ContentControl
+                            x:Name="PART_LoadingContent"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding LoadingContent}"
+                            Visibility="Collapsed" />
+                        <ContentPresenter
+                            x:Name="PART_Content"
+                            Grid.Column="1"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBackground}" />
+                        <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBorderBrush}" />
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" />
+                        <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
+                    </Trigger>
+                    <Trigger Property="IsLoading" Value="true">
+                        <Setter Property="IsEnabled" Value="False" />
+                        <Setter TargetName="PART_LoadingContent" Property="Visibility" Value="Visible" />
+                        <Setter TargetName="PART_LoadingContent" Property="Panel.ZIndex" Value="1" />
+                        <Setter TargetName="PART_Content" Property="Opacity" Value="0" />
+                        <Setter TargetName="PART_Content" Property="IsHitTestVisible" Value="False" />
+                        <Setter TargetName="PART_Content" Property="Width" Value="0" />
+                        <Setter TargetName="icon" Property="Visibility" Value="Visible" />
+                        <Setter Property="Opacity" Value="0.6" />
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="icon"
+                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                        To="360"
+                                        Duration="0:0:1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="icon"
+                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                        To="0"
+                                        Duration="0:0:0" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Style.Resources>
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Width" Value="94" />
+        <Setter Property="Height" Value="38" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Type" Value="Primary" />
+        <Style.Triggers>
+            <Trigger Property="Type" Value="Primary">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="HoverBackground" Value="White" />
+                <Setter Property="HoverBorderBrush" Value="{DynamicResource Green}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
+            </Trigger>
+            <Trigger Property="Type" Value="Default">
+                <Setter Property="Background" Value="{DynamicResource Green}" />
+                <Setter Property="HoverBackground" Value="{DynamicResource LightGreen}" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
+            </Trigger>
+            <Trigger Property="Type" Value="Normal">
+                <Setter Property="Background" Value="{DynamicResource Blue}" />
+                <Setter Property="HoverBackground" Value="{DynamicResource LightBlue}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
+            </Trigger>
+            <Trigger Property="Type" Value="Warm">
+                <Setter Property="Background" Value="{DynamicResource Orange}" />
+                <Setter Property="HoverBackground" Value="{DynamicResource LightOrange}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
+            </Trigger>
+            <Trigger Property="Type" Value="Danger">
+                <Setter Property="Background" Value="{DynamicResource Red}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="HoverBackground" Value="{DynamicResource LightRed}" />
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
+            </Trigger>
+            <Trigger Property="Type" Value="Customize">
+                <Setter Property="Template" Value="{DynamicResource LayButtonControlTemplate}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.4" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style BasedOn="{StaticResource LayButtonStyle}" TargetType="{x:Type Lay:LayButton}" />
+</ResourceDictionary>

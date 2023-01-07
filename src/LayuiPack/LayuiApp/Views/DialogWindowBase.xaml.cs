@@ -1,5 +1,5 @@
-﻿using LayuiTemplate.Controls;
-using LayuiTemplate.Global;
+﻿using LayUI.Wpf.Controls;
+using LayUI.Wpf.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;

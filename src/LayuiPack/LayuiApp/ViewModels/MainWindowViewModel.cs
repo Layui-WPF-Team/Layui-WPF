@@ -1,7 +1,7 @@
 ﻿using Layui.Core.AppHelper;
 using Layui.Core.Base;
 using Layui.Core.Resource;
-using LayuiTemplate.Tools;
+using LayUI.Wpf.Tools;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;

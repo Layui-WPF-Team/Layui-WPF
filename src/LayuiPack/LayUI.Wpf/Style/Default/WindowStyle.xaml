@@ -1,0 +1,36 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <WindowChrome
+        x:Key="LayWindowChromeStyle"
+        CaptionHeight="56"
+        CornerRadius="0"
+        GlassFrameThickness="1"
+        NonClientFrameEdges="None"
+        ResizeBorderThickness="4"
+        UseAeroCaptionButtons="False" />
+    <Style x:Key="LayWindowStyle" TargetType="Lay:LayWindow">
+        <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource LayWindowChromeStyle}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayWindow">
+                    <Border Background="{TemplateBinding Background}" ClipToBounds="True">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayWindow}, Path=WindowState}" Value="Maximized">
+                                        <Setter Property="Padding" Value="8" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Lay:LayTransition Style="{DynamicResource LayTransitionStyle}" Type="{TemplateBinding Type}">
+                            <ContentPresenter />
+                        </Lay:LayTransition>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

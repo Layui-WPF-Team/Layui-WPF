@@ -1,5 +1,5 @@
 ﻿using Layui.Core.Base;
-using LayuiTemplate.Global;
+using LayUI.Wpf.Global;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Ioc;

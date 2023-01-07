@@ -96,9 +96,9 @@
       <Project>{b867ed96-1955-45c5-9381-a21dbae85529}</Project>
       <Name>Layui.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\LayuiTemplate\LayuiTemplate.csproj">
-      <Project>{af5e6a51-5926-46ba-9ce0-3229491a15fb}</Project>
-      <Name>LayuiTemplate</Name>
+    <ProjectReference Include="..\..\LayUI.Wpf\LayUI.Wpf.csproj">
+      <Project>{511490c6-c8ac-4a19-ac4d-44413ebf81a2}</Project>
+      <Name>LayUI.Wpf</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
