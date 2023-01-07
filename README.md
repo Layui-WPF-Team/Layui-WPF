@@ -28,3 +28,27 @@
 ![image](https://user-images.githubusercontent.com/37786276/209177671-9bfa0971-adf0-41c8-8fe4-0814fb53d2bc.png)
 ![image](https://user-images.githubusercontent.com/37786276/209177898-a28f4524-17f2-4d94-9b8b-cf837de5fa94.png)
 ![image](https://user-images.githubusercontent.com/37786276/210231504-d0f2acf5-60fc-450a-b913-1476818c6a1a.png)
+
+
+## Usage
+
+Step 1: 添加LayuiTemplate Nuget包;
+
+```Install-Package LayuiTemplate```
+
+Step 2: 添加代码在 App.xaml 下面:
+```XML
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+</Application.Resources>
+```
+
+Step 3: 在目标页面添加需要的控件引用:
+`xmlns:Lay="clr-namespace:LayuiTemplate.Controls;assembly=LayuiTemplate"`
+
+Step 4: 完成
