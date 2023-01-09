@@ -4,10 +4,31 @@
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
     <Style x:Key="LayMenuItemStyle" TargetType="Lay:LayMenuItem">
         <Style.Resources>
-            <ControlTemplate x:Key="{x:Static MenuItem.TopLevelHeaderTemplateKey}" TargetType="{x:Type Lay:LayMenuItem}">
-                <Border x:Name="Border" Background="Transparent">
+            <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
+                <Setter Property="Height" Value="1" />
+                <Setter Property="Margin" Value="0,4,0,4" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Separator}">
+                            <Border BorderThickness="1">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush Color="{DynamicResource LightBlackEffect}" />
+                                </Border.BorderBrush>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!--  TopLevelHeader  -->
+            <ControlTemplate x:Key="TopLevelHeaderTemplateKey" TargetType="{x:Type Lay:LayMenuItem}">
+                <Border
+                    x:Name="Border"
+                    Background="Transparent"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
                     <Grid>
                         <ContentPresenter
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             ContentSource="Header"
                             RecognizesAccessKey="True" />
@@ -15,20 +36,25 @@
                             x:Name="Popup"
                             AllowsTransparency="True"
                             Focusable="False"
-                            HorizontalOffset="-8"
+                            HorizontalOffset="-15"
                             IsOpen="{TemplateBinding IsSubmenuOpen}"
                             Placement="Bottom"
-                            PopupAnimation="Fade">
-                            <Grid Background="Transparent" Effect="{DynamicResource LayShadow}">
-                                <Border
-                                    x:Name="SubmenuBorder"
-                                    Margin="3"
-                                    Background="{TemplateBinding Background}"
-                                    SnapsToDevicePixels="True">
-                                    <ScrollViewer CanContentScroll="True">
-                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
-                                    </ScrollViewer>
-                                </Border>
+                            PlacementTarget="{Binding ElementName=Border}"
+                            PopupAnimation="Fade"
+                            VerticalOffset="-14">
+                            <Grid
+                                x:Name="SubmenuBorder"
+                                Background="Transparent"
+                                Effect="{DynamicResource LayShadow}"
+                                SnapsToDevicePixels="True">
+                                <Border Background="White" Opacity="0.01" />
+                                <Border Margin="15" Background="{TemplateBinding Background}" />
+                                <ScrollViewer
+                                    Margin="15"
+                                    CanContentScroll="True"
+                                    Style="{DynamicResource LayScrollViewerStyle}">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                                </ScrollViewer>
                             </Grid>
                         </Popup>
                     </Grid>
@@ -39,62 +65,89 @@
                     </Trigger>
                     <Trigger Property="IsHighlighted" Value="true" />
                     <Trigger SourceName="Popup" Property="AllowsTransparency" Value="True" />
-                    <Trigger Property="IsEnabled" Value="False" />
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Foreground">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{DynamicResource LightBlackEffect}" />
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
                 </ControlTemplate.Triggers>
             </ControlTemplate>
-            <ControlTemplate x:Key="{x:Static MenuItem.TopLevelItemTemplateKey}" TargetType="{x:Type MenuItem}">
-                <Border x:Name="Border" Background="Transparent">
+
+            <!--  TopLevelItem  -->
+            <ControlTemplate x:Key="TopLevelItemTemplateKey" TargetType="{x:Type Lay:LayMenuItem}">
+                <Border x:Name="Border">
                     <Grid>
                         <ContentPresenter
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             ContentSource="Header"
                             RecognizesAccessKey="True" />
                     </Grid>
                 </Border>
                 <ControlTemplate.Triggers>
-                    <Trigger Property="IsHighlighted" Value="true">
-                        <Setter TargetName="Border" Property="Background">
-                            <Setter.Value>
-                                <SolidColorBrush Opacity="0.1" Color="{DynamicResource LightBlackEffect}" />
-                            </Setter.Value>
-                        </Setter>
-                    </Trigger>
+                    <Trigger Property="IsHighlighted" Value="true" />
                     <Trigger Property="IsEnabled" Value="False" />
                 </ControlTemplate.Triggers>
             </ControlTemplate>
-            <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
+
+            <!--  SubmenuItem  -->
+            <ControlTemplate x:Key="SubmenuItemTemplateKey" TargetType="{x:Type Lay:LayMenuItem}">
                 <Border
                     x:Name="Border"
-                    Padding="5,0"
-                    Background="Transparent">
+                    Background="Transparent"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
-                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="13" />
                         </Grid.ColumnDefinitions>
                         <ContentPresenter
                             x:Name="Icon"
-                            VerticalAlignment="Center"
+                            Margin="6,0"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             ContentSource="Icon" />
                         <Border
                             x:Name="Check"
-                            Width="15"
+                            Width="13"
                             Height="13"
-                            Visibility="Collapsed">
-                            <Path x:Name="CheckMark" />
+                            Margin="6,0"
+                            IsHitTestVisible="True"
+                            Visibility="Hidden">
+                            <Path
+                                x:Name="CheckMark"
+                                Width="7"
+                                Height="7"
+                                Data="M 0 0 L 7 7 M 0 7 L 7 0"
+                                IsHitTestVisible="True"
+                                SnapsToDevicePixels="False"
+                                StrokeThickness="2"
+                                Visibility="Hidden">
+                                <Path.Stroke>
+                                    <SolidColorBrush Color="{DynamicResource LightBlackEffect}" />
+                                </Path.Stroke>
+                            </Path>
                         </Border>
                         <ContentPresenter
                             x:Name="HeaderHost"
                             Grid.Column="1"
+                            Margin="6,3"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             ContentSource="Header"
                             RecognizesAccessKey="True" />
                         <TextBlock
                             x:Name="InputGestureText"
                             Grid.Column="2"
+                            Margin="5,2,0,2"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            IsHitTestVisible="True"
                             Text="{TemplateBinding InputGestureText}" />
                     </Grid>
                 </Border>
@@ -103,6 +156,13 @@
                     <Trigger Property="Icon" Value="{x:Null}">
                         <Setter TargetName="Icon" Property="Visibility" Value="Hidden" />
                     </Trigger>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="Border" Property="Background">
+                            <Setter.Value>
+                                <SolidColorBrush Opacity="0.1" Color="{DynamicResource LightBlackEffect}" />
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
                     <Trigger Property="IsChecked" Value="true">
                         <Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
                     </Trigger>
@@ -110,87 +170,109 @@
                         <Setter TargetName="Check" Property="Visibility" Value="Visible" />
                         <Setter TargetName="Icon" Property="Visibility" Value="Hidden" />
                     </Trigger>
-                    <Trigger Property="IsHighlighted" Value="true">
-                        <Setter TargetName="Border" Property="Background">
-                            <Setter.Value>
-                                <SolidColorBrush Opacity="0.1" Color="{DynamicResource LightBlackEffect}" />
-                            </Setter.Value>
-                        </Setter>
-                    </Trigger>
+                    <Trigger Property="IsHighlighted" Value="true" />
                     <Trigger Property="IsEnabled" Value="false" />
                 </ControlTemplate.Triggers>
             </ControlTemplate>
-            <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
+
+            <ControlTemplate x:Key="SubmenuHeaderTemplateKey" TargetType="{x:Type Lay:LayMenuItem}">
                 <Border
                     x:Name="Border"
-                    Padding="5,0"
-                    Background="Transparent">
+                    Background="Transparent"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
-                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="25" />
                         </Grid.ColumnDefinitions>
+                        <Border
+                            x:Name="Check"
+                            Width="13"
+                            Height="13"
+                            Margin="6,0"
+                            IsHitTestVisible="True"
+                            Visibility="Hidden" />
                         <ContentPresenter
                             x:Name="Icon"
+                            Margin="6,0"
                             VerticalAlignment="Center"
                             ContentSource="Icon" />
                         <ContentPresenter
                             x:Name="HeaderHost"
                             Grid.Column="1"
+                            Margin="6,3"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             ContentSource="Header"
                             RecognizesAccessKey="True" />
                         <TextBlock
                             x:Name="InputGestureText"
                             Grid.Column="2"
+                            Margin="5,2,2,2"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            IsHitTestVisible="True"
                             Text="{TemplateBinding InputGestureText}" />
                         <Path
                             Grid.Column="3"
-                            Width="15"
-                            Height="8"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
+                            Width="13"
+                            Height="7"
                             Data="M966.4 323.2c-9.6-9.6-25.6-9.6-35.2 0l-416 416-425.6-416c-9.6-9.6-25.6-9.6-35.2 0-9.6 9.6-9.6 25.6 0 35.2l441.6 432c9.6 9.6 25.6 9.6 35.2 0l435.2-432C976 345.6 976 332.8 966.4 323.2z"
-                            Fill="{DynamicResource Black}"
+                            IsHitTestVisible="True"
                             RenderTransformOrigin="0.5,0.5"
                             Stretch="Fill">
                             <Path.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform />
                                     <SkewTransform />
-                                    <RotateTransform Angle="-90" />
+                                    <RotateTransform x:Name="RotateTransform" Angle="-90" />
                                     <TranslateTransform />
                                 </TransformGroup>
                             </Path.RenderTransform>
+                            <Path.Fill>
+                                <SolidColorBrush Color="{DynamicResource LightBlackEffect}" />
+                            </Path.Fill>
                         </Path>
                         <Popup
                             x:Name="Popup"
                             AllowsTransparency="True"
                             Focusable="False"
-                            HorizontalOffset="8"
+                            HorizontalOffset="-15"
                             IsOpen="{TemplateBinding IsSubmenuOpen}"
                             Placement="Right"
-                            PopupAnimation="Fade">
-                            <Grid Effect="{DynamicResource LayShadow}">
-                                <Border
-                                    x:Name="SubmenuBorder"
-                                    Margin="3"
-                                    Background="{TemplateBinding Background}"
-                                    SnapsToDevicePixels="True">
-                                    <ScrollViewer CanContentScroll="True">
-                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
-                                    </ScrollViewer>
-                                </Border>
+                            PlacementTarget="{Binding ElementName=Border}"
+                            PopupAnimation="Fade"
+                            VerticalOffset="-14">
+                            <Grid
+                                x:Name="SubmenuBorder"
+                                Background="Transparent"
+                                Effect="{DynamicResource LayShadow}"
+                                SnapsToDevicePixels="True">
+                                <Border Background="White" Opacity="0.01" />
+                                <Border Margin="15" Background="{TemplateBinding Background}" />
+                                <ScrollViewer
+                                    Margin="15"
+                                    CanContentScroll="True"
+                                    Style="{DynamicResource LayScrollViewerStyle}">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                                </ScrollViewer>
                             </Grid>
                         </Popup>
                     </Grid>
                 </Border>
                 <ControlTemplate.Triggers>
                     <Trigger Property="Icon" Value="{x:Null}">
-                        <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                        <Setter TargetName="Icon" Property="Visibility" Value="Hidden" />
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="Border" Property="Background">
+                            <Setter.Value>
+                                <SolidColorBrush Opacity="0.1" Color="{DynamicResource LightBlackEffect}" />
+                            </Setter.Value>
+                        </Setter>
                     </Trigger>
                     <Trigger Property="IsHighlighted" Value="true">
                         <Setter TargetName="Border" Property="Background">
@@ -199,29 +281,27 @@
                             </Setter.Value>
                         </Setter>
                     </Trigger>
-                    <Trigger SourceName="Popup" Property="AllowsTransparency" Value="True" />
                     <Trigger Property="IsEnabled" Value="false" />
                 </ControlTemplate.Triggers>
             </ControlTemplate>
         </Style.Resources>
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background" Value="White" />
-        <Setter Property="Padding" Value="10,0" />
         <Setter Property="Height" Value="40" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
-                <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.TopLevelHeaderTemplateKey}}" />
+                <Setter Property="Template" Value="{DynamicResource TopLevelHeaderTemplateKey}" />
                 <Setter Property="Grid.IsSharedSizeScope" Value="true" />
             </Trigger>
             <Trigger Property="Role" Value="TopLevelItem">
-                <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.TopLevelItemTemplateKey}}" />
+                <Setter Property="Template" Value="{DynamicResource TopLevelItemTemplateKey}" />
             </Trigger>
             <Trigger Property="Role" Value="SubmenuHeader">
-                <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.SubmenuHeaderTemplateKey}}" />
+                <Setter Property="Template" Value="{DynamicResource SubmenuHeaderTemplateKey}" />
             </Trigger>
             <Trigger Property="Role" Value="SubmenuItem">
-                <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.SubmenuItemTemplateKey}}" />
+                <Setter Property="Template" Value="{DynamicResource SubmenuItemTemplateKey}" />
             </Trigger>
         </Style.Triggers>
     </Style>

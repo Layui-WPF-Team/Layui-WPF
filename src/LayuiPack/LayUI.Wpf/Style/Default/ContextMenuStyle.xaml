@@ -9,6 +9,7 @@
         <Setter Property="HasDropShadow" Value="True" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Background" Value="White" />
         <Setter Property="Template">
             <Setter.Value>

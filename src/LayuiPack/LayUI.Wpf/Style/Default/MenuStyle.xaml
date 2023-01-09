@@ -3,8 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
     <Style x:Key="LayMenuStyle" TargetType="{x:Type Lay:LayMenu}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="Background" Value="White" />
         <Setter Property="Padding" Value="10,0" />
         <Setter Property="Height" Value="40" />
@@ -17,7 +18,10 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         SnapsToDevicePixels="true">
-                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <StackPanel
+                            ClipToBounds="True"
+                            IsItemsHost="True"
+                            Orientation="Horizontal" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

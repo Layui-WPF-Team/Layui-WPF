@@ -8,24 +8,24 @@
     <StackPanel>
         <Lay:LayMenu Effect="{DynamicResource LayShadow}">
             <Lay:LayMenuItem Header="菜单">
-                <Lay:LayMenuItem Width="150" Header="123" />
-                <Lay:LayMenuItem Width="150" Header="123" />
-                <Lay:LayMenuItem Width="150" Header="123" />
-                <Lay:LayMenuItem Width="150" Header="123" />
-                <Lay:LayMenuItem Width="150" Header="123" />
-                <Lay:LayMenuItem Width="150" Header="123" />
-                <Lay:LayMenuItem Width="150" Header="123" />
-                <Lay:LayMenuItem Width="150" Header="123" />
+                <Lay:LayMenuItem Header="123" />
+                <Lay:LayMenuItem Header="123" />
+                <Lay:LayMenuItem Header="123" />
+                <Lay:LayMenuItem Header="123" />
+                <Lay:LayMenuItem Header="123" />
+                <Lay:LayMenuItem Header="123" />
+                <Lay:LayMenuItem Header="123" />
+                <Lay:LayMenuItem Header="123" />
                 <Lay:LayMenuItem Header="123">
-                    <Lay:LayMenuItem Width="150" Header="123" />
-                    <Lay:LayMenuItem Width="150" Header="123" />
-                    <Lay:LayMenuItem Width="150" Header="123" />
-                    <Lay:LayMenuItem Width="150" Header="123" />
-                    <Lay:LayMenuItem Width="150" Header="123" />
-                    <Lay:LayMenuItem Width="150" Header="123" />
-                    <Lay:LayMenuItem Width="150" Header="123" />
-                    <Lay:LayMenuItem Width="150" Header="123" />
-                    <Lay:LayMenuItem Width="150" Header="123" />
+                    <Lay:LayMenuItem Header="123" />
+                    <Lay:LayMenuItem Header="123" />
+                    <Lay:LayMenuItem Header="123" />
+                    <Lay:LayMenuItem Header="123" />
+                    <Lay:LayMenuItem Header="123" />
+                    <Lay:LayMenuItem Header="123" />
+                    <Lay:LayMenuItem Header="123" />
+                    <Lay:LayMenuItem Header="123" />
+                    <Lay:LayMenuItem Header="123" />
                 </Lay:LayMenuItem>
             </Lay:LayMenuItem>
         </Lay:LayMenu>
@@ -35,13 +35,17 @@
             Background="{DynamicResource Gray}">
             <Border.ContextMenu>
                 <Lay:LayContextMenu>
-                    <Lay:LayMenuItem Width="150" Header="我是一级菜单" />
-                    <Lay:LayMenuItem Width="150" Header="我是一级菜单">
-                        <Lay:LayMenuItem Width="150" Header="我是二级菜单" />
-                        <Lay:LayMenuItem Width="150" Header="我是二级菜单" />
-                        <Lay:LayMenuItem Width="150" Header="我是二级菜单">
-                            <Lay:LayMenuItem Width="150" Header="我是三级菜单" />
-                            <Lay:LayMenuItem Width="150" Header="我是三级菜单" />
+                    <Lay:LayMenuItem Header="我是一级菜单" />
+                    <Lay:LayMenuItem Header="我是一级菜单">
+                        <Lay:LayMenuItem Header="我是二级菜单" />
+                        <Lay:LayMenuItem Header="我是二级菜单" />
+                        <Lay:LayMenuItem Header="我是二级菜单">
+                            <Lay:LayMenuItem Header="我是三级菜单" />
+                            <Lay:LayMenuItem Header="我是三级菜单" />
+                            <Lay:LayMenuItem Header="我是二级菜单">
+                                <Lay:LayMenuItem Header="我是三级菜单" />
+                                <Lay:LayMenuItem Header="我是三级菜单" />
+                            </Lay:LayMenuItem>
                         </Lay:LayMenuItem>
                     </Lay:LayMenuItem>
                 </Lay:LayContextMenu>

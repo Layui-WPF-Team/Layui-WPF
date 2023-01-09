@@ -16,5 +16,22 @@ namespace LayUI.Wpf.Controls
     /// </summary>
     public class LayMenuItem: MenuItem
     {
+        /// <summary>
+        /// 重写自定义指定项子控件
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        protected override bool IsItemItsOwnContainerOverride(object item)
+        {
+            return item is LayMenuItem;
+        }
+        /// <summary>
+        /// 抓取指定项控件并返回定制项控件
+        /// </summary>
+        /// <returns></returns>
+        protected override DependencyObject GetContainerForItemOverride()
+        {
+            return new LayMenuItem();
+        }
     }
 }
