@@ -27,8 +27,7 @@
                 Width="auto"
                 Margin="0,5"
                 LayHelper:LayControlsBaseHelper.IsFocus="True"
-                Text="123123"
-                TextWrapping="Wrap" />
+                Text="123123" />
             <Lay:LayTextBox
                 Width="auto"
                 Margin="0,5"

@@ -7,8 +7,9 @@
     xmlns:local="clr-namespace:LayuiApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="DialogWindowBase"
-    Width="800"
-    Height="450"
+    SizeToContent="WidthAndHeight"
     Type="Zoom"
     WindowStartupLocation="CenterOwner"
-    mc:Ignorable="d" />
+    mc:Ignorable="d">
+    <Grid />
+</Lay:LayWindow>

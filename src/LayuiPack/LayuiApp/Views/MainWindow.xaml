@@ -12,9 +12,9 @@
     Width="1080"
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    Background="Transparent"
     Icon="/LayuiApp;component/Layui.png"
     ShowInTaskbar="True"
+    WindowChrome.WindowChrome="{DynamicResource LayWindowChromeStyle}"
     WindowStartupLocation="CenterOwner"
     WindowState="{Binding WindowState}">
     <i:Interaction.Triggers>

@@ -96,6 +96,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="LayUI.Wpf">
+      <Version>1.0.1.230109-pre</Version>
+    </PackageReference>
     <PackageReference Include="log4net">
       <Version>2.0.15</Version>
     </PackageReference>
@@ -107,10 +110,6 @@
     <ProjectReference Include="..\Core\Layui.Core\Layui.Core.csproj">
       <Project>{B867ED96-1955-45C5-9381-A21DBAE85529}</Project>
       <Name>Layui.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LayUI.Wpf\LayUI.Wpf.csproj">
-      <Project>{511490c6-c8ac-4a19-ac4d-44413ebf81a2}</Project>
-      <Name>LayUI.Wpf</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utils\Layui.Wpf.Utils\Layui.Wpf.Utils.csproj">
       <Project>{78a35fc5-344a-416b-87b8-eb50579fe3bf}</Project>

@@ -35,10 +35,7 @@
                         CornerRadius="{TemplateBinding CornerRadius}"
                         SnapsToDevicePixels="True">
                         <Grid>
-                            <ScrollViewer
-                                x:Name="PART_ContentHost"
-                                Focusable="false"
-                                Style="{DynamicResource LayScrollViewerStyle}" />
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" />
                             <Border
                                 Padding="2,0,2,0"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

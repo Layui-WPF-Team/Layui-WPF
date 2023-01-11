@@ -11,24 +11,159 @@
         ResizeBorderThickness="4"
         UseAeroCaptionButtons="False" />
     <Style x:Key="LayWindowStyle" TargetType="Lay:LayWindow">
-        <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource LayWindowChromeStyle}" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="HeaderBackground" Value="#23262E" />
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome
+                    CaptionHeight="40"
+                    CornerRadius="0"
+                    GlassFrameThickness="1"
+                    NonClientFrameEdges="None"
+                    ResizeBorderThickness="4"
+                    UseAeroCaptionButtons="False" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayWindow">
-                    <Border Background="{TemplateBinding Background}" ClipToBounds="True">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="True">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayWindow}, Path=WindowState}" Value="Maximized">
-                                        <Setter Property="Padding" Value="8" />
+                                        <Setter Property="Padding" Value="7" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
                         <Lay:LayTransition Style="{DynamicResource LayTransitionStyle}" Type="{TemplateBinding Type}">
-                            <ContentPresenter />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid
+                                    x:Name="PART_Header"
+                                    Height="40"
+                                    Background="{TemplateBinding HeaderBackground}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        x:Name="Icon"
+                                        Width="20"
+                                        Height="20"
+                                        Margin="5,0"
+                                        Source="{TemplateBinding Icon}"
+                                        Stretch="Fill" />
+                                    <TextBlock
+                                        x:Name="HeaderText"
+                                        Grid.Column="1"
+                                        Margin="5,0"
+                                        VerticalAlignment="Center"
+                                        Foreground="{TemplateBinding HeaderForeground}"
+                                        Text="{TemplateBinding Title}" />
+                                    <ContentPresenter
+                                        Grid.Column="2"
+                                        ContentSource="HeaderContent"
+                                        WindowChrome.IsHitTestVisibleInChrome="true" />
+                                    <StackPanel Grid.Column="3" Orientation="Horizontal">
+                                        <StackPanel.Resources>
+                                            <ControlTemplate x:Key="WindowButtonTemplate" TargetType="Button">
+                                                <Grid x:Name="body" Background="Transparent">
+                                                    <Border
+                                                        Margin="3"
+                                                        Background="Transparent"
+                                                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                </Grid>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="body" Property="Background">
+                                                            <Setter.Value>
+                                                                <SolidColorBrush Opacity="0.1" Color="Black" />
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </StackPanel.Resources>
+                                        <Button
+                                            x:Name="PART_MinWindowButton"
+                                            Width="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight}"
+                                            Cursor="Hand"
+                                            Template="{DynamicResource WindowButtonTemplate}">
+                                            <Path
+                                                Width="15"
+                                                Height="2"
+                                                Data="M772.963422 533.491105l-528.06716 0c-12.38297 0-22.514491-10.131521-22.514491-22.514491l0 0c0-12.38297 10.131521-22.514491 22.514491-22.514491l528.06716 0c12.38297 0 22.514491 10.131521 22.514491 22.514491l0 0C795.477913 523.359584 785.346392 533.491105 772.963422 533.491105z"
+                                                Fill="{TemplateBinding HeaderForeground}"
+                                                IsHitTestVisible="false"
+                                                Opacity="0.6"
+                                                Stretch="Fill" />
+                                        </Button>
+                                        <Button
+                                            x:Name="PART_MaxWindowButton"
+                                            Width="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight}"
+                                            Cursor="Hand"
+                                            Template="{DynamicResource WindowButtonTemplate}">
+                                            <Path
+                                                x:Name="winCnangePath"
+                                                Width="15"
+                                                Height="15"
+                                                Data="M714.666667 256H138.666667a53.393333 53.393333 0 0 0-53.333334 53.333333v576a53.393333 53.393333 0 0 0 53.333334 53.333334h576a53.393333 53.393333 0 0 0 53.333333-53.333334V309.333333a53.393333 53.393333 0 0 0-53.333333-53.333333z m10.666666 629.333333a10.666667 10.666667 0 0 1-10.666666 10.666667H138.666667a10.666667 10.666667 0 0 1-10.666667-10.666667V309.333333a10.666667 10.666667 0 0 1 10.666667-10.666666h576a10.666667 10.666667 0 0 1 10.666666 10.666666z m213.333334-746.666666v565.333333a21.333333 21.333333 0 0 1-42.666667 0V138.666667a10.666667 10.666667 0 0 0-10.666667-10.666667H320a21.333333 21.333333 0 0 1 0-42.666667h565.333333a53.393333 53.393333 0 0 1 53.333334 53.333334z"
+                                                Fill="{TemplateBinding HeaderForeground}"
+                                                IsHitTestVisible="false"
+                                                Stretch="Fill" />
+                                        </Button>
+                                        <Button
+                                            x:Name="PART_CloseWindowButton"
+                                            Width="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight}"
+                                            Cursor="Hand"
+                                            Template="{DynamicResource WindowButtonTemplate}">
+                                            <Path
+                                                Width="15"
+                                                Height="15"
+                                                Data="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
+                                                Fill="{TemplateBinding HeaderForeground}"
+                                                IsHitTestVisible="false"
+                                                Opacity="0.6"
+                                                Stretch="Fill" />
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="1" ClipToBounds="True">
+                                    <ContentPresenter />
+                                </Grid>
+                            </Grid>
                         </Lay:LayTransition>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="WindowState" Value="Normal">
+                            <Setter TargetName="winCnangePath" Property="Data" Value="M926.45937303 97.54062697v828.2973677H97.54062697V97.54062697h828.91874606m4.97102697-77.6722963h-838.8608c-39.7682157 0-72.07989097 32.31167525-72.07989097 72.07989096v839.48217837c0 39.7682157 32.31167525 72.07989097 72.07989097 72.07989097h839.48217837c39.7682157 0 72.07989097-32.31167525 72.07989096-72.07989097v-838.8608c0-40.38959408-32.31167525-72.70126933-72.70126933-72.70126933 0.62137837 0 0 0 0 0z" />
+                            <Setter TargetName="winCnangePath" Property="Opacity" Value="0.8" />
+                        </Trigger>
+                        <Trigger Property="IsShowHeader" Value="false">
+                            <Setter TargetName="PART_Header" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="Icon" Value="{x:Null}">
+                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger SourceName="HeaderText" Property="Text" Value="">
+                            <Setter TargetName="HeaderText" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger SourceName="HeaderText" Property="Text" Value="{x:Null}">
+                            <Setter TargetName="HeaderText" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

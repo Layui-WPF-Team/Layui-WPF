@@ -9,17 +9,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    Effect="{DynamicResource LayShadow}"
     mc:Ignorable="d">
     <Global:LayDialog.WindowStyle>
         <Style BasedOn="{StaticResource LayWindowStyle}" TargetType="Lay:LayWindow">
             <Setter Property="AllowsTransparency" Value="True" />
             <Setter Property="Background" Value="{x:Null}" />
             <Setter Property="WindowStyle" Value="None" />
+            <Setter Property="ResizeMode" Value="NoResize" />
             <Setter Property="SizeToContent" Value="WidthAndHeight" />
+            <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource LayWindowChromeStyle}" />
         </Style>
     </Global:LayDialog.WindowStyle>
     <Grid
         Width="300"
+        Margin="4"
         HorizontalAlignment="Center"
         VerticalAlignment="Center">
         <Grid.RowDefinitions>
@@ -27,6 +31,10 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
+        <Border
+            Grid.RowSpan="3"
+            Background="#393D49"
+            CornerRadius="2" />
         <Border
             Padding="0,20"
             Background="#393D49"
