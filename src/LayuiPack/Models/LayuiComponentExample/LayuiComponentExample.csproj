@@ -54,6 +54,7 @@
     <Compile Include="ViewModels\BadgeViewModel.cs" />
     <Compile Include="ViewModels\CarouselViewModel.cs" />
     <Compile Include="ViewModels\DateTimeViewModel.cs" />
+    <Compile Include="ViewModels\DefaultDialogViewModel.cs" />
     <Compile Include="ViewModels\DrawerViewModel.cs" />
     <Compile Include="ViewModels\PaginationViewModel.cs" />
     <Compile Include="ViewModels\PopupBoxViewModel.cs" />
@@ -70,6 +71,9 @@
     </Compile>
     <Compile Include="Views\DateTime.xaml.cs">
       <DependentUpon>DateTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DefaultDialog.xaml.cs">
+      <DependentUpon>DefaultDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DialogMessageView.xaml.cs">
       <DependentUpon>DialogMessageView.xaml</DependentUpon>
@@ -148,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DateTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DefaultDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

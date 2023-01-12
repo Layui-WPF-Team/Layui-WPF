@@ -1,7 +1,4 @@
-﻿using LayUI.Wpf.Controls;
-using LayUI.Wpf.Global;
-using Prism.Services.Dialogs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,22 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Shell;
 
-namespace LayuiApp.Views
+namespace LayuiComponentExample.Views
 {
     /// <summary>
-    /// DialogWindowBase.xaml 的交互逻辑
+    /// DefaultDialogView.xaml 的交互逻辑
     /// </summary>
-    public partial class DialogWindowBase : LayWindow, IDialogWindow, ILayDialogWindow
+    public partial class DefaultDialog : UserControl
     {
-        public DialogWindowBase()
+        public DefaultDialog()
         {
             InitializeComponent();
         }
-
-        public ILayDialogResult Result { get; set ; }
-         IDialogResult IDialogWindow.Result { get; set; }
     }
 }

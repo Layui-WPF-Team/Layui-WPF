@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.DefaultDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Global="clr-namespace:LayUI.Wpf.Global;assembly=LayUI.Wpf"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LayuiComponentExample.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <prism:Dialog.WindowStyle>
+        <Style BasedOn="{StaticResource LayWindowStyle}" TargetType="Lay:LayWindow">
+            <Setter Property="ResizeMode" Value="NoResize" />
+            <Setter Property="IsShowHeader" Value="true" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+    <Grid
+        MinWidth="300"
+        MinHeight="200"
+        Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Lay:LayButton
+            Grid.Row="1"
+            Margin="10"
+            Command="{Binding OKCommand}"
+            Content="确定"
+            Type="Default" />
+    </Grid>
+</UserControl>

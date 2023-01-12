@@ -32,9 +32,7 @@ namespace LayuiComponentExample.ViewModels
                 LayDialog.ShowDialog(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                 }, "RootDialogToken");
-                LayDialog.ShowDialog(SystemResource.DialogMessageView, dialogParameter, rest =>
-                {
-                }, "RootDialogToken");
+                Dialog.Show("DefaultDialog", null,null);
             }
             else
             {

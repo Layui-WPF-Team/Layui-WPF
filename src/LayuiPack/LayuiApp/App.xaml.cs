@@ -46,6 +46,7 @@ namespace LayuiApp
         {
             //注入自定义接口
             containerRegistry.RegisterInstance<ILayLogger>(new LayLogger());
+            containerRegistry.RegisterDialogWindow<DialogWindowBase>();
             LayDialog.RegisterDialogWindow<DialogWindowBase>("window");
             LayDialog.Register(Container.Resolve<IContainerExtension>());
         }
