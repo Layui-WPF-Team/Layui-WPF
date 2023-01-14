@@ -12,5 +12,9 @@ namespace LayUI.Wpf.Global
         {
             return (ILayDialogWindowAware)dialog.DataContext;
         }
+        internal static ILayDialogWindowAware GetDialogView(this ILayDialogWindow dialog)
+        {
+            return (ILayDialogWindowAware)dialog.Content;
+        }
     }
 }

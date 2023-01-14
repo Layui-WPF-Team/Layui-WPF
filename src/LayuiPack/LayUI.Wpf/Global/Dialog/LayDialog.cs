@@ -206,6 +206,13 @@ namespace LayUI.Wpf.Global
         /// <summary>
         /// 普通弹窗
         /// </summary>
+        /// <param name="content">视图</param>
+        /// <param name="parameters">参数</param>
+        /// <param name="token">需要通知弹窗的唯一健值</param>
+        public static void Show(object content, ILayDialogParameter parameters, string token = null) => Alert(content, parameters, null, false, token, null);
+        /// <summary>
+        /// 普通弹窗
+        /// </summary>
         /// <param name="dialogName">窗体名称</param>
         /// <param name="parameters">参数</param>
         /// <param name="windowName">指定需要打开的窗体样式</param>
@@ -218,6 +225,14 @@ namespace LayUI.Wpf.Global
         /// <param name="callback">回调</param>
         /// <param name="token">需要通知弹窗的唯一健值</param>
         public static void Show(string dialogName, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token = null) => Alert(dialogName, parameters, callback, false, token, null);
+        /// <summary>
+        /// 普通弹窗
+        /// </summary>
+        /// <param name="content">视图</param>
+        /// <param name="parameters">参数</param>
+        /// <param name="callback">回调</param>
+        /// <param name="token">需要通知弹窗的唯一健值</param>
+        public static void Show(object content, ILayDialogParameter parameters, Action<ILayDialogResult> callback, string token = null) => Alert(content, parameters, callback, false, token, null);
         /// <summary>
         /// 普通弹窗
         /// </summary>
@@ -271,6 +286,89 @@ namespace LayUI.Wpf.Global
         {
             if (windowName != null) AlertWindow(dialogName, parameters, callback, isModel, windowName);
             else AlertUserControl(dialogName, parameters, callback, isModel, token);
+        }
+        /// <summary>
+        /// 弹窗业务
+        /// </summary>
+        /// <param name="view">视图</param>
+        /// <param name="parameters">参数</param>
+        /// <param name="callback">回调</param>
+        /// <param name="isModel">是否为模态</param>
+        /// <param name="token">需要通知弹窗的唯一健值,如果是Window窗体该值给Null</param>
+        /// <param name="windowName">指定需要打开的窗体样式</param>
+        private static void Alert(object content, ILayDialogParameter parameters, Action<ILayDialogResult> callback, bool isModel, string token, string windowName)
+        {
+            DispatcherFrame dispatcherFrame = null;
+            try
+            {
+                if (!DialogHosts.ContainsKey(token)) throw new Exception($"未找到{nameof(token)}值为{token}的弹窗组件:{nameof(LayDialogHost)}");
+                if (content is UserControl && content is ILayDialogAware)
+                {
+                    //抓取当前展示弹窗容器
+                    LayDialogHost host = DialogHosts[token];
+                    //创建内容视图
+                    var view = content as UserControl;
+                    //创建弹窗
+                    LayDialogUserControlWindow dialogView = new LayDialogUserControlWindow()
+                    {
+                        Uid = nameof(content) + Guid.NewGuid().ToString(),
+                        IsOpen = true,
+                        Content = view,
+                    };
+                    host.DialogItems.Items.Add(dialogView);
+                    ILayDialogUserControlWindow dialog = dialogView as ILayDialogUserControlWindow;
+                    Action<ILayDialogResult> requestCloseHandler = null;
+                    //窗体关闭的回调方法
+                    requestCloseHandler = (o) =>
+                    {
+                        dialogView.Result = o;
+                        //关闭窗体
+                        host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(async () =>
+                        {
+                            //窗体关闭后数据置空
+                            dialogView.IsOpen = false;
+                            await Task.Delay(100);
+                            host.DialogItems.Items.Remove(dialogView);
+                        }));
+                    };
+                    RoutedEventHandler LoadedHandler = null;
+                    LoadedHandler = (o, e) =>
+                    {
+                        dialogView.Loaded -= LoadedHandler;
+                        dialogView.GetDialogView().RequestClose += requestCloseHandler;
+                    };
+                    dialog.Loaded += LoadedHandler;
+                    RoutedEventHandler UnloadedHandler = null;
+                    //窗体销毁后的事件
+                    UnloadedHandler = (o, e) =>
+                    {
+                        dialog.Unloaded -= UnloadedHandler;
+                        dialog.GetDialogView().RequestClose -= requestCloseHandler;
+                        //抓取回调后的数据并回传
+                        if (dialog.Result == null) dialog.Result = new LayDialogResult() { Result = Enum.ButtonResult.Default };
+                        callback?.Invoke(dialog.Result);
+                        //判断是否为模态弹窗
+                        if (isModel)
+                        {
+                            //取消线程占用，允许进行ViewModel业务代码操作
+                            dispatcherFrame.Continue = false;
+                            ComponentDispatcher.PopModal();
+                            dispatcherFrame = null;
+                        }
+                    };
+                    dialog.Unloaded += UnloadedHandler;
+                    //抓取当前需要传递的参数并且传递给对应视图的ViewModel
+                    if (!(view is ILayDialogAware vm))
+                        throw new NullReferenceException("对话框的 content 必须实现 IDialogAware 接口 ");
+                    //给对应的ViewModel传值
+                    ViewAndViewModelAction<ILayDialogAware>(view, d => d.OnDialogOpened(parameters));
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         /// <summary>
         /// 弹起Window窗体

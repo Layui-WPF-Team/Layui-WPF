@@ -13,6 +13,7 @@
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Icon="/LayuiApp;component/Layui.png"
+    IsShowHeader="true"
     ShowInTaskbar="True"
     WindowChrome.WindowChrome="{DynamicResource LayWindowChromeStyle}"
     WindowStartupLocation="CenterOwner"
