@@ -48,7 +48,7 @@
             <Lay:LayAutoCompleteTextBox Margin="0,5" ItemsSource="{Binding ListDatas}">
                 <Lay:LayAutoCompleteTextBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding .}" />
+                        <Button Content="{Binding .}" />
                     </DataTemplate>
                 </Lay:LayAutoCompleteTextBox.ItemTemplate>
             </Lay:LayAutoCompleteTextBox>

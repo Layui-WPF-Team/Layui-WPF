@@ -150,8 +150,8 @@
                                                 Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=NoDataTips, Mode=OneWay}" />
                                         </Grid>
                                         <Grid x:Name="ItemsGrid" Background="Transparent">
-                                            <ScrollViewer Focusable="False" Style="{DynamicResource LayScrollViewerStyle}">
-                                                <ItemsPresenter Focusable="False" />
+                                            <ScrollViewer VerticalScrollBarVisibility="Visible">
+                                                <StackPanel x:Name="PART_ItemsHost" />
                                             </ScrollViewer>
                                         </Grid>
                                     </Grid>

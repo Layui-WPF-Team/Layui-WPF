@@ -364,10 +364,10 @@ namespace LayUI.Wpf.Global
                     ViewAndViewModelAction<ILayDialogAware>(view, d => d.OnDialogOpened(parameters));
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
         /// <summary>
