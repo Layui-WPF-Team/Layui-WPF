@@ -21,12 +21,11 @@
     </i:Interaction.Triggers>
     <ScrollViewer>
         <StackPanel Margin="6">
-            <PasswordBox />
             <Lay:LayLegend Header="表单集合演示" />
             <Lay:LayTextBox
                 Width="auto"
                 Margin="0,5"
-                LayHelper:LayControlsBaseHelper.IsFocus="True"
+                LayHelper:LayControlsBaseHelper.IsFocus="true"
                 Text="123123" />
             <Lay:LayTextBox
                 Width="auto"
@@ -45,7 +44,10 @@
                 Margin="0,5"
                 LayHelper:LayTextBoxHelper.InputType="Phone"
                 Watermark="只允许输入电话号码" />
-            <Lay:LayAutoCompleteTextBox Margin="0,5" ItemsSource="{Binding ListDatas}">
+            <Lay:LayAutoCompleteTextBox
+                Margin="0,5"
+                ItemsSource="{Binding ListDatas}"
+                Style="{DynamicResource LayAutoCompleteTextBoxStyle}">
                 <Lay:LayAutoCompleteTextBox.ItemTemplate>
                     <DataTemplate>
                         <Button Content="{Binding .}" />

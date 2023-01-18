@@ -63,7 +63,7 @@ namespace LayUI.Wpf.Controls
             DependencyProperty.Register("Time", typeof(DateTime?), typeof(LayTimer), new PropertyMetadata(OnTimeChanged));
 
         /// <summary>
-        /// 按钮点击事件
+        /// 点击事件
         /// </summary>
         public event EventHandler<RoutedEventArgs> Click
         {
@@ -76,7 +76,62 @@ namespace LayUI.Wpf.Controls
         {
             RaiseEvent(e);
         }
-
+        /// <summary>
+        /// 确定按钮点击事件
+        /// </summary>
+        public event EventHandler<RoutedEventArgs> Submited
+        {
+            add => AddHandler(SubmitedEvent, value);
+            remove => RemoveHandler(SubmitedEvent, value);
+        }
+        public static readonly RoutedEvent SubmitedEvent =
+            EventManager.RegisterRoutedEvent("Submited", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(LayTimer));
+        protected virtual void OnSubmited(RoutedEventArgs e)
+        {
+            RaiseEvent(e);
+        }
+        /// <summary>
+        /// 时间选中事件
+        /// </summary>
+        public event EventHandler<RoutedEventArgs> SelectedTimesChanged
+        {
+            add => AddHandler(SelectedTimesChangedEvent, value);
+            remove => RemoveHandler(SelectedTimesChangedEvent, value);
+        }
+        public static readonly RoutedEvent SelectedTimesChangedEvent =
+            EventManager.RegisterRoutedEvent("SelectedTimesChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(LayTimer));
+        protected virtual void OnSelectedTimesChanged(RoutedEventArgs e)
+        {
+            RaiseEvent(e);
+        }
+        /// <summary>
+        /// 时间重置
+        /// </summary>
+        public event EventHandler<RoutedEventArgs> Reseted
+        {
+            add => AddHandler(ResetedEvent, value);
+            remove => RemoveHandler(ResetedEvent, value);
+        }
+        public static readonly RoutedEvent ResetedEvent =
+            EventManager.RegisterRoutedEvent("Reseted", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(LayTimer));
+        protected virtual void OnReseted(RoutedEventArgs e)
+        {
+            RaiseEvent(e);
+        }
+        /// <summary>
+        /// 获取点击现在按钮事件
+        /// </summary>
+        public event EventHandler<RoutedEventArgs> Currented
+        {
+            add => AddHandler(CurrentedEvent, value);
+            remove => RemoveHandler(CurrentedEvent, value);
+        }
+        public static readonly RoutedEvent CurrentedEvent =
+            EventManager.RegisterRoutedEvent("Currented", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(LayTimer));
+        protected virtual void OnCurrented(RoutedEventArgs e)
+        {
+            RaiseEvent(e);
+        }
         internal DateTime? DefaultTime
         {
             get { return (DateTime?)GetValue(DefaultTimeProperty); }
@@ -101,6 +156,18 @@ namespace LayUI.Wpf.Controls
             UpdateIsSelectedItem(PART_Second, Time?.Second.ToString());
             DefaultTime = Time;
         }
+
+        public bool IsShowSelectedTime
+        {
+            get { return (bool)GetValue(IsShowSelectedTimeProperty); }
+            set { SetValue(IsShowSelectedTimeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsShowSelectedTime.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsShowSelectedTimeProperty =
+            DependencyProperty.Register("IsShowSelectedTime", typeof(bool), typeof(LayTimer), new PropertyMetadata(true));
+
+
 
         public string Title
         {
@@ -193,6 +260,7 @@ namespace LayUI.Wpf.Controls
         /// </summary>
         private void UpdateIsSelectedItem(ListBox list, string value)
         {
+            if (list == null) return;
             foreach (ListBoxItem item in list.Items)
             {
                 if (Convert.ToInt32(item.Content.ToString()) == Convert.ToInt32(value))
@@ -239,16 +307,26 @@ namespace LayUI.Wpf.Controls
         {
             Time = DefaultTime;
             OnClick(new RoutedEventArgs(ClickEvent, sender));
+            OnSubmited(new RoutedEventArgs(SubmitedEvent, sender));
         }
-
+        /// <summary>
+        /// 获取现在时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PART_QueryTimeBtn_Click(object sender, RoutedEventArgs e)
         {
             DateTime localTime = DateTime.Now;
             DefaultTime = localTime;
             Time = DefaultTime;
             OnClick(new RoutedEventArgs(ClickEvent, sender));
+            OnCurrented(new RoutedEventArgs(CurrentedEvent, sender));
         }
-
+        /// <summary>
+        /// 重置时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PART_ResetTimeBtn_Click(object sender, RoutedEventArgs e)
         {
             UpdateIsSelectedItem(PART_Hour, (PART_Hour.Items[0] as ListBoxItem).Content.ToString());
@@ -257,11 +335,13 @@ namespace LayUI.Wpf.Controls
             UpdateDate();
             Time = DefaultTime;
             OnClick(new RoutedEventArgs(ClickEvent, sender));
+            OnReseted(new RoutedEventArgs(ResetedEvent, sender));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             UpdateDate();
+            OnSelectedTimesChanged(new RoutedEventArgs(SelectedTimesChangedEvent, sender));
         }
     }
 }

@@ -95,7 +95,7 @@ namespace LayUI.Wpf.Controls
         /// </summary>
         protected virtual void Refresh()
         {
-            if (PART_ItemsHost == null) return;
+            if (PART_Popup == null && PART_ItemsHost == null) return;
             PART_ItemsHost.Children.Clear();
             if (ItemsSource != null)
             {
@@ -105,7 +105,7 @@ namespace LayUI.Wpf.Controls
                 }
                 else
                 {
-                   var items= new Collection<object>();
+                    var items = new Collection<object>();
                     foreach (var item in ItemsSource)
                     {
                         items.Add(item);
@@ -114,23 +114,26 @@ namespace LayUI.Wpf.Controls
                 }
 
             }
-            foreach (var item in Items)
+            if (Items != null)
             {
-                DependencyObject container;
-                if (IsItemItsOwnContainerOverride(item))
+                foreach (var item in Items)
                 {
-                    container = item as DependencyObject;
-                }
-                else
-                {
-                    container = GetContainerForItemOverride();
-                    PrepareContainerForItemOverride(container, item);
-                }
+                    DependencyObject container;
+                    if (IsItemItsOwnContainerOverride(item))
+                    {
+                        container = item as DependencyObject;
+                    }
+                    else
+                    {
+                        container = GetContainerForItemOverride();
+                        PrepareContainerForItemOverride(container, item);
+                    }
 
-                if (container is FrameworkElement element)
-                {
-                    element.Style = ItemContainerStyle;
-                    PART_ItemsHost.Children.Add(element);
+                    if (container is FrameworkElement element)
+                    {
+                        element.Style = ItemContainerStyle;
+                        PART_ItemsHost.Children.Add(element);
+                    }
                 }
             }
         }
@@ -289,11 +292,11 @@ namespace LayUI.Wpf.Controls
 
         public override void OnApplyTemplate()
         {
-            PART_ItemsHost?.Children.Clear();
             base.OnApplyTemplate();
             PART_Popup = GetTemplateChild("PART_Popup") as Popup;
             PART_ItemsHost = GetTemplateChild("PART_ItemsHost") as Panel;
             var window = Window.GetWindow(this);
+            if (PART_Popup == null && PART_ItemsHost == null && window == null) return;
             window.LocationChanged -= Window_LocationChanged;
             window.LocationChanged += Window_LocationChanged;
             LostFocus -= LayAutoCompleteTextBox_LostFocus;
@@ -317,7 +320,7 @@ namespace LayUI.Wpf.Controls
         }
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
-            base.OnPreviewMouseLeftButtonDown(e); 
+            base.OnPreviewMouseLeftButtonDown(e);
             IsDropDownOpen = true;
         }
 

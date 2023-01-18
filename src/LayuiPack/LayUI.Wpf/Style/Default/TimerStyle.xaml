@@ -93,7 +93,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <Grid Height="46" Focusable="False">
+                            <Grid Height="45" Focusable="False">
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -134,40 +134,42 @@
                                             VerticalAlignment="Center"
                                             Text="秒" />
                                     </Grid>
-                                    <Border
+                                    <Grid
                                         Grid.Row="1"
                                         Grid.ColumnSpan="3"
-                                        Margin="10,0,10,10"
-                                        Background="{TemplateBinding Background}"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition />
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition />
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition />
-                                            </Grid.ColumnDefinitions>
-                                            <ListBox x:Name="PART_Hour" Style="{DynamicResource TimeListBoxStyle}" />
-                                            <Grid
-                                                Grid.Column="1"
-                                                Width="{TemplateBinding Line}"
-                                                Background="{TemplateBinding BorderBrush}" />
-                                            <ListBox
-                                                x:Name="PART_Minute"
-                                                Grid.Column="2"
-                                                Style="{DynamicResource TimeListBoxStyle}" />
-                                            <Grid
-                                                Grid.Column="3"
-                                                Width="{TemplateBinding Line}"
-                                                Background="{TemplateBinding BorderBrush}" />
-                                            <ListBox
-                                                x:Name="PART_Second"
-                                                Grid.Column="4"
-                                                Style="{DynamicResource TimeListBoxStyle}" />
-                                        </Grid>
-                                    </Border>
+                                        Margin="10,0,10,10">
+                                        <Border
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Line}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <ListBox x:Name="PART_Hour" Style="{DynamicResource TimeListBoxStyle}" />
+                                                <Grid
+                                                    Grid.Column="1"
+                                                    Width="{TemplateBinding Line}"
+                                                    Background="{TemplateBinding BorderBrush}" />
+                                                <ListBox
+                                                    x:Name="PART_Minute"
+                                                    Grid.Column="2"
+                                                    Style="{DynamicResource TimeListBoxStyle}" />
+                                                <Grid
+                                                    Grid.Column="3"
+                                                    Width="{TemplateBinding Line}"
+                                                    Background="{TemplateBinding BorderBrush}" />
+                                                <ListBox
+                                                    x:Name="PART_Second"
+                                                    Grid.Column="4"
+                                                    Style="{DynamicResource TimeListBoxStyle}" />
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
                                 </Grid>
                             </Border>
                             <Grid
@@ -182,7 +184,10 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=DefaultTime, StringFormat={}{0:HH:mm:ss}}" />
+                                <TextBlock
+                                    x:Name="time"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=DefaultTime, StringFormat={}{0:HH:mm:ss}}" />
                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                                     <Button
                                         x:Name="PART_ResetTimeBtn"
@@ -207,6 +212,11 @@
                             </Grid>
                         </Grid>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsShowSelectedTime" Value="false">
+                            <Setter TargetName="time" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

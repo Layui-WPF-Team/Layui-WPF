@@ -64,17 +64,6 @@ namespace LayUI.Wpf.Controls
                 }
             }
         }
-        protected override void OnGotFocus(RoutedEventArgs e)
-        {
-            base.OnGotFocus(e);
-            if (!IsShowPasswrod)
-            {
-                if (PART_PasswordBox != null)
-                {
-                    PART_PasswordBox.Focus();
-                }
-            }
-        }
         /// <summary>
         /// 初始化模板
         /// </summary>

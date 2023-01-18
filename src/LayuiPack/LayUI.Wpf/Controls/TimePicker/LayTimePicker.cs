@@ -19,11 +19,11 @@ namespace LayUI.Wpf.Controls
     public class LayTimePicker : System.Windows.Controls.Control
     {
         /// <summary>
-        /// 
+        /// 时间
         /// </summary>
         private LayTimer PART_LayTimer;
         /// <summary>
-        /// 文本
+        /// 提示窗
         /// </summary>
         private Popup PART_Popup;
         /// <summary>
@@ -171,12 +171,12 @@ namespace LayUI.Wpf.Controls
             {
                 PART_Popup.Opened -= PART_Popup_Opened;
                 PART_Popup.Opened += PART_Popup_Opened;
-                PART_LayTimer.Click -= PART_LayTimer_Click;
-                PART_LayTimer.Click += PART_LayTimer_Click;
+                PART_LayTimer.Submited -= PART_LayTimer_Submited;
+                PART_LayTimer.Submited += PART_LayTimer_Submited;
             }
         }
 
-        private void PART_LayTimer_Click(object sender, RoutedEventArgs e)
+        private void PART_LayTimer_Submited(object sender, RoutedEventArgs e)
         {
             PART_Popup.IsOpen = false;
         }

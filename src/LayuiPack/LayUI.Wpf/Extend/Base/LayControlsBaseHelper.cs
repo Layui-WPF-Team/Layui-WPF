@@ -71,6 +71,8 @@ namespace LayUI.Wpf.Extend
             {
                 if (GetIsFocus(d) && Element.IsLoaded)
                 {
+                    if (d is TextBox text) text.SelectionStart = int.MaxValue;
+                    if (d is PasswordBox password) SetSelection(password, int.MaxValue, int.MaxValue);
                     input.Focus();
                 }
                 else
@@ -103,6 +105,8 @@ namespace LayUI.Wpf.Extend
         {
             if (sender is IInputElement input)
             {
+                if (sender is TextBox text) text.SelectionStart = int.MaxValue;
+                if (sender is PasswordBox password) SetSelection(password, int.MaxValue, int.MaxValue);
                 input.Focus();
             }
             (sender as FrameworkElement).Loaded -= Input_Loaded;
