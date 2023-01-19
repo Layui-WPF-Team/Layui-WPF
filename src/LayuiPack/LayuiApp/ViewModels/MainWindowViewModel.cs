@@ -9,6 +9,7 @@ using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
 using System.Diagnostics;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -113,7 +114,14 @@ namespace LayuiApp.ViewModels
         {
             Network = isAvailable;
         }
+        private DelegateCommand _GoQQ;
+        public DelegateCommand GoQQ =>
+            _GoQQ ?? (_GoQQ = new DelegateCommand(ExecuteGoQQ));
 
+        void ExecuteGoQQ()
+        {
+            Process.Start(new ProcessStartInfo("https://qm.qq.com/cgi-bin/qm/qr?k=ewLfhryw080flnV8-Zic4JH3N8IP_aGt&jump_from=webapi&authKey=MVumLNpztW43NPgVMwCzLMTm+T2puC4YN3mjg9eDl6/Fet+Elx+8WYQmRAXISrAF"));
+        }
         /// <summary>
         /// 关闭窗体
         /// </summary>

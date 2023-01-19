@@ -57,7 +57,7 @@
                             FontSize="20"
                             Foreground="White"
                             Opacity="0.7"
-                            Text="{Binding Title}" />
+                            Text="点我有好康的" />
                     </Border>
                 </ToggleButton>
                 <StackPanel
@@ -248,7 +248,26 @@
                                         <Button
                                             Width="150"
                                             Height="40"
-                                            Content="介绍" />
+                                            HorizontalContentAlignment="Stretch"
+                                            Command="{Binding GoQQ}">
+                                            <Grid Margin="30,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="{DynamicResource IconFont}"
+                                                    FontSize="18"
+                                                    Text="&#xf1d6;" />
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Margin="10,0"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="QQ群" />
+                                            </Grid>
+                                        </Button>
                                     </StackPanel>
                                 </Border>
                             </Grid>
@@ -352,8 +371,17 @@
                 </Grid>
                 <Lay:LayDrawerHost DrawerOpen="{Binding ElementName=Title, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Type="Right">
                     <Lay:LayDrawerHost.DrawerContent>
-                        <Border Width="300" Background="White">
-                            <TextBlock Text="欢迎使用Layui-WPF UI组件库" />
+                        <Border Width="300" Background="#F7F9F6">
+                            <StackPanel>
+                                <Image Source="/LayuiApp;component/R-C.jpg" />
+                                <TextBlock
+                                    Margin="10"
+                                    HorizontalAlignment="Center"
+                                    FontSize="25"
+                                    Text="老老实实打代码"
+                                    TextAlignment="Center"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
                         </Border>
                     </Lay:LayDrawerHost.DrawerContent>
                     <ContentControl prism:RegionManager.RegionName="{x:Static Nv:SystemResource.Nav_MainContent}" />
