@@ -1,4 +1,4 @@
-﻿using LayUI.Wpf.Enum.Carousel;
+﻿using LayUI.Wpf.Enum;
 using LayUI.Wpf.Tools;
 using System;
 using System.Collections;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayUI.Wpf.Enum.Carousel
+namespace LayUI.Wpf.Enum
 {
     /// <summary>
     ///  CarouselArrow
