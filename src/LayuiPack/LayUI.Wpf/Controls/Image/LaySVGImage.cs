@@ -42,8 +42,8 @@ namespace LayUI.Wpf.Controls
             DependencyProperty.Register("UriSource", typeof(Uri), typeof(LaySVGImage),
                 new FrameworkPropertyMetadata(null, OnUriSourceChanged));
 
-        public static DependencyProperty SizeTypeProperty = DependencyProperty.Register("SizeType",
-            typeof(SizeType), typeof(LaySVGImage), new FrameworkPropertyMetadata(SizeType.ContentToSizeNoStretch,
+        public static DependencyProperty StretchProperty = DependencyProperty.Register("Stretch",
+            typeof(Stretch), typeof(LaySVGImage), new FrameworkPropertyMetadata(Stretch.Fill,
                 FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender,
                 new PropertyChangedCallback(OnSizeTypeChanged)));
 
@@ -116,10 +116,10 @@ namespace LayUI.Wpf.Controls
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LaySVGImage));
 
 
-        public SizeType SizeType
+        public Stretch Stretch
         {
-            get { return (SizeType)this.GetValue(SizeTypeProperty); }
-            set { this.SetValue(SizeTypeProperty, value); }
+            get { return (Stretch)this.GetValue(StretchProperty); }
+            set { this.SetValue(StretchProperty, value); }
         }
 
         public string Source
@@ -297,7 +297,7 @@ namespace LayUI.Wpf.Controls
         {
             this.m_drawing = drawing;
             this.InvalidateVisual();
-            if (this.m_drawing != null && this.SizeType == SizeType.SizeToContent)
+            if (this.m_drawing != null && this.Stretch == Stretch.Uniform)
                 this.InvalidateMeasure();
             this.RecalcImage();
             this.InvalidateVisual();
@@ -357,7 +357,7 @@ namespace LayUI.Wpf.Controls
         protected override Size MeasureOverride(Size constraint)
         {
             Size result = base.MeasureOverride(constraint);
-            if (this.SizeType == SizeType.SizeToContent)
+            if (this.Stretch == Stretch.Uniform)
             {
                 if (this.m_drawing != null && !this.m_drawing.Bounds.Size.IsEmpty)
                     result = this.m_drawing.Bounds.Size;
@@ -380,7 +380,7 @@ namespace LayUI.Wpf.Controls
         protected override Size ArrangeOverride(Size arrangeBounds)
         {
             Size result = base.ArrangeOverride(arrangeBounds);
-            if (this.SizeType == SizeType.SizeToContent)
+            if (this.Stretch == Stretch.Uniform)
             {
                 if (this.m_drawing != null && !this.m_drawing.Bounds.Size.IsEmpty)
                     result = this.m_drawing.Bounds.Size;
@@ -399,7 +399,7 @@ namespace LayUI.Wpf.Controls
                 return;
 
             Rect r = this.m_drawing.Bounds;
-            if (this.SizeType == SizeType.None)
+            if (this.Stretch == Stretch.None)
             {
                 this.m_scaleTransform.ScaleX = 1;
                 this.m_scaleTransform.ScaleY = 1;
@@ -429,12 +429,12 @@ namespace LayUI.Wpf.Controls
                 }
                 return;
             }
-            if (this.SizeType == SizeType.ContentToSizeNoStretch)
+            if (this.Stretch == Stretch.Fill)
             {
                 this.SizeToContentNoStretch(this.HorizontalContentAlignment, this.VerticalContentAlignment);
                 return;
             }
-            if (this.SizeType == SizeType.ContentToSizeStretch)
+            if (this.Stretch == Stretch.UniformToFill)
             {
                 double xscale = this.ActualWidth / r.Width;
                 double yscale = this.ActualHeight / r.Height;
@@ -447,7 +447,7 @@ namespace LayUI.Wpf.Controls
                 this.m_offsetTransform.Y = -r.Top;
                 return;
             }
-            if (this.SizeType == SizeType.SizeToContent)
+            if (this.Stretch == Stretch.Uniform)
             {
                 if (r.Width > this.ActualWidth || r.Height > this.ActualHeight)
                     this.SizeToContentNoStretch(HorizontalAlignment.Left, VerticalAlignment.Top);

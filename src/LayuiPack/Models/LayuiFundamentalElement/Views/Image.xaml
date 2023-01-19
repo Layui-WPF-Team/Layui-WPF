@@ -7,10 +7,13 @@
     prism:ViewModelLocator.AutoWireViewModel="True">
     <TabControl>
         <TabItem Header="SVG">
-            <Lay:LaySVGImage CornerRadius="5" Source="https://iconfont.alicdn.com/auth/illus/file/ZGVfkV4gKjpJ/7bb7e450-b47c-45bf-85b6-d69f14cae4df_origin.svg?auth_key=1674122400-0-0-2a85a0494860f475a3f3a6234295d1b8" />
+            <Lay:LaySVGImage Source="/LayuiFundamentalElement;component/Images/SVG/购物车空空如也.svg" Stretch="UniformToFill" />
         </TabItem>
         <TabItem Header="网络Gif">
-            <Lay:LayGifImage CornerRadius="5" Source="https://img.zcool.cn/community/01639c586c91bba801219c77f6efc8.gif" />
+            <Lay:LayGifImage
+                CornerRadius="5"
+                Source="https://img.zcool.cn/community/01639c586c91bba801219c77f6efc8.gif"
+                Stretch="UniformToFill" />
         </TabItem>
         <TabItem Header="本地Gif">
             <Lay:LayGifImage Source="/LayuiFundamentalElement;component/Images/GIF/v2-30156325f3b931600dc40e119d6a12cc_b.gif" />

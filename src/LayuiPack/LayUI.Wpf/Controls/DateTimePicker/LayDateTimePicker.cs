@@ -39,44 +39,6 @@ namespace LayUI.Wpf.Controls
             DependencyProperty.Register("DefaultTime", typeof(DateTime?), typeof(LayDateTimePicker));
 
         [Bindable(true)]
-        public bool IsDropDownOpen
-        {
-            get { return (bool)GetValue(IsDropDownOpenProperty); }
-            set { SetValue(IsDropDownOpenProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for IsDropDownOpen.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsDropDownOpenProperty =
-            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(LayDateTimePicker));
-
-
-
-        [Bindable(true)]
-        public CornerRadius CornerRadius
-        {
-            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayDateTimePicker));
-
-
-
-        public DateTime? SelectedDate
-        {
-            get { return (DateTime?)GetValue(SelectedDateProperty); }
-            set { SetValue(SelectedDateProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for SelectedDate.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty SelectedDateProperty =
-            DependencyProperty.Register("SelectedDate", typeof(DateTime?), typeof(LayDateTimePicker) );
-
-
-
-        [Bindable(true)]
         public string DateMessageTitle
         {
             get { return (string)GetValue(DateMessageTitleProperty); }
