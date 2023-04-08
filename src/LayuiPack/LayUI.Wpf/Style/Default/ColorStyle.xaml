@@ -23,7 +23,7 @@
     <SolidColorBrush x:Key="LightRed" Color="{StaticResource LightRedEffect}" />
     <!--  深色  -->
     <Color x:Key="BlackEffect">#61646D</Color>
-    <Color x:Key="LightBlackEffect">#61646D</Color>
+    <Color x:Key="LightBlackEffect">#9b9a9a</Color>
     <SolidColorBrush x:Key="Black" Color="{StaticResource BlackEffect}" />
     <SolidColorBrush x:Key="LightBlack" Color="{StaticResource LightBlackEffect}" />
     <!--  灰色  -->
