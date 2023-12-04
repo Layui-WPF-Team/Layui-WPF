@@ -21,11 +21,12 @@
                 </Lay:LayTreeView.ItemContainerStyle>
                 <Lay:LayTreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Child}">
-                        <Lay:LayCheckBox
+                        <TextBlock Margin="10,0" Text="{Binding Title}" />
+                        <!--<Lay:LayCheckBox
                             Command="{Binding RelativeSource={RelativeSource AncestorType=local:TreeView}, Path=DataContext.CheckedCommand}"
                             CommandParameter="{Binding}"
                             Content="{Binding Title}"
-                            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTreeViewItem}, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTreeViewItem}, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />-->
                     </HierarchicalDataTemplate>
                 </Lay:LayTreeView.ItemTemplate>
             </Lay:LayTreeView>
