@@ -12,10 +12,11 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <UniformGrid Rows="1">
-            <Lay:LayTreeView ItemsSource="{Binding ListApps}">
+            <Lay:LayTreeView IsShowCheckButton="True" ItemsSource="{Binding ListApps}">
                 <Lay:LayTreeView.ItemContainerStyle>
                     <Style BasedOn="{StaticResource LayTreeViewItemStyle}" TargetType="Lay:LayTreeViewItem">
                         <Setter Property="IsExpanded" Value="true" />
+                        <Setter Property="IsChecked" Value="{Binding IsChecked, Mode=TwoWay}" />
                     </Style>
                 </Lay:LayTreeView.ItemContainerStyle>
                 <Lay:LayTreeView.ItemTemplate>
@@ -24,7 +25,7 @@
                             Command="{Binding RelativeSource={RelativeSource AncestorType=local:TreeView}, Path=DataContext.CheckedCommand}"
                             CommandParameter="{Binding}"
                             Content="{Binding Title}"
-                            IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTreeViewItem}, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </HierarchicalDataTemplate>
                 </Lay:LayTreeView.ItemTemplate>
             </Lay:LayTreeView>

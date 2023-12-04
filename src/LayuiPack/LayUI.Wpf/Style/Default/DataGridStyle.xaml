@@ -611,4 +611,27 @@
         </Setter>
     </Style>
     <Style BasedOn="{StaticResource LayDataGridStyle}" TargetType="Lay:LayDataGrid" />
+    <Style x:Key="DefaultDataGridStyle" TargetType="DataGrid">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="ColumnHeaderHeight" Value="40" />
+        <Setter Property="MinRowHeight" Value="40" />
+        <Setter Property="RowHeaderWidth" Value="0" />
+        <Setter Property="AutoGenerateColumns" Value="false" />
+        <Setter Property="CanUserReorderColumns" Value="false" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource LayColumnHeaderStyle}" />
+        <Setter Property="RowHeaderStyle" Value="{DynamicResource LayRowHeaderStyle}" />
+        <Setter Property="RowStyle" Value="{DynamicResource LayDataGridRowStyle}" />
+        <Setter Property="CellStyle" Value="{DynamicResource LayDataGridCellStyle}" />
+        <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="SelectionMode" Value="Single" />
+    </Style>
 </ResourceDictionary>

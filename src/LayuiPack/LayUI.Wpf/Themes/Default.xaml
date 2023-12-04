@@ -5,6 +5,7 @@
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/TransitionControlStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/FontsStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/ControlBaseStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/ScaleImageStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/ButtonStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/ToggleButtonStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/TextBoxStyle.xaml" />

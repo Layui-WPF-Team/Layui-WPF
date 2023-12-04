@@ -60,6 +60,581 @@ namespace LayuiFundamentalElement.ViewModels
                                             Id="1-1-1-2",
                                             Title="李四",
                                             Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
+                                        },new CheckBoxTreeViewModel(){
+                                            FatherId="1-1-1",
+                                            Id="1-1-1-2",
+                                            Title="李四",
+                                            Child=null
                                         }
                                     }
                                 },new CheckBoxTreeViewModel(){
@@ -97,8 +672,8 @@ namespace LayuiFundamentalElement.ViewModels
 
         void ExecuteCheckedCommand(CheckBoxTreeViewModel parameter)
         {
-            CheckPrent(ListApps, parameter);
-            CheckItems(parameter.Child, parameter);
+            //CheckPrent(ListApps, parameter);
+            //CheckItems(parameter.Child, parameter);
         }
         private DelegateCommand _CheckedItemCommand;
         /// <summary>
@@ -165,7 +740,7 @@ namespace LayuiFundamentalElement.ViewModels
             {
                 if (item.Id == info.FatherId)
                 {
-                    if (info.IsChecked)
+                    if (info.IsChecked==true)
                     {
                         item.IsChecked = true;
                         if (item.FatherId == null) return;
@@ -190,7 +765,7 @@ namespace LayuiFundamentalElement.ViewModels
             {
                 if (item.Id == info.FatherId)
                 {
-                    if (!info.IsChecked)
+                    if (info.IsChecked==false)
                     {
                         /////////////设置抓取复选框///////////
                         var unCheckNum = item.Child.ToList().Where(o => o.IsChecked == false).Count();
@@ -241,7 +816,7 @@ namespace LayuiFundamentalElement.ViewModels
                 if (item.Child != null) GetCheckItems(item.Child, items);
                 else
                 {
-                    if (item.IsChecked) items.Add(item);
+                    if (item.IsChecked==true) items.Add(item);
                 }
 
             }
@@ -271,11 +846,11 @@ namespace LayuiFundamentalElement.ViewModels
             get { return _FatherId; }
             set { SetProperty(ref _FatherId, value); }
         }
-        private bool _IsChecked;
+        private bool? _IsChecked;
         /// <summary>
         /// 复选框状态
         /// </summary>
-        public bool IsChecked
+        public bool? IsChecked
         {
             get { return _IsChecked; }
             set { SetProperty(ref _IsChecked, value); }

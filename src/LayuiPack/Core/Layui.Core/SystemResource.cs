@@ -94,7 +94,7 @@ namespace Layui.Core.Resource
         /// <summary>
         /// Image视图
         /// </summary>
-        public const string Page_ImageView = "GIFView";
+        public const string Page_GIFImageView = "GIFView";
         /// <summary>
         /// 标记视图
         /// </summary>
@@ -135,6 +135,10 @@ namespace Layui.Core.Resource
         /// </summary>
         public const string DialogMessageView = "DialogMessageView";
         public const string LayDialogWindowTooken = "LayDialogWindowTooken";
+        /// <summary>
+        /// 缩放图片
+        /// </summary>
+        public const string Page_ScaleImageView = "ScaleImageView";
 
 
 

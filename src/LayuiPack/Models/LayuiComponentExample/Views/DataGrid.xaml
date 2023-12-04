@@ -33,262 +33,516 @@
                 Foreground="Black"
                 Text="编号展示开关" />
         </Lay:LaySwitch>
-        <Lay:LayDataGrid
-            x:Name="LayDataGrid"
+        <UniformGrid
             Grid.Row="1"
             Margin="5"
-            ColumnHeaderHeight="80"
-            FrozenColumnCount="2"
-            IsActive="{Binding IsActive}"
-            ItemsSource="{Binding ListData}"
-            SelectedIndex="{Binding SelectedIndex}">
-            <Lay:LayDataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <Lay:LayExpander
-                        Padding="10"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Header="详情信息">
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock VerticalAlignment="Center" Text="名称: " />
-                                <TextBlock VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            Rows="1">
+            <Lay:LayDataGrid
+                x:Name="LayDataGrid"
+                Grid.Row="1"
+                Margin="5"
+                ColumnHeaderHeight="80"
+                FrozenColumnCount="2"
+                IsActive="{Binding IsActive}"
+                ItemsSource="{Binding ListData}"
+                SelectedIndex="{Binding SelectedIndex}">
+                <Lay:LayDataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <Lay:LayExpander
+                            Padding="10"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Header="详情信息">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center" Text="名称: " />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center" Text="进度: " />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding ProgressBarValue}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        FontSize="12"
+                                        Text="编号 " />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Index}" />
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock VerticalAlignment="Center" Text="进度: " />
-                                <TextBlock VerticalAlignment="Center" Text="{Binding ProgressBarValue}" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                        </Lay:LayExpander>
+                    </DataTemplate>
+                </Lay:LayDataGrid.RowDetailsTemplate>
+                <Lay:LayDataGrid.Resources>
+                    <!--  用于存储当前数据山下文 提供Columns进行依赖属性绑定 解决绑定失效问题 Start  -->
+                    <LayHelper:LayBindingProperty x:Key="LayBindingProperty" DataContext="{Binding}" />
+                    <!--  用于存储当前数据山下文 End  -->
+                    <ContextMenu x:Key="DataItemsContextMenu">
+                        <MenuItem
+                            Command="{Binding RelativeSource={RelativeSource AncestorType=local:DataGrid}, Path=DataContext.GetItemsCommand}"
+                            CommandParameter="{Binding}"
+                            Header="获取数据" />
+                    </ContextMenu>
+                </Lay:LayDataGrid.Resources>
+                <Lay:LayDataGrid.RowStyle>
+                    <Style BasedOn="{StaticResource LayDataGridRowStyle}" TargetType="DataGridRow">
+                        <Setter Property="ContextMenu" Value="{StaticResource DataItemsContextMenu}" />
+                    </Style>
+                </Lay:LayDataGrid.RowStyle>
+                <Lay:LayDataGrid.Columns>
+                    <DataGridCheckBoxColumn Width="60" Header="默认" />
+                    <DataGridTemplateColumn Width="80" Header="自动索引">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
                                 <TextBlock
+                                    HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    FontSize="12"
-                                    Text="编号 " />
-                                <TextBlock VerticalAlignment="Center" Text="{Binding Index}" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Lay:LayExpander>
-                </DataTemplate>
-            </Lay:LayDataGrid.RowDetailsTemplate>
-            <Lay:LayDataGrid.Resources>
-                <!--  用于存储当前数据山下文 提供Columns进行依赖属性绑定 解决绑定失效问题 Start  -->
-                <LayHelper:LayBindingProperty x:Key="LayBindingProperty" DataContext="{Binding}" />
-                <!--  用于存储当前数据山下文 End  -->
-                <ContextMenu x:Key="DataItemsContextMenu">
-                    <MenuItem
-                        Command="{Binding RelativeSource={RelativeSource AncestorType=local:DataGrid}, Path=DataContext.GetItemsCommand}"
-                        CommandParameter="{Binding}"
-                        Header="获取数据" />
-                </ContextMenu>
-            </Lay:LayDataGrid.Resources>
-            <Lay:LayDataGrid.RowStyle>
-                <Style BasedOn="{StaticResource LayDataGridRowStyle}" TargetType="DataGridRow">
-                    <Setter Property="ContextMenu" Value="{StaticResource DataItemsContextMenu}" />
-                </Style>
-            </Lay:LayDataGrid.RowStyle>
-            <Lay:LayDataGrid.Columns>
-                <DataGridCheckBoxColumn Width="60" Header="默认" />
-                <DataGridTemplateColumn Width="80" Header="自动索引">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=(LayHelper:LayDataGridHelper.LineNumber)}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn MinWidth="50" MaxWidth="100">
-                    <DataGridTemplateColumn.Header>
-                        <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
+                                    Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=(LayHelper:LayDataGridHelper.LineNumber)}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn MinWidth="50" MaxWidth="100">
+                        <DataGridTemplateColumn.Header>
                             <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn
-                    MinWidth="150"
-                    MaxWidth="150"
-                    Binding="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Header="编号"
-                    Visibility="{Binding Source={StaticResource LayBindingProperty}, Path=DataContext.Visibility}" />
-                <DataGridTextColumn
-                    Width="200"
-                    Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Header="名称" />
-                <DataGridTemplateColumn Width="150" Header="下拉框">
-                    <!--  这里是默认的显示框  -->
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock
-                                Padding="13,0"
-                                VerticalAlignment="Center"
-                                Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <!--  这里是可编辑后的下拉框效果  -->
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <Lay:LayComboBox
-                                BorderBrush="{DynamicResource Green}"
-                                CornerRadius="0"
-                                Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
-                                Watermark="请选择">
-                                <Lay:LayComboBoxItem Content="123" />
-                                <Lay:LayComboBoxItem Content="123" />
-                                <Lay:LayComboBoxItem Content="456" />
-                            </Lay:LayComboBox>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Width="300">
-                    <DataGridTemplateColumn.HeaderStyle>
-                        <Style BasedOn="{StaticResource LayColumnHeaderStyle}" TargetType="DataGridColumnHeader">
-                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                            <Setter Property="Padding" Value="0" />
-                        </Style>
-                    </DataGridTemplateColumn.HeaderStyle>
-                    <DataGridTemplateColumn.Header>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition Height="auto" />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Text="合并表头" />
-                            <Grid
-                                Grid.Row="1"
-                                Height="1"
-                                Background="{DynamicResource Gray}" />
-                            <Grid Grid.Row="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn
+                        MinWidth="150"
+                        MaxWidth="150"
+                        Binding="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Header="编号"
+                        Visibility="{Binding Source={StaticResource LayBindingProperty}, Path=DataContext.Visibility}" />
+                    <DataGridTextColumn
+                        Width="200"
+                        Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Header="名称" />
+                    <DataGridTemplateColumn Width="150" Header="下拉框">
+                        <!--  这里是默认的显示框  -->
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
                                 <TextBlock
                                     Padding="13,0"
                                     VerticalAlignment="Center"
-                                    Text="标题" />
-                                <Grid
-                                    Grid.Column="1"
-                                    Width="1"
-                                    Background="{DynamicResource Gray}" />
-                                <TextBlock
-                                    Grid.Column="2"
-                                    Padding="13,0"
-                                    VerticalAlignment="Center"
-                                    Text="标题" />
-                            </Grid>
-
-                        </Grid>
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellStyle>
-                        <Style BasedOn="{StaticResource LayDataGridCellStyle}" TargetType="DataGridCell">
-                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                            <Setter Property="Padding" Value="0" />
-                        </Style>
-                    </DataGridTemplateColumn.CellStyle>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
+                                    Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <!--  这里是可编辑后的下拉框效果  -->
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Lay:LayComboBox
+                                    BorderBrush="{DynamicResource Green}"
+                                    CornerRadius="0"
+                                    Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                                    Watermark="请选择">
+                                    <Lay:LayComboBoxItem Content="123" />
+                                    <Lay:LayComboBoxItem Content="123" />
+                                    <Lay:LayComboBoxItem Content="456" />
+                                </Lay:LayComboBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="300">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style BasedOn="{StaticResource LayColumnHeaderStyle}" TargetType="DataGridColumnHeader">
+                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="Padding" Value="0" />
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.Header>
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <Lay:LayEditText>
-                                    <TextBlock
-                                        Padding="13,0"
-                                        VerticalAlignment="Center"
-                                        Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                    <Lay:LayEditText.EditContent>
-                                        <TextBox
-                                            Padding="13,0"
-                                            VerticalContentAlignment="Center"
-                                            Style="{DynamicResource EditingTextStyle}"
-                                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                    </Lay:LayEditText.EditContent>
-                                </Lay:LayEditText>
-                                <Grid
-                                    Grid.Column="1"
-                                    Width="1"
-                                    Background="{DynamicResource Gray}" />
-                                <Lay:LayEditText Grid.Column="2">
-                                    <TextBlock
-                                        Padding="13,0"
-                                        VerticalAlignment="Center"
-                                        Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                    <Lay:LayEditText.EditContent>
-                                        <TextBox
-                                            Padding="13,0"
-                                            VerticalContentAlignment="Center"
-                                            Style="{DynamicResource EditingTextStyle}"
-                                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                    </Lay:LayEditText.EditContent>
-                                </Lay:LayEditText>
-                            </Grid>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn MinWidth="200" MaxWidth="200">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="进度" />
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Grid Margin="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="auto" />
-                                </Grid.ColumnDefinitions>
-                                <Lay:LayProgressBar
-                                    x:Name="ProgressBar"
-                                    Height="10"
-                                    VerticalAlignment="Center"
-                                    Value="{Binding ProgressBarValue, Mode=OneWay}" />
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
                                 <TextBlock
-                                    Grid.Column="1"
+                                    HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding ElementName=ProgressBar, Path=Value, StringFormat={}{0}%}" />
+                                    Text="合并表头" />
+                                <Grid
+                                    Grid.Row="1"
+                                    Height="1"
+                                    Background="{DynamicResource Gray}" />
+                                <Grid Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Padding="13,0"
+                                        VerticalAlignment="Center"
+                                        Text="标题" />
+                                    <Grid
+                                        Grid.Column="1"
+                                        Width="1"
+                                        Background="{DynamicResource Gray}" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Padding="13,0"
+                                        VerticalAlignment="Center"
+                                        Text="标题" />
+                                </Grid>
+
                             </Grid>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn MinWidth="50" MaxWidth="50">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="操作" />
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button
-                                Width="auto"
-                                Height="auto"
-                                Margin="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}"
-                                VerticalAlignment="Center"
-                                Command="{Binding RelativeSource={RelativeSource AncestorType=local:DataGrid}, Path=DataContext.DeleteCommand}"
-                                CommandParameter="{Binding}"
-                                Cursor="Hand"
-                                Style="{x:Null}">
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellStyle>
+                            <Style BasedOn="{StaticResource LayDataGridCellStyle}" TargetType="DataGridCell">
+                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                <Setter Property="Padding" Value="0" />
+                            </Style>
+                        </DataGridTemplateColumn.CellStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Lay:LayEditText>
                                         <TextBlock
-                                            HorizontalAlignment="Center"
-                                            FontFamily="{StaticResource IconFont}"
-                                            FontSize="20"
-                                            Text="&#xf014;" />
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </Lay:LayDataGrid.Columns>
-        </Lay:LayDataGrid>
+                                            Padding="13,0"
+                                            VerticalAlignment="Center"
+                                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        <Lay:LayEditText.EditContent>
+                                            <TextBox
+                                                Padding="13,0"
+                                                VerticalContentAlignment="Center"
+                                                Style="{DynamicResource EditingTextStyle}"
+                                                Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        </Lay:LayEditText.EditContent>
+                                    </Lay:LayEditText>
+                                    <Grid
+                                        Grid.Column="1"
+                                        Width="1"
+                                        Background="{DynamicResource Gray}" />
+                                    <Lay:LayEditText Grid.Column="2">
+                                        <TextBlock
+                                            Padding="13,0"
+                                            VerticalAlignment="Center"
+                                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        <Lay:LayEditText.EditContent>
+                                            <TextBox
+                                                Padding="13,0"
+                                                VerticalContentAlignment="Center"
+                                                Style="{DynamicResource EditingTextStyle}"
+                                                Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        </Lay:LayEditText.EditContent>
+                                    </Lay:LayEditText>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn MinWidth="200" MaxWidth="200">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="进度" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Margin="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Lay:LayProgressBar
+                                        x:Name="ProgressBar"
+                                        Height="10"
+                                        VerticalAlignment="Center"
+                                        Value="{Binding ProgressBarValue, Mode=OneWay}" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding ElementName=ProgressBar, Path=Value, StringFormat={}{0}%}" />
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn MinWidth="50" MaxWidth="50">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="操作" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button
+                                    Width="auto"
+                                    Height="auto"
+                                    Margin="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}"
+                                    VerticalAlignment="Center"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=local:DataGrid}, Path=DataContext.DeleteCommand}"
+                                    CommandParameter="{Binding}"
+                                    Cursor="Hand"
+                                    Style="{x:Null}">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontFamily="{StaticResource IconFont}"
+                                                FontSize="20"
+                                                Text="&#xf014;" />
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </Lay:LayDataGrid.Columns>
+            </Lay:LayDataGrid>
+            <DataGrid
+                ColumnHeaderHeight="80"
+                FrozenColumnCount="2"
+                ItemsSource="{Binding ListData}"
+                SelectedIndex="{Binding SelectedIndex}"
+                Style="{DynamicResource DefaultDataGridStyle}"
+                Visibility="Collapsed">
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <Lay:LayExpander
+                            Padding="10"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Header="详情信息">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center" Text="名称: " />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center" Text="进度: " />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding ProgressBarValue}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        FontSize="12"
+                                        Text="编号 " />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Index}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Lay:LayExpander>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+                <DataGrid.Resources>
+                    <!--  用于存储当前数据山下文 提供Columns进行依赖属性绑定 解决绑定失效问题 Start  -->
+                    <LayHelper:LayBindingProperty x:Key="LayBindingProperty" DataContext="{Binding}" />
+                    <!--  用于存储当前数据山下文 End  -->
+                    <ContextMenu x:Key="DataItemsContextMenu">
+                        <MenuItem
+                            Command="{Binding RelativeSource={RelativeSource AncestorType=local:DataGrid}, Path=DataContext.GetItemsCommand}"
+                            CommandParameter="{Binding}"
+                            Header="获取数据" />
+                    </ContextMenu>
+                </DataGrid.Resources>
+                <DataGrid.RowStyle>
+                    <Style BasedOn="{StaticResource LayDataGridRowStyle}" TargetType="DataGridRow">
+                        <Setter Property="ContextMenu" Value="{StaticResource DataItemsContextMenu}" />
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn Width="60" Header="默认" />
+                    <DataGridTemplateColumn Width="80" Header="自动索引">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=(LayHelper:LayDataGridHelper.LineNumber)}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn MinWidth="50" MaxWidth="100">
+                        <DataGridTemplateColumn.Header>
+                            <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Lay:LayCheckBox HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn
+                        MinWidth="150"
+                        MaxWidth="150"
+                        Binding="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Header="编号"
+                        Visibility="{Binding Source={StaticResource LayBindingProperty}, Path=DataContext.Visibility}" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Header="名称" />
+                    <DataGridTemplateColumn Width="150" Header="下拉框">
+                        <!--  这里是默认的显示框  -->
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Padding="13,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <!--  这里是可编辑后的下拉框效果  -->
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Lay:LayComboBox
+                                    BorderBrush="{DynamicResource Green}"
+                                    CornerRadius="0"
+                                    Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                                    Watermark="请选择">
+                                    <Lay:LayComboBoxItem Content="123" />
+                                    <Lay:LayComboBoxItem Content="123" />
+                                    <Lay:LayComboBoxItem Content="456" />
+                                </Lay:LayComboBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="300">
+
+                        <DataGridTemplateColumn.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="合并表头" />
+                                <Grid
+                                    Grid.Row="1"
+                                    Height="1"
+                                    Background="{DynamicResource Gray}" />
+                                <Grid Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Padding="13,0"
+                                        VerticalAlignment="Center"
+                                        Text="标题" />
+                                    <Grid
+                                        Grid.Column="1"
+                                        Width="1"
+                                        Background="{DynamicResource Gray}" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Padding="13,0"
+                                        VerticalAlignment="Center"
+                                        Text="标题" />
+                                </Grid>
+
+                            </Grid>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellStyle>
+                            <Style BasedOn="{StaticResource LayDataGridCellStyle}" TargetType="DataGridCell">
+                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                <Setter Property="Padding" Value="0" />
+                            </Style>
+                        </DataGridTemplateColumn.CellStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Lay:LayEditText>
+                                        <TextBlock
+                                            Padding="13,0"
+                                            VerticalAlignment="Center"
+                                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        <Lay:LayEditText.EditContent>
+                                            <TextBox
+                                                Padding="13,0"
+                                                VerticalContentAlignment="Center"
+                                                Style="{DynamicResource EditingTextStyle}"
+                                                Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        </Lay:LayEditText.EditContent>
+                                    </Lay:LayEditText>
+                                    <Grid
+                                        Grid.Column="1"
+                                        Width="1"
+                                        Background="{DynamicResource Gray}" />
+                                    <Lay:LayEditText Grid.Column="2">
+                                        <TextBlock
+                                            Padding="13,0"
+                                            VerticalAlignment="Center"
+                                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        <Lay:LayEditText.EditContent>
+                                            <TextBox
+                                                Padding="13,0"
+                                                VerticalContentAlignment="Center"
+                                                Style="{DynamicResource EditingTextStyle}"
+                                                Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        </Lay:LayEditText.EditContent>
+                                    </Lay:LayEditText>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn MinWidth="200" MaxWidth="200">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="进度" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Margin="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Lay:LayProgressBar
+                                        x:Name="ProgressBar"
+                                        Height="10"
+                                        VerticalAlignment="Center"
+                                        Value="{Binding ProgressBarValue, Mode=OneWay}" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding ElementName=ProgressBar, Path=Value, StringFormat={}{0}%}" />
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn MinWidth="50" MaxWidth="50">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="操作" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button
+                                    Width="auto"
+                                    Height="auto"
+                                    Margin="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Padding}"
+                                    VerticalAlignment="Center"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=local:DataGrid}, Path=DataContext.DeleteCommand}"
+                                    CommandParameter="{Binding}"
+                                    Cursor="Hand"
+                                    Style="{x:Null}">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontFamily="{StaticResource IconFont}"
+                                                FontSize="20"
+                                                Text="&#xf014;" />
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </UniformGrid>
     </Grid>
 </UserControl>

@@ -20,7 +20,7 @@ namespace LayUI.Wpf.Controls
         public bool IsTrimming
         {
             get { return (bool)GetValue(IsTrimmingProperty); }
-            set { SetValue(IsTrimmingProperty, value); }
+            private set { SetValue(IsTrimmingProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for IsTrimming.  This enables animation, styling, binding, etc...

@@ -59,7 +59,7 @@ namespace LayuiComponentExample.ViewModels
             {
                 var random = new Random();
                 ObservableCollection<Data> ListData = new ObservableCollection<Data>();
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < 10000; i++)
                 {
                     int num = random.Next(1, 101);
                     ListData.Add(new Data (){ Index = i, Name = "测试" + i, ProgressBarValue = num });

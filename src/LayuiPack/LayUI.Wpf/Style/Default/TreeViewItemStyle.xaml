@@ -5,10 +5,14 @@
     <Style x:Key="LayTreeViewItemStyle" TargetType="Lay:LayTreeViewItem">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Lay:LayTreeViewItem}">
+                    <ControlTemplate.Resources>
+                        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+                    </ControlTemplate.Resources>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -57,13 +61,23 @@
                             x:Name="Bd"
                             Grid.Column="1"
                             SnapsToDevicePixels="true">
-                            <ContentPresenter
-                                x:Name="PART_Header"
-                                Grid.Column="1"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                ContentSource="Header"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Lay:LayCheckBox
+                                    x:Name="PART_CheckBox"
+                                    IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTreeViewItem}, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTreeView}, Path=IsShowCheckButton, Converter={StaticResource BooleanToVisibility}}" />
+                                <ContentPresenter
+                                    x:Name="PART_Header"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    ContentSource="Header"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Grid>
                         </Border>
                         <Grid
                             x:Name="contentGrid"

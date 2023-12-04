@@ -153,7 +153,10 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="加载动画", PageKey=SystemResource.Page_LoadingView
                             },new MenuItemModel()
                             {
-                                ItemTitle="Gif动画", PageKey=SystemResource.Page_ImageView
+                                ItemTitle="Gif动画", PageKey=SystemResource.Page_GIFImageView
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="可缩放图片", PageKey=SystemResource.Page_ScaleImageView
                             },new MenuItemModel()
                             {
                                 ItemTitle="时间线", PageKey=SystemResource.Page_TimelineView

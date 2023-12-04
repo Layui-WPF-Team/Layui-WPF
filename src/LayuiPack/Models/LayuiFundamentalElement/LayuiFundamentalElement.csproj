@@ -73,6 +73,7 @@
     <Compile Include="ViewModels\LoadingViewModel.cs" />
     <Compile Include="ViewModels\PanelViewModel.cs" />
     <Compile Include="ViewModels\ProgressBarViewModel.cs" />
+    <Compile Include="ViewModels\ScaleImageViewModel.cs" />
     <Compile Include="ViewModels\TabControlViewModel.cs" />
     <Compile Include="ViewModels\TimelineViewModel.cs" />
     <Compile Include="ViewModels\TransitionControlViewModel.cs" />
@@ -89,8 +90,8 @@
     <Compile Include="Views\Form.xaml.cs">
       <DependentUpon>Form.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Image.xaml.cs">
-      <DependentUpon>Image.xaml</DependentUpon>
+    <Compile Include="Views\GIFImage.xaml.cs">
+      <DependentUpon>GIFImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
@@ -106,6 +107,9 @@
     </Compile>
     <Compile Include="Views\ProgressBar.xaml.cs">
       <DependentUpon>ProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScaleImage.xaml.cs">
+      <DependentUpon>ScaleImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TabControl.xaml.cs">
       <DependentUpon>TabControl.xaml</DependentUpon>
@@ -146,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Image.xaml">
+    <Page Include="Views\GIFImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,6 +171,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ScaleImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,9 +5,9 @@ namespace LayuiFundamentalElement.Views
     /// <summary>
     /// Interaction logic for Image
     /// </summary>
-    public partial class Image : UserControl
+    public partial class GIFImage : UserControl
     {
-        public Image()
+        public GIFImage()
         {
             InitializeComponent();
         }
