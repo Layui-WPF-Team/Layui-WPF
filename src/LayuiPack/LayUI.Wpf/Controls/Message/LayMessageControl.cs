@@ -17,8 +17,19 @@ namespace LayUI.Wpf.Controls
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-05-19 下午 8:02:09</para>
     /// </summary>
-    internal class LayMessageControl : ContentControl
+    public class LayMessageControl : ContentControl, ILayControl
     {
+        [Bindable(true)]
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayMessageControl));
+
         internal LayMessageControl()
         {
             Loaded += LayMessageControl_Loaded;

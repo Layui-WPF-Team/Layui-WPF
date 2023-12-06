@@ -10,6 +10,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Height" Value="25" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Style.Triggers>
             <Trigger Property="Type" Value="Primary">
                 <Setter Property="Background" Value="White" />
@@ -38,7 +39,7 @@
                                                 Background="White"
                                                 BorderBrush="{TemplateBinding BorderBrush}"
                                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                                CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                                CornerRadius="{TemplateBinding CornerRadius}">
                                                 <Path
                                                     x:Name="textBlock"
                                                     Data="M332.972089 890.88a56.888889 56.888889 0 0 0 85.333333 0.170667l591.388445-682.666667a56.888889 56.888889 0 0 0-85.162667-75.434667l-591.388444 682.666667 85.333333 0.199111L99.642311 465.208889a56.888889 56.888889 0 1 0-85.504 75.064889l318.862222 350.577778z"

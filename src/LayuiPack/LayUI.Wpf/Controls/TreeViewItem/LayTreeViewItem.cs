@@ -16,7 +16,7 @@ namespace LayUI.Wpf.Controls
         /// <summary>
         /// 复选框按钮
         /// </summary>
-        private ButtonBase checkButton;
+        private ToggleButton checkButton;
         /// <summary>
         /// 父类复选框事件
         /// </summary>
@@ -135,11 +135,11 @@ namespace LayUI.Wpf.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            checkButton = GetTemplateChild("PART_CheckBox") as ButtonBase;
+            checkButton = GetTemplateChild("PART_CheckBox") as ToggleButton;
             if (checkButton != null)
             {
                 checkButton.Click -= CheckButton_Click;
-                checkButton.Click += CheckButton_Click;
+                checkButton.Click += CheckButton_Click; 
             }
         }
         private void CheckButton_Click(object sender, RoutedEventArgs e)

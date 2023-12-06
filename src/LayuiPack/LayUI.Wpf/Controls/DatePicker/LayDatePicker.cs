@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace LayUI.Wpf.Controls
 {
-    public class LayDatePicker: DatePicker
+    public class LayDatePicker: DatePicker, ILayControl
     {
         /// <summary>
         /// 水印文字颜色

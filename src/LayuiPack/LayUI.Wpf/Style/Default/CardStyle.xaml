@@ -9,6 +9,7 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Effect" Value="{DynamicResource LayShadow}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayCard">
@@ -16,7 +17,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                        CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />

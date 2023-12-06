@@ -18,7 +18,7 @@ namespace LayUI.Wpf.Controls
     [TemplatePart(Name = "PART_Popup", Type = typeof(Popup))]
     [TemplatePart(Name = "PART_ToggleButton", Type = typeof(ToggleButton))]
     [TemplatePart(Name = "PART_ContentGrid", Type = typeof(Grid))]
-    public class LayPopupBox : System.Windows.Controls.Control
+    public class LayPopupBox : System.Windows.Controls.Control, ILayControl
     {
         /// <summary>
         /// 容器

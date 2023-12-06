@@ -12,7 +12,7 @@ using System.Windows.Media;
 
 namespace LayUI.Wpf.Controls
 {
-    public class LayCheckBox: CheckBox
+    public class LayCheckBox: CheckBox, ILayControl
     {
         /// <summary>
         /// 复选框样式
@@ -52,6 +52,20 @@ namespace LayUI.Wpf.Controls
         // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CheckedColorProperty =
             DependencyProperty.Register("CheckedColor", typeof(Brush), typeof(LayCheckBox));
+        
+        /// <summary>
+        /// 圆角
+        /// </summary>
+        [Bindable(true)]
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayCheckBox));
 
     }
 }

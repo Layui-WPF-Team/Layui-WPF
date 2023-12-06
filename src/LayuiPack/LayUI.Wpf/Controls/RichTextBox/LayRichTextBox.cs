@@ -19,7 +19,7 @@ namespace LayUI.Wpf.Controls
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-07-26 下午 3:27:04</para>
     /// </summary>
-    public class LayRichTextBox : RichTextBox
+    public class LayRichTextBox : RichTextBox, ILayControl
     {
         private HashSet<Thread> _recursionProtection = new HashSet<Thread>();
         /// <summary>

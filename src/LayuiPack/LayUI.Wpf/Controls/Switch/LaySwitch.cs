@@ -17,7 +17,7 @@ namespace LayUI.Wpf.Controls
     /// <para>创建时间:2022-06-28 下午 5:32:33</para>
     /// </summary>
     [TemplatePart(Name = "PART_Icon")]
-    public class LaySwitch:ToggleButton
+    public class LaySwitch:ToggleButton, ILayControl
     {
         private Viewbox PART_Icon;
         private Border PART_Border;

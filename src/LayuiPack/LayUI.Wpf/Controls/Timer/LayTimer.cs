@@ -22,7 +22,7 @@ namespace LayUI.Wpf.Controls
     [TemplatePart(Name = "PART_ResetTimeBtn", Type = typeof(Button))]
     [TemplatePart(Name = "PART_QueryTimeBtn", Type = typeof(Button))]
     [TemplatePart(Name = "PART_SubmitTimeBtn", Type = typeof(Button))]
-    public class LayTimer : System.Windows.Controls.Control
+    public class LayTimer : Control, ILayControl
     {
         /// <summary>
         /// 确定按钮
@@ -242,12 +242,13 @@ namespace LayUI.Wpf.Controls
         /// </summary>
         private void UpdateDate()
         {
+            var Date = DateTime.Now;
+            var Year = Date.Year;
+            var Month = Date.Month;
+            var Day = Date.Day;
             var Hour = GetTime(PART_Hour.SelectedItem as ListBoxItem);
             var Minute = GetTime(PART_Minute.SelectedItem as ListBoxItem);
             var Second = GetTime(PART_Second.SelectedItem as ListBoxItem);
-            var Year = DateTime.Now.Year;
-            var Month = DateTime.Now.Month;
-            var Day = DateTime.Now.Day;
             var time = $"{Year}/{Month}/{Day} {Hour}:{Minute}:{Second}";
             DefaultTime = DateTime.Parse(time);
         }

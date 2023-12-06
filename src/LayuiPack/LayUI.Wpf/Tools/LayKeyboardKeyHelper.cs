@@ -32,6 +32,15 @@ namespace LayUI.Wpf.Tools
         {
             keybd_event((byte)KeyInterop.VirtualKeyFromKey(key), 0, keyEvent, 0);
         }
+        public static void Keyboard_Event(Key[] keyDowns, Key key)
+        {
+            keybd_event((byte)KeyInterop.VirtualKeyFromKey(key), 0, KeyDown, 0);
+            foreach (var item in keyDowns)
+            {
+                Keyboard_Event(item);
+            }
+            keybd_event((byte)KeyInterop.VirtualKeyFromKey(key), 0, KeyUp, 0);
+        }
         /// <summary>
         /// 模拟键盘事件
         /// </summary>

@@ -23,7 +23,7 @@ namespace LayUI.Wpf.Controls
     [ContentProperty("Items")]
     [TemplatePart(Name = "PART_Popup", Type = typeof(Popup))]
     [TemplatePart(Name = "PART_ItemsHost", Type = typeof(Panel))]
-    public class LayAutoCompleteTextBox : TextBox
+    public class LayAutoCompleteTextBox : TextBox, ILayControl
     {
         public LayAutoCompleteTextBox()
         {

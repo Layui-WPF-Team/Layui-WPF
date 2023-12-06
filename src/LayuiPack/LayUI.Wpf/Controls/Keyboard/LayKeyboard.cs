@@ -18,7 +18,7 @@ namespace LayUI.Wpf.Controls
     /// <para>创建时间:2022-09-23 上午 10:05:38</para>
     /// </summary>
     [TemplatePart(Name = "PART_KeysRoot")]
-    public class LayKeyboard : Control
+    public class LayKeyboard : Control, ILayControl
     {
         /// <summary>
         /// 存储键盘控件按钮主容器
@@ -39,17 +39,62 @@ namespace LayUI.Wpf.Controls
             DependencyProperty.Register("DefaultButtonStyle", typeof(Style), typeof(LayKeyboard));
 
         /// <summary>
-        /// 大小写键盘按钮样式
+        /// 扩展键盘按钮样式
         /// </summary>
-        public Style CapsButtonStyle
+        public Style ExtendButtonStyle
         {
-            get { return (Style)GetValue(CapsButtonStyleProperty); }
-            set { SetValue(CapsButtonStyleProperty, value); }
+            get { return (Style)GetValue(ExtendButtonStyleProperty); }
+            set { SetValue(ExtendButtonStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CapsButtonStyle.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CapsButtonStyleProperty =
-            DependencyProperty.Register("CapsButtonStyle", typeof(Style), typeof(LayKeyboard));
+        // Using a DependencyProperty as the backing store for ExtendButtonStyle.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ExtendButtonStyleProperty =
+            DependencyProperty.Register("ExtendButtonStyle", typeof(Style), typeof(LayKeyboard));
+
+
+        /// <summary>
+        /// 开启Shift扩展
+        /// <para>支持Shift+其他按钮进行组合</para>
+        /// </summary>
+        public bool IsShiftExtend
+        {
+            get { return (bool)GetValue(IsShiftExtendProperty); }
+            set { SetValue(IsShiftExtendProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsShiftExtend.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsShiftExtendProperty =
+            DependencyProperty.Register("IsShiftExtend", typeof(bool), typeof(LayKeyboard), new PropertyMetadata(false));
+
+        /// <summary>
+        /// 开启Alt扩展
+        /// <para>支持Alt+其他按钮进行组合</para>
+        /// </summary>
+        public bool IsAltExtend
+        {
+            get { return (bool)GetValue(IsAltExtendProperty); }
+            set { SetValue(IsAltExtendProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsAltExtend.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsAltExtendProperty =
+            DependencyProperty.Register("IsAltExtend", typeof(bool), typeof(LayKeyboard), new PropertyMetadata(false));
+
+        /// <summary>
+        /// 开启Ctrl扩展
+        /// <para>支持Ctrl+其他按钮进行组合</para>
+        /// </summary>
+        public bool IsCtrlExtend
+        {
+            get { return (bool)GetValue(IsCtrlExtendProperty); }
+            set { SetValue(IsCtrlExtendProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsCtrlExtend.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsCtrlExtendProperty =
+            DependencyProperty.Register("IsCtrlExtend", typeof(bool), typeof(LayKeyboard), new PropertyMetadata(false));
+
+
 
         /// <summary>
         /// 圆角
@@ -160,7 +205,56 @@ namespace LayUI.Wpf.Controls
             {
                 if (button.CommandParameter != null && button.CommandParameter is Key key)
                 {
-                    LayKeyboardKeyHelper.Keyboard_Event(key);
+                    if (key == Key.RightShift)
+                    {
+                        IsShiftExtend = !IsShiftExtend;
+                        IsAltExtend = false;
+                        IsCtrlExtend = false;
+                    }
+                    else if (key == Key.RightAlt)
+                    {
+                        IsShiftExtend = false;
+                        IsAltExtend = !IsAltExtend;
+                        IsCtrlExtend = false;
+                    }
+                    else if (key == Key.RightCtrl)
+                    {
+                        IsShiftExtend = false;
+                        IsAltExtend = false;
+                        IsCtrlExtend = !IsCtrlExtend;
+                    }
+                    else
+                    {
+                        if (IsShiftExtend)
+                        {
+                            LayKeyboardKeyHelper.Keyboard_Event(new Key[] { key }, Key.RightShift);
+                            IsShiftExtend = false;
+                            IsAltExtend = false;
+                            IsAltExtend=false;
+                            return;
+                        }
+                        if (IsAltExtend)
+                        {
+                            LayKeyboardKeyHelper.Keyboard_Event(new Key[] { key }, Key.RightAlt);
+                            IsShiftExtend = false;
+                            IsAltExtend = false;
+                            IsCtrlExtend = false;
+                            return;
+                        }
+                        if (IsCtrlExtend)
+                        {
+                            LayKeyboardKeyHelper.Keyboard_Event(new Key[] { key }, Key.RightCtrl);
+                            IsShiftExtend = false;
+                            IsAltExtend = false;
+                            IsCtrlExtend = false;
+                            return;
+                        }
+                        LayKeyboardKeyHelper.Keyboard_Event(key);
+
+                    }
+                    //LayKeyboardKeyHelper.Keyboard_Event(new Key[] { key }, Key.RightShift);
+                    //LayKeyboardKeyHelper.Keyboard_Event(new Key[] { key }, Key.RightAlt);
+                    //LayKeyboardKeyHelper.Keyboard_Event(key);
                 }
             }
         }

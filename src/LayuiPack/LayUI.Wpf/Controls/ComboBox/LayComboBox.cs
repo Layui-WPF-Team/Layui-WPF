@@ -17,7 +17,7 @@ namespace LayUI.Wpf.Controls
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-06-20 上午 9:19:08</para>
     /// </summary>
-    public class LayComboBox : ComboBox
+    public class LayComboBox : ComboBox, ILayControl
     {
         private TextBox EditableTextBox;
         private Popup DropDownPopup;

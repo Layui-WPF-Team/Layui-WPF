@@ -17,7 +17,7 @@ namespace LayUI.Wpf.Controls
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-06-14 下午 1:13:06</para>
     /// </summary>
-    public class LayNumericUpDown : System.Windows.Controls.ContentControl
+    public class LayNumericUpDown : System.Windows.Controls.ContentControl, ILayControl
     {
         private TextBox PART_ValueHost;
         private Button PART_AddBtn;

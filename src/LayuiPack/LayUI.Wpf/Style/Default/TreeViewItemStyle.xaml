@@ -22,8 +22,13 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
                         </Grid.RowDefinitions>
+                        <Grid
+                            x:Name="PART_Grid"
+                            Grid.Column="1"
+                            Background="#eee" />
                         <ToggleButton
                             x:Name="Expander"
+                            Margin="0,0,3,0"
                             ClickMode="Press"
                             Foreground="{TemplateBinding Foreground}"
                             IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
@@ -41,11 +46,44 @@
                                             Height="12"
                                             Data="M288.791335 65.582671l446.41733 446.417329-446.41733 446.417329z"
                                             Fill="{TemplateBinding Foreground}"
+                                            Opacity="0.5"
                                             RenderTransformOrigin="0.5,0.5"
-                                            Stretch="Fill" />
+                                            Stretch="Fill">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform />
+                                                    <SkewTransform />
+                                                    <RotateTransform x:Name="RotateTransform" Angle="0" />
+                                                    <TranslateTransform />
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
                                     </Border>
                                     <ControlTemplate.Triggers>
-                                        <Trigger Property="IsChecked" Value="True" />
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetName="RotateTransform"
+                                                            Storyboard.TargetProperty="Angle"
+                                                            To="90"
+                                                            Duration="0:0:0.3" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetName="RotateTransform"
+                                                            Storyboard.TargetProperty="Angle"
+                                                            To="0"
+                                                            Duration="0:0:0.3" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
                                         <Trigger Property="IsMouseOver" Value="True" />
                                         <MultiTrigger>
                                             <MultiTrigger.Conditions>
@@ -60,6 +98,7 @@
                         <Border
                             x:Name="Bd"
                             Grid.Column="1"
+                            Background="Transparent"
                             SnapsToDevicePixels="true">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -68,6 +107,8 @@
                                 </Grid.ColumnDefinitions>
                                 <Lay:LayCheckBox
                                     x:Name="PART_CheckBox"
+                                    Margin="0,0,10,0"
+                                    FlowDirection="LeftToRight"
                                     IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTreeViewItem}, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Visibility="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTreeView}, Path=IsShowCheckButton, Converter={StaticResource BooleanToVisibility}}" />
                                 <ContentPresenter
@@ -98,6 +139,12 @@
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger SourceName="Bd" Property="IsMouseOver" Value="true">
+                            <Setter TargetName="PART_Grid" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <Trigger SourceName="Bd" Property="IsMouseOver" Value="false">
+                            <Setter TargetName="PART_Grid" Property="Opacity" Value="0" />
+                        </Trigger>
                         <Trigger Property="IsExpanded" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard>

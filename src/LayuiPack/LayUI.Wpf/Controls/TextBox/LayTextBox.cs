@@ -20,7 +20,7 @@ namespace LayUI.Wpf.Controls
     /// <summary>
     /// 输入框控件
     /// </summary>
-    public class LayTextBox : TextBox
+    public class LayTextBox : TextBox, ILayControl
     {
         protected override void OnTextChanged(TextChangedEventArgs e)
         {

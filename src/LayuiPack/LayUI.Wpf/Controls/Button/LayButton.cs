@@ -21,7 +21,7 @@ namespace LayUI.Wpf.Controls
     /// <summary>
     /// 按钮
     /// </summary>
-    public class LayButton : Button
+    public class LayButton : Button, ILayControl
     {
 
 

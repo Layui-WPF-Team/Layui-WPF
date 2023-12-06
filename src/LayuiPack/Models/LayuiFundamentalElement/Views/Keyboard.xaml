@@ -26,7 +26,7 @@
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                         </Style>
                     </Lay:LayKeyboard.DefaultButtonStyle>
-                    <Lay:LayKeyboard.CapsButtonStyle>
+                    <Lay:LayKeyboard.ExtendButtonStyle>
                         <Style BasedOn="{StaticResource LayKeyboardToggleButtonStyle}" TargetType="Lay:LayToggleButton">
                             <Setter Property="Background" Value="White" />
                             <Setter Property="HoverBackground" Value="#F0F6FA" />
@@ -37,7 +37,7 @@
                             <Setter Property="Height" Value="auto" />
                             <Setter Property="Margin" Value="3" />
                         </Style>
-                    </Lay:LayKeyboard.CapsButtonStyle>
+                    </Lay:LayKeyboard.ExtendButtonStyle>
                 </Lay:LayKeyboard>
             </Lay:LayLegend>
             <Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
@@ -52,7 +52,7 @@
                             <Setter Property="Margin" Value="3" />
                         </Style>
                     </Lay:LayKeyboard.DefaultButtonStyle>
-                    <Lay:LayKeyboard.CapsButtonStyle>
+                    <Lay:LayKeyboard.ExtendButtonStyle>
                         <Style BasedOn="{StaticResource LayKeyboardToggleButtonStyle}" TargetType="Lay:LayToggleButton">
                             <Setter Property="Background" Value="{DynamicResource Red}" />
                             <Setter Property="HoverBackground" Value="{DynamicResource LightRed}" />
@@ -64,7 +64,7 @@
                             <Setter Property="Height" Value="auto" />
                             <Setter Property="Margin" Value="3" />
                         </Style>
-                    </Lay:LayKeyboard.CapsButtonStyle>
+                    </Lay:LayKeyboard.ExtendButtonStyle>
                 </Lay:LayKeyboard>
             </Lay:LayLegend>
             <Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
@@ -79,7 +79,7 @@
                             <Setter Property="Margin" Value="3" />
                         </Style>
                     </Lay:LayKeyboard.DefaultButtonStyle>
-                    <Lay:LayKeyboard.CapsButtonStyle>
+                    <Lay:LayKeyboard.ExtendButtonStyle>
                         <Style BasedOn="{StaticResource LayKeyboardToggleButtonStyle}" TargetType="Lay:LayToggleButton">
                             <Setter Property="Background" Value="{DynamicResource Blue}" />
                             <Setter Property="HoverBackground" Value="{DynamicResource LightBlue}" />
@@ -91,7 +91,7 @@
                             <Setter Property="Height" Value="auto" />
                             <Setter Property="Margin" Value="3" />
                         </Style>
-                    </Lay:LayKeyboard.CapsButtonStyle>
+                    </Lay:LayKeyboard.ExtendButtonStyle>
                 </Lay:LayKeyboard>
             </Lay:LayLegend>
             <Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
@@ -106,7 +106,7 @@
                             <Setter Property="Margin" Value="3" />
                         </Style>
                     </Lay:LayKeyboard.DefaultButtonStyle>
-                    <Lay:LayKeyboard.CapsButtonStyle>
+                    <Lay:LayKeyboard.ExtendButtonStyle>
                         <Style BasedOn="{StaticResource LayKeyboardToggleButtonStyle}" TargetType="Lay:LayToggleButton">
                             <Setter Property="Background" Value="White" />
                             <Setter Property="HoverBackground" Value="White" />
@@ -118,7 +118,7 @@
                             <Setter Property="Height" Value="auto" />
                             <Setter Property="Margin" Value="3" />
                         </Style>
-                    </Lay:LayKeyboard.CapsButtonStyle>
+                    </Lay:LayKeyboard.ExtendButtonStyle>
                 </Lay:LayKeyboard>
             </Lay:LayLegend>
             <Lay:LayLegend Effect="{DynamicResource LayShadow}" Header="自定义按钮样式">
@@ -133,7 +133,7 @@
                             <Setter Property="Margin" Value="3" />
                         </Style>
                     </Lay:LayKeyboard.DefaultButtonStyle>
-                    <Lay:LayKeyboard.CapsButtonStyle>
+                    <Lay:LayKeyboard.ExtendButtonStyle>
                         <Style BasedOn="{StaticResource LayKeyboardToggleButtonStyle}" TargetType="Lay:LayToggleButton">
                             <Setter Property="Background" Value="{DynamicResource Orange}" />
                             <Setter Property="HoverBackground" Value="{DynamicResource LightOrange}" />
@@ -145,7 +145,7 @@
                             <Setter Property="Height" Value="auto" />
                             <Setter Property="Margin" Value="3" />
                         </Style>
-                    </Lay:LayKeyboard.CapsButtonStyle>
+                    </Lay:LayKeyboard.ExtendButtonStyle>
                 </Lay:LayKeyboard>
             </Lay:LayLegend>
         </VirtualizingStackPanel>

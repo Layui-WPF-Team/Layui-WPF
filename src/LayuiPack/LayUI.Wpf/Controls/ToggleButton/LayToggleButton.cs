@@ -15,7 +15,7 @@ namespace LayUI.Wpf.Controls
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-09-28 下午 3:20:49</para>
     /// </summary>
-    public class LayToggleButton: ToggleButton
+    public class LayToggleButton: ToggleButton, ILayControl
     {
         /// <summary>
         /// 按钮圆角
