@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace LayuiHome.ViewModels
 {
@@ -163,6 +164,9 @@ namespace LayuiHome.ViewModels
                             },new MenuItemModel()
                             {
                                 ItemTitle="辅助元素", PageKey=SystemResource.Page_AuxiliaryElementView
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="流加载容器", PageKey=SystemResource.Page_FlowItemsControlView
                             }
                         }
                 },new MenuItemModel()

@@ -1,0 +1,30 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.FlowItemsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Lay:LayLoading
+        Width="350"
+        Margin="10"
+        IsActive="{Binding IsActive}">
+        <Lay:LayFlowItemsControl
+            BorderBrush="#eee"
+            BorderThickness="1"
+            ItemsSource="{Binding Items}"
+            ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Append">
+                    <i:InvokeCommandAction Command="{Binding GetItemsCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Lay:LayFlowItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="http://www.avanpa.com/images/upload/Image/201304/20130428143018834_997906.jpg" />
+                </DataTemplate>
+            </Lay:LayFlowItemsControl.ItemTemplate>
+        </Lay:LayFlowItemsControl>
+    </Lay:LayLoading>
+</UserControl>

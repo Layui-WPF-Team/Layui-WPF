@@ -17,15 +17,25 @@
             <Lay:LayPopupBox.Header>
                 <TextBlock Margin="10,5" Text="弹出框" />
             </Lay:LayPopupBox.Header>
-            <ListBox Width="150">
-                <ListBoxItem Content="123" />
-                <ListBoxItem Content="123" />
-                <ListBoxItem Content="123" />
-                <ListBoxItem Content="123" />
-                <ListBoxItem Content="123" />
-                <ListBoxItem Content="123" />
-                <ListBoxItem Content="123" />
-            </ListBox>
+            <Grid Background="White">
+                <Lay:LayTabControl
+                    Width="350"
+                    Height="250"
+                    Margin="10,5">
+                    <Lay:LayTabItem Header="Tab header 1">
+                        <TextBlock
+                            Margin="0,5"
+                            Text="在 content 属性中传入任意的 html 内容，可替代默认的下拉菜单结构，从而实现更多有趣的弹出内容。  是否发现，dropdown 组件不仅仅只是一个下拉菜单或者右键菜单，它能被赋予许多的想象可能。"
+                            TextWrapping="WrapWithOverflow" />
+                    </Lay:LayTabItem>
+                    <Lay:LayTabItem Header="Tab header 2">
+                        <TextBlock Margin="0,5" Text="Tab body 2" />
+                    </Lay:LayTabItem>
+                    <Lay:LayTabItem Header="Tab header 3">
+                        <TextBlock Margin="0,5" Text="Tab body 3" />
+                    </Lay:LayTabItem>
+                </Lay:LayTabControl>
+            </Grid>
         </Lay:LayPopupBox>
         <Lay:LayPopupBox
             Width="150"

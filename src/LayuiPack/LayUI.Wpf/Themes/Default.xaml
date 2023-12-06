@@ -55,5 +55,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/DrawerItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/EditTextStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/KeyboardStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/ItemsControlStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

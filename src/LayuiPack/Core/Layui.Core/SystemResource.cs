@@ -139,6 +139,10 @@ namespace Layui.Core.Resource
         /// 缩放图片
         /// </summary>
         public const string Page_ScaleImageView = "ScaleImageView";
+        /// <summary>
+        /// 流加载容器
+        /// </summary>
+        public static string Page_FlowItemsControlView = "FlowItemsControlView";
 
 
 
