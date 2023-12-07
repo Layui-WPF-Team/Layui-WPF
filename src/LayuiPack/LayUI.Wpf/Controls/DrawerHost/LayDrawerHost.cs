@@ -21,7 +21,7 @@ namespace LayUI.Wpf.Controls
     [TemplatePart(Name = "PART_DrawerGrid", Type = typeof(Grid))]
     [TemplatePart(Name = "PART_RootGrid", Type = typeof(Grid))]
     [TemplatePart(Name = "PART_DockBorder", Type = typeof(Border))]
-    public class LayDrawerHost : System.Windows.Controls.ContentControl
+    public class LayDrawerHost : System.Windows.Controls.ContentControl,ILayControl
     {
         private Grid PART_RootGrid;
         private Grid PART_DrawerGrid;

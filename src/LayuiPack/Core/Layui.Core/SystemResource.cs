@@ -143,6 +143,10 @@ namespace Layui.Core.Resource
         /// 流加载容器
         /// </summary>
         public static string Page_FlowItemsControlView = "FlowItemsControlView";
+        /// <summary>
+        /// 通知
+        /// </summary>
+        public static string Page_NotificationView = "NotificationView";
 
 
 

@@ -1,0 +1,168 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="LayNotificationControlStyle" TargetType="Lay:LayNotificationControl">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="Padding" Value="10,5" />
+        <Setter Property="Margin" Value="14,5" />
+        <Setter Property="MinHeight" Value="150" />
+        <Setter Property="Width" Value="280" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayNotificationControl">
+                    <Grid>
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Grid" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="280" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseOut" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <Grid x:Name="PART_Grid">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Opacity" Value="0" />
+                                    <Style.Triggers>
+                                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                        To="1"
+                                                        Duration="0:0:0.3" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Effect="{DynamicResource LayShadow}" />
+                            <Border
+                                Background="Transparent"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid Height="40" Margin="{TemplateBinding Padding}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Path
+                                            x:Name="PART_Icon"
+                                            Width="20"
+                                            Height="20"
+                                            Margin="0,0,10,0"
+                                            Stretch="Fill" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Text="{TemplateBinding Title}" />
+                                        <Button
+                                            x:Name="PART_CloseButton"
+                                            Grid.Column="2"
+                                            Width="30"
+                                            Height="30"
+                                            Cursor="Hand"
+                                            Style="{x:Null}">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Grid Background="Transparent">
+                                                        <ContentPresenter />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                            <Path
+                                                Width="20"
+                                                Height="20"
+                                                Data="M100,0 C102.76142,0 105,2.2385788 105,5 L105,94.999999 195,94.999999 C197.76143,95 200,97.238576 200,100 200,102.76142 197.76143,105 195,105 L105,105 105,195 C105,197.76142 102.76142,200 100,200 97.238579,200 95,197.76142 95,195 L95,105 5.000001,105 C2.2385762,105 0,102.76142 0,100 0,97.238576 2.2385762,95 5.000001,94.999999 L95,94.999999 95,5 C95,2.2385788 97.238579,0 100,0 z"
+                                                Fill="#111111"
+                                                RenderTransformOrigin="0.5,0.5"
+                                                Stretch="Fill"
+                                                StrokeThickness="0">
+                                                <Path.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform Angle="45" />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </Path.RenderTransform>
+                                            </Path>
+                                        </Button>
+                                    </Grid>
+                                    <Grid
+                                        Grid.Row="1"
+                                        Height="1"
+                                        Background="{TemplateBinding BorderBrush}" />
+                                    <ContentPresenter Grid.Row="2" Margin="{TemplateBinding Padding}" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Type" Value="Default">
+                            <Setter TargetName="PART_Icon" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Info">
+                            <Setter Property="Background" Value="White" />
+                            <Setter TargetName="PART_Icon" Property="Fill" Value="{DynamicResource Blue}" />
+                            <Setter TargetName="PART_Icon" Property="Data" Value="M955.456 67.392c-3.968-3.584-9.664-4.416-14.464-2.112L71.744 527.168C67.072 529.408 64.064 534.208 64 539.456 63.936 544.704 66.88 549.568 71.488 551.872l246.016 123.2c4.48 2.24 9.856 1.728 13.888-1.344l239.168-232.256-154.624 258.624c-2.112 2.688-3.136 6.4-2.944 10.112l14.592 237.76c0.32 5.248 3.136 9.792 7.168 11.392C435.84 959.808 436.928 960 438.016 960c3.008 0 5.888-1.6 7.872-4.544l105.92-154.56 161.408 78.72c3.52 1.728 7.552 1.792 11.136 0.192 3.584-1.6 6.272-4.672 7.424-8.448L959.36 81.728C960.96 76.608 959.424 70.976 955.456 67.392z" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Error">
+                            <Setter Property="Background" Value="White" />
+                            <Setter TargetName="PART_Icon" Property="Fill" Value="{DynamicResource Red}" />
+                            <Setter TargetName="PART_Icon" Property="Data" Value="M1006.4 876.4 585.6 64.128c-40.464-78.128-106.72-78.128-147.184 0L17.6 876.4c-40.464 78.128-1.6 142.064 86.4 142.064l816 0C1008 1018.464 1046.88 954.528 1006.4 876.4zM460.816 313.168c0-28.256 22.912-51.184 51.184-51.184s51.216 22.944 51.216 51.184l0 345.632c0 28.256-22.944 51.184-51.216 51.184s-51.184-22.944-51.184-51.184L460.816 313.168zM512 905.168c-35.344 0-64-28.624-64-64 0-35.344 28.656-64 64-64s64 28.656 64 64C576 876.544 547.344 905.168 512 905.168z" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Success">
+                            <Setter Property="Background" Value="White" />
+                            <Setter TargetName="PART_Icon" Property="Fill" Value="{DynamicResource CyanBlue}" />
+                            <Setter TargetName="PART_Icon" Property="Data" Value="M510.107082 0C228.488568 0 0.191459 228.297109 0.191459 509.913817 0.191459 791.530527 228.488568 1019.827635 510.107082 1019.827635 791.725594 1019.827635 1020.017285 791.530527 1020.017285 509.913817 1020.017285 228.297109 791.725594 0 510.107082 0L510.107082 0ZM410.902284 770.518774 409.764366 769.377244 408.622835 770.518774 168.529307 530.430664 248.958453 449.997904 409.764366 610.798397 771.252096 249.310666 851.681244 329.739812 410.902284 770.518774 410.902284 770.518774Z" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Warning">
+                            <Setter Property="Background" Value="White" />
+                            <Setter TargetName="PART_Icon" Property="Fill" Value="{DynamicResource Orange}" />
+                            <Setter TargetName="PART_Icon" Property="Data" Value="M512 0C229.254842 0 0.010628 229.244214 0.010628 511.989372c0 282.766414 229.244214 512.010628 511.989372 512.010628 282.766414 0 511.989372-229.244214 511.989372-512.010628C1024.010628 229.244214 794.78767 0 512 0zM580.146217 804.23589l-136.271178 0L443.875039 687.626362l136.271178 0L580.146217 804.23589zM580.146217 591.443695l-136.271178 0L443.875039 219.76411l136.271178 0L580.146217 591.443695z" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayNotificationControlStyle}" TargetType="Lay:LayNotificationControl" />
+    <Style x:Key="LayNotificationHostStyle" TargetType="Lay:LayNotificationHost">
+        <Setter Property="ClipToBounds" Value="false" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+    <Style BasedOn="{StaticResource LayNotificationHostStyle}" TargetType="Lay:LayNotificationHost" />
+</ResourceDictionary>

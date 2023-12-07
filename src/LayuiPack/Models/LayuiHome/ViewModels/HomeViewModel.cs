@@ -227,8 +227,11 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="提示信息", PageKey=SystemResource.Page_MessageView
                             },new MenuItemModel()
                             {
+                                ItemTitle="通知", PageKey=SystemResource.Page_NotificationView
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="键盘", PageKey=SystemResource.Page_KeyboardView
-                            }
+                            },
                         }
                 },new MenuItemModel()
                 {

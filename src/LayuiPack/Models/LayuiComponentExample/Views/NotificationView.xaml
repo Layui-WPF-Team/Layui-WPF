@@ -1,0 +1,18 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.NotificationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Global="clr-namespace:LayUI.Wpf.Global;assembly=LayUI.Wpf"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <ScrollViewer>
+            <Lay:LayNotificationHost Global:LayNotification.Token="RootNotificationToken" />
+        </ScrollViewer>
+        <Lay:LayButton
+            Command="{Binding GoCommand}"
+            Content="点我"
+            Type="Normal" />
+    </Grid>
+</UserControl>
