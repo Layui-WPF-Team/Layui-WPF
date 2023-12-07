@@ -29,6 +29,7 @@
 ![image](https://user-images.githubusercontent.com/37786276/209177898-a28f4524-17f2-4d94-9b8b-cf837de5fa94.png)
 ![image](https://user-images.githubusercontent.com/37786276/210231504-d0f2acf5-60fc-450a-b913-1476818c6a1a.png)
 ![Flow](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/5eb41d4e-affe-472e-b58b-2ca48f4e25ab)
+![通知](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/55275f6a-d025-499e-99de-01f2d5a879e1)
 
 
 ## Usage
