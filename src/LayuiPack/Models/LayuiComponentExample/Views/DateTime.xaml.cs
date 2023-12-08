@@ -10,6 +10,6 @@ namespace LayuiComponentExample.Views
         public DateTime()
         {
             InitializeComponent();
-        }
+        } 
     }
 }

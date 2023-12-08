@@ -9,6 +9,9 @@ using System.Windows.Controls;
 
 namespace LayUI.Wpf.Controls
 {
+    /// <summary>
+    /// 通知组件容器
+    /// </summary>
     public class LayNotificationHost : ItemsControl, ILayControl
     {
         [Bindable(true)]

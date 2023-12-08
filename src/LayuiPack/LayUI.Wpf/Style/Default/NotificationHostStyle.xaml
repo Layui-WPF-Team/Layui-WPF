@@ -4,7 +4,7 @@
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
     <Style x:Key="LayNotificationControlStyle" TargetType="Lay:LayNotificationControl">
         <Setter Property="Background" Value="White" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="BorderBrush" Value="#f0f0f0" />
         <Setter Property="Padding" Value="10,5" />
         <Setter Property="Margin" Value="14,5" />
         <Setter Property="MinHeight" Value="150" />
@@ -12,6 +12,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayNotificationControl">
+                    <ControlTemplate.Resources>
+                        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+                    </ControlTemplate.Resources>
                     <Grid>
                         <Grid.Triggers>
                             <EventTrigger RoutedEvent="FrameworkElement.Loaded">
@@ -69,9 +72,10 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
-                                        <RowDefinition />
+                                        <RowDefinition MinHeight="100" />
+                                        <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
-                                    <Grid Height="40" Margin="{TemplateBinding Padding}">
+                                    <Grid Height="35" Margin="{TemplateBinding Padding}">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="auto" />
                                             <ColumnDefinition />
@@ -94,7 +98,8 @@
                                             Width="30"
                                             Height="30"
                                             Cursor="Hand"
-                                            Style="{x:Null}">
+                                            Style="{x:Null}"
+                                            Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ShowClose, Converter={StaticResource BooleanToVisibility}}">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Grid Background="Transparent">
@@ -103,8 +108,8 @@
                                                 </ControlTemplate>
                                             </Button.Template>
                                             <Path
-                                                Width="20"
-                                                Height="20"
+                                                Width="15"
+                                                Height="15"
                                                 Data="M100,0 C102.76142,0 105,2.2385788 105,5 L105,94.999999 195,94.999999 C197.76143,95 200,97.238576 200,100 200,102.76142 197.76143,105 195,105 L105,105 105,195 C105,197.76142 102.76142,200 100,200 97.238579,200 95,197.76142 95,195 L95,105 5.000001,105 C2.2385762,105 0,102.76142 0,100 0,97.238576 2.2385762,95 5.000001,94.999999 L95,94.999999 95,5 C95,2.2385788 97.238579,0 100,0 z"
                                                 Fill="#111111"
                                                 RenderTransformOrigin="0.5,0.5"
@@ -126,6 +131,13 @@
                                         Height="1"
                                         Background="{TemplateBinding BorderBrush}" />
                                     <ContentPresenter Grid.Row="2" Margin="{TemplateBinding Padding}" />
+                                    <Lay:LayButton
+                                        x:Name="PART_SubmitButton"
+                                        Grid.Row="3"
+                                        Margin="0,10"
+                                        Content="{TemplateBinding SubmitContent}"
+                                        Type="Normal"
+                                        Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ShowSubmit, Converter={StaticResource BooleanToVisibility}}" />
                                 </Grid>
                             </Border>
                         </Grid>

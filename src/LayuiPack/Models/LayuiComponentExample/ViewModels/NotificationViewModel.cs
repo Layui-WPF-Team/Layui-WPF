@@ -29,7 +29,10 @@ namespace LayuiComponentExample.ViewModels
             await Task.Delay(100);
             LayNotification.Warning("这是标题", "这是内容");
             await Task.Delay(100);
-            LayNotification.Error("这是标题", "这是内容");
+            LayNotification.Error("这是标题", "这是内容", "确定", (o) =>
+            {
+                LayMessage.Success($"这是回调状态：{o}");
+            });
         }
     }
 }

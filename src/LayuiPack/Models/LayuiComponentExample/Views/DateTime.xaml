@@ -11,6 +11,10 @@
                 Width="250"
                 Height="35"
                 Margin="5" />
+            <Lay:LayDateRangePicker
+                Width="250"
+                Height="35"
+                Margin="5" />
             <Lay:LayDateTimePicker
                 Width="250"
                 Height="35"
