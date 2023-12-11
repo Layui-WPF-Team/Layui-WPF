@@ -142,15 +142,15 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 流加载容器
         /// </summary>
-        public static string Page_FlowItemsControlView = "FlowItemsControlView";
+        public const string Page_FlowItemsControlView = "FlowItemsControlView";
         /// <summary>
         /// 通知
         /// </summary>
-        public static string Page_NotificationView = "NotificationView";
-
-
-
-
+        public const string Page_NotificationView = "NotificationView";
+        /// <summary>
+        /// 树选择
+        /// </summary>
+        public const string Page_TreeSelectView = "TreeSelectView"; 
 
         #endregion
     }

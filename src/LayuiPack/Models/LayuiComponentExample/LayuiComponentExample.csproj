@@ -61,6 +61,7 @@
     <Compile Include="ViewModels\PaginationViewModel.cs" />
     <Compile Include="ViewModels\PopupBoxViewModel.cs" />
     <Compile Include="ViewModels\ToolTipViewModel.cs" />
+    <Compile Include="ViewModels\TreeSelectViewModel.cs" />
     <Compile Include="ViewModels\UploadViewModel.cs" />
     <Compile Include="Views\AnimationCommand.xaml.cs">
       <DependentUpon>AnimationCommand.xaml</DependentUpon>
@@ -136,6 +137,9 @@
     </Compile>
     <Compile Include="Views\ToolTip.xaml.cs">
       <DependentUpon>ToolTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TreeSelect.xaml.cs">
+      <DependentUpon>TreeSelect.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Upload.xaml.cs">
       <DependentUpon>Upload.xaml</DependentUpon>
@@ -219,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TreeSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

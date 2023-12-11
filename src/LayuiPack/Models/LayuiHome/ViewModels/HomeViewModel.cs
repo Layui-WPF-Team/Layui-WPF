@@ -215,6 +215,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="树形组件", PageKey=SystemResource.Page_TreeView
                             },new MenuItemModel()
                             {
+                                ItemTitle="树选择", PageKey=SystemResource.Page_TreeSelectView
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="滑块", PageKey=SystemResource.Page_Slider
                             },new MenuItemModel()
                             {

@@ -153,6 +153,13 @@ namespace LayUI.Wpf.Controls
             EventManager.RegisterRoutedEvent("SelectedDatesChanged", RoutingStrategy.Bubble, typeof(EventHandler<LaySelectionDatesChangedEventArgs>), typeof(LayDateRangePicker));
         protected virtual void OnSelectedDatesChanged(LaySelectionDatesChangedEventArgs e)
         {
+            if (PART_StartDate != null && PART_EndDate != null)
+            {
+                PART_StartDate.SelectedDate = SelectedDates?.FirstOrDefault();
+                PART_EndDate.SelectedDate = SelectedDates?.LastOrDefault();
+                StartDate = SelectedDates?.FirstOrDefault();
+                EndDate = SelectedDates?.LastOrDefault();
+            }
             RaiseEvent(e);
         }
         public override void OnApplyTemplate()
@@ -174,9 +181,12 @@ namespace LayUI.Wpf.Controls
                 PART_ResetTimeBtn.Click += PART_ResetTimeBtn_Click;
                 PART_SubmitTimeBtn.Click += PART_SubmitTimeBtn_Click;
                 PART_Popup.Closed -= PART_Popup_Closed;
-                PART_Popup.Closed += PART_Popup_Closed;
-            }
-
+                PART_Popup.Closed += PART_Popup_Closed; 
+                PART_StartDate.SelectedDate = SelectedDates?.FirstOrDefault();
+                PART_EndDate.SelectedDate = SelectedDates?.LastOrDefault();
+                StartDate = SelectedDates?.FirstOrDefault();
+                EndDate = SelectedDates?.LastOrDefault();
+            } 
         }
 
         private void PART_Popup_Closed(object sender, EventArgs e)
