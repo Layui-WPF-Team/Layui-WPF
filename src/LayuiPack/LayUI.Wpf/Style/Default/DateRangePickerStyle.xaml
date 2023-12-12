@@ -3,9 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
     <Style x:Key="LayDateRangePickerStyle" TargetType="Lay:LayDateRangePicker">
+        <Setter Property="HoverBorderBrush" Value="{DynamicResource Gray}" />
+        <Setter Property="FocusedBorderBrush" Value="{DynamicResource Gray}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="WatermarkColor" Value="{DynamicResource Gray}" />
+        <Setter Property="Background" Value="White" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="#eee" />
@@ -14,6 +18,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayDateRangePicker">
                     <Border
+                        x:Name="border"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
@@ -31,9 +36,10 @@
                                 </Grid.ColumnDefinitions>
                                 <Grid>
                                     <TextBox
+                                        x:Name="PART_StartDateText"
                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                        Background="{x:Null}"
+                                        Background="Transparent"
                                         BorderThickness="0"
                                         FocusVisualStyle="{x:Null}"
                                         IsReadOnly="True"
@@ -57,9 +63,10 @@
                                     Text="~" />
                                 <Grid Grid.Column="2">
                                     <TextBox
+                                        x:Name="PART_EndDateText"
                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                        Background="{x:Null}"
+                                        Background="Transparent"
                                         BorderThickness="0"
                                         FocusVisualStyle="{x:Null}"
                                         IsReadOnly="True"
@@ -125,7 +132,7 @@
                                 <Grid>
                                     <Border
                                         Margin="0,4"
-                                        Background="White"
+                                        Background="{TemplateBinding Background}"
                                         BorderBrush="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}"
                                         BorderThickness="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderThickness}">
                                         <Grid Width="545">
@@ -214,6 +221,18 @@
                         </Trigger>
                         <Trigger Property="EndDate" Value="{x:Null}">
                             <Setter TargetName="PART_EndWatermark" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBorderBrush}" />
+                        </Trigger>
+                        <Trigger SourceName="PART_StartDateText" Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=FocusedBorderBrush}" />
+                        </Trigger>
+                        <Trigger SourceName="PART_EndDateText" Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=FocusedBorderBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=FocusedBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsOpenSelectedDateAnimation" Value="true">
                             <Setter Property="TextBlock.Foreground" Value="{DynamicResource LightGreen}" />

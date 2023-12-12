@@ -2,6 +2,34 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="LayTreeSelectItemStyle" TargetType="Lay:LayTreeSelectItem">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="#eee" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayTreeSelectItem">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayTreeSelectItemStyle}" TargetType="Lay:LayTreeSelectItem" />
     <Style x:Key="LayTreeSelectStyle" TargetType="Lay:LayTreeSelect">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="White" />
@@ -20,7 +48,7 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Horizontal" />
+                    <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
@@ -63,7 +91,13 @@
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="1"
                                         CornerRadius="{TemplateBinding CornerRadius}">
-                                        <ScrollViewer Height="300">
+                                        <ScrollViewer
+                                            Height="300"
+                                            CanContentScroll="false"
+                                            Focusable="false"
+                                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                                             <ItemsPresenter />
                                         </ScrollViewer>
                                     </Border>

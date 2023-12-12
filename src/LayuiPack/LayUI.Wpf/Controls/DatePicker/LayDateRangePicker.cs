@@ -30,6 +30,36 @@ namespace LayUI.Wpf.Controls
         private Button PART_SubmitTimeBtn;
         private Button PART_ResetTimeBtn;
         private Popup PART_Popup;
+
+        /// <summary>
+        /// 鼠标移入边框色
+        /// </summary>
+        [Bindable(true)]
+        public Brush HoverBorderBrush
+        {
+            get { return (Brush)GetValue(HoverBorderBrushProperty); }
+            set { SetValue(HoverBorderBrushProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HoverBorderBrush.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HoverBorderBrushProperty =
+            DependencyProperty.Register("HoverBorderBrush", typeof(Brush), typeof(LayDateRangePicker), new PropertyMetadata(Brushes.Transparent));
+
+
+        /// <summary>
+        /// 光标聚焦后的边框色
+        /// </summary>
+        [Bindable(true)]
+        public Brush FocusedBorderBrush
+        {
+            get { return (Brush)GetValue(FocusedBorderBrushProperty); }
+            set { SetValue(FocusedBorderBrushProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for FocusedBorderBrush.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FocusedBorderBrushProperty =
+            DependencyProperty.Register("FocusedBorderBrush", typeof(Brush), typeof(LayDateRangePicker), new PropertyMetadata(Brushes.Transparent));
+
         /// <summary>
         /// 起始水印
         /// </summary>

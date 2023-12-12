@@ -5,24 +5,5 @@
     xmlns:lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <lay:LayTreeSelect
-        Width="300"
-        Foreground="Black"
-        ItemsSource="{Binding Items}"
-        SelectedItems="{Binding Items}">
-        <lay:LayTreeSelect.SelectedItemTemplate>
-            <DataTemplate>
-                <Border BorderBrush="Black" BorderThickness="1">
-                    <TextBlock Margin="2" Text="{Binding .}" />
-                </Border>
-            </DataTemplate>
-        </lay:LayTreeSelect.SelectedItemTemplate>
-        <lay:LayTreeSelect.ItemTemplate>
-            <DataTemplate>
-                <Border BorderBrush="Black" BorderThickness="1">
-                    <TextBlock Margin="2" Text="{Binding .}" />
-                </Border>
-            </DataTemplate>
-        </lay:LayTreeSelect.ItemTemplate>
-    </lay:LayTreeSelect>
+    <lay:LayTreeSelect Width="300" Foreground="Black" />
 </UserControl>

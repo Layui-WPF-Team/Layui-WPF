@@ -13,7 +13,7 @@ namespace LayUI.Wpf.Controls
     /// 流加载控件
     /// </summary>
 
-    [TemplatePart(Name = nameof(PART_ScrollViewer), Type = typeof(Button))]
+    [TemplatePart(Name = nameof(PART_ScrollViewer), Type = typeof(ScrollViewer))]
     public class LayFlowItemsControl : ItemsControl
     {
         private ScrollViewer PART_ScrollViewer;

@@ -60,5 +60,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/NotificationHostStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/DateRangePickerStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/TreeSelectStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/DateTimeRangePickerStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

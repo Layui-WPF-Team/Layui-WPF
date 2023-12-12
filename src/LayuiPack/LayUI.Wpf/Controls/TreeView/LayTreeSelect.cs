@@ -79,7 +79,7 @@ namespace LayUI.Wpf.Controls
         /// <returns></returns>
         protected override bool IsItemItsOwnContainerOverride(object item)
         {
-            return item is LayTreeSelectItem;
+            return item is TreeViewItem;
         }
         /// <summary>
         /// 抓取指定项控件并返回定制项控件
@@ -87,7 +87,7 @@ namespace LayUI.Wpf.Controls
         /// <returns></returns>
         protected override DependencyObject GetContainerForItemOverride()
         {
-            return new LayTreeSelectItem();
+            return new TreeViewItem();
         }
         public override void OnApplyTemplate()
         {

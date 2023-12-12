@@ -10,25 +10,37 @@
             <Lay:LayDatePicker
                 Width="250"
                 Height="35"
-                Margin="5" />
+                Margin="5"
+                HorizontalAlignment="Left" />
             <Lay:LayDateRangePicker
                 Width="250"
                 Height="35"
-                Margin="5" />
+                Margin="5"
+                HorizontalAlignment="Left" />
+            <Lay:LayDateTimeRangePicker
+                Height="35"
+                Margin="5"
+                HorizontalAlignment="Left" />
             <Lay:LayDateTimePicker
                 Width="250"
                 Height="35"
-                Margin="5" />
+                Margin="5"
+                HorizontalAlignment="Left" />
             <Lay:LayTimePicker
                 Width="250"
                 Height="35"
-                Margin="5" />
-            <Calendar Margin="5" />
+                Margin="5"
+                HorizontalAlignment="Left" />
+            <Calendar Margin="5" HorizontalAlignment="Left" />
             <Lay:LayTextBox
                 Width="250"
                 Margin="5"
+                HorizontalAlignment="Left"
                 Text="{Binding ElementName=time, Path=Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <Lay:LayTimer x:Name="time" Margin="5" />
+            <Lay:LayTimer
+                x:Name="time"
+                Margin="5"
+                HorizontalAlignment="Left" />
         </StackPanel>
     </ScrollViewer>
 </UserControl>
