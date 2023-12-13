@@ -151,6 +151,10 @@ namespace Layui.Core.Resource
         /// 树选择
         /// </summary>
         public const string Page_TreeSelectView = "TreeSelectView"; 
+        /// <summary>
+        /// 图标
+        /// </summary>
+        public const string Page_IconView = "IconView"; 
 
         #endregion
     }

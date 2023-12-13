@@ -56,7 +56,7 @@
                             FontSize="20"
                             Foreground="White"
                             Opacity="0.7"
-                            Text="点我有好康的" />
+                            Text="LayUI-WPF" />
                     </Border>
                 </ToggleButton>
                 <StackPanel
@@ -101,7 +101,7 @@
                             Width="50"
                             Content="&#xf142;"
                             Cursor="Hand"
-                            FontFamily="{StaticResource IconFont}"
+                            FontFamily="{StaticResource IconFont-FontAwesome}"
                             FontSize="20"
                             Foreground="White"
                             WindowChrome.IsHitTestVisibleInChrome="true">
@@ -185,7 +185,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock
                                                     VerticalAlignment="Center"
-                                                    FontFamily="{DynamicResource IconFont}"
+                                                    FontFamily="{DynamicResource IconFont-FontAwesome}"
                                                     FontSize="18"
                                                     Text="&#xf09b;" />
                                                 <TextBlock
@@ -209,7 +209,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock
                                                     VerticalAlignment="Center"
-                                                    FontFamily="{DynamicResource IconFont}"
+                                                    FontFamily="{DynamicResource IconFont-FontAwesome}"
                                                     FontSize="18"
                                                     Text="&#xf127;" />
                                                 <TextBlock
@@ -233,7 +233,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock
                                                     VerticalAlignment="Center"
-                                                    FontFamily="{DynamicResource IconFont}"
+                                                    FontFamily="{DynamicResource IconFont-FontAwesome}"
                                                     FontSize="18"
                                                     Text="&#xf03d;" />
                                                 <TextBlock
@@ -256,7 +256,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock
                                                     VerticalAlignment="Center"
-                                                    FontFamily="{DynamicResource IconFont}"
+                                                    FontFamily="{DynamicResource IconFont-FontAwesome}"
                                                     FontSize="18"
                                                     Text="&#xf1d6;" />
                                                 <TextBlock
@@ -275,7 +275,7 @@
                     <Button
                         Command="{Binding MinWindowCommand}"
                         Content="&#xf2d1;"
-                        FontFamily="{StaticResource IconFont}"
+                        FontFamily="{StaticResource IconFont-FontAwesome}"
                         FontSize="20"
                         Foreground="White">
                         <Button.ToolTip>
@@ -286,7 +286,7 @@
                         x:Name="WindowStateBtn"
                         Command="{Binding MaxWindowCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"
-                        FontFamily="{StaticResource IconFont}"
+                        FontFamily="{StaticResource IconFont-FontAwesome}"
                         FontSize="20"
                         Foreground="White">
                         <CheckBox.Style>
@@ -317,7 +317,7 @@
                     <Button
                         Command="{Binding CloseWindowCommand}"
                         Content="&#xf00d;"
-                        FontFamily="{StaticResource IconFont}"
+                        FontFamily="{StaticResource IconFont-FontAwesome}"
                         FontSize="20"
                         Foreground="White">
                         <Button.ToolTip>

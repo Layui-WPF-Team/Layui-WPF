@@ -27,7 +27,7 @@
                 <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    FontFamily="{StaticResource IconFont}"
+                    FontFamily="{StaticResource IconFont-FontAwesome}"
                     Text="&#xf2bc;" />
                 <TextBlock Text="图标" />
             </StackPanel>

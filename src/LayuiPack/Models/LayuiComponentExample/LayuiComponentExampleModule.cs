@@ -33,6 +33,7 @@ namespace LayuiComponentExample
             containerRegistry.RegisterForNavigation<Views.FlowItemsControl>(SystemResource.Page_FlowItemsControlView);
             containerRegistry.RegisterForNavigation<Views.NotificationView>(SystemResource.Page_NotificationView);
             containerRegistry.RegisterForNavigation<Views.TreeSelect>(SystemResource.Page_TreeSelectView);
+            containerRegistry.RegisterForNavigation<Views.Icon>(SystemResource.Page_IconView);
             LayDialog.RegisterDialog<DialogMessageView>(SystemResource.DialogMessageView);
             containerRegistry.RegisterDialog<DefaultDialog>(nameof(DefaultDialog));
             LayDialog.RegisterDialog<DialogAlert>("DialogAlert");

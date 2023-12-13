@@ -24,7 +24,7 @@
                             Width="15"
                             Height="15"
                             Margin="0,0,5,0"
-                            Data="{DynamicResource loading}"
+                            Data="{DynamicResource LoadingGeometry}"
                             Fill="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}"
                             RenderTransformOrigin="0.5,0.5"
                             Stretch="Fill"

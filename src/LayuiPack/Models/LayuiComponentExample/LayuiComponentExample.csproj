@@ -57,6 +57,7 @@
     <Compile Include="ViewModels\DefaultDialogViewModel.cs" />
     <Compile Include="ViewModels\DrawerViewModel.cs" />
     <Compile Include="ViewModels\FlowItemsControlViewModel.cs" />
+    <Compile Include="ViewModels\IconViewModel.cs" />
     <Compile Include="ViewModels\NotificationViewModel.cs" />
     <Compile Include="ViewModels\PaginationViewModel.cs" />
     <Compile Include="ViewModels\PopupBoxViewModel.cs" />
@@ -116,6 +117,9 @@
     </Compile>
     <Compile Include="Views\FlowItemsControl.xaml.cs">
       <DependentUpon>FlowItemsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Icon.xaml.cs">
+      <DependentUpon>Icon.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Message.xaml.cs">
       <DependentUpon>Message.xaml</DependentUpon>
@@ -195,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FlowItemsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Icon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

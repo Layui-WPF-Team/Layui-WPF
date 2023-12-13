@@ -11,10 +11,12 @@
 
 	<ItemGroup>
 	  <None Remove="Fonts\fontawesome-webfont.ttf" />
+	  <None Remove="Fonts\iconfont.ttf" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Resource Include="Fonts\fontawesome-webfont.ttf" />
+	  <Resource Include="Fonts\iconfont.ttf" />
 	</ItemGroup>
 
 </Project>

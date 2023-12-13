@@ -283,7 +283,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <TextBlock
                                                 HorizontalAlignment="Center"
-                                                FontFamily="{StaticResource IconFont}"
+                                                FontFamily="{StaticResource IconFont-FontAwesome}"
                                                 FontSize="20"
                                                 Text="&#xf014;" />
                                         </ControlTemplate>
@@ -532,7 +532,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <TextBlock
                                                 HorizontalAlignment="Center"
-                                                FontFamily="{StaticResource IconFont}"
+                                                FontFamily="{StaticResource IconFont-FontAwesome}"
                                                 FontSize="20"
                                                 Text="&#xf014;" />
                                         </ControlTemplate>
