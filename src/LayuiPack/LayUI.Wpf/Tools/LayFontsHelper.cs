@@ -42,13 +42,13 @@ namespace LayUI.Wpf.Tools
                 foreach (var key in keys)
                 {
                     string outStr = "";
-                    var unicode = "&#xe" + key.Key.ToString("x4").Substring(1) + ";";
+                    var unicode = "&#x" + key.Key.ToString("x4") + ";";
                     string[] strlist = unicode.Replace("&#", "").Replace(";", "").Split('x');
                     for (int i = 1; i < strlist.Length; i++)
                     {
                         outStr += (char)int.Parse(strlist[i], System.Globalization.NumberStyles.HexNumber);
                     }
-                    if(!items.ContainsKey(outStr)) items.Add($"{outStr}", $"&#xe{key.Key.ToString("x4").Substring(1)};"); 
+                    if(!items.ContainsKey(outStr)) items.Add($"{outStr}", $"&#x{key.Key.ToString("x4")};"); 
                 }
             }
             return items;
