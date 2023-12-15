@@ -145,6 +145,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="面板", PageKey=SystemResource.Page_PanelView
                             },new MenuItemModel()
                             {
+                                ItemTitle="标签", PageKey=SystemResource.Page_TagView
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="折叠板", PageKey=SystemResource.Page_ExpanderView
                             },new MenuItemModel()
                             {

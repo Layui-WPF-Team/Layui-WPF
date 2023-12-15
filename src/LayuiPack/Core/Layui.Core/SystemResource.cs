@@ -155,6 +155,10 @@ namespace Layui.Core.Resource
         /// 图标
         /// </summary>
         public const string Page_IconView = "IconView"; 
+        /// <summary>
+        /// 标签
+        /// </summary>
+        public const string Page_TagView = "TagView"; 
 
         #endregion
     }

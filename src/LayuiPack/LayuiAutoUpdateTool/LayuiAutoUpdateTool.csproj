@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LayUI.Wpf">
-      <Version>1.0.2.230112-pre</Version>
+      <Version>1.0.2.231214-pre</Version>
     </PackageReference>
     <PackageReference Include="log4net">
       <Version>2.0.15</Version>
