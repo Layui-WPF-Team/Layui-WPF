@@ -98,5 +98,29 @@ namespace LayUI.Wpf.Controls
             DependencyProperty.Register("WatermarkColor", typeof(Brush), typeof(LayTextBox), new PropertyMetadata(Brushes.Transparent));
 
 
+
+        public object InnerLeftContent
+        {
+            get { return (object)GetValue(InnerLeftContentProperty); }
+            set { SetValue(InnerLeftContentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for InnerLeftContent.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InnerLeftContentProperty =
+            DependencyProperty.Register("InnerLeftContent", typeof(object), typeof(LayTextBox));
+
+
+
+        public object InnerRightContent
+        {
+            get { return (object)GetValue(InnerRightContentProperty); }
+            set { SetValue(InnerRightContentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for InnerRightContent.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InnerRightContentProperty =
+            DependencyProperty.Register("InnerRightContent", typeof(object), typeof(LayTextBox));
+
+
     }
 }

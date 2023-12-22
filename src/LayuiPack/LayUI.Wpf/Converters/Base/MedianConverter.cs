@@ -14,7 +14,7 @@ namespace LayUI.Wpf.Converters
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-08-22 上午 10:03:25</para>
     /// </summary>
-    public class MedianConvert : IValueConverter
+    public class MedianConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

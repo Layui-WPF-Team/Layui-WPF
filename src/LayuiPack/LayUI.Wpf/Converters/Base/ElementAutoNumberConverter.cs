@@ -13,7 +13,7 @@ namespace LayUI.Wpf.Converters
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-09-01 下午 3:52:01</para>
     /// </summary>
-    public class ElementAutoNumberConvert : IValueConverter
+    public class ElementAutoNumberConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

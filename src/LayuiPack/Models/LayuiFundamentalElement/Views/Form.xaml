@@ -43,7 +43,29 @@
                 Width="auto"
                 Margin="0,5"
                 LayHelper:LayTextBoxHelper.InputType="Phone"
-                Watermark="只允许输入电话号码" />
+                CornerRadius="1"
+                Watermark="只允许输入电话号码">
+                <Lay:LayTextBox.InnerLeftContent>
+                    <Grid>
+                        <TextBlock
+                            Margin="10,0"
+                            VerticalAlignment="Center"
+                            FontFamily="{DynamicResource IconFont}"
+                            FontSize="18"
+                            Text="&#xe9d4;" />
+                    </Grid>
+                </Lay:LayTextBox.InnerLeftContent>
+                <Lay:LayTextBox.InnerRightContent>
+                    <Grid>
+                        <TextBlock
+                            Margin="10,0"
+                            VerticalAlignment="Center"
+                            FontFamily="{DynamicResource IconFont}"
+                            FontSize="18"
+                            Text="&#xe9d4;" />
+                    </Grid>
+                </Lay:LayTextBox.InnerRightContent>
+            </Lay:LayTextBox>
             <Lay:LayAutoCompleteTextBox
                 Margin="0,5"
                 ItemsSource="{Binding ListDatas}"

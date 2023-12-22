@@ -5,7 +5,7 @@
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
     <Style x:Key="LayBadgeStyle" TargetType="Lay:LayBadge">
         <Style.Resources>
-            <Cv:MedianConvert x:Key="MedianConvert" />
+            <Cv:MedianConverter x:Key="MedianConvert" />
         </Style.Resources>
         <Setter Property="Padding" Value="7,2" />
         <Setter Property="Background" Value="Transparent" />
