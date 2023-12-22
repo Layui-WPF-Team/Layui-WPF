@@ -83,6 +83,7 @@ namespace LayuiHome.ViewModels
         {
             if (item == null) return;
             MenuItemModel = item;
+            item.IsNew = false;
         }
         #endregion
         public async override void ExecuteLoadedCommand()
@@ -145,7 +146,7 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="面板", PageKey=SystemResource.Page_PanelView
                             },new MenuItemModel()
                             {
-                                ItemTitle="标签", PageKey=SystemResource.Page_TagView
+                                ItemTitle="标签", PageKey=SystemResource.Page_TagView,IsNew=true
                             },new MenuItemModel()
                             {
                                 ItemTitle="折叠板", PageKey=SystemResource.Page_ExpanderView
@@ -239,7 +240,7 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="键盘", PageKey=SystemResource.Page_KeyboardView
                             },new MenuItemModel()
                             {
-                                ItemTitle="图标", PageKey=SystemResource.Page_IconView
+                                ItemTitle="图标", PageKey=SystemResource.Page_IconView,IsNew=true
                             },
                         }
                 },new MenuItemModel()

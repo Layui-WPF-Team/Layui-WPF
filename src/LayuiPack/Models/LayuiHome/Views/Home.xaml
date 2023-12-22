@@ -63,8 +63,18 @@
                                 IsChecked="{Binding IsSelected}">
                                 <RadioButton.Template>
                                     <ControlTemplate TargetType="RadioButton">
+                                        <ControlTemplate.Resources>
+                                            <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+                                        </ControlTemplate.Resources>
                                         <Grid>
-                                            <Border x:Name="bg" Background="Transparent" />
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border
+                                                x:Name="bg"
+                                                Grid.ColumnSpan="2"
+                                                Background="Transparent" />
                                             <Grid
                                                 x:Name="line"
                                                 Width="5"
@@ -78,6 +88,18 @@
                                                 VerticalAlignment="Center"
                                                 IsHitTestVisible="True"
                                                 Opacity="0.7" />
+                                            <Grid Grid.Column="1" Visibility="{Binding IsNew, Converter={StaticResource BooleanToVisibility}}">
+                                                <Border
+                                                    Height="20"
+                                                    Margin="5,0"
+                                                    VerticalAlignment="Center"
+                                                    Background="{DynamicResource Gradient}"
+                                                    CornerRadius="10" />
+                                                <TextBlock
+                                                    Margin="15,0"
+                                                    VerticalAlignment="Center"
+                                                    Text="new" />
+                                            </Grid>
                                         </Grid>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="true">

@@ -58,6 +58,11 @@ namespace LayuiHome.Models
             get { return _Data; }
             set { _Data = value; RaisePropertyChanged(); }
         }
-
+        private bool _IsNew;
+        public bool IsNew
+        {
+            get { return _IsNew; }
+            set { SetProperty(ref _IsNew, value); }
+        }
     }
 }
