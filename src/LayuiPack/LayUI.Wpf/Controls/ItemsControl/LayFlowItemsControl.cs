@@ -50,7 +50,7 @@ namespace LayUI.Wpf.Controls
             if (e.ExtentHeight != 0 && (e.VerticalOffset + e.ViewportHeight) != 0)
             {
                 //判断当前滚动条滑动到最后30米
-                if ((e.VerticalOffset + e.ViewportHeight) >= e.ExtentHeight)
+                if ((e.VerticalOffset + e.ViewportHeight) >= e.ExtentHeight-30)
                 {
                     OnAppend(new RoutedEventArgs(AppendEvent, this)); 
                 }

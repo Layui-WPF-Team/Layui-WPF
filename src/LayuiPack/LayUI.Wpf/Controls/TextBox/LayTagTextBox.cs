@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace LayUI.Wpf.Controls
@@ -24,6 +25,7 @@ namespace LayUI.Wpf.Controls
             PART_TextBox = new LayTextBox();
             ItemsSoure = new ObservableCollection<object>();
             Tags = new ObservableCollection<string>();
+            ItemsSoure.Add(PART_TextBox);
         }
         public Style TextBoxStyle
         {
@@ -107,12 +109,13 @@ namespace LayUI.Wpf.Controls
             {
                 list.RemoveAt(list.Count - 1);
             }
-
-            for (int i = 0; i < newTags.Count; i++)
+            if (newTags != null)
             {
-                list.Add(newTags[i]);
+                for (int i = 0; i < newTags.Count; i++)
+                {
+                    list.Insert(list.Count - 1, newTags[i]);
+                }
             }
-
             if (oldTags is INotifyCollectionChanged inccold)
             {
                 inccold.CollectionChanged -= OnCollectionChanged;
@@ -187,15 +190,27 @@ namespace LayUI.Wpf.Controls
         // Using a DependencyProperty as the backing store for TagTemplate.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TagTemplateProperty =
             DependencyProperty.Register("TagTemplate", typeof(DataTemplate), typeof(LayTagTextBox));
-        internal IList ItemsSoure
+        internal IList<object> ItemsSoure
         {
-            get { return (IList)GetValue(ItemsSoureProperty); }
+            get { return (IList<object>)GetValue(ItemsSoureProperty); }
             private set { SetValue(ItemsSoureProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for ItemsSoure.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty ItemsSoureProperty =
-            DependencyProperty.Register("ItemsSoure", typeof(IList), typeof(LayTagTextBox));
+            DependencyProperty.Register("ItemsSoure", typeof(IList<object>), typeof(LayTagTextBox));
+        /// <summary>
+        /// 清空列表
+        /// </summary>
+        public void Clear()
+        {
+            var items = Tags.ToArray();
+            foreach (var item in items)
+            {
+                Tags.Remove(item);
+            }
+            items = null;
+        }
 
         public override void OnApplyTemplate()
         {
@@ -203,14 +218,12 @@ namespace LayUI.Wpf.Controls
             PART_ItemsControl = GetTemplateChild(nameof(PART_ItemsControl)) as ItemsControl;
             if (PART_ItemsControl != null)
             {
-                if (ItemsSoure is IList list) list.Add(PART_TextBox);
                 PART_TextBox.GotFocus -= PART_TextBox_GotFocus;
                 PART_TextBox.GotFocus += PART_TextBox_GotFocus;
                 PART_TextBox.LostFocus -= PART_TextBox_LostFocus;
                 PART_TextBox.LostFocus += PART_TextBox_LostFocus;
             }
-        }
-
+        } 
         private void PART_TextBox_LostFocus(object sender, RoutedEventArgs e) => IsTextBoxFocused = false;
 
         private void PART_TextBox_GotFocus(object sender, RoutedEventArgs e) => IsTextBoxFocused = true;
@@ -227,7 +240,7 @@ namespace LayUI.Wpf.Controls
                         values = PART_TextBox.Text.Split(new string[] { this.Separator }, StringSplitOptions.RemoveEmptyEntries);
                     else
                         values = new[] { PART_TextBox.Text };
-                    if (!AllowDuplicates)
+                    if (!AllowDuplicates&& Tags!=null)
                         values = values.Distinct().Except(Tags).ToArray();
                     for (int i = 0; i < values.Length; i++)
                     {

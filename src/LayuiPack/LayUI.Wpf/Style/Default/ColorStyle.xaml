@@ -32,4 +32,28 @@
     <!--  浅灰色  -->
     <Color x:Key="LightGrayEffect">#FAFAFA</Color>
     <SolidColorBrush x:Key="LighGray" Color="{StaticResource LightGrayEffect}" />
+    <!--  银灰色  -->
+    <Color x:Key="SilverGrayEffect">#eee</Color>
+    <SolidColorBrush x:Key="SilverGray" Color="{StaticResource SilverGrayEffect}" />
+    <!--  青色  -->
+    <Color x:Key="CyanEffect">#2F4056</Color>
+    <SolidColorBrush x:Key="Cyan" Color="{StaticResource CyanEffect}" />
+    <!--  渐变色  -->
+    <LinearGradientBrush x:Key="Gradient" StartPoint="0,0" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#359FD4" />
+            <GradientStop Offset="0.5" Color="#36B5C8" />
+            <GradientStop Offset="1" Color="#25D8AB" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <!--  用于主题色 Start  -->
+    <SolidColorBrush x:Key="Warning" Color="#ffb800" />
+    <SolidColorBrush x:Key="Danger" Color="#ff5722" />
+    <SolidColorBrush x:Key="Success" Color="#16b777" />
+    <SolidColorBrush x:Key="Info" Color="#31bdec" />
+    <!--  用于主题色 End  -->
+    <!--  七色调 Start  -->
+    <SolidColorBrush x:Key="Purple" Color="#a233c6" />
+    <SolidColorBrush x:Key="Deep" Color="#2f363c" />
+    <!--  七色调 End  -->
 </ResourceDictionary>

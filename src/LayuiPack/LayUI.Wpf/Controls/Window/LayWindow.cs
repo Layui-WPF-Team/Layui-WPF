@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Shell;
 
 namespace LayUI.Wpf.Controls
@@ -54,6 +55,17 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty HeaderContentProperty =
             DependencyProperty.Register("HeaderContent", typeof(object), typeof(LayWindow));
 
+
+
+        public Effect HeaderEffect
+        {
+            get { return (Effect)GetValue(HeaderEffectProperty); }
+            set { SetValue(HeaderEffectProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HeaderEffect.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderEffectProperty =
+            DependencyProperty.Register("HeaderEffect", typeof(Effect), typeof(LayWindow)); 
 
         /// <summary>
         /// 头部标题栏文字颜色

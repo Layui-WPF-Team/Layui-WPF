@@ -14,7 +14,7 @@ namespace LayuiComponentExample.ViewModels
         public TagViewModel(IContainerExtension container) : base(container)
         {
         }
-        private ObservableCollection<string> _Tags=new ObservableCollection<string>() { "啊禾斗厉害","LayUI-WPF", "像你学习", "带带我" };
+        private ObservableCollection<string> _Tags=new ObservableCollection<string>();
         public ObservableCollection<string> Tags
         {
             get { return _Tags; }

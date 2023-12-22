@@ -200,6 +200,9 @@
       <Version>2.0.15</Version>
     </PackageReference>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
+    <PackageReference Include="VirtualizingWrapPanel">
+      <Version>1.5.8</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Layui.Core\Layui.Core.csproj">

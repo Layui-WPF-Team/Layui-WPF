@@ -29,7 +29,7 @@ namespace LayuiApp.ViewModels
             get { return _Network; }
             set { SetProperty(ref _Network, value); }
         }
-        private string _title = "Layui-WPF";
+        private string _title = "欢迎来到Layui-WPF";
         /// <summary>
         /// 标题
         /// </summary>
@@ -56,21 +56,7 @@ namespace LayuiApp.ViewModels
         }
 
         #endregion
-        #region 窗体命令
-        /// <summary>
-        /// 窗体最小化命令
-        /// </summary>
-        public DelegateCommand MinWindowCommand => new DelegateCommand(MinWindow);
-
-        /// <summary>
-        ///窗体最大化命令
-        /// </summary>
-        public DelegateCommand<bool?> MaxWindowCommand => new DelegateCommand<bool?>(MaxWindow);
-
-        /// <summary>
-        /// 关闭窗体
-        /// </summary>
-        public DelegateCommand CloseWindowCommand => new DelegateCommand(CloseWindow);
+        #region 窗体命令 
         private DelegateCommand<string> _GoBrowser;
         public DelegateCommand<string> GoBrowser =>
             _GoBrowser ?? (_GoBrowser = new DelegateCommand<string>(ExecuteGoBrowser));
@@ -81,30 +67,6 @@ namespace LayuiApp.ViewModels
         }
         #endregion
         #region 核心方法
-        /// <summary>
-        /// 窗体最小化
-        /// </summary>
-        private void MinWindow()
-        {
-            WindowState = WindowState.Minimized;
-        }
-        /// <summary>
-        /// 窗体最大化
-        /// </summary>
-        /// <param name="obj"></param>
-        private void MaxWindow(bool? obj)
-        {
-            if (obj == true)
-            {
-                GlassFrameThickness = new Thickness(1);
-                WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                GlassFrameThickness = new Thickness(0);
-                WindowState = WindowState.Normal;
-            }
-        }
         public override void ExecuteLoadedCommand()
         {
             base.ExecuteLoadedCommand();
@@ -122,13 +84,7 @@ namespace LayuiApp.ViewModels
         {
             Process.Start(new ProcessStartInfo("https://qm.qq.com/cgi-bin/qm/qr?k=ewLfhryw080flnV8-Zic4JH3N8IP_aGt&jump_from=webapi&authKey=MVumLNpztW43NPgVMwCzLMTm+T2puC4YN3mjg9eDl6/Fet+Elx+8WYQmRAXISrAF"));
         }
-        /// <summary>
-        /// 关闭窗体
-        /// </summary>
-        private void CloseWindow()
-        {
-            Application.Current.Shutdown();
-        }
+         
         #endregion
     }
 }

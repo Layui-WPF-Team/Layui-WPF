@@ -14,6 +14,7 @@
     <StackPanel Margin="10">
         <Lay:LayLegend Header="可输入标签" />
         <Lay:LayTagTextBox
+            x:Name="tags"
             Width="auto"
             Margin="0,5"
             AllowDuplicates="True"
@@ -46,5 +47,6 @@
                 </DataTemplate>
             </Lay:LayTagTextBox.TagTemplate>
         </Lay:LayTagTextBox>
+        <Button Click="Button_Click" Content="删除" />
     </StackPanel>
 </UserControl>

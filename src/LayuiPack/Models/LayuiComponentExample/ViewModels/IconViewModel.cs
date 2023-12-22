@@ -2,6 +2,7 @@
 using LayUI.Wpf.Enum;
 using LayUI.Wpf.Global;
 using LayUI.Wpf.Tools;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -19,14 +20,14 @@ namespace LayuiComponentExample.ViewModels
     {
         public IconViewModel(IContainerExtension container) : base(container)
         {
-             
-        } 
+
+        }
         private Dictionary<string, string> _Items;
         public Dictionary<string, string> Items
         {
             get { return _Items; }
             set { SetProperty(ref _Items, value); }
-        } 
+        }
         private DelegateCommand<string> _CopyCommand;
         public DelegateCommand<string> CopyCommand =>
             _CopyCommand ?? (_CopyCommand = new DelegateCommand<string>(ExecuteCopyCommand));

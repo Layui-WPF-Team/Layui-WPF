@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
     xmlns:prism="http://prismlibrary.com/"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:wpftk="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -18,8 +20,6 @@
             SelectedIndex="0">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
-                    <Setter Property="Height" Value="50" />
-                    <Setter Property="Width" Value="50" />
                     <Setter Property="Margin" Value="1" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="ToolTip">
@@ -68,17 +68,19 @@
             </ListBox.ItemContainerStyle>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel Margin="5" />
+                    <wpftk:VirtualizingWrapPanel Margin="5" SpacingMode="Uniform" />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontFamily="{DynamicResource IconFont}"
-                        FontSize="35"
-                        Text="{Binding Key}" />
+                    <Grid Width="80" Height="80">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="{DynamicResource IconFont}"
+                            FontSize="35"
+                            Text="{Binding Key}" />
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

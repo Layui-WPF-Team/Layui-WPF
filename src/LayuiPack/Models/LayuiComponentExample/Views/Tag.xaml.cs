@@ -24,5 +24,10 @@ namespace LayuiComponentExample.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            tags.Clear();
+        }
     }
 }

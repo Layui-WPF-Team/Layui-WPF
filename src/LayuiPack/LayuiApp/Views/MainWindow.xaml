@@ -8,325 +8,384 @@
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:local="clr-namespace:LayuiApp.Views"
     xmlns:prism="http://prismlibrary.com/"
-    Title="{Binding Title}"
     Width="1080"
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    Icon="/LayuiApp;component/Layui.png"
+    HeaderBackground="#393D49"
+    IsShowHeader="True"
     ShowInTaskbar="True"
     WindowChrome.WindowChrome="{DynamicResource LayWindowChromeStyle}"
     WindowStartupLocation="CenterOwner"
     WindowState="{Binding WindowState}">
+    <Lay:LayWindow.HeaderEffect>
+        <DropShadowEffect
+            BlurRadius="3"
+            Direction="270"
+            ShadowDepth="0" />
+    </Lay:LayWindow.HeaderEffect>
+    <Lay:LayWindow.HeaderContent>
+        <Grid WindowChrome.IsHitTestVisibleInChrome="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Margin="10,0"
+                VerticalAlignment="Center"
+                FontFamily="{DynamicResource IconFont}"
+                FontSize="20"
+                Foreground="White"
+                Text="&#xeeba;" />
+            <TextBlock
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                FontSize="14"
+                Foreground="White"
+                Text="{Binding Title}" />
+            <StackPanel
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal"
+                WindowChrome.IsHitTestVisibleInChrome="true">
+                <Lay:LayBadge
+                    Margin="5,10"
+                    Background="{DynamicResource Red}"
+                    IsDot="True"
+                    Value="1">
+                    <ToggleButton
+                        x:Name="Title"
+                        Content="公告"
+                        Cursor="Hand"
+                        Foreground="White">
+                        <ToggleButton.Template>
+                            <ControlTemplate TargetType="ToggleButton">
+                                <Grid Background="Transparent">
+                                    <ContentPresenter VerticalAlignment="Center" />
+                                </Grid>
+                            </ControlTemplate>
+                        </ToggleButton.Template>
+                    </ToggleButton>
+                </Lay:LayBadge>
+                <Grid VerticalAlignment="Center">
+                    <ToggleButton
+                        x:Name="MoreToggleButton"
+                        Width="50"
+                        Content="&#xed3b;"
+                        Cursor="Hand"
+                        FontFamily="{StaticResource IconFont}"
+                        FontSize="20"
+                        Foreground="White">
+                        <ToggleButton.ToolTip>
+                            <TextBlock FontSize="14" Text="更多" />
+                        </ToggleButton.ToolTip>
+                        <ToggleButton.Template>
+                            <ControlTemplate TargetType="ToggleButton">
+                                <Grid Background="Transparent">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Grid>
+                            </ControlTemplate>
+                        </ToggleButton.Template>
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=MorePopup, Path=IsOpen}" Value="true">
+                                        <Setter Property="IsEnabled" Value="false" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+                    <Popup
+                        x:Name="MorePopup"
+                        AllowsTransparency="True"
+                        IsOpen="{Binding ElementName=MoreToggleButton, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Placement="Bottom"
+                        PlacementTarget="{Binding ElementName=MoreToggleButton}"
+                        PopupAnimation="Slide"
+                        StaysOpen="False"
+                        VerticalOffset="5">
+                        <Popup.Style>
+                            <Style TargetType="Popup">
+                                <Setter Property="IsOpen" Value="false" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=MoreToggleButton, Path=IsChecked}" Value="true">
+                                        <Setter Property="IsOpen" Value="true" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Popup.Style>
+                        <Grid>
+                            <Grid.Effect>
+                                <DropShadowEffect Opacity="0.5" ShadowDepth="0" />
+                            </Grid.Effect>
+                            <Grid
+                                Width="10"
+                                Height="10"
+                                Margin="20,2"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Background="White"
+                                RenderTransformOrigin="0.5,0.5">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="45" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                            </Grid>
+                            <Border
+                                Width="150"
+                                Height="auto"
+                                Margin="5"
+                                Background="White"
+                                CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                <StackPanel>
+                                    <StackPanel.Resources>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Width" Value="50" />
+                                            <Setter Property="Height" Value="50" />
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Cursor" Value="Hand" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border Background="{TemplateBinding Background}">
+                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                        <Style x:Key="WindowCheckBoxStyle" TargetType="CheckBox">
+                                            <Setter Property="Width" Value="50" />
+                                            <Setter Property="Height" Value="50" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="CheckBox">
+                                                        <Border Background="Transparent">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Button
+                                        Width="150"
+                                        Height="40"
+                                        HorizontalContentAlignment="Stretch"
+                                        Command="{Binding GoBrowser}"
+                                        CommandParameter="https://github.com/Layui-WPF-Team/Layui-WPF">
+                                        <Grid Margin="30,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock
+                                                VerticalAlignment="Center"
+                                                FontFamily="{DynamicResource IconFont-FontAwesome}"
+                                                FontSize="18"
+                                                Text="&#xf09b;" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Margin="10,0"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="GitHub" />
+                                        </Grid>
+                                    </Button>
+                                    <Button
+                                        Width="150"
+                                        Height="40"
+                                        HorizontalContentAlignment="Stretch"
+                                        Command="{Binding GoBrowser}"
+                                        CommandParameter="https://www.cnblogs.com/ShyFrog/">
+                                        <Grid Margin="30,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock
+                                                VerticalAlignment="Center"
+                                                FontFamily="{DynamicResource IconFont-FontAwesome}"
+                                                FontSize="18"
+                                                Text="&#xf127;" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Margin="10,0"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="博客" />
+                                        </Grid>
+                                    </Button>
+                                    <Button
+                                        Width="150"
+                                        Height="40"
+                                        HorizontalContentAlignment="Stretch"
+                                        Command="{Binding GoBrowser}"
+                                        CommandParameter="https://b23.tv/F9IA5Vs">
+                                        <Grid Margin="30,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock
+                                                VerticalAlignment="Center"
+                                                FontFamily="{DynamicResource IconFont-FontAwesome}"
+                                                FontSize="18"
+                                                Text="&#xf03d;" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Margin="10,0"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="教学视频" />
+                                        </Grid>
+                                    </Button>
+                                    <Button
+                                        Width="150"
+                                        Height="40"
+                                        HorizontalContentAlignment="Stretch"
+                                        Command="{Binding GoQQ}">
+                                        <Grid Margin="30,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock
+                                                VerticalAlignment="Center"
+                                                FontFamily="{DynamicResource IconFont-FontAwesome}"
+                                                FontSize="18"
+                                                Text="&#xf1d6;" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Margin="10,0"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="QQ群" />
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Popup>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Lay:LayWindow.HeaderContent>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Border
-            Height="60"
-            Panel.ZIndex="1"
-            Background="#23262E">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <ToggleButton x:Name="Title" WindowChrome.IsHitTestVisibleInChrome="true">
-                    <ToggleButton.Template>
-                        <ControlTemplate TargetType="ToggleButton">
-                            <ContentPresenter />
-                        </ControlTemplate>
-                    </ToggleButton.Template>
-                    <Border Width="200" Background="#393D49">
-                        <Border.Effect>
-                            <DropShadowEffect
-                                BlurRadius="3"
-                                Direction="-90"
-                                Opacity="0.6"
-                                ShadowDepth="0" />
-                        </Border.Effect>
+        <Lay:LayDrawerHost DrawerOpen="{Binding ElementName=Title, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Type="Right">
+            <Lay:LayDrawerHost.DrawerContent>
+                <Border Width="300" Background="#F7F9F6">
+                    <StackPanel>
+                        <Image Source="/LayuiApp;component/R-C.jpg" />
                         <TextBlock
+                            Margin="10"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontSize="20"
-                            Foreground="White"
-                            Opacity="0.7"
-                            Text="LayUI-WPF" />
-                    </Border>
-                </ToggleButton>
-                <StackPanel
-                    Grid.Column="1"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal"
-                    WindowChrome.IsHitTestVisibleInChrome="True">
-                    <StackPanel.Resources>
-                        <Style TargetType="Button">
-                            <Setter Property="Width" Value="50" />
-                            <Setter Property="Height" Value="50" />
-                            <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="Cursor" Value="Hand" />
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                        <Style x:Key="WindowCheckBoxStyle" TargetType="CheckBox">
-                            <Setter Property="Width" Value="50" />
-                            <Setter Property="Height" Value="50" />
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="CheckBox">
-                                        <Border Background="Transparent">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </StackPanel.Resources>
+                            FontSize="25"
+                            Text="老老实实打代码"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+            </Lay:LayDrawerHost.DrawerContent>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Border
+                    Height="60"
+                    Panel.ZIndex="1"
+                    Background="#23262E">
                     <Grid>
-                        <ToggleButton
-                            x:Name="MoreToggleButton"
-                            Width="50"
-                            Content="&#xf142;"
-                            Cursor="Hand"
-                            FontFamily="{StaticResource IconFont-FontAwesome}"
-                            FontSize="20"
-                            Foreground="White"
-                            WindowChrome.IsHitTestVisibleInChrome="true">
-                            <ToggleButton.ToolTip>
-                                <TextBlock FontSize="14" Text="更多" />
-                            </ToggleButton.ToolTip>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ToggleButton WindowChrome.IsHitTestVisibleInChrome="true">
                             <ToggleButton.Template>
                                 <ControlTemplate TargetType="ToggleButton">
-                                    <Grid Background="Transparent">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                    </Grid>
+                                    <ContentPresenter />
                                 </ControlTemplate>
                             </ToggleButton.Template>
-                            <ToggleButton.Style>
-                                <Style TargetType="ToggleButton">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=MorePopup, Path=IsOpen}" Value="true">
-                                            <Setter Property="IsEnabled" Value="false" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </ToggleButton.Style>
+                            <Border Width="200" Background="#393D49">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                        BlurRadius="3"
+                                        Direction="-90"
+                                        Opacity="0.6"
+                                        ShadowDepth="0" />
+                                </Border.Effect>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="20"
+                                    Foreground="{DynamicResource Gradient}"
+                                    Text="LayUI-WPF" />
+                            </Border>
                         </ToggleButton>
-                        <Popup
-                            x:Name="MorePopup"
-                            AllowsTransparency="True"
-                            IsOpen="{Binding ElementName=MoreToggleButton, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                            Placement="Bottom"
-                            PlacementTarget="{Binding ElementName=MoreToggleButton}"
-                            PopupAnimation="Slide"
-                            StaysOpen="False"
-                            VerticalOffset="5">
-                            <Popup.Style>
-                                <Style TargetType="Popup">
-                                    <Setter Property="IsOpen" Value="false" />
+                        <Lay:LayButton
+                            Grid.Column="1"
+                            Margin="10,0"
+                            HorizontalAlignment="Left"
+                            Background="{DynamicResource Gradient}"
+                            BorderThickness="0"
+                            Content="关于项目"
+                            Cursor="Hand"
+                            Foreground="White"
+                            HoverBackground="{DynamicResource Gradient}"
+                            Type="Customize"
+                            Uri="https://github.com/Layui-WPF-Team/Layui-WPF"
+                            WindowChrome.IsHitTestVisibleInChrome="True" />
+                    </Grid>
+                </Border>
+                <Border
+                    Grid.Row="1"
+                    Panel.ZIndex="0"
+                    Background="White">
+                    <Grid>
+                        <Grid Background="White">
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Panel.ZIndex" Value="100" />
+                                    <Setter Property="Visibility" Value="Collapsed" />
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=MoreToggleButton, Path=IsChecked}" Value="true">
-                                            <Setter Property="IsOpen" Value="true" />
+                                        <DataTrigger Binding="{Binding Network}" Value="false">
+                                            <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
-                            </Popup.Style>
-                            <Grid>
-                                <Grid.Effect>
-                                    <DropShadowEffect Opacity="0.5" ShadowDepth="0" />
-                                </Grid.Effect>
-                                <Grid
-                                    Width="10"
-                                    Height="10"
-                                    Margin="20,2"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Top"
-                                    Background="White"
-                                    RenderTransformOrigin="0.5,0.5">
-                                    <Grid.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform Angle="45" />
-                                            <TranslateTransform />
-                                        </TransformGroup>
-                                    </Grid.RenderTransform>
-                                </Grid>
-                                <Border
-                                    Width="150"
-                                    Height="auto"
-                                    Margin="5"
-                                    Background="White"
-                                    CornerRadius="{DynamicResource ControlCornerRadiusBase}">
-                                    <StackPanel>
-                                        <Button
-                                            Width="150"
-                                            Height="40"
-                                            HorizontalContentAlignment="Stretch"
-                                            Command="{Binding GoBrowser}"
-                                            CommandParameter="https://github.com/Layui-WPF-Team/Layui-WPF">
-                                            <Grid Margin="30,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock
-                                                    VerticalAlignment="Center"
-                                                    FontFamily="{DynamicResource IconFont-FontAwesome}"
-                                                    FontSize="18"
-                                                    Text="&#xf09b;" />
-                                                <TextBlock
-                                                    Grid.Column="1"
-                                                    Margin="10,0"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="GitHub" />
-                                            </Grid>
-                                        </Button>
-                                        <Button
-                                            Width="150"
-                                            Height="40"
-                                            HorizontalContentAlignment="Stretch"
-                                            Command="{Binding GoBrowser}"
-                                            CommandParameter="https://www.cnblogs.com/ShyFrog/">
-                                            <Grid Margin="30,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock
-                                                    VerticalAlignment="Center"
-                                                    FontFamily="{DynamicResource IconFont-FontAwesome}"
-                                                    FontSize="18"
-                                                    Text="&#xf127;" />
-                                                <TextBlock
-                                                    Grid.Column="1"
-                                                    Margin="10,0"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="博客" />
-                                            </Grid>
-                                        </Button>
-                                        <Button
-                                            Width="150"
-                                            Height="40"
-                                            HorizontalContentAlignment="Stretch"
-                                            Command="{Binding GoBrowser}"
-                                            CommandParameter="https://b23.tv/F9IA5Vs">
-                                            <Grid Margin="30,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock
-                                                    VerticalAlignment="Center"
-                                                    FontFamily="{DynamicResource IconFont-FontAwesome}"
-                                                    FontSize="18"
-                                                    Text="&#xf03d;" />
-                                                <TextBlock
-                                                    Grid.Column="1"
-                                                    Margin="10,0"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="教学视频" />
-                                            </Grid>
-                                        </Button>
-                                        <Button
-                                            Width="150"
-                                            Height="40"
-                                            HorizontalContentAlignment="Stretch"
-                                            Command="{Binding GoQQ}">
-                                            <Grid Margin="30,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock
-                                                    VerticalAlignment="Center"
-                                                    FontFamily="{DynamicResource IconFont-FontAwesome}"
-                                                    FontSize="18"
-                                                    Text="&#xf1d6;" />
-                                                <TextBlock
-                                                    Grid.Column="1"
-                                                    Margin="10,0"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Text="QQ群" />
-                                            </Grid>
-                                        </Button>
-                                    </StackPanel>
-                                </Border>
-                            </Grid>
-                        </Popup>
+                            </Grid.Style>
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Viewbox Width="150" Height="150">
+                                    <Grid Width="1024" Height="1024">
+                                        <Path Data="M892.171556 133.778866 131.931798 133.778866c-30.352285 0-55.038524 24.686239-55.038524 55.038524l0 523.098779c0 30.326702 24.711821 55.038524 55.038524 55.038524l41.351803 0c2.5071 7.730055 7.094582 15.376199 13.980409 22.521946 1.685385 1.741667 3.848655 3.007497 6.197142 3.638877 68.938092 17.854647 86.052888 40.059368 90.113367 51.692313 4.508687 12.894681-2.954285 23.260773-3.427052 23.893176-4.432962 5.724375-3.430122 13.923104 2.215458 18.406209 5.720282 4.562922 13.976316 3.614317 18.540262-2.134617 6.250354-7.91118 14.925944-26.927279 7.80578-48.233538-9.785877-29.170366-45.043892-52.113915-104.780415-68.147076-4.955872-5.907547-6.460132-10.759041-6.460132-14.716166l0-0.079818c0.024559-5.273097 3.351328-10.57587 9.335622-15.164375 0.187265-0.13303 0.396019-0.26299 0.554632-0.397043 1.714038-1.26583 3.638877-2.477424 5.749958-3.584642 0.50142-0.292666 1.00284-0.527003 1.50426-0.76441 2.52859-1.266853 5.431709-2.24411 8.3072-3.27151 4.587482-1.108241 12.869099-2.582825 26.027793-2.582825 23.077601 0 50.003857 4.53427 79.988776 13.370519 5.010107 2.185782 10.020214 4.454452 15.084557 7.144724 1.528819 0.818645 3.058662 1.688455 4.588505 2.582825 6.355755 3.564175 12.710486 7.467065 19.120476 11.871375 0.554632 0.39295 1.082658 0.656963 1.633197 1.052982 100.847849 70.809719 89.587388 106.543571 89.667206 106.543571l0 0c-3.40147 6.435573-0.949628 14.427594 5.485945 17.830087 1.952468 1.027399 4.061502 1.528819 6.147 1.528819 4.746094 0 9.31004-2.557242 11.654434-7.04137 4.140297-7.834432 17.933441-47.338145-65.719794-115.986641l233.343489 0c-83.678818 68.673056-69.914326 108.180861-65.774029 115.986641 2.427282 4.562922 7.199982 7.30436 12.105712 7.30436 1.980097 0 4.010337-0.472767 5.907547-1.474584 6.435573-3.40147 9.071609-11.023054 5.67014-17.458627-0.134053-0.342808-11.971659-36.080753 89.37761-107.232257 7.065929-4.955872 14.081717-9.230222 21.096481-13.132088 1.266853-0.711198 2.558265-1.451048 3.824095-2.13564 5.273097-2.794649 10.471492-5.16872 15.690354-7.437389 29.880541-8.783037 56.756655-13.317307 79.780021-13.317307 13.183254 0 21.439288 1.500167 25.974581 2.557242 2.90312 1.027399 5.882987 2.030239 8.385994 3.322675 0.50142 0.23843 0.951675 0.475837 1.424442 0.685615 2.214435 1.187035 4.298909 2.452865 6.067182 3.824095l0.23843 0.158612c6.03853 4.587482 9.359158 9.915837 9.388834 15.217586 0 0.079818 0.050142 0.12996 0.050142 0.209778-0.050142 3.90596-1.608637 8.732895-6.484691 14.586207-59.761082 16.034185-94.993514 38.977733-104.780415 68.147076-7.144724 21.306258 1.555425 40.322357 7.80578 48.233538 4.53734 5.748934 12.818957 6.671956 18.514679 2.134617 5.724375-4.508687 6.67298-12.790304 2.13564-18.511609-0.079818-0.104377-7.831362-10.44591-3.456728-23.470551 3.90289-11.711739 20.863167-34.050514 90.222861-52.034097 2.373047-0.606821 4.507664-1.87265 6.196119-3.6399 6.91141-7.173376 11.524474-14.874779 14.005992-22.654976 29.773094-0.656963 53.798277-24.974811 53.798277-54.905494L947.106726 188.818413C947.18552 158.465105 922.499281 133.778866 892.171556 133.778866L892.171556 133.778866zM216.906122 386.824069l117.357871 0c4.955872 17.433044 13.421684 61.737086-6.435573 117.671003l-1.424442 3.90596c-9.627265 26.767644-21.598924 60.075237 5.010107 128.906905 16.270569 42.010813 6.250354 65.931618-0.581238 76.110445 0-0.024559-0.025583-0.024559-0.051165-0.024559-1.187035-0.476861-2.348488-0.898463-3.50994-1.345648-15.743566-5.934153-30.933523-9.677407-45.306882-11.632945-1.24127-0.155543-2.478448-0.342808-3.718695-0.497327-6.752798-0.76441-13.291724-1.187035-19.621896-1.215688-1.421372 0-2.795673 0.079818-4.217045 0.13303-5.247514 0.12996-10.341532 0.50142-15.193027 1.108241-1.290389 0.158612-2.611477 0.26299-3.877307 0.447185-1.027399 0.158612-1.977028 0.421602-2.979868 0.581238 4.588505-21.836331 7.701402-54.115502-6.671956-75.714426-15.401782-23.261797-18.987447-94.889137-0.26299-148.98008C233.465263 452.966489 223.763296 410.875858 216.906122 386.824069L216.906122 386.824069zM735.228107 637.308961c26.637684-68.882833 14.611789-102.193497 4.958942-128.986723l-1.370207-3.826142c-19.860327-55.959499-11.365862-100.238982-6.40999-117.671003l117.357871 0c-6.881734 24.051789-16.588817 66.141396-8.515954 89.453335 18.669198 54.145178 15.109116 125.797078-0.264013 148.951427-14.402011 21.627577-11.289114 53.881165-6.700609 75.743078-1.028423-0.209778-1.977028-0.447185-3.03001-0.581238-0.844228-0.12996-1.741667-0.184195-2.64013-0.317225-5.457292-0.735757-11.207249-1.131777-17.165961-1.26583-0.793062-0.024559-1.557472-0.075725-2.348488-0.075725-22.046109-0.10847-46.995337 4.270257-73.261561 14.687514C728.980823 703.291744 718.956515 679.348426 735.228107 637.308961L735.228107 637.308961zM920.81185 711.916169c0 15.427364-12.234649 28.007891-27.504424 28.613688-1.76725-5.064342-4.562922-9.970072-8.465812-14.529925-0.554632-0.60989-1.214664-1.186012-1.76725-1.76725-0.212848-0.237407-0.450255-0.421602-0.63445-0.63445-1.951445-2.001587-4.140297-3.90289-6.53995-5.720282-0.73985-0.581238-1.528819-1.161453-2.319835-1.717108-1.87572-1.316995-3.90596-2.557242-6.0416-3.743254-0.89437-0.527003-1.658779-1.1328-2.611477-1.63422-0.288572-0.158612-0.656963-0.23843-0.948605-0.397043-0.025583-0.024559-0.051165-0.024559-0.079818-0.050142-5.010107-16.881482-12.44852-53.276391-0.923022-70.520123 21.940708-33.097816 23.444968-113.534799 3.217275-172.187641-5.457292-15.798824 3.03308-54.642504 11.102872-80.833003l5.167696 0c7.278777 0 13.18837-5.9055 13.18837-13.184277 0-7.277754-5.90857-13.187347-13.18837-13.187347l-14.791891 0L722.939223 360.423793l-11.390421 0c-7.278777 0-13.18837 5.90857-13.18837 13.187347 0 5.115508 2.979868 9.414417 7.225565 11.604292-5.934153 23.496134-12.289907 69.88465 8.360412 128.062678l1.424442 3.982708c8.595772 23.817452 18.327414 50.818409-4.746094 110.474091-18.724457 48.340985-8.91402 79.855746 1.052982 96.736205-8.779967 4.638647-17.667382 9.965979-26.583448 16.033162l-0.024559 0.025583L381.759727 740.529857c-0.844228-0.581238-1.688455-0.974188-2.557242-1.555425-7.229658-4.851495-14.4542-9.205663-21.603017-13.08297-0.868787-0.471744-1.738597-1.052982-2.636037-1.528819 9.970072-16.902972 19.754926-48.391127 1.056052-96.653317-23.077601-59.551304-13.345959-86.527702-4.800329-110.369713l1.450025-4.03285c20.650319-58.181097 14.294564-104.541985 8.361435-128.041188 4.270257-2.189875 7.253194-6.485715 7.253194-11.604292 0-7.278777-5.907547-13.187347-13.187347-13.187347l-11.364839 0L198.99724 360.473935l-14.795984 0c-7.278777 0-13.183254 5.907547-13.183254 13.187347 0 7.278777 5.904477 13.187347 13.183254 13.187347l5.16872 0c8.043187 26.187429 16.563234 65.034179 11.105942 80.833003-19.913539 57.571207-18.384719 139.616828 3.217275 172.183548 11.417027 17.169031 4.03285 53.643758-0.951675 70.520123-0.314155 0.184195-0.735757 0.292666-1.054005 0.451278-1.056052 0.551562-1.90028 1.211595-2.874467 1.76418-1.976004 1.13587-3.877307 2.26867-5.644557 3.50994-0.86981 0.605797-1.714038 1.236154-2.558265 1.871627-2.293229 1.76725-4.403287 3.614317-6.30152 5.564739-0.26299 0.26299-0.554632 0.527003-0.818645 0.789992-0.554632 0.554632-1.211595 1.107217-1.713015 1.688455-1.608637 1.871627-2.874467 3.848655-4.140297 5.8001-0.025583 0.079818-0.079818 0.134053-0.134053 0.187265-1.738597 2.795673-3.217275 5.67014-4.245697 8.595772l-41.35078 0c-15.824407 0-28.668946-12.844539-28.668946-28.664853L103.237269 188.818413c0-15.797801 12.870122-28.667923 28.668946-28.667923l760.239757 0c15.794731 0 28.639271 12.869099 28.639271 28.667923l0 523.098779L920.81185 711.917192zM920.81185 711.916169" Fill="{DynamicResource Green}" />
+                                        <Path Data="M484.137419 325.401138c0-7.278777-5.907547-13.18837-13.187347-13.18837-44.701085 0-82.59616-27.636431-100.82329-40.928155-4.191462-3.058662-7.487531-5.432733-9.756201-6.777357-6.275937-3.718695-14.344706-1.662873-18.063401 4.617158-3.719718 6.247284-1.662873 14.344706 4.587482 18.064424 1.76725 1.082658 4.379751 2.978844 7.701402 5.432733 20.466124 14.925944 63.057151 45.992497 116.355031 45.992497C478.229872 338.588485 484.137419 332.679915 484.137419 325.401138L484.137419 325.401138zM484.137419 325.401138" Fill="{DynamicResource Green}" />
+                                        <Path Data="M673.097048 264.507256c-2.24411 1.345648-5.565762 3.719718-9.785877 6.777357-18.197454 13.266142-56.092529 40.903595-100.793614 40.903595-7.278777 0-13.187347 5.907547-13.187347 13.187347 0 7.278777 5.907547 13.187347 13.187347 13.187347 53.296857 0 95.888907-31.041994 116.355031-45.966914 3.322675-2.427282 5.934153-4.378727 7.725962-5.432733 6.251378-3.718695 8.3072-11.816117 4.588505-18.067494C687.441754 262.819824 679.345356 260.764002 673.097048 264.507256L673.097048 264.507256zM673.097048 264.507256" Fill="{DynamicResource Green}" />
+                                        <Path Data="M606.187149 622.85476l-88.742137-39.820937c-3.6399-1.633197-7.806803-1.528819-11.365862 0.26299l-78.484515 39.825031c-6.514367 3.294023-9.097192 11.231809-5.8001 17.747199 3.267417 6.488785 11.206226 9.021467 17.720593 5.803169l72.864518-36.975123 82.968643 37.238113c1.741667 0.789992 3.614317 1.158383 5.406127 1.158383 5.010107 0 9.837042-2.870374 12.025894-7.777127C615.814414 633.66906 612.834546 625.863281 606.187149 622.85476L606.187149 622.85476zM606.187149 622.85476" Fill="{DynamicResource Green}" />
+                                    </Grid>
+                                </Viewbox>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    FontSize="25"
+                                    Foreground="{DynamicResource Green}"
+                                    Text="网络已断开" />
+                            </StackPanel>
+                        </Grid>
+                        <ContentControl prism:RegionManager.RegionName="{x:Static Nv:SystemResource.Nav_MainContent}" />
                     </Grid>
-                    <Button
-                        Command="{Binding MinWindowCommand}"
-                        Content="&#xf2d1;"
-                        FontFamily="{StaticResource IconFont-FontAwesome}"
-                        FontSize="20"
-                        Foreground="White">
-                        <Button.ToolTip>
-                            <TextBlock FontSize="14" Text="最小化" />
-                        </Button.ToolTip>
-                    </Button>
-                    <CheckBox
-                        x:Name="WindowStateBtn"
-                        Command="{Binding MaxWindowCommand}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"
-                        FontFamily="{StaticResource IconFont-FontAwesome}"
-                        FontSize="20"
-                        Foreground="White">
-                        <CheckBox.Style>
-                            <Style BasedOn="{StaticResource WindowCheckBoxStyle}" TargetType="CheckBox">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding WindowState}" Value="Maximized">
-                                        <Setter Property="Content" Value="&#xf2d2;" />
-                                        <Setter Property="IsChecked" Value="True" />
-                                        <Setter Property="ToolTip">
-                                            <Setter.Value>
-                                                <TextBlock FontSize="14" Text="还原" />
-                                            </Setter.Value>
-                                        </Setter>
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding WindowState, FallbackValue=Normal}" Value="Normal">
-                                        <Setter Property="IsChecked" Value="false" />
-                                        <Setter Property="Content" Value="&#xf2d0;" />
-                                        <Setter Property="ToolTip">
-                                            <Setter.Value>
-                                                <TextBlock FontSize="14" Text="最大化" />
-                                            </Setter.Value>
-                                        </Setter>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </CheckBox.Style>
-                    </CheckBox>
-                    <Button
-                        Command="{Binding CloseWindowCommand}"
-                        Content="&#xf00d;"
-                        FontFamily="{StaticResource IconFont-FontAwesome}"
-                        FontSize="20"
-                        Foreground="White">
-                        <Button.ToolTip>
-                            <TextBlock FontSize="14" Text="关闭" />
-                        </Button.ToolTip>
-                    </Button>
-                </StackPanel>
+                </Border>
             </Grid>
-        </Border>
+        </Lay:LayDrawerHost>
         <Lay:LayDialogHost
             Grid.Row="1"
             Panel.ZIndex="99"
@@ -335,57 +394,5 @@
             Grid.Row="1"
             Panel.ZIndex="99"
             Global:LayMessage.Token="RootMessageToken" />
-        <Border
-            Grid.Row="1"
-            Panel.ZIndex="0"
-            Background="White">
-            <Grid>
-                <Grid Background="White">
-                    <Grid.Style>
-                        <Style TargetType="Grid">
-                            <Setter Property="Panel.ZIndex" Value="100" />
-                            <Setter Property="Visibility" Value="Collapsed" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Network}" Value="false">
-                                    <Setter Property="Visibility" Value="Visible" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Grid.Style>
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Viewbox Width="150" Height="150">
-                            <Grid Width="1024" Height="1024">
-                                <Path Data="M892.171556 133.778866 131.931798 133.778866c-30.352285 0-55.038524 24.686239-55.038524 55.038524l0 523.098779c0 30.326702 24.711821 55.038524 55.038524 55.038524l41.351803 0c2.5071 7.730055 7.094582 15.376199 13.980409 22.521946 1.685385 1.741667 3.848655 3.007497 6.197142 3.638877 68.938092 17.854647 86.052888 40.059368 90.113367 51.692313 4.508687 12.894681-2.954285 23.260773-3.427052 23.893176-4.432962 5.724375-3.430122 13.923104 2.215458 18.406209 5.720282 4.562922 13.976316 3.614317 18.540262-2.134617 6.250354-7.91118 14.925944-26.927279 7.80578-48.233538-9.785877-29.170366-45.043892-52.113915-104.780415-68.147076-4.955872-5.907547-6.460132-10.759041-6.460132-14.716166l0-0.079818c0.024559-5.273097 3.351328-10.57587 9.335622-15.164375 0.187265-0.13303 0.396019-0.26299 0.554632-0.397043 1.714038-1.26583 3.638877-2.477424 5.749958-3.584642 0.50142-0.292666 1.00284-0.527003 1.50426-0.76441 2.52859-1.266853 5.431709-2.24411 8.3072-3.27151 4.587482-1.108241 12.869099-2.582825 26.027793-2.582825 23.077601 0 50.003857 4.53427 79.988776 13.370519 5.010107 2.185782 10.020214 4.454452 15.084557 7.144724 1.528819 0.818645 3.058662 1.688455 4.588505 2.582825 6.355755 3.564175 12.710486 7.467065 19.120476 11.871375 0.554632 0.39295 1.082658 0.656963 1.633197 1.052982 100.847849 70.809719 89.587388 106.543571 89.667206 106.543571l0 0c-3.40147 6.435573-0.949628 14.427594 5.485945 17.830087 1.952468 1.027399 4.061502 1.528819 6.147 1.528819 4.746094 0 9.31004-2.557242 11.654434-7.04137 4.140297-7.834432 17.933441-47.338145-65.719794-115.986641l233.343489 0c-83.678818 68.673056-69.914326 108.180861-65.774029 115.986641 2.427282 4.562922 7.199982 7.30436 12.105712 7.30436 1.980097 0 4.010337-0.472767 5.907547-1.474584 6.435573-3.40147 9.071609-11.023054 5.67014-17.458627-0.134053-0.342808-11.971659-36.080753 89.37761-107.232257 7.065929-4.955872 14.081717-9.230222 21.096481-13.132088 1.266853-0.711198 2.558265-1.451048 3.824095-2.13564 5.273097-2.794649 10.471492-5.16872 15.690354-7.437389 29.880541-8.783037 56.756655-13.317307 79.780021-13.317307 13.183254 0 21.439288 1.500167 25.974581 2.557242 2.90312 1.027399 5.882987 2.030239 8.385994 3.322675 0.50142 0.23843 0.951675 0.475837 1.424442 0.685615 2.214435 1.187035 4.298909 2.452865 6.067182 3.824095l0.23843 0.158612c6.03853 4.587482 9.359158 9.915837 9.388834 15.217586 0 0.079818 0.050142 0.12996 0.050142 0.209778-0.050142 3.90596-1.608637 8.732895-6.484691 14.586207-59.761082 16.034185-94.993514 38.977733-104.780415 68.147076-7.144724 21.306258 1.555425 40.322357 7.80578 48.233538 4.53734 5.748934 12.818957 6.671956 18.514679 2.134617 5.724375-4.508687 6.67298-12.790304 2.13564-18.511609-0.079818-0.104377-7.831362-10.44591-3.456728-23.470551 3.90289-11.711739 20.863167-34.050514 90.222861-52.034097 2.373047-0.606821 4.507664-1.87265 6.196119-3.6399 6.91141-7.173376 11.524474-14.874779 14.005992-22.654976 29.773094-0.656963 53.798277-24.974811 53.798277-54.905494L947.106726 188.818413C947.18552 158.465105 922.499281 133.778866 892.171556 133.778866L892.171556 133.778866zM216.906122 386.824069l117.357871 0c4.955872 17.433044 13.421684 61.737086-6.435573 117.671003l-1.424442 3.90596c-9.627265 26.767644-21.598924 60.075237 5.010107 128.906905 16.270569 42.010813 6.250354 65.931618-0.581238 76.110445 0-0.024559-0.025583-0.024559-0.051165-0.024559-1.187035-0.476861-2.348488-0.898463-3.50994-1.345648-15.743566-5.934153-30.933523-9.677407-45.306882-11.632945-1.24127-0.155543-2.478448-0.342808-3.718695-0.497327-6.752798-0.76441-13.291724-1.187035-19.621896-1.215688-1.421372 0-2.795673 0.079818-4.217045 0.13303-5.247514 0.12996-10.341532 0.50142-15.193027 1.108241-1.290389 0.158612-2.611477 0.26299-3.877307 0.447185-1.027399 0.158612-1.977028 0.421602-2.979868 0.581238 4.588505-21.836331 7.701402-54.115502-6.671956-75.714426-15.401782-23.261797-18.987447-94.889137-0.26299-148.98008C233.465263 452.966489 223.763296 410.875858 216.906122 386.824069L216.906122 386.824069zM735.228107 637.308961c26.637684-68.882833 14.611789-102.193497 4.958942-128.986723l-1.370207-3.826142c-19.860327-55.959499-11.365862-100.238982-6.40999-117.671003l117.357871 0c-6.881734 24.051789-16.588817 66.141396-8.515954 89.453335 18.669198 54.145178 15.109116 125.797078-0.264013 148.951427-14.402011 21.627577-11.289114 53.881165-6.700609 75.743078-1.028423-0.209778-1.977028-0.447185-3.03001-0.581238-0.844228-0.12996-1.741667-0.184195-2.64013-0.317225-5.457292-0.735757-11.207249-1.131777-17.165961-1.26583-0.793062-0.024559-1.557472-0.075725-2.348488-0.075725-22.046109-0.10847-46.995337 4.270257-73.261561 14.687514C728.980823 703.291744 718.956515 679.348426 735.228107 637.308961L735.228107 637.308961zM920.81185 711.916169c0 15.427364-12.234649 28.007891-27.504424 28.613688-1.76725-5.064342-4.562922-9.970072-8.465812-14.529925-0.554632-0.60989-1.214664-1.186012-1.76725-1.76725-0.212848-0.237407-0.450255-0.421602-0.63445-0.63445-1.951445-2.001587-4.140297-3.90289-6.53995-5.720282-0.73985-0.581238-1.528819-1.161453-2.319835-1.717108-1.87572-1.316995-3.90596-2.557242-6.0416-3.743254-0.89437-0.527003-1.658779-1.1328-2.611477-1.63422-0.288572-0.158612-0.656963-0.23843-0.948605-0.397043-0.025583-0.024559-0.051165-0.024559-0.079818-0.050142-5.010107-16.881482-12.44852-53.276391-0.923022-70.520123 21.940708-33.097816 23.444968-113.534799 3.217275-172.187641-5.457292-15.798824 3.03308-54.642504 11.102872-80.833003l5.167696 0c7.278777 0 13.18837-5.9055 13.18837-13.184277 0-7.277754-5.90857-13.187347-13.18837-13.187347l-14.791891 0L722.939223 360.423793l-11.390421 0c-7.278777 0-13.18837 5.90857-13.18837 13.187347 0 5.115508 2.979868 9.414417 7.225565 11.604292-5.934153 23.496134-12.289907 69.88465 8.360412 128.062678l1.424442 3.982708c8.595772 23.817452 18.327414 50.818409-4.746094 110.474091-18.724457 48.340985-8.91402 79.855746 1.052982 96.736205-8.779967 4.638647-17.667382 9.965979-26.583448 16.033162l-0.024559 0.025583L381.759727 740.529857c-0.844228-0.581238-1.688455-0.974188-2.557242-1.555425-7.229658-4.851495-14.4542-9.205663-21.603017-13.08297-0.868787-0.471744-1.738597-1.052982-2.636037-1.528819 9.970072-16.902972 19.754926-48.391127 1.056052-96.653317-23.077601-59.551304-13.345959-86.527702-4.800329-110.369713l1.450025-4.03285c20.650319-58.181097 14.294564-104.541985 8.361435-128.041188 4.270257-2.189875 7.253194-6.485715 7.253194-11.604292 0-7.278777-5.907547-13.187347-13.187347-13.187347l-11.364839 0L198.99724 360.473935l-14.795984 0c-7.278777 0-13.183254 5.907547-13.183254 13.187347 0 7.278777 5.904477 13.187347 13.183254 13.187347l5.16872 0c8.043187 26.187429 16.563234 65.034179 11.105942 80.833003-19.913539 57.571207-18.384719 139.616828 3.217275 172.183548 11.417027 17.169031 4.03285 53.643758-0.951675 70.520123-0.314155 0.184195-0.735757 0.292666-1.054005 0.451278-1.056052 0.551562-1.90028 1.211595-2.874467 1.76418-1.976004 1.13587-3.877307 2.26867-5.644557 3.50994-0.86981 0.605797-1.714038 1.236154-2.558265 1.871627-2.293229 1.76725-4.403287 3.614317-6.30152 5.564739-0.26299 0.26299-0.554632 0.527003-0.818645 0.789992-0.554632 0.554632-1.211595 1.107217-1.713015 1.688455-1.608637 1.871627-2.874467 3.848655-4.140297 5.8001-0.025583 0.079818-0.079818 0.134053-0.134053 0.187265-1.738597 2.795673-3.217275 5.67014-4.245697 8.595772l-41.35078 0c-15.824407 0-28.668946-12.844539-28.668946-28.664853L103.237269 188.818413c0-15.797801 12.870122-28.667923 28.668946-28.667923l760.239757 0c15.794731 0 28.639271 12.869099 28.639271 28.667923l0 523.098779L920.81185 711.917192zM920.81185 711.916169" Fill="{DynamicResource Green}" />
-                                <Path Data="M484.137419 325.401138c0-7.278777-5.907547-13.18837-13.187347-13.18837-44.701085 0-82.59616-27.636431-100.82329-40.928155-4.191462-3.058662-7.487531-5.432733-9.756201-6.777357-6.275937-3.718695-14.344706-1.662873-18.063401 4.617158-3.719718 6.247284-1.662873 14.344706 4.587482 18.064424 1.76725 1.082658 4.379751 2.978844 7.701402 5.432733 20.466124 14.925944 63.057151 45.992497 116.355031 45.992497C478.229872 338.588485 484.137419 332.679915 484.137419 325.401138L484.137419 325.401138zM484.137419 325.401138" Fill="{DynamicResource Green}" />
-                                <Path Data="M673.097048 264.507256c-2.24411 1.345648-5.565762 3.719718-9.785877 6.777357-18.197454 13.266142-56.092529 40.903595-100.793614 40.903595-7.278777 0-13.187347 5.907547-13.187347 13.187347 0 7.278777 5.907547 13.187347 13.187347 13.187347 53.296857 0 95.888907-31.041994 116.355031-45.966914 3.322675-2.427282 5.934153-4.378727 7.725962-5.432733 6.251378-3.718695 8.3072-11.816117 4.588505-18.067494C687.441754 262.819824 679.345356 260.764002 673.097048 264.507256L673.097048 264.507256zM673.097048 264.507256" Fill="{DynamicResource Green}" />
-                                <Path Data="M606.187149 622.85476l-88.742137-39.820937c-3.6399-1.633197-7.806803-1.528819-11.365862 0.26299l-78.484515 39.825031c-6.514367 3.294023-9.097192 11.231809-5.8001 17.747199 3.267417 6.488785 11.206226 9.021467 17.720593 5.803169l72.864518-36.975123 82.968643 37.238113c1.741667 0.789992 3.614317 1.158383 5.406127 1.158383 5.010107 0 9.837042-2.870374 12.025894-7.777127C615.814414 633.66906 612.834546 625.863281 606.187149 622.85476L606.187149 622.85476zM606.187149 622.85476" Fill="{DynamicResource Green}" />
-                            </Grid>
-                        </Viewbox>
-                        <TextBlock
-                            HorizontalAlignment="Center"
-                            FontSize="25"
-                            Foreground="{DynamicResource Green}"
-                            Text="网络已断开" />
-                    </StackPanel>
-                </Grid>
-                <Lay:LayDrawerHost DrawerOpen="{Binding ElementName=Title, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Type="Right">
-                    <Lay:LayDrawerHost.DrawerContent>
-                        <Border Width="300" Background="#F7F9F6">
-                            <StackPanel>
-                                <Image Source="/LayuiApp;component/R-C.jpg" />
-                                <TextBlock
-                                    Margin="10"
-                                    HorizontalAlignment="Center"
-                                    FontSize="25"
-                                    Text="老老实实打代码"
-                                    TextAlignment="Center"
-                                    TextWrapping="Wrap" />
-                            </StackPanel>
-                        </Border>
-                    </Lay:LayDrawerHost.DrawerContent>
-                    <ContentControl prism:RegionManager.RegionName="{x:Static Nv:SystemResource.Nav_MainContent}" />
-                </Lay:LayDrawerHost>
-            </Grid>
-        </Border>
     </Grid>
 </Lay:LayWindow>

@@ -39,6 +39,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="VirtualizingWrapPanel, Version=1.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\VirtualizingWrapPanel.1.5.8\lib\net452\VirtualizingWrapPanel.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -47,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mvvm\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

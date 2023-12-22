@@ -3,6 +3,7 @@ using LayUI.Wpf.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -101,5 +102,29 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty HoverBorderBrushProperty =
             DependencyProperty.Register("HoverBorderBrush", typeof(Brush), typeof(LayButton), new PropertyMetadata(Brushes.Transparent));
 
+
+
+        public Uri Uri
+        {
+            get { return (Uri)GetValue(UriProperty); }
+            set { SetValue(UriProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Uri.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UriProperty =
+            DependencyProperty.Register("Uri", typeof(Uri), typeof(LayButton));
+
+        protected override void OnClick()
+        {
+            base.OnClick();
+            if (Uri != null)
+            {
+                if (Uri.Scheme == Uri.UriSchemeHttp || Uri.Scheme == Uri.UriSchemeHttps)
+                {
+                    var proc = new Process { StartInfo = { UseShellExecute = true, FileName = Uri.ToString() } };
+                    proc.Start();
+                }
+            }
+        }
     }
 }

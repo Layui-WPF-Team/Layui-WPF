@@ -48,8 +48,14 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <Grid
+                                    Grid.ColumnSpan="2"
+                                    Panel.ZIndex="1"
+                                    Background="{TemplateBinding HeaderBackground}"
+                                    Effect="{TemplateBinding HeaderEffect}" />
+                                <Grid
                                     x:Name="PART_Header"
                                     Height="40"
+                                    Panel.ZIndex="1"
                                     Background="{TemplateBinding HeaderBackground}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto" />
