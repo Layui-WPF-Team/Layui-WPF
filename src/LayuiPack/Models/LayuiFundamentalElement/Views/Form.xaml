@@ -48,7 +48,7 @@
                 <Lay:LayTextBox.InnerLeftContent>
                     <Grid>
                         <TextBlock
-                            Margin="10,0"
+                            Margin="10,0,0,0"
                             VerticalAlignment="Center"
                             FontFamily="{DynamicResource IconFont}"
                             FontSize="18"
@@ -58,7 +58,7 @@
                 <Lay:LayTextBox.InnerRightContent>
                     <Grid>
                         <TextBlock
-                            Margin="10,0"
+                            Margin="0,0,10,0"
                             VerticalAlignment="Center"
                             FontFamily="{DynamicResource IconFont}"
                             FontSize="18"
@@ -80,7 +80,18 @@
                 x:Name="Test"
                 Margin="0,5"
                 IsShowPasswrod="True"
-                Text="{Binding Password}" />
+                Text="{Binding Password}">
+                <Lay:LayPasswordBox.InnerLeftContent>
+                    <Grid>
+                        <TextBlock
+                            Margin="10,0,0,0"
+                            VerticalAlignment="Center"
+                            FontFamily="{DynamicResource IconFont}"
+                            FontSize="18"
+                            Text="&#xec7c;" />
+                    </Grid>
+                </Lay:LayPasswordBox.InnerLeftContent>
+            </Lay:LayPasswordBox>
             <StackPanel Margin="0,5" Orientation="Horizontal">
                 <Lay:LayNumericUpDown
                     Width="150"
