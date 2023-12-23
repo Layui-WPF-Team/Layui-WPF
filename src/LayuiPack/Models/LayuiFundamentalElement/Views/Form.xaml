@@ -66,16 +66,6 @@
                     </Grid>
                 </Lay:LayTextBox.InnerRightContent>
             </Lay:LayTextBox>
-            <Lay:LayAutoCompleteTextBox
-                Margin="0,5"
-                ItemsSource="{Binding ListDatas}"
-                Style="{DynamicResource LayAutoCompleteTextBoxStyle}">
-                <Lay:LayAutoCompleteTextBox.ItemTemplate>
-                    <DataTemplate>
-                        <Button Content="{Binding .}" />
-                    </DataTemplate>
-                </Lay:LayAutoCompleteTextBox.ItemTemplate>
-            </Lay:LayAutoCompleteTextBox>
             <Lay:LayPasswordBox
                 x:Name="Test"
                 Margin="0,5"

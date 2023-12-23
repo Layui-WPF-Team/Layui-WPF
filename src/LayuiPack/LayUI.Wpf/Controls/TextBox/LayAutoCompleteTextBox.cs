@@ -215,7 +215,7 @@ namespace LayUI.Wpf.Controls
             IEnumerable enumerable = (IEnumerable)e.NewValue;
             if (e.OldValue != null)
             {
-                if (oldValue is INotifyCollectionChanged notify) notify.CollectionChanged += AutoCompleteTextBox.Items_CollectionChanged;
+                if (oldValue is INotifyCollectionChanged notify) notify.CollectionChanged -= AutoCompleteTextBox.Items_CollectionChanged;
             }
             else if (e.NewValue != null)
             {
@@ -223,7 +223,7 @@ namespace LayUI.Wpf.Controls
             }
             else
             {
-                (AutoCompleteTextBox.Items as IList).Clear();
+                (AutoCompleteTextBox.Items as IList)?.Clear();
             }
             AutoCompleteTextBox.OnItemsSourceChanged(oldValue, enumerable);
         }

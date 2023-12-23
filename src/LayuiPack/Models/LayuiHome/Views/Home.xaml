@@ -24,7 +24,7 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Border Width="200" Background="#393D49">
+        <Border Width="200" Background="{DynamicResource LighCyan}">
             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                 <ItemsControl
                     Padding="0"
@@ -37,9 +37,7 @@
                         <DataTemplate x:Key="MenuItemsDataTemplate">
                             <Lay:LayNavExpander
                                 Padding="10,0"
-                                Background="#282B33"
                                 Header="{Binding ItemTitle}"
-                                HeaderBackground="#393D49"
                                 IsExpanded="{Binding IsSelected}">
                                 <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Data}">
                                     <ItemsControl.ItemsPanel>

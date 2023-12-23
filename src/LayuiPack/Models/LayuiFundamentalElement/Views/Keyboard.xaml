@@ -16,8 +16,6 @@
                     <Lay:LayKeyboard.DefaultButtonStyle>
                         <Style BasedOn="{StaticResource LayButtonStyle}" TargetType="Lay:LayButton">
                             <Setter Property="Type" Value="Customize" />
-                            <Setter Property="Background" Value="White" />
-                            <Setter Property="HoverBackground" Value="#F0F6FA" />
                             <Setter Property="BorderThickness" Value="0" />
                             <Setter Property="Width" Value="auto" />
                             <Setter Property="Height" Value="auto" />
@@ -28,9 +26,10 @@
                     </Lay:LayKeyboard.DefaultButtonStyle>
                     <Lay:LayKeyboard.ExtendButtonStyle>
                         <Style BasedOn="{StaticResource LayKeyboardToggleButtonStyle}" TargetType="Lay:LayToggleButton">
-                            <Setter Property="Background" Value="White" />
-                            <Setter Property="HoverBackground" Value="#F0F6FA" />
+                            <Setter Property="Background" Value="{DynamicResource Gradient}" />
+                            <Setter Property="HoverBackground" Value="{DynamicResource LightGradient}" />
                             <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Foreground" Value="White" />
                             <Setter Property="VerticalContentAlignment" Value="Stretch" />
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             <Setter Property="Width" Value="auto" />

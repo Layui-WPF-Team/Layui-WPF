@@ -149,7 +149,7 @@
                                                             Opacity="0">
                                                             <Border
                                                                 Padding="8,5"
-                                                                Background="Black"
+                                                                Background="{DynamicResource LighCyan}"
                                                                 CornerRadius="2">
                                                                 <TextBlock Foreground="White" Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlider}, Path=Value}" />
                                                             </Border>
@@ -157,7 +157,7 @@
                                                                 Width="5"
                                                                 Height="5"
                                                                 VerticalAlignment="Bottom"
-                                                                Background="Black"
+                                                                Background="{DynamicResource LighCyan}"
                                                                 RenderTransformOrigin="0.5,0.5">
                                                                 <Grid.RenderTransform>
                                                                     <TransformGroup>
@@ -296,7 +296,7 @@
                                                             Opacity="0">
                                                             <Border
                                                                 Padding="8,5"
-                                                                Background="Black"
+                                                                Background="{DynamicResource LighCyan}"
                                                                 CornerRadius="2">
                                                                 <TextBlock Foreground="White" Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlider}, Path=Value}" />
                                                             </Border>
@@ -304,14 +304,14 @@
                                                                 Width="5"
                                                                 Height="5"
                                                                 VerticalAlignment="Top"
-                                                                Background="Black"
+                                                                Background="{DynamicResource LighCyan}"
                                                                 RenderTransformOrigin="0.5,0.5">
                                                                 <Grid.RenderTransform>
                                                                     <TransformGroup>
                                                                         <ScaleTransform />
                                                                         <SkewTransform />
                                                                         <RotateTransform Angle="45" />
-                                                                        <TranslateTransform Y="2.5" />
+                                                                        <TranslateTransform Y="-2.5" />
                                                                     </TransformGroup>
                                                                 </Grid.RenderTransform>
                                                             </Grid>
@@ -585,7 +585,7 @@
                                                             Opacity="0">
                                                             <Border
                                                                 Padding="8,5"
-                                                                Background="Black"
+                                                                Background="{DynamicResource LighCyan}"
                                                                 CornerRadius="2">
                                                                 <TextBlock Foreground="White" Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlider}, Path=Value}" />
                                                             </Border>
@@ -593,7 +593,7 @@
                                                                 Width="5"
                                                                 Height="5"
                                                                 HorizontalAlignment="Right"
-                                                                Background="Black"
+                                                                Background="{DynamicResource LighCyan}"
                                                                 RenderTransformOrigin="0.5,0.5">
                                                                 <Grid.RenderTransform>
                                                                     <TransformGroup>
@@ -732,7 +732,7 @@
                                                             Opacity="0">
                                                             <Border
                                                                 Padding="8,5"
-                                                                Background="Black"
+                                                                Background="{DynamicResource LighCyan}"
                                                                 CornerRadius="2">
                                                                 <TextBlock Foreground="White" Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlider}, Path=Value}" />
                                                             </Border>
@@ -740,7 +740,7 @@
                                                                 Width="5"
                                                                 Height="5"
                                                                 HorizontalAlignment="Left"
-                                                                Background="Black"
+                                                                Background="{DynamicResource LighCyan}"
                                                                 RenderTransformOrigin="0.5,0.5">
                                                                 <Grid.RenderTransform>
                                                                     <TransformGroup>

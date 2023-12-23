@@ -9,8 +9,8 @@
     <Style x:Key="LayNavExpanderStyle" TargetType="{x:Type Lay:LayNavExpander}">
         <Setter Property="HeaderHeight" Value="50" />
         <Setter Property="Foreground" Value="White" />
-        <Setter Property="HeaderBackground" Value="#393D49" />
-        <Setter Property="Background" Value="#282B33" />
+        <Setter Property="HeaderBackground" Value="{DynamicResource LighCyan}" />
+        <Setter Property="Background" Value="{DynamicResource Black}" />
         <Setter Property="HeaderHorizontalAlignment" Value="Left" />
         <Setter Property="HeaderVerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />

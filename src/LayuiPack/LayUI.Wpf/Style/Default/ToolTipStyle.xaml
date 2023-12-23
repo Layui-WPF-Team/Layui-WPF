@@ -8,7 +8,7 @@
             <Cv:ToolTipOffsetConverter x:Key="ToolTipOffsetConverter" />
         </Style.Resources>
         <Setter Property="ToolTipForeground" Value="White" />
-        <Setter Property="Background" Value="{DynamicResource Black}" />
+        <Setter Property="Background" Value="{DynamicResource LighCyan}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayToolTip">
@@ -124,6 +124,7 @@
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="HasDropShadow" Value="True" />
         <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource LighCyan}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToolTip">
@@ -135,7 +136,7 @@
                             Name="Border"
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}"
-                            Background="{DynamicResource Black}"
+                            Background="{TemplateBinding Background}"
                             BorderThickness="0">
                             <ContentPresenter Margin="10" />
                         </Border>

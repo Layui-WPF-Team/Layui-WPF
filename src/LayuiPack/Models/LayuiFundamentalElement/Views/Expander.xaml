@@ -12,7 +12,7 @@
         </Grid.ColumnDefinitions>
         <Lay:LayNavExpanderPanel
             Margin="1,0"
-            Background="#393D49"
+            Background="{DynamicResource LighCyan}"
             IsAutoFold="true">
             <Lay:LayNavExpander IsExpanded="false">
                 <Lay:LayNavExpander.Header>
