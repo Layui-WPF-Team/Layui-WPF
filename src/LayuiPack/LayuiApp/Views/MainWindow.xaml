@@ -292,6 +292,21 @@
             BorderBrush="{DynamicResource Black}"
             BorderThickness="0,0,0,1"
             Foreground="White">
+            <Lay:LayNoticeBar.Resources>
+                <Storyboard
+                    x:Key="Storyboard"
+                    AutoReverse="True"
+                    RepeatBehavior="Forever">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Icon" Storyboard.TargetProperty="(UIElement.Opacity)">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5" />
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </Lay:LayNoticeBar.Resources>
+            <Lay:LayNoticeBar.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource Storyboard}" />
+                </EventTrigger>
+            </Lay:LayNoticeBar.Triggers>
             <Lay:LayButton
                 Width="auto"
                 Background="Transparent"
@@ -301,6 +316,7 @@
                 Uri="https://github.com/Layui-WPF-Team/Layui-WPF" />
             <Lay:LayNoticeBar.InnerLeftContent>
                 <TextBlock
+                    x:Name="Icon"
                     VerticalAlignment="Center"
                     FontFamily="{DynamicResource IconFont}"
                     FontSize="20"
