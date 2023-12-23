@@ -6,44 +6,85 @@
     xmlns:local="clr-namespace:LayuiFundamentalElement.Views"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-        <UniformGrid Rows="1">
-            <Lay:LayTreeView IsShowCheckButton="True" ItemsSource="{Binding ListApps}">
-                <Lay:LayTreeView.ItemContainerStyle>
-                    <Style BasedOn="{StaticResource LayTreeViewItemStyle}" TargetType="Lay:LayTreeViewItem">
-                        <Setter Property="IsExpanded" Value="true" />
-                        <Setter Property="IsChecked" Value="{Binding IsChecked, Mode=TwoWay}" />
-                    </Style>
-                </Lay:LayTreeView.ItemContainerStyle>
-                <Lay:LayTreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding Child}">
-                        <TextBlock Text="{Binding Title}" />
-                        <!--<Lay:LayCheckBox
+    <ScrollViewer>
+        <StackPanel Margin="10,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <UniformGrid Rows="1">
+                    <Lay:LayTreeView IsShowCheckButton="True" ItemsSource="{Binding ListApps}">
+                        <Lay:LayTreeView.ItemContainerStyle>
+                            <Style BasedOn="{StaticResource LayTreeViewItemStyle}" TargetType="Lay:LayTreeViewItem">
+                                <Setter Property="IsExpanded" Value="true" />
+                                <Setter Property="IsChecked" Value="{Binding IsChecked, Mode=TwoWay}" />
+                            </Style>
+                        </Lay:LayTreeView.ItemContainerStyle>
+                        <Lay:LayTreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Child}">
+                                <TextBlock Text="{Binding Title}" />
+                                <!--<Lay:LayCheckBox
                             Command="{Binding RelativeSource={RelativeSource AncestorType=local:TreeView}, Path=DataContext.CheckedCommand}"
                             CommandParameter="{Binding}"
                             Content="{Binding Title}"
                             IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTreeViewItem}, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />-->
-                    </HierarchicalDataTemplate>
-                </Lay:LayTreeView.ItemTemplate>
+                            </HierarchicalDataTemplate>
+                        </Lay:LayTreeView.ItemTemplate>
+                    </Lay:LayTreeView>
+                    <ListView ItemsSource="{Binding SelectItems}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </UniformGrid>
+                <UniformGrid
+                    Grid.Row="1"
+                    Height="50"
+                    Rows="1">
+                    <Lay:LayButton Command="{Binding CheckedItemCommand}" Content="设置选中项" />
+                    <Lay:LayButton Command="{Binding GetCheckedItemsCommand}" Content="获得选中项" />
+                </UniformGrid>
+            </Grid>
+            <Lay:LayTreeView Height="200" IsShowCheckButton="False">
+                <Lay:LayTreeViewItem Header="树">
+                    <Lay:LayTreeViewItem Header="树" />
+                    <Lay:LayTreeViewItem Header="树" />
+                    <Lay:LayTreeViewItem Header="树" />
+                    <Lay:LayTreeViewItem Header="树">
+                        <Lay:LayTreeViewItem Header="树" />
+                        <Lay:LayTreeViewItem Header="树" />
+                        <Lay:LayTreeViewItem Header="树" />
+                        <Lay:LayTreeViewItem Header="树">
+                            <Lay:LayTreeViewItem Header="树" />
+                            <Lay:LayTreeViewItem Header="树" />
+                            <Lay:LayTreeViewItem Header="树" />
+                            <Lay:LayTreeViewItem Header="树">
+                                <Lay:LayTreeViewItem Header="树" />
+                                <Lay:LayTreeViewItem Header="树" />
+                                <Lay:LayTreeViewItem Header="树" />
+                                <Lay:LayTreeViewItem Header="树">
+                                    <Lay:LayTreeViewItem Header="树" />
+                                    <Lay:LayTreeViewItem Header="树" />
+                                    <Lay:LayTreeViewItem Header="树" />
+                                    <Lay:LayTreeViewItem Header="树">
+                                        <Lay:LayTreeViewItem Header="树" />
+                                        <Lay:LayTreeViewItem Header="树" />
+                                        <Lay:LayTreeViewItem Header="树" />
+                                        <Lay:LayTreeViewItem Header="树">
+                                            <Lay:LayTreeViewItem Header="树" />
+                                            <Lay:LayTreeViewItem Header="树" />
+                                            <Lay:LayTreeViewItem Header="树" />
+                                        </Lay:LayTreeViewItem>
+                                    </Lay:LayTreeViewItem>
+                                </Lay:LayTreeViewItem>
+                            </Lay:LayTreeViewItem>
+                        </Lay:LayTreeViewItem>
+                    </Lay:LayTreeViewItem>
+                </Lay:LayTreeViewItem>
             </Lay:LayTreeView>
-            <ListView ItemsSource="{Binding SelectItems}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Title}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </UniformGrid>
-        <UniformGrid
-            Grid.Row="1"
-            Height="50"
-            Rows="1">
-            <Lay:LayButton Command="{Binding CheckedItemCommand}" Content="设置选中项" />
-            <Lay:LayButton Command="{Binding GetCheckedItemsCommand}" Content="获得选中项" />
-        </UniformGrid>
-    </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
