@@ -241,7 +241,7 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="通知", PageKey=SystemResource.Page_NotificationView
                             },new MenuItemModel()
                             {
-                                ItemTitle="公告栏", PageKey=SystemResource.Page_NoticeBarView
+                                ItemTitle="公告栏", PageKey=SystemResource.Page_NoticeBarView,IsNew=true
                             },new MenuItemModel()
                             {
                                 ItemTitle="键盘", PageKey=SystemResource.Page_KeyboardView

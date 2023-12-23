@@ -7,7 +7,6 @@
     <Style x:Key="LayNoticeBarStyle" TargetType="Lay:LayNoticeBar">
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayNoticeBar">
@@ -17,7 +16,7 @@
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="1"
+                        BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid Margin="{TemplateBinding Padding}">
                             <Grid.ColumnDefinitions>

@@ -18,7 +18,12 @@ namespace LayuiApp.ViewModels
 {
     public class MainWindowViewModel : LayuiViewModelBase
     {
-
+        private string _Message= "------------------新增公告栏控件，详情请看Demo，LayNoticeBar控件-------------《点击我可以直接跳转本项目地址，获取最新代码》";
+        public string Message
+        {
+            get { return _Message; }
+            set { SetProperty(ref _Message, value); }
+        }
         public MainWindowViewModel(IContainerExtension container) : base(container)
         {
         }

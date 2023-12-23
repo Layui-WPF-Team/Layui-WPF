@@ -281,7 +281,36 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        <Lay:LayDrawerHost DrawerOpen="{Binding ElementName=Title, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Type="Right">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Lay:LayNoticeBar
+            Height="40"
+            Padding="10,0"
+            Background="{DynamicResource LighCyan}"
+            BorderBrush="{DynamicResource Black}"
+            BorderThickness="0,0,0,1"
+            Foreground="White">
+            <Lay:LayButton
+                Width="auto"
+                Background="Transparent"
+                Content="{Binding Message}"
+                HoverBackground="Transparent"
+                Type="Customize"
+                Uri="https://github.com/Layui-WPF-Team/Layui-WPF" />
+            <Lay:LayNoticeBar.InnerLeftContent>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontFamily="{DynamicResource IconFont}"
+                    FontSize="20"
+                    Text="&#xeff0;" />
+            </Lay:LayNoticeBar.InnerLeftContent>
+        </Lay:LayNoticeBar>
+        <Lay:LayDrawerHost
+            Grid.Row="1"
+            DrawerOpen="{Binding ElementName=Title, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Type="Right">
             <Lay:LayDrawerHost.DrawerContent>
                 <Border Width="300" Background="#F7F9F6">
                     <StackPanel>
@@ -387,10 +416,12 @@
         </Lay:LayDrawerHost>
         <Lay:LayDialogHost
             Grid.Row="1"
+            Grid.RowSpan="2"
             Panel.ZIndex="99"
             Global:LayDialog.Token="RootDialogToken" />
         <Lay:LayMessageHost
             Grid.Row="1"
+            Grid.RowSpan="2"
             Panel.ZIndex="99"
             Global:LayMessage.Token="RootMessageToken" />
     </Grid>
