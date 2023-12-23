@@ -82,6 +82,7 @@ namespace Layui.Core.Base
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
+           
         }
     }
 }

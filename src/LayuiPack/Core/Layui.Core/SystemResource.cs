@@ -159,6 +159,10 @@ namespace Layui.Core.Resource
         /// 标签
         /// </summary>
         public const string Page_TagView = "TagView"; 
+        /// <summary>
+        /// 公告栏
+        /// </summary>
+        public const string Page_NoticeBarView = "NoticeBarView"; 
 
         #endregion
     }

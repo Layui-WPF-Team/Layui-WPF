@@ -128,6 +128,10 @@ namespace LayuiHome.ViewModels
                         {
                             new MenuItemModel()
                             {
+                                ItemTitle="图标", PageKey=SystemResource.Page_IconView,IsNew=true
+                            },
+                            new MenuItemModel()
+                            {
                                 ItemTitle="按钮", PageKey=SystemResource.Page_ButtonView
                             },new MenuItemModel()
                             {
@@ -237,11 +241,11 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="通知", PageKey=SystemResource.Page_NotificationView
                             },new MenuItemModel()
                             {
-                                ItemTitle="键盘", PageKey=SystemResource.Page_KeyboardView
+                                ItemTitle="公告栏", PageKey=SystemResource.Page_NoticeBarView
                             },new MenuItemModel()
                             {
-                                ItemTitle="图标", PageKey=SystemResource.Page_IconView,IsNew=true
-                            },
+                                ItemTitle="键盘", PageKey=SystemResource.Page_KeyboardView
+                            }
                         }
                 },new MenuItemModel()
                 {
