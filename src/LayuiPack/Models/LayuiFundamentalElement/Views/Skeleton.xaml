@@ -1,0 +1,47 @@
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.Skeleton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel Margin="10">
+        <Lay:LaySwitch x:Name="Switch" />
+        <Lay:LaySkeleton
+            Margin="0,5"
+            HorizontalAlignment="Left"
+            IsActive="{Binding ElementName=Switch, Path=IsChecked}">
+            <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
+                <TextBlock
+                    Margin="10,0"
+                    VerticalAlignment="Center"
+                    FontFamily="{DynamicResource IconFont}"
+                    Foreground="{DynamicResource Gradient}"
+                    Text="&#xec26;" />
+                <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+            </StackPanel>
+        </Lay:LaySkeleton>
+        <Lay:LaySkeleton Margin="0,5" IsActive="{Binding ElementName=Switch, Path=IsChecked}">
+            <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
+                <TextBlock
+                    Margin="10,0"
+                    VerticalAlignment="Center"
+                    FontFamily="{DynamicResource IconFont}"
+                    Foreground="{DynamicResource Gradient}"
+                    Text="&#xec26;" />
+                <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+            </StackPanel>
+        </Lay:LaySkeleton>
+        <Lay:LaySkeleton Margin="0,5" IsActive="{Binding ElementName=Switch, Path=IsChecked}">
+            <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
+                <TextBlock
+                    Margin="10,0"
+                    VerticalAlignment="Center"
+                    FontFamily="{DynamicResource IconFont}"
+                    Foreground="{DynamicResource Gradient}"
+                    Text="&#xec26;" />
+                <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+            </StackPanel>
+        </Lay:LaySkeleton>
+    </StackPanel>
+</UserControl>

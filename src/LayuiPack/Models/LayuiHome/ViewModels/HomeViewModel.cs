@@ -82,8 +82,7 @@ namespace LayuiHome.ViewModels
         private void GoPage(MenuItemModel item)
         {
             if (item == null) return;
-            MenuItemModel = item;
-            item.IsNew = false;
+            MenuItemModel = item; 
         }
         #endregion
         public async override void ExecuteLoadedCommand()
@@ -129,6 +128,9 @@ namespace LayuiHome.ViewModels
                             new MenuItemModel()
                             {
                                 ItemTitle="图标", PageKey=SystemResource.Page_IconView,IsNew=true
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="骨架屏", PageKey=SystemResource.Page_SkeletonView,IsNew=true
                             },
                             new MenuItemModel()
                             {
@@ -182,6 +184,7 @@ namespace LayuiHome.ViewModels
                     ItemTitle = "组件示例",
                     Data = new ObservableCollection<MenuItemModel>()
                         {
+                            
                             new MenuItemModel()
                             {
                                 ItemTitle="关键帧动画命令绑定", PageKey=SystemResource.Page_AnimationCommandView

@@ -74,6 +74,7 @@
     <Compile Include="ViewModels\PanelViewModel.cs" />
     <Compile Include="ViewModels\ProgressBarViewModel.cs" />
     <Compile Include="ViewModels\ScaleImageViewModel.cs" />
+    <Compile Include="ViewModels\SkeletonViewModel.cs" />
     <Compile Include="ViewModels\TabControlViewModel.cs" />
     <Compile Include="ViewModels\TimelineViewModel.cs" />
     <Compile Include="ViewModels\TransitionControlViewModel.cs" />
@@ -110,6 +111,9 @@
     </Compile>
     <Compile Include="Views\ScaleImage.xaml.cs">
       <DependentUpon>ScaleImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skeleton.xaml.cs">
+      <DependentUpon>Skeleton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TabControl.xaml.cs">
       <DependentUpon>TabControl.xaml</DependentUpon>
@@ -175,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ScaleImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skeleton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

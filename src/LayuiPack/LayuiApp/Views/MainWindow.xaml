@@ -291,7 +291,8 @@
             Background="{DynamicResource LighCyan}"
             BorderBrush="{DynamicResource Black}"
             BorderThickness="0,0,0,1"
-            Foreground="White">
+            Foreground="White"
+            Duration="60">
             <Lay:LayNoticeBar.Resources>
                 <Storyboard
                     x:Key="Storyboard"

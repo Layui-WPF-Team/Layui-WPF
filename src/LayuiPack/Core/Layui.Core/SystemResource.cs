@@ -163,7 +163,10 @@ namespace Layui.Core.Resource
         /// 公告栏
         /// </summary>
         public const string Page_NoticeBarView = "NoticeBarView"; 
-
+        /// <summary>
+        /// 骨架屏
+        /// </summary>
+        public const string Page_SkeletonView = "SkeletonView"; 
         #endregion
     }
 }

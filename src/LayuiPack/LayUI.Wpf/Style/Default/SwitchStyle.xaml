@@ -12,6 +12,7 @@
         <Setter Property="MinHeight" Value="20" />
         <Setter Property="Height" Value="25" />
         <Setter Property="MaxHeight" Value="100" />
+        <Setter Property="Foreground" Value="White" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LaySwitch">
