@@ -36,6 +36,7 @@
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/87f8f75a-cd3c-466c-86dd-27608af87c18)
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/26ba878e-b6ae-4b6f-806c-929dc6f3c325)
 ![骨架屏](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/60f90325-85d9-4e5d-9052-c0e18c18b3f2)
+![波纹](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/f2b3ebbd-872b-4a25-a3ec-3858d6af3c00)
 
 
 
