@@ -10,7 +10,7 @@
         HorizontalAlignment="Center"
         VerticalAlignment="Center">
         <Lay:LayRipple Margin="0,15" Type="Click">
-            <Lay:LayButton Content="闪烁" Type="Default" />
+            <Lay:LayButton Content="点击" Type="Default" />
         </Lay:LayRipple>
         <Lay:LayRipple Margin="0,15" Type="Auto">
             <Lay:LayButton Content="闪烁" Type="Default" />
