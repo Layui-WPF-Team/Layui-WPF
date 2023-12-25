@@ -70,12 +70,16 @@
                 </UniformGrid>
             </Grid>
             <Lay:LayLegend />
-            <Lay:LayButton
-                Margin="0,5"
+            <Lay:LayRipple
                 HorizontalAlignment="Left"
-                Command="{Binding TestCommand}"
-                Content="刷新"
-                Type="Default" />
+                Panel.ZIndex="1"
+                Type="Auto">
+                <Lay:LayButton
+                    Margin="0,5"
+                    Command="{Binding TestCommand}"
+                    Content="刷新"
+                    Type="Default" />
+            </Lay:LayRipple>
             <ListBox Height="500" ItemsSource="{Binding Items}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>

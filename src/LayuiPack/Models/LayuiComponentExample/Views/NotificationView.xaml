@@ -10,9 +10,14 @@
         <ScrollViewer>
             <Lay:LayNotificationHost Global:LayNotification.Token="RootNotificationToken" />
         </ScrollViewer>
-        <Lay:LayButton
-            Command="{Binding GoCommand}"
-            Content="点我"
-            Type="Normal" />
+        <Lay:LayRipple
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Type="Auto">
+            <Lay:LayButton
+                Command="{Binding GoCommand}"
+                Content="点我"
+                Type="Default" />
+        </Lay:LayRipple>
     </Grid>
 </UserControl>

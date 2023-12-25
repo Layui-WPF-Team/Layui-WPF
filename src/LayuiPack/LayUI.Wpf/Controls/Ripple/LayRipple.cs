@@ -1,4 +1,5 @@
 ﻿using LayUI.Wpf.Enum;
+using LayUI.Wpf.Tools;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -84,19 +85,13 @@ namespace LayUI.Wpf.Controls
             {
                 _Storyboard.Stop();
                 _Storyboard.Children.Clear();
-            }
-            _Storyboard = new Storyboard(); 
-            DoubleAnimation ODoubleAnimation = new DoubleAnimation
-            {
-                From = 0,
-                To = 0,
-                Duration = TimeSpan.FromSeconds(0),
-            };
-            _Storyboard.Children.Add(ODoubleAnimation);
-            Storyboard.SetTarget(ODoubleAnimation, PART_Border);
-            Storyboard.SetTargetProperty(ODoubleAnimation, new PropertyPath("(UIElement.Opacity)"));
-            Storyboard.SetTarget(_Storyboard, PART_Border);
-            this.BeginStoryboard(_Storyboard);
+            } 
+            _Storyboard = LayAnimationHelper.CreateStoryboard(
+                new AnimationTimeline[]
+                {
+                    LayAnimationHelper.CreateDoubleAnimation(3.0, 0.0, 0, new PropertyPath("(UIElement.Opacity)"), PART_Border)
+                });
+            LayAnimationHelper.ExecuteStoryboard(_Storyboard, PART_Border); 
         }
         /// <summary>
         /// 执行点击背景色扩散动画
@@ -110,35 +105,14 @@ namespace LayUI.Wpf.Controls
                 _Storyboard.Stop();
                 _Storyboard.Children.Clear();
             }
-            _Storyboard = new Storyboard();
-            DoubleAnimation XDoubleAnimation = new DoubleAnimation
-            {
-                From = 1,
-                To = 1.4,
-                Duration = TimeSpan.FromSeconds(1),
-            };
-            _Storyboard.Children.Add(XDoubleAnimation);
-            Storyboard.SetTarget(XDoubleAnimation, PART_Border);
-            Storyboard.SetTargetProperty(XDoubleAnimation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"));
-            DoubleAnimation YDoubleAnimation = new DoubleAnimation
-            {
-                From = 1,
-                To = 1.4,
-                Duration = TimeSpan.FromSeconds(1),
-            };
-            _Storyboard.Children.Add(YDoubleAnimation);
-            Storyboard.SetTarget(YDoubleAnimation, PART_Border);
-            Storyboard.SetTargetProperty(YDoubleAnimation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-            DoubleAnimation ODoubleAnimation = new DoubleAnimation
-            {
-                From = 0.3,
-                To = 0,
-                Duration = TimeSpan.FromSeconds(1),
-            };
-            _Storyboard.Children.Add(ODoubleAnimation);
-            Storyboard.SetTarget(ODoubleAnimation, PART_Border);
-            Storyboard.SetTargetProperty(ODoubleAnimation, new PropertyPath("(UIElement.Opacity)"));
-            this.BeginStoryboard(_Storyboard);
+            _Storyboard = LayAnimationHelper.CreateStoryboard(
+                new AnimationTimeline[]
+                {
+                    LayAnimationHelper.CreateDoubleAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"), PART_Border),
+                    LayAnimationHelper.CreateDoubleAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"), PART_Border),
+                    LayAnimationHelper.CreateDoubleAnimation(0.3, 0.0, 1, new PropertyPath("(UIElement.Opacity)"), PART_Border)
+                });
+            LayAnimationHelper.ExecuteStoryboard(_Storyboard, PART_Border);
         }
         /// <summary>
         /// 执行自动背景色扩散动画
@@ -151,37 +125,16 @@ namespace LayUI.Wpf.Controls
             {
                 _Storyboard.Stop();
                 _Storyboard.Children.Clear();
-            }
-            _Storyboard = new Storyboard();
+            } 
+            _Storyboard = LayAnimationHelper.CreateStoryboard(
+                new AnimationTimeline[]
+                {
+                    LayAnimationHelper.CreateDoubleAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"), PART_Border),
+                    LayAnimationHelper.CreateDoubleAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"), PART_Border),
+                    LayAnimationHelper.CreateDoubleAnimation(0.3, 0.0, 1, new PropertyPath("(UIElement.Opacity)"), PART_Border)
+                });
             _Storyboard.RepeatBehavior = RepeatBehavior.Forever;
-            DoubleAnimation XDoubleAnimation = new DoubleAnimation
-            {
-                From = 1,
-                To = 1.4,
-                Duration = TimeSpan.FromSeconds(1),
-            };
-            _Storyboard.Children.Add(XDoubleAnimation);
-            Storyboard.SetTarget(XDoubleAnimation, PART_Border);
-            Storyboard.SetTargetProperty(XDoubleAnimation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"));
-            DoubleAnimation YDoubleAnimation = new DoubleAnimation
-            {
-                From = 1,
-                To = 1.4,
-                Duration = TimeSpan.FromSeconds(1),
-            };
-            _Storyboard.Children.Add(YDoubleAnimation);
-            Storyboard.SetTarget(YDoubleAnimation, PART_Border);
-            Storyboard.SetTargetProperty(YDoubleAnimation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-            DoubleAnimation ODoubleAnimation = new DoubleAnimation
-            {
-                From = 0.3,
-                To = 0,
-                Duration = TimeSpan.FromSeconds(1),
-            };
-            _Storyboard.Children.Add(ODoubleAnimation);
-            Storyboard.SetTarget(ODoubleAnimation, PART_Border);
-            Storyboard.SetTargetProperty(ODoubleAnimation, new PropertyPath("(UIElement.Opacity)"));
-            this.BeginStoryboard(_Storyboard);
+            LayAnimationHelper.ExecuteStoryboard(_Storyboard, PART_Border); 
         }
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {

@@ -7,7 +7,7 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:wpftk="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid Margin="10">
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="auto" />
@@ -106,14 +106,17 @@
                 VerticalContentAlignment="Center"
                 IsReadOnly="True"
                 Text="{Binding ElementName=Value, Path=Text, Mode=OneWay}" />
-            <Lay:LayButton
+            <Lay:LayRipple
                 Grid.Column="1"
-                Height="auto"
                 Margin="5,0,0,0"
-                Command="{Binding CopyCommand}"
-                CommandParameter="{Binding ElementName=Icons, Path=SelectedItem.Value, Mode=OneWay}"
-                Content="复制"
-                Type="Default" />
+                Type="Auto">
+                <Lay:LayButton
+                    Height="auto"
+                    Command="{Binding CopyCommand}"
+                    CommandParameter="{Binding ElementName=Icons, Path=SelectedItem.Value, Mode=OneWay}"
+                    Content="复制"
+                    Type="Default" />
+            </Lay:LayRipple>
         </Grid>
     </Grid>
 </UserControl>
