@@ -14,7 +14,7 @@
     HeaderBackground="{DynamicResource LighCyan}"
     IsShowHeader="True"
     ShowInTaskbar="True"
-    WindowStartupLocation="CenterOwner"
+    WindowStartupLocation="CenterScreen"
     WindowState="{Binding WindowState}">
     <Lay:LayWindow.HeaderEffect>
         <DropShadowEffect

@@ -64,5 +64,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/TreeSelectStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/DateTimeRangePickerStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/NoticeBarStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/RippleStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

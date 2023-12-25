@@ -167,6 +167,10 @@ namespace Layui.Core.Resource
         /// 骨架屏
         /// </summary>
         public const string Page_SkeletonView = "SkeletonView"; 
+        /// <summary>
+        /// 波纹
+        /// </summary>
+        public const string Page_RippleView = "RippleView"; 
         #endregion
     }
 }

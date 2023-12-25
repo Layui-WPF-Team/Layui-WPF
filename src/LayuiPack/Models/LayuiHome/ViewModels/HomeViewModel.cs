@@ -196,6 +196,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="标记", PageKey=SystemResource.Page_BadgeView
                             },new MenuItemModel()
                             {
+                                ItemTitle="波纹", PageKey=SystemResource.Page_RippleView,IsNew=true
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="弹出框", PageKey=SystemResource.Page_PopupBoxView
                             },new MenuItemModel()
                             {

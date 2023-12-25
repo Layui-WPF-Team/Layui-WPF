@@ -62,6 +62,7 @@
     <Compile Include="ViewModels\NotificationViewModel.cs" />
     <Compile Include="ViewModels\PaginationViewModel.cs" />
     <Compile Include="ViewModels\PopupBoxViewModel.cs" />
+    <Compile Include="ViewModels\RippleViewModel.cs" />
     <Compile Include="ViewModels\TagViewModel.cs" />
     <Compile Include="ViewModels\ToolTipViewModel.cs" />
     <Compile Include="ViewModels\TreeSelectViewModel.cs" />
@@ -137,6 +138,9 @@
     </Compile>
     <Compile Include="Views\PopupBox.xaml.cs">
       <DependentUpon>PopupBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Ripple.xaml.cs">
+      <DependentUpon>Ripple.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
@@ -231,6 +235,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PopupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Ripple.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
