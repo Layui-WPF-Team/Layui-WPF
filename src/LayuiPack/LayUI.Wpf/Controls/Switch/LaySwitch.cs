@@ -17,7 +17,7 @@ namespace LayUI.Wpf.Controls
     /// <para>创建时间:2022-06-28 下午 5:32:33</para>
     /// </summary>
     [TemplatePart(Name = "PART_Icon")]
-    public class LaySwitch:ToggleButton, ILayControl
+    public class LaySwitch : ToggleButton, ILayControl
     {
         private Viewbox PART_Icon;
         private Border PART_Border;
@@ -42,31 +42,21 @@ namespace LayUI.Wpf.Controls
         protected override void OnChecked(RoutedEventArgs e)
         {
             base.OnChecked(e);
-            if (PART_Icon != null)
-            {
-                ThicknessAnimation thicknessAnimation = new ThicknessAnimation();
-                thicknessAnimation.To = new Thickness(PART_Border.ActualWidth / 2, 0, 0, 0);
-                thicknessAnimation.Duration = TimeSpan.FromMilliseconds(200);
-                PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
-
-            }
+            InitAnimation((bool)this.IsChecked);
         }
         protected override void OnUnchecked(RoutedEventArgs e)
         {
             base.OnUnchecked(e);
-            if (PART_Icon != null)
-            {
-                ThicknessAnimation thicknessAnimation = new ThicknessAnimation();
-                thicknessAnimation.To = new Thickness(0, 0, 0, 0);
-                thicknessAnimation.Duration = TimeSpan.FromMilliseconds(200);
-                PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
-
-            }
+            InitAnimation((bool)this.IsChecked);
         }
-        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        /// <summary>
+        /// 初始化选中效果
+        /// </summary>
+        /// <param name="isCheck"></param>
+        void InitAnimation(bool isCheck)
         {
-            base.OnRenderSizeChanged(sizeInfo);
-            if (PART_Icon != null)
+            if (PART_Icon == null) return;
+            if (isCheck)
             {
                 ThicknessAnimation thicknessAnimation = new ThicknessAnimation();
                 if (IsChecked == true)
@@ -80,12 +70,25 @@ namespace LayUI.Wpf.Controls
                 thicknessAnimation.Duration = TimeSpan.FromMilliseconds(0);
                 PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
             }
+            else
+            {
+                ThicknessAnimation thicknessAnimation = new ThicknessAnimation();
+                thicknessAnimation.To = new Thickness(0, 0, 0, 0);
+                thicknessAnimation.Duration = TimeSpan.FromMilliseconds(200);
+                PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
+            }
         }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             PART_Icon = GetTemplateChild("PART_Icon") as Viewbox;
             PART_Border = GetTemplateChild("PART_Border") as Border;
+            InitAnimation((bool)this.IsChecked);
+        }
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            InitAnimation((bool)this.IsChecked);
         }
     }
 }

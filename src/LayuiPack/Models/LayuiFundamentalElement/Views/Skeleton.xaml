@@ -5,43 +5,143 @@
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <StackPanel Margin="10">
-        <Lay:LaySwitch x:Name="Switch" />
-        <Lay:LaySkeleton
-            Margin="0,5"
-            HorizontalAlignment="Left"
-            IsActive="{Binding ElementName=Switch, Path=IsChecked}">
-            <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
-                <TextBlock
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    FontFamily="{DynamicResource IconFont}"
-                    Foreground="{DynamicResource Gradient}"
-                    Text="&#xec26;" />
-                <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
-            </StackPanel>
-        </Lay:LaySkeleton>
-        <Lay:LaySkeleton Margin="0,5" IsActive="{Binding ElementName=Switch, Path=IsChecked}">
-            <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
-                <TextBlock
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    FontFamily="{DynamicResource IconFont}"
-                    Foreground="{DynamicResource Gradient}"
-                    Text="&#xec26;" />
-                <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
-            </StackPanel>
-        </Lay:LaySkeleton>
-        <Lay:LaySkeleton Margin="0,5" IsActive="{Binding ElementName=Switch, Path=IsChecked}">
-            <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
-                <TextBlock
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    FontFamily="{DynamicResource IconFont}"
-                    Foreground="{DynamicResource Gradient}"
-                    Text="&#xec26;" />
-                <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
-            </StackPanel>
-        </Lay:LaySkeleton>
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel Margin="10">
+            <Lay:LayLegend Header="基础使用" />
+            <Lay:LaySwitch x:Name="Switch" IsChecked="True" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Lay:LaySkeleton
+                    Width="100"
+                    Margin="0,5,10,5"
+                    IsActive="{Binding ElementName=Switch, Path=IsChecked}"
+                    Type="Image">
+                    <Image Source="http://www.avanpa.com/images/upload/Image/201304/20130428143018834_997906.jpg" />
+                </Lay:LaySkeleton>
+                <UniformGrid
+                    Grid.Column="1"
+                    Columns="1"
+                    Rows="3">
+                    <Lay:LaySkeleton
+                        Margin="0,5,250,5"
+                        VerticalAlignment="Center"
+                        IsActive="{Binding ElementName=Switch, Path=IsChecked}">
+                        <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
+                            <TextBlock
+                                Margin="10,0"
+                                VerticalAlignment="Center"
+                                FontFamily="{DynamicResource IconFont}"
+                                Foreground="{DynamicResource Gradient}"
+                                Text="&#xec26;" />
+                            <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                        </StackPanel>
+                    </Lay:LaySkeleton>
+                    <Lay:LaySkeleton
+                        Margin="0,5,100,5"
+                        VerticalAlignment="Center"
+                        IsActive="{Binding ElementName=Switch, Path=IsChecked}">
+                        <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
+                            <TextBlock
+                                Margin="10,0"
+                                VerticalAlignment="Center"
+                                FontFamily="{DynamicResource IconFont}"
+                                Foreground="{DynamicResource Gradient}"
+                                Text="&#xec26;" />
+                            <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                        </StackPanel>
+                    </Lay:LaySkeleton>
+                    <Lay:LaySkeleton
+                        Margin="0,5"
+                        VerticalAlignment="Center"
+                        IsActive="{Binding ElementName=Switch, Path=IsChecked}">
+                        <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
+                            <TextBlock
+                                Margin="10,0"
+                                VerticalAlignment="Center"
+                                FontFamily="{DynamicResource IconFont}"
+                                Foreground="{DynamicResource Gradient}"
+                                Text="&#xec26;" />
+                            <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                        </StackPanel>
+                    </Lay:LaySkeleton>
+                </UniformGrid>
+            </Grid>
+            <Lay:LayLegend />
+            <Lay:LayButton
+                Margin="0,5"
+                HorizontalAlignment="Left"
+                Command="{Binding TestCommand}"
+                Content="刷新"
+                Type="Default" />
+            <ListBox Height="500" ItemsSource="{Binding Items}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Lay:LaySkeleton
+                                Width="100"
+                                Margin="0,5,10,5"
+                                IsActive="{Binding ., Mode=OneWay}"
+                                Type="Image">
+                                <Image Source="http://www.avanpa.com/images/upload/Image/201304/20130428143018834_997906.jpg" />
+                            </Lay:LaySkeleton>
+                            <UniformGrid
+                                Grid.Column="1"
+                                Columns="1"
+                                Rows="3">
+                                <Lay:LaySkeleton
+                                    Margin="0,5,250,5"
+                                    VerticalAlignment="Center"
+                                    IsActive="{Binding ., Mode=OneWay}">
+                                    <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{DynamicResource IconFont}"
+                                            Foreground="{DynamicResource Gradient}"
+                                            Text="&#xec26;" />
+                                        <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                                    </StackPanel>
+                                </Lay:LaySkeleton>
+                                <Lay:LaySkeleton
+                                    Margin="0,5,100,5"
+                                    VerticalAlignment="Center"
+                                    IsActive="{Binding ., Mode=OneWay}">
+                                    <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{DynamicResource IconFont}"
+                                            Foreground="{DynamicResource Gradient}"
+                                            Text="&#xec26;" />
+                                        <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                                    </StackPanel>
+                                </Lay:LaySkeleton>
+                                <Lay:LaySkeleton
+                                    Margin="0,5"
+                                    VerticalAlignment="Center"
+                                    IsActive="{Binding ., Mode=OneWay}">
+                                    <StackPanel Orientation="Horizontal" TextBlock.FontSize="20">
+                                        <TextBlock
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{DynamicResource IconFont}"
+                                            Foreground="{DynamicResource Gradient}"
+                                            Text="&#xec26;" />
+                                        <TextBlock VerticalAlignment="Center" Text="看山不是山，看水不是水，看山还是山，看水还是水" />
+                                    </StackPanel>
+                                </Lay:LaySkeleton>
+                            </UniformGrid>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

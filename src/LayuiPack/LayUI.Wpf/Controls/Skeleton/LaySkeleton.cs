@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LayUI.Wpf.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,15 @@ namespace LayUI.Wpf.Controls
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LaySkeleton));
 
 
+        public SkeletonStyle Type
+        {
+            get { return (SkeletonStyle)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Type.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TypeProperty =
+            DependencyProperty.Register("Type", typeof(SkeletonStyle), typeof(LaySkeleton)); 
 
     }
 }
