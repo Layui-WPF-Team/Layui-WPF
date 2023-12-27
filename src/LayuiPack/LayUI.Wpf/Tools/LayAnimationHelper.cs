@@ -79,7 +79,7 @@ namespace LayUI.Wpf.Tools
             }
         }
         /// <summary>
-        /// 创建双精度动画
+        /// 创建动画
         /// </summary>
         /// <param name="from">起始值</param>
         /// <param name="to">结束值</param>
@@ -89,7 +89,7 @@ namespace LayUI.Wpf.Tools
         /// <returns></returns>
         public static AnimationTimeline CreateAnimation(object from, object to, double duration, PropertyPath path, FrameworkElement element) => CreateAnimation(from, to, null, duration, null, path, element, null);
         /// <summary>
-        /// 创建双精度动画
+        /// 创建动画
         /// </summary>
         /// <param name="from">起始值</param>
         /// <param name="to">结束值</param>
@@ -100,7 +100,7 @@ namespace LayUI.Wpf.Tools
         /// <returns></returns>
         public static AnimationTimeline CreateAnimation(object from, object to, double duration, PropertyPath path, FrameworkElement element, Action<object, EventArgs> callBack) => CreateAnimation(from, to, null, duration, null, path, element, callBack);
         /// <summary>
-        /// 创建双精度动画
+        /// 创建动画
         /// </summary>
         /// <param name="from">起始值</param>
         /// <param name="to">结束值</param>
@@ -112,7 +112,7 @@ namespace LayUI.Wpf.Tools
         /// <returns></returns>
         public static AnimationTimeline CreateAnimation(object from, object to, double duration, IEasingFunction easing, PropertyPath path, FrameworkElement element, Action<object, EventArgs> callBack) => CreateAnimation(from, to, null, duration, easing, path, element, callBack);
         /// <summary>
-        /// 创建双精度动画
+        /// 创建动画
         /// </summary>
         /// <param name="from">起始值</param>
         /// <param name="to">结束值</param>
@@ -124,7 +124,7 @@ namespace LayUI.Wpf.Tools
         public static AnimationTimeline CreateAnimation(object from, object to, double duration, IEasingFunction easing, PropertyPath path, FrameworkElement ui) => CreateAnimation(from, to, null, duration, easing, path, ui, null);
 
         /// <summary>
-        /// 创建双精度动画
+        /// 创建动画
         /// </summary>
         /// <param name="from">起始值</param>
         /// <param name="to">结束值</param>
