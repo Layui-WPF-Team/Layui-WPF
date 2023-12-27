@@ -87,7 +87,7 @@ namespace LayUI.Wpf.Tools
         /// <param name="path">被执行的动画属性</param> 
         /// <param name="ui">执行动画的控件</param>
         /// <returns></returns>
-        public static AnimationTimeline CreateDoubleAnimation(object from, object to, double duration, PropertyPath path, FrameworkElement element) => CreateDoubleAnimation(from, to, null, duration, null, path, element, null);
+        public static AnimationTimeline CreateAnimation(object from, object to, double duration, PropertyPath path, FrameworkElement element) => CreateAnimation(from, to, null, duration, null, path, element, null);
         /// <summary>
         /// 创建双精度动画
         /// </summary>
@@ -98,7 +98,7 @@ namespace LayUI.Wpf.Tools
         /// <param name="element">执行动画的控件</param>
         /// <param name="callBack">回调(通常是指当前动画执行完成后触发)</param>
         /// <returns></returns>
-        public static AnimationTimeline CreateDoubleAnimation(object from, object to, double duration, PropertyPath path, FrameworkElement element, Action<object, EventArgs> callBack) => CreateDoubleAnimation(from, to, null, duration, null, path, element, callBack);
+        public static AnimationTimeline CreateAnimation(object from, object to, double duration, PropertyPath path, FrameworkElement element, Action<object, EventArgs> callBack) => CreateAnimation(from, to, null, duration, null, path, element, callBack);
         /// <summary>
         /// 创建双精度动画
         /// </summary>
@@ -110,7 +110,7 @@ namespace LayUI.Wpf.Tools
         /// <param name="element">执行动画的控件</param>
         /// <param name="callBack">回调(通常是指当前动画执行完成后触发)</param>
         /// <returns></returns>
-        public static AnimationTimeline CreateDoubleAnimation(object from, object to, double duration, IEasingFunction easing, PropertyPath path, FrameworkElement element, Action<object, EventArgs> callBack) => CreateDoubleAnimation(from, to, null, duration, easing, path, element, callBack);
+        public static AnimationTimeline CreateAnimation(object from, object to, double duration, IEasingFunction easing, PropertyPath path, FrameworkElement element, Action<object, EventArgs> callBack) => CreateAnimation(from, to, null, duration, easing, path, element, callBack);
         /// <summary>
         /// 创建双精度动画
         /// </summary>
@@ -121,7 +121,7 @@ namespace LayUI.Wpf.Tools
         /// <param name="path">被执行的动画属性</param> 
         /// <param name="element">执行动画的控件</param>
         /// <returns></returns>
-        public static AnimationTimeline CreateDoubleAnimation(object from, object to, double duration, IEasingFunction easing, PropertyPath path, FrameworkElement ui) => CreateDoubleAnimation(from, to, null, duration, easing, path, ui, null);
+        public static AnimationTimeline CreateAnimation(object from, object to, double duration, IEasingFunction easing, PropertyPath path, FrameworkElement ui) => CreateAnimation(from, to, null, duration, easing, path, ui, null);
 
         /// <summary>
         /// 创建双精度动画
@@ -135,7 +135,7 @@ namespace LayUI.Wpf.Tools
         /// <param name="element">执行动画的控件</param>
         /// <param name="callBack">回调(通常是指当前动画执行完成后触发)</param>
         /// <returns></returns>
-        public static AnimationTimeline CreateDoubleAnimation(object from, object to, double? beginTime, double duration, IEasingFunction easing, PropertyPath path, FrameworkElement element, Action<object, EventArgs> callBack)
+        public static AnimationTimeline CreateAnimation(object from, object to, double? beginTime, double duration, IEasingFunction easing, PropertyPath path, FrameworkElement element, Action<object, EventArgs> callBack)
         {
             try
             {

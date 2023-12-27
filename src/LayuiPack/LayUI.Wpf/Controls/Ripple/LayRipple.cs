@@ -89,7 +89,7 @@ namespace LayUI.Wpf.Controls
             _Storyboard = LayAnimationHelper.CreateStoryboard(
                 new AnimationTimeline[]
                 {
-                    LayAnimationHelper.CreateDoubleAnimation(3.0, 0.0, 0, new PropertyPath("(UIElement.Opacity)"), PART_Border)
+                    LayAnimationHelper.CreateAnimation(3.0, 0.0, 0, new PropertyPath("(UIElement.Opacity)"), PART_Border)
                 });
             LayAnimationHelper.ExecuteStoryboard(_Storyboard, PART_Border); 
         }
@@ -108,9 +108,9 @@ namespace LayUI.Wpf.Controls
             _Storyboard = LayAnimationHelper.CreateStoryboard(
                 new AnimationTimeline[]
                 {
-                    LayAnimationHelper.CreateDoubleAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"), PART_Border),
-                    LayAnimationHelper.CreateDoubleAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"), PART_Border),
-                    LayAnimationHelper.CreateDoubleAnimation(0.3, 0.0, 1, new PropertyPath("(UIElement.Opacity)"), PART_Border)
+                    LayAnimationHelper.CreateAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"), PART_Border),
+                    LayAnimationHelper.CreateAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"), PART_Border),
+                    LayAnimationHelper.CreateAnimation(0.3, 0.0, 1, new PropertyPath("(UIElement.Opacity)"), PART_Border)
                 });
             LayAnimationHelper.ExecuteStoryboard(_Storyboard, PART_Border);
         }
@@ -129,9 +129,9 @@ namespace LayUI.Wpf.Controls
             _Storyboard = LayAnimationHelper.CreateStoryboard(
                 new AnimationTimeline[]
                 {
-                    LayAnimationHelper.CreateDoubleAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"), PART_Border),
-                    LayAnimationHelper.CreateDoubleAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"), PART_Border),
-                    LayAnimationHelper.CreateDoubleAnimation(0.3, 0.0, 1, new PropertyPath("(UIElement.Opacity)"), PART_Border)
+                    LayAnimationHelper.CreateAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"), PART_Border),
+                    LayAnimationHelper.CreateAnimation(1.0, 1.4, 1, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"), PART_Border),
+                    LayAnimationHelper.CreateAnimation(0.3, 0.0, 1, new PropertyPath("(UIElement.Opacity)"), PART_Border)
                 });
             _Storyboard.RepeatBehavior = RepeatBehavior.Forever;
             LayAnimationHelper.ExecuteStoryboard(_Storyboard, PART_Border); 
