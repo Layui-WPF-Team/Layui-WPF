@@ -22,6 +22,10 @@ namespace LayuiComponentExample.ViewModels
             Images = new ObservableCollection<string>() {
                 "pack://SiteOfOrigin:,,,/Images/1.jpeg",
                 "pack://SiteOfOrigin:,,,/Images/2.jpg",
+                "pack://SiteOfOrigin:,,,/Images/1.jpeg",
+                "pack://SiteOfOrigin:,,,/Images/2.jpg",
+                "pack://SiteOfOrigin:,,,/Images/1.jpeg",
+                "pack://SiteOfOrigin:,,,/Images/2.jpg",
             };
         }
         private DelegateCommand _DeleteCommand;

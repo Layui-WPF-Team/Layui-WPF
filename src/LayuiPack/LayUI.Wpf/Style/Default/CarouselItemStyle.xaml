@@ -53,19 +53,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style
-        x:Key="LaySlideCarouselItemStyle"
-        BasedOn="{StaticResource LayCarouselItemBaseStyle}"
-        TargetType="Lay:LayCarouselItem">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Lay:LayCarouselItem">
-                    <Grid>
-                        <ContentPresenter />
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
     <Style BasedOn="{StaticResource LayCarouselItemBaseStyle}" TargetType="Lay:LayCarouselItem" />
 </ResourceDictionary>

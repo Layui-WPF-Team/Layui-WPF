@@ -29,8 +29,18 @@
                             HorizontalAlignment="Left"
                             Cursor="Hand"
                             FocusVisualStyle="{x:Null}"
-                            Style="{x:Null}"
-                            Visibility="Collapsed">
+                            IsHitTestVisible="false"
+                            Opacity="0"
+                            RenderTransformOrigin="0.5,0.5"
+                            Style="{x:Null}">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Button.RenderTransform>
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid Width="36" Height="36">
@@ -67,8 +77,18 @@
                             HorizontalAlignment="Right"
                             Cursor="Hand"
                             FocusVisualStyle="{x:Null}"
-                            Style="{x:Null}"
-                            Visibility="Collapsed">
+                            IsHitTestVisible="false"
+                            Opacity="0"
+                            RenderTransformOrigin="0.5,0.5"
+                            Style="{x:Null}">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Button.RenderTransform>
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid Width="36" Height="36">
@@ -99,63 +119,190 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <ListBox
+                        <Border
                             x:Name="PATR_Tools"
+                            Height="18"
                             Margin="20,10"
+                            Padding="2,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            ItemsSource="{TemplateBinding ItemsSource}"
-                            SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayGradientCarousel}, Path=SelectedIndex}"
-                            SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayGradientCarousel}, Path=SelectedItem}"
-                            Style="{x:Null}"
-                            Visibility="Collapsed">
-                            <ListBox.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ListBoxItem">
-                                                <Ellipse
-                                                    x:Name="bg"
-                                                    Width="12"
-                                                    Height="12"
-                                                    Margin="2"
-                                                    Cursor="Hand"
-                                                    Fill="White"
-                                                    Opacity="0.5" />
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsSelected" Value="True">
-                                                        <Setter TargetName="bg" Property="Opacity" Value="1" />
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ListBox.ItemContainerStyle>
-                            <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel />
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                        </ListBox>
+                            CornerRadius="8"
+                            IsHitTestVisible="False"
+                            Opacity="0">
+                            <Border.Background>
+                                <SolidColorBrush Opacity="0.6" Color="{DynamicResource LighCyanEffect}" />
+                            </Border.Background>
+                            <ListBox
+                                Background="Transparent"
+                                BorderThickness="0"
+                                ItemsSource="{TemplateBinding ItemsSource}"
+                                SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayGradientCarousel}, Path=SelectedIndex}"
+                                SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayGradientCarousel}, Path=SelectedItem}"
+                                Style="{x:Null}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <Ellipse
+                                                        x:Name="bg"
+                                                        Width="12"
+                                                        Height="12"
+                                                        Margin="2"
+                                                        Cursor="Hand"
+                                                        Fill="White"
+                                                        Opacity="0.5" />
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsSelected" Value="True">
+                                                            <Setter TargetName="bg" Property="Opacity" Value="1" />
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                            </ListBox>
+                        </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Arrow}" Value="Always">
-                            <Setter TargetName="PART_RightButton" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_LeftButton" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PATR_Tools" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_RightButton" Property="IsHitTestVisible" Value="true" />
+                            <Setter TargetName="PART_LeftButton" Property="IsHitTestVisible" Value="true" />
+                            <Setter TargetName="PATR_Tools" Property="IsHitTestVisible" Value="true" />
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PATR_Tools"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_RightButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_LeftButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_RightButton"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                            To="0"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_LeftButton"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                            To="0"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PATR_Tools"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_RightButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_RightButton"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                            To="20"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_LeftButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_LeftButton"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                            To="-20"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.ExitActions>
                         </DataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Arrow}" Value="Hover" />
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsMouseOver}" Value="true" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="PART_RightButton" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_LeftButton" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PATR_Tools" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_RightButton" Property="IsHitTestVisible" Value="true" />
+                            <Setter TargetName="PART_LeftButton" Property="IsHitTestVisible" Value="true" />
+                            <Setter TargetName="PATR_Tools" Property="IsHitTestVisible" Value="true" />
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PATR_Tools"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_RightButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_LeftButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_RightButton"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                            To="0"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_LeftButton"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                            To="0"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiDataTrigger.EnterActions>
+                            <MultiDataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PATR_Tools"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_RightButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_RightButton"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                            To="20"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_LeftButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.3" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_LeftButton"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                            To="-20"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiDataTrigger.ExitActions>
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -163,157 +310,4 @@
         </Setter>
     </Style>
     <Style BasedOn="{StaticResource LayGradientCarouselStyle}" TargetType="Lay:LayGradientCarousel" />
-    <Style x:Key="LaySlideCarouselStyle" TargetType="Lay:LaySlideCarousel">
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource GrayEffect}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Lay:LaySlideCarousel">
-                    <Grid Background="{TemplateBinding Background}">
-                        <StackPanel x:Name="PART_ItemsPanel" Orientation="Horizontal" />
-                        <Button
-                            x:Name="PART_LeftButton"
-                            Margin="20,0,0,0"
-                            HorizontalAlignment="Left"
-                            Cursor="Hand"
-                            FocusVisualStyle="{x:Null}"
-                            Style="{x:Null}"
-                            Visibility="Collapsed">
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Grid Width="36" Height="36">
-                                        <Border
-                                            Background="Black"
-                                            CornerRadius="18"
-                                            Opacity="0.2" />
-                                        <Path
-                                            Width="15"
-                                            Height="10"
-                                            Margin="0,0,3,0"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Data="M533.333333 516.266667l-174.933333-170.666667-64 59.733333 234.666667 234.666667L768 405.333333l-59.733333-59.733333-174.933334 170.666667z"
-                                            Fill="White"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            Stretch="Fill">
-                                            <Path.RenderTransform>
-                                                <TransformGroup>
-                                                    <ScaleTransform />
-                                                    <SkewTransform />
-                                                    <RotateTransform x:Name="RotateTransform" Angle="90" />
-                                                    <TranslateTransform />
-                                                </TransformGroup>
-                                            </Path.RenderTransform>
-                                        </Path>
-                                    </Grid>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                        <Button
-                            x:Name="PART_RightButton"
-                            Margin="0,0,20,0"
-                            HorizontalAlignment="Right"
-                            Cursor="Hand"
-                            FocusVisualStyle="{x:Null}"
-                            Style="{x:Null}"
-                            Visibility="Collapsed">
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Grid Width="36" Height="36">
-                                        <Border
-                                            Background="Black"
-                                            CornerRadius="18"
-                                            Opacity="0.2" />
-                                        <Path
-                                            Width="15"
-                                            Height="10"
-                                            Margin="3,0,0,0"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Data="M533.333333 516.266667l-174.933333-170.666667-64 59.733333 234.666667 234.666667L768 405.333333l-59.733333-59.733333-174.933334 170.666667z"
-                                            Fill="White"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            Stretch="Fill">
-                                            <Path.RenderTransform>
-                                                <TransformGroup>
-                                                    <ScaleTransform />
-                                                    <SkewTransform />
-                                                    <RotateTransform x:Name="RotateTransform" Angle="-90" />
-                                                    <TranslateTransform />
-                                                </TransformGroup>
-                                            </Path.RenderTransform>
-                                        </Path>
-                                    </Grid>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                        <ListBox
-                            x:Name="PATR_Tools"
-                            Margin="20,10"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            DataContext="{TemplateBinding DataContext}"
-                            ItemsSource="{TemplateBinding ItemsSource}"
-                            SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlideCarousel}, Path=SelectedIndex}"
-                            SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=Lay:LaySlideCarousel}, Path=SelectedItem}"
-                            Style="{x:Null}"
-                            Visibility="Collapsed">
-                            <ListBox.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ListBoxItem">
-                                                <Ellipse
-                                                    x:Name="bg"
-                                                    Width="12"
-                                                    Height="12"
-                                                    Margin="2"
-                                                    Cursor="Hand"
-                                                    Fill="White"
-                                                    Opacity="0.5" />
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsSelected" Value="True">
-                                                        <Setter TargetName="bg" Property="Opacity" Value="1" />
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ListBox.ItemContainerStyle>
-                            <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel />
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                        </ListBox>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Arrow}" Value="Always">
-                            <Setter TargetName="PART_RightButton" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_LeftButton" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PATR_Tools" Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Arrow}" Value="Hover" />
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsMouseOver}" Value="true" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="PART_RightButton" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_LeftButton" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PATR_Tools" Property="Visibility" Value="Visible" />
-                        </MultiDataTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style BasedOn="{StaticResource LaySlideCarouselStyle}" TargetType="Lay:LaySlideCarousel" />
 </ResourceDictionary>

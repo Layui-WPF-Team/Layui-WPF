@@ -68,7 +68,7 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty IsAutoSwitchProperty =
             DependencyProperty.Register("IsAutoSwitch", typeof(bool), typeof(LayGradientCarousel), new PropertyMetadata(false, OnAutoSwitchChange));
 
-        private static void OnAutoSwitchChange(DependencyObject d, DependencyPropertyChangedEventArgs e)=> ((LayGradientCarousel)d).ImageSwitch();
+        private static void OnAutoSwitchChange(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((LayGradientCarousel)d).ImageSwitch();
         /// <summary>
         /// 间隔时间
         /// </summary>
@@ -84,6 +84,22 @@ namespace LayUI.Wpf.Controls
             DependencyProperty.Register("Interval", typeof(TimeSpan), typeof(LayGradientCarousel), new PropertyMetadata(TimeSpan.FromSeconds(4), OnIntervalChange));
 
         private static void OnIntervalChange(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((LayGradientCarousel)d).SetInterval();
+
+
+        /// <summary>
+        /// 触摸滑动间隔
+        /// </summary>
+        public double TouchSlidingInterval
+        {
+            get { return (double)GetValue(TouchSlidingIntervalProperty); }
+            set { SetValue(TouchSlidingIntervalProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TouchSlidingInterval.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TouchSlidingIntervalProperty =
+            DependencyProperty.Register("TouchSlidingInterval", typeof(double), typeof(LayGradientCarousel),new PropertyMetadata(100.0));
+
+
 
         // <summary>
         /// 切换开关
@@ -183,12 +199,19 @@ namespace LayUI.Wpf.Controls
         /// <param name="e"></param>
         private void PART_RightButton_Click(object sender, RoutedEventArgs e)
         {
+            Next();
+        }
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        void Next()
+        {
             try
             {
+                if (IsAutoSwitch) timer?.Stop();
                 if (Items.Count < 0) SelectedIndex = 0;
                 if (SelectedIndex >= (Items.Count - 1)) SelectedIndex = 0;
                 else SelectedIndex++;
-                timer?.Stop();
                 if (IsAutoSwitch) timer?.Start();
             }
             catch (Exception ex)
@@ -198,18 +221,25 @@ namespace LayUI.Wpf.Controls
             }
         }
         /// <summary>
-        /// 执行下一页
+        /// 执行上一页
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PART_LeftButton_Click(object sender, RoutedEventArgs e)
         {
+            Previous();
+        }
+        /// <summary>
+        /// 上一页
+        /// </summary>
+        public void Previous()
+        {
             try
             {
+                if (IsAutoSwitch) timer?.Stop();
                 if (Items.Count < 0) SelectedIndex = 0;
                 if (SelectedIndex <= 0) SelectedIndex = (Items.Count - 1);
                 else SelectedIndex--;
-                timer?.Stop();
                 if (IsAutoSwitch) timer?.Start();
             }
             catch (Exception ex)
@@ -237,9 +267,18 @@ namespace LayUI.Wpf.Controls
             var item = new LayCarouselItem();
             return item;
         }
-        protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
+        private Point touchPoint;
+        protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
-            base.OnItemsChanged(e);
+            base.OnPreviewMouseLeftButtonDown(e);
+            touchPoint = e.GetPosition(this);
+        }
+        protected override void OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)
+        {
+            base.OnPreviewMouseLeftButtonUp(e);
+            var point = e.GetPosition(this);
+            if (point.X - touchPoint.X > TouchSlidingInterval) Next();
+            if (point.X - touchPoint.X < -TouchSlidingInterval) Previous();
         }
     }
 }
