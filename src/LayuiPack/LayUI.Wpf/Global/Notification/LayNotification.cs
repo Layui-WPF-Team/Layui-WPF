@@ -166,11 +166,12 @@ namespace LayUI.Wpf.Global
                 var view = NotificationHosts.Where(o => o.Key.Equals("RootNotificationToken")).FirstOrDefault().Value;
                 view.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
                 {
-                    var page = new LayNotificationControl() { Title = title, Type = type, Content = Notification, SubmitContent = SubmitContent, ShowSubmit = SubmitContent == null ? false : true, Uid = Guid.NewGuid().ToString() };
+                    var page = new LayNotificationControl() { Time=time,Title = title, Type = type, Content = Notification, SubmitContent = SubmitContent, ShowSubmit = SubmitContent == null ? false : true, Uid = Guid.NewGuid().ToString() };
                     Action<bool> close = (o) =>
                     {
                         callback?.Invoke(o);//执行回调方法
                         page.Close = null;
+                        page.RemoveTime();
                         view.Items.Remove(page);
                     };
                     page.Close = close;
@@ -183,11 +184,12 @@ namespace LayUI.Wpf.Global
                 var view = NotificationHosts.Where(o => o.Key.Equals(tooken)).FirstOrDefault().Value;
                 view.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
                 {
-                    var page = new LayNotificationControl() { Title = title, Type = type, Content = Notification, SubmitContent = SubmitContent, ShowSubmit = SubmitContent == null ? false : true, Uid = Guid.NewGuid().ToString() };
+                    var page = new LayNotificationControl() { Time = time, Title = title, Type = type, Content = Notification, SubmitContent = SubmitContent, ShowSubmit = SubmitContent == null ? false : true, Uid = Guid.NewGuid().ToString() };
                     Action<bool> close = (o) =>
                     {
                         callback?.Invoke(o);//执行回调方法
                         page.Close = null;
+                        page.RemoveTime();
                         view.Items.Remove(page);
                     };
                     page.Close = close;

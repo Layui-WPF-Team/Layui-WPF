@@ -21,7 +21,9 @@ namespace LayuiComponentExample.ViewModels
 
         async void ExecuteGoCommand()
         {
-            LayNotification.Default("这是标题", "这是内容");
+            LayNotification.Default("这是标题", "这是内容", (o) => {
+                LayMessage.Success($"显示：{5}秒");
+            },null,5.0);
             await Task.Delay(100);
             LayNotification.Info("这是标题", "这是内容");
             await Task.Delay(100);

@@ -7,15 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace LayUI.Wpf.Controls
 {
     /// <summary>
     /// 提示内容控件
     /// </summary>
-    [TemplatePart(Name =nameof(PART_CloseButton),Type =typeof(Button))]
+    [TemplatePart(Name = nameof(PART_CloseButton), Type = typeof(Button))]
     [TemplatePart(Name = nameof(PART_SubmitButton), Type = typeof(Button))]
-    public class LayNotificationControl:ContentControl, ILayControl
+    public class LayNotificationControl : ContentControl, ILayControl
     {
         /// <summary>
         /// 关闭按钮
@@ -25,6 +26,25 @@ namespace LayUI.Wpf.Controls
         /// 提交按钮
         /// </summary>
         private Button PART_SubmitButton;
+        /// <summary>
+        /// 关闭通知信息计时器
+        /// </summary>
+
+        private DispatcherTimer PART_CloseTimer; 
+        internal void RemoveTime()
+        {
+            if (PART_CloseTimer != null)
+            {
+                PART_CloseTimer.Stop();
+                PART_CloseTimer.Tick -= PART_CloseTimer_Tick;
+                PART_CloseTimer = null;
+            }
+        }
+        private void PART_CloseTimer_Tick(object sender, EventArgs e)
+        { 
+            if(PART_CloseTimer!=null)  Close?.Invoke(false);
+            RemoveTime();
+        }
 
         internal Action<bool> Close;
         /// <summary>
@@ -39,6 +59,21 @@ namespace LayUI.Wpf.Controls
         // Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(LayNotificationControl));
+
+
+        /// <summary>
+        /// 倒计时时间
+        /// </summary>
+        internal double Time
+        {
+            get { return (double)GetValue(TimeProperty); }
+            set { SetValue(TimeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Time.  This enables animation, styling, binding, etc...
+        internal static readonly DependencyProperty TimeProperty =
+            DependencyProperty.Register("Time", typeof(double), typeof(LayNotificationControl));
+
 
 
         /// <summary>
@@ -114,12 +149,19 @@ namespace LayUI.Wpf.Controls
             base.OnApplyTemplate();
             PART_CloseButton = GetTemplateChild(nameof(PART_CloseButton)) as Button;
             PART_SubmitButton = GetTemplateChild(nameof(PART_SubmitButton)) as Button;
-            if (PART_CloseButton != null&& PART_SubmitButton != null)
+            if (PART_CloseButton != null && PART_SubmitButton != null)
             {
                 PART_CloseButton.Click -= PART_CloseButton_Click;
                 PART_CloseButton.Click += PART_CloseButton_Click;
                 PART_SubmitButton.Click -= PART_SubmitButton_Click;
                 PART_SubmitButton.Click += PART_SubmitButton_Click;
+                if (Time > 0)
+                {
+                    PART_CloseTimer = new DispatcherTimer();
+                    PART_CloseTimer.Interval = TimeSpan.FromSeconds(Time);
+                    PART_CloseTimer.Tick += PART_CloseTimer_Tick;
+                    PART_CloseTimer.Start();
+                }
             }
         }
 
