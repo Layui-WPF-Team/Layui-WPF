@@ -1,5 +1,48 @@
-# Layui-WPF
-这是一个WPF版的Layui前端UI样式库
+
+# LayUI-WPF
+
+这是一个WPF版的Layui前端UI样式库，该控件库参考了Web版本的LayUI风格，利用该控件库可以完成现代化UI客户端程序，让你的客户端看起来更加简洁丰富又不失美感
+
+## 技术交流
+
+| 联系方式             |                                                                |
+| ----------------- | ------------------------------------------------------------------ | 
+| QQ群 |  769599646(暗号：就叫我啊禾斗吧)|
+| QQ群 |  592390923(暗号：就叫我啊禾斗吧)| 
+| 微信公众号 |  WRQBC1024| 
+
+
+## 作者
+
+- [Coolkeke](https://github.com/Coolkeke?tab=overview&from=2023-12-01&to=2023-12-31) 
+## 其他项目
+[LayUI.Avalonia](https://github.com/Coolkeke/LayUI-Avalonia/tree/LayUI-Avalonia-11.0.0)
+## 教学视频
+[Bilibili](https://space.bilibili.com/48808444) 
+## 想找我外包？
+WPF、Avalonia前端外包联系 QQ : 1357703886 微信：ywk912zj
+## 想为我买防脱发水？
+![1704476122969](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/3e169d64-1c3d-42d3-81b0-89895d664b15) ![IMG_20240106_013112](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/36a60904-207c-4120-b531-cb402f95f5bb)
+## 你们还想干嘛？
+我想不到你门想干嘛了，想不了一点了>_<  干脆直接联系我吧~~~ 
+## 使用
+
+步骤一 : 添加LayUI.Wpf Nuget包;
+
+```Install-Package LayUI.Wpf```
+
+步骤二 : 添加代码在 App.xaml 下面:
+```XML
+<Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Themes/Default.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+</Application.Resources>
+```
+## 截图
+ 
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/fb00a697-7cbe-4ce4-a3e5-55ad92a3b118)
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/c3ed03b6-c600-4aa2-9f24-1ba67634e079)
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/93bc64cd-4b12-4142-bc3f-f3eebec6b3de)
@@ -35,23 +78,6 @@
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/eb953d64-5d7f-4437-8f3a-09f83b7b85ad)
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/ff190e06-b52e-4782-ae4d-c66fe73ba43c)
 
-
-## Usage
-
-Step 1: 添加LayUI.Wpf Nuget包;
-
-```Install-Package LayUI.Wpf```
-
-Step 2: 添加代码在 App.xaml 下面:
-```XML
-<Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Themes/Default.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-</Application.Resources>
-```
 
 Step 3: 在目标页面添加需要的控件引用:
 `xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"`
