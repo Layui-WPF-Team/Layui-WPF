@@ -40,7 +40,11 @@ WPF、Avalonia前端外包联系 QQ : 1357703886 微信：ywk912zj
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 </Application.Resources>
-```
+``` 
+步骤三: 在目标页面添加需要的控件引用:
+`xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"`
+
+步骤四: 完成
 ## 截图
  
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/fb00a697-7cbe-4ce4-a3e5-55ad92a3b118)
@@ -77,9 +81,3 @@ WPF、Avalonia前端外包联系 QQ : 1357703886 微信：ywk912zj
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/0d8d8af2-df1a-4d61-80a2-db7ba33e5c54)
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/eb953d64-5d7f-4437-8f3a-09f83b7b85ad)
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/ff190e06-b52e-4782-ae4d-c66fe73ba43c)
-
-
-Step 3: 在目标页面添加需要的控件引用:
-`xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"`
-
-Step 4: 完成
