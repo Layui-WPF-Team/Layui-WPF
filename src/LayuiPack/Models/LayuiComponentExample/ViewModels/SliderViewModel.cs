@@ -14,7 +14,7 @@ namespace LayuiComponentExample.ViewModels
     {
         public SliderViewModel(IContainerExtension container) : base(container)
         {
-
+            
         }
     }
 }
