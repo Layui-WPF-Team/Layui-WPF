@@ -463,67 +463,72 @@ namespace LayUI.Wpf.Global
                 LayDialogHost host = DialogHosts[token];
                 //创建内容视图
                 var view = Activator.CreateInstance(DialogViewCollection[dialogName]) as UserControl;
-                //检查VM初始化被注入情况
-                if (DialogViewModelCollection.ContainsKey(dialogName))
+                if (view is UserControl content && content.DataContext is ILayDialogAware dialogAware)
                 {
-                    //创建VM
-                    view.DataContext = Activator.CreateInstance(DialogViewModelCollection[dialogName]);
-                }
-                //创建弹窗
-                LayDialogUserControlWindow dialogView = new LayDialogUserControlWindow()
-                {
-                    Uid = dialogName + Guid.NewGuid().ToString(),
-                    IsOpen = true,
-                    Content = view,
-                    DataContext = view.DataContext
-                };
-                host.DialogItems.Items.Add(dialogView);
-                ILayDialogUserControlWindow dialog = dialogView as ILayDialogUserControlWindow;
-                Action<ILayDialogResult> requestCloseHandler = null;
-                //窗体关闭的回调方法
-                requestCloseHandler = (o) =>
-                {
-                    dialogView.Result = o;
-                    //关闭窗体
-                    host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(async () =>
+
+                    //检查VM初始化被注入情况
+                    if (DialogViewModelCollection.ContainsKey(dialogName))
                     {
-                        //窗体关闭后数据置空
-                        dialogView.IsOpen = false;
-                        await Task.Delay(100);
-                        host.DialogItems.Items.Remove(dialogView);
-                    }));
-                };
-                RoutedEventHandler LoadedHandler = null;
-                LoadedHandler = (o, e) =>
-                {
-                    dialogView.Loaded -= LoadedHandler;
-                    dialogView.GetDialogViewModel().RequestClose += requestCloseHandler;
-                };
-                dialog.Loaded += LoadedHandler;
-                RoutedEventHandler UnloadedHandler = null;
-                //窗体销毁后的事件
-                UnloadedHandler = (o, e) =>
-                {
-                    dialog.Unloaded -= UnloadedHandler;
-                    dialog.GetDialogViewModel().RequestClose -= requestCloseHandler;
-                    //抓取回调后的数据并回传
-                    if (dialog.Result == null) dialog.Result = new LayDialogResult() { Result = Enum.ButtonResult.Default };
-                    callback?.Invoke(dialog.Result);
-                    //判断是否为模态弹窗
-                    if (isModel)
-                    {
-                        //取消线程占用，允许进行ViewModel业务代码操作
-                        dispatcherFrame.Continue = false;
-                        ComponentDispatcher.PopModal();
-                        dispatcherFrame = null;
+                        //创建VM
+                        view.DataContext = Activator.CreateInstance(DialogViewModelCollection[dialogName]);
                     }
-                };
-                dialog.Unloaded += UnloadedHandler;
-                //抓取当前需要传递的参数并且传递给对应视图的ViewModel
-                if (!(view.DataContext is ILayDialogAware viewModel))
-                    throw new NullReferenceException("对话框的 ViewModel 必须实现 IDialogAware 接口 ");
-                //给对应的ViewModel传值
-                ViewAndViewModelAction<ILayDialogAware>(viewModel, d => d.OnDialogOpened(parameters));
+                    //创建弹窗
+                    LayDialogUserControlWindow dialogView = new LayDialogUserControlWindow()
+                    {
+                        Uid = dialogName + Guid.NewGuid().ToString(),
+                        IsOpen = true,
+                        Content = view,
+                        DataContext = view.DataContext
+                    };
+                    host.DialogItems.Items.Add(dialogView);
+                    ILayDialogUserControlWindow dialog = dialogView as ILayDialogUserControlWindow;
+                    Action<ILayDialogResult> requestCloseHandler = null;
+                    //窗体关闭的回调方法
+                    requestCloseHandler = (o) =>
+                    {
+                        dialogView.Result = o;
+                        //关闭窗体
+                        host.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(async () =>
+                        {
+                            //窗体关闭后数据置空
+                            dialogView.IsOpen = false;
+                            await Task.Delay(100);
+                            dialogAware.OnDialogClosed();
+                            host.DialogItems.Items.Remove(dialogView);
+                        }));
+                    };
+                    RoutedEventHandler LoadedHandler = null;
+                    LoadedHandler = (o, e) =>
+                    {
+                        dialogView.Loaded -= LoadedHandler;
+                        dialogView.GetDialogViewModel().RequestClose += requestCloseHandler;
+                    };
+                    dialog.Loaded += LoadedHandler;
+                    RoutedEventHandler UnloadedHandler = null;
+                    //窗体销毁后的事件
+                    UnloadedHandler = (o, e) =>
+                    {
+                        dialog.Unloaded -= UnloadedHandler;
+                        dialog.GetDialogViewModel().RequestClose -= requestCloseHandler;
+                        //抓取回调后的数据并回传
+                        if (dialog.Result == null) dialog.Result = new LayDialogResult() { Result = Enum.ButtonResult.Default };
+                        callback?.Invoke(dialog.Result);
+                        //判断是否为模态弹窗
+                        if (isModel)
+                        {
+                            //取消线程占用，允许进行ViewModel业务代码操作
+                            dispatcherFrame.Continue = false;
+                            ComponentDispatcher.PopModal();
+                            dispatcherFrame = null;
+                        }
+                    };
+                    dialog.Unloaded += UnloadedHandler;
+                    //抓取当前需要传递的参数并且传递给对应视图的ViewModel
+                    if (!(view.DataContext is ILayDialogAware viewModel))
+                        throw new NullReferenceException("对话框的 ViewModel 必须实现 IDialogAware 接口 ");
+                    //给对应的ViewModel传值
+                    ViewAndViewModelAction<ILayDialogAware>(viewModel, d => d.OnDialogOpened(parameters));
+                }
             }
             catch (Exception ex)
             {

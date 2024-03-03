@@ -9,6 +9,5 @@ namespace LayUI.Wpf.Global
     public interface ILayDialogWindowAware:ILayDialogAware
     {
         bool CanCloseDialog();
-        void OnDialogClosed();
     }
 }
