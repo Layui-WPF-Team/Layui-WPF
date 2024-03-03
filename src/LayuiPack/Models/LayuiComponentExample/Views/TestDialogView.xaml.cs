@@ -29,6 +29,10 @@ namespace LayuiComponentExample.Views
 
         public event Action<ILayDialogResult> RequestClose;
 
+        public void OnDialogClosed()
+        { 
+        }
+
         public void OnDialogOpened(ILayDialogParameter parameters)
         {
             

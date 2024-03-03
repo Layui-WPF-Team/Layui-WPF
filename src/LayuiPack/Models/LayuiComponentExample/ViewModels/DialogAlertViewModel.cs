@@ -34,5 +34,9 @@ namespace LayuiComponentExample.ViewModels
         {
             Message = parameters.GetValue<string>("Message");
         }
+
+        public void OnDialogClosed()
+        { 
+        }
     }
 }

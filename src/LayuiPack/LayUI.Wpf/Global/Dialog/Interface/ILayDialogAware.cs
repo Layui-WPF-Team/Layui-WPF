@@ -10,5 +10,6 @@ namespace LayUI.Wpf.Global
     {
         event Action<ILayDialogResult> RequestClose;
         void OnDialogOpened(ILayDialogParameter parameters);
+        void OnDialogClosed();
     }
 }

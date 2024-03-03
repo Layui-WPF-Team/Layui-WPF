@@ -302,7 +302,7 @@ namespace LayUI.Wpf.Global
             try
             {
                 if (!DialogHosts.ContainsKey(token)) throw new Exception($"未找到{nameof(token)}值为{token}的弹窗组件:{nameof(LayDialogHost)}");
-                if (content is UserControl && content is ILayDialogAware)
+                if (content is UserControl && content is ILayDialogAware dialogAware)
                 {
                     //抓取当前展示弹窗容器
                     LayDialogHost host = DialogHosts[token];
@@ -328,6 +328,7 @@ namespace LayUI.Wpf.Global
                             //窗体关闭后数据置空
                             dialogView.IsOpen = false;
                             await Task.Delay(100);
+                            dialogAware.OnDialogClosed();
                             host.DialogItems.Items.Remove(dialogView);
                         }));
                     };
