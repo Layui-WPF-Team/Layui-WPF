@@ -30,7 +30,7 @@
                         <Grid.Effect>
                             <DropShadowEffect
                                 BlurRadius="9"
-                                Opacity="0.7"
+                                Opacity="0.3"
                                 ShadowDepth="0" />
                         </Grid.Effect>
                         <Border x:Name="PART_Root_Border">
