@@ -90,8 +90,8 @@
                     </Style>
                 </Lay:LayDataGrid.RowStyle>
                 <Lay:LayDataGrid.Columns>
-                    <DataGridCheckBoxColumn Width="60" Header="默认" />
-                    <DataGridTemplateColumn Width="80" Header="自动索引">
+                    <DataGridCheckBoxColumn Width="auto" Header="默认" />
+                    <DataGridTemplateColumn Width="*" Header="自动索引">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock
