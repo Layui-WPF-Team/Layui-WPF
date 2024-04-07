@@ -1,4 +1,4 @@
-﻿using LayUI.Wpf.Enum.Badge;
+﻿using LayUI.Wpf.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

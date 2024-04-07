@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayUI.Wpf.Enum.Badge
+namespace LayUI.Wpf.Enum
 {
     /// <summary>
     ///  BadgeStyle

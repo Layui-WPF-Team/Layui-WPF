@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayUI.Wpf.Enum.GroupBox
+namespace LayUI.Wpf.Enum
 {
     /// <summary>
     /// 顶部区域文字排版类型

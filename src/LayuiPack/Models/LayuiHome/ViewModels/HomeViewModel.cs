@@ -229,6 +229,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="树形组件", PageKey=SystemResource.Page_TreeView
                             },new MenuItemModel()
                             {
+                                ItemTitle="级联选择器", PageKey=SystemResource.Page_LayCascaderView
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="树选择", PageKey=SystemResource.Page_TreeSelectView
                             },new MenuItemModel()
                             {

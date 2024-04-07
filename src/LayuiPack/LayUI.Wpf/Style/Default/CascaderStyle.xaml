@@ -1,0 +1,38 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="LayCascaderStyle" TargetType="Lay:LayCascader">
+        <Setter Property="Height" Value="38" />
+        <Setter Property="Padding" Value="10,0,10,0" />
+        <Setter Property="BorderBrush" Value="Red" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="MaxDropDownHeight" Value="100" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayCascader">
+                    <Grid>
+                        <ToggleButton
+                            x:Name="PART_ToggleButton"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsDropDown, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Popup
+                            x:Name="PART_Popup"
+                            MinWidth="200"
+                            MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                            IsOpen="{TemplateBinding IsDropDown}">
+                            <ScrollViewer>
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayCascaderStyle}" TargetType="Lay:LayCascader" />
+</ResourceDictionary>

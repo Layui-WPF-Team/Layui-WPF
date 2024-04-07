@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LayUI.Wpf.Enum.Legend
+namespace LayUI.Wpf.Enum
 {
     /// <summary>
     /// 分割线类型

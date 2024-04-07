@@ -170,7 +170,11 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 波纹
         /// </summary>
-        public const string Page_RippleView = "RippleView"; 
+        public const string Page_RippleView = "RippleView";
+        /// <summary>
+        /// 级联选择器
+        /// </summary>
+        public const string Page_LayCascaderView = "LayCascaderView"; 
         #endregion
     }
 }

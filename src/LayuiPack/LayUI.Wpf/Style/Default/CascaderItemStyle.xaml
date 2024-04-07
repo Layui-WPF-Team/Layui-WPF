@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="LayCascaderItemStyle" TargetType="Lay:LayCascaderItem">
+        <Setter Property="Height" Value="38" />
+        <Setter Property="Padding" Value="10,0,10,0" />
+        <Setter Property="BorderBrush" Value="Red" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayCascaderItem">
+                    <Border x:Name="PART_Border" Background="Red">
+                        <Grid>
+                            <Button
+                                x:Name="PART_Button"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+                            <Popup
+                                x:Name="PART_Popup"
+                                MinWidth="200"
+                                MaxHeight="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayCascader}, Path=MaxDropDownHeight}"
+                                IsOpen="{TemplateBinding IsDropDown}"
+                                Placement="Right"
+                                PlacementTarget="{Binding ElementName=PART_Border}">
+                                <ScrollViewer>
+                                    <ItemsPresenter />
+                                </ScrollViewer>
+                            </Popup>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayCascaderItemStyle}" TargetType="Lay:LayCascaderItem" />
+</ResourceDictionary>

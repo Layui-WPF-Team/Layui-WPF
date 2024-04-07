@@ -53,6 +53,7 @@
     <Compile Include="ViewModels\AnimationCommandViewModel.cs" />
     <Compile Include="ViewModels\BadgeViewModel.cs" />
     <Compile Include="ViewModels\CarouselViewModel.cs" />
+    <Compile Include="ViewModels\CascaderViewModel.cs" />
     <Compile Include="ViewModels\DateTimeViewModel.cs" />
     <Compile Include="ViewModels\DefaultDialogViewModel.cs" />
     <Compile Include="ViewModels\DrawerViewModel.cs" />
@@ -75,6 +76,9 @@
     </Compile>
     <Compile Include="Views\Carousel.xaml.cs">
       <DependentUpon>Carousel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cascader.xaml.cs">
+      <DependentUpon>Cascader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DateTime.xaml.cs">
       <DependentUpon>DateTime.xaml</DependentUpon>
@@ -179,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Carousel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Cascader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,4 @@
-﻿using LayUI.Wpf.Enum.Legend;
+﻿using LayUI.Wpf.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
