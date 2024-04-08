@@ -10,8 +10,8 @@
 | QQ群 |  769599646(暗号：就叫我啊禾斗吧)|
 | QQ群 |  592390923(暗号：就叫我啊禾斗吧)| 
 | 微信公众号 |  WRQBC1024| 
-
-
+## 学习文档
+[LayUI.WPF在线文档](https://layui-wpf-team.github.io/Document/)  
 ## 作者
 
 - [Coolkeke](https://github.com/Coolkeke?tab=overview&from=2023-12-01&to=2023-12-31) 
