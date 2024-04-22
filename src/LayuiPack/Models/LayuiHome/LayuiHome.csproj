@@ -86,6 +86,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="LayUI.Wpf.Extensions">
+      <Version>1.0.2.240422</Version>
+    </PackageReference>
     <PackageReference Include="log4net">
       <Version>2.0.15</Version>
     </PackageReference>

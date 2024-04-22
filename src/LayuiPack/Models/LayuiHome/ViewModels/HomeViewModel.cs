@@ -122,138 +122,138 @@ namespace LayuiHome.ViewModels
                 {
                 new MenuItemModel()
                 {
-                    ItemTitle = "基本元素",
+                    ItemTitle = "BasicElements",
                     Data = new ObservableCollection<MenuItemModel>()
                         {
                             new MenuItemModel()
                             {
-                                ItemTitle="图标", PageKey=SystemResource.Page_IconView,IsNew=true
+                                ItemTitle="Icon", PageKey=SystemResource.Page_IconView,IsNew=true
                             },new MenuItemModel()
                             {
-                                ItemTitle="骨架屏", PageKey=SystemResource.Page_SkeletonView,IsNew=true
+                                ItemTitle="Skeleton", PageKey=SystemResource.Page_SkeletonView,IsNew=true
                             },
                             new MenuItemModel()
                             {
-                                ItemTitle="按钮", PageKey=SystemResource.Page_ButtonView
+                                ItemTitle="Button", PageKey=SystemResource.Page_ButtonView
                             },new MenuItemModel()
                             {
-                                ItemTitle="表单", PageKey=SystemResource.Page_FormView
+                                ItemTitle="Form", PageKey=SystemResource.Page_FormView
                             },new MenuItemModel()
                             {
-                                ItemTitle="基础菜单", PageKey=SystemResource.Page_MenuView
+                                ItemTitle="Menu", PageKey=SystemResource.Page_MenuView
                             },new MenuItemModel()
                             {
-                                ItemTitle="选项卡", PageKey=SystemResource.Page_TabControl
+                                ItemTitle="TabControl", PageKey=SystemResource.Page_TabControl
                             },new MenuItemModel()
                             {
-                                ItemTitle="进度条", PageKey=SystemResource.Page_ProgressBar
+                                ItemTitle="ProgressBar", PageKey=SystemResource.Page_ProgressBar
                             },new MenuItemModel()
                             {
-                                ItemTitle="面板", PageKey=SystemResource.Page_PanelView
+                                ItemTitle="Panel", PageKey=SystemResource.Page_PanelView
                             },new MenuItemModel()
                             {
-                                ItemTitle="标签", PageKey=SystemResource.Page_TagView,IsNew=true
+                                ItemTitle="Tag", PageKey=SystemResource.Page_TagView,IsNew=true
                             },new MenuItemModel()
                             {
-                                ItemTitle="折叠板", PageKey=SystemResource.Page_ExpanderView
+                                ItemTitle="Expander", PageKey=SystemResource.Page_ExpanderView
                             },new MenuItemModel()
                             {
-                                ItemTitle="过渡动画", PageKey=SystemResource.Page_TransitionControlView
+                                ItemTitle="Transition", PageKey=SystemResource.Page_TransitionControlView
                             },new MenuItemModel()
                             {
-                                ItemTitle="加载动画", PageKey=SystemResource.Page_LoadingView
+                                ItemTitle="Loading", PageKey=SystemResource.Page_LoadingView
                             },new MenuItemModel()
                             {
-                                ItemTitle="Gif动画", PageKey=SystemResource.Page_GIFImageView
+                                ItemTitle="GIF", PageKey=SystemResource.Page_GIFImageView
                             },new MenuItemModel()
                             {
-                                ItemTitle="可缩放图片", PageKey=SystemResource.Page_ScaleImageView
+                                ItemTitle="ScaleImage", PageKey=SystemResource.Page_ScaleImageView
                             },new MenuItemModel()
                             {
-                                ItemTitle="时间线", PageKey=SystemResource.Page_TimelineView
+                                ItemTitle="Timeline", PageKey=SystemResource.Page_TimelineView
                             },new MenuItemModel()
                             {
-                                ItemTitle="辅助元素", PageKey=SystemResource.Page_AuxiliaryElementView
+                                ItemTitle="AuxiliaryElement", PageKey=SystemResource.Page_AuxiliaryElementView
                             },new MenuItemModel()
                             {
-                                ItemTitle="流加载容器", PageKey=SystemResource.Page_FlowItemsControlView
+                                ItemTitle="FlowItemsControl", PageKey=SystemResource.Page_FlowItemsControlView
                             }
                         }
                 },new MenuItemModel()
                 {
-                    ItemTitle = "组件示例",
+                    ItemTitle = "ComponentExamples",
                     Data = new ObservableCollection<MenuItemModel>()
                         {
                             
                             new MenuItemModel()
                             {
-                                ItemTitle="关键帧动画命令绑定", PageKey=SystemResource.Page_AnimationCommandView
+                                ItemTitle="AnimationCommand", PageKey=SystemResource.Page_AnimationCommandView
                             },new MenuItemModel()
                             {
-                                ItemTitle="鼠标移上信息", PageKey=SystemResource.Page_ToolTipView
+                                ItemTitle="ToolTip", PageKey=SystemResource.Page_ToolTipView
                             },new MenuItemModel()
                             {
-                                ItemTitle="标记", PageKey=SystemResource.Page_BadgeView
+                                ItemTitle="Badge", PageKey=SystemResource.Page_BadgeView
                             },new MenuItemModel()
                             {
-                                ItemTitle="波纹", PageKey=SystemResource.Page_RippleView,IsNew=true
+                                ItemTitle="Ripple", PageKey=SystemResource.Page_RippleView,IsNew=true
                             },new MenuItemModel()
                             {
-                                ItemTitle="弹出框", PageKey=SystemResource.Page_PopupBoxView
+                                ItemTitle="PopupBox", PageKey=SystemResource.Page_PopupBoxView
                             },new MenuItemModel()
                             {
-                                ItemTitle="对话框", PageKey=SystemResource.Page_DialogView
+                                ItemTitle="Dialog", PageKey=SystemResource.Page_DialogView
                             },new MenuItemModel()
                             {
-                                ItemTitle="抽屉", PageKey=SystemResource.Page_DrawerView
+                                ItemTitle="Drawer", PageKey=SystemResource.Page_DrawerView
                             },new MenuItemModel()
                             {
-                                ItemTitle="日期与时间选择", PageKey=SystemResource.Page_DateTimeView
+                                ItemTitle="DateTime", PageKey=SystemResource.Page_DateTimeView
                             },new MenuItemModel()
                             {
-                                ItemTitle="数据表格", PageKey=SystemResource.Page_DataGrid
+                                ItemTitle="DataGrid", PageKey=SystemResource.Page_DataGrid
                             },new MenuItemModel()
                             {
-                                ItemTitle="分页", PageKey=SystemResource.Page_PaginationView
+                                ItemTitle="Pagination", PageKey=SystemResource.Page_PaginationView
                             },new MenuItemModel()
                             {
-                                ItemTitle="下拉菜单", PageKey=SystemResource.Page_ButtonView
+                                ItemTitle="DropDownMenu", PageKey=SystemResource.Page_ButtonView
                             },new MenuItemModel()
                             {
-                                ItemTitle="文件上传", PageKey=SystemResource.Page_UploadView
+                                ItemTitle="Upload", PageKey=SystemResource.Page_UploadView
                             },new MenuItemModel()
                             {
-                                ItemTitle="穿梭格", PageKey=SystemResource.Page_ButtonView
+                                ItemTitle="ShuttleGrid", PageKey=SystemResource.Page_ButtonView
                             },new MenuItemModel()
                             {
-                                ItemTitle="树形组件", PageKey=SystemResource.Page_TreeView
+                                ItemTitle="TreeView", PageKey=SystemResource.Page_TreeView
                             },new MenuItemModel()
                             {
-                                ItemTitle="级联选择器", PageKey=SystemResource.Page_LayCascaderView
+                                ItemTitle="Cascader", PageKey=SystemResource.Page_LayCascaderView
                             },new MenuItemModel()
                             {
-                                ItemTitle="树选择", PageKey=SystemResource.Page_TreeSelectView
+                                ItemTitle="TreeSelect", PageKey=SystemResource.Page_TreeSelectView
                             },new MenuItemModel()
                             {
-                                ItemTitle="滑块", PageKey=SystemResource.Page_Slider
+                                ItemTitle="Slider", PageKey=SystemResource.Page_Slider
                             },new MenuItemModel()
                             {
-                                ItemTitle="评分", PageKey=SystemResource.Page_ButtonView
+                                ItemTitle="Score", PageKey=SystemResource.Page_ButtonView
                             },new MenuItemModel()
                             {
-                                ItemTitle="轮播图", PageKey=SystemResource.Page_CarouselView
+                                ItemTitle="Carousel", PageKey=SystemResource.Page_CarouselView
                             },new MenuItemModel()
                             {
-                                ItemTitle="提示信息", PageKey=SystemResource.Page_MessageView
+                                ItemTitle="Message", PageKey=SystemResource.Page_MessageView
                             },new MenuItemModel()
                             {
-                                ItemTitle="通知", PageKey=SystemResource.Page_NotificationView
+                                ItemTitle="Notification", PageKey=SystemResource.Page_NotificationView
                             },new MenuItemModel()
                             {
-                                ItemTitle="公告栏", PageKey=SystemResource.Page_NoticeBarView,IsNew=true
+                                ItemTitle="NoticeBar", PageKey=SystemResource.Page_NoticeBarView,IsNew=true
                             },new MenuItemModel()
                             {
-                                ItemTitle="键盘", PageKey=SystemResource.Page_KeyboardView
+                                ItemTitle="Keyboard", PageKey=SystemResource.Page_KeyboardView
                             }
                         }
                 },new MenuItemModel()

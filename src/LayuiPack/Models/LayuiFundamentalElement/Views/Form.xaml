@@ -114,6 +114,10 @@
                 <Lay:LayComboBoxItem Content="123" />
                 <Lay:LayComboBoxItem Content="234" />
             </Lay:LayComboBox>
+            <Lay:LayMultipleComboBox Margin="0,5">
+                <Lay:LayMultipleComboBoxItem Content="123" />
+                <Lay:LayMultipleComboBoxItem Content="234" />
+            </Lay:LayMultipleComboBox>
             <Lay:LayComboBox
                 Margin="0,5"
                 IsEditable="True"

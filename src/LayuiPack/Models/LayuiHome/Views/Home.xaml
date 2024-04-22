@@ -6,6 +6,7 @@
     xmlns:Nv="clr-namespace:Layui.Core.Resource;assembly=Layui.Core"
     xmlns:Selector="clr-namespace:LayuiHome.Selector"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ex="clr-namespace:LayUI.Wpf.Extensions;assembly=LayUI.Wpf.Extensions"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:local="clr-namespace:LayuiHome.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -37,7 +38,7 @@
                         <DataTemplate x:Key="MenuItemsDataTemplate">
                             <Lay:LayNavExpander
                                 Padding="10,0"
-                                Header="{Binding ItemTitle}"
+                                Header="{ex:Language {Binding ItemTitle}}"
                                 IsExpanded="{Binding IsSelected}">
                                 <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Data}">
                                     <ItemsControl.ItemsPanel>
@@ -54,7 +55,7 @@
                                 Padding="20,0"
                                 Command="{Binding RelativeSource={RelativeSource AncestorType=local:Home}, Path=DataContext.GoPageCommand}"
                                 CommandParameter="{Binding}"
-                                Content="{Binding ItemTitle}"
+                                Content="{ex:Language {Binding ItemTitle}}"
                                 FocusVisualStyle="{x:Null}"
                                 Foreground="White"
                                 GroupName="Item"

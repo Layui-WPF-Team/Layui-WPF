@@ -8,16 +8,62 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
+using LayUI.Wpf.Extensions;
 
 namespace LayuiApp.ViewModels
 {
+    public class Language: BindableBase
+    {
+        private string _Title;
+        public string Title
+        {
+            get { return _Title; }
+            set { SetProperty(ref _Title, value); }
+        }
+        private string _Icon;
+        public string Icon
+        {
+            get { return _Icon; }
+            set { SetProperty(ref _Icon, value); }
+        }
+        private string _Key;
+        public string Key
+        {
+            get { return _Key; }
+            set { SetProperty(ref _Key, value); }
+        }
+    }
     public class MainWindowViewModel : LayuiViewModelBase
     {
+        private Language _Language;
+        public Language Language
+        {
+            get { return _Language; }
+            set 
+            { 
+                SetProperty(ref _Language, value);
+                LanguageExtension.LoadResourceKey(Language.Key);
+            }
+        } 
+        private List<Language> _Languages=new List<Language>() 
+        {  
+            new Language(){ Title="中文",Icon="/Images/Svg/cn.svg",Key="zh_CN" },
+            new Language(){ Title="英语",Icon="/Images/Svg/um.svg",Key="en_US" },
+        };
+        public List<Language> Languages
+        {
+            get { return _Languages; }
+            set { SetProperty(ref _Languages, value); }
+        }
+
         private string _Message= "项目地址：https://github.com/Layui-WPF-Team/Layui-WPF";
         public string Message
         {
@@ -26,6 +72,7 @@ namespace LayuiApp.ViewModels
         }
         public MainWindowViewModel(IContainerExtension container) : base(container)
         {
+            Language = Languages.FirstOrDefault();
         }
         #region 视图属性
         private bool _Network=true;
@@ -34,7 +81,7 @@ namespace LayuiApp.ViewModels
             get { return _Network; }
             set { SetProperty(ref _Network, value); }
         }
-        private string _title = "欢迎来到Layui-WPF";
+        private string _title = nameof(Title);
         /// <summary>
         /// 标题
         /// </summary>

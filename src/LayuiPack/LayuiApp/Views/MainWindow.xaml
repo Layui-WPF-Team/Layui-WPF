@@ -5,6 +5,7 @@
     xmlns:Global="clr-namespace:LayUI.Wpf.Global;assembly=LayUI.Wpf"
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
     xmlns:Nv="clr-namespace:Layui.Core.Resource;assembly=Layui.Core"
+    xmlns:ex="clr-namespace:LayUI.Wpf.Extensions;assembly=LayUI.Wpf.Extensions"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:local="clr-namespace:LayuiApp.Views"
     xmlns:prism="http://prismlibrary.com/"
@@ -35,12 +36,49 @@
                             Margin="10,0"
                             VerticalAlignment="Center"
                             Foreground="White"
-                            Text="{Binding Title}" />
+                            Text="{ex:Language {Binding Title}}" />
                         <StackPanel
                             Grid.Column="1"
                             HorizontalAlignment="Right"
                             Orientation="Horizontal"
                             WindowChrome.IsHitTestVisibleInChrome="true">
+                            <Lay:LayComboBox
+                                Width="90"
+                                Padding="0"
+                                VerticalContentAlignment="Center"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="White"
+                                ItemsSource="{Binding Languages}"
+                                SelectedItem="{Binding Language, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <Lay:LayComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Margin="0,-4" Background="White" />
+                                    </ItemsPanelTemplate>
+                                </Lay:LayComboBox.ItemsPanel>
+                                <Lay:LayComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Lay:LaySVGImage
+                                                Width="20"
+                                                Height="15"
+                                                VerticalAlignment="Center"
+                                                Source="{Binding Icon}"
+                                                Stretch="UniformToFill" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Margin="5,0"
+                                                VerticalAlignment="Center"
+                                                FontSize="13"
+                                                Text="{Binding Title}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </Lay:LayComboBox.ItemTemplate>
+                            </Lay:LayComboBox>
                             <Lay:LayBadge
                                 Margin="5,10"
                                 Background="{DynamicResource Red}"
@@ -285,7 +323,7 @@
                                         Margin="10"
                                         HorizontalAlignment="Center"
                                         FontSize="25"
-                                        Text="老老实实打代码"
+                                        Text="{ex:Language Key='Code'}"
                                         TextAlignment="Center"
                                         TextWrapping="Wrap" />
                                 </StackPanel>
@@ -333,7 +371,7 @@
                                         HorizontalAlignment="Left"
                                         Background="{DynamicResource Gradient}"
                                         BorderThickness="0"
-                                        Content="关于项目"
+                                        Content="{ex:Language Key='Github'}"
                                         Cursor="Hand"
                                         Foreground="White"
                                         HoverBackground="{DynamicResource Gradient}"

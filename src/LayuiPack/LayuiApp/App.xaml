@@ -9,6 +9,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Themes/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary x:Key="zh_CN" Source="pack://siteoforigin:,,,/Languaes/zh_CN.xaml" />
+            <ResourceDictionary x:Key="en_US" Source="pack://siteoforigin:,,,/Languaes/en_US.xaml" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

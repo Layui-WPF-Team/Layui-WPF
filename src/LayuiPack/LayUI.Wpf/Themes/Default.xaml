@@ -68,5 +68,7 @@
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/TitleBarStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/CascaderStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/CascaderItemStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/MultipleComboBoxStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/MultipleComboBoxItemStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
