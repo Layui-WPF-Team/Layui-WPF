@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
+    xmlns:ex="clr-namespace:LayUI.Wpf.Extensions;assembly=LayUI.Wpf.Extensions"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:wpftk="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
@@ -114,7 +115,7 @@
                     Height="auto"
                     Command="{Binding CopyCommand}"
                     CommandParameter="{Binding ElementName=Icons, Path=SelectedItem.Value, Mode=OneWay}"
-                    Content="复制"
+                    Content="{ex:Language Key='Copy'}"
                     Type="Default" />
             </Lay:LayRipple>
         </Grid>

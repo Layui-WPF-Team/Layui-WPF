@@ -11,6 +11,9 @@ using Prism.Modularity;
 using System;
 using System.IO;
 using System.Windows;
+using LayUI.Wpf.Extensions;
+using LayuiApp.ViewModels; 
+using Layui.Core;
 
 namespace LayuiApp
 {
@@ -45,6 +48,8 @@ namespace LayuiApp
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             //注入自定义接口
+            
+            containerRegistry.RegisterInstance<ILayLanguage>(new LayLanguage());
             containerRegistry.RegisterInstance<ILayLogger>(new LayLogger());
             containerRegistry.RegisterDialogWindow<DialogWindowBase>();
             LayDialog.RegisterDialogWindow<DialogWindowBase>("window");

@@ -31,11 +31,14 @@ namespace Layui.Core.Base
         /// 日志
         /// </summary>
         public ILayLogger Logger;
+
+        public ILayLanguage language;
         public LayuiViewModelBase()
         {
         }
         public LayuiViewModelBase(IContainerExtension container)
         {
+            this.language = container.Resolve<ILayLanguage>();
             this.Region = container.Resolve<IRegionManager>();
             this.Dialog = container.Resolve<IDialogService>();
             this.Event = container.Resolve<IEventAggregator>();

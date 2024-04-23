@@ -47,4 +47,17 @@
     <sys:String x:Key="NoticeBar">NoticeBar</sys:String>
     <sys:String x:Key="Keyboard">Keyboard</sys:String>
     <sys:String x:Key="Code">Honestly typing code</sys:String>
+    <sys:String x:Key="Announcement">Announcement</sys:String>
+    <sys:String x:Key="Blog">Blog</sys:String>
+    <sys:String x:Key="Videos">Videos</sys:String>
+    <sys:String x:Key="QQ">QQ</sys:String>
+    <sys:String x:Key="Copy">Copy</sys:String>
+    <sys:String x:Key="ReplicatingSuccess">Replicating Success</sys:String>
+    <sys:String x:Key="BasicUsage">Basic usage</sys:String>
+    <sys:String x:Key="Refresh">Refresh</sys:String>
+    <sys:String x:Key="Looking">Looking at mountains is not mountains, looking at water is not water, looking at mountains is still mountains, looking at water is still water</sys:String>
+    <sys:String x:Key="lines">Gorgeous dividing lines</sys:String>
+    <sys:String x:Key="DialogBoxAnnouncement">This is a WPF version of the Layui component library, where you can feel the charm of the WPF version of Layui</sys:String>
+    <sys:String x:Key="ModalPopUpWindow">This is a modal pop-up window</sys:String>
+    <sys:String x:Key="NonModalPopUpWindow">This is a non modal pop-up window</sys:String>
 </ResourceDictionary>

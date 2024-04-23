@@ -47,4 +47,17 @@
     <sys:String x:Key="NoticeBar">公告栏</sys:String>
     <sys:String x:Key="Keyboard">键盘</sys:String>
     <sys:String x:Key="Code">老老实实打代码</sys:String>
+    <sys:String x:Key="Announcement">公告</sys:String>
+    <sys:String x:Key="Blog">博客</sys:String>
+    <sys:String x:Key="Videos">视频教学</sys:String>
+    <sys:String x:Key="QQ">QQ群</sys:String>
+    <sys:String x:Key="Copy">复制</sys:String>
+    <sys:String x:Key="ReplicatingSuccess">复制成功</sys:String>
+    <sys:String x:Key="BasicUsage">基础使用</sys:String>
+    <sys:String x:Key="Refresh">刷新</sys:String>
+    <sys:String x:Key="Looking">看山不是山，看水不是水，看山还是山，看水还是水</sys:String>
+    <sys:String x:Key="lines">华丽的分割线</sys:String>
+    <sys:String x:Key="DialogBoxAnnouncement">这是一个WPF版的Layui组件库,在这里你可以感受到WPF版本的Layui的魅力</sys:String>
+    <sys:String x:Key="ModalPopUpWindow">这是模态弹窗</sys:String>
+    <sys:String x:Key="NonModalPopUpWindow">这是非模态弹窗</sys:String>
 </ResourceDictionary>

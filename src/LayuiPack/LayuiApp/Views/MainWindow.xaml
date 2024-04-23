@@ -86,7 +86,7 @@
                                 Value="1">
                                 <ToggleButton
                                     x:Name="Title"
-                                    Content="公告"
+                                    Content="{ex:Language Key='Announcement'}"
                                     Cursor="Hand"
                                     Foreground="White">
                                     <ToggleButton.Template>
@@ -249,7 +249,7 @@
                                                             Margin="10,0"
                                                             HorizontalAlignment="Center"
                                                             VerticalAlignment="Center"
-                                                            Text="博客" />
+                                                            Text="{ex:Language Key='Blog'}" />
                                                     </Grid>
                                                 </Button>
                                                 <Button
@@ -273,7 +273,7 @@
                                                             Margin="10,0"
                                                             HorizontalAlignment="Center"
                                                             VerticalAlignment="Center"
-                                                            Text="教学视频" />
+                                                            Text="{ex:Language Key='Videos'}" />
                                                     </Grid>
                                                 </Button>
                                                 <Button
@@ -296,7 +296,7 @@
                                                             Margin="10,0"
                                                             HorizontalAlignment="Center"
                                                             VerticalAlignment="Center"
-                                                            Text="QQ群" />
+                                                            Text="{ex:Language Key='QQ'}" />
                                                     </Grid>
                                                 </Button>
                                             </StackPanel>

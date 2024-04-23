@@ -1,5 +1,6 @@
 ﻿using Layui.Core.Base;
 using LayUI.Wpf.Enum;
+using LayUI.Wpf.Extensions;
 using LayUI.Wpf.Global;
 using LayUI.Wpf.Tools;
 using Newtonsoft.Json;
@@ -35,7 +36,7 @@ namespace LayuiComponentExample.ViewModels
         void ExecuteCopyCommand(string value)
         {
             Clipboard.SetDataObject($"<TextBlock FontFamily=\"{{DynamicResource IconFont}}\" Text=\"{value}\" />");
-            LayMessage.Success("复制成功");
+            LayMessage.Success(language.GetValue("ReplicatingSuccess"));
         }
         public async override void OnNavigatedTo(NavigationContext navigationContext)
         {

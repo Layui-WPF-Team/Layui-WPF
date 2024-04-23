@@ -28,7 +28,7 @@ namespace LayuiComponentExample.ViewModels
             if (IsModel == "true")
             {
                 dialogParameter = new LayDialogParameter();
-                dialogParameter.Add("IsModel", "这是模态弹窗");
+                dialogParameter.Add("IsModel", "ModalPopUpWindow");
                 LayDialog.ShowDialog(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                 }, "RootDialogToken");
@@ -37,7 +37,7 @@ namespace LayuiComponentExample.ViewModels
             else
             {
                 dialogParameter = new LayDialogParameter();
-                dialogParameter.Add("IsModel", "这是非模态弹窗");
+                dialogParameter.Add("IsModel", "NonModalPopUpWindow"); 
                 LayDialog.Show(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                     switch (rest.Result)

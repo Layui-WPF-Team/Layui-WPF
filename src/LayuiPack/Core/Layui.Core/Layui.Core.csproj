@@ -34,6 +34,9 @@
     <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CommonServiceLocator.2.0.4\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
+    <Reference Include="LayUI.Wpf.Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LayUI.Wpf.Extensions.1.0.2.240423\lib\net452\LayUI.Wpf.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
     </Reference>
@@ -54,6 +57,7 @@
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Wpf.7.2.0.1422\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,6 +70,8 @@
     <Compile Include="AppHelper\NetworkHelper.cs" />
     <Compile Include="Base\LayuiViewModelBase.cs" />
     <Compile Include="AppHelper\FileHelper.cs" />
+    <Compile Include="Language\ILayLanguage.cs" />
+    <Compile Include="Language\LayLanguage.cs" />
     <Compile Include="Log\ILayLogger.cs" />
     <Compile Include="Log\LayLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
