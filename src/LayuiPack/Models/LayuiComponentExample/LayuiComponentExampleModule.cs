@@ -4,6 +4,7 @@ using LayUI.Wpf.Global;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using LayuiComponentExample.ViewModels;
 
 namespace LayuiComponentExample
 {
@@ -16,7 +17,7 @@ namespace LayuiComponentExample
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.Register<DialogMessageViewModel>("DialogMessageViewModel");
             containerRegistry.RegisterForNavigation<Views.Slider>(SystemResource.Page_Slider);
             containerRegistry.RegisterForNavigation<Views.DataGrid>(SystemResource.Page_DataGrid);
             containerRegistry.RegisterForNavigation<Views.Dialog>(SystemResource.Page_DialogView);

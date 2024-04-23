@@ -1,4 +1,5 @@
-﻿using LayuiComponentExample.ViewModels;
+﻿using CommonServiceLocator;
+using LayuiComponentExample.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,8 @@ namespace LayuiComponentExample.Views
     {
         public DialogMessageView()
         {
-            InitializeComponent();
-            DataContext = new DialogMessageViewModel();
+            InitializeComponent(); 
+            DataContext = ServiceLocator.Current.GetService(typeof(DialogMessageViewModel));
         }
     }
 }

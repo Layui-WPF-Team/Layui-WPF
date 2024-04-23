@@ -15,8 +15,7 @@ using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
-using System.Windows.Input;
-using LayUI.Wpf.Extensions;
+using System.Windows.Input; 
 
 namespace LayuiApp.ViewModels
 {
@@ -50,7 +49,7 @@ namespace LayuiApp.ViewModels
             set 
             { 
                 SetProperty(ref _Language, value);
-                LanguageExtension.LoadResourceKey(Language.Key);
+                language.LoadResourceKey(Language.Key);
             }
         } 
         private List<Language> _Languages=new List<Language>() 
