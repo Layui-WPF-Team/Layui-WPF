@@ -141,12 +141,15 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LayUI.Wpf.Extensions">
-      <Version>1.0.2.240423</Version>
+      <Version>1.0.2.240424</Version>
     </PackageReference>
     <PackageReference Include="log4net">
       <Version>2.0.15</Version>
     </PackageReference>
     <PackageReference Include="Prism.Unity" Version="7.2.0.1422" />
+    <PackageReference Include="Prism.Wpf">
+      <Version>7.2.0.1422</Version>
+    </PackageReference>
     <PackageReference Include="VirtualizingWrapPanel">
       <Version>1.5.8</Version>
     </PackageReference>
