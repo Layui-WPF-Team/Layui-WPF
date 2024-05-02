@@ -27,7 +27,7 @@ namespace LayuiComponentExample.ViewModels
             set 
             {
                 _Title = value; RaisePropertyChanged();
-                Language.Refresh();
+                //Language.Refresh();
             }
         }
 

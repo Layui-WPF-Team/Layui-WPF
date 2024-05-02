@@ -49,6 +49,7 @@
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/SwitchStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/GifImageStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/SvgImageStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/VRImageStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/PopupBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/RichTextBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/BadgeStyle.xaml" />

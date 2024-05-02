@@ -63,7 +63,7 @@ namespace LayuiComponentExample.ViewModels
         void ExecuteLocalDialogShowCommand()
         {
             LayDialogParameter dialogParameter = new LayDialogParameter();
-            dialogParameter.Add("IsModel", "这是非模态弹窗");
+            dialogParameter.Add("IsModel", "Title");
             LayDialog.Show(SystemResource.DialogMessageView, dialogParameter, rest =>
             {
                 switch (rest.Result)
@@ -98,7 +98,7 @@ namespace LayuiComponentExample.ViewModels
             if (IsModel == "true")
             {
                 dialogParameter = new LayDialogParameter();
-                dialogParameter.Add("IsModel", "这是模态弹窗");
+                dialogParameter.Add("IsModel", "Title");
                 LayDialog.ShowDialogWindow(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                     switch (rest.Result)
@@ -119,7 +119,7 @@ namespace LayuiComponentExample.ViewModels
             else
             {
                 dialogParameter = new LayDialogParameter();
-                dialogParameter.Add("IsModel", "这是非模态弹窗");
+                dialogParameter.Add("IsModel", "Title");
                 LayDialog.ShowWindow(SystemResource.DialogMessageView, dialogParameter, rest =>
                 {
                     switch (rest.Result)
