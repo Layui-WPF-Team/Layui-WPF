@@ -9,19 +9,9 @@ using System.Windows;
 namespace Layui.Core
 {
     public class LayLanguage : ILayLanguage
-    {
-        private LanguageExtension _language;
-        private LanguageExtension language
-        {
-            get
-            { 
-                if (_language == null) _language = new LanguageExtension();
-                return _language;
-            }
+    { 
 
-        }
-
-        public object GetValue(string key) => language.GetValue(key);
+        public object GetValue(string key) => LanguageExtension.GetValue(key);
 
         public void LoadDictionary(ResourceDictionary languageDictionary)=> LanguageExtension.LoadDictionary(languageDictionary);
 

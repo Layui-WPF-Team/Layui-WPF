@@ -35,7 +35,7 @@
       <HintPath>..\..\packages\CommonServiceLocator.2.0.4\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
     <Reference Include="LayUI.Wpf.Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LayUI.Wpf.Extensions.1.0.2.240503\lib\net452\LayUI.Wpf.Extensions.dll</HintPath>
+      <HintPath>..\..\packages\LayUI.Wpf.Extensions.1.0.2.240505\lib\net452\LayUI.Wpf.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
