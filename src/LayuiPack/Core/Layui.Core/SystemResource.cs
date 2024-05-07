@@ -174,7 +174,11 @@ namespace Layui.Core.Resource
         /// <summary>
         /// 级联选择器
         /// </summary>
-        public const string Page_LayCascaderView = "LayCascaderView"; 
+        public const string Page_LayCascaderView = "LayCascaderView";
+        /// <summary>
+        /// VR图片
+        /// </summary>
+        public const string Page_VRView = "VRView"; 
         #endregion
     }
 }

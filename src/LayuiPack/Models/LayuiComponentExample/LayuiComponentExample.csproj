@@ -68,6 +68,7 @@
     <Compile Include="ViewModels\ToolTipViewModel.cs" />
     <Compile Include="ViewModels\TreeSelectViewModel.cs" />
     <Compile Include="ViewModels\UploadViewModel.cs" />
+    <Compile Include="ViewModels\VRViewModel.cs" />
     <Compile Include="Views\AnimationCommand.xaml.cs">
       <DependentUpon>AnimationCommand.xaml</DependentUpon>
     </Compile>
@@ -163,6 +164,9 @@
     </Compile>
     <Compile Include="Views\Upload.xaml.cs">
       <DependentUpon>Upload.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VR.xaml.cs">
+      <DependentUpon>VR.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -271,6 +275,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Upload.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

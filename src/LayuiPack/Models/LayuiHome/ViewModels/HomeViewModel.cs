@@ -253,6 +253,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="NoticeBar", PageKey=SystemResource.Page_NoticeBarView,IsNew=true
                             },new MenuItemModel()
                             {
+                                ItemTitle="VRImage", PageKey=SystemResource.Page_VRView,IsNew=true
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="Keyboard", PageKey=SystemResource.Page_KeyboardView
                             }
                         }

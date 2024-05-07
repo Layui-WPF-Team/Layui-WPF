@@ -1,0 +1,9 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.VR"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Lay:LayVRImage Source="https://data.znds.com/attachment/forum/201609/04/130847fiv45r1ryinvsl1x.jpg" />
+</UserControl>
