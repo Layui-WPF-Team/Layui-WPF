@@ -78,7 +78,7 @@ namespace LayUI.Wpf.Controls
                 AddIsEnabled = false;
                 return;
             }
-            RaiseEvent(e);
+            if(IsLoaded) RaiseEvent(e);
         }
         /// <summary>
         /// 布局方向
@@ -230,28 +230,28 @@ namespace LayUI.Wpf.Controls
         /// 增加按钮是否启用
         /// </summary>
         [Bindable(true)]
-        public bool AddIsEnabled
+        internal bool AddIsEnabled
         {
             get { return (bool)GetValue(AddIsEnabledProperty); }
             set { SetValue(AddIsEnabledProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for AddIsEnabled.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty AddIsEnabledProperty =
+        internal static readonly DependencyProperty AddIsEnabledProperty =
             DependencyProperty.Register(nameof(AddIsEnabled), typeof(bool), typeof(LayNumericUpDown), new PropertyMetadata(true));
 
         /// <summary>
         /// 减少按钮是否启用
         /// </summary>
         [Bindable(true)]
-        public bool LowerIsEnabled
+        internal bool LowerIsEnabled
         {
             get { return (bool)GetValue(LowerIsEnabledProperty); }
             set { SetValue(LowerIsEnabledProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for AddIsEnabled.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LowerIsEnabledProperty =
+        internal static readonly DependencyProperty LowerIsEnabledProperty =
             DependencyProperty.Register(nameof(LowerIsEnabled), typeof(bool), typeof(LayNumericUpDown), new PropertyMetadata(true));
 
 
