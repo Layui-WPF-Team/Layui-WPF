@@ -36,10 +36,11 @@ namespace LayuiComponentExample
             containerRegistry.RegisterForNavigation<Views.TreeSelect>(SystemResource.Page_TreeSelectView);
             containerRegistry.RegisterForNavigation<Views.Icon>(SystemResource.Page_IconView);
             containerRegistry.RegisterForNavigation<Views.Tag>(SystemResource.Page_TagView);
-            containerRegistry.RegisterForNavigation<Views.NoticeBar>(SystemResource.Page_NoticeBarView);
+            containerRegistry.RegisterForNavigation<Views.NoticeBar>(SystemResource.Page_NoticeBarView); 
             containerRegistry.RegisterForNavigation<Views.Ripple>(SystemResource.Page_RippleView); 
             containerRegistry.RegisterForNavigation<Views.LayCascader>(SystemResource.Page_LayCascaderView);
             containerRegistry.RegisterForNavigation<Views.VR>(SystemResource.Page_VRView);
+            containerRegistry.RegisterForNavigation<Views.PropertyGrid>(SystemResource.Page_PropertyGridView);
             LayDialog.RegisterDialog<DialogMessageView>(SystemResource.DialogMessageView);  
             containerRegistry.RegisterDialog<DefaultDialog>(nameof(DefaultDialog));
             LayDialog.RegisterDialog<DialogAlert>("DialogAlert");

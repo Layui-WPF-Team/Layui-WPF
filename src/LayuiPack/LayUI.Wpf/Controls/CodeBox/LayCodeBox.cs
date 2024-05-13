@@ -11,7 +11,7 @@ namespace LayUI.Wpf.Controls
     /// <summary>
     /// 代码高亮输入框
     /// </summary>
-    public class LayCodeTextBox: Control
+    public class LayCodeBox: Control
     { 
         public object Text
         {
@@ -21,7 +21,7 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(object), typeof(LayCodeTextBox)); 
+            DependencyProperty.Register("Text", typeof(object), typeof(LayCodeBox)); 
 
     }
 }

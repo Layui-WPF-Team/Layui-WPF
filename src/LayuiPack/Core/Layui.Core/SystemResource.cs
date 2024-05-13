@@ -179,6 +179,10 @@ namespace Layui.Core.Resource
         /// VR图片
         /// </summary>
         public const string Page_VRView = "VRView"; 
+        /// <summary>
+        /// 属性网格
+        /// </summary>
+        public const string Page_PropertyGridView = "PropertyGridView"; 
         #endregion
     }
 }

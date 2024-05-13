@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="LayPropertyGridStyle" TargetType="Lay:LayPropertyGrid">
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray}"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderThickness" Value="1"/> 
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayPropertyGrid">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Propertys}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0 1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition /> 
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Margin="{Binding ElementName=textBox,Path=Padding}" VerticalAlignment="Center" Text="{Binding Name}"/>
+                                        <Lay:LayTextBox CornerRadius="0" x:Name="textBox" Watermark="" Width="auto" Grid.Column="1" Text="{Binding Value}"/> 
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayPropertyGridStyle}" TargetType="Lay:LayPropertyGrid"></Style>
+</ResourceDictionary>

@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace LayuiComponentExample.ViewModels
 {
@@ -36,7 +37,7 @@ namespace LayuiComponentExample.ViewModels
         void ExecuteCopyCommand(string value)
         {
             Clipboard.SetDataObject($"<TextBlock FontFamily=\"{{DynamicResource IconFont}}\" Text=\"{value}\" />");
-            LayMessage.Success(language.GetValue("ReplicatingSuccess"));
+            LayMessage.Success(language.GetValue("ReplicatingSuccess"));  
         }
         public async override void OnNavigatedTo(NavigationContext navigationContext)
         {

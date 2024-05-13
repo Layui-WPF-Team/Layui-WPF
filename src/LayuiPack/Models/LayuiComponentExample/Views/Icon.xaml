@@ -111,12 +111,13 @@
                 Grid.Column="1"
                 Margin="5,0,0,0"
                 Type="Auto">
-                <Lay:LayButton
+                <Lay:LayButton 
+                    Focusable="False"
                     Height="auto"
                     Command="{Binding CopyCommand}"
                     CommandParameter="{Binding ElementName=Icons, Path=SelectedItem.Value, Mode=OneWay}"
                     Content="{ex:Language Key='Copy'}"
-                    Type="Default" />
+                    Type="Default" Cursor="Hand" />
             </Lay:LayRipple>
         </Grid>
     </Grid>

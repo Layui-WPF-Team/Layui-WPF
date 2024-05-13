@@ -256,6 +256,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="VRImage", PageKey=SystemResource.Page_VRView,IsNew=true
                             },new MenuItemModel()
                             {
+                                ItemTitle="PropertyGrid", PageKey=SystemResource.Page_PropertyGridView,IsNew=true
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="Keyboard", PageKey=SystemResource.Page_KeyboardView
                             }
                         }
