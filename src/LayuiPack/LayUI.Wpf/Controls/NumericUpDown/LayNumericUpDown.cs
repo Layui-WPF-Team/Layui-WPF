@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -78,7 +79,7 @@ namespace LayUI.Wpf.Controls
                 AddIsEnabled = false;
                 return;
             }
-            if(IsLoaded) RaiseEvent(e);
+            if (IsLoaded) RaiseEvent(e);
         }
         /// <summary>
         /// 布局方向
@@ -347,7 +348,16 @@ namespace LayUI.Wpf.Controls
 
         private void PART_ValueHost_TextChanged(object sender, TextChangedEventArgs e)
         {
-            PART_ValueHost.Select(PART_ValueHost.Text.Length, 0);
+            try
+            {
+                PART_ValueHost.Select(PART_ValueHost.Text.Length, 0);
+                if (string.IsNullOrEmpty(PART_ValueHost.Text)) Value = 0;
+                else Value = Convert.ToDouble(PART_ValueHost.Text);
+            }
+            catch 
+            {
+                 
+            }
         }
         private void PART_AddBtn_Click(object sender, RoutedEventArgs e)
         {

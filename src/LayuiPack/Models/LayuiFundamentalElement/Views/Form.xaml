@@ -91,6 +91,7 @@
                     ToolTip="横向模式" />
                 <Lay:LayNumericUpDown
                     Width="150"
+                    Value="{Binding Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     Margin="5,0"
                     HorizontalAlignment="Left"
                     Increment="0.1"
@@ -98,7 +99,7 @@
                     ToolTip="纵向模式" />
                 <Lay:LayNumericUpDown
                     Width="150"
-                    Margin="5,0"
+                    Margin="5,0" 
                     HorizontalAlignment="Left"
                     Increment="0.1"
                     IsReadOnly="true"

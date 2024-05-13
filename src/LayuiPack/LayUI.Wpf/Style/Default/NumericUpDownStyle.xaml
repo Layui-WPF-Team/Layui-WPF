@@ -204,7 +204,7 @@
                                             InputMethod.IsInputMethodEnabled="False"
                                             IsReadOnly="{TemplateBinding IsReadOnly}"
                                             Style="{x:Null}"
-                                            Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                            Text="{TemplateBinding Value}">
                                             <TextBox.Template>
                                                 <ControlTemplate TargetType="TextBox">
                                                     <ScrollViewer
