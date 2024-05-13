@@ -52,6 +52,7 @@
                                         Cursor="Hand"
                                         FocusVisualStyle="{x:Null}"
                                         Foreground="{TemplateBinding Foreground}"
+                                        IsEnabled="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=LowerIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         Style="{x:Null}">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
@@ -111,6 +112,7 @@
                                         BorderThickness="0"
                                         Cursor="Hand"
                                         FocusVisualStyle="{x:Null}"
+                                        IsEnabled="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=AddIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         Style="{x:Null}">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
@@ -232,6 +234,7 @@
                                             BorderThickness="0"
                                             Cursor="Hand"
                                             FocusVisualStyle="{x:Null}"
+                                            IsEnabled="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=AddIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             Style="{x:Null}">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
@@ -275,6 +278,7 @@
                                             Cursor="Hand"
                                             FocusVisualStyle="{x:Null}"
                                             Foreground="{TemplateBinding Foreground}"
+                                            IsEnabled="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=LowerIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             Style="{x:Null}">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">

@@ -39,7 +39,7 @@ namespace LayUI.Wpf.Controls
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayNumericUpDown layNumericUp = d as LayNumericUpDown;
-            if(layNumericUp.IsLoaded) layNumericUp.PART_ValueHost.Text = layNumericUp.CurrentText;
+            if (layNumericUp.IsLoaded) layNumericUp.PART_ValueHost.Text = layNumericUp.CurrentText;
             layNumericUp.OnValueChanged(new RoutedEventArgs(ValueChangedEvent, layNumericUp));
         }
         /// <summary>
@@ -54,24 +54,30 @@ namespace LayUI.Wpf.Controls
         ///     值改变事件
         /// </summary>
         public static readonly RoutedEvent ValueChangedEvent =
-            EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble,  typeof(EventHandler<RoutedEventArgs>), typeof(LayNumericUpDown));
+            EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(LayNumericUpDown));
 
         protected virtual void OnValueChanged(RoutedEventArgs e)
         {
+            if (Value >= MaxValue && Value <= MinValue)
+            {
+                Value = MaxValue;
+                LowerIsEnabled = AddIsEnabled = false;
+                return;
+            }
+            AddIsEnabled = true;
+            LowerIsEnabled = true;
             if (Value <= MinValue)
             {
                 Value = MinValue;
-                PART_LowerBtn.IsEnabled = false;
+                LowerIsEnabled = false;
                 return;
             }
-            if (Value>= MaxValue)
+            if (Value >= MaxValue)
             {
                 Value = MaxValue;
-                PART_AddBtn.IsEnabled = false;
+                AddIsEnabled = false;
                 return;
             }
-            PART_LowerBtn.IsEnabled = true;
-            PART_AddBtn.IsEnabled = true;
             RaiseEvent(e);
         }
         /// <summary>
@@ -101,7 +107,7 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MinValueProperty =
-            DependencyProperty.Register("MinValue", typeof(double), typeof(LayNumericUpDown),new PropertyMetadata(OnMinValueChanged));
+            DependencyProperty.Register("MinValue", typeof(double), typeof(LayNumericUpDown), new PropertyMetadata(OnMinValueChanged));
 
         private static void OnMinValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -109,7 +115,6 @@ namespace LayUI.Wpf.Controls
             if (layNumericUp.Value <= layNumericUp.MinValue)
             {
                 layNumericUp.Value = layNumericUp.MinValue;
-                layNumericUp.PART_LowerBtn.IsEnabled = false;
             }
         }
 
@@ -133,7 +138,6 @@ namespace LayUI.Wpf.Controls
             if (layNumericUp.Value >= layNumericUp.MaxValue)
             {
                 layNumericUp.Value = layNumericUp.MaxValue;
-                layNumericUp.PART_LowerBtn.IsEnabled = false;
             }
         }
 
@@ -223,6 +227,37 @@ namespace LayUI.Wpf.Controls
 
 
         /// <summary>
+        /// 增加按钮是否启用
+        /// </summary>
+        [Bindable(true)]
+        public bool AddIsEnabled
+        {
+            get { return (bool)GetValue(AddIsEnabledProperty); }
+            set { SetValue(AddIsEnabledProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for AddIsEnabled.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AddIsEnabledProperty =
+            DependencyProperty.Register(nameof(AddIsEnabled), typeof(bool), typeof(LayNumericUpDown), new PropertyMetadata(true));
+
+        /// <summary>
+        /// 减少按钮是否启用
+        /// </summary>
+        [Bindable(true)]
+        public bool LowerIsEnabled
+        {
+            get { return (bool)GetValue(LowerIsEnabledProperty); }
+            set { SetValue(LowerIsEnabledProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for AddIsEnabled.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LowerIsEnabledProperty =
+            DependencyProperty.Register(nameof(LowerIsEnabled), typeof(bool), typeof(LayNumericUpDown), new PropertyMetadata(true));
+
+
+
+
+        /// <summary>
         /// 指示要显示的数字的格式，这将会覆盖 <see cref="DecimalPlaces"/> 属性
         /// </summary>
         public string ValueFormat
@@ -233,7 +268,7 @@ namespace LayUI.Wpf.Controls
         /// <summary>
         /// 指示要显示的数字的格式
         /// </summary>
-        public static readonly DependencyProperty ValueFormatProperty = 
+        public static readonly DependencyProperty ValueFormatProperty =
             DependencyProperty.Register("ValueFormat", typeof(string), typeof(LayNumericUpDown), new PropertyMetadata(default(string)));
         /// <summary>
         ///  指示要显示的小数位数
@@ -246,8 +281,8 @@ namespace LayUI.Wpf.Controls
         /// <summary>
         ///  指示要显示的小数位数
         /// </summary>
-        internal static readonly DependencyProperty DecimalPlacesProperty = 
-            DependencyProperty.Register( "DecimalPlaces", typeof(int?), typeof(LayNumericUpDown), new PropertyMetadata(default(int?)));
+        internal static readonly DependencyProperty DecimalPlacesProperty =
+            DependencyProperty.Register("DecimalPlaces", typeof(int?), typeof(LayNumericUpDown), new PropertyMetadata(default(int?)));
         private string CurrentText => string.IsNullOrWhiteSpace(ValueFormat) ? DecimalPlaces.HasValue ? Value.ToString($"#0.{new string('0', DecimalPlaces.Value)}") : Value.ToString() : Value.ToString(ValueFormat);
         public override void OnApplyTemplate()
         {
@@ -272,13 +307,13 @@ namespace LayUI.Wpf.Controls
                 if (Value <= MinValue)
                 {
                     Value = MinValue;
-                    PART_LowerBtn.IsEnabled = false;
+                    LowerIsEnabled = false;
                     return;
                 }
                 if (Value >= MaxValue)
                 {
                     Value = MaxValue;
-                    PART_AddBtn.IsEnabled = false;
+                    AddIsEnabled = false;
                     return;
                 }
             }
