@@ -9,80 +9,144 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <StackPanel Margin="5">
-        <WrapPanel Orientation="Horizontal">
-            <Lay:LayButton
-                Margin="5"
-                Content="原始按钮"
-                Type="Primary" />
-            <Lay:LayButton
+    <ScrollViewer>
+        <StackPanel Margin="5">
+            <Lay:LayLegend Header="按钮主题" />
+            <WrapPanel Orientation="Horizontal">
+                <Lay:LayButton
                 Margin="5"
                 Content="默认按钮"
                 Type="Default" />
-            <Lay:LayButton
+                <Lay:LayButton
                 Margin="5"
-                Content="百搭按钮"
+                Content="蓝色按钮"
                 Type="Normal" />
-            <Lay:LayButton Margin="5" Type="Normal">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontFamily="{StaticResource IconFont-FontAwesome}"
-                        Text="&#xf2bc;" />
-                    <TextBlock Text="图标" />
-                </StackPanel>
-            </Lay:LayButton>
-            <Lay:LayButton
+                <Lay:LayButton
                 Margin="5"
-                Content="暖色按钮"
+                Content="橙色按钮"
                 Type="Warm" />
-            <Lay:LayButton
+                <Lay:LayButton
                 Margin="5"
-                Content="警告按钮"
+                Content="红色按钮"
                 Type="Danger" />
-            <Lay:LayButton
+                <Lay:LayButton Margin="5" Content="紫色按钮" Type="Customize" Background="{DynamicResource Purple}" HoverBackground="{DynamicResource Purple}" />
+                <Lay:LayButton Margin="5" Content="渐变按钮" Type="Customize" />
+                <Lay:LayButton
                 Margin="5"
                 Content="禁用按钮"
                 IsEnabled="False"
                 Type="Primary" />
-            <Lay:LayButton
+            </WrapPanel>
+            <WrapPanel>
+                <Lay:LayButton Margin="5" Content="主色按钮" Background="Transparent" BorderBrush="{DynamicResource Green}" Foreground="{DynamicResource Green}"
+                           HoverBackground="Transparent"/>
+                <Lay:LayButton Margin="5" Content="蓝色按钮" Background="Transparent" BorderBrush="{DynamicResource Blue}" Foreground="{DynamicResource Blue}"
+                           HoverBorderBrush="{DynamicResource Blue}"/>
+                <Lay:LayButton Margin="5" Content="橙色按钮" Background="Transparent" BorderBrush="{DynamicResource Orange}" Foreground="{DynamicResource Orange}"
+                           HoverBorderBrush="{DynamicResource Orange}"/>
+                <Lay:LayButton Margin="5" Content="红色按钮" Background="Transparent" BorderBrush="{DynamicResource Red}" Foreground="{DynamicResource Red}"
+                           HoverBorderBrush="{DynamicResource Red}"/>
+                <Lay:LayButton Margin="5" Content="紫色按钮" Background="Transparent" BorderBrush="{DynamicResource Purple}" Foreground="{DynamicResource Purple}"
+                           HoverBorderBrush="{DynamicResource Purple}"/>
+                <Lay:LayButton Margin="5" Content="渐变按钮" Background="Transparent" BorderBrush="{DynamicResource Gradient}" Foreground="{DynamicResource Gradient}"
+                           HoverBorderBrush="{DynamicResource Gradient}"/>
+                <Lay:LayButton Margin="5" Content="普通按钮" Background="Transparent" />
+            </WrapPanel>
+
+            <Lay:LayLegend Header="按钮圆角" Margin="0,20,0,0" />
+            <WrapPanel Margin="0,10">
+                <Lay:LayButton Margin="5" Content="原始按钮" CornerRadius="19" />
+                <Lay:LayButton Margin="5" Content="默认按钮" CornerRadius="19" Type="Default" />
+                <Lay:LayButton Margin="5" Content="百搭按钮" CornerRadius="19" Type="Normal" />
+                <Lay:LayButton Margin="5" Content="暖色按钮" CornerRadius="19" Type="Warm" />
+                <Lay:LayButton Margin="5" Content="警告按钮" CornerRadius="19" Type="Danger" />
+                <Lay:LayButton Margin="5" Content="渐变按钮" CornerRadius="19" Type="Customize" />
+                <Lay:LayButton Margin="5" Content="禁用按钮" CornerRadius="19" IsEnabled="False" />
+            </WrapPanel>
+
+            <Lay:LayLegend Header="按钮图标" Margin="0,20,0,0" />
+            <WrapPanel Orientation="Horizontal">
+                <Lay:LayButton Margin="5" Type="Default">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xecf8;" FontSize="16" />
+                        <TextBlock Text="点赞" VerticalAlignment="Center" Margin="5,0,0,0" />
+                    </StackPanel>
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Type="Default">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xeb7b;" FontSize="16" />
+                        <TextBlock Text="投币" VerticalAlignment="Center"  Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Type="Default">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xef0b;" FontSize="16" />
+                        <TextBlock Text="收藏" VerticalAlignment="Center" Margin="5,0,0,0" />
+                    </StackPanel>
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Type="Normal" Width="58">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xf010;" FontSize="20" />
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Type="Warm" Width="58">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xf011;" FontSize="20" />
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Type="Danger" Width="58">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xeb75;" FontSize="20" />
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Type="Default" Width="58">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xeee9;" FontSize="20" />
+                </Lay:LayButton>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal">
+                <Lay:LayButton Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xecf8;" FontSize="16" />
+                        <TextBlock Text="点赞" VerticalAlignment="Center" Margin="5,0,0,0" />
+                    </StackPanel>
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xeb7b;" FontSize="16" />
+                        <TextBlock Text="投币" VerticalAlignment="Center"  Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xef0b;" FontSize="16" />
+                        <TextBlock Text="收藏" VerticalAlignment="Center" Margin="5,0,0,0" />
+                    </StackPanel>
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Width="58">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xf010;" FontSize="20" />
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Width="58">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xf011;" FontSize="20" />
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Width="58">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xeb75;" FontSize="20" />
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Width="58">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xeee9;" FontSize="20" />
+                </Lay:LayButton>
+                <Lay:LayButton Margin="5" Width="58" IsEnabled="False">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource IconFont}" Text="&#xea69;" FontSize="20" />
+                </Lay:LayButton>
+            </WrapPanel>
+
+            <Lay:LayLegend Header="按钮加载" Margin="0,20,0,0" />
+            <WrapPanel Orientation="Horizontal">
+                <Lay:LayButton
                 Margin="5"
                 Command="{Binding BtnLoadingCommand}"
                 Content="点我"
                 IsLoading="{Binding BtnIsLoading}"
                 LoadingContent="加载中"
                 Type="Default" />
-        </WrapPanel>
-        <Lay:LayButton
-            Width="auto"
-            Margin="0,5"
-            Content="按钮"
-            Type="Customize" />
-        <Lay:LayButton
-            Width="auto"
-            Margin="0,5"
-            Background="Transparent"
-            BorderBrush="{DynamicResource Gradient}"
-            BorderThickness="1"
-            Content="按钮"
-            Foreground="{DynamicResource Gradient}"
-            HoverBackground="Transparent"
-            HoverBorderBrush="{DynamicResource Gradient}"
-            Type="Customize" />
-        <Lay:LayButton
-            Width="auto"
-            Margin="0,5"
-            Background="{DynamicResource Purple}"
-            Content="按钮"
-            HoverBackground="{DynamicResource Purple}"
-            Type="Customize" />
-        <Lay:LayButton
-            Width="auto"
-            Margin="0,5"
-            Background="{DynamicResource Deep}"
-            Content="按钮"
-            HoverBackground="{DynamicResource Deep}"
-            Type="Customize" />
-    </StackPanel>
+            </WrapPanel>
+
+            <Lay:LayLegend Header="其它" Margin="0,20,0,0" />
+            <Lay:LayButton Width="auto" Margin="0,5" Content="流体按钮（宽度自适应）" Type="Customize" />
+
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
