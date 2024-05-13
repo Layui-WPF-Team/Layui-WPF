@@ -18,6 +18,14 @@ namespace LayuiFundamentalElement.ViewModels
     /// </summary>
     public class FormViewModel :  LayuiViewModelBase
     {
+
+        private double _Value;
+        public double Value
+        {
+            get { return _Value; }
+            set { SetProperty(ref _Value, value); }
+        }
+
         private FlowDocument _GetDocument;
         public FlowDocument GetDocument
         {

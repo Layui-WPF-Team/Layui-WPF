@@ -30,6 +30,7 @@
             <Lay:LayTextBox
                 Width="auto"
                 Margin="0,5"
+                Text="{Binding Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,StringFormat=N1}"
                 LayHelper:LayTextBoxHelper.InputType="Number"
                 Watermark="只允许输入数字" />
             <Lay:LayTextBox
