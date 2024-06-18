@@ -168,7 +168,7 @@ namespace LayUI.Wpf.Extend
                     Stream Stream = (await WebRequest.Create(https).GetResponseAsync()).GetResponseStream();
                     return new Bitmap(Stream);
                 }
-                string file = Source.ToString();
+                string file = Source.ToString(); 
                 return new Bitmap(file);
             }
             catch (Exception ex)

@@ -19,7 +19,7 @@ namespace LayuiFundamentalElement.ViewModels
     public class FormViewModel :  LayuiViewModelBase
     {
 
-        private double _Value;
+        private double _Value=1.1;
         public double Value
         {
             get { return _Value; }

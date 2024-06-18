@@ -437,8 +437,7 @@ namespace LayUI.Wpf.Global
                 else window.Show();
             }
             catch (Exception ex)
-            {
-
+            { 
                 throw ex;
             }
         }

@@ -82,29 +82,38 @@ namespace LayUI.Wpf.Controls
         {
             return Task.Run(() =>
            {
-               if (PART_Image != null)
+               try
                {
-                   Dispatcher.Invoke(async () =>
+
+                   if (PART_Image != null)
                    {
-                       //防呆置空
-                       if (Source == null)
+                       Dispatcher.Invoke(async () =>
                        {
-                           StopAnimate();
-                           gifBitmap?.Dispose();
-                           if(gifBitmap!=null) gifBitmap = null;
-                           this.PART_Image.Source = null;
-                           return;
-                       }
-                       if (gifBitmap != null)
-                       {
-                           StopAnimate();
-                           gifBitmap?.Dispose();
-                       }
-                       this.gifBitmap = await LayImageHelper.GetBitmapAsync(Source);
-                       this.bitmapSource = this.GetBitmapSource();
-                       this.PART_Image.Source = this.bitmapSource;
-                       StartAnimate();
-                   });
+                           //防呆置空
+                           if (Source == null)
+                           {
+                               StopAnimate();
+                               gifBitmap?.Dispose();
+                               if (gifBitmap != null) gifBitmap = null;
+                               this.PART_Image.Source = null;
+                               return;
+                           }
+                           if (gifBitmap != null)
+                           {
+                               StopAnimate();
+                               gifBitmap?.Dispose();
+                           }
+                           this.gifBitmap = await LayImageHelper.GetBitmapAsync(Source);
+                           this.bitmapSource = this.GetBitmapSource();
+                           this.PART_Image.Source = this.bitmapSource;
+                           StartAnimate();
+                       });
+                   }
+               }
+               catch (Exception ex)
+               {
+
+                   throw ex;
                }
            });
 

@@ -16,7 +16,8 @@
                 Width="250"
                 Height="35"
                 Margin="5"
-                HorizontalAlignment="Left" />
+                HorizontalAlignment="Left"
+                SelectedDates="{Binding SelectedDates, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <Lay:LayDateTimeRangePicker
                 Height="35"
                 Margin="5"

@@ -30,8 +30,8 @@
             <Lay:LayTextBox
                 Width="auto"
                 Margin="0,5"
-                Text="{Binding Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,StringFormat=N1}"
                 LayHelper:LayTextBoxHelper.InputType="Number"
+                Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Watermark="只允许输入数字" />
             <Lay:LayTextBox
                 Width="auto"
@@ -88,18 +88,20 @@
                     Width="150"
                     HorizontalAlignment="Left"
                     Increment="0.1"
-                    ToolTip="横向模式" />
+                    ToolTip="横向模式"
+                    Value="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Lay:LayNumericUpDown
                     Width="150"
-                    Value="{Binding Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     Margin="5,0"
                     HorizontalAlignment="Left"
                     Increment="0.1"
+                    MinValue="10"
                     Orientation="Vertical"
-                    ToolTip="纵向模式" />
+                    ToolTip="纵向模式"
+                    Value="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Lay:LayNumericUpDown
                     Width="150"
-                    Margin="5,0" 
+                    Margin="5,0"
                     HorizontalAlignment="Left"
                     Increment="0.1"
                     IsReadOnly="true"

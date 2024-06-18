@@ -51,8 +51,8 @@
                                         BorderThickness="0"
                                         Cursor="Hand"
                                         FocusVisualStyle="{x:Null}"
+                                        Focusable="False"
                                         Foreground="{TemplateBinding Foreground}"
-                                        IsEnabled="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=LowerIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         Style="{x:Null}">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
@@ -86,8 +86,7 @@
                                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                             InputMethod.IsInputMethodEnabled="False"
                                             IsReadOnly="{TemplateBinding IsReadOnly}"
-                                            Style="{x:Null}"
-                                            Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                            Style="{x:Null}">
                                             <TextBox.Template>
                                                 <ControlTemplate TargetType="TextBox">
                                                     <ScrollViewer
@@ -112,7 +111,7 @@
                                         BorderThickness="0"
                                         Cursor="Hand"
                                         FocusVisualStyle="{x:Null}"
-                                        IsEnabled="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=AddIsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Focusable="False"
                                         Style="{x:Null}">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
@@ -203,8 +202,7 @@
                                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                             InputMethod.IsInputMethodEnabled="False"
                                             IsReadOnly="{TemplateBinding IsReadOnly}"
-                                            Style="{x:Null}"
-                                            Text="{TemplateBinding Value}">
+                                            Style="{x:Null}">
                                             <TextBox.Template>
                                                 <ControlTemplate TargetType="TextBox">
                                                     <ScrollViewer
@@ -234,7 +232,7 @@
                                             BorderThickness="0"
                                             Cursor="Hand"
                                             FocusVisualStyle="{x:Null}"
-                                            IsEnabled="{TemplateBinding AddIsEnabled}"
+                                            Focusable="False"
                                             Style="{x:Null}">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
@@ -277,8 +275,8 @@
                                             BorderThickness="0"
                                             Cursor="Hand"
                                             FocusVisualStyle="{x:Null}"
+                                            Focusable="False"
                                             Foreground="{TemplateBinding Foreground}"
-                                            IsEnabled="{TemplateBinding LowerIsEnabled}"
                                             Style="{x:Null}">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">

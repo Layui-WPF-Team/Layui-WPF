@@ -18,7 +18,7 @@ namespace LayUI.Wpf.Controls
     /// <para>创建者:YWK</para>
     /// <para>创建时间:2022-06-14 下午 1:13:06</para>
     /// </summary>
-    public class LayNumericUpDown : System.Windows.Controls.ContentControl, ILayControl
+    public class LayNumericUpDown : Control, ILayControl
     {
         private TextBox PART_ValueHost;
         private Button PART_AddBtn;
@@ -35,13 +35,37 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(LayNumericUpDown), new PropertyMetadata(OnValueChanged));
+            DependencyProperty.Register("Value", typeof(double), typeof(LayNumericUpDown), new PropertyMetadata(0.0,OnValueChanged));
 
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayNumericUpDown layNumericUp = d as LayNumericUpDown;
-            if (layNumericUp.IsLoaded) layNumericUp.PART_ValueHost.Text = layNumericUp.CurrentText;
-            layNumericUp.OnValueChanged(new RoutedEventArgs(ValueChangedEvent, layNumericUp));
+            if (!layNumericUp.IsLoaded) return;
+            layNumericUp.OnValueChanged();
+        }
+        private void OnValueChanged()
+        {
+            Refresh();
+            OnValueChanged(new RoutedEventArgs(ValueChangedEvent, this));
+        }
+        /// <summary>
+        /// 刷新
+        /// </summary>
+        private void Refresh()
+        {
+            PART_LowerBtn.IsEnabled=true;
+            PART_AddBtn.IsEnabled = true;
+            if (Value <= MinValue)
+            {
+                Value = MinValue;
+                PART_LowerBtn.IsEnabled = false;
+            }
+            if (Value >= MaxValue)
+            {
+                Value = MaxValue;
+                PART_AddBtn.IsEnabled = false;
+            }
+            PART_ValueHost.Text = $"{Value}"; 
         }
         /// <summary>
         /// 值改变事件
@@ -57,29 +81,10 @@ namespace LayUI.Wpf.Controls
         public static readonly RoutedEvent ValueChangedEvent =
             EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(LayNumericUpDown));
 
+
         protected virtual void OnValueChanged(RoutedEventArgs e)
         {
-            if (Value >= MaxValue && Value <= MinValue)
-            {
-                Value = MaxValue;
-                LowerIsEnabled = AddIsEnabled = false;
-                return;
-            }
-            AddIsEnabled = true;
-            LowerIsEnabled = true;
-            if (Value <= MinValue)
-            {
-                Value = MinValue;
-                LowerIsEnabled = false;
-                return;
-            }
-            if (Value >= MaxValue)
-            {
-                Value = MaxValue;
-                AddIsEnabled = false;
-                return;
-            }
-            if (IsLoaded) RaiseEvent(e);
+            RaiseEvent(e);
         }
         /// <summary>
         /// 布局方向
@@ -113,10 +118,8 @@ namespace LayUI.Wpf.Controls
         private static void OnMinValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayNumericUpDown layNumericUp = d as LayNumericUpDown;
-            if (layNumericUp.Value <= layNumericUp.MinValue)
-            {
-                layNumericUp.Value = layNumericUp.MinValue;
-            }
+            if (!layNumericUp.IsLoaded) return;
+            layNumericUp.OnValueChanged();
         }
 
         /// <summary>
@@ -131,15 +134,13 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MaxValueProperty =
-            DependencyProperty.Register("MaxValue", typeof(double), typeof(LayNumericUpDown), new PropertyMetadata(OnMaxValueChanged));
+            DependencyProperty.Register("MaxValue", typeof(double), typeof(LayNumericUpDown), new PropertyMetadata(100.0, OnMaxValueChanged));
 
         private static void OnMaxValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayNumericUpDown layNumericUp = d as LayNumericUpDown;
-            if (layNumericUp.Value >= layNumericUp.MaxValue)
-            {
-                layNumericUp.Value = layNumericUp.MaxValue;
-            }
+            if (!layNumericUp.IsLoaded) return;
+            layNumericUp.OnValueChanged();
         }
 
         /// <summary>
@@ -224,40 +225,7 @@ namespace LayUI.Wpf.Controls
         // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsReadOnlyProperty =
             DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(LayNumericUpDown), new PropertyMetadata(false));
-
-
-
-        /// <summary>
-        /// 增加按钮是否启用
-        /// </summary>
-        [Bindable(true)]
-        internal bool AddIsEnabled
-        {
-            get { return (bool)GetValue(AddIsEnabledProperty); }
-            set { SetValue(AddIsEnabledProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for AddIsEnabled.  This enables animation, styling, binding, etc...
-        internal static readonly DependencyProperty AddIsEnabledProperty =
-            DependencyProperty.Register(nameof(AddIsEnabled), typeof(bool), typeof(LayNumericUpDown), new PropertyMetadata(true));
-
-        /// <summary>
-        /// 减少按钮是否启用
-        /// </summary>
-        [Bindable(true)]
-        internal bool LowerIsEnabled
-        {
-            get { return (bool)GetValue(LowerIsEnabledProperty); }
-            set { SetValue(LowerIsEnabledProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for AddIsEnabled.  This enables animation, styling, binding, etc...
-        internal static readonly DependencyProperty LowerIsEnabledProperty =
-            DependencyProperty.Register(nameof(LowerIsEnabled), typeof(bool), typeof(LayNumericUpDown), new PropertyMetadata(true));
-
-
-
-
+          
         /// <summary>
         /// 指示要显示的数字的格式，这将会覆盖 <see cref="DecimalPlaces"/> 属性
         /// </summary>
@@ -303,20 +271,7 @@ namespace LayUI.Wpf.Controls
                 PART_LowerBtn.Click -= PART_LowerBtn_Click;
                 PART_AddBtn.Click += PART_AddBtn_Click;
                 PART_LowerBtn.Click += PART_LowerBtn_Click;
-                if (string.IsNullOrEmpty(PART_ValueHost.Text)) PART_ValueHost.Text = "0";
-                else PART_ValueHost.Text = CurrentText;
-                if (Value <= MinValue)
-                {
-                    Value = MinValue;
-                    LowerIsEnabled = false;
-                    return;
-                }
-                if (Value >= MaxValue)
-                {
-                    Value = MaxValue;
-                    AddIsEnabled = false;
-                    return;
-                }
+                Refresh();
             }
         }
         /// <summary>
@@ -350,24 +305,28 @@ namespace LayUI.Wpf.Controls
         {
             try
             {
-                PART_ValueHost.Select(PART_ValueHost.Text.Length, 0);
-                if (string.IsNullOrEmpty(PART_ValueHost.Text)) Value = 0;
-                else Value = Convert.ToDouble(PART_ValueHost.Text);
+                if (double.TryParse(PART_ValueHost.Text, out double value))
+                {
+                    if (value >= MinValue && value <= MaxValue)
+                    {
+                        SetCurrentValue(ValueProperty, value);
+                    }
+                } 
             }
-            catch 
+            catch
             {
-                 
+
             }
         }
         private void PART_AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            Value = Value + Increment;
+            Value += Increment;
             PART_ValueHost.Focus();
         }
 
         private void PART_LowerBtn_Click(object sender, RoutedEventArgs e)
         {
-            Value = Value - Increment;
+            Value -= Increment;
             PART_ValueHost.Focus();
         }
 

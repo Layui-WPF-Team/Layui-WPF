@@ -110,8 +110,8 @@ namespace LayUI.Wpf.Controls
 
         public IEnumerable<DateTime?> SelectedDates
         {
-            get { return (IEnumerable<DateTime?>)GetValue(SelectedItemsProperty); }
-            set { SetValue(SelectedItemsProperty, value); }
+            get { return (IEnumerable<DateTime?>)GetValue(SelectedDatesProperty); }
+            set { SetValue(SelectedDatesProperty, value); }
         }
 
 
@@ -138,8 +138,8 @@ namespace LayUI.Wpf.Controls
 
 
         // Using a DependencyProperty as the backing store for SelectedItems.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty SelectedItemsProperty =
-            DependencyProperty.Register("SelectedItems", typeof(IEnumerable<DateTime?>), typeof(LayDateRangePicker), new PropertyMetadata(OnSelectedDatesChanged));
+        public static readonly DependencyProperty SelectedDatesProperty =
+            DependencyProperty.Register("SelectedDates", typeof(IEnumerable<DateTime?>), typeof(LayDateRangePicker), new PropertyMetadata(OnSelectedDatesChanged));
 
         private static void OnSelectedDatesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
