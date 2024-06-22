@@ -113,8 +113,8 @@ namespace LayuiComponentExample.ViewModels
                 get { return _Name; }
                 set { SetProperty(ref _Name, value); }
             }
-            private int _ProgressBarValue;
-            public int ProgressBarValue
+            private double _ProgressBarValue;
+            public double ProgressBarValue
             {
                 get { return _ProgressBarValue; }
                 set { SetProperty(ref _ProgressBarValue, value); }

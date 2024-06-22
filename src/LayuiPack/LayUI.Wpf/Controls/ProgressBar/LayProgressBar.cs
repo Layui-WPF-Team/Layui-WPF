@@ -30,7 +30,7 @@ namespace LayUI.Wpf.Controls
         {
             if (d is LayProgressBar layProgress)
             {
-                if (layProgress.IsLoaded)
+                if (layProgress.IsInitialized)
                     layProgress.InvalidateVisual();
             }
         }

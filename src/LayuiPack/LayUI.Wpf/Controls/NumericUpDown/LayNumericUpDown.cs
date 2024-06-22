@@ -35,12 +35,12 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(LayNumericUpDown), new PropertyMetadata(0.0,OnValueChanged));
+            DependencyProperty.Register("Value", typeof(double), typeof(LayNumericUpDown), new FrameworkPropertyMetadata(OnValueChanged));
 
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayNumericUpDown layNumericUp = d as LayNumericUpDown;
-            if (!layNumericUp.IsLoaded) return;
+            if (!layNumericUp.IsInitialized) return;
             layNumericUp.OnValueChanged();
         }
         private void OnValueChanged()
@@ -65,7 +65,7 @@ namespace LayUI.Wpf.Controls
                 Value = MaxValue;
                 PART_AddBtn.IsEnabled = false;
             }
-            PART_ValueHost.Text = $"{Value}"; 
+            PART_ValueHost.Text = $"{Value}";  
         }
         /// <summary>
         /// 值改变事件
@@ -118,7 +118,7 @@ namespace LayUI.Wpf.Controls
         private static void OnMinValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayNumericUpDown layNumericUp = d as LayNumericUpDown;
-            if (!layNumericUp.IsLoaded) return;
+            if (!layNumericUp.IsInitialized) return;
             layNumericUp.OnValueChanged();
         }
 
@@ -139,7 +139,7 @@ namespace LayUI.Wpf.Controls
         private static void OnMaxValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayNumericUpDown layNumericUp = d as LayNumericUpDown;
-            if (!layNumericUp.IsLoaded) return;
+            if (!layNumericUp.IsInitialized) return;
             layNumericUp.OnValueChanged();
         }
 
@@ -270,7 +270,7 @@ namespace LayUI.Wpf.Controls
                 PART_AddBtn.Click -= PART_AddBtn_Click;
                 PART_LowerBtn.Click -= PART_LowerBtn_Click;
                 PART_AddBtn.Click += PART_AddBtn_Click;
-                PART_LowerBtn.Click += PART_LowerBtn_Click;
+                PART_LowerBtn.Click += PART_LowerBtn_Click; 
                 Refresh();
             }
         }

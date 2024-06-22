@@ -54,7 +54,7 @@ namespace LayUI.Wpf.Controls
         {
             if (d is LayDrawerHost host)
             {
-                if (host.IsLoaded) host.UpdateModelEvent();
+                if (host.IsInitialized) host.UpdateModelEvent();
             }
         }
 

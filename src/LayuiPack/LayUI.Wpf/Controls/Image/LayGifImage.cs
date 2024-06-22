@@ -49,7 +49,7 @@ namespace LayUI.Wpf.Controls
         private async static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayGifImage layGif = d as LayGifImage;
-            if (!layGif.IsLoaded) return;
+            if (!layGif.IsInitialized) return;
             if (e.NewValue == e.OldValue) return;
             await layGif.RefreshAsync();
         }

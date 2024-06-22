@@ -251,11 +251,11 @@
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
-                                    <Lay:LayProgressBar
+                                    <Lay:LayNumericUpDown
                                         x:Name="ProgressBar"
-                                        Height="10"
                                         VerticalAlignment="Center"
-                                        Value="{Binding ProgressBarValue, Mode=OneWay}" />
+                                        Style="{DynamicResource LayNumericUpDownStyle}"
+                                        Value="{Binding ProgressBarValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock
                                         Grid.Column="1"
                                         VerticalAlignment="Center"

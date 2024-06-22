@@ -39,7 +39,7 @@ namespace LayUI.Wpf.Controls
         private static void OnTypeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (!(d is LayRipple ripple)) return;
-            if (ripple.IsLoaded) ripple.ExecuteAnimation(ripple.Type);
+            if (ripple.IsInitialized) ripple.ExecuteAnimation(ripple.Type);
         }
 
         public override void OnApplyTemplate()

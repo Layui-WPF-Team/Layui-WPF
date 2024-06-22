@@ -108,7 +108,7 @@ namespace LayUI.Wpf.Controls
         {
             try
             {
-                if (!IsLoaded) return;
+                if (!IsInitialized) return;
                 if (timer == null)
                 {
                     timer = new DispatcherTimer();
@@ -132,7 +132,7 @@ namespace LayUI.Wpf.Controls
             try
             {
 
-                if (!IsLoaded) return;
+                if (!IsInitialized) return;
                 if (!IsAutoSwitch) return;
                 if (timer == null)
                 {

@@ -55,7 +55,7 @@ namespace LayUI.Wpf.Controls
         private static void AnimationChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayTransition control = d as LayTransition;
-            if (!control.IsLoaded) return;
+            if (!control.IsInitialized) return;
             control.RefreshAnimation();
         }
         /// <summary>

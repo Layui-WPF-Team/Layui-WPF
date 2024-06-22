@@ -52,7 +52,7 @@ namespace LayUI.Wpf.Controls
         private static void OnIsShowPasswrodChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             LayPasswordBox passwordBox = d as LayPasswordBox;
-            if (passwordBox.IsLoaded)
+            if (passwordBox.IsInitialized)
             {
                 if (passwordBox.IsShowPasswrod)
                 {

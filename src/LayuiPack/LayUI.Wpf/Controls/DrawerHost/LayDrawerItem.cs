@@ -51,7 +51,7 @@ namespace LayUI.Wpf.Controls
         {
             if (d is LayDrawerItem item)
             {
-                if (item.IsLoaded) item.UpdateModelEvent();
+                if (item.IsInitialized) item.UpdateModelEvent();
             }
         }
         /// <summary>

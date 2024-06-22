@@ -88,6 +88,7 @@
                     Width="150"
                     HorizontalAlignment="Left"
                     Increment="0.1"
+                    MaxValue="100000000"
                     ToolTip="横向模式"
                     Value="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Lay:LayNumericUpDown
@@ -95,6 +96,7 @@
                     Margin="5,0"
                     HorizontalAlignment="Left"
                     Increment="0.1"
+                    MaxValue="100000000"
                     MinValue="10"
                     Orientation="Vertical"
                     ToolTip="纵向模式"

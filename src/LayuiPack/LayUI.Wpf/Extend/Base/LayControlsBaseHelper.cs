@@ -69,7 +69,7 @@ namespace LayUI.Wpf.Extend
             var Element = d as FrameworkElement;
             if (d is IInputElement input)
             {
-                if (GetIsFocus(d) && Element.IsLoaded)
+                if (GetIsFocus(d) && Element.IsInitialized)
                 {
                     if (d is TextBox text) text.SelectionStart = int.MaxValue;
                     if (d is PasswordBox password) SetSelection(password, int.MaxValue, int.MaxValue);
@@ -79,7 +79,7 @@ namespace LayUI.Wpf.Extend
                 {
                     input.LostKeyboardFocus -= Input_LostKeyboardFocus;
                     input.LostKeyboardFocus += Input_LostKeyboardFocus;
-                    if (!Element.IsLoaded)
+                    if (!Element.IsInitialized)
                     {
                         Element.Loaded -= Input_Loaded;
                         Element.Loaded += Input_Loaded;

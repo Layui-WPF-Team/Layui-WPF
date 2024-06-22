@@ -97,7 +97,7 @@ namespace LayUI.Wpf.Controls
 
         private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!(d as LayVRImage).IsLoaded) return;
+            if (!(d as LayVRImage).IsInitialized) return;
             (d as LayVRImage).OnSourceChanged();
         }
 
@@ -137,7 +137,7 @@ namespace LayUI.Wpf.Controls
 
         private static void OnFieldOfViewChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!(d as LayVRImage).IsLoaded) return;
+            if (!(d as LayVRImage).IsInitialized) return;
             (d as LayVRImage).OnFieldOfViewChanged();
         }
         private void OnFieldOfViewChanged()
@@ -178,7 +178,7 @@ namespace LayUI.Wpf.Controls
 
         private static void OnThetaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!(d as LayVRImage).IsLoaded) return;
+            if (!(d as LayVRImage).IsInitialized) return;
             (d as LayVRImage).OnThetaChanged();
         }
         private void OnThetaChanged() => RefreshCamera(Theta, null);
@@ -194,7 +194,7 @@ namespace LayUI.Wpf.Controls
 
         private static void OnPhiChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!(d as LayVRImage).IsLoaded) return;
+            if (!(d as LayVRImage).IsInitialized) return;
             (d as LayVRImage).OnPhiChanged();
         }
 
