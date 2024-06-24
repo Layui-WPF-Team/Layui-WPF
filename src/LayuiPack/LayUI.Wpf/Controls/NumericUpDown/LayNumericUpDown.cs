@@ -46,7 +46,7 @@ namespace LayUI.Wpf.Controls
         private void OnValueChanged()
         {
             Refresh();
-            OnValueChanged(new RoutedEventArgs(ValueChangedEvent, this));
+            if(IsLoaded)OnValueChanged(new RoutedEventArgs(ValueChangedEvent, this));
         }
         /// <summary>
         /// 刷新
