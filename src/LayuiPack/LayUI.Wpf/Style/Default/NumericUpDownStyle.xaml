@@ -86,8 +86,7 @@
                                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                             InputMethod.IsInputMethodEnabled="False"
                                             IsReadOnly="{TemplateBinding IsReadOnly}"
-                                            Style="{x:Null}"
-                                            Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Value, Mode=OneWay}">
+                                            Style="{x:Null}">
                                             <TextBox.Template>
                                                 <ControlTemplate TargetType="TextBox">
                                                     <ScrollViewer

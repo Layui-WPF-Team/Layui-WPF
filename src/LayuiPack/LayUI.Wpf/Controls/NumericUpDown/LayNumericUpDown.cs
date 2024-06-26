@@ -1,7 +1,9 @@
-﻿using System;
+﻿using LayUI.Wpf.Converters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,15 +29,15 @@ namespace LayUI.Wpf.Controls
         /// 当前值
         /// </summary>
         [Bindable(true)]
-        public double Value
+        public decimal Value
         {
-            get { return (double)GetValue(ValueProperty); }
+            get { return (decimal)GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(LayNumericUpDown), new FrameworkPropertyMetadata(OnValueChanged));
+            DependencyProperty.Register("Value", typeof(decimal), typeof(LayNumericUpDown), new FrameworkPropertyMetadata(OnValueChanged));
 
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -53,19 +55,17 @@ namespace LayUI.Wpf.Controls
         /// </summary>
         private void Refresh()
         {
+            if (PART_LowerBtn == null || PART_AddBtn == null || PART_ValueHost == null) return;
             PART_LowerBtn.IsEnabled=true;
             PART_AddBtn.IsEnabled = true;
             if (Value <= MinValue)
-            {
-                Value = MinValue;
+            { 
                 PART_LowerBtn.IsEnabled = false;
             }
             if (Value >= MaxValue)
-            {
-                Value = MaxValue;
+            { 
                 PART_AddBtn.IsEnabled = false;
-            }
-            PART_ValueHost.Text = $"{Value}";  
+            } 
         }
         /// <summary>
         /// 值改变事件
@@ -105,44 +105,58 @@ namespace LayUI.Wpf.Controls
         /// 最小值
         /// </summary>
         [Bindable(true)]
-        public double MinValue
+        public decimal MinValue
         {
-            get { return (double)GetValue(MinValueProperty); }
+            get { return (decimal)GetValue(MinValueProperty); }
             set { SetValue(MinValueProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MinValueProperty =
-            DependencyProperty.Register("MinValue", typeof(double), typeof(LayNumericUpDown), new PropertyMetadata(OnMinValueChanged));
+            DependencyProperty.Register("MinValue", typeof(decimal), typeof(LayNumericUpDown), new PropertyMetadata(OnMinValueChanged));
 
         private static void OnMinValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            LayNumericUpDown layNumericUp = d as LayNumericUpDown;
-            if (!layNumericUp.IsInitialized) return;
-            layNumericUp.OnValueChanged();
+            if (d is LayNumericUpDown numericUpDown && numericUpDown.IsInitialized) numericUpDown.OnMinValueChanged((decimal)e.NewValue);
         }
 
+        private void OnMinValueChanged(decimal value)
+        {
+            PART_LowerBtn.IsEnabled = true;
+            if (Value <= value)
+            {
+                Value = value;
+                PART_LowerBtn.IsEnabled = false;
+            }
+        }
         /// <summary>
         /// 最大值
         /// </summary>
         [Bindable(true)]
-        public double MaxValue
+        public decimal MaxValue
         {
-            get { return (double)GetValue(MaxValueProperty); }
+            get { return (decimal)GetValue(MaxValueProperty); }
             set { SetValue(MaxValueProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MaxValueProperty =
-            DependencyProperty.Register("MaxValue", typeof(double), typeof(LayNumericUpDown), new PropertyMetadata(100.0, OnMaxValueChanged));
+            DependencyProperty.Register("MaxValue", typeof(decimal), typeof(LayNumericUpDown), new PropertyMetadata(decimal.Parse("100.0"), OnMaxValueChanged));
 
         private static void OnMaxValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            LayNumericUpDown layNumericUp = d as LayNumericUpDown;
-            if (!layNumericUp.IsInitialized) return;
-            layNumericUp.OnValueChanged();
+            if (d is LayNumericUpDown numericUpDown && numericUpDown.IsInitialized) numericUpDown.OnMaxValueChanged((decimal)e.NewValue);
         }
 
+        private void OnMaxValueChanged(decimal value)
+        {
+            PART_AddBtn.IsEnabled = true;
+            if (Value >= value)
+            {
+                PART_AddBtn.IsEnabled = false;
+                Value = value;
+            }
+        }
         /// <summary>
         /// 输入框圆角
         /// </summary>
@@ -203,15 +217,15 @@ namespace LayUI.Wpf.Controls
         /// 每单击按钮时增加或减少的数量
         /// </summary>
         [Bindable(true)]
-        public double Increment
+        public decimal Increment
         {
-            get { return (double)GetValue(IncrementProperty); }
+            get { return (decimal)GetValue(IncrementProperty); }
             set { SetValue(IncrementProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Increment.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IncrementProperty =
-            DependencyProperty.Register("Increment", typeof(double), typeof(LayNumericUpDown));
+            DependencyProperty.Register("Increment", typeof(decimal), typeof(LayNumericUpDown),new PropertyMetadata(decimal.Parse("1")));
         /// <summary>
         /// 是否只读
         /// </summary>
@@ -238,21 +252,8 @@ namespace LayUI.Wpf.Controls
         /// 指示要显示的数字的格式
         /// </summary>
         public static readonly DependencyProperty ValueFormatProperty =
-            DependencyProperty.Register("ValueFormat", typeof(string), typeof(LayNumericUpDown), new PropertyMetadata(default(string)));
-        /// <summary>
-        ///  指示要显示的小数位数
-        /// </summary>
-        internal int? DecimalPlaces
-        {
-            get => (int?)GetValue(DecimalPlacesProperty);
-            set => SetValue(DecimalPlacesProperty, value);
-        }
-        /// <summary>
-        ///  指示要显示的小数位数
-        /// </summary>
-        internal static readonly DependencyProperty DecimalPlacesProperty =
-            DependencyProperty.Register("DecimalPlaces", typeof(int?), typeof(LayNumericUpDown), new PropertyMetadata(default(int?)));
-        private string CurrentText => string.IsNullOrWhiteSpace(ValueFormat) ? DecimalPlaces.HasValue ? Value.ToString($"#0.{new string('0', DecimalPlaces.Value)}") : Value.ToString() : Value.ToString(ValueFormat);
+            DependencyProperty.Register("ValueFormat", typeof(string), typeof(LayNumericUpDown));
+        
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -261,17 +262,29 @@ namespace LayUI.Wpf.Controls
             PART_LowerBtn = GetTemplateChild("PART_LowerBtn") as Button;
             if (PART_ValueHost != null && PART_AddBtn != null && PART_LowerBtn != null)
             {
-                PART_ValueHost.LostFocus -= PART_ValueHost_LostFocus;
-                PART_ValueHost.LostFocus += PART_ValueHost_LostFocus;
-                PART_ValueHost.PreviewKeyDown -= PART_ValueHost_PreviewKeyDown;
-                PART_ValueHost.PreviewKeyDown += PART_ValueHost_PreviewKeyDown;
+                MultiBinding binding = new MultiBinding();
+                binding.Bindings.Add(new Binding()
+                {
+                    Mode = BindingMode.OneWay,
+                    Source = this,
+                    Path = new PropertyPath(ValueProperty.Name)
+                });
+                binding.Bindings.Add(new Binding()
+                {
+                    Mode = BindingMode.OneWay,
+                    Source = this,
+                    Path = new PropertyPath(ValueFormatProperty.Name)
+                });
+                binding.Converter = new DecimalToStringFormatConverter();
+                PART_ValueHost.SetBinding(TextBox.TextProperty, binding);
                 PART_ValueHost.TextChanged -= PART_ValueHost_TextChanged;
                 PART_ValueHost.TextChanged += PART_ValueHost_TextChanged;
                 PART_AddBtn.Click -= PART_AddBtn_Click;
                 PART_LowerBtn.Click -= PART_LowerBtn_Click;
                 PART_AddBtn.Click += PART_AddBtn_Click;
-                PART_LowerBtn.Click += PART_LowerBtn_Click; 
-                Refresh();
+                PART_LowerBtn.Click += PART_LowerBtn_Click;
+                if (Value <= MinValue) PART_LowerBtn.IsEnabled = false;
+                if (Value >= MaxValue) PART_AddBtn.IsEnabled = false;
             }
         }
         /// <summary>
@@ -281,37 +294,39 @@ namespace LayUI.Wpf.Controls
         protected override void OnMouseWheel(MouseWheelEventArgs e)
         {
             base.OnMouseWheel(e);
-
-            if (PART_ValueHost.IsFocused && !IsReadOnly)
+            if (PART_ValueHost != null)
             {
-                Value += e.Delta > 0 ? Increment : -Increment;
-                e.Handled = true;
+                if (PART_ValueHost.IsFocused && !IsReadOnly)
+                {
+                    if (Value < MaxValue && e.Delta > 0)
+                    {
+                        var value = Value + Increment;
+                        if (value < MaxValue) Value = value;
+                        else Value = MaxValue;
+                    }
+                    if (Value > MinValue && e.Delta < 0)
+                    {
+                        var value = Value - Increment;
+                        if (value > MinValue) Value = value;
+                        else Value = MinValue;
+                    }
+                    PART_ValueHost?.SelectAll();
+                    e.Handled = true;
+                }
             }
         }
-        private void PART_ValueHost_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (IsReadOnly) return;
-            if (e.Key == Key.Up)
-            {
-                Value += Increment;
-            }
-            else if (e.Key == Key.Down)
-            {
-                Value -= Increment;
-            }
-        }
-
+        private int index = 0;
         private void PART_ValueHost_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
-                if (double.TryParse(PART_ValueHost.Text, out double value))
-                {
-                    if (value >= MinValue && value <= MaxValue)
-                    {
-                        SetCurrentValue(ValueProperty, value);
-                    }
-                } 
+                var textBox = e.OriginalSource as TextBox;
+                decimal value = 0;
+                bool isDouble = decimal.TryParse(textBox.Text, out value);
+                if (Value == value) return;
+                index = textBox.CaretIndex;
+                if (isDouble) Value = value;
+                textBox.CaretIndex = index;
             }
             catch
             {
@@ -321,19 +336,15 @@ namespace LayUI.Wpf.Controls
         private void PART_AddBtn_Click(object sender, RoutedEventArgs e)
         {
             Value += Increment;
-            PART_ValueHost.Focus();
+            PART_ValueHost?.Focus();
+            PART_ValueHost?.SelectAll();
         }
 
         private void PART_LowerBtn_Click(object sender, RoutedEventArgs e)
         {
             Value -= Increment;
-            PART_ValueHost.Focus();
-        }
-
-        private void PART_ValueHost_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty((sender as TextBox).Text)) (sender as TextBox).Text = "0";
-            PART_ValueHost.Text = CurrentText;
-        }
+            PART_ValueHost?.Focus();
+            PART_ValueHost?.SelectAll();
+        } 
     }
 }
