@@ -29,7 +29,7 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
-                            <Grid Margin="{TemplateBinding Padding}">
+                            <Grid x:Name="PART_Grid" Margin="{TemplateBinding Padding}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="auto" />
@@ -117,7 +117,8 @@
                                 x:Name="PART_Popup"
                                 AllowsTransparency="True"
                                 IsOpen="{Binding ElementName=PART_ToggleButton, Path=IsChecked}"
-                                Placement="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                Placement="Bottom"
+                                PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDateTimeRangePicker}}"
                                 PopupAnimation="Slide"
                                 StaysOpen="False">
                                 <Popup.Style>
