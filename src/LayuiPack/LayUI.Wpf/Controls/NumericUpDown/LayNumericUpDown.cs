@@ -282,9 +282,9 @@ namespace LayUI.Wpf.Controls
                 PART_AddBtn.Click -= PART_AddBtn_Click;
                 PART_LowerBtn.Click -= PART_LowerBtn_Click;
                 PART_AddBtn.Click += PART_AddBtn_Click;
-                PART_LowerBtn.Click += PART_LowerBtn_Click;
-                if (Value <= MinValue) PART_LowerBtn.IsEnabled = false;
-                if (Value >= MaxValue) PART_AddBtn.IsEnabled = false;
+                PART_LowerBtn.Click += PART_LowerBtn_Click; 
+                OnMinValueChanged(MinValue);
+                OnMaxValueChanged(MaxValue);
             }
         }
         /// <summary>

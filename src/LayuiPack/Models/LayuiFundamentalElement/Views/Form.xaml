@@ -100,7 +100,7 @@
                     MinValue="10"
                     Orientation="Vertical"
                     ToolTip="纵向模式"
-                    Value="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    ValueFormat="N6" />
                 <Lay:LayNumericUpDown
                     Width="150"
                     Margin="5,0"
