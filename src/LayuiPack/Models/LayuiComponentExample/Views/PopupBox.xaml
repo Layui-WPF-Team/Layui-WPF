@@ -10,10 +10,7 @@
         Margin="10"
         HorizontalAlignment="Center"
         Orientation="Horizontal">
-        <Lay:LayPopupBox
-            Width="150"
-            Margin="10,0"
-            Style="{DynamicResource LayPopupBoxStyle}">
+        <Lay:LayPopupBox Width="150" Margin="10,0">
             <Lay:LayPopupBox.Header>
                 <TextBlock Margin="10,5" Text="弹出框" />
             </Lay:LayPopupBox.Header>

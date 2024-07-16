@@ -55,6 +55,7 @@
     <Compile Include="ViewModels\CarouselViewModel.cs" />
     <Compile Include="ViewModels\CascaderViewModel.cs" />
     <Compile Include="ViewModels\DateTimeViewModel.cs" />
+    <Compile Include="ViewModels\DecimalTextViewModel.cs" />
     <Compile Include="ViewModels\DefaultDialogViewModel.cs" />
     <Compile Include="ViewModels\DrawerViewModel.cs" />
     <Compile Include="ViewModels\FlowItemsControlViewModel.cs" />
@@ -84,6 +85,9 @@
     </Compile>
     <Compile Include="Views\DateTime.xaml.cs">
       <DependentUpon>DateTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DecimalText.xaml.cs">
+      <DependentUpon>DecimalText.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DefaultDialog.xaml.cs">
       <DependentUpon>DefaultDialog.xaml</DependentUpon>
@@ -199,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DateTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DecimalText.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

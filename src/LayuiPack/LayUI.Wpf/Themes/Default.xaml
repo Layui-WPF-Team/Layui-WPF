@@ -72,5 +72,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/MultipleComboBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/MultipleComboBoxItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/PropertyGridStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/DecimalTextStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -259,6 +259,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="PropertyGrid", PageKey=SystemResource.Page_PropertyGridView,IsNew=true
                             },new MenuItemModel()
                             {
+                                ItemTitle="DecimalText", PageKey=SystemResource.Page_DecimalTextView,IsNew=true
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="Keyboard", PageKey=SystemResource.Page_KeyboardView
                             }
                         }

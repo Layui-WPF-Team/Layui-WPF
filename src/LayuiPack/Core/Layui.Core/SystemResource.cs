@@ -183,6 +183,10 @@ namespace Layui.Core.Resource
         /// 属性网格
         /// </summary>
         public const string Page_PropertyGridView = "PropertyGridView"; 
+        /// <summary>
+        /// 支持十进制动画过渡效果
+        /// </summary>
+        public const string Page_DecimalTextView = "DecimalTextView"; 
         #endregion
     }
 }

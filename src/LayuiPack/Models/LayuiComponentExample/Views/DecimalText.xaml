@@ -1,0 +1,42 @@
+﻿<UserControl
+    x:Class="LayuiComponentExample.Views.DecimalText"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock
+            Margin="20"
+            FontSize="20"
+            Text="当前控件可以使用任意一个数字属性产生过渡效果,当前控件使用得当，你将可以为你的程序创造无限的可能性"
+            TextAlignment="Center"
+            TextWrapping="WrapWithOverflow" />
+        <Lay:LayDecimalText
+            Margin="20"
+            HorizontalAlignment="Center"
+            Time="0:0:1"
+            Value="{Binding Value}" />
+        <Lay:LayDecimalText
+            x:Name="Decimal"
+            Margin="20"
+            HorizontalAlignment="Center"
+            Value="{Binding Value}">
+            <TextBlock
+                FontSize="20"
+                Foreground="{DynamicResource CyanBlue}"
+                Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDecimalText}, Path=AnimationValue, StringFormat={}金额：{0:N0}}" />
+        </Lay:LayDecimalText>
+        <Lay:LayLegend Header="进度条动画" Type="Center" />
+        <Lay:LayProgressBar
+            Width="400"
+            Height="20"
+            Margin="50"
+            Maximum="10000000"
+            Value="{Binding ElementName=Decimal, Path=AnimationValue, Mode=OneWay}" />
+        <Lay:LayButton
+            Command="{Binding ValueCommand}"
+            Content="产生随机金额"
+            Type="Normal" />
+    </StackPanel>
+</UserControl>
