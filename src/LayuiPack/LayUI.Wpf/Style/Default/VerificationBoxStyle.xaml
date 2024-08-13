@@ -1,0 +1,150 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls"
+    xmlns:layCv="clr-namespace:LayUI.Wpf.Converters">
+    <Style x:Key="LayVerificationBoxStyle" TargetType="Lay:LayVerificationBox">
+        <Style.Resources>
+            <layCv:SimpleCornerRadiusToClipConverter x:Key="CornerRadiusToClip" />
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+        </Style.Resources>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="38" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource LightGrayEffect}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource Black}" />
+        <Setter Property="Effect" Value="{DynamicResource LayShadow}" />
+        <Setter Property="ClipToBounds" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayVerificationBox">
+                    <Grid UseLayoutRounding="true">
+                        <Grid.Clip>
+                            <MultiBinding Converter="{StaticResource CornerRadiusToClip}">
+                                <Binding ElementName="PART_Border" Path="ActualWidth" />
+                                <Binding ElementName="PART_Border" Path="ActualHeight" />
+                                <Binding ElementName="PART_Border" Path="CornerRadius" />
+                            </MultiBinding>
+                        </Grid.Clip>
+                        <Border
+                            Panel.ZIndex="1"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Border
+                            x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid Effect="{x:Null}">
+                                <ContentPresenter
+                                    x:Name="PART_OFFContentPresenter"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding OFFContent}"
+                                    UseLayoutRounding="False"
+                                    Visibility="Collapsed" />
+                                <ContentPresenter
+                                    x:Name="PART_ONContentPresenter"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding ONContent}"
+                                    UseLayoutRounding="False"
+                                    Visibility="Collapsed" />
+                                <Slider
+                                    x:Name="PART_Gesture"
+                                    BorderThickness="0"
+                                    Maximum="100"
+                                    Minimum="0"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    <Slider.Clip>
+                                        <MultiBinding Converter="{StaticResource CornerRadiusToClip}">
+                                            <Binding ElementName="PART_Border" Path="ActualWidth" />
+                                            <Binding ElementName="PART_Border" Path="ActualHeight" />
+                                            <Binding ElementName="PART_Border" Path="CornerRadius" />
+                                        </MultiBinding>
+                                    </Slider.Clip>
+                                    <Slider.Template>
+                                        <ControlTemplate TargetType="Slider">
+                                            <Track x:Name="PART_Track" Height="Auto">
+                                                <Track.Thumb>
+                                                    <Thumb Width="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight}">
+                                                        <Thumb.Template>
+                                                            <ControlTemplate TargetType="Thumb">
+                                                                <Border
+                                                                    Background="{DynamicResource LightGreen}"
+                                                                    CornerRadius="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayVerificationBox}, Path=CornerRadius, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                    Effect="{DynamicResource LayShadow}"
+                                                                    UseLayoutRounding="True">
+                                                                    <Viewbox>
+                                                                        <TextBlock
+                                                                            Margin="10"
+                                                                            FontFamily="{DynamicResource IconFont}"
+                                                                            FontSize="20"
+                                                                            Foreground="White"
+                                                                            Text="&#xeb5c;" />
+                                                                    </Viewbox>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Thumb.Template>
+                                                    </Thumb>
+                                                </Track.Thumb>
+                                                <Track.IncreaseRepeatButton>
+                                                    <RepeatButton
+                                                        Background="Transparent"
+                                                        BorderThickness="0"
+                                                        Command="Slider.IncreaseLarge">
+                                                        <RepeatButton.Template>
+                                                            <ControlTemplate TargetType="RepeatButton" />
+                                                        </RepeatButton.Template>
+                                                    </RepeatButton>
+                                                </Track.IncreaseRepeatButton>
+                                                <Track.DecreaseRepeatButton>
+                                                    <RepeatButton
+                                                        x:Name="PART_DecreaseRepeatButton"
+                                                        BorderThickness="0"
+                                                        Command="Slider.DecreaseLarge">
+                                                        <RepeatButton.Template>
+                                                            <ControlTemplate TargetType="RepeatButton">
+                                                                <Grid Background="{DynamicResource LightGreen}" />
+                                                            </ControlTemplate>
+                                                        </RepeatButton.Template>
+                                                    </RepeatButton>
+                                                </Track.DecreaseRepeatButton>
+                                            </Track>
+                                            <ControlTemplate.Triggers>
+                                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Value}" Value="100">
+                                                    <Setter TargetName="PART_DecreaseRepeatButton" Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Slider.Template>
+                                </Slider>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSuccess" Value="True">
+                            <Setter TargetName="PART_OFFContentPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_ONContentPresenter" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_Gesture" Property="IsHitTestVisible" Value="false" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource LightGreen}" />
+                        </Trigger>
+                        <Trigger Property="IsSuccess" Value="False">
+                            <Setter TargetName="PART_OFFContentPresenter" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_ONContentPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayVerificationBoxStyle}" TargetType="Lay:LayVerificationBox" />
+</ResourceDictionary>

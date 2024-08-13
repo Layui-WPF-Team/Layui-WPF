@@ -262,6 +262,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="DecimalText", PageKey=SystemResource.Page_DecimalTextView,IsNew=true
                             },new MenuItemModel()
                             {
+                                ItemTitle="VerificationBox", PageKey=SystemResource.Page_VerificationBoxView,IsNew=true
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="Keyboard", PageKey=SystemResource.Page_KeyboardView
                             }
                         }

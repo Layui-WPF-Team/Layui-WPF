@@ -187,6 +187,10 @@ namespace Layui.Core.Resource
         /// 支持十进制动画过渡效果
         /// </summary>
         public const string Page_DecimalTextView = "DecimalTextView"; 
+        /// <summary>
+        /// 滑动解锁
+        /// </summary>
+        public const string Page_VerificationBoxView = "VerificationBoxView"; 
         #endregion
     }
 }

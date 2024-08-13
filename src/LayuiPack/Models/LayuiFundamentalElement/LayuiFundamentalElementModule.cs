@@ -32,7 +32,8 @@ namespace LayuiFundamentalElement
             containerRegistry.RegisterForNavigation<Views.GIFImage>(SystemResource.Page_GIFImageView);
             containerRegistry.RegisterForNavigation<Views.ScaleImage>(SystemResource.Page_ScaleImageView);
             containerRegistry.RegisterForNavigation<Views.Keyboard>(SystemResource.Page_KeyboardView);
-            containerRegistry.RegisterForNavigation<Views.Skeleton>(SystemResource.Page_SkeletonView);
+            containerRegistry.RegisterForNavigation<Views.Skeleton>(SystemResource.Page_SkeletonView); 
+            containerRegistry.RegisterForNavigation<Views.VerificationBox>(SystemResource.Page_VerificationBoxView); 
         }
     }
 }

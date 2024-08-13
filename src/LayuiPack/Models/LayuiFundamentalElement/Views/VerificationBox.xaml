@@ -1,0 +1,25 @@
+﻿<UserControl
+    x:Class="LayuiFundamentalElement.Views.VerificationBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Lay:LayVerificationBox
+        x:Name="verificationBox"
+        Margin="10"
+        VerticalAlignment="Center">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Succeed">
+                <i:InvokeCommandAction Command="{Binding SoccessCommand}" />
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <Lay:LayVerificationBox.OFFContent>
+            <TextBlock Text="滑动解锁" />
+        </Lay:LayVerificationBox.OFFContent>
+        <Lay:LayVerificationBox.ONContent>
+            <TextBlock Foreground="White" Text="解锁成功" />
+        </Lay:LayVerificationBox.ONContent>
+    </Lay:LayVerificationBox>
+</UserControl>
