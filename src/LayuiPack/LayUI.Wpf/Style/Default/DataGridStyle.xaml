@@ -215,6 +215,7 @@
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="CanUserAddRows" Value="false" />
         <Setter Property="ElementTextColumnStyle" Value="{DynamicResource ElementTextStyle}" />
         <Setter Property="EditingTextColumnStyle" Value="{DynamicResource EditingTextStyle}" />
         <Setter Property="ElementCheckBoxColumnStyle" Value="{DynamicResource ElementCheckBoxStyle}" />
@@ -604,6 +605,94 @@
         </Setter>
     </Style>
     <Style BasedOn="{StaticResource LayDataGridStyle}" TargetType="Lay:LayDataGrid" />
+    <Style x:Key="DefaultColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="Height" Value="{Binding ColumnHeaderHeight, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+        <Setter Property="Background" Value="{DynamicResource LighGray}" />
+        <Setter Property="BorderThickness" Value="1,0,1,1" />
+        <Setter Property="Margin" Value="-1,0,0,0" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="13,0,13,0" />
+        <Setter Property="BorderBrush" Value="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridColumnHeader">
+                    <Grid>
+                        <Border
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <ContentPresenter
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <Grid
+                                    x:Name="SortArrowGrid"
+                                    Grid.Column="1"
+                                    Width="7"
+                                    Height="15"
+                                    Margin="10,0,-10,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Visibility="Hidden">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Path
+                                        x:Name="SortArrowUp"
+                                        Margin="0,0,0,2"
+                                        Data="M500 365.76l-244.78 279.7a16 16 0 0 0 12 26.54h489.52a16 16 0 0 0 12-26.54L524 365.76a16 16 0 0 0-24 0z"
+                                        Fill="{DynamicResource Gray}"
+                                        Stretch="Fill" />
+                                    <Path
+                                        x:Name="SortArrowDown"
+                                        Grid.Row="1"
+                                        Margin="0,2,0,0"
+                                        Data="M524 658.24l244.74-279.7a16 16 0 0 0-12-26.54H267.26a16 16 0 0 0-12 26.54L500 658.24a16 16 0 0 0 24 0z"
+                                        Fill="{DynamicResource Gray}"
+                                        Stretch="Fill" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Thumb
+                            x:Name="PART_LeftHeaderGripper"
+                            HorizontalAlignment="Left"
+                            Cursor="SizeWE"
+                            FocusVisualStyle="{x:Null}"
+                            Opacity="0" />
+                        <Thumb
+                            x:Name="PART_RightHeaderGripper"
+                            HorizontalAlignment="Right"
+                            Cursor="SizeWE"
+                            FocusVisualStyle="{x:Null}"
+                            Opacity="0" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="SortDirection" Value="Ascending">
+                            <Setter TargetName="SortArrowGrid" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="SortArrowUp" Property="Fill" Value="{DynamicResource Black}" />
+                            <Setter TargetName="SortArrowDown" Property="Fill" Value="{DynamicResource Gray}" />
+                        </Trigger>
+                        <Trigger Property="SortDirection" Value="Descending">
+                            <Setter TargetName="SortArrowGrid" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="SortArrowUp" Property="Fill" Value="{DynamicResource Gray}" />
+                            <Setter TargetName="SortArrowDown" Property="Fill" Value="{DynamicResource Black}" />
+                        </Trigger>
+                        <Trigger Property="SortDirection" Value="{x:Null}">
+                            <Setter TargetName="SortArrowGrid" Property="Visibility" Value="Hidden" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding GridLinesVisibility, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Value="None">
+                <Setter Property="Padding" Value="0" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
     <Style x:Key="DefaultDataGridStyle" TargetType="DataGrid">
         <Setter Property="Background" Value="White" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -612,13 +701,14 @@
         <Setter Property="RowHeaderWidth" Value="0" />
         <Setter Property="AutoGenerateColumns" Value="false" />
         <Setter Property="CanUserReorderColumns" Value="false" />
+        <Setter Property="CanUserAddRows" Value="false" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource Gray}" />
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource Gray}" />
-        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource LayColumnHeaderStyle}" />
+        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DefaultColumnHeaderStyle}" />
         <Setter Property="RowHeaderStyle" Value="{DynamicResource LayRowHeaderStyle}" />
         <Setter Property="RowStyle" Value="{DynamicResource LayDataGridRowStyle}" />
         <Setter Property="CellStyle" Value="{DynamicResource LayDataGridCellStyle}" />
@@ -627,4 +717,5 @@
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="SelectionMode" Value="Single" />
     </Style>
+    <Style BasedOn="{StaticResource DefaultDataGridStyle}" TargetType="DataGrid" />
 </ResourceDictionary>

@@ -17,8 +17,63 @@ using System.Windows;
 
 namespace LayuiComponentExample.ViewModels
 {
+    public class DataInfo : BindableBase
+    {
+        private bool _IsChecked;
+        public bool IsChecked
+        {
+            get { return _IsChecked; }
+            set { SetProperty(ref _IsChecked, value); }
+        }
+        private int _Index;
+        public int Index
+        {
+            get { return _Index; }
+            set { SetProperty(ref _Index, value); }
+        }
+        private string _Name;
+        public string Name
+        {
+            get { return _Name; }
+            set { SetProperty(ref _Name, value); }
+        }
+        private double _ProgressBarValue;
+        public double ProgressBarValue
+        {
+            get { return _ProgressBarValue; }
+            set { SetProperty(ref _ProgressBarValue, value); }
+        }
+    }
     public class DataGridViewModel : LayuiViewModelBase
     {
+        public List<int> Limits { get; set; } = new List<int>()
+        {
+            10,20,30,40,50
+        };
+        private int _PageIndex=1;
+        /// <summary>
+        /// 记录当前的页数为第几页
+        /// </summary>
+        public int PageIndex
+        {
+            get { return _PageIndex; }
+            set { SetProperty(ref _PageIndex, value); }
+        }
+        private int _PageSize = 30;
+        /// <summary>
+        /// 每一页显示数据的条数，在这里让每一页显示12条
+        /// </summary>
+        public int PageSize
+        {
+            get { return _PageSize; }
+            set { SetProperty(ref _PageSize, value); }
+        }
+        private int _PageCount;
+        public int PageCount
+        {
+            get { return _PageCount; }
+            private set { SetProperty(ref _PageCount, value); }
+        }
         public DataGridViewModel(IContainerExtension container) : base(container)
         {
         }
@@ -47,22 +102,23 @@ namespace LayuiComponentExample.ViewModels
             get { return _IsActive; }
             set { SetProperty(ref _IsActive, value); }
         }
-        private ObservableCollection<Data> _ListData;
-        public ObservableCollection<Data> ListData
+        public ObservableCollection<DataInfo> _Data; 
+        private ObservableCollection<DataInfo> _ListData;
+        public ObservableCollection<DataInfo> ListData
         {
             get { return _ListData; }
             set { SetProperty(ref _ListData, value); }
         }
-        private Task<ObservableCollection<Data>> LoadedListData()
+        private Task<ObservableCollection<DataInfo>> LoadedListData()
         {
             try
             {
                 var random = new Random();
-                ObservableCollection<Data> ListData = new ObservableCollection<Data>();
+                ObservableCollection<DataInfo> ListData = new ObservableCollection<DataInfo>();
                 for (int i = 0; i < 10000; i++)
                 {
                     int num = random.Next(1, 101);
-                    ListData.Add(new Data (){ Index = i, Name = "测试" + i, ProgressBarValue = num });
+                    ListData.Add(new DataInfo(){ Index = i, Name = "测试" + i, ProgressBarValue = num });
                 };
                 return Task.FromResult(ListData);
             }
@@ -77,48 +133,38 @@ namespace LayuiComponentExample.ViewModels
             base.ExecuteLoadedCommand();
             IsActive = true;
             await Task.Delay(2000);
-            ListData = await LoadedListData();
+            _Data = await LoadedListData();
+            PageCount= _Data.Count;
+            ExecutePageUpdatedCommand(PageIndex);
             IsActive = false;
 
         }
-        private DelegateCommand<Data> _GetItemsCommand;
-        public DelegateCommand<Data> GetItemsCommand =>
-            _GetItemsCommand ?? (_GetItemsCommand = new DelegateCommand<Data>(ExecuteGetItemsCommand));
+        private DelegateCommand<DataInfo> _GetItemsCommand;
+        public DelegateCommand<DataInfo> GetItemsCommand =>
+            _GetItemsCommand ?? (_GetItemsCommand = new DelegateCommand<DataInfo>(ExecuteGetItemsCommand));
 
-        void ExecuteGetItemsCommand(Data data)
+        void ExecuteGetItemsCommand(DataInfo data)
         {
             LayDialogParameter dialogParameter = new LayDialogParameter();
             dialogParameter.Add("Message", JsonConvert.SerializeObject(data));
             LayDialog.Show("DialogAlert", dialogParameter);
         }
-        private DelegateCommand<Data> _DeleteCommand;
-        public DelegateCommand<Data> DeleteCommand =>
-            _DeleteCommand ?? (_DeleteCommand = new DelegateCommand<Data>(ExecuteDeleteCommand));
+        private DelegateCommand<DataInfo> _DeleteCommand;
+        public DelegateCommand<DataInfo> DeleteCommand =>
+            _DeleteCommand ?? (_DeleteCommand = new DelegateCommand<DataInfo>(ExecuteDeleteCommand));
 
-        void ExecuteDeleteCommand(Data data)
+        void ExecuteDeleteCommand(DataInfo data)
         {
             ListData.Remove(data);
         }
-        public class Data : BindableBase
+        private DelegateCommand<object> _PageUpdatedCommand;
+        public DelegateCommand<object> PageUpdatedCommand =>
+            _PageUpdatedCommand ?? (_PageUpdatedCommand = new DelegateCommand<object>(ExecutePageUpdatedCommand));
+
+        void ExecutePageUpdatedCommand(object obj)
         {
-            private int _Index;
-            public int Index
-            {
-                get { return _Index; }
-                set { SetProperty(ref _Index, value); }
-            }
-            private string _Name;
-            public string Name
-            {
-                get { return _Name; }
-                set { SetProperty(ref _Name, value); }
-            }
-            private double _ProgressBarValue;
-            public double ProgressBarValue
-            {
-                get { return _ProgressBarValue; }
-                set { SetProperty(ref _ProgressBarValue, value); }
-            }
+            if (obj is int index) PageIndex = index;
+            ListData = new ObservableCollection<DataInfo>(_Data.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList());
         }
     }
 }
