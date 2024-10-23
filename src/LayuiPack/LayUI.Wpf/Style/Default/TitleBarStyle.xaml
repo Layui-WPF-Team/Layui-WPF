@@ -133,6 +133,29 @@
                             <Setter TargetName="PART_Border" Property="CornerRadius" Value="0" />
                             <Setter TargetName="PART_Grid" Property="Effect" Value="{x:Null}" />
                         </Trigger>
+                        <Trigger Property="ResizeMode" Value="NoResize">
+                            <Setter TargetName="PART_MinWindowButton" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_MaxWindowButton" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="CanResize">
+                            <Setter TargetName="PART_MinWindowButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_MinWindowButton" Property="IsEnabled" Value="True" />
+                            <Setter TargetName="PART_MaxWindowButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_MaxWindowButton" Property="IsEnabled" Value="True" />
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="CanMinimize">
+                            <Setter TargetName="PART_MinWindowButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_MinWindowButton" Property="IsEnabled" Value="True" />
+                            <Setter TargetName="PART_MaxWindowButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_MaxWindowButton" Property="IsEnabled" Value="False" />
+                            <Setter TargetName="winCnangePath" Property="Opacity" Value="0.4" />
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                            <Setter TargetName="PART_MinWindowButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_MinWindowButton" Property="IsEnabled" Value="True" />
+                            <Setter TargetName="PART_MaxWindowButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_MaxWindowButton" Property="IsEnabled" Value="True" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
