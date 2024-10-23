@@ -4,6 +4,7 @@
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
     <Style x:Key="LayGroupBoxStyle" TargetType="Lay:LayGroupBox">
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="5,0,5,5" />
         <Setter Property="Type" Value="Left" />
         <Setter Property="Template">
             <Setter.Value>
@@ -72,7 +73,7 @@
                             Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderThickness.Right, Mode=OneWay}"
                             HorizontalAlignment="Right"
                             Background="{TemplateBinding BorderBrush}" />
-                        <ContentPresenter Grid.Column="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <ContentPresenter Grid.Column="1" Grid.Row="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="{TemplateBinding Padding}" />
                         <Grid
                             Grid.Row="1"
                             Grid.Column="2"
@@ -150,7 +151,7 @@
                                     Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderThickness.Right, Mode=OneWay}"
                                     HorizontalAlignment="Right"
                                     Background="{TemplateBinding BorderBrush}" />
-                                <ContentPresenter Grid.Column="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <ContentPresenter Grid.Row="1" Grid.Column="1" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 <Grid
                                     Grid.Row="1"
                                     Grid.Column="2"
@@ -228,7 +229,7 @@
                                     Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderThickness.Right, Mode=OneWay}"
                                     HorizontalAlignment="Right"
                                     Background="{TemplateBinding BorderBrush}" />
-                                <ContentPresenter Grid.Column="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <ContentPresenter Grid.Row="1" Grid.Column="1" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 <Grid
                                     Grid.Row="1"
                                     Grid.Column="2"
