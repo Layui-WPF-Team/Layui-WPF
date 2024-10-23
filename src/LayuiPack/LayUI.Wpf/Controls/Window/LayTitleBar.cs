@@ -1,7 +1,8 @@
-﻿using LayUI.Wpf.Tools; 
+﻿using LayUI.Wpf.Tools;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data; 
+using System.Windows.Data;
 
 namespace LayUI.Wpf.Controls
 {
@@ -22,7 +23,7 @@ namespace LayUI.Wpf.Controls
         /// 最小化窗体
         /// </summary>
         private Button PART_MinWindowButton = null;
-        private Window _window; 
+        private Window _window;
 
         public Style RootStyle
         {
@@ -42,7 +43,7 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayTitleBar)); 
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayTitleBar));
 
         public WindowState WindowState
         {
@@ -54,7 +55,17 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty WindowStateProperty =
             DependencyProperty.Register("WindowState", typeof(WindowState), typeof(LayTitleBar));
 
-         
+        public ResizeMode ResizeMode
+        {
+            get { return (ResizeMode)GetValue(ResizeModeProperty); }
+            set { SetValue(ResizeModeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ResizeMode.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ResizeModeProperty =
+            DependencyProperty.Register("ResizeMode", typeof(ResizeMode), typeof(LayTitleBar));
+
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -62,8 +73,9 @@ namespace LayUI.Wpf.Controls
             if (window != null)
             {
                 _window = window;
-                LayBindingHelper.SetBinding(_window, Window.WindowStateProperty, nameof(WindowState), BindingMode.TwoWay, this); 
+                LayBindingHelper.SetBinding(_window, Window.WindowStateProperty, nameof(WindowState), BindingMode.TwoWay, this);
                 LayBindingHelper.SetBinding(_window, Window.StyleProperty, nameof(RootStyle), BindingMode.TwoWay, this);
+                LayBindingHelper.SetBinding(_window, Window.ResizeModeProperty, nameof(ResizeMode), BindingMode.TwoWay, this);
             }
             PART_CloseWindowButton = GetTemplateChild("PART_CloseWindowButton") as Button;
             PART_MaxWindowButton = GetTemplateChild("PART_MaxWindowButton") as Button;
@@ -78,6 +90,7 @@ namespace LayUI.Wpf.Controls
                 PART_CloseWindowButton.Click += PART_CloseWindowButton_Click;
             }
         }
+
         private void PART_CloseWindowButton_Click(object sender, RoutedEventArgs e)
         {
             _window.Close();

@@ -48,7 +48,7 @@ namespace LayUI.Wpf.Controls
         private void OnValueChanged()
         {
             Refresh();
-            if(IsLoaded)OnValueChanged(new RoutedEventArgs(ValueChangedEvent, this));
+            if (IsLoaded) OnValueChanged(new RoutedEventArgs(ValueChangedEvent, this));
         }
         /// <summary>
         /// 刷新
@@ -56,16 +56,16 @@ namespace LayUI.Wpf.Controls
         private void Refresh()
         {
             if (PART_LowerBtn == null || PART_AddBtn == null || PART_ValueHost == null) return;
-            PART_LowerBtn.IsEnabled=true;
+            PART_LowerBtn.IsEnabled = true;
             PART_AddBtn.IsEnabled = true;
             if (Value <= MinValue)
-            { 
+            {
                 PART_LowerBtn.IsEnabled = false;
             }
             if (Value >= MaxValue)
-            { 
+            {
                 PART_AddBtn.IsEnabled = false;
-            } 
+            }
         }
         /// <summary>
         /// 值改变事件
@@ -225,7 +225,7 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for Increment.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IncrementProperty =
-            DependencyProperty.Register("Increment", typeof(decimal), typeof(LayNumericUpDown),new PropertyMetadata(decimal.Parse("1")));
+            DependencyProperty.Register("Increment", typeof(decimal), typeof(LayNumericUpDown), new PropertyMetadata(decimal.Parse("1")));
         /// <summary>
         /// 是否只读
         /// </summary>
@@ -239,7 +239,7 @@ namespace LayUI.Wpf.Controls
         // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsReadOnlyProperty =
             DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(LayNumericUpDown), new PropertyMetadata(false));
-          
+
         /// <summary>
         /// 指示要显示的数字的格式，这将会覆盖 <see cref="DecimalPlaces"/> 属性
         /// </summary>
@@ -253,7 +253,7 @@ namespace LayUI.Wpf.Controls
         /// </summary>
         public static readonly DependencyProperty ValueFormatProperty =
             DependencyProperty.Register("ValueFormat", typeof(string), typeof(LayNumericUpDown));
-        
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -279,14 +279,17 @@ namespace LayUI.Wpf.Controls
                 PART_ValueHost.SetBinding(TextBox.TextProperty, binding);
                 PART_ValueHost.TextChanged -= PART_ValueHost_TextChanged;
                 PART_ValueHost.TextChanged += PART_ValueHost_TextChanged;
+                PART_ValueHost.LostFocus -= PART_ValueHost_LostFocus;
+                PART_ValueHost.LostFocus += PART_ValueHost_LostFocus;
                 PART_AddBtn.Click -= PART_AddBtn_Click;
                 PART_LowerBtn.Click -= PART_LowerBtn_Click;
                 PART_AddBtn.Click += PART_AddBtn_Click;
-                PART_LowerBtn.Click += PART_LowerBtn_Click; 
+                PART_LowerBtn.Click += PART_LowerBtn_Click;
                 OnMinValueChanged(MinValue);
                 OnMaxValueChanged(MaxValue);
             }
         }
+
         /// <summary>
         /// 鼠标滚轮控制加减数字
         /// </summary>
@@ -333,6 +336,25 @@ namespace LayUI.Wpf.Controls
 
             }
         }
+
+        private void PART_ValueHost_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                if (decimal.TryParse(textBox.Text, out decimal value))
+                {
+                    if (value < MinValue)
+                    {
+                        Value = MinValue;
+                    }
+                    else if (value > MaxValue)
+                    {
+                        Value = MaxValue;
+                    }
+                }
+            }
+        }
+
         private void PART_AddBtn_Click(object sender, RoutedEventArgs e)
         {
             Value += Increment;
@@ -345,6 +367,6 @@ namespace LayUI.Wpf.Controls
             Value -= Increment;
             PART_ValueHost?.Focus();
             PART_ValueHost?.SelectAll();
-        } 
+        }
     }
 }

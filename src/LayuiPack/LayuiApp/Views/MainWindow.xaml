@@ -24,7 +24,8 @@
         <Lay:LayTitleBar
             Background="{DynamicResource LighCyan}"
             CornerRadius="4"
-            WindowState="{Binding WindowState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            WindowState="{Binding WindowState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            ResizeMode="CanResize">
             <Lay:LayTitleBar.Header>
                 <Border Height="40">
                     <Grid>
