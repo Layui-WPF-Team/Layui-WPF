@@ -42,6 +42,7 @@ namespace LayuiComponentExample
             containerRegistry.RegisterForNavigation<Views.VR>(SystemResource.Page_VRView);
             containerRegistry.RegisterForNavigation<Views.DecimalText>(SystemResource.Page_DecimalTextView);
             containerRegistry.RegisterForNavigation<Views.PropertyGrid>(SystemResource.Page_PropertyGridView);
+            containerRegistry.RegisterForNavigation<Views.CodeBox>(SystemResource.Page_CodeBoxView);
             LayDialog.RegisterDialog<DialogMessageView>(SystemResource.DialogMessageView);  
             containerRegistry.RegisterDialog<DefaultDialog>(nameof(DefaultDialog));
             LayDialog.RegisterDialog<DialogAlert>("DialogAlert");

@@ -17,14 +17,18 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}">
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        UseLayoutRounding="true">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <ContentControl Margin="{TemplateBinding Padding}" Content="{TemplateBinding Header}" />
+                            <ContentControl
+                                Margin="{TemplateBinding Padding}"
+                                Content="{TemplateBinding Header}"
+                                UseLayoutRounding="false" />
                             <Grid
                                 Grid.Row="1"
                                 Height="{TemplateBinding Line}"
@@ -34,7 +38,8 @@
                                 Grid.Row="2"
                                 Margin="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                UseLayoutRounding="false" />
                         </Grid>
                     </Border>
                 </ControlTemplate>

@@ -54,6 +54,7 @@
     <Compile Include="ViewModels\BadgeViewModel.cs" />
     <Compile Include="ViewModels\CarouselViewModel.cs" />
     <Compile Include="ViewModels\CascaderViewModel.cs" />
+    <Compile Include="ViewModels\CodeBoxViewModel.cs" />
     <Compile Include="ViewModels\DateTimeViewModel.cs" />
     <Compile Include="ViewModels\DecimalTextViewModel.cs" />
     <Compile Include="ViewModels\DefaultDialogViewModel.cs" />
@@ -82,6 +83,9 @@
     </Compile>
     <Compile Include="Views\Cascader.xaml.cs">
       <DependentUpon>Cascader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CodeBox.xaml.cs">
+      <DependentUpon>CodeBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DateTime.xaml.cs">
       <DependentUpon>DateTime.xaml</DependentUpon>
@@ -199,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Cascader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CodeBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

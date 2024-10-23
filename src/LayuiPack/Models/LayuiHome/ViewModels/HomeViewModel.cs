@@ -193,6 +193,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="ToolTip", PageKey=SystemResource.Page_ToolTipView
                             },new MenuItemModel()
                             {
+                                ItemTitle="CodeBox", PageKey=SystemResource.Page_CodeBoxView
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="Badge", PageKey=SystemResource.Page_BadgeView
                             },new MenuItemModel()
                             {

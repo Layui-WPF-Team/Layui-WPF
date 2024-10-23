@@ -19,7 +19,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayNavExpander">
-                    <Grid Background="{TemplateBinding HeaderBackground}">
+                    <Grid Background="{TemplateBinding HeaderBackground}" UseLayoutRounding="true">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="*" />
@@ -47,7 +47,10 @@
                                                 <ColumnDefinition />
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
-                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                UseLayoutRounding="false" />
                                             <Grid
                                                 x:Name="iconGrid"
                                                 Grid.Column="1"
@@ -487,7 +490,8 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="0"
-                        SnapsToDevicePixels="true">
+                        SnapsToDevicePixels="true"
+                        UseLayoutRounding="true">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
@@ -545,6 +549,7 @@
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                         Focusable="false"
+                                        UseLayoutRounding="false"
                                         Visibility="Collapsed" />
                                 </Grid>
                             </Grid>
@@ -626,7 +631,8 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="0"
-                                SnapsToDevicePixels="true">
+                                SnapsToDevicePixels="true"
+                                UseLayoutRounding="true">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto" />
@@ -684,6 +690,7 @@
                                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                 Focusable="false"
+                                                UseLayoutRounding="false"
                                                 Visibility="Collapsed" />
                                         </Grid>
                                     </Grid>
@@ -765,7 +772,8 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="0"
-                                SnapsToDevicePixels="true">
+                                SnapsToDevicePixels="true"
+                                UseLayoutRounding="true">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
@@ -788,6 +796,7 @@
                                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                 Focusable="false"
+                                                UseLayoutRounding="false"
                                                 Visibility="Collapsed" />
                                         </Grid>
                                     </Grid>
@@ -903,7 +912,8 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="0"
-                                SnapsToDevicePixels="true">
+                                SnapsToDevicePixels="true"
+                                UseLayoutRounding="true">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -925,6 +935,7 @@
                                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                 Focusable="false"
+                                                UseLayoutRounding="false"
                                                 Visibility="Collapsed" />
                                         </Grid>
                                     </Grid>

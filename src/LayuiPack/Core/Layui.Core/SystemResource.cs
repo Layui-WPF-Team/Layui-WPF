@@ -191,6 +191,10 @@ namespace Layui.Core.Resource
         /// 滑动解锁
         /// </summary>
         public const string Page_VerificationBoxView = "VerificationBoxView"; 
+        /// <summary>
+        /// 代码输入框
+        /// </summary>
+        public const string Page_CodeBoxView = "CodeBoxView"; 
         #endregion
     }
 }

@@ -154,6 +154,15 @@
                             </Lay:LayExpander>
                         </StackPanel>
                     </StackPanel>
+                    <Lay:LayGroupBox Header="标题">
+                        <Grid Height="100" Background="{DynamicResource CyanBlue}" />
+                    </Lay:LayGroupBox>
+                    <Lay:LayGroupBox Header="标题" Type="Center">
+                        <Grid Height="100" Background="{DynamicResource CyanBlue}" />
+                    </Lay:LayGroupBox>
+                    <Lay:LayGroupBox Header="标题" Type="Right">
+                        <Grid Height="100" Background="{DynamicResource CyanBlue}" />
+                    </Lay:LayGroupBox>
                 </StackPanel>
             </ScrollViewer>
         </Border>

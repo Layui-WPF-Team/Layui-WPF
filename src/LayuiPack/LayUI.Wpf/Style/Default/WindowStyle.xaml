@@ -31,7 +31,8 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        ClipToBounds="True">
+                        ClipToBounds="True"
+                        UseLayoutRounding="true">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Style.Triggers>
@@ -145,7 +146,7 @@
                                     </StackPanel>
                                 </Grid>
                                 <Grid Grid.Row="1" ClipToBounds="True">
-                                    <ContentPresenter />
+                                    <ContentPresenter UseLayoutRounding="false" />
                                 </Grid>
                             </Grid>
                         </Lay:LayTransition>
