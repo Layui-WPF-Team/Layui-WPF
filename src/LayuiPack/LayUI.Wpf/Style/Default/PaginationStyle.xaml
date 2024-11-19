@@ -3,9 +3,32 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls"
     xmlns:LayHelper="clr-namespace:LayUI.Wpf.Extend">
+    <StackPanel
+        x:Key="Pagination"
+        x:Shared="False"
+        Orientation="Horizontal">
+        <TextBlock
+            Margin="5,0"
+            VerticalAlignment="Center"
+            Text="到第" />
+        <Lay:LayTextBox
+            Width="60"
+            Height="auto"
+            Margin="5,0"
+            Padding="0"
+            LayHelper:LayTextBoxHelper.InputType="Number"
+            BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=BorderBrush, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            InputMethod.IsInputMethodEnabled="False"
+            Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=JumpIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Watermark="数量" />
+        <TextBlock
+            Margin="5,0"
+            VerticalAlignment="Center"
+            Text="页" />
+    </StackPanel>
     <Style x:Key="LayPaginationStyle" TargetType="Lay:LayPagination">
         <Style.Resources>
-            <Style x:Key="PaginationButtonStyle" TargetType="RadioButton">
+            <Style x:Key="PaginationRadioButtonStyle" TargetType="RadioButton">
                 <Setter Property="MinWidth" Value="30" />
                 <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="Padding" Value="5,0" />
@@ -39,69 +62,42 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="PaginationButtonStyle" TargetType="Button">
+                <Setter Property="MinWidth" Value="30" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Padding" Value="5,0" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border
+                                x:Name="BorderRoot"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="True" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </Style.Resources>
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="PrevButtonContent">
-            <Setter.Value>
-                <TextBlock Margin="5,0" Text="上一页" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="NextButtonContent">
-            <Setter.Value>
-                <TextBlock Margin="5,0" Text="下一页" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="JumpContent">
-            <Setter.Value>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock
-                        Margin="5,0"
-                        VerticalAlignment="Center"
-                        Text="到第" />
-                    <Lay:LayTextBox
-                        Width="60"
-                        Height="auto"
-                        Margin="5,0"
-                        Padding="0"
-                        LayHelper:LayTextBoxHelper.InputType="Number"
-                        BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=BorderBrush, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        InputMethod.IsInputMethodEnabled="False"
-                        Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=JumpIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Watermark="数量" />
-                    <TextBlock
-                        Margin="5,0"
-                        VerticalAlignment="Center"
-                        Text="页" />
-                </StackPanel>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="LimitContent">
-            <Setter.Value>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center">
-                        <Run Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=Limit}" />
-                        <Run Text="条/页 " />
-                    </TextBlock>
-                </StackPanel>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="PageCountContent">
-            <Setter.Value>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center">
-                        <Run Text="共 " />
-                        <Run Text="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=PageCount}" />
-                        <Run Text="条 " />
-                    </TextBlock>
-                </StackPanel>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="ConfirmButtonContent">
-            <Setter.Value>
-                <TextBlock Margin="5,0" Text="确定" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="PrevButtonContent" Value="上一页" />
+        <Setter Property="NextButtonContent" Value="下一页" />
+        <Setter Property="JumpContent" Value="{StaticResource Pagination}" />
+        <Setter Property="LimitContent" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination, Mode=FindAncestor}, Path=Limit, Mode=OneWay}" />
+        <Setter Property="PageCountContent" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination, Mode=FindAncestor}, Path=PageCount, Mode=OneWay}" />
+        <Setter Property="ConfirmButtonContent" Value="确定" />
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
         <Setter Property="Height" Value="30" />
         <Setter Property="MaxPageInterval" Value="3" />
@@ -109,11 +105,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayPagination">
                     <StackPanel Orientation="Horizontal" UseLayoutRounding="True">
-                        <ContentControl
-                            Height="auto"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Content="{TemplateBinding PageCountContent}" />
+                        <ContentPresenter Height="auto" Content="{TemplateBinding PageCountContent}" />
                         <Button
                             x:Name="PART_PrevButton"
                             Height="auto"
@@ -123,14 +115,17 @@
                             BorderThickness="1"
                             Content="{TemplateBinding PrevButtonContent}"
                             Cursor="Hand"
-                            Style="{x:Null}">
+                            Style="{StaticResource PaginationButtonStyle}">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
                                         Background="Transparent"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}">
-                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                        <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsEnabled" Value="False">
@@ -146,7 +141,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1"
                             Content="1"
-                            Style="{StaticResource PaginationButtonStyle}" />
+                            Style="{StaticResource PaginationRadioButtonStyle}" />
                         <Border
                             Name="PART_MoreLeft"
                             Margin="-1,0,0,0"
@@ -162,7 +157,7 @@
                             Height="auto"
                             Orientation="Horizontal">
                             <StackPanel.Resources>
-                                <Style BasedOn="{StaticResource PaginationButtonStyle}" TargetType="RadioButton">
+                                <Style BasedOn="{StaticResource PaginationRadioButtonStyle}" TargetType="RadioButton">
                                     <Setter Property="Margin" Value="-1,0,0,0" />
                                     <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=BorderBrush}" />
                                 </Style>
@@ -184,7 +179,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1"
                             Content="100"
-                            Style="{StaticResource PaginationButtonStyle}" />
+                            Style="{StaticResource PaginationRadioButtonStyle}" />
                         <Button
                             x:Name="PART_NextButton"
                             Height="auto"
@@ -195,14 +190,17 @@
                             BorderThickness="1"
                             Content="{TemplateBinding NextButtonContent}"
                             Cursor="Hand"
-                            Style="{x:Null}">
+                            Style="{StaticResource PaginationButtonStyle}">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
                                         Background="Transparent"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}">
-                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                        <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsEnabled" Value="False">
@@ -212,12 +210,12 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <ContentControl
+                        <ContentPresenter
                             Width="auto"
                             Height="auto"
                             Margin="10,0"
                             Content="{TemplateBinding LimitContent}" />
-                        <ContentControl Height="auto" Content="{TemplateBinding JumpContent}" />
+                        <ContentPresenter Height="auto" Content="{TemplateBinding JumpContent}" />
                         <Button
                             x:Name="PART_ConfirmButton"
                             Height="auto"
@@ -226,7 +224,8 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1"
                             Content="{TemplateBinding ConfirmButtonContent}"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Style="{StaticResource PaginationButtonStyle}">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
@@ -234,7 +233,10 @@
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         CornerRadius="2">
-                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                        <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
