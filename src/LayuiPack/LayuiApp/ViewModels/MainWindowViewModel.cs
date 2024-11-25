@@ -1,6 +1,7 @@
 ﻿using Layui.Core.AppHelper;
 using Layui.Core.Base;
 using Layui.Core.Resource;
+using LayUI.Wpf.Controls;
 using LayUI.Wpf.Tools;
 using Prism.Commands;
 using Prism.Ioc;
@@ -39,9 +40,16 @@ namespace LayuiApp.ViewModels
             get { return _Key; }
             set { SetProperty(ref _Key, value); }
         }
+
     }
-    public class MainWindowViewModel : LayuiViewModelBase
+    public class MainWindowViewModel : LayuiViewModelBase, IWindowAware
     {
+        public bool CanClosing()
+        {
+            var res = MessageBox.Show("确定关闭窗体吗？","提示",MessageBoxButton.OKCancel);
+            if(res== MessageBoxResult.OK) return true;
+            else return false;
+        }
         private Language _Language;
         public Language Language
         {

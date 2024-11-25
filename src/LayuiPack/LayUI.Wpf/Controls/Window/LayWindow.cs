@@ -170,5 +170,9 @@ namespace LayUI.Wpf.Controls
                 InvalidateMeasure();
             }
         }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if(DataContext is IWindowAware windowAware&& windowAware.CanClosing()) base.OnClosing(e);
+        }
     }
 }

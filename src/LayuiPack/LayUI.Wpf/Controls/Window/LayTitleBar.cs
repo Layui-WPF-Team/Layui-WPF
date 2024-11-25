@@ -93,7 +93,7 @@ namespace LayUI.Wpf.Controls
 
         private void PART_CloseWindowButton_Click(object sender, RoutedEventArgs e)
         {
-            _window.Close();
+            if (_window.DataContext is IWindowAware windowAware && windowAware.CanClosing()) _window.Close(); 
         }
 
         private void PART_MinWindowButton_Click(object sender, RoutedEventArgs e)
