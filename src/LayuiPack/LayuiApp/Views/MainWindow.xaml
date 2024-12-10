@@ -24,8 +24,8 @@
         <Lay:LayTitleBar
             Background="{DynamicResource LighCyan}"
             CornerRadius="4"
-            WindowState="{Binding WindowState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ResizeMode="CanResize">
+            ResizeMode="CanResize"
+            WindowState="{Binding WindowState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <Lay:LayTitleBar.Header>
                 <Border Height="40">
                     <Grid>
@@ -258,7 +258,7 @@
                                                     Height="40"
                                                     HorizontalContentAlignment="Stretch"
                                                     Command="{Binding GoBrowser}"
-                                                    CommandParameter="https://b23.tv/F9IA5Vs">
+                                                    CommandParameter="https://space.bilibili.com/48808444">
                                                     <Grid Margin="30,0">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="auto" />

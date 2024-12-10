@@ -5,5 +5,16 @@
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Lay:LayVRImage Source="https://data.znds.com/attachment/forum/201609/04/130847fiv45r1ryinvsl1x.jpg" />
+    <Grid>
+        <Lay:LayVRImage Source="https://unsignedzhang.cn/wp-content/uploads/2019/08/SINA_IMG_20171028_185004_8721.jpg" />
+        <TextBlock
+            Margin="20"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            FontSize="20"
+            Foreground="White"
+            IsHitTestVisible="false"
+            Opacity="0.5"
+            Text="鼠标按下滑动即可查看全景图效果" />
+    </Grid>
 </UserControl>
