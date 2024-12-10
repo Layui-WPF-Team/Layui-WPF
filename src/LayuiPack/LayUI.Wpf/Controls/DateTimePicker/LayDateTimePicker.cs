@@ -47,21 +47,7 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for DateMessageTitle.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DateMessageTitleProperty =
-            DependencyProperty.Register("DateMessageTitle", typeof(string), typeof(LayDateTimePicker));
-
-        /// <summary>
-        /// 是否只读
-        /// </summary>
-        [Bindable(true)]
-        public bool IsReadOnly
-        {
-            get { return (bool)GetValue(IsReadOnlyProperty); }
-            set { SetValue(IsReadOnlyProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsReadOnlyProperty =
-            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(LayDateTimePicker), new PropertyMetadata(true));
+            DependencyProperty.Register("DateMessageTitle", typeof(string), typeof(LayDateTimePicker)); 
 
         public override void OnApplyTemplate()
         {

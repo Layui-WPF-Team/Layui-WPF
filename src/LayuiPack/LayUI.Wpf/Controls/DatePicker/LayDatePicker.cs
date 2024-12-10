@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace LayUI.Wpf.Controls
 {
-    public class LayDatePicker: DatePicker, ILayControl
+    public class LayDatePicker : DatePicker, ILayControl
     {
         /// <summary>
         /// 水印文字颜色
@@ -63,6 +63,20 @@ namespace LayUI.Wpf.Controls
         // Using a DependencyProperty as the backing store for FocusedBorderBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FocusedBorderBrushProperty =
             DependencyProperty.Register("FocusedBorderBrush", typeof(Brush), typeof(LayDatePicker), new PropertyMetadata(Brushes.Transparent));
+        /// <summary>
+        /// 是否只读
+        /// </summary>
+        [Bindable(true)]
+        public bool IsReadOnly
+        {
+            get { return (bool)GetValue(IsReadOnlyProperty); }
+            set { SetValue(IsReadOnlyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(LayDatePicker), new PropertyMetadata(true));
+
 
     }
 }

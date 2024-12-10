@@ -158,6 +158,19 @@ namespace LayUI.Wpf.Controls
         // Using a DependencyProperty as the backing store for IsOpenSelectedDateAnimation.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty IsOpenSelectedDateAnimationProperty =
             DependencyProperty.Register("IsOpenSelectedDateAnimation", typeof(bool), typeof(LayDateRangePicker), new PropertyMetadata(false));
+        /// <summary>
+        /// 是否只读
+        /// </summary>
+        [Bindable(true)]
+        public bool IsReadOnly
+        {
+            get { return (bool)GetValue(IsReadOnlyProperty); }
+            set { SetValue(IsReadOnlyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(LayDateRangePicker), new PropertyMetadata(true));
 
 
         [Bindable(true)]

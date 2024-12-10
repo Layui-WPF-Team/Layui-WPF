@@ -42,7 +42,7 @@
                                         Background="Transparent"
                                         BorderThickness="0"
                                         FocusVisualStyle="{x:Null}"
-                                        IsReadOnly="True"
+                                        IsReadOnly="{TemplateBinding IsReadOnly}"
                                         Style="{x:Null}"
                                         Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:yyyy-MM-dd}, NotifyOnValidationError=False}" />
                                     <Grid IsHitTestVisible="False" Style="{x:Null}">
@@ -69,7 +69,7 @@
                                         Background="Transparent"
                                         BorderThickness="0"
                                         FocusVisualStyle="{x:Null}"
-                                        IsReadOnly="True"
+                                        IsReadOnly="{TemplateBinding IsReadOnly}"
                                         Style="{x:Null}"
                                         Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:yyyy-MM-dd}, NotifyOnValidationError=False}" />
                                     <Grid IsHitTestVisible="False" Style="{x:Null}">
