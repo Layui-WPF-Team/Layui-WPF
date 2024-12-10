@@ -21,6 +21,6 @@
             Height="200"
             Source="http://www.avanpa.com/images/upload/Image/201304/20130428143018834_997906.jpg"
             Style="{DynamicResource LayImageViewerStyle}" />
-        <!--<Image Source="{Binding ElementName=scaleImage, Path=Intercept, Mode=OneWay}" Stretch="Fill" />-->
+        <Lay:LayImage Source="http://www.avanpa.com/images/upload/Image/201304/20130428143018834_997906.jpg" />
     </UniformGrid>
 </UserControl>

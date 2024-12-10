@@ -230,7 +230,7 @@ namespace LayUI.Wpf.Controls
             if (d is LayPagination pagination)
             {
                 var intValue = (int)baseValue;
-                return intValue < 1 ? 1 : intValue> pagination.PageNum ? pagination.PageNum: intValue;
+                return intValue < 1 ? 1 : intValue > pagination.PageNum ? pagination.PageNum : intValue;
             }
             else return 1;
         }
@@ -494,7 +494,7 @@ namespace LayUI.Wpf.Controls
             if (e.OriginalSource is RadioButton button)
             {
                 if (button.IsChecked == false) return;
-                PageIndex = int.Parse(button.Content.ToString());
+                PageIndex = int.Parse(button.Content.ToString()); 
                 RaiseEvent(new LayFunctionEventArgs<int>(PageUpdatedEvent, this)
                 {
                     Info = PageIndex

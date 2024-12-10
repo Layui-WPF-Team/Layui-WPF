@@ -4,7 +4,7 @@
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls"
     xmlns:LayHelper="clr-namespace:LayUI.Wpf.Extend">
     <StackPanel
-        x:Key="Pagination"
+        x:Key="JumpContent"
         x:Shared="False"
         Orientation="Horizontal">
         <TextBlock
@@ -94,9 +94,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="PrevButtonContent" Value="上一页" />
         <Setter Property="NextButtonContent" Value="下一页" />
-        <Setter Property="JumpContent" Value="{StaticResource Pagination}" />
-        <Setter Property="LimitContent" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination, Mode=FindAncestor}, Path=Limit, Mode=OneWay}" />
-        <Setter Property="PageCountContent" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination, Mode=FindAncestor}, Path=PageCount, Mode=OneWay}" />
+        <Setter Property="JumpContent" Value="{StaticResource JumpContent}" />
         <Setter Property="ConfirmButtonContent" Value="确定" />
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
         <Setter Property="Height" Value="30" />

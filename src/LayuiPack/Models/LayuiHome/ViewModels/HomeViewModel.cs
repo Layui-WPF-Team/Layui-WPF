@@ -217,6 +217,9 @@ namespace LayuiHome.ViewModels
                                 ItemTitle="DataGrid", PageKey=SystemResource.Page_DataGrid
                             },new MenuItemModel()
                             {
+                                ItemTitle="DataGrid", PageKey=SystemResource.Page_DataGrid
+                            },new MenuItemModel()
+                            {
                                 ItemTitle="Pagination", PageKey=SystemResource.Page_PaginationView
                             },new MenuItemModel()
                             {

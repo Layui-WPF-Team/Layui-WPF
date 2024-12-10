@@ -16,6 +16,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="System.Net.Http" Version="4.3.4" Condition="'$(TargetFramework)' == 'net4.5.2' or '$(TargetFramework)' == 'net4.6' or '$(TargetFramework)' == 'net4.6.2' or '$(TargetFramework)' == 'net4.7' or '$(TargetFramework)' == 'net4.7.2' or '$(TargetFramework)' == 'net4.8'" />
+	</ItemGroup>
+	<ItemGroup>
 	  <None Remove="Fonts\fontawesome-webfont.ttf" />
 	  <None Remove="Fonts\iconfont.ttf" />
 	</ItemGroup>

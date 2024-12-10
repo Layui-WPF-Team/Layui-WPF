@@ -75,5 +75,6 @@
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/DecimalTextStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/VerificationBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/CodeBoxStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/LayUI.Wpf;component/Style/Default/ImageStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

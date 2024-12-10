@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -286,6 +287,86 @@ namespace LayUI.Wpf.Extend
             }
 
             return bmp;
+        }
+        /// <summary>
+        /// 从网络加载图片
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static async Task<BitmapImage> LoadFromUrlAsync(string filePath)
+        {
+            using (HttpClient client = new HttpClient()) // 创建 HttpClient 实例
+            using (HttpResponseMessage response = await client.GetAsync(filePath, HttpCompletionOption.ResponseHeadersRead))
+            {
+                response.EnsureSuccessStatusCode(); // 确保请求成功
+
+                using (Stream stream = await response.Content.ReadAsStreamAsync()) // 获取响应流
+                using (MemoryStream memoryStream = new MemoryStream()) // 创建内存流以存储数据
+                {
+                    // 将响应流复制到内存流
+                    await stream.CopyToAsync(memoryStream);
+                    memoryStream.Position = 0; // 重置内存流位置 
+                    return ToBitmapImage(memoryStream); // 创建并返回 BitmapImage
+                }
+            }
+        }
+        /// <summary>
+        /// 从本地文件加载图片
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static async Task<BitmapImage> LoadFromFileAsync(string filePath)
+        {
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read)) // 打开文件流
+            using (MemoryStream memoryStream = new MemoryStream()) // 创建内存流以存储数据
+            {
+                // 将文件流复制到内存流
+                await fileStream.CopyToAsync(memoryStream);
+                memoryStream.Position = 0; // 重置内存流位置 
+                return ToBitmapImage(memoryStream); // 创建并返回 BitmapImage
+            }
+        }
+        /// <summary>
+        /// 从嵌入资源加载图片
+        /// </summary>
+        /// <param name="resourcePath"></param>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        public static async Task<BitmapImage> LoadFromResourceAsync(string filePath)
+        {
+            Uri resourceUri = new Uri(filePath, UriKind.Relative); // 创建资源 URI
+            using (Stream resourceStream = Application.GetResourceStream(resourceUri)?.Stream)
+            {
+                if (resourceStream != null) // 检查资源流是否存在
+                {
+                    using (MemoryStream memoryStream = new MemoryStream()) // 创建内存流以存储数据
+                    {
+                        // 将资源流复制到内存流
+                        await resourceStream.CopyToAsync(memoryStream);
+                        memoryStream.Position = 0; // 重置内存流位置 
+                        return ToBitmapImage(memoryStream); // 创建并返回 BitmapImage
+                    }
+                }
+                else
+                {
+                    throw new FileNotFoundException("Resource not found: " + filePath); // 如果资源流不存在，抛出异常
+                }
+            }
+        }
+        /// <summary>
+        /// 创建 BitmapImage 实例
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        private static BitmapImage ToBitmapImage(Stream stream)
+        {
+            BitmapImage bitmapImage = new BitmapImage(); // 创建 BitmapImage 实例
+            bitmapImage.BeginInit(); // 开始初始化
+            bitmapImage.CacheOption = BitmapCacheOption.OnLoad; // 立即加载
+            bitmapImage.StreamSource = stream; // 设置流源为内存流
+            bitmapImage.EndInit(); // 结束初始化
+            bitmapImage.Freeze(); // 使 BitmapImage 可安全使用在其他线程
+            return bitmapImage; // 返回 BitmapImage
         }
     }
 }
