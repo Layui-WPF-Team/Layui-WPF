@@ -657,7 +657,7 @@
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Focusable="{TemplateBinding Focusable}"
-                                IsReadOnly="true">
+                                IsReadOnly="{TemplateBinding IsReadOnly}">
                                 <DatePickerTextBox.Template>
                                     <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
                                         <Grid>

@@ -17,7 +17,7 @@ namespace LayUI.Wpf.Controls
     [TemplatePart(Name = "PART_CloseWindowButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_MaxWindowButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_MinWindowButton", Type = typeof(Button))]
-    public class LayWindow : Window
+    public class LayWindow : Window, IWindowAware
     {
         /// <summary>
         /// 关闭窗体
@@ -170,5 +170,18 @@ namespace LayUI.Wpf.Controls
                 InvalidateMeasure();
             }
         }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (DataContext is IWindowAware windowAware)
+            {
+                e.Cancel = !windowAware.CanClosing();
+            }
+            else
+            {
+                e.Cancel = !CanClosing();
+                base.OnClosing(e);
+            }
+        }
+        public virtual bool CanClosing() => true;
     }
 }
