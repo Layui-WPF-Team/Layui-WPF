@@ -13,6 +13,8 @@
         <Setter Property="Height" Value="25" />
         <Setter Property="MaxHeight" Value="100" />
         <Setter Property="Foreground" Value="White" />
+        <Setter Property="CheckedColor" Value="{DynamicResource CyanBlue}" />
+        <Setter Property="Background" Value="{DynamicResource Gray}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LaySwitch">
@@ -46,7 +48,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource CyanBlue}" />
+                            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=CheckedColor}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

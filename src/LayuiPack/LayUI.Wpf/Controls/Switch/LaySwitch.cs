@@ -17,7 +17,7 @@ namespace LayUI.Wpf.Controls
     /// <para>创建时间:2022-06-28 下午 5:32:33</para>
     /// </summary>
     [TemplatePart(Name = "PART_Icon")]
-    public class LaySwitch : ToggleButton, ILayControl
+    public class LaySwitch : LaySimpleToggleButton, ILayControl
     {
         private Viewbox PART_Icon;
         private Border PART_Border;
@@ -48,7 +48,7 @@ namespace LayUI.Wpf.Controls
         {
             base.OnUnchecked(e);
             InitAnimation((bool)this.IsChecked);
-        }
+        } 
         /// <summary>
         /// 初始化选中效果
         /// </summary>
@@ -67,7 +67,7 @@ namespace LayUI.Wpf.Controls
                 {
                     thicknessAnimation.To = new Thickness(0, 0, 0, 0);
                 }
-                thicknessAnimation.Duration = TimeSpan.FromMilliseconds(0);
+                thicknessAnimation.Duration = TimeSpan.FromMilliseconds(200);
                 PART_Icon.BeginAnimation(MarginProperty, thicknessAnimation);
             }
             else
@@ -83,8 +83,15 @@ namespace LayUI.Wpf.Controls
             base.OnApplyTemplate();
             PART_Icon = GetTemplateChild("PART_Icon") as Viewbox;
             PART_Border = GetTemplateChild("PART_Border") as Border;
+            Loaded += LaySwitch_Loaded;
+        }
+
+        private void LaySwitch_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= LaySwitch_Loaded;
             InitAnimation((bool)this.IsChecked);
         }
+
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
