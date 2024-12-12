@@ -13,7 +13,7 @@ namespace LayUI.Wpf.Tools
     /// <summary>
     /// 控件帮助类
     /// </summary>
-    public class LayUIElementHelper
+    public  class LayUIElementHelper
     {
         /// <summary>
         /// 元素复制（克隆）
