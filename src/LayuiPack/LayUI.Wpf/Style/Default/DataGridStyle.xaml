@@ -216,6 +216,8 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="CanUserAddRows" Value="false" />
+        <Setter Property="RowBackground" Value="Transparent" />
+        <Setter Property="AlternatingRowBackground" Value="Transparent" />
         <Setter Property="ElementTextColumnStyle" Value="{DynamicResource ElementTextStyle}" />
         <Setter Property="EditingTextColumnStyle" Value="{DynamicResource EditingTextStyle}" />
         <Setter Property="ElementCheckBoxColumnStyle" Value="{DynamicResource ElementCheckBoxStyle}" />
@@ -558,18 +560,18 @@
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="true" />
                         <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter TargetName="border" Property="Background" Value="{x:Null}" />
+                            <Setter TargetName="border" Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=RowBackground}" />
                         </Trigger>
                         <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource LighGray}" />
+                            <Setter TargetName="border" Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=AlternatingRowBackground}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="border" Property="Background" Value="{DynamicResource LighGray}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="fousIcon" Property="Opacity" Value="1" />
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource LighGray}" />
                         </Trigger>
                         <Trigger Property="DetailsVisibility" Value="Visible">
                             <Setter TargetName="DetailsPresenter" Property="Margin" Value="0,0,1,0" />
@@ -713,6 +715,8 @@
         <Setter Property="RowStyle" Value="{DynamicResource LayDataGridRowStyle}" />
         <Setter Property="CellStyle" Value="{DynamicResource LayDataGridCellStyle}" />
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
+        <Setter Property="RowBackground" Value="Transparent" />
+        <Setter Property="AlternatingRowBackground" Value="Transparent" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="SelectionMode" Value="Single" />
