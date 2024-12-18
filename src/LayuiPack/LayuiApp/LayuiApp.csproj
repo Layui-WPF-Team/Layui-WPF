@@ -193,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Svg\cn.svg" />
+    <Resource Include="LayUI.jpg" />
     <Content Include="R-C.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

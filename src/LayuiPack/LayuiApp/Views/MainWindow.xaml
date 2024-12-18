@@ -14,7 +14,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     AllowsTransparency="True"
     WindowStartupLocation="CenterScreen"
-    WindowStyle="None">
+    WindowStyle="None" Icon="/LayUI.jpg">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
