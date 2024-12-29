@@ -9,7 +9,7 @@
         <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
         <Setter Property="Size" Value="17" />
         <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis" />
-        <Setter Property="Margin" Value="2" />
+        <Setter Property="Margin" Value="4,2" />
         <Setter Property="Padding" Value="15,10" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
