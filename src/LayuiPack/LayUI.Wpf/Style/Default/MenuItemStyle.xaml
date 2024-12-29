@@ -36,21 +36,19 @@
                             x:Name="Popup"
                             AllowsTransparency="True"
                             Focusable="False"
-                            HorizontalOffset="-15"
                             IsOpen="{TemplateBinding IsSubmenuOpen}"
                             Placement="Bottom"
                             PlacementTarget="{Binding ElementName=Border}"
-                            PopupAnimation="Fade"
-                            VerticalOffset="-14">
+                            PopupAnimation="Fade">
                             <Grid
                                 x:Name="SubmenuBorder"
                                 Background="Transparent"
                                 Effect="{DynamicResource LayShadow}"
                                 SnapsToDevicePixels="True">
                                 <Border Background="White" Opacity="0.01" />
-                                <Border Margin="15" Background="{TemplateBinding Background}" />
+                                <Border Margin="5" Background="{TemplateBinding Background}" />
                                 <ScrollViewer
-                                    Margin="15"
+                                    Margin="5"
                                     CanContentScroll="True"
                                     Style="{DynamicResource LayScrollViewerStyle}">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
@@ -240,21 +238,19 @@
                             x:Name="Popup"
                             AllowsTransparency="True"
                             Focusable="False"
-                            HorizontalOffset="-15"
                             IsOpen="{TemplateBinding IsSubmenuOpen}"
                             Placement="Right"
                             PlacementTarget="{Binding ElementName=Border}"
-                            PopupAnimation="Fade"
-                            VerticalOffset="-14">
+                            PopupAnimation="Fade">
                             <Grid
                                 x:Name="SubmenuBorder"
                                 Background="Transparent"
                                 Effect="{DynamicResource LayShadow}"
                                 SnapsToDevicePixels="True">
                                 <Border Background="White" Opacity="0.01" />
-                                <Border Margin="15" Background="{TemplateBinding Background}" />
+                                <Border Margin="5" Background="{TemplateBinding Background}" />
                                 <ScrollViewer
-                                    Margin="15"
+                                    Margin="5"
                                     CanContentScroll="True"
                                     Style="{DynamicResource LayScrollViewerStyle}">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
