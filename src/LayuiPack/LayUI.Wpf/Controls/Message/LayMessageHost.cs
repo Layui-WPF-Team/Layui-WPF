@@ -15,6 +15,7 @@ namespace LayUI.Wpf.Controls
     /// </summary>
     public class LayMessageHost : System.Windows.Controls.ItemsControl
     {
+         
         /// <summary>
         /// 重写自定义指定项子控件
         /// </summary>
