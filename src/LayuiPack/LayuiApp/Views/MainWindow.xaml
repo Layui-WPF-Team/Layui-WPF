@@ -13,8 +13,9 @@
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
     AllowsTransparency="True"
+    Icon="/LayUI.jpg"
     WindowStartupLocation="CenterScreen"
-    WindowStyle="None" Icon="/LayUI.jpg">
+    WindowStyle="None">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
@@ -151,23 +152,6 @@
                                         <Grid.Effect>
                                             <DropShadowEffect Opacity="0.5" ShadowDepth="0" />
                                         </Grid.Effect>
-                                        <Grid
-                                            Width="10"
-                                            Height="10"
-                                            Margin="20,2"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Background="White"
-                                            RenderTransformOrigin="0.5,0.5">
-                                            <Grid.RenderTransform>
-                                                <TransformGroup>
-                                                    <ScaleTransform />
-                                                    <SkewTransform />
-                                                    <RotateTransform Angle="45" />
-                                                    <TranslateTransform />
-                                                </TransformGroup>
-                                            </Grid.RenderTransform>
-                                        </Grid>
                                         <Border
                                             Width="150"
                                             Height="auto"

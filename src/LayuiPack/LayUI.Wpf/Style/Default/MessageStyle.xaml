@@ -3,15 +3,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
     <Style x:Key="LayMessageControlStyle" TargetType="Lay:LayMessageControl">
-        <Setter Property="MinHeight" Value="50" />
-        <Setter Property="MinWidth" Value="250" />
         <Setter Property="IsHitTestVisible" Value="false" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+        <Setter Property="Size" Value="17" />
         <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis" />
-        <Setter Property="Margin" Value="0,4" />
-        <Setter Property="Panel.ZIndex" Value="100" />
+        <Setter Property="Margin" Value="4,2" />
+        <Setter Property="Padding" Value="15,10" />
+        <Setter Property="FontSize" Value="14" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -27,23 +27,25 @@
                                     <DropShadowEffect Opacity="0.2" ShadowDepth="0" />
                                 </Border.Effect>
                             </Border>
-                            <Grid Margin="1,0">
+                            <Grid Margin="{TemplateBinding Padding}" UseLayoutRounding="True">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <Border
                                     x:Name="bg"
-                                    Width="20"
-                                    Height="20"
-                                    Margin="4,10">
+                                    Width="{TemplateBinding Size}"
+                                    Height="{TemplateBinding Size}"
+                                    Margin="0,0,5,0">
                                     <Path x:Name="PART_Icon" Stretch="Fill" />
                                 </Border>
                                 <ContentPresenter
                                     Grid.Column="1"
-                                    Margin="4,10"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    UseLayoutRounding="False" />
                             </Grid>
                         </Grid>
                     </Lay:LayTransition>
@@ -54,16 +56,19 @@
                         </Trigger>
                         <Trigger Property="Type" Value="Error">
                             <Setter Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="{DynamicResource Red}" />
                             <Setter TargetName="PART_Icon" Property="Fill" Value="{DynamicResource Red}" />
                             <Setter TargetName="PART_Icon" Property="Data" Value="M512 0C229.23 0 0 229.23 0 512s229.23 512 512 512c282.768 0 512-229.23 512-512C1024 229.23 794.77 0 512 0zM746.76 656.252c7.808 7.808 7.806 20.472 0.002 28.284l-62.228 62.224c-7.808 7.808-20.47 7.814-28.286 0.002L512 602.51l-144.25 144.25c-7.81 7.812-20.474 7.808-28.284 0l-62.226-62.224c-7.81-7.808-7.812-20.472 0-28.284L421.492 512l-144.25-144.25c-7.81-7.808-7.81-20.474 0-28.284l62.226-62.224c7.81-7.812 20.474-7.81 28.284 0L512 421.49l144.252-144.25c7.806-7.812 20.47-7.81 28.282 0l62.226 62.224c7.806 7.812 7.808 20.474 0 28.284L602.51 512 746.76 656.252z" />
                         </Trigger>
                         <Trigger Property="Type" Value="Success">
                             <Setter Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="{DynamicResource CyanBlue}" />
                             <Setter TargetName="PART_Icon" Property="Fill" Value="{DynamicResource CyanBlue}" />
                             <Setter TargetName="PART_Icon" Property="Data" Value="M510.107082 0C228.488568 0 0.191459 228.297109 0.191459 509.913817 0.191459 791.530527 228.488568 1019.827635 510.107082 1019.827635 791.725594 1019.827635 1020.017285 791.530527 1020.017285 509.913817 1020.017285 228.297109 791.725594 0 510.107082 0L510.107082 0ZM410.902284 770.518774 409.764366 769.377244 408.622835 770.518774 168.529307 530.430664 248.958453 449.997904 409.764366 610.798397 771.252096 249.310666 851.681244 329.739812 410.902284 770.518774 410.902284 770.518774Z" />
                         </Trigger>
                         <Trigger Property="Type" Value="Warning">
                             <Setter Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="{DynamicResource Orange}" />
                             <Setter TargetName="PART_Icon" Property="Fill" Value="{DynamicResource Orange}" />
                             <Setter TargetName="PART_Icon" Property="Data" Value="M512 0C229.254842 0 0.010628 229.244214 0.010628 511.989372c0 282.766414 229.244214 512.010628 511.989372 512.010628 282.766414 0 511.989372-229.244214 511.989372-512.010628C1024.010628 229.244214 794.78767 0 512 0zM580.146217 804.23589l-136.271178 0L443.875039 687.626362l136.271178 0L580.146217 804.23589zM580.146217 591.443695l-136.271178 0L443.875039 219.76411l136.271178 0L580.146217 591.443695z" />
                         </Trigger>
