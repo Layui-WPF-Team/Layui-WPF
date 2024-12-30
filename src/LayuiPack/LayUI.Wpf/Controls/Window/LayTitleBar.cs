@@ -76,9 +76,9 @@ namespace LayUI.Wpf.Controls
                 LayBindingHelper.SetBinding(_window, Window.WindowStateProperty, nameof(WindowState), BindingMode.TwoWay, this);
                 LayBindingHelper.SetBinding(_window, Window.StyleProperty, nameof(RootStyle), BindingMode.TwoWay, this);
                 LayBindingHelper.SetBinding(_window, Window.ResizeModeProperty, nameof(ResizeMode), BindingMode.TwoWay, this);
+                window.Closing -= Window_Closing;
+                window.Closing += Window_Closing;
             }
-            window.Closing -= Window_Closing;
-            window.Closing += Window_Closing;
             PART_CloseWindowButton = GetTemplateChild("PART_CloseWindowButton") as Button;
             PART_MaxWindowButton = GetTemplateChild("PART_MaxWindowButton") as Button;
             PART_MinWindowButton = GetTemplateChild("PART_MinWindowButton") as Button;
