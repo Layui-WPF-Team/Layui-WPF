@@ -10,19 +10,24 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTabControl, Mode=FindAncestor}, Path=Type}" Value="{x:Static Enum:TabControlStyle.Simplicity}">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Lay:LayTabItem}">
-                            <Grid Background="{TemplateBinding Background}" Cursor="Hand">
+                            <Grid
+                                Background="{TemplateBinding Background}"
+                                Cursor="Hand"
+                                UseLayoutRounding="True">
                                 <ContentPresenter
                                     x:Name="contentPresenter"
                                     Margin="{TemplateBinding Padding}"
                                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                     ContentSource="Header"
-                                    TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                    TextBlock.Foreground="{TemplateBinding Foreground}"
+                                    UseLayoutRounding="False" />
                                 <Rectangle
                                     x:Name="rectangle"
                                     Fill="{Binding ElementName=contentPresenter, Path=(TextBlock.Foreground)}"
@@ -30,12 +35,16 @@
                                     Opacity="0" />
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsSelected" Value="true">
+                                <Trigger Property="IsSelected" Value="false">
+                                    <Setter TargetName="rectangle" Property="Opacity" Value="0" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
                                     <Setter TargetName="rectangle" Property="Opacity" Value="1" />
                                     <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{DynamicResource Green}" />
                                 </Trigger>
-                                <Trigger Property="IsSelected" Value="false">
-                                    <Setter TargetName="rectangle" Property="Opacity" Value="0" />
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter TargetName="rectangle" Property="Opacity" Value="1" />
+                                    <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{DynamicResource Green}" />
                                 </Trigger>
                                 <Trigger Property="TabStripPlacement" Value="Left">
                                     <Setter TargetName="rectangle" Property="Width" Value="2" />
@@ -74,7 +83,10 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Lay:LayTabItem}">
-                            <Grid Background="{TemplateBinding Background}" Cursor="Hand">
+                            <Grid
+                                Background="{TemplateBinding Background}"
+                                Cursor="Hand"
+                                UseLayoutRounding="True">
                                 <Border
                                     x:Name="border"
                                     Margin="0"
@@ -82,59 +94,59 @@
                                     BorderBrush="{DynamicResource Gray}"
                                     BorderThickness="1,1,1,0"
                                     Opacity="0" />
-                                <Border
-                                    x:Name="borderBottom"
-                                    Height="1"
-                                    Background="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTabControl}, Path=Background}"
-                                    Opacity="0" />
+                                <Border x:Name="borderBottom" Opacity="0" />
                                 <ContentPresenter
                                     x:Name="contentPresenter"
                                     Margin="{TemplateBinding Padding}"
                                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                     ContentSource="Header"
-                                    TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                    TextBlock.Foreground="{TemplateBinding Foreground}"
+                                    UseLayoutRounding="false" />
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="borderBottom" Property="Opacity" Value="1" />
+                                    <Setter TargetName="borderBottom" Property="Background" Value="{DynamicResource LightGreen}" />
+                                    <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{DynamicResource LightGreen}" />
+                                </Trigger>
                                 <Trigger Property="IsSelected" Value="true">
                                     <Setter TargetName="border" Property="Opacity" Value="1" />
                                     <Setter TargetName="borderBottom" Property="Opacity" Value="1" />
+                                    <Setter TargetName="borderBottom" Property="Background" Value="{DynamicResource LightGreen}" />
+                                    <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{DynamicResource LightGreen}" />
                                 </Trigger>
                                 <Trigger Property="TabStripPlacement" Value="Left">
-                                    <Setter TargetName="borderBottom" Property="Width" Value="1" />
+                                    <Setter TargetName="borderBottom" Property="Width" Value="2" />
                                     <Setter TargetName="borderBottom" Property="Height" Value="auto" />
-                                    <Setter TargetName="borderBottom" Property="Margin" Value="0,1,-1,1" />
                                     <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Right" />
                                     <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Stretch" />
-                                    <Setter TargetName="border" Property="BorderThickness" Value="0,1,0,1" />
                                     <Setter TargetName="border" Property="Margin" Value="0,0,0,0" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="1,1,0,1" />
                                 </Trigger>
                                 <Trigger Property="TabStripPlacement" Value="Top">
                                     <Setter TargetName="borderBottom" Property="Width" Value="auto" />
-                                    <Setter TargetName="borderBottom" Property="Height" Value="1" />
-                                    <Setter TargetName="borderBottom" Property="Margin" Value="1,0,1,-1" />
+                                    <Setter TargetName="borderBottom" Property="Height" Value="2" />
                                     <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Stretch" />
-                                    <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Bottom" />
-                                    <Setter TargetName="border" Property="BorderThickness" Value="1,0,1,0" />
+                                    <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Top" />
                                     <Setter TargetName="border" Property="Margin" Value="0,0,0,0" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="1,1,1,0" />
                                 </Trigger>
                                 <Trigger Property="TabStripPlacement" Value="Right">
-                                    <Setter TargetName="borderBottom" Property="Width" Value="1" />
+                                    <Setter TargetName="borderBottom" Property="Width" Value="2" />
                                     <Setter TargetName="borderBottom" Property="Height" Value="auto" />
-                                    <Setter TargetName="borderBottom" Property="Margin" Value="-1,1,0,1" />
                                     <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Left" />
                                     <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Stretch" />
-                                    <Setter TargetName="border" Property="BorderThickness" Value="0,1,0,1" />
                                     <Setter TargetName="border" Property="Margin" Value="0,0,0,0" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="0,1,1,1" />
                                 </Trigger>
                                 <Trigger Property="TabStripPlacement" Value="Bottom">
                                     <Setter TargetName="borderBottom" Property="Width" Value="auto" />
-                                    <Setter TargetName="borderBottom" Property="Height" Value="1" />
-                                    <Setter TargetName="borderBottom" Property="Margin" Value="1,-1,1,0" />
+                                    <Setter TargetName="borderBottom" Property="Height" Value="2" />
                                     <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Stretch" />
-                                    <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Top" />
-                                    <Setter TargetName="border" Property="BorderThickness" Value="1,0,1,0" />
+                                    <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Bottom" />
                                     <Setter TargetName="border" Property="Margin" Value="0,0,0,0" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="1,0,1,1" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

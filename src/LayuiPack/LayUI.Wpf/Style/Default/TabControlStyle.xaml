@@ -30,15 +30,76 @@
                             Grid.ColumnSpan="2"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}" />
-                        <UniformGrid
-                            x:Name="headerPanel"
+                        <Grid
+                            x:Name="PART_Grid"
                             Grid.Row="0"
                             Grid.Column="0"
-                            HorizontalAlignment="Left"
                             Panel.ZIndex="1"
-                            Background="Transparent"
-                            IsItemsHost="true"
-                            KeyboardNavigation.TabIndex="1" />
+                            ClipToBounds="true"
+                            KeyboardNavigation.TabNavigation="Local">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button
+                                x:Name="PART_UpBtn"
+                                Width="30"
+                                Cursor="Hand">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid Background="Transparent">
+                                            <ContentPresenter />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <TextBlock
+                                    x:Name="PART_UpIcon"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource IconFont}"
+                                    Text="&#xeb61;" />
+                            </Button>
+                            <Button
+                                x:Name="PART_DownBtn"
+                                Grid.Column="2"
+                                Width="30"
+                                Cursor="Hand">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid Background="Transparent">
+                                            <ContentPresenter />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <TextBlock
+                                    x:Name="PART_DownIcon"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource IconFont}"
+                                    Text="&#xeb5c;" />
+                            </Button>
+                            <ScrollViewer
+                                x:Name="PART_ScrollViewer"
+                                Grid.Column="1"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                HorizontalScrollBarVisibility="Hidden"
+                                Style="{DynamicResource LayScrollViewerStyle}"
+                                VerticalScrollBarVisibility="Disabled">
+                                <StackPanel
+                                    x:Name="headerPanel"
+                                    Background="{x:Null}"
+                                    IsItemsHost="true"
+                                    KeyboardNavigation.TabIndex="1"
+                                    Orientation="Horizontal" />
+                            </ScrollViewer>
+                        </Grid>
                         <Border
                             x:Name="contentPanel"
                             Grid.Row="1"
@@ -58,41 +119,69 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="TabStripPlacement" Value="Top">
-                            <Setter TargetName="headerPanel" Property="Rows" Value="1" />
+                            <Setter TargetName="PART_UpIcon" Property="Text" Value="&#xeb61;" />
+                            <Setter TargetName="PART_DownIcon" Property="Text" Value="&#xeb5c;" />
+                            <Setter TargetName="headerPanel" Property="Orientation" Value="Horizontal" />
+                            <Setter TargetName="PART_ScrollViewer" Property="VerticalScrollBarVisibility" Value="Disabled" />
+                            <Setter TargetName="PART_ScrollViewer" Property="HorizontalScrollBarVisibility" Value="Hidden" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Bottom">
-                            <Setter TargetName="headerPanel" Property="Rows" Value="1" />
-                            <Setter TargetName="headerPanel" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="PART_UpIcon" Property="Text" Value="&#xeb61;" />
+                            <Setter TargetName="PART_DownIcon" Property="Text" Value="&#xeb5c;" />
+                            <Setter TargetName="PART_ScrollViewer" Property="VerticalScrollBarVisibility" Value="Disabled" />
+                            <Setter TargetName="PART_ScrollViewer" Property="HorizontalScrollBarVisibility" Value="Hidden" />
+                            <Setter TargetName="headerPanel" Property="Orientation" Value="Horizontal" />
+                            <Setter TargetName="PART_Grid" Property="Grid.Row" Value="1" />
                             <Setter TargetName="contentPanel" Property="Grid.Row" Value="0" />
                             <Setter TargetName="RowDefinition0" Property="Height" Value="*" />
                             <Setter TargetName="RowDefinition1" Property="Height" Value="Auto" />
-                            <Setter TargetName="headerPanel" Property="Margin" Value="0" />
+                            <Setter TargetName="PART_ScrollViewer" Property="Margin" Value="0" />
+                            <Setter TargetName="PART_UpBtn" Property="Grid.Row" Value="2" />
+                            <Setter TargetName="PART_ScrollViewer" Property="Grid.Row" Value="2" />
+                            <Setter TargetName="PART_DownBtn" Property="Grid.Row" Value="2" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Left">
-                            <Setter TargetName="headerPanel" Property="VerticalAlignment" Value="Top" />
-                            <Setter TargetName="headerPanel" Property="Columns" Value="1" />
-                            <Setter TargetName="headerPanel" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="PART_UpIcon" Property="Text" Value="&#xeb71;" />
+                            <Setter TargetName="PART_DownIcon" Property="Text" Value="&#xeb6f;" />
+                            <Setter TargetName="PART_ScrollViewer" Property="VerticalScrollBarVisibility" Value="Hidden" />
+                            <Setter TargetName="PART_ScrollViewer" Property="HorizontalScrollBarVisibility" Value="Disabled" />
+                            <Setter TargetName="headerPanel" Property="Orientation" Value="Vertical" />
+                            <Setter TargetName="PART_Grid" Property="Grid.Row" Value="0" />
                             <Setter TargetName="contentPanel" Property="Grid.Row" Value="0" />
-                            <Setter TargetName="headerPanel" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_Grid" Property="Grid.Column" Value="0" />
                             <Setter TargetName="contentPanel" Property="Grid.Column" Value="1" />
                             <Setter TargetName="ColumnDefinition0" Property="Width" Value="Auto" />
                             <Setter TargetName="ColumnDefinition1" Property="Width" Value="*" />
                             <Setter TargetName="RowDefinition0" Property="Height" Value="*" />
                             <Setter TargetName="RowDefinition1" Property="Height" Value="0" />
-                            <Setter TargetName="headerPanel" Property="Margin" Value="0" />
+                            <Setter TargetName="PART_ScrollViewer" Property="Margin" Value="0" />
+                            <Setter TargetName="PART_ScrollViewer" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="PART_ScrollViewer" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_DownBtn" Property="Grid.Row" Value="2" />
+                            <Setter TargetName="PART_DownBtn" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_UpBtn" Property="Grid.Row" Value="0" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Right">
-                            <Setter TargetName="headerPanel" Property="VerticalAlignment" Value="Top" />
-                            <Setter TargetName="headerPanel" Property="Columns" Value="1" />
-                            <Setter TargetName="headerPanel" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="PART_UpIcon" Property="Text" Value="&#xeb71;" />
+                            <Setter TargetName="PART_DownIcon" Property="Text" Value="&#xeb6f;" />
+                            <Setter TargetName="PART_ScrollViewer" Property="VerticalScrollBarVisibility" Value="Hidden" />
+                            <Setter TargetName="PART_ScrollViewer" Property="HorizontalScrollBarVisibility" Value="Disabled" />
+                            <Setter TargetName="headerPanel" Property="Orientation" Value="Vertical" />
+                            <Setter TargetName="PART_Grid" Property="Grid.Row" Value="0" />
                             <Setter TargetName="contentPanel" Property="Grid.Row" Value="0" />
-                            <Setter TargetName="headerPanel" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="PART_Grid" Property="Grid.Column" Value="1" />
                             <Setter TargetName="contentPanel" Property="Grid.Column" Value="0" />
                             <Setter TargetName="ColumnDefinition0" Property="Width" Value="*" />
                             <Setter TargetName="ColumnDefinition1" Property="Width" Value="Auto" />
                             <Setter TargetName="RowDefinition0" Property="Height" Value="*" />
                             <Setter TargetName="RowDefinition1" Property="Height" Value="0" />
-                            <Setter TargetName="headerPanel" Property="Margin" Value="0" />
+                            <Setter TargetName="PART_ScrollViewer" Property="Margin" Value="0" />
+                            <Setter TargetName="PART_ScrollViewer" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="PART_ScrollViewer" Property="Grid.Column" Value="2" />
+                            <Setter TargetName="PART_DownBtn" Property="Grid.Row" Value="2" />
+                            <Setter TargetName="PART_DownBtn" Property="Grid.Column" Value="2" />
+                            <Setter TargetName="PART_UpBtn" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="PART_UpBtn" Property="Grid.Column" Value="2" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="templateRoot" Property="TextElement.Foreground" Value="{DynamicResource LighGray}" />

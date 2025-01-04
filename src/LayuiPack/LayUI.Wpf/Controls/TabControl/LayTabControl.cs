@@ -15,9 +15,14 @@ namespace LayUI.Wpf.Controls
     /// <summary>
     /// 选项卡
     /// </summary>
+    [TemplatePart(Name = nameof(PART_UpBtn), Type = typeof(Button))]
+    [TemplatePart(Name = nameof(PART_DownBtn), Type = typeof(Button))]
+    [TemplatePart(Name = "PART_ScrollViewer", Type = typeof(ScrollViewer))]
     public class LayTabControl : TabControl
     {
-
+        private Button PART_UpBtn;
+        private Button PART_DownBtn;
+        private ScrollViewer PART_ScrollViewer;
         /// <summary>
         /// 选项卡类型
         /// </summary>
@@ -49,6 +54,46 @@ namespace LayUI.Wpf.Controls
         {
             return new LayTabItem();
         }
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            PART_ScrollViewer = GetTemplateChild(nameof(PART_ScrollViewer)) as ScrollViewer;
+            PART_UpBtn = GetTemplateChild("PART_UpBtn") as Button;
+            PART_DownBtn = GetTemplateChild("PART_DownBtn") as Button;
+            if (PART_ScrollViewer != null && PART_UpBtn != null && PART_DownBtn != null)
+            {
+                PART_UpBtn.Click -= PART_UpBtn_Click;
+                PART_DownBtn.Click -= PART_DownBtn_Click;
+                PART_UpBtn.Click += PART_UpBtn_Click;
+                PART_DownBtn.Click += PART_DownBtn_Click;
+                PART_ScrollViewer.PreviewMouseWheel -= PART_ScrollViewer_MouseWheel;
+                PART_ScrollViewer.PreviewMouseWheel += PART_ScrollViewer_MouseWheel;
+            }
+        }
+        private void PART_ScrollViewer_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                if (TabStripPlacement == Dock.Top || TabStripPlacement == Dock.Bottom) PART_ScrollViewer?.LineLeft();
+                else PART_ScrollViewer?.LineUp();
+            }
+            else
+            {
+                if (TabStripPlacement == Dock.Top || TabStripPlacement == Dock.Bottom) PART_ScrollViewer?.LineRight();
+                else PART_ScrollViewer?.LineDown();
+            }
+            e.Handled = true;
+        }
+        private void PART_UpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (TabStripPlacement == Dock.Top || TabStripPlacement == Dock.Bottom) PART_ScrollViewer?.LineLeft();
+            else PART_ScrollViewer?.LineUp();
+        }
 
+        private void PART_DownBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (TabStripPlacement == Dock.Top || TabStripPlacement == Dock.Bottom) PART_ScrollViewer?.LineRight();
+            else PART_ScrollViewer?.LineDown();
+        }
     }
 }

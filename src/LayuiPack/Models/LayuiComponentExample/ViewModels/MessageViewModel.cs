@@ -24,13 +24,13 @@ namespace LayuiComponentExample.ViewModels
             switch (type)
             {
                 case "1":
-                    LayMessage.Success("成功信息");
+                    LayMessage.Success("常用于主动操作后的反馈提示。 与 Notification 的区别是后者更多用于系统级通知的被动提醒。");
                     break;
                 case "2":
-                    LayMessage.Warning("警告信息");
+                    LayMessage.Warning("常用于主动操作后的反馈提示。 与 Notification 的区别是后者更多用于系统级通知的被动提醒。");
                     break;
                 case "3":
-                    LayMessage.Error("错误信息");
+                    LayMessage.Error("常用于主动操作后的反馈提示。 与 Notification 的区别是后者更多用于系统级通知的被动提醒。");
                     break;
                 default:
                     break;

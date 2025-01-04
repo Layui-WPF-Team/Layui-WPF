@@ -21,31 +21,34 @@
                         IsActive="True"
                         Style="{DynamicResource LayTransitionStyle}"
                         Type="SlideInToTop">
-                        <Grid Margin="1">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
-                                <Border.Effect>
-                                    <DropShadowEffect Opacity="0.2" ShadowDepth="0" />
-                                </Border.Effect>
-                            </Border>
-                            <Grid Margin="{TemplateBinding Padding}" UseLayoutRounding="True">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <Border
-                                    x:Name="bg"
-                                    Width="{TemplateBinding Size}"
-                                    Height="{TemplateBinding Size}"
-                                    Margin="0,0,5,0">
-                                    <Path x:Name="PART_Icon" Stretch="Fill" />
-                                </Border>
-                                <ContentPresenter
-                                    Grid.Column="1"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    UseLayoutRounding="False" />
+                        <Grid>
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Effect="{DynamicResource LayShadow}" />
+                            <Grid Margin="1">
+                                <Grid Margin="{TemplateBinding Padding}" UseLayoutRounding="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Border
+                                        x:Name="bg"
+                                        Width="{TemplateBinding Size}"
+                                        Height="{TemplateBinding Size}"
+                                        Margin="0,0,5,0">
+                                        <Path x:Name="PART_Icon" Stretch="Fill" />
+                                    </Border>
+                                    <ContentPresenter
+                                        Grid.Column="1"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        UseLayoutRounding="False" />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Lay:LayTransition>
