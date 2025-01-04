@@ -5,8 +5,12 @@
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <Style x:Key="LayTabControlStyle" TargetType="{x:Type Lay:LayTabControl}">
+        <Style.Resources>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+        </Style.Resources>
         <Setter Property="BorderBrush" Value="{DynamicResource Gray}" />
         <Setter Property="Padding" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="ItemContainerStyle" Value="{DynamicResource LayTabItemStyle}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -50,7 +54,8 @@
                             <Button
                                 x:Name="PART_UpBtn"
                                 Width="30"
-                                Cursor="Hand">
+                                Cursor="Hand"
+                                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsEnableControl, Converter={StaticResource BooleanToVisibility}}">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Grid Background="Transparent">
@@ -69,7 +74,8 @@
                                 x:Name="PART_DownBtn"
                                 Grid.Column="2"
                                 Width="30"
-                                Cursor="Hand">
+                                Cursor="Hand"
+                                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsEnableControl, Converter={StaticResource BooleanToVisibility}}">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Grid Background="Transparent">
@@ -141,6 +147,8 @@
                             <Setter TargetName="PART_DownBtn" Property="Grid.Row" Value="2" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter TargetName="PART_UpBtn" Property="Height" Value="30" />
+                            <Setter TargetName="PART_DownBtn" Property="Height" Value="30" />
                             <Setter TargetName="PART_UpIcon" Property="Text" Value="&#xeb71;" />
                             <Setter TargetName="PART_DownIcon" Property="Text" Value="&#xeb6f;" />
                             <Setter TargetName="PART_ScrollViewer" Property="VerticalScrollBarVisibility" Value="Hidden" />
@@ -162,6 +170,8 @@
                             <Setter TargetName="PART_UpBtn" Property="Grid.Row" Value="0" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter TargetName="PART_UpBtn" Property="Height" Value="30" />
+                            <Setter TargetName="PART_DownBtn" Property="Height" Value="30" />
                             <Setter TargetName="PART_UpIcon" Property="Text" Value="&#xeb71;" />
                             <Setter TargetName="PART_DownIcon" Property="Text" Value="&#xeb6f;" />
                             <Setter TargetName="PART_ScrollViewer" Property="VerticalScrollBarVisibility" Value="Hidden" />

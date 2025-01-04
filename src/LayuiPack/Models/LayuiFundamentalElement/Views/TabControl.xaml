@@ -52,7 +52,6 @@
                 Grid.Row="1"
                 ItemsSource="{Binding PageList}"
                 SelectedItem="{Binding PageModel}"
-                TabStripPlacement="Top"
                 Type="Card">
                 <Lay:LayTabControl.ItemTemplate>
                     <DataTemplate>

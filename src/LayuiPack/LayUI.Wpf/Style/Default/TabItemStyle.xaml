@@ -119,7 +119,7 @@
                                 <Trigger Property="TabStripPlacement" Value="Left">
                                     <Setter TargetName="borderBottom" Property="Width" Value="2" />
                                     <Setter TargetName="borderBottom" Property="Height" Value="auto" />
-                                    <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Right" />
+                                    <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Left" />
                                     <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Stretch" />
                                     <Setter TargetName="border" Property="Margin" Value="0,0,0,0" />
                                     <Setter TargetName="border" Property="BorderThickness" Value="1,1,0,1" />
@@ -135,7 +135,7 @@
                                 <Trigger Property="TabStripPlacement" Value="Right">
                                     <Setter TargetName="borderBottom" Property="Width" Value="2" />
                                     <Setter TargetName="borderBottom" Property="Height" Value="auto" />
-                                    <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Left" />
+                                    <Setter TargetName="borderBottom" Property="HorizontalAlignment" Value="Right" />
                                     <Setter TargetName="borderBottom" Property="VerticalAlignment" Value="Stretch" />
                                     <Setter TargetName="border" Property="Margin" Value="0,0,0,0" />
                                     <Setter TargetName="border" Property="BorderThickness" Value="0,1,1,1" />

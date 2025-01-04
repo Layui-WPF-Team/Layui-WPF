@@ -37,6 +37,22 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.Register("Type", typeof(TabControlStyle), typeof(LayTabControl), new PropertyMetadata(TabControlStyle.Simplicity));
 
+
+        /// <summary>
+        /// 禁用滚动按钮
+        /// </summary>
+        public bool IsEnableControl
+        {
+            get { return (bool)GetValue(IsEnableControlProperty); }
+            set { SetValue(IsEnableControlProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsEnableControl.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsEnableControlProperty =
+            DependencyProperty.Register("IsEnableControl", typeof(bool), typeof(LayTabControl), new PropertyMetadata(true));
+
+
+
         /// <summary>
         /// 重写自定义指定项子控件
         /// </summary>
