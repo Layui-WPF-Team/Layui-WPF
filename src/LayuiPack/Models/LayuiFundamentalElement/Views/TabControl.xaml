@@ -53,6 +53,13 @@
                 ItemsSource="{Binding PageList}"
                 SelectedItem="{Binding PageModel}"
                 Type="Card">
+                <Lay:LayTabControl.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource LayTabItemStyle}" TargetType="Lay:LayTabItem">
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="VerticalAlignment" Value="Stretch" />
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    </Style>
+                </Lay:LayTabControl.ItemContainerStyle>
                 <Lay:LayTabControl.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -60,12 +67,17 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
+                            <TextBlock
+                                Margin="10,0"
+                                VerticalAlignment="Center"
+                                Text="{Binding Title}" />
                             <Lay:LayButton
                                 Grid.Column="1"
                                 Width="20"
                                 Height="20"
-                                Margin="10,0,0,0"
+                                Margin="5,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
                                 Command="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayTabControl}, Path=DataContext.DeleteCommand}"
                                 CommandParameter="{Binding}"
                                 Content="X" />
