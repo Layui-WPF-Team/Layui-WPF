@@ -23,8 +23,10 @@ namespace LayUI.Wpf.Controls
         /// 最小化窗体
         /// </summary>
         private Button PART_MinWindowButton = null;
+        /// <summary>
+        /// 主窗口
+        /// </summary>
         private Window _window;
-
         public Style RootStyle
         {
             get { return (Style)GetValue(RootStyleProperty); }
@@ -69,15 +71,14 @@ namespace LayUI.Wpf.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            var window = Window.GetWindow(this);
-            if (window != null)
-            {
-                _window = window;
+            _window = Window.GetWindow(this);
+            if (_window != null)
+            { 
                 LayBindingHelper.SetBinding(_window, Window.WindowStateProperty, nameof(WindowState), BindingMode.TwoWay, this);
                 LayBindingHelper.SetBinding(_window, Window.StyleProperty, nameof(RootStyle), BindingMode.TwoWay, this);
                 LayBindingHelper.SetBinding(_window, Window.ResizeModeProperty, nameof(ResizeMode), BindingMode.TwoWay, this);
-                window.Closing -= Window_Closing;
-                window.Closing += Window_Closing;
+                _window.Closing -= Window_Closing;
+                _window.Closing += Window_Closing;
             }
             PART_CloseWindowButton = GetTemplateChild("PART_CloseWindowButton") as Button;
             PART_MaxWindowButton = GetTemplateChild("PART_MaxWindowButton") as Button;
