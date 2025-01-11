@@ -177,6 +177,9 @@ namespace LayuiHome.ViewModels
                             },new MenuItemModel()
                             {
                                 ItemTitle="FlowItemsControl", PageKey=SystemResource.Page_FlowItemsControlView
+                            },new MenuItemModel()
+                            {
+                                ItemTitle="WaterfallPanel", PageKey=SystemResource.Page_WaterfallPanelView
                             }
                         }
                 },new MenuItemModel()

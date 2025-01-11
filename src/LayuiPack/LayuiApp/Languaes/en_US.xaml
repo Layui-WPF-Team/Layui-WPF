@@ -61,4 +61,5 @@
     <sys:String x:Key="DialogBoxAnnouncement">This is a WPF version of the Layui component library, where you can feel the charm of the WPF version of Layui</sys:String>
     <sys:String x:Key="ModalPopUpWindow">This is a modal pop-up window</sys:String>
     <sys:String x:Key="NonModalPopUpWindow">This is a non modal pop-up window</sys:String>
+    <sys:String x:Key="WaterfallPanel">WaterfallPanel</sys:String>
 </ResourceDictionary>

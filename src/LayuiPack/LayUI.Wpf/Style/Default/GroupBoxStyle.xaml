@@ -73,7 +73,11 @@
                             Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderThickness.Right, Mode=OneWay}"
                             HorizontalAlignment="Right"
                             Background="{TemplateBinding BorderBrush}" />
-                        <ContentPresenter Grid.Column="1" Grid.Row="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="{TemplateBinding Padding}" />
+                        <ContentPresenter
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <Grid
                             Grid.Row="1"
                             Grid.Column="2"
@@ -151,7 +155,11 @@
                                     Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderThickness.Right, Mode=OneWay}"
                                     HorizontalAlignment="Right"
                                     Background="{TemplateBinding BorderBrush}" />
-                                <ContentPresenter Grid.Row="1" Grid.Column="1" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <ContentPresenter
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="{TemplateBinding Padding}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 <Grid
                                     Grid.Row="1"
                                     Grid.Column="2"
@@ -229,7 +237,11 @@
                                     Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderThickness.Right, Mode=OneWay}"
                                     HorizontalAlignment="Right"
                                     Background="{TemplateBinding BorderBrush}" />
-                                <ContentPresenter Grid.Row="1" Grid.Column="1" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <ContentPresenter
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="{TemplateBinding Padding}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 <Grid
                                     Grid.Row="1"
                                     Grid.Column="2"

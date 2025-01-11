@@ -195,6 +195,10 @@ namespace Layui.Core.Resource
         /// 代码输入框
         /// </summary>
         public const string Page_CodeBoxView = "CodeBoxView"; 
+        /// <summary>
+        /// 瀑布流
+        /// </summary>
+        public const string Page_WaterfallPanelView = "WaterfallPanelView"; 
         #endregion
     }
 }
