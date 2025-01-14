@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace LayUI.Wpf.Controls
 {
@@ -66,7 +67,27 @@ namespace LayUI.Wpf.Controls
         // Using a DependencyProperty as the backing store for ResizeMode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ResizeModeProperty =
             DependencyProperty.Register("ResizeMode", typeof(ResizeMode), typeof(LayTitleBar));
+         
 
+        public Brush HeaderBackground
+        {
+            get { return (Brush)GetValue(HeaderBackgroundProperty); }
+            set { SetValue(HeaderBackgroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HeaderBackground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderBackgroundProperty =
+            DependencyProperty.Register("HeaderBackground", typeof(Brush), typeof(LayTitleBar));
+          
+        public Brush HeaderForeground
+        {
+            get { return (Brush)GetValue(HeaderForegroundProperty); }
+            set { SetValue(HeaderForegroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HeaderForeground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderForegroundProperty =
+            DependencyProperty.Register("HeaderForeground", typeof(Brush), typeof(LayTitleBar)); 
 
         public override void OnApplyTemplate()
         {

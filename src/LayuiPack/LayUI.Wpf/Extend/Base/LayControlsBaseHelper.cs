@@ -123,5 +123,6 @@ namespace LayUI.Wpf.Extend
                .GetMethod("Select", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
                .Invoke(passwordBox, new object[] { start, length });
         }
+
     }
 }
