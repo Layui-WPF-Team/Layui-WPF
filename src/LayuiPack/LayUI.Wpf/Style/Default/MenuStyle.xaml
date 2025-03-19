@@ -7,7 +7,6 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background" Value="White" />
-        <Setter Property="Padding" Value="10,0" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Template">
             <Setter.Value>
@@ -18,10 +17,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         SnapsToDevicePixels="true">
-                        <StackPanel
-                            ClipToBounds="True"
-                            IsItemsHost="True"
-                            Orientation="Horizontal" />
+                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
