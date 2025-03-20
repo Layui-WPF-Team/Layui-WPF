@@ -12,7 +12,11 @@
 		<PackageTags>WPF,LayUI,layui</PackageTags> 
 		<PackageReleaseNotes>这是一款WPF版Layui库，面向所有WPF开发者，提供全新的小清新风格的UI组件库</PackageReleaseNotes> 
 		<Authors>wenke</Authors> 
-		<Title>这是一款WPF版本的Layui风格的前端UI组件库</Title>
+		<Title>这是一款WPF版本的Layui风格的前端UI组件库</Title> 
+		<Version>1.0.3.1</Version> 
+		<Copyright>© MaShangFeng</Copyright>
+		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+		<Company />
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -30,41 +34,43 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net4.6.2'">
 	  <PackageReference Include="System.Drawing.Common">
-	    <Version>8.0.3</Version>
+	    <Version>9.0.3</Version>
 	  </PackageReference>
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net4.7.2'">
 	  <PackageReference Include="System.Drawing.Common">
-	    <Version>8.0.3</Version>
+	    <Version>9.0.3</Version>
 	  </PackageReference>
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net4.8'">
 	  <PackageReference Include="System.Drawing.Common">
-	    <Version>8.0.3</Version>
+	    <Version>9.0.3</Version>
 	  </PackageReference>
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
 	  <PackageReference Include="System.Drawing.Common">
-	    <Version>8.0.3</Version>
+	    <Version>9.0.3</Version>
 	  </PackageReference>
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
-		<PackageReference Include="System.Drawing.Common">
-			<Version>8.0.3</Version>
-		</PackageReference>
+	  <PackageReference Include="System.Drawing.Common">
+	    <Version>9.0.3</Version>
+	  </PackageReference>
 	</ItemGroup>
+
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
-		<PackageReference Include="System.Drawing.Common">
-			<Version>8.0.3</Version>
-		</PackageReference>
+	  <PackageReference Include="System.Drawing.Common">
+	    <Version>9.0.3</Version>
+	  </PackageReference>
 	</ItemGroup>
+
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
-		<PackageReference Include="System.Drawing.Common">
-			<Version>8.0.3</Version>
-		</PackageReference>
+	  <PackageReference Include="System.Drawing.Common">
+	    <Version>9.0.3</Version>
+	  </PackageReference>
 	</ItemGroup>
 </Project>

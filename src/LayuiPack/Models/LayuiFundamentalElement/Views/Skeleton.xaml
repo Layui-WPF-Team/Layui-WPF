@@ -81,8 +81,8 @@
                     Content="{ex:Language Key='Refresh'}"
                     Type="Default" />
             </Lay:LayRipple>
-            <ListBox Height="500" ItemsSource="{Binding Items}">
-                <ListBox.ItemTemplate>
+            <Lay:LayListBox Height="500" ItemsSource="{Binding Items}">
+                <Lay:LayListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -155,8 +155,8 @@
                             </UniformGrid>
                         </Grid>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </Lay:LayListBox.ItemTemplate>
+            </Lay:LayListBox>
         </StackPanel>
     </ScrollViewer>
 </UserControl>
