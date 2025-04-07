@@ -47,7 +47,12 @@ WPF、Avalonia前端外包联系 QQ : 1357703886 微信：ywk912zj
 步骤三: 在目标页面添加需要的控件引用:
 `xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"`
 
-步骤四: 完成
+步骤四: 完成 
+
+## 赞助者
+
+<a href="https://github.com/ZhuYajunFly" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ZhuYajunFly" src="https://avatars.githubusercontent.com/u/52872318?v=4"></a> 
+
 ## 截图
  
 ![image](https://github.com/Layui-WPF-Team/Layui-WPF/assets/37786276/fb00a697-7cbe-4ce4-a3e5-55ad92a3b118)
