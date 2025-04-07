@@ -279,6 +279,8 @@ namespace LayUI.Wpf.Controls
                 PART_ValueHost.SetBinding(TextBox.TextProperty, binding);
                 PART_ValueHost.TextChanged -= PART_ValueHost_TextChanged;
                 PART_ValueHost.TextChanged += PART_ValueHost_TextChanged;
+                PART_ValueHost.PreviewKeyDown -= PART_ValueHost_PreviewKeyDown;
+                PART_ValueHost.PreviewKeyDown += PART_ValueHost_PreviewKeyDown;
                 PART_ValueHost.LostFocus -= PART_ValueHost_LostFocus;
                 PART_ValueHost.LostFocus += PART_ValueHost_LostFocus;
                 PART_AddBtn.Click -= PART_AddBtn_Click;
@@ -287,6 +289,36 @@ namespace LayUI.Wpf.Controls
                 PART_LowerBtn.Click += PART_LowerBtn_Click;
                 OnMinValueChanged(MinValue);
                 OnMaxValueChanged(MaxValue);
+            }
+        }
+
+        /// <summary>
+        /// 输入前验证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PART_ValueHost_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            string currentText = textBox.Text;
+
+            // 允许的按键：主键盘数字、小键盘数字、退格、小数点
+            bool isMainDigit = e.Key >= Key.D0 && e.Key <= Key.D9;
+            bool isNumpadDigit = e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9;
+            bool isBackspace = e.Key == Key.Back;
+            bool isDecimal = e.Key == Key.Decimal || e.Key == Key.OemPeriod;
+
+            // 禁止输入多个小数点
+            if (isDecimal && currentText.Contains('.'))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // 允许数字、退格、小数点输入
+            if (!(isMainDigit || isNumpadDigit || isBackspace || isDecimal))
+            {
+                e.Handled = true;
             }
         }
 
