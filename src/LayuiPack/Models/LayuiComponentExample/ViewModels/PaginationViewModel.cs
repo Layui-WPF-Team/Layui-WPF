@@ -58,7 +58,7 @@ namespace LayuiComponentExample.ViewModels
             base.ExecuteLoadedCommand();
             IsActive = true;
             await Task.Delay(2000);
-            ListData = await LoadedListData();
+            ListData = await LoadedListData(); 
             IsActive = false;
 
         }

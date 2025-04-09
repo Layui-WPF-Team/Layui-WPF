@@ -13,7 +13,7 @@
 		<PackageReleaseNotes>这是一款WPF版Layui库，面向所有WPF开发者，提供全新的小清新风格的UI组件库</PackageReleaseNotes> 
 		<Authors>wenke</Authors> 
 		<Title>这是一款WPF版本的Layui风格的前端UI组件库</Title> 
-		<Version>1.0.3.1</Version> 
+		<Version>1.0.3.2</Version> 
 		<Copyright>© MaShangFeng</Copyright>
 		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
 		<Company />

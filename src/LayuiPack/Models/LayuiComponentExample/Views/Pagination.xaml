@@ -33,18 +33,19 @@
             x:Name="LayPagination"
             Grid.Row="1"
             Margin="0,5"
-            Limit="{Binding ElementName=PaginationLimits, Path=SelectedValue}"
-            PageCount="100">
-            <i:Interaction.Triggers>
+            Limit="10"
+            Total="20">
+            <!--<i:Interaction.Triggers>
                 <i:EventTrigger EventName="PageUpdated">
                     <i:InvokeCommandAction Command="{Binding PageUpdatedCommand}" CommandParameter="{Binding ElementName=LayPagination, Path=JumpIndex}" />
                 </i:EventTrigger>
-            </i:Interaction.Triggers>
+            </i:Interaction.Triggers>-->
             <Lay:LayPagination.LimitContent>
                 <Lay:LayComboBox
                     x:Name="PaginationLimits"
                     Height="auto"
-                    ItemsSource="{Binding Limits}">
+                    ItemsSource="{Binding Limits}"
+                    SelectedIndex="0">
                     <Lay:LayComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>

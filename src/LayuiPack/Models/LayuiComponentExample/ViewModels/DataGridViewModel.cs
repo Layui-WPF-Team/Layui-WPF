@@ -68,11 +68,11 @@ namespace LayuiComponentExample.ViewModels
             get { return _PageSize; }
             set { SetProperty(ref _PageSize, value); }
         }
-        private int _PageCount;
-        public int PageCount
+        private int _Total;
+        public int Total
         {
-            get { return _PageCount; }
-            private set { SetProperty(ref _PageCount, value); }
+            get { return _Total; }
+            private set { SetProperty(ref _Total, value); }
         }
         public DataGridViewModel(IContainerExtension container) : base(container)
         {
@@ -132,9 +132,9 @@ namespace LayuiComponentExample.ViewModels
         {
             base.ExecuteLoadedCommand();
             IsActive = true;
-            await Task.Delay(2000);
+            await Task.Delay(0);
             _Data = await LoadedListData();
-            PageCount= _Data.Count;
+            Total= _Data.Count;
             ExecutePageUpdatedCommand(PageIndex);
             IsActive = false;
 

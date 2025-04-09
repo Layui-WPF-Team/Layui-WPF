@@ -284,8 +284,8 @@
             Margin="10"
             HorizontalAlignment="Right"
             JumpIndex="{Binding PageIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            Limit="{Binding PageSize}"
-            PageCount="{Binding PageCount}">
+            Limit="{Binding PageSize, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+            Total="{Binding Total}">
             <Lay:LayPagination.LimitContent>
                 <Lay:LayComboBox
                     Height="auto"
@@ -303,41 +303,7 @@
             </Lay:LayPagination.LimitContent>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="PageUpdated">
-                    <i:InvokeCommandAction Command="{Binding PageUpdatedCommand}" CommandParameter="{Binding PageIndex}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Lay:LayPagination>
-        <Lay:LayPagination
-            Grid.Row="3"
-            Margin="10"
-            HorizontalAlignment="Right"
-            JumpIndex="{Binding PageIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            Limit="{Binding PageSize}"
-            PageCount="{Binding PageCount}">
-            <Lay:LayPagination.PageCountContent>
-                <TextBlock
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    Text="{Binding PageCount, StringFormat={}共 {0} 条}" />
-            </Lay:LayPagination.PageCountContent>
-            <Lay:LayPagination.LimitContent>
-                <Lay:LayComboBox
-                    Height="auto"
-                    ItemsSource="{Binding Limits}"
-                    SelectedItem="{Binding PageSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <Lay:LayComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock>
-                                <Run Text="{Binding .}" />
-                                <Run Text="条/页" />
-                            </TextBlock>
-                        </DataTemplate>
-                    </Lay:LayComboBox.ItemTemplate>
-                </Lay:LayComboBox>
-            </Lay:LayPagination.LimitContent>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="PageUpdated">
-                    <i:InvokeCommandAction Command="{Binding PageUpdatedCommand}" CommandParameter="{Binding PageIndex}" />
+                    <prism:InvokeCommandAction Command="{Binding PageUpdatedCommand}" TriggerParameterPath="Info" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Lay:LayPagination>
