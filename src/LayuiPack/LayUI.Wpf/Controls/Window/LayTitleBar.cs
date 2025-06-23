@@ -36,7 +36,7 @@ namespace LayUI.Wpf.Controls
         /// <summary>
         /// 主窗口
         /// </summary>
-        private Window _window; 
+        private Window _window;
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -45,7 +45,17 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayTitleBar));
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayTitleBar)); 
+        public bool AllowsTransparency
+        {
+            get { return (bool)GetValue(AllowsTransparencyProperty); }
+            private set { SetValue(AllowsTransparencyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for AllowsTransparency.  This enables animation, styling, binding, etc...
+        private static readonly DependencyProperty AllowsTransparencyProperty =
+            DependencyProperty.Register("AllowsTransparency", typeof(bool), typeof(LayTitleBar));
+         
 
         public WindowState WindowState
         {
@@ -94,7 +104,7 @@ namespace LayUI.Wpf.Controls
         // Using a DependencyProperty as the backing store for HeaderBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderBackgroundProperty =
             DependencyProperty.Register("HeaderBackground", typeof(Brush), typeof(LayTitleBar));
-          
+
         public Brush HeaderForeground
         {
             get { return (Brush)GetValue(HeaderForegroundProperty); }
@@ -103,22 +113,23 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for HeaderForeground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderForegroundProperty =
-            DependencyProperty.Register("HeaderForeground", typeof(Brush), typeof(LayTitleBar)); 
+            DependencyProperty.Register("HeaderForeground", typeof(Brush), typeof(LayTitleBar));
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             _window = Window.GetWindow(this);
             if (_window != null)
-            { 
+            {
                 WindowChrome.SetWindowChrome(_window, windowChrome);
-                LayBindingHelper.SetBinding(_window, Window.WindowStateProperty, nameof(WindowState), BindingMode.TwoWay, this); 
+                LayBindingHelper.SetBinding(_window, Window.WindowStateProperty, nameof(WindowState), BindingMode.TwoWay, this);
                 LayBindingHelper.SetBinding(_window, Window.ResizeModeProperty, nameof(ResizeMode), BindingMode.TwoWay, this);
                 _window.Closing -= Window_Closing;
                 _window.Closing += Window_Closing;
                 WindowState = _window.WindowState;
-                ResizeMode = _window.ResizeMode; 
-
+                ResizeMode = _window.ResizeMode;
+                AllowsTransparency = _window.AllowsTransparency;
+                windowChrome.ResizeBorderThickness= AllowsTransparency ? new Thickness(0) : new Thickness(9);
             }
             PART_CloseWindowButton = GetTemplateChild("PART_CloseWindowButton") as Button;
             PART_MaxWindowButton = GetTemplateChild("PART_MaxWindowButton") as Button;
@@ -136,7 +147,7 @@ namespace LayUI.Wpf.Controls
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (_window.DataContext is IWindowAware windowAware) e.Cancel = !windowAware.CanClosing(); 
+            if (_window.DataContext is IWindowAware windowAware) e.Cancel = !windowAware.CanClosing();
         }
 
         private void PART_CloseWindowButton_Click(object sender, RoutedEventArgs e)

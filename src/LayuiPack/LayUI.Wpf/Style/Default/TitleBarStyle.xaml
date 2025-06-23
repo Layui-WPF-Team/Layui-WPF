@@ -116,6 +116,14 @@
                             <Setter TargetName="winCnangePath" Property="Data" Value="M10.62,72a9.92,9.92,0,0,1-4-.86A11.15,11.15,0,0,1,.86,65.43,9.92,9.92,0,0,1,0,61.38V10.62a9.92,9.92,0,0,1,.86-4A11.15,11.15,0,0,1,6.57.86a9.92,9.92,0,0,1,4-.86H61.38a9.92,9.92,0,0,1,4.05.86,11.15,11.15,0,0,1,5.71,5.71,9.92,9.92,0,0,1,.86,4V61.38a9.92,9.92,0,0,1-.86,4.05,11.15,11.15,0,0,1-5.71,5.71,9.92,9.92,0,0,1-4.05.86Zm50.59-7.21a3.45,3.45,0,0,0,1.39-.28,3.62,3.62,0,0,0,1.91-1.91,3.45,3.45,0,0,0,.28-1.39V10.79a3.45,3.45,0,0,0-.28-1.39A3.62,3.62,0,0,0,62.6,7.49a3.45,3.45,0,0,0-1.39-.28H10.79a3.45,3.45,0,0,0-1.39.28A3.62,3.62,0,0,0,7.49,9.4a3.45,3.45,0,0,0-.28,1.39V61.21a3.45,3.45,0,0,0,.28,1.39A3.62,3.62,0,0,0,9.4,64.51a3.45,3.45,0,0,0,1.39.28Z" />
                             <Setter TargetName="PART_Root_Border" Property="BorderThickness" Value="7" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="AllowsTransparency" Value="false" />
+                                <Condition Property="WindowState" Value="Normal" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Root_Border" Property="BorderThickness" Value="0" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0" />
+                        </MultiTrigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_Root_Border" Property="BorderThickness" Value="0" />
                             <Setter TargetName="PART_Border" Property="Margin" Value="7" />
