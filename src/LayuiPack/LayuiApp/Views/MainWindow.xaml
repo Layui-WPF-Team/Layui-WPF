@@ -16,7 +16,6 @@
     AllowsTransparency="True"
     Background="{x:Null}"
     Icon="/LayUI.jpg"
-    ResizeMode="CanResize"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None">
     <i:Interaction.Triggers>

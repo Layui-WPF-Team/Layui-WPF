@@ -9,6 +9,7 @@
         <Setter Property="HeaderForeground" Value="White" />
         <Setter Property="HeaderHeight" Value="40" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
+        <Setter Property="ResizeMode" Value="CanResize" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayTitleBar">
