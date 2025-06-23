@@ -36,17 +36,7 @@ namespace LayUI.Wpf.Controls
         /// <summary>
         /// 主窗口
         /// </summary>
-        private Window _window;
-        public Style RootStyle
-        {
-            get { return (Style)GetValue(RootStyleProperty); }
-            set { SetValue(RootStyleProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for RootStyle.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty RootStyleProperty =
-            DependencyProperty.Register("RootStyle", typeof(Style), typeof(LayTitleBar));
-
+        private Window _window; 
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -122,8 +112,7 @@ namespace LayUI.Wpf.Controls
             if (_window != null)
             { 
                 WindowChrome.SetWindowChrome(_window, windowChrome);
-                LayBindingHelper.SetBinding(_window, Window.WindowStateProperty, nameof(WindowState), BindingMode.TwoWay, this);
-                LayBindingHelper.SetBinding(_window, Window.StyleProperty, nameof(RootStyle), BindingMode.TwoWay, this);
+                LayBindingHelper.SetBinding(_window, Window.WindowStateProperty, nameof(WindowState), BindingMode.TwoWay, this); 
                 LayBindingHelper.SetBinding(_window, Window.ResizeModeProperty, nameof(ResizeMode), BindingMode.TwoWay, this);
                 _window.Closing -= Window_Closing;
                 _window.Closing += Window_Closing;
