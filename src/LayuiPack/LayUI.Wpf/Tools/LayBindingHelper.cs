@@ -22,7 +22,8 @@ namespace LayUI.Wpf.Tools
             {
                 Path = new PropertyPath(path),
                 Mode = mode,
-                Source = source
+                Source = source,
+                UpdateSourceTrigger= UpdateSourceTrigger.PropertyChanged
             });
         }
     }

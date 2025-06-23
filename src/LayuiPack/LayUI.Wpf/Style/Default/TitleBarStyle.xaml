@@ -7,24 +7,8 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="HeaderBackground" Value="Transparent" />
         <Setter Property="HeaderForeground" Value="White" />
-        <Setter Property="RootStyle">
-            <Setter.Value>
-                <Style TargetType="Window">
-                    <Setter Property="Background" Value="{x:Null}" />
-                    <Setter Property="WindowChrome.WindowChrome">
-                        <Setter.Value>
-                            <WindowChrome
-                                CaptionHeight="30"
-                                CornerRadius="0"
-                                GlassFrameThickness="1"
-                                NonClientFrameEdges="None"
-                                ResizeBorderThickness="9"
-                                UseAeroCaptionButtons="False" />
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="HeaderHeight" Value="40" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadiusBase}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayTitleBar">
@@ -47,7 +31,7 @@
                                         <RowDefinition Height="auto" />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
-                                    <Border Background="{TemplateBinding HeaderBackground}">
+                                    <Border Height="{TemplateBinding HeaderHeight}" Background="{TemplateBinding HeaderBackground}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />

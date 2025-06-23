@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Shell;
 
 namespace LayUI.Wpf.Controls
 {
@@ -12,6 +13,14 @@ namespace LayUI.Wpf.Controls
     [TemplatePart(Name = "PART_MinWindowButton", Type = typeof(Button))]
     public class LayTitleBar : HeaderedContentControl, ILayControl
     {
+        private WindowChrome windowChrome = new WindowChrome()
+        {
+            CornerRadius = new CornerRadius(0),
+            GlassFrameThickness = new Thickness(1),
+            NonClientFrameEdges = NonClientFrameEdges.None,
+            ResizeBorderThickness = new Thickness(9),
+            UseAeroCaptionButtons = false
+        };
         /// <summary>
         /// 关闭窗体
         /// </summary>
@@ -67,7 +76,24 @@ namespace LayUI.Wpf.Controls
         // Using a DependencyProperty as the backing store for ResizeMode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ResizeModeProperty =
             DependencyProperty.Register("ResizeMode", typeof(ResizeMode), typeof(LayTitleBar));
-         
+        public double HeaderHeight
+        {
+            get { return (double)GetValue(HeaderHeightProperty); }
+            set { SetValue(HeaderHeightProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HeaderHeight.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderHeightProperty =
+            DependencyProperty.Register("HeaderHeight", typeof(double), typeof(LayTitleBar), new PropertyMetadata(30.0, OnHeaderHeightChanged));
+
+        private static void OnHeaderHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as LayTitleBar).OnHeaderHeightChanged((double)e.NewValue);
+        }
+        private void OnHeaderHeightChanged(double value)
+        {
+            windowChrome.CaptionHeight = value;
+        }
 
         public Brush HeaderBackground
         {
@@ -95,11 +121,15 @@ namespace LayUI.Wpf.Controls
             _window = Window.GetWindow(this);
             if (_window != null)
             { 
+                WindowChrome.SetWindowChrome(_window, windowChrome);
                 LayBindingHelper.SetBinding(_window, Window.WindowStateProperty, nameof(WindowState), BindingMode.TwoWay, this);
                 LayBindingHelper.SetBinding(_window, Window.StyleProperty, nameof(RootStyle), BindingMode.TwoWay, this);
                 LayBindingHelper.SetBinding(_window, Window.ResizeModeProperty, nameof(ResizeMode), BindingMode.TwoWay, this);
                 _window.Closing -= Window_Closing;
                 _window.Closing += Window_Closing;
+                WindowState = _window.WindowState;
+                ResizeMode = _window.ResizeMode; 
+
             }
             PART_CloseWindowButton = GetTemplateChild("PART_CloseWindowButton") as Button;
             PART_MaxWindowButton = GetTemplateChild("PART_MaxWindowButton") as Button;
