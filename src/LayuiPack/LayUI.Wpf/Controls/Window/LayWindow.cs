@@ -61,20 +61,15 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for HeaderHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderHeightProperty =
-            DependencyProperty.Register("HeaderHeight", typeof(double), typeof(LayWindow),new PropertyMetadata(OnHeaderHeightChanged));
+            DependencyProperty.Register("HeaderHeight", typeof(double), typeof(LayWindow),new PropertyMetadata(0.0,OnHeaderHeightChanged));
 
         private static void OnHeaderHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             (d as LayWindow).OnHeaderHeightChanged((double)e.NewValue);
         }
         private void OnHeaderHeightChanged(double value)
-        {
-            //设置窗口的顶部标题栏高度
-            if (WindowChrome.GetWindowChrome(this) != null)
-            {
-                WindowChrome.GetWindowChrome(this).CaptionHeight = value; 
-            }
-
+        { 
+            windowChrome.CaptionHeight = value;
         }
         /// <summary>
         /// 顶部内容
@@ -141,20 +136,7 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for IsShowHeader.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsShowHeaderProperty =
-            DependencyProperty.Register("IsShowHeader", typeof(bool), typeof(LayWindow), new PropertyMetadata(false, OnIsShowHeaderChanged));
-
-        private static void OnIsShowHeaderChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            (d as LayWindow).OnIsShowHeaderChanged((bool)e.NewValue); 
-        }
-        private void OnIsShowHeaderChanged(bool value)
-        {
-            //设置窗口的顶部标题栏是否显示
-            if (WindowChrome.GetWindowChrome(this) != null)
-            {
-                WindowChrome.GetWindowChrome(this).CaptionHeight = value ? HeaderHeight : 0;
-            }
-        }
+            DependencyProperty.Register("IsShowHeader", typeof(bool), typeof(LayWindow), new PropertyMetadata(false));
         /// <summary>
         /// 动画类型
         /// </summary>

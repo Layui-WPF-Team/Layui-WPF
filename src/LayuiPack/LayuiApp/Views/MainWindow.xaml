@@ -12,12 +12,13 @@
     Width="1080"
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
+    HeaderHeight="50"
     Icon="/LayUI.jpg"
     IsShowHeader="True"
     WindowStartupLocation="CenterScreen">
     <Lay:LayWindow.HeaderContent>
         <Border>
-            <Grid>
+            <Grid ClipToBounds="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="auto" />
