@@ -2,28 +2,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
-    <WindowChrome
-        x:Key="LayWindowChromeStyle"
-        CaptionHeight="56"
-        CornerRadius="0"
-        GlassFrameThickness="1"
-        NonClientFrameEdges="None"
-        ResizeBorderThickness="4"
-        UseAeroCaptionButtons="False" />
     <Style x:Key="LayWindowStyle" TargetType="Lay:LayWindow">
-        <Setter Property="Background" Value="White" />
-        <Setter Property="HeaderBackground" Value="#23262E" />
-        <Setter Property="WindowChrome.WindowChrome">
-            <Setter.Value>
-                <WindowChrome
-                    CaptionHeight="40"
-                    CornerRadius="0"
-                    GlassFrameThickness="1"
-                    NonClientFrameEdges="None"
-                    ResizeBorderThickness="4"
-                    UseAeroCaptionButtons="False" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="{DynamicResource LighCyan}" />
+        <Setter Property="HeaderBackground" Value="Transparent" />
+        <Setter Property="HeaderHeight" Value="35" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Lay:LayWindow">
@@ -55,7 +37,7 @@
                                     Effect="{TemplateBinding HeaderEffect}" />
                                 <Grid
                                     x:Name="PART_Header"
-                                    Height="40"
+                                    Height="{TemplateBinding HeaderHeight}"
                                     Panel.ZIndex="1"
                                     Background="{TemplateBinding HeaderBackground}">
                                     <Grid.ColumnDefinitions>
@@ -78,10 +60,7 @@
                                         VerticalAlignment="Center"
                                         Foreground="{TemplateBinding HeaderForeground}"
                                         Text="{TemplateBinding Title}" />
-                                    <ContentPresenter
-                                        Grid.Column="2"
-                                        ContentSource="HeaderContent"
-                                        WindowChrome.IsHitTestVisibleInChrome="true" />
+                                    <ContentPresenter Grid.Column="2" ContentSource="HeaderContent" />
                                     <StackPanel Grid.Column="3" Orientation="Horizontal">
                                         <StackPanel.Resources>
                                             <ControlTemplate x:Key="WindowButtonTemplate" TargetType="Button">

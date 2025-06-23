@@ -19,7 +19,7 @@
             <Setter Property="WindowStyle" Value="None" />
             <Setter Property="ResizeMode" Value="NoResize" />
             <Setter Property="SizeToContent" Value="WidthAndHeight" />
-            <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource LayWindowChromeStyle}" />
+            <Setter Property="HeaderHeight" Value="40" />
         </Style>
     </Global:LayDialog.WindowStyle>
     <Grid

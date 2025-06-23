@@ -43,6 +43,7 @@
                         <Button
                             x:Name="PART_PrevButton"
                             Height="auto"
+                            Margin="0,0,-1,0"
                             Padding="{TemplateBinding Padding}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -72,7 +73,9 @@
                         </Button>
                         <ItemsControl
                             Height="auto"
+                            Margin="0,0,-1,0"
                             BorderThickness="0"
+                            ClipToBounds="True"
                             ItemsSource="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Pages, Mode=OneWay}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             UseLayoutRounding="True">
@@ -84,15 +87,15 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Button
-                                        Margin="-1,0,0,0"
                                         Padding="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=Padding}"
                                         Background="White"
                                         BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayPagination}, Path=BorderBrush}"
-                                        BorderThickness="1"
                                         CommandParameter="{Binding JumpIndex}"
                                         Content="{Binding DisplayText}">
                                         <Button.Style>
                                             <Style TargetType="Button">
+                                                <Setter Property="Margin" Value="0,0,-1,0" />
+                                                <Setter Property="BorderThickness" Value="1" />
                                                 <Setter Property="Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="Button">
@@ -111,10 +114,15 @@
                                                                 <DataTrigger Binding="{Binding IsCurrent}" Value="true">
                                                                     <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource LightGreen}" />
                                                                     <Setter Property="Foreground" Value="White" />
+                                                                    <Setter Property="Margin" Value="0,0,0,0" />
+                                                                    <Setter Property="BorderThickness" Value="0,0,0,0" />
                                                                 </DataTrigger>
                                                                 <DataTrigger Binding="{Binding IsEnabled}" Value="false">
                                                                     <Setter Property="Cursor" Value="No" />
                                                                 </DataTrigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Opacity" Value="0.3" />
+                                                                </Trigger>
                                                             </ControlTemplate.Triggers>
                                                         </ControlTemplate>
                                                     </Setter.Value>
@@ -128,7 +136,6 @@
                         <Button
                             x:Name="PART_NextButton"
                             Height="auto"
-                            Margin="-1,0,0,0"
                             Padding="{TemplateBinding Padding}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
