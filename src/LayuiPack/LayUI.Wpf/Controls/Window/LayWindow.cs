@@ -19,7 +19,7 @@ namespace LayUI.Wpf.Controls
     [TemplatePart(Name = "PART_CloseWindowButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_MaxWindowButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_MinWindowButton", Type = typeof(Button))]
-    public class LayWindow : Window, IWindowAware
+    public class LayWindow : Window
     {
         /// <summary>
         /// 关闭窗体
@@ -41,8 +41,21 @@ namespace LayUI.Wpf.Controls
         {
             StyleProperty.OverrideMetadata(typeof(LayWindow), new FrameworkPropertyMetadata(LayResourceHelper.GetStyle(nameof(LayWindow) + "Style")));
         }
+        Action _closeAction = null;
 
-
+        public LayWindow()
+        { 
+            _closeAction = () => Close(); 
+        }
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+            if (DataContext is IWindowAware windowAware)
+            {
+                windowAware.Intialized();
+                windowAware.WindowClose += _closeAction;
+            }
+        }
         /// <summary>
         /// 顶部内容
         /// </summary>
@@ -67,7 +80,7 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for HeaderEffect.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderEffectProperty =
-            DependencyProperty.Register("HeaderEffect", typeof(Effect), typeof(LayWindow)); 
+            DependencyProperty.Register("HeaderEffect", typeof(Effect), typeof(LayWindow));
 
         /// <summary>
         /// 头部标题栏文字颜色
@@ -172,6 +185,19 @@ namespace LayUI.Wpf.Controls
                 InvalidateMeasure();
             }
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            if (DataContext is IWindowAware windowAware)
+            {
+                windowAware.WindowClose -= _closeAction;
+                windowAware.Closed();
+            }
+            base.OnClosed(e);
+        }
+
+
+
         protected override void OnClosing(CancelEventArgs e)
         {
             if (DataContext is IWindowAware windowAware)
