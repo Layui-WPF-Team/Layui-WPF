@@ -4,7 +4,7 @@
 		<TargetFrameworks>net4.5.2;net4.6.2;net4.7.2;net4.8;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows;</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<AssemblyTitle>LayUI.Wpf</AssemblyTitle>
-		<Description>这是一款WPF版Layui库</Description>
+		<Description>这是一款WPF版Layui库，面向所有WPF开发者，提供全新的小清新风格的UI组件库</Description>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild> 
 		<GenerateDocumentationFile>true</GenerateDocumentationFile> 
 		<SignAssembly>False</SignAssembly> 
@@ -13,7 +13,8 @@
 		<PackageReleaseNotes>这是一款WPF版Layui库，面向所有WPF开发者，提供全新的小清新风格的UI组件库</PackageReleaseNotes> 
 		<Authors>wenke</Authors> 
 		<Title>这是一款WPF版本的Layui风格的前端UI组件库</Title> 
-		<Version>1.0.3.2</Version> 
+		<Version>1.0.3.3</Version>
+		<ReleaseNotes>新增窗体退出回调效果</ReleaseNotes>
 		<Copyright>© MaShangFeng</Copyright>
 		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
 		<Company />
@@ -72,5 +73,9 @@
 	  <PackageReference Include="System.Drawing.Common">
 	    <Version>9.0.3</Version>
 	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Properties\PublishProfiles\" />
 	</ItemGroup>
 </Project>
