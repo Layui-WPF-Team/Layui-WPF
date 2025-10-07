@@ -10,10 +10,10 @@
 		<SignAssembly>False</SignAssembly> 
 		<RepositoryUrl>https://github.com/Layui-WPF-Team/Layui-WPF</RepositoryUrl> 
 		<PackageTags>WPF,LayUI,layui</PackageTags> 
-		<PackageReleaseNotes>新增数字控件键盘减号以及方向键偏移功能</PackageReleaseNotes> 
+		<PackageReleaseNotes>修复主窗体标题栏高度功能</PackageReleaseNotes> 
 		<Authors>wenke</Authors> 
 		<Title>这是一款WPF版本的Layui风格的前端UI组件库</Title> 
-		<Version>1.1.0</Version> 
+		<Version>1.1.1</Version> 
 		<Copyright>© MaShangFeng</Copyright>
 		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
 		<Company />
