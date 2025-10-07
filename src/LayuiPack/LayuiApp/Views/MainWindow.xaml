@@ -9,296 +9,290 @@
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:local="clr-namespace:LayuiApp.Views"
     xmlns:prism="http://prismlibrary.com/"
-    x:Name="root"
     Width="1080"
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
+    AllowsTransparency="True"
     Icon="/LayUI.jpg"
-    WindowStartupLocation="CenterScreen">
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Lay:LayTitleBar Background="{DynamicResource LighCyan}" WindowState="{Binding ElementName=root, Path=WindowState}">
-        <Lay:LayTitleBar.Header>
-            <Border>
-                <Grid ClipToBounds="True">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                        Margin="10,0"
-                        VerticalAlignment="Center"
-                        Foreground="White"
-                        Text="{ex:Language {Binding Title}}" />
-                    <StackPanel
-                        Grid.Column="1"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal"
-                        WindowChrome.IsHitTestVisibleInChrome="true">
-                        <Lay:LayComboBox
-                            Width="90"
-                            Padding="0"
-                            VerticalContentAlignment="Center"
-                            Background="Transparent"
-                            BorderThickness="0"
+    <Grid>
+        <Lay:LayTitleBar
+            Background="{DynamicResource LighCyan}"
+            CornerRadius="4"
+            ResizeMode="CanResize"
+            WindowState="{Binding WindowState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <Lay:LayTitleBar.Header>
+                <Border Height="40">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Margin="10,0"
+                            VerticalAlignment="Center"
                             Foreground="White"
-                            ItemsSource="{Binding Languages}"
-                            SelectedItem="{Binding Language, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                            <Lay:LayComboBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Margin="0,-4" Background="White" />
-                                </ItemsPanelTemplate>
-                            </Lay:LayComboBox.ItemsPanel>
-                            <Lay:LayComboBox.ItemTemplate>
-                                <DataTemplate>
+                            Text="{ex:Language {Binding Title}}" />
+                        <StackPanel
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal"
+                            WindowChrome.IsHitTestVisibleInChrome="true">
+                            <Lay:LayComboBox
+                                Width="90"
+                                Padding="0"
+                                VerticalContentAlignment="Center"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="White"
+                                ItemsSource="{Binding Languages}"
+                                SelectedItem="{Binding Language, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <Lay:LayComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Margin="0,-4" Background="White" />
+                                    </ItemsPanelTemplate>
+                                </Lay:LayComboBox.ItemsPanel>
+                                <Lay:LayComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Lay:LaySVGImage
+                                                Width="20"
+                                                Height="15"
+                                                VerticalAlignment="Center"
+                                                Source="{Binding Icon}"
+                                                Stretch="UniformToFill" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Margin="5,0"
+                                                VerticalAlignment="Center"
+                                                FontSize="13"
+                                                Text="{Binding Title}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </Lay:LayComboBox.ItemTemplate>
+                            </Lay:LayComboBox>
+                            <Lay:LayBadge
+                                Margin="5,10"
+                                Background="{DynamicResource Red}"
+                                IsDot="True"
+                                Value="1">
+                                <ToggleButton
+                                    x:Name="Title"
+                                    Content="{ex:Language Key='Announcement'}"
+                                    Cursor="Hand"
+                                    Foreground="White">
+                                    <ToggleButton.Template>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Grid Background="Transparent">
+                                                <ContentPresenter VerticalAlignment="Center" />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </ToggleButton.Template>
+                                </ToggleButton>
+                            </Lay:LayBadge>
+                            <Grid VerticalAlignment="Center">
+                                <ToggleButton
+                                    x:Name="MoreToggleButton"
+                                    Width="50"
+                                    Content="&#xed3b;"
+                                    Cursor="Hand"
+                                    FontFamily="{StaticResource IconFont}"
+                                    FontSize="20"
+                                    Foreground="White">
+                                    <ToggleButton.ToolTip>
+                                        <TextBlock FontSize="14" Text="更多" />
+                                    </ToggleButton.ToolTip>
+                                    <ToggleButton.Template>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Grid Background="Transparent">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </ToggleButton.Template>
+                                    <ToggleButton.Style>
+                                        <Style TargetType="ToggleButton">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=MorePopup, Path=IsOpen}" Value="true">
+                                                    <Setter Property="IsEnabled" Value="false" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <Popup
+                                    x:Name="MorePopup"
+                                    AllowsTransparency="True"
+                                    IsOpen="{Binding ElementName=MoreToggleButton, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Placement="Bottom"
+                                    PlacementTarget="{Binding ElementName=MoreToggleButton}"
+                                    PopupAnimation="Slide"
+                                    StaysOpen="False"
+                                    VerticalOffset="5">
+                                    <Popup.Style>
+                                        <Style TargetType="Popup">
+                                            <Setter Property="IsOpen" Value="false" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=MoreToggleButton, Path=IsChecked}" Value="true">
+                                                    <Setter Property="IsOpen" Value="true" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Popup.Style>
                                     <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto" />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <Lay:LaySVGImage
-                                            Width="20"
-                                            Height="15"
-                                            VerticalAlignment="Center"
-                                            Source="{Binding Icon}"
-                                            Stretch="UniformToFill" />
-                                        <TextBlock
-                                            Grid.Column="1"
-                                            Margin="5,0"
-                                            VerticalAlignment="Center"
-                                            FontSize="13"
-                                            Text="{Binding Title}" />
+                                        <Grid.Effect>
+                                            <DropShadowEffect Opacity="0.5" ShadowDepth="0" />
+                                        </Grid.Effect>
+                                        <Border
+                                            Width="150"
+                                            Height="auto"
+                                            Margin="5"
+                                            Background="White"
+                                            CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                                            <StackPanel>
+                                                <StackPanel.Resources>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Width" Value="50" />
+                                                        <Setter Property="Height" Value="50" />
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                        <Setter Property="Cursor" Value="Hand" />
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Border Background="{TemplateBinding Background}">
+                                                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                    <Style x:Key="WindowCheckBoxStyle" TargetType="CheckBox">
+                                                        <Setter Property="Width" Value="50" />
+                                                        <Setter Property="Height" Value="50" />
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="CheckBox">
+                                                                    <Border Background="Transparent">
+                                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </StackPanel.Resources>
+                                                <Button
+                                                    Width="150"
+                                                    Height="40"
+                                                    HorizontalContentAlignment="Stretch"
+                                                    Command="{Binding GoBrowser}"
+                                                    CommandParameter="https://github.com/Layui-WPF-Team/Layui-WPF">
+                                                    <Grid Margin="30,0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock
+                                                            VerticalAlignment="Center"
+                                                            FontFamily="{DynamicResource IconFont-FontAwesome}"
+                                                            FontSize="18"
+                                                            Text="&#xf09b;" />
+                                                        <TextBlock
+                                                            Grid.Column="1"
+                                                            Margin="10,0"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            Text="GitHub" />
+                                                    </Grid>
+                                                </Button>
+                                                <Button
+                                                    Width="150"
+                                                    Height="40"
+                                                    HorizontalContentAlignment="Stretch"
+                                                    Command="{Binding GoBrowser}"
+                                                    CommandParameter="https://www.cnblogs.com/ShyFrog/">
+                                                    <Grid Margin="30,0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock
+                                                            VerticalAlignment="Center"
+                                                            FontFamily="{DynamicResource IconFont-FontAwesome}"
+                                                            FontSize="18"
+                                                            Text="&#xf127;" />
+                                                        <TextBlock
+                                                            Grid.Column="1"
+                                                            Margin="10,0"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            Text="{ex:Language Key='Blog'}" />
+                                                    </Grid>
+                                                </Button>
+                                                <Button
+                                                    Width="150"
+                                                    Height="40"
+                                                    HorizontalContentAlignment="Stretch"
+                                                    Command="{Binding GoBrowser}"
+                                                    CommandParameter="https://space.bilibili.com/48808444">
+                                                    <Grid Margin="30,0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock
+                                                            VerticalAlignment="Center"
+                                                            FontFamily="{DynamicResource IconFont-FontAwesome}"
+                                                            FontSize="18"
+                                                            Text="&#xf03d;" />
+                                                        <TextBlock
+                                                            Grid.Column="1"
+                                                            Margin="10,0"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            Text="{ex:Language Key='Videos'}" />
+                                                    </Grid>
+                                                </Button>
+                                                <Button
+                                                    Width="150"
+                                                    Height="40"
+                                                    HorizontalContentAlignment="Stretch"
+                                                    Command="{Binding GoQQ}">
+                                                    <Grid Margin="30,0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock
+                                                            VerticalAlignment="Center"
+                                                            FontFamily="{DynamicResource IconFont-FontAwesome}"
+                                                            FontSize="18"
+                                                            Text="&#xf1d6;" />
+                                                        <TextBlock
+                                                            Grid.Column="1"
+                                                            Margin="10,0"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            Text="{ex:Language Key='QQ'}" />
+                                                    </Grid>
+                                                </Button>
+                                            </StackPanel>
+                                        </Border>
                                     </Grid>
-                                </DataTemplate>
-                            </Lay:LayComboBox.ItemTemplate>
-                        </Lay:LayComboBox>
-                        <Lay:LayBadge
-                            Margin="5,10"
-                            Background="{DynamicResource Red}"
-                            IsDot="True"
-                            Value="1">
-                            <ToggleButton
-                                x:Name="Title"
-                                Content="{ex:Language Key='Announcement'}"
-                                Cursor="Hand"
-                                Foreground="White">
-                                <ToggleButton.Template>
-                                    <ControlTemplate TargetType="ToggleButton">
-                                        <Grid Background="Transparent">
-                                            <ContentPresenter VerticalAlignment="Center" />
-                                        </Grid>
-                                    </ControlTemplate>
-                                </ToggleButton.Template>
-                            </ToggleButton>
-                        </Lay:LayBadge>
-                        <Grid VerticalAlignment="Center">
-                            <ToggleButton
-                                x:Name="MoreToggleButton"
-                                Width="50"
-                                Content="&#xed3b;"
-                                Cursor="Hand"
-                                FontFamily="{StaticResource IconFont}"
-                                FontSize="20"
-                                Foreground="White">
-                                <ToggleButton.ToolTip>
-                                    <TextBlock FontSize="14" Text="更多" />
-                                </ToggleButton.ToolTip>
-                                <ToggleButton.Template>
-                                    <ControlTemplate TargetType="ToggleButton">
-                                        <Grid Background="Transparent">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                        </Grid>
-                                    </ControlTemplate>
-                                </ToggleButton.Template>
-                                <ToggleButton.Style>
-                                    <Style TargetType="ToggleButton">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ElementName=MorePopup, Path=IsOpen}" Value="true">
-                                                <Setter Property="IsEnabled" Value="false" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </ToggleButton.Style>
-                            </ToggleButton>
-                            <Popup
-                                x:Name="MorePopup"
-                                AllowsTransparency="True"
-                                IsOpen="{Binding ElementName=MoreToggleButton, Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                Placement="Bottom"
-                                PlacementTarget="{Binding ElementName=MoreToggleButton}"
-                                PopupAnimation="Slide"
-                                StaysOpen="False"
-                                VerticalOffset="5">
-                                <Popup.Style>
-                                    <Style TargetType="Popup">
-                                        <Setter Property="IsOpen" Value="false" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ElementName=MoreToggleButton, Path=IsChecked}" Value="true">
-                                                <Setter Property="IsOpen" Value="true" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Popup.Style>
-                                <Grid>
-                                    <Grid.Effect>
-                                        <DropShadowEffect Opacity="0.5" ShadowDepth="0" />
-                                    </Grid.Effect>
-                                    <Border
-                                        Width="150"
-                                        Height="auto"
-                                        Margin="5"
-                                        Background="White"
-                                        CornerRadius="{DynamicResource ControlCornerRadiusBase}">
-                                        <StackPanel>
-                                            <StackPanel.Resources>
-                                                <Style TargetType="Button">
-                                                    <Setter Property="Width" Value="50" />
-                                                    <Setter Property="Height" Value="50" />
-                                                    <Setter Property="Background" Value="Transparent" />
-                                                    <Setter Property="Cursor" Value="Hand" />
-                                                    <Setter Property="Template">
-                                                        <Setter.Value>
-                                                            <ControlTemplate TargetType="Button">
-                                                                <Border Background="{TemplateBinding Background}">
-                                                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                                                                </Border>
-                                                            </ControlTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                </Style>
-                                                <Style x:Key="WindowCheckBoxStyle" TargetType="CheckBox">
-                                                    <Setter Property="Width" Value="50" />
-                                                    <Setter Property="Height" Value="50" />
-                                                    <Setter Property="Template">
-                                                        <Setter.Value>
-                                                            <ControlTemplate TargetType="CheckBox">
-                                                                <Border Background="Transparent">
-                                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                                                </Border>
-                                                            </ControlTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                </Style>
-                                            </StackPanel.Resources>
-                                            <Button
-                                                Width="150"
-                                                Height="40"
-                                                HorizontalContentAlignment="Stretch"
-                                                Command="{Binding GoBrowser}"
-                                                CommandParameter="https://github.com/Layui-WPF-Team/Layui-WPF">
-                                                <Grid Margin="30,0">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto" />
-                                                        <ColumnDefinition />
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock
-                                                        VerticalAlignment="Center"
-                                                        FontFamily="{DynamicResource IconFont-FontAwesome}"
-                                                        FontSize="18"
-                                                        Text="&#xf09b;" />
-                                                    <TextBlock
-                                                        Grid.Column="1"
-                                                        Margin="10,0"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"
-                                                        Text="GitHub" />
-                                                </Grid>
-                                            </Button>
-                                            <Button
-                                                Width="150"
-                                                Height="40"
-                                                HorizontalContentAlignment="Stretch"
-                                                Command="{Binding GoBrowser}"
-                                                CommandParameter="https://www.cnblogs.com/ShyFrog/">
-                                                <Grid Margin="30,0">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto" />
-                                                        <ColumnDefinition />
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock
-                                                        VerticalAlignment="Center"
-                                                        FontFamily="{DynamicResource IconFont-FontAwesome}"
-                                                        FontSize="18"
-                                                        Text="&#xf127;" />
-                                                    <TextBlock
-                                                        Grid.Column="1"
-                                                        Margin="10,0"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"
-                                                        Text="{ex:Language Key='Blog'}" />
-                                                </Grid>
-                                            </Button>
-                                            <Button
-                                                Width="150"
-                                                Height="40"
-                                                HorizontalContentAlignment="Stretch"
-                                                Command="{Binding GoBrowser}"
-                                                CommandParameter="https://space.bilibili.com/48808444">
-                                                <Grid Margin="30,0">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto" />
-                                                        <ColumnDefinition />
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock
-                                                        VerticalAlignment="Center"
-                                                        FontFamily="{DynamicResource IconFont-FontAwesome}"
-                                                        FontSize="18"
-                                                        Text="&#xf03d;" />
-                                                    <TextBlock
-                                                        Grid.Column="1"
-                                                        Margin="10,0"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"
-                                                        Text="{ex:Language Key='Videos'}" />
-                                                </Grid>
-                                            </Button>
-                                            <Button
-                                                Width="150"
-                                                Height="40"
-                                                HorizontalContentAlignment="Stretch"
-                                                Command="{Binding GoQQ}">
-                                                <Grid Margin="30,0">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto" />
-                                                        <ColumnDefinition />
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock
-                                                        VerticalAlignment="Center"
-                                                        FontFamily="{DynamicResource IconFont-FontAwesome}"
-                                                        FontSize="18"
-                                                        Text="&#xf1d6;" />
-                                                    <TextBlock
-                                                        Grid.Column="1"
-                                                        Margin="10,0"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"
-                                                        Text="{ex:Language Key='QQ'}" />
-                                                </Grid>
-                                            </Button>
-                                        </StackPanel>
-                                    </Border>
-                                </Grid>
-                            </Popup>
-                        </Grid>
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </Lay:LayTitleBar.Header>
-        <Grid>
-            <Lay:LayDialogHost
-                Grid.RowSpan="2"
-                Panel.ZIndex="99"
-                Global:LayDialog.Token="RootDialogToken"
-                Background="{x:Null}" />
-            <Lay:LayMessageHost
-                Grid.RowSpan="2"
-                Panel.ZIndex="99"
-                Global:LayMessage.Token="RootMessageToken"
-                Background="{x:Null}" />
-
+                                </Popup>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Lay:LayTitleBar.Header>
             <Border BorderBrush="{DynamicResource Black}" BorderThickness="0,1,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -449,8 +443,16 @@
                                 Text="&#xeff0;" />
                         </Lay:LayNoticeBar.InnerLeftContent>
                     </Lay:LayNoticeBar>
+                    <Lay:LayDialogHost
+                        Grid.RowSpan="2"
+                        Panel.ZIndex="99"
+                        Global:LayDialog.Token="RootDialogToken" />
+                    <Lay:LayMessageHost
+                        Grid.RowSpan="2"
+                        Panel.ZIndex="99"
+                        Global:LayMessage.Token="RootMessageToken" />
                 </Grid>
             </Border>
-        </Grid>
-    </Lay:LayTitleBar>
+        </Lay:LayTitleBar>
+    </Grid>
 </Window>

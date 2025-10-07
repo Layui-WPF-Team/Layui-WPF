@@ -122,7 +122,6 @@ namespace LayUI.Wpf.Controls
 
         private void OnMinValueChanged(decimal value)
         {
-            if (PART_LowerBtn == null || PART_AddBtn == null || PART_ValueHost == null) return;
             PART_LowerBtn.IsEnabled = true;
             if (Value <= value)
             {
@@ -151,7 +150,6 @@ namespace LayUI.Wpf.Controls
 
         private void OnMaxValueChanged(decimal value)
         {
-            if (PART_LowerBtn == null || PART_AddBtn == null || PART_ValueHost == null) return;
             PART_AddBtn.IsEnabled = true;
             if (Value >= value)
             {
