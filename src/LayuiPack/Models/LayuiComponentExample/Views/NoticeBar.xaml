@@ -12,7 +12,8 @@
             VerticalAlignment="Top"
             BorderBrush="{DynamicResource Gradient}"
             BorderThickness="1"
-            Content="欢迎使用LayUI">
+            Content="欢迎使用LayUI"
+            Duration="10">
             <Lay:LayNoticeBar.InnerLeftContent>
                 <Grid>
                     <TextBlock

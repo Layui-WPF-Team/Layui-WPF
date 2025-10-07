@@ -42,8 +42,14 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for Duration.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DurationProperty =
-            DependencyProperty.Register("Duration", typeof(double), typeof(LayNoticeBar), new PropertyMetadata(20.0));
-         
+            DependencyProperty.Register("Duration", typeof(double), typeof(LayNoticeBar), new PropertyMetadata(20.0, OnDurationChanged));
+
+        private static void OnDurationChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+             var control = d as LayNoticeBar;
+            control?.InitAnimation();
+        } 
+
         public object InnerRightContent
         {
             get { return (object)GetValue(InnerRightContentProperty); }

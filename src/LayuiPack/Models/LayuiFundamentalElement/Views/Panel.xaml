@@ -42,7 +42,7 @@
                         <UniformGrid Columns="2">
                             <Lay:LayExpander
                                 Margin="20"
-                                VerticalAlignment="Top"
+                                IsExpanded="True"
                                 Style="{DynamicResource LayExpanderStyle}">
                                 <Lay:LayExpander.Header>
                                     <TextBlock Text="我是标题" />

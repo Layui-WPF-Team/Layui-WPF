@@ -20,7 +20,7 @@ namespace LayUI.Wpf.Controls
     [TemplatePart(Name = "PART_CloseWindowButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_MaxWindowButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_MinWindowButton", Type = typeof(Button))]
-    public class LayWindow : Window, IWindowAware
+    public class LayWindow : Window
     {
         private WindowChrome windowChrome = new WindowChrome()
         {
@@ -53,23 +53,20 @@ namespace LayUI.Wpf.Controls
         {
             StyleProperty.OverrideMetadata(typeof(LayWindow), new FrameworkPropertyMetadata(LayResourceHelper.GetStyle(nameof(LayWindow) + "Style")));
         }
-        public double HeaderHeight
-        {
-            get { return (double)GetValue(HeaderHeightProperty); }
-            set { SetValue(HeaderHeightProperty, value); }
-        }
+        Action _closeAction = null;
 
-        // Using a DependencyProperty as the backing store for HeaderHeight.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HeaderHeightProperty =
-            DependencyProperty.Register("HeaderHeight", typeof(double), typeof(LayWindow),new PropertyMetadata(0.0,OnHeaderHeightChanged));
-
-        private static void OnHeaderHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            (d as LayWindow).OnHeaderHeightChanged((double)e.NewValue);
-        }
-        private void OnHeaderHeightChanged(double value)
+        public LayWindow()
         { 
-            windowChrome.CaptionHeight = value;
+            _closeAction = () => Close(); 
+        }
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+            if (DataContext is IWindowAware windowAware)
+            {
+                windowAware.Intialized();
+                windowAware.WindowClose += _closeAction;
+            }
         }
         /// <summary>
         /// 顶部内容
@@ -198,6 +195,19 @@ namespace LayUI.Wpf.Controls
                 InvalidateMeasure();
             }
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            if (DataContext is IWindowAware windowAware)
+            {
+                windowAware.WindowClose -= _closeAction;
+                windowAware.Closed();
+            }
+            base.OnClosed(e);
+        }
+
+
+
         protected override void OnClosing(CancelEventArgs e)
         {
             if (DataContext is IWindowAware windowAware)

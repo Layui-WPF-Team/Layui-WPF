@@ -1,0 +1,34 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    <Style x:Key="LayBorderStyle" TargetType="Lay:LayBorder">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Lay:LayBorder">
+                    <Grid UseLayoutRounding="True">
+                        <Border
+                            x:Name="PART_Border"
+                            Panel.ZIndex="1"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Lay:LayClipBorder BorderThickness="{Binding ElementName=PART_Border, Path=BorderThickness}" CornerRadius="{Binding ElementName=PART_Border, Path=CornerRadius}">
+                            <Grid Background="{TemplateBinding Background}">
+                                <ContentPresenter
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Child}"
+                                    UseLayoutRounding="False" />
+                            </Grid>
+                        </Lay:LayClipBorder>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource LayBorderStyle}" TargetType="Lay:LayBorder" />
+</ResourceDictionary>
