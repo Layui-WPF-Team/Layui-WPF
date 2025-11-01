@@ -22,10 +22,10 @@
         <Setter Property="CalendarStyle">
             <Setter.Value>
                 <Style BasedOn="{StaticResource LayCalendarStyle}" TargetType="Calendar">
-                    <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDatePicker}, Path=Background}" />
-                    <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDatePicker}, Path=BorderBrush}" />
-                    <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDatePicker}, Path=BorderThickness}" />
-                    <Setter Property="Helper:LayDatePickerHelper.CornerRadius" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDatePicker}, Path=CornerRadius}" />
+                    <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDateTimePicker}, Path=Background}" />
+                    <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDateTimePicker}, Path=BorderBrush}" />
+                    <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDateTimePicker}, Path=BorderThickness}" />
+                    <Setter Property="Helper:LayDatePickerHelper.CornerRadius" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDateTimePicker}, Path=CornerRadius}" />
                 </Style>
             </Setter.Value>
         </Setter>
@@ -43,66 +43,28 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <DatePickerTextBox
+                            <Lay:LayTextBox
                                 x:Name="PART_TextBox"
+                                Width="auto"
+                                Height="auto"
                                 Padding="{TemplateBinding Padding}"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                BorderThickness="0"
                                 Focusable="{TemplateBinding Focusable}"
-                                IsReadOnly="{TemplateBinding IsReadOnly}">
-                                <DatePickerTextBox.Template>
-                                    <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
-                                        <Grid>
-                                            <Border x:Name="Border">
-                                                <Grid x:Name="WatermarkContent">
-                                                    <Border Padding="2,0">
-                                                        <ContentControl
-                                                            x:Name="PART_Watermark"
-                                                            Margin="{TemplateBinding Padding}"
-                                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                            Focusable="False"
-                                                            IsHitTestVisible="False"
-                                                            Opacity="0"
-                                                            TextBlock.Foreground="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDatePicker}, Path=WatermarkColor}" />
-                                                    </Border>
-                                                    <ScrollViewer
-                                                        x:Name="PART_ContentHost"
-                                                        Margin="0"
-                                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-                                                </Grid>
-                                            </Border>
-                                            <VisualStateManager.VisualStateGroups>
-                                                <VisualStateGroup x:Name="WatermarkStates">
-                                                    <VisualStateGroup.Transitions>
-                                                        <VisualTransition GeneratedDuration="0" />
-                                                    </VisualStateGroup.Transitions>
-                                                    <VisualState x:Name="Unwatermarked" />
-                                                    <VisualState x:Name="Watermarked">
-                                                        <Storyboard>
-                                                            <DoubleAnimation
-                                                                Storyboard.TargetName="PART_Watermark"
-                                                                Storyboard.TargetProperty="Opacity"
-                                                                To="1"
-                                                                Duration="0" />
-                                                        </Storyboard>
-                                                    </VisualState>
-                                                </VisualStateGroup>
-                                            </VisualStateManager.VisualStateGroups>
-                                        </Grid>
-                                    </ControlTemplate>
-                                </DatePickerTextBox.Template>
-                            </DatePickerTextBox>
-                            <Button
+                                IsReadOnly="{TemplateBinding IsReadOnly}"
+                                Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Time}"
+                                Watermark="请选择日期" />
+                            <ToggleButton
                                 x:Name="PART_Button"
                                 Grid.Column="1"
                                 Width="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight}"
                                 Cursor="Hand"
                                 FocusManager.FocusedElement="{Binding ElementName=PART_TextBox}"
-                                Foreground="{TemplateBinding Foreground}">
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
+                                Foreground="{TemplateBinding Foreground}"
+                                IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsDropDownOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
                                         <Grid Background="Transparent">
                                             <Path
                                                 Margin="5"
@@ -112,15 +74,153 @@
                                                 Stretch="Fill" />
                                         </Grid>
                                     </ControlTemplate>
-                                </Button.Template>
-                            </Button>
+                                </ToggleButton.Template>
+                            </ToggleButton>
                             <Popup
                                 x:Name="PART_Popup"
                                 AllowsTransparency="True"
                                 Placement="Bottom"
                                 PlacementTarget="{Binding ElementName=bg}"
                                 PopupAnimation="Slide"
-                                StaysOpen="False" />
+                                StaysOpen="False">
+                                <Border
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Calendar
+                                            x:Name="PART_Calendar"
+                                            BorderThickness="0"
+                                            Focusable="False"
+                                            IsTodayHighlighted="{TemplateBinding IsTodayHighlighted}"
+                                            Style="{TemplateBinding CalendarStyle}" />
+                                        <Grid
+                                            Grid.Row="1"
+                                            Height="1"
+                                            Background="{TemplateBinding BorderBrush}" />
+                                        <Grid Grid.Row="2" Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                <Lay:LayComboBox
+                                                    x:Name="PART_Hours"
+                                                    Width="50"
+                                                    Height="auto"
+                                                    MinHeight="0"
+                                                    Margin="2,0"
+                                                    Padding="5"
+                                                    VerticalAlignment="Center"
+                                                    Focusable="False"
+                                                    MaxDropDownHeight="200"
+                                                    SelectedItem="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Hour}"
+                                                    Style="{DynamicResource LayComboBoxStyle}">
+                                                    <Lay:LayComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock HorizontalAlignment="Center" Text="{Binding}" />
+                                                        </DataTemplate>
+                                                    </Lay:LayComboBox.ItemTemplate>
+                                                </Lay:LayComboBox>
+                                                <TextBlock
+                                                    Margin="2,0"
+                                                    VerticalAlignment="Center"
+                                                    Text=":" />
+                                                <Lay:LayComboBox
+                                                    x:Name="PART_Minutes"
+                                                    Width="50"
+                                                    Height="auto"
+                                                    MinHeight="0"
+                                                    Margin="2,0"
+                                                    Padding="5"
+                                                    VerticalAlignment="Center"
+                                                    Focusable="False"
+                                                    MaxDropDownHeight="200"
+                                                    SelectedItem="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Minute}"
+                                                    Style="{DynamicResource LayComboBoxStyle}">
+                                                    <Lay:LayComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock HorizontalAlignment="Center" Text="{Binding}" />
+                                                        </DataTemplate>
+                                                    </Lay:LayComboBox.ItemTemplate>
+                                                </Lay:LayComboBox>
+                                                <TextBlock
+                                                    Margin="2,0"
+                                                    VerticalAlignment="Center"
+                                                    Text=":" />
+                                                <Lay:LayComboBox
+                                                    x:Name="PART_Seconds"
+                                                    Width="50"
+                                                    Height="auto"
+                                                    MinHeight="0"
+                                                    Margin="2,0"
+                                                    Padding="5"
+                                                    VerticalAlignment="Center"
+                                                    Focusable="False"
+                                                    MaxDropDownHeight="200"
+                                                    SelectedItem="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Second}"
+                                                    Style="{DynamicResource LayComboBoxStyle}">
+                                                    <Lay:LayComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock HorizontalAlignment="Center" Text="{Binding}" />
+                                                        </DataTemplate>
+                                                    </Lay:LayComboBox.ItemTemplate>
+                                                </Lay:LayComboBox>
+                                            </StackPanel>
+                                            <StackPanel
+                                                Margin="5,0"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                Orientation="Horizontal"
+                                                UseLayoutRounding="True">
+                                                <Lay:LayButton
+                                                    x:Name="PART_Current"
+                                                    Width="auto"
+                                                    Height="25"
+                                                    MinWidth="45"
+                                                    MinHeight="0"
+                                                    Padding="5"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Center"
+                                                    Content="当前"
+                                                    CornerRadius="0"
+                                                    Focusable="False" />
+                                                <Lay:LayButton
+                                                    x:Name="PART_Cancel"
+                                                    Width="auto"
+                                                    Height="25"
+                                                    MinWidth="45"
+                                                    MinHeight="0"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Center"
+                                                    Content="取消"
+                                                    CornerRadius="0"
+                                                    Focusable="False"
+                                                    Visibility="Collapsed" />
+                                                <Lay:LayButton
+                                                    x:Name="PART_Submit"
+                                                    Width="auto"
+                                                    Height="25"
+                                                    MinWidth="45"
+                                                    MinHeight="0"
+                                                    Padding="5"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Center"
+                                                    BorderThickness="0,1,1,1"
+                                                    Content="确定"
+                                                    CornerRadius="0"
+                                                    Focusable="False" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </Popup>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
