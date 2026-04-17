@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls">
+    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls"
+    xmlns:LayEx="clr-namespace:LayUI.Wpf.Extend">
     <Style x:Key="ElementTextStyle" TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=VerticalContentAlignment}" />
         <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=HorizontalContentAlignment}" />
@@ -571,7 +572,7 @@
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="fousIcon" Property="Opacity" Value="1" />
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource LighGray}" />
+                            <Setter TargetName="border" Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(LayEx:LayDataGridHelper.SelectedRowBackground)}" />
                         </Trigger>
                         <Trigger Property="DetailsVisibility" Value="Visible">
                             <Setter TargetName="DetailsPresenter" Property="Margin" Value="0,0,1,0" />
@@ -588,7 +589,7 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="13,0" />
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=Lay:LayDataGrid, Mode=FindAncestor}, Path=Foreground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid, Mode=FindAncestor}, Path=Foreground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
@@ -602,6 +603,11 @@
                             <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </Border>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(LayEx:LayDataGridHelper.SelectedRowForeground)}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -700,6 +706,8 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="ColumnHeaderHeight" Value="40" />
         <Setter Property="MinRowHeight" Value="40" />
+        <Setter Property="LayEx:LayDataGridHelper.SelectedRowBackground" Value="{DynamicResource LighGray}" />
+        <Setter Property="LayEx:LayDataGridHelper.SelectedRowForeground" Value="Black" />
         <Setter Property="RowHeaderWidth" Value="0" />
         <Setter Property="AutoGenerateColumns" Value="false" />
         <Setter Property="CanUserReorderColumns" Value="false" />

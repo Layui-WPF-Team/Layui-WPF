@@ -24,6 +24,7 @@ using System.Runtime.InteropServices;
 
 // 
 [assembly: System.Windows.Markup.XmlnsDefinition("https://github.com/Coolkeke", "LayUI.Wpf.Controls")]
+[assembly: System.Windows.Markup.XmlnsDefinition("https://github.com/Coolkeke", "LayUI.Wpf.Extend")]
 [assembly: System.Windows.Markup.XmlnsDefinition("https://github.com/Coolkeke", "LayUI.Wpf.Global")]
 [assembly: System.Windows.Markup.XmlnsDefinition("https://github.com/Coolkeke", "LayUI.Wpf.Converters")]
 [assembly: System.Windows.Markup.XmlnsDefinition("https://github.com/Coolkeke", "LayUI.Wpf.Enum")]

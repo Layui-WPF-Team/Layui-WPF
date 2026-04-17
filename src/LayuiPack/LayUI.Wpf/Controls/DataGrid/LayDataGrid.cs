@@ -325,7 +325,9 @@ namespace LayUI.Wpf.Controls
         {
             base.OnLoadingRow(e);
             LayDataGridHelper.SetLineNumber(e.Row, e.Row.GetIndex() + 1);
-        }
+        } 
+         
+
     }
 
 }

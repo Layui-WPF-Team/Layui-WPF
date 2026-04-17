@@ -2,7 +2,7 @@
     x:Class="LayuiComponentExample.Views.DataGrid"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Lay="clr-namespace:LayUI.Wpf.Controls;assembly=LayUI.Wpf"
+    xmlns:Lay="https://github.com/Coolkeke"
     xmlns:LayHelper="clr-namespace:LayUI.Wpf.Extend;assembly=LayUI.Wpf"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -131,7 +131,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Width="300">
+                <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style BasedOn="{StaticResource LayColumnHeaderStyle}" TargetType="DataGridColumnHeader">
                             <Setter Property="VerticalContentAlignment" Value="Stretch" />

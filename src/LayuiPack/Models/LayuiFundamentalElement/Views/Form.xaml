@@ -23,10 +23,11 @@
         <StackPanel Margin="6">
             <Lay:LayLegend Header="表单集合演示" />
             <Lay:LayTextBox
+                Name="textBox"
                 Width="auto"
                 Margin="0,5"
                 LayHelper:LayControlsBaseHelper.IsFocus="true"
-                Text="123123" />
+                Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <Lay:LayTextBox
                 Width="auto"
                 Margin="0,5"
@@ -71,7 +72,7 @@
                 x:Name="Test"
                 Margin="0,5"
                 IsShowPasswrod="True"
-                Text="{Binding Password}">
+                Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <Lay:LayPasswordBox.InnerLeftContent>
                     <Grid>
                         <TextBlock
