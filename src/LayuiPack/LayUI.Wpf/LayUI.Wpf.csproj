@@ -4,16 +4,16 @@
 		<TargetFrameworks>net4.5.2;net4.6.2;net4.7.2;net4.8;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows;</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<AssemblyTitle>LayUI.Wpf</AssemblyTitle>
-		<Description>这是一款WPF版Layui库，面向所有WPF开发者，提供全新的小清新风格的UI组件库</Description>
+		<Description>这是一个 WPF 版本的 LayUI 风格控件库，面向所有 WPF 开发者，提供全新的小清新风格 UI 组件库。</Description>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild> 
 		<GenerateDocumentationFile>true</GenerateDocumentationFile> 
 		<SignAssembly>False</SignAssembly> 
 		<RepositoryUrl>https://github.com/Layui-WPF-Team/Layui-WPF</RepositoryUrl> 
 		<PackageTags>WPF,LayUI,layui</PackageTags> 
-		<PackageReleaseNotes>修复主窗体标题栏高度功能</PackageReleaseNotes> 
+		<PackageReleaseNotes>修复 LayPasswordBox 密码同步与显示异常问题</PackageReleaseNotes> 
 		<Authors>wenke</Authors> 
-		<Title>这是一款WPF版本的Layui风格的前端UI组件库</Title> 
-		<Version>1.1.1</Version> 
+		<Title>这是一个 WPF 版本的 LayUI 风格前端 UI 控件库</Title> 
+		<Version>1.1.2</Version> 
 		<Copyright>© MaShangFeng</Copyright>
 		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
 		<Company />
