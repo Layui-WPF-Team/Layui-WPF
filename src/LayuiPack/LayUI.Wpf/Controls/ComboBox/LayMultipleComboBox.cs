@@ -11,7 +11,7 @@ using System.Windows.Media;
 
 namespace LayUI.Wpf.Controls
 {
-    public class LayMultipleComboBox: Selector, ILayControl
+    public class LayMultipleComboBox: ComboBox, ILayControl
     { 
 
         /// <summary>
