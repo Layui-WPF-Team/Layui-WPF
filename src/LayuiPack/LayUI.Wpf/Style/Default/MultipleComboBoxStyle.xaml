@@ -40,6 +40,7 @@
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
+                                    Focusable="True"
                                     IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                     Opacity="0" />
                                 <Border
@@ -81,12 +82,7 @@
                                     Margin="{TemplateBinding Padding}"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    Content="{TemplateBinding SelectionBoxItem}"
-                                    ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
-                                    ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                    ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                    IsHitTestVisible="false"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    Content="{TemplateBinding SelectedItems}" />
                             </Grid>
                         </Border>
                         <Popup
@@ -95,7 +91,9 @@
                             AllowsTransparency="true"
                             IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                             Placement="Bottom"
-                            PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
+                            PlacementTarget="{Binding ElementName=templateRoot}"
+                            PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}"
+                            StaysOpen="True">
                             <Grid>
                                 <Border
                                     x:Name="dropDownBorder"
@@ -175,5 +173,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource LayMultipleComboBoxStyle}" TargetType="Lay:LayMultipleComboBox" />
+    <Style BasedOn="{StaticResource LayMultipleComboBoxStyle}" TargetType="Lay:LayMultipleComboBox">
+        <Setter Property="SelectionMode" Value="Multiple" />
+    </Style>
 </ResourceDictionary>

@@ -17,7 +17,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                <Lay:LayCheckBox Margin="{TemplateBinding Padding}" />
+                                <Lay:LayCheckBox Margin="{TemplateBinding Padding}" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
                                 <ContentPresenter
                                     Margin="{TemplateBinding Padding}"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

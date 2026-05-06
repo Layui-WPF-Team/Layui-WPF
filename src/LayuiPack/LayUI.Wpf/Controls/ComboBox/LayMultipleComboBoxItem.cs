@@ -10,7 +10,7 @@ using System.Windows.Controls.Primitives;
 
 namespace LayUI.Wpf.Controls
 {
-    public class LayMultipleComboBoxItem:ListViewItem, ILayControl
+    public class LayMultipleComboBoxItem:ListBoxItem, ILayControl
     {
         /// <summary>
         /// 圆角

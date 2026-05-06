@@ -2,17 +2,28 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace LayUI.Wpf.Controls
 {
-    public class LayMultipleComboBox: ComboBox, ILayControl
-    { 
+    public class LayMultipleComboBox: ListBox, ILayControl
+    {
+
+        private ToggleButton toggleButton;
+        private Popup popup;
+
+
+        static LayMultipleComboBox()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(LayMultipleComboBox), new FrameworkPropertyMetadata(typeof(LayMultipleComboBox)));
+        }
 
         /// <summary>
         /// 这是水印
@@ -55,9 +66,64 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for IsDropDownOpen.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDropDownOpenProperty =
-            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(LayMultipleComboBox), new PropertyMetadata(false));
-         
+            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(LayMultipleComboBox), new PropertyMetadata(false,OnIsDropDownOpenChanged));
 
+        private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var multipComboBox = (LayMultipleComboBox)d;
+            if ((bool)e.NewValue)
+            {
+                // 🔥 效仿原生：打开下拉时，捕获鼠标（SubTree模式：只捕获本控件及子元素）
+                Mouse.Capture(multipComboBox, CaptureMode.SubTree);
+            }
+            else
+            {
+                // 关闭下拉时，释放鼠标捕获
+                if (Mouse.Captured == multipComboBox)
+                    Mouse.Capture(null);
+            }
+        }
+
+        protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
+        {
+            base.OnPreviewMouseDown(e);
+
+
+            if (!IsDropDownOpen) return;
+
+            // 获取点击的元素
+            var clickedElement = e.OriginalSource as DependencyObject;
+
+            // 🔥 效仿原生：判断点击是否在「控件内部 / Popup内部」
+            bool isClickInside = IsAncestorOf(clickedElement) || IsClickInsidePopup(clickedElement);
+
+            if (isClickInside)
+            {
+                // 点击内部：不关闭，仅标记事件已处理（防止冒泡）
+                e.Handled = true;
+            }
+            else
+            {
+                // 点击外部：关闭下拉
+                IsDropDownOpen = false;
+                e.Handled = true;
+            }
+        }
+
+        private bool IsClickInsidePopup(DependencyObject element)
+        {
+            if (element == null) return false;
+
+            // 遍历视觉树，找 Popup
+            while (element != null)
+            {
+                if (element is Popup popup && popup.PlacementTarget == this)
+                    return true;
+
+                element = VisualTreeHelper.GetParent(element);
+            }
+            return false;
+        }
         /// <summary>
         /// 重写自定义指定项子控件
         /// </summary>
@@ -152,6 +218,7 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty MaxDropDownHeightProperty =
             DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(LayMultipleComboBox));
 
+   
 
 
     }
