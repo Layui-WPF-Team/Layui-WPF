@@ -13,16 +13,63 @@ using System.Windows.Media;
 
 namespace LayUI.Wpf.Controls
 {
-    public class LayMultipleComboBox: ListBox, ILayControl
+    /// <summary>
+    /// 多选Combobox
+    /// </summary>
+    public class LayMultipleComboBox : ListBox, ILayControl
     {
 
-        private ToggleButton toggleButton;
+
         private Popup popup;
 
 
         static LayMultipleComboBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(LayMultipleComboBox), new FrameworkPropertyMetadata(typeof(LayMultipleComboBox)));
+        }
+
+
+        public LayMultipleComboBox()
+        {
+            // 监听全局鼠标按下事件
+            EventManager.RegisterClassHandler(typeof(Window), Mouse.PreviewMouseDownEvent, new MouseButtonEventHandler(OnGlobalPreviewMouseDown), true);
+        }
+
+        private  void OnGlobalPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            if (!IsDropDownOpen) return;
+
+            var clickedElement = e.OriginalSource as DependencyObject;
+
+            bool isClickInside = IsAncestorOf(clickedElement) || IsChildInPopup(clickedElement);
+
+            if (isClickInside)
+                // 内部点击：不关闭，处理事件
+                return;
+            else
+                // 外部点击：关闭
+                IsDropDownOpen = false;
+
+        }
+
+        private bool IsChildInPopup(DependencyObject element)
+        {
+            // 安全检查
+            if (popup == null || popup.Child == null || element == null)
+                return false;
+
+            // 核心逻辑：直接判断点击的元素，是否是 Popup.Child 的子元素
+            // 注意：Popup内部可能也有逻辑树，这里兼容视觉树和逻辑树
+            var current = element;
+            while (current != null)
+            {
+                if(current == popup.Child)
+                    return true;
+
+                current = VisualTreeHelper.GetParent(current);
+            }
+            return false;
         }
 
         /// <summary>
@@ -66,64 +113,11 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for IsDropDownOpen.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDropDownOpenProperty =
-            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(LayMultipleComboBox), new PropertyMetadata(false,OnIsDropDownOpenChanged));
-
-        private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var multipComboBox = (LayMultipleComboBox)d;
-            if ((bool)e.NewValue)
-            {
-                // 🔥 效仿原生：打开下拉时，捕获鼠标（SubTree模式：只捕获本控件及子元素）
-                Mouse.Capture(multipComboBox, CaptureMode.SubTree);
-            }
-            else
-            {
-                // 关闭下拉时，释放鼠标捕获
-                if (Mouse.Captured == multipComboBox)
-                    Mouse.Capture(null);
-            }
-        }
-
-        protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
-        {
-            base.OnPreviewMouseDown(e);
+            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(LayMultipleComboBox), new PropertyMetadata(false));
 
 
-            if (!IsDropDownOpen) return;
 
-            // 获取点击的元素
-            var clickedElement = e.OriginalSource as DependencyObject;
 
-            // 🔥 效仿原生：判断点击是否在「控件内部 / Popup内部」
-            bool isClickInside = IsAncestorOf(clickedElement) || IsClickInsidePopup(clickedElement);
-
-            if (isClickInside)
-            {
-                // 点击内部：不关闭，仅标记事件已处理（防止冒泡）
-                e.Handled = true;
-            }
-            else
-            {
-                // 点击外部：关闭下拉
-                IsDropDownOpen = false;
-                e.Handled = true;
-            }
-        }
-
-        private bool IsClickInsidePopup(DependencyObject element)
-        {
-            if (element == null) return false;
-
-            // 遍历视觉树，找 Popup
-            while (element != null)
-            {
-                if (element is Popup popup && popup.PlacementTarget == this)
-                    return true;
-
-                element = VisualTreeHelper.GetParent(element);
-            }
-            return false;
-        }
         /// <summary>
         /// 重写自定义指定项子控件
         /// </summary>
@@ -158,7 +152,7 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayMultipleComboBox));
 
-        
+
         /// <summary>
         /// 分割线宽度(只有IsEditable开启才生效)
         /// </summary>
@@ -204,7 +198,7 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty FocusedBorderBrushProperty =
             DependencyProperty.Register("FocusedBorderBrush", typeof(Brush), typeof(LayMultipleComboBox), new PropertyMetadata(Brushes.Transparent));
 
-         
+
         /// <summary>
         /// 
         /// </summary>
@@ -218,7 +212,13 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty MaxDropDownHeightProperty =
             DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(LayMultipleComboBox));
 
-   
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            popup = GetTemplateChild("PART_Popup") as Popup;
+        }
 
 
     }

@@ -10,6 +10,9 @@ using System.Windows.Controls.Primitives;
 
 namespace LayUI.Wpf.Controls
 {
+    /// <summary>
+    /// 多选Combobox的Item
+    /// </summary>
     public class LayMultipleComboBoxItem:ListBoxItem, ILayControl
     {
         /// <summary>
