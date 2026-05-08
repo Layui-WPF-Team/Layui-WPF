@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LayUI.Wpf.Controls.SVG;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -21,7 +23,10 @@ namespace LayUI.Wpf.Controls
 
 
         private Popup popup;
-
+        /// <summary>
+        /// 标签元素删除路由事件
+        /// </summary>
+        private RoutedEventHandler delItemClickHandler;
 
         static LayMultipleComboBox()
         {
@@ -33,9 +38,35 @@ namespace LayUI.Wpf.Controls
         {
             // 监听全局鼠标按下事件
             EventManager.RegisterClassHandler(typeof(Window), Mouse.PreviewMouseDownEvent, new MouseButtonEventHandler(OnGlobalPreviewMouseDown), true);
+            ContentItems = new ObservableCollection<object>();
+
+            this.Loaded += LayMultipleComboBox_Loaded;
+            this.Unloaded += LayMultipleComboBox_Unloaded;
         }
 
-        private  void OnGlobalPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void LayMultipleComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (delItemClickHandler == null)
+                delItemClickHandler = new RoutedEventHandler(OnDeleteItemBtnClick);
+
+            this.AddHandler(Button.ClickEvent, delItemClickHandler);
+        }
+
+        private void LayMultipleComboBox_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (delItemClickHandler != null)
+            {
+                this.RemoveHandler(Button.ClickEvent, delItemClickHandler);
+                delItemClickHandler = null;
+            }
+        }
+
+        /// <summary>
+        /// 全局点击事件捕获，用于关闭Popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnGlobalPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
 
             if (!IsDropDownOpen) return;
@@ -53,6 +84,11 @@ namespace LayUI.Wpf.Controls
 
         }
 
+        /// <summary>
+        /// 判断元素是否在Popup内
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
         private bool IsChildInPopup(DependencyObject element)
         {
             // 安全检查
@@ -64,7 +100,7 @@ namespace LayUI.Wpf.Controls
             var current = element;
             while (current != null)
             {
-                if(current == popup.Child)
+                if (current == popup.Child)
                     return true;
 
                 current = VisualTreeHelper.GetParent(current);
@@ -218,6 +254,110 @@ namespace LayUI.Wpf.Controls
             base.OnApplyTemplate();
 
             popup = GetTemplateChild("PART_Popup") as Popup;
+        }
+
+
+
+        public ObservableCollection<object> ContentItems
+        {
+            get { return (ObservableCollection<object>)GetValue(ContentItemsProperty); }
+            set { SetValue(ContentItemsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ContentItems.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ContentItemsProperty =
+            DependencyProperty.Register("ContentItems", typeof(ObservableCollection<object>), typeof(LayMultipleComboBox), new PropertyMetadata(null));
+
+        protected override void OnSelectionChanged(SelectionChangedEventArgs e)
+        {
+            base.OnSelectionChanged(e);
+
+            if (ContentItems == null)
+                throw new NullReferenceException("ContentItems in LayMultipleComboBox is null");
+
+            if (e.AddedItems != null)
+            {
+                foreach (var item in e.AddedItems)
+                {
+                    var disPlayContent = GetItemContent(item);
+                    if (!ContentItems.Contains(disPlayContent))
+                        ContentItems.Add(disPlayContent);
+                }
+            }
+
+            if (e.RemovedItems != null)
+            {
+                foreach (var item in e.RemovedItems)
+                {
+                    var disPlayContent = GetItemContent(item);
+                    if (ContentItems.Contains(disPlayContent))
+                        ContentItems.Remove(disPlayContent);
+                }
+            }
+        }
+
+        private object GetItemContent(object rawItem)
+        {
+            if (rawItem is LayMultipleComboBoxItem multipleComboBoxItem)
+                return multipleComboBoxItem.Content;
+            else
+                return rawItem;
+        }
+
+
+        public Brush ItemDelBtnForeground
+        {
+            get { return (Brush)GetValue(ItemDelBtnForegroundProperty); }
+            set { SetValue(ItemDelBtnForegroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ItemDelBtnForeground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemDelBtnForegroundProperty =
+            DependencyProperty.Register("ItemDelBtnForeground", typeof(Brush), typeof(LayMultipleComboBox), new PropertyMetadata());
+
+        /// <summary>
+        /// 点击删除标签事件逻辑
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnDeleteItemBtnClick(object sender, RoutedEventArgs e)
+        {
+            if (ContentItems == null)
+                return;
+            //判断是否是标签关闭按钮
+            if (e.OriginalSource is Button btn)
+            {
+                //拿到数据源
+                var delItem = btn.DataContext;
+                //简单判断是否是ContentItems集合里的元素
+                if (delItem != null && ContentItems.Contains(delItem))
+                {
+                    object DeselectItem = null;
+                    //在SelectedItems中找到对应元素，并取消选中
+                    foreach (var selectedItem in this.SelectedItems)
+                    {
+                        if (selectedItem is LayMultipleComboBoxItem layCItem)
+                        {
+                            if (object.ReferenceEquals(delItem, layCItem.Content))
+                            {
+                                DeselectItem = layCItem;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            if (object.ReferenceEquals(delItem, selectedItem))
+                            {
+                                DeselectItem = delItem;
+                                break;
+                            }
+                        }
+                    }
+                    //在SelectedItems取消选中后，ContentItems会在OnSelectionChanged事件里Remove对应元素
+                    if (DeselectItem != null)
+                        this.SelectedItems.Remove(DeselectItem);
+                }
+            }
         }
 
 
