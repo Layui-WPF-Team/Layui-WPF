@@ -19,8 +19,8 @@ using System.Windows.Media;
 
 namespace LayUI.Wpf.Controls
 {
-    [DefaultProperty("ContentItems")]
-    [ContentProperty("ContentItems")]
+    [DefaultProperty("Items")]
+    [ContentProperty("Items")]
     [TemplatePart(Name = "PART_Popup", Type = typeof(Popup))]
     [TemplatePart(Name = "PART_ItemsHost", Type = typeof(Panel))]
     public class LayAutoCompleteTextBox : TextBox, ILayControl
@@ -68,7 +68,7 @@ namespace LayUI.Wpf.Controls
 
         // Using a DependencyProperty as the backing store for Items.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty ItemsProperty =
-            DependencyProperty.Register("ContentItems", typeof(Collection<object>), typeof(LayAutoCompleteTextBox));
+            DependencyProperty.Register("Items", typeof(Collection<object>), typeof(LayAutoCompleteTextBox));
 
 
 
