@@ -77,7 +77,18 @@
                                         </TransformGroup>
                                     </Path.RenderTransform>
                                 </Path>
-                                <ItemsControl ItemTemplate="{TemplateBinding ItemTemplate}" ItemsSource="{TemplateBinding ContentItems}">
+                                <ContentPresenter
+                                    x:Name="PART_ContentText"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding ContentText}"
+                                    Visibility="Collapsed" />
+                                <ItemsControl
+                                    x:Name="PART_ContextItems"
+                                    ItemTemplate="{TemplateBinding ItemTemplate}"
+                                    ItemsSource="{TemplateBinding ContentItems}"
+                                    Visibility="Collapsed">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" />
@@ -159,6 +170,12 @@
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ContentItems.Count}" Value="0">
                             <Setter TargetName="watermark" Property="Visibility" Value="Visible" />
                         </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=JustString}" Value="false">
+                            <Setter TargetName="PART_ContextItems" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=JustString}" Value="true">
+                            <Setter TargetName="PART_ContentText" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
                         <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true" />
                         <Trigger Property="HasItems" Value="false">
                             <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
@@ -201,10 +218,10 @@
                                 Content="{Binding}" />
                             <Button
                                 x:Name="ItemDelBtn"
-                                AutomationProperties.Name="asd"
                                 Width="20"
                                 Height="20"
                                 Margin="2,0,0,0"
+                                AutomationProperties.Name="asd"
                                 Background="Transparent"
                                 BorderThickness="0"
                                 Cursor="Hand">

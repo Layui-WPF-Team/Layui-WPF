@@ -28,6 +28,8 @@ namespace LayUI.Wpf.Controls
         /// </summary>
         private RoutedEventHandler delItemClickHandler;
 
+        private StringBuilder contentTextSB;
+
         static LayMultipleComboBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(LayMultipleComboBox), new FrameworkPropertyMetadata(typeof(LayMultipleComboBox)));
@@ -39,7 +41,7 @@ namespace LayUI.Wpf.Controls
             // 监听全局鼠标按下事件
             EventManager.RegisterClassHandler(typeof(Window), Mouse.PreviewMouseDownEvent, new MouseButtonEventHandler(OnGlobalPreviewMouseDown), true);
             ContentItems = new ObservableCollection<object>();
-
+            contentTextSB = new StringBuilder();
             this.Loaded += LayMultipleComboBox_Loaded;
             this.Unloaded += LayMultipleComboBox_Unloaded;
         }
@@ -268,12 +270,18 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty ContentItemsProperty =
             DependencyProperty.Register("ContentItems", typeof(ObservableCollection<object>), typeof(LayMultipleComboBox), new PropertyMetadata(null));
 
+        /// <summary>
+        /// 选择元素改变事件
+        /// </summary>
+        /// <param name="e"></param>
+        /// <exception cref="NullReferenceException"></exception>
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
 
             if (ContentItems == null)
                 throw new NullReferenceException("ContentItems in LayMultipleComboBox is null");
+            contentTextSB.Clear();
 
             if (e.AddedItems != null)
             {
@@ -294,6 +302,14 @@ namespace LayUI.Wpf.Controls
                         ContentItems.Remove(disPlayContent);
                 }
             }
+
+            foreach (var item in ContentItems)
+            {
+                if (contentTextSB.Length > 0)
+                    contentTextSB.Append(SeparatorText);
+                contentTextSB.Append(item?.ToString()??string.Empty);
+            }
+            ContentText = contentTextSB.ToString();
         }
 
         private object GetItemContent(object rawItem)
@@ -361,5 +377,62 @@ namespace LayUI.Wpf.Controls
         }
 
 
+        /// <summary>
+        /// 显示的文本
+        /// </summary>
+        public string ContentText
+        {
+            get { return (string)GetValue(ContentTextProperty); }
+            set { SetValue(ContentTextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ContentText.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ContentTextProperty =
+            DependencyProperty.Register("ContentText", typeof(string), typeof(LayMultipleComboBox), new PropertyMetadata(null));
+
+
+        /// <summary>
+        /// 是否只显示文本
+        /// </summary>
+        public bool JustString
+        {
+            get { return (bool)GetValue(JustStringProperty); }
+            set { SetValue(JustStringProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for JustString.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty JustStringProperty =
+            DependencyProperty.Register("JustString", typeof(bool), typeof(LayMultipleComboBox), new PropertyMetadata(false));
+
+
+        /// <summary>
+        /// 显示文本的分隔符
+        /// </summary>
+        public string SeparatorText
+        {
+            get { return (string)GetValue(SeparatorTextProperty); }
+            set { SetValue(SeparatorTextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SeparatorText.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SeparatorTextProperty =
+            DependencyProperty.Register("SeparatorText", typeof(string), typeof(LayMultipleComboBox), new PropertyMetadata(null,OnSeparatorTextChanged));
+
+        private static void OnSeparatorTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if(d is LayMultipleComboBox layMultipleComboBox)
+            {
+                var sb = layMultipleComboBox.contentTextSB;
+                sb.Clear();
+                var separator = layMultipleComboBox.SeparatorText;
+                foreach (var item in layMultipleComboBox.ContentItems)
+                {
+                    if (sb.Length > 0)
+                        sb.Append(separator);
+                    sb.Append(item?.ToString() ?? string.Empty);
+                }
+                layMultipleComboBox.ContentText = sb.ToString();
+            }
+        }
     }
 }
