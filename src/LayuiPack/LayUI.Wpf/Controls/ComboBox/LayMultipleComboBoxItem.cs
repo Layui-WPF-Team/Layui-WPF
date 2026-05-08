@@ -10,7 +10,10 @@ using System.Windows.Controls.Primitives;
 
 namespace LayUI.Wpf.Controls
 {
-    public class LayMultipleComboBoxItem:ListViewItem, ILayControl
+    /// <summary>
+    /// 多选Combobox的Item
+    /// </summary>
+    public class LayMultipleComboBoxItem : ListBoxItem, ILayControl
     {
         /// <summary>
         /// 圆角
@@ -26,5 +29,8 @@ namespace LayUI.Wpf.Controls
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(LayMultipleComboBoxItem));
 
+        public LayMultipleComboBoxItem() { }
+
+        public LayMultipleComboBoxItem(object content) => this.Content = content;
     }
 }

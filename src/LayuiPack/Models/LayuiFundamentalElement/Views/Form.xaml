@@ -121,10 +121,32 @@
                 <Lay:LayComboBoxItem Content="123" />
                 <Lay:LayComboBoxItem Content="234" />
             </Lay:LayComboBox>
-            <Lay:LayMultipleComboBox Margin="0,5">
-                <Lay:LayMultipleComboBoxItem Content="123" />
-                <Lay:LayMultipleComboBoxItem Content="234" />
-            </Lay:LayMultipleComboBox>
+
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=StackPanel}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Lay:LayMultipleComboBox x:Name="layMComboBox" Margin="0,5">
+                        <Lay:LayMultipleComboBoxItem Content="123" />
+                        <Lay:LayMultipleComboBoxItem Content="234" />
+                    </Lay:LayMultipleComboBox>
+                    <Lay:LayCheckBox
+                        Grid.Column="1"
+                        Content="JustString"
+                        IsChecked="{Binding JustString, ElementName=layMComboBox}" />
+                    <StackPanel Grid.Column="2" Orientation="Horizontal">
+                        <Lay:LayTextBlock
+                            Margin="10,0,0,0"
+                            VerticalAlignment="Center"
+                            Text="间隔符：" />
+                        <Lay:LayTextBox Text="{Binding SeparatorText, ElementName=layMComboBox, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
             <Lay:LayComboBox
                 Margin="0,5"
                 IsEditable="True"

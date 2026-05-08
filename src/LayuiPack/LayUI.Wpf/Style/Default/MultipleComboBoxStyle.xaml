@@ -34,7 +34,29 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <ToggleButton
+                                    x:Name="PART_ToggleButton"
+                                    Grid.ColumnSpan="2"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Focusable="True"
+                                    IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Opacity="0" />
+                                <Border
+                                    Padding="2,0,0,0"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    IsHitTestVisible="False">
+                                    <TextBlock
+                                        x:Name="watermark"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Foreground="{TemplateBinding WatermarkColor}"
+                                        Text="{TemplateBinding Watermark}"
+                                        Visibility="Collapsed" />
+                                </Border>
                                 <Path
                                     Grid.Column="1"
                                     Width="13"
@@ -55,6 +77,29 @@
                                         </TransformGroup>
                                     </Path.RenderTransform>
                                 </Path>
+                                <ContentPresenter
+                                    x:Name="PART_ContentText"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding ContentText}"
+                                    Visibility="Collapsed" />
+                                <ItemsControl
+                                    x:Name="PART_ContextItems"
+                                    ItemTemplate="{TemplateBinding ItemTemplate}"
+                                    ItemsSource="{TemplateBinding ContentItems}"
+                                    Visibility="Collapsed">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemContainerStyle>
+                                        <Style>
+                                            <Setter Property="FrameworkElement.Margin" Value="0,0,4,0" />
+                                        </Style>
+                                    </ItemsControl.ItemContainerStyle>
+                                </ItemsControl>
                             </Grid>
                         </Border>
                         <Popup
@@ -63,7 +108,9 @@
                             AllowsTransparency="true"
                             IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                             Placement="Bottom"
-                            PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
+                            PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                            PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}"
+                            StaysOpen="True">
                             <Grid>
                                 <Border
                                     x:Name="dropDownBorder"
@@ -89,9 +136,101 @@
                             </Grid>
                         </Popup>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsDropDownOpen}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="RotateTransform"
+                                            Storyboard.TargetProperty="Angle"
+                                            To="180"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="RotateTransform"
+                                            Storyboard.TargetProperty="Angle"
+                                            To="0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ContentItems}" Value="">
+                            <Setter TargetName="watermark" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ContentItems}" Value="{x:Null}">
+                            <Setter TargetName="watermark" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ContentItems.Count}" Value="0">
+                            <Setter TargetName="watermark" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=JustString}" Value="false">
+                            <Setter TargetName="PART_ContextItems" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=JustString}" Value="true">
+                            <Setter TargetName="PART_ContentText" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true" />
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=HoverBorderBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=FocusedBorderBrush}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" Value="true" />
+                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                        </MultiTrigger>
+                        <Trigger SourceName="DropDownScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false" />
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource LayMultipleComboBoxStyle}" TargetType="Lay:LayMultipleComboBox" />
+    <Style BasedOn="{StaticResource LayMultipleComboBoxStyle}" TargetType="Lay:LayMultipleComboBox">
+        <Setter Property="SelectionMode" Value="Multiple" />
+        <Setter Property="ItemDelBtnForeground" Value="Green" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border
+                        Margin="1"
+                        Padding="5,3"
+                        BorderBrush="#eee"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource ControlCornerRadiusBase}">
+                        <StackPanel Height="20" Orientation="Horizontal">
+                            <ContentPresenter
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                Content="{Binding}" />
+                            <Button
+                                x:Name="ItemDelBtn"
+                                Width="20"
+                                Height="20"
+                                Margin="2,0,0,0"
+                                AutomationProperties.Name="asd"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Cursor="Hand">
+                                <TextBlock FontFamily="{DynamicResource IconFont}" Text="&#xea80;" />
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
